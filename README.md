@@ -9,13 +9,16 @@ Stand-alone IP KVM device with web interface with various video capture options 
 - Raspberry Pi power supply
 - Arduino Pro Micro with hardware USB for HID sub-system
 - GPIO cables
-
-- Relay board (https://www.amazon.com/dp/B0057OC5WK)
+- 2-Channel Relay Module
+# Video capture side for lowcost S-Video
 - Easycap UTV007 device (https://www.amazon.com/dp/B0126O0RDC)
 - HDMI to S-Video (not all options work, but these two have been tested) (https://www.amazon.com/dp/B012MDMWLM or https://www.amazon.com/gp/product/B01E56CV42)
-- USB TTL Serial cable (https://www.amazon.com/gp/product/B00QT7LQ88)
+# Video capture side for HDMI
+- B101 HDMI to CSI-2 Bridge (https://auvidea.eu/b101-hdmi-to-csi-2-bridge-15-pin-fpc/)
 
-A full wishlist totaling under $120 at the time of this writing can be found at http://a.co/36FK9T8
+
+
+
 
 ## Before assembling
 
