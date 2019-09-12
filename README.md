@@ -26,9 +26,7 @@ Stand-alone IP KVM device with web interface with various video capture options 
 ## Setting up the hardware
 Here is a diagram of how you connect all of the pieces:
 
-![Diagram](https://github.com/Fmstrat/diy-ipmi/raw/master/Resources/Diagram-sm.png)
-
-View the [high resolution version](https://raw.githubusercontent.com/Fmstrat/diy-ipmi/master/Resources/Diagram.png)
+![Screenshot](image2.png)
 
 The detailed process is to:
 - Connect the Pi3 to the relay board using this method: http://youtu.be/oaf_zQcrg7g
