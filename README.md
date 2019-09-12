@@ -1,7 +1,7 @@
 # DIY IP KVM System with WEB-interface using Raspberry Pi
 Stand-alone IP KVM device with web interface with various video capture options and bunch of features like keyboard/mouse control, ATX control (power/reset/ HDD load), Mass-Storage Device. 
 
-![Screenshot](https://github.com/Fmstrat/diy-ipmi/raw/master/Resources/Screenshot.png)
+![Screenshot](image1.png)
 
 ## Minimal hardware implementation
 - Raspberry Pi 2, 3 or 4(work in progress)
