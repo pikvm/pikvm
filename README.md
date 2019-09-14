@@ -42,15 +42,32 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
 3. Create config file `config.mk` for the target system. You must specify the path to SD card on your local computer (this will be used to format and install the system) and version of your Raspberry Pi and platform. You can change other parameters as you wish:
     ```Makefile
     $ cat config.mk
-    BOARD = rpi3       # rpi3 for any Raspberry Pi 3, rpi2 for version 2.
-    PLATFORM = v0-vga  # Hardware configuration.
-    HOSTNAME = pikvm   # Target hostname
-    LOCALE = en_US     # ru_RU, etc. UTF-8 only
-    TIMEZONE = Europe/Moscow  # See /usr/share/zoneinfo
-    ROOT_PASSWD ?= root         # For SSH root user
-    WEBUI_ADMIN_PASSWD ?= admin # Web UI credentials: user=admin, password=<this>
-    IPMI_ADMIN_PASSWD ?= admin  # IPMI credentials: user=admin, password=<this>
-    CARD ?= /dev/mmcblk0  # SD card device
+    # rpi3 for any Raspberry Pi 3, rpi2 for version 2.
+    BOARD = rpi3
+    
+    # Hardware configuration
+    PLATFORM = v0-vga
+    
+    # Target hostname
+    HOSTNAME = pikvm
+    
+    # ru_RU, etc. UTF-8 only
+    LOCALE = en_US
+    
+    # See /usr/share/zoneinfo
+    TIMEZONE = Europe/Moscow
+    
+    # For SSH root user
+    ROOT_PASSWD = root
+    
+    # Web UI credentials: user=admin, password=<this>
+    WEBUI_ADMIN_PASSWD = admin
+    
+    # IPMI credentials: user=admin, password=<this>
+    IPMI_ADMIN_PASSWD = admin
+    
+    # SD card device
+    CARD = /dev/mmcblk0
     ```
 
 4. Build OS. It may take about an hour depends on your Internet connection:
