@@ -29,7 +29,7 @@ Here is a diagram of how you connect all of the pieces:
 ![Screenshot](image2.png)
 
 ## Building OS
-Pi-KVM OS is based on Arch Linux ARM and contains all required packages and config for work. To build OS you will need any Linux machine with fresh Docker (we recommand >= 1:19).
+Pi-KVM OS is based on Arch Linux ARM and contains all required packages and config for work. To build OS you will need any Linux machine with fresh Docker (we recommand >= 1:19) with privileged mode (for fdisk and some other commands, check Makefiles if you don't trust us :))
 
 1. Checkout build toolchain:
     ```shell
