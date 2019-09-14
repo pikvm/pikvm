@@ -28,100 +28,48 @@ Here is a diagram of how you connect all of the pieces:
 
 ![Screenshot](image2.png)
 
-## Quick Install
-The quick method of installation is to simply run the install script on the Pi3 as the `pi` user:
-```
-git clone https://github.com/pi-kvm/pi-builder
+## Building OS
+Pi-KVM OS is based on Arch Linux ARM and contains all required packages and config for work. To build OS you will need any Linux machine with fresh Docker (we recommand >= 1:19).
 
-make binfmt os BOARD=rpi3 STAGES="__init__ os watchdog ro __cleanup__"
+1. Checkout build toolchain:
+    ```shell
+    $ git clone https://github.com/pikvm/os
+    $ cd os
+    ```
 
-cat .build/Dockerfile
+2. Select the target hardware configuration (platform). If you are using an analog VGA video capture device, choose `v0-vga`. If you want to use HDMI with Auvidea B101, choose `v0-hdmi`. Other options are for specialized Pi-KVM boards (WIP).
 
-find .build/stages
+3. Create config file `config.mk` for the target system. You must specify the path to SD card on your local computer (this will be used to format and install the system) and version of your Raspberry Pi and platform. You can change other parameters as you wish:
+    ```Makefile
+    $ cat config.mk
+    BOARD = rpi3       # rpi3 for any Raspberry Pi 3, rpi2 for version 2.
+    PLATFORM = v0-vga  # Hardware configuration.
+    HOSTNAME = pikvm   # Target hostname
+    LOCALE = en_US     # ru_RU, etc. UTF-8 only
+    TIMEZONE = Europe/Moscow  # See /usr/share/zoneinfo
+    ROOT_PASSWD ?= root         # For SSH root user
+    WEBUI_ADMIN_PASSWD ?= admin # Web UI credentials: user=admin, password=<this>
+    IPMI_ADMIN_PASSWD ?= admin  # IPMI credentials: user=admin, password=<this>
+    CARD ?= /dev/mmcblk0  # SD card device
+    ```
 
-можешь запустить make shell
-оно тебе даст поковыряться в армовом корне
+4. Build OS. It may take about an hour depends on your Internet connection:
+    ```shell
+    $ make os
+    ```
+    
+5. Put SD card into card reader and install OS:
+    ```shell
+    $ make install
+    ```
+    
+6. After installation remove the SD card and insert it into Raspberry Pi. Turn on the power. Raspberry Pi will try to get the address using DHCP in your LAN. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>`) and HTTPS (try to open using browser `https://<addr`). For HTTPS used a self-signed certificate by default.
 
-CARD ?= /dev/sdb
-CARD_BOOT ?= $(CARD)1
-CARD_ROOT ?= $(CARD)2
+7. If you cannot find the device address, try using the following command:
+    ```shell
+    $ make scan
+    ```
 
-попробуешь снова собрать?
-git checkout .
-git pull
-<поправить путь к карточке в Makefile>
-make binfmt os BOARD=rpi3 BUILD_OPTS=--no-cache STAGES="__init__ os watchdog ro sshkeygen __cleanup__"
-make install
-
-
-
-
-
-
-git clone https://github.com/pi-kvm/os
-отредактируй мейкфайл
-потом делай make v1-vga-rpi3
-потом make install
-в начале файла будет пачка переменных
-.......................................................................................................
-CARD ?= /dev/sdb
-CARD_BOOT ?= $(CARD)1
-CARD_ROOT ?= $(CARD)2
-
-BOARD ?= rpi2
-PLATFORM ?= v1-vga
-STAGES ?= "__init__ os watchdog ro pikvm-common-init pikvm-$(PLATFORM) pikvm-common-final rootssh sshkeygen __cleanup__"
-
-BUILD_OPTS ?=
-
-HOSTNAME ?= pikvm
-LOCALE ?= en_US.UTF-8
-TIMEZONE ?= Europe/Moscow
-REPO_URL ?= http://mirror.yandex.ru/archlinux-arm
-
-WEBUI_ADMIN_PASSWD ?= admin
-.......................................................................................................
-заменяешь CARD, в STAGES убираешь rootssh, потом билдишь
-make v1-vga-rpi3
-make install
-всё
-пользователь в морду admin, пароль admin
-
-
-
-mdevaevВчера в 17:36
-если есть время - попробуй пересобрать квм
-я там всякой мелочи прикольной допилил
-только надо в os сделать make clean-all
-и в самом репе сделать git pull
-много перепилил
-чекни урл /extras/webterm/gotty/
-там консоль
-
-1. 
-make clean-all
-git checkout .
-git pull
-2. 
-nano Makefile
-CARD ?= /dev/sdb
-CARD_BOOT ?= $(CARD)1
-CARD_ROOT ?= $(CARD)2
-3.
-make v1-vga-rpi3
-make install
-
-
-
-
-make clean-all
-git pull --rebase
-make v1-vga-rpi3
-make install
-
-
-make v1-vga-rpi3 install
-```
 Everything will be done on the Pi3 and Pi0 automatically with the video input defaulting to s-video.
 
 If you would like to manage multiple servers with one IPMI system, please see the [Managing multiple servers](#managing-multiple-servers) section below.
