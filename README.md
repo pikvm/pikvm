@@ -3,6 +3,20 @@ Stand-alone IP KVM device with web interface with various video capture options 
 
 ![Screenshot](image1.png)
 
+## List of implemented features
+
+- Microservice architecture - the system consists of a some separated parts that perform a strictly defined task.
+- Control backend with clear API that can be used for scripts and alternative UI (for example, you can make a desktop application);
+- Own MJPG streamer written on C than can change the resolution in real time, report statistics about the video and much more (see details in README).
+- Ability to use any video capture device.
+- Extensible authorization methods - you can configure multiple KVMs so that they use a common password database.
+- IPMI BMC support (you can use ipmitool for power management in your existing network infrastructure).
+- Mass-storage device based on flash drive (but! I can implement OTG for backend). Now I use a regular USB drive whose contacts switch between PI and computer using relay.
+- One arduino for keyboard and mouse. The firmware implements a protocol with a check for transmission errors - it can never just hang. Can be replaced by OTG.
+- A ready-to-use operating system that can be assembled using make build and installed to flash using make install.
+- All components in packages have their own repository. In addition, I developed a special tool that allows you to build the operating system as if it were a regular docker container. It is very convenient and makes debugging easier.
+
+
 ## Minimal hardware implementation
 - Raspberry Pi 2, 3 or 4(work in progress)
 - MicroSD card
@@ -36,6 +50,8 @@ Or if you can made DIY PCB - made one!
 ![Screenshot](image3.jpg)
 
 The details in our Discord chat. Files in https://github.com/pikvm/hardware
+
+
 
 ## Building OS
 Pi-KVM OS is based on Arch Linux ARM and contains all required packages and config for work. To build OS you will need any Linux machine with fresh Docker (we recommand >= 1:19) with privileged mode (for fdisk and some other commands, check Makefiles if you don't trust us :))
