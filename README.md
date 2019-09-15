@@ -1,21 +1,21 @@
 # DIY IP KVM System with WEB-interface using Raspberry Pi
-Stand-alone IP KVM device with web interface with various video capture options and bunch of features like keyboard/mouse control, ATX control (power/reset/ HDD load), Mass-Storage Device. 
+Stand-alone IP KVM device with a web interface with various video capture options and a bunch of features like keyboard/mouse control, ATX control (power/reset/HDD activity), Mass-Storage Device emulation. 
 
 ![Screenshot](image1.png)
 
 ## Featurs
 - Extra-lightweight and fancy Web-UI.
-- Advanced HID emulator based on one Arduino board. It has a mouse support; a keyboard is perfectly works in BIOS. The firmware implements a protocol with a check for transmission errors, it can never just hang.
+- Advanced HID emulator based on one Arduino board. It has mouse support; keyboard works perfectly in a BIOS. The firmware implements a protocol with a check for transmission errors, it will never just hang.
 - Control the power of the server through the ATX button connectors on the motherboard and get the status of the power LEDs and hard drive activity.
-- Mass-storage device based on flash drive. Now we use a regular USB drive whose contacts switch between Pi and server using relay.
+- Mass-storage device based on a flash drive. Now we use a regular USB drive whose contacts switch between the Pi and server using a relay.
 - The Ability to use any video capture device.
-- [Own MJPG streamer](https://github.com/pikvm/ustreamer) written on C with support for multi-threaded and GPU video encoding. It can change the resolution in real time for HDMI source, report statistics about the video and much more (see [README](https://github.com/pikvm/ustreamer/blob/master/README.md) for detalis).
+- [Our own MJPG streamer](https://github.com/pikvm/ustreamer) written on C with support for multi-threading and GPU video encoding. It can change the resolution in real time for an HDMI source, report statistics about the video and much more (see [README](https://github.com/pikvm/ustreamer/blob/master/README.md) for detalis).
 - IPMI BMC support. You can use `ipmitool` for power management in your existing network infrastructure.
 - Extensible authorization methods - you can configure multiple KVMs so that they use a common authorization service.
-- Microservice architecture - the system consists of a some separated parts that perform a strictly defined task.
+- Microservice architecture - the system consists of separated parts that each perform a strictly defined task.
 - Plugin architecture to support a variety of hardware. In the future, we'll be able to support other HID, ATX, and MSD devices. For example, now we are planning to change HID from using the serial port to SPI.
 - Backend with clear API that can be used for scripts and alternative UI (for example, you can make a desktop application);
-- A ready-to-use operating system that can be assembled just using `make build` and installed to memory card using `make install`.
+- A ready-to-use operating system that can be assembled just using `make build` and installed to a memory card using `make install`.
 
 
 ## Minimal hardware implementation
@@ -34,11 +34,11 @@ Stand-alone IP KVM device with web interface with various video capture options 
 - Arduino Pro Micro (ATMega32u4) with hardware USB for HID sub-system
 - GPIO cables for connections (Dupont or identical, suitable for PLS pins and breadboards; for example https://www.amazon.com/gp/product/B01BV2A54G)
 - Logic level converter module https://www.sparkfun.com/products/12009
-- 2-Channel Relay Module for Power and Reset buttons emulation (can be replaced with solid state relays or optocouples)
+- 2-Channel Relay Module for Power and Reset buttons emulation (can be replaced with solid state relays or optocouplers)
 - Optocouplers for receive ATX Leds statuses (almost any NPN transistor optocouplers: PC817, PC123, etc)
-- NPN transistor for HID reser (almost any NPN transistor: 2n2222 or similar) 
-- Constant resistors, for transistor/optocoupler(to RaspberryPi) 220Ohm-1kOhm, from ATX to optocoupler need to be matchet for yours motherboard (supposedly 330-470 Ohm)
-- Capacitors for compensation power loss by relays and for Arduino stability (10V and more, 220uF and more)
+- NPN transistor for HID reset (almost any NPN transistor: 2n2222 or similar) 
+- Constant resistors, for transistor/optocoupler(to RaspberryPi) 220Ohm-1kOhm, those from ATX to optocoupler need to be matched for your motherboard (supposedly 330-470 Ohm)
+- Capacitors to prevent a power loss caused by the relays and for Arduino stability (rated for 10V or more, 220uF or more)
 
 
 ## Setting up the hardware
@@ -46,22 +46,22 @@ Here is a diagram of how you connect all of the pieces:
 
 ![Screenshot](image2.png)
 
-Or if you can made DIY PCB - made one!
+Or if you can make a DIY PCB - make one!
 
 ![Screenshot](image3.jpg)
 
-The details in our Discord chat. Files in https://github.com/pikvm/hardware
+The details are in our Discord chat. Files in https://github.com/pikvm/hardware
 
 ## ATTENTION !
 
-The S-video capture device must be connected to showing USB port, not anything else. It is binded in software.
+The S-video capture device must be connected to the USB port shown, not anything else. It is bound in software.
 
 ![Screenshot](image4.jpg)
 
 ## Building OS
-Pi-KVM OS is based on Arch Linux ARM and contains all required packages and config for work. To build OS you will need any Linux machine with fresh Docker (we recommand >= 1:19) with privileged mode (for fdisk and some other commands, check Makefiles if you don't trust us :))
+Pi-KVM OS is based on ARM Arch Linux and contains all required packages and configs to work. To build the OS you will need any Linux machine with a fresh version of Docker (we recommand >= 1:19) with privileged mode (for fdisk and some other commands, check Makefiles if you don't trust us :) )
 
-0. For clean OS (Like Ubuntu 18) you need to install and configure docker (after adding user in docker group relogin is needed), as well as git and make.
+0. For a clean OS (Like Ubuntu 18) you need to install and configure docker (after adding user in the docker group a relogin is needed), as well as git and make.
     ```shell
     $ sudo apt-get install git make curl -y
     $ curl -fsSL https://get.docker.com -o get-docker.sh
@@ -75,9 +75,9 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     $ cd os
     ```
 
-2. Select the target hardware configuration (platform). If you are using an analog VGA video capture device, choose `v0-vga`. If you want to use HDMI with Auvidea B101, choose `v0-hdmi`. Other options are for specialized Pi-KVM boards (WIP).
+2. Determine the target hardware configuration (platform). If you are using an analog VGA video capture device, choose `v0-vga`. If you want to use HDMI with Auvidea B101, choose `v0-hdmi`. Other options are for specialized Pi-KVM boards (WIP).
 
-3. Create config file `config.mk` for the target system. You must specify the path to SD card on your local computer (this will be used to format and install the system) and version of your Raspberry Pi and platform. You can change other parameters as you wish:
+3. Create config file `config.mk` for the target system. You must specify the path to the SD card on your local computer (this will be used to format and install the system) and the version of your Raspberry Pi and platform. You can change other parameters as you wish:
     ```Makefile
     $ cat config.mk
     # rpi3 for any Raspberry Pi 3, rpi2 for version 2.
@@ -108,7 +108,7 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     CARD = /dev/mmcblk0
     ```
 
-4. Build OS. It may take about an hour depends on your Internet connection:
+4. Build OS. It may take about an hour depending on your Internet connection:
     ```shell
     $ make os
     ```
@@ -118,14 +118,14 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     $ make install
     ```
     
-6. After installation remove the SD card and insert it into Raspberry Pi. Turn on the power. Raspberry Pi will try to get the address using DHCP in your LAN. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>`) and HTTPS (try to open using browser `https://<addr>`). For HTTPS used a self-signed certificate by default.
+6. After installation remove the SD card and insert it into your Raspberry Pi. Turn on the power. Raspberry Pi will try to get ad IP address using DHCP on your LAN. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>`) and HTTPS (try to open it in a browser at `https://<addr>`). For HTTPS a self-signed certificate is used by default.
 
-7. If you cannot find the device address, try using the following command:
+7. If you cannot find the device's address, try using the following command:
     ```shell
     $ make scan
     ```
 
-Everything will be done on the Pi3 and Pi0 automatically with the video input defaulting to s-video.
+Everything will be done for the Pi3 and Pi0 automatically with the video input defaulting to s-video.
 
 Be sure to check the bottom of this README for [Tips](#tips) and [Troubleshooting](#troubleshooting)!
 
