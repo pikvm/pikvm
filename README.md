@@ -17,10 +17,12 @@ Stand-alone IP KVM device with web interface with various video capture options 
 
 **HID Subsystem and ATX control**
 - Arduino Pro Micro with hardware USB for HID sub-system
-- GPIO cables
-- 2-Channel Relay Module
-- Optocouplers
-
+- GPIO cables for connections (Dupont or identical, suitable for PLS pins and breadboards)
+- 2-Channel Relay Module for Power and Reset buttons emulation (can be replaced with solid state relays or optocouples)
+- Optocouplers for receive ATX Leds statuses (almost any NPN transistor optocouplers: PC817, PC123, etc)
+- NPN transistor for HID reser (almost any NPN transistor: 2n2222 or similar) 
+- Constant resistors, for transistor/optocoupler(to RaspberryPi) 220Ohm-1kOhm, from ATX to optocoupler need to be matchet for yours motherboard (supposedly 330-470 Ohm)
+- Capacitors for compensation power loss by relays and for Arduino stability (10V and more, 220uF and more)
 
 
 ## Setting up the hardware
@@ -28,8 +30,22 @@ Here is a diagram of how you connect all of the pieces:
 
 ![Screenshot](image2.png)
 
+Or if you can made DIY PCB - made one!
+
+![Screenshot](image3.jpg)
+
+The details in our Discord chat. Files in https://github.com/pikvm/hardware
+
 ## Building OS
 Pi-KVM OS is based on Arch Linux ARM and contains all required packages and config for work. To build OS you will need any Linux machine with fresh Docker (we recommand >= 1:19) with privileged mode (for fdisk and some other commands, check Makefiles if you don't trust us :))
+
+0. For clean OS (Like Ubuntu 18) you need to install and configure docker (after adding user in docker group relogin is needed), as well as git and make.
+    ```shell
+    $ sudo apt-get install curl -y
+    $ curl -fsSL https://get.docker.com -o get-docker.sh
+    $ sudo sh get-docker.sh
+    $ sudo usermod -aG docker user
+    ```
 
 1. Checkout build toolchain:
     ```shell
@@ -89,24 +105,7 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
 
 Everything will be done on the Pi3 and Pi0 automatically with the video input defaulting to s-video.
 
-If you would like to manage multiple servers with one IPMI system, please see the [Managing multiple servers](#managing-multiple-servers) section below.
-
 Be sure to check the bottom of this README for [Tips](#tips) and [Troubleshooting](#troubleshooting)!
-
-## The long way
-If you would like to do things step by step to understand how things work, the following instructions can be used.
-
-#### Setting up the Pi 3
-First, let's get all the software we need:
-```
-sudo apt-get update
-
-```
-
-#### Access the IPMI
-You should now be able to access the IPMI console at `http://<RaspberryPi3IP>/`. From here you can set up SSL and port forwarding to the device as your situation requires.
-
-## Managing multiple servers
 
 ## Tips
 
