@@ -53,7 +53,7 @@ The details in our Discord chat. Files in https://github.com/pikvm/hardware
 
 ## ATTENTION !
 
-The S-video captude device must be connected to showing USB port, not anything else. It is binded in software.
+The S-video capture device must be connected to showing USB port, not anything else. It is binded in software.
 
 ![Screenshot](image4.jpg)
 
