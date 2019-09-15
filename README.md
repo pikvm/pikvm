@@ -51,7 +51,11 @@ Or if you can made DIY PCB - made one!
 
 The details in our Discord chat. Files in https://github.com/pikvm/hardware
 
+## ATTENTION !
 
+The S-video captude device must be connected to showing USB port, not anything else. It is binded in software.
+
+![Screenshot](image3.jpg)
 
 ## Building OS
 Pi-KVM OS is based on Arch Linux ARM and contains all required packages and config for work. To build OS you will need any Linux machine with fresh Docker (we recommand >= 1:19) with privileged mode (for fdisk and some other commands, check Makefiles if you don't trust us :))
