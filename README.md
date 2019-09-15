@@ -3,18 +3,19 @@ Stand-alone IP KVM device with web interface with various video capture options 
 
 ![Screenshot](image1.png)
 
-## List of implemented features
-
+## Featurs
+- Extra-lightweight and fancy Web-UI.
+- Advanced HID emulator based on one Arduino board. It has a mouse support; a keyboard is perfectly works in BIOS. The firmware implements a protocol with a check for transmission errors, it can never just hang.
+- Control the power of the server through the ATX button connectors on the motherboard and get the status of the power LEDs and hard drive activity.
+- Mass-storage device based on flash drive. Now we use a regular USB drive whose contacts switch between Pi and server using relay.
+- The Ability to use any video capture device.
+- [Own MJPG streamer](https://github.com/pikvm/ustreamer) written on C with support for multi-threaded and GPU video encoding. It can change the resolution in real time for HDMI source, report statistics about the video and much more (see [README](https://github.com/pikvm/ustreamer/blob/master/README.md) for detalis).
+- IPMI BMC support. You can use `ipmitool` for power management in your existing network infrastructure.
+- Extensible authorization methods - you can configure multiple KVMs so that they use a common authorization service.
 - Microservice architecture - the system consists of a some separated parts that perform a strictly defined task.
-- Control backend with clear API that can be used for scripts and alternative UI (for example, you can make a desktop application);
-- Own MJPG streamer written on C than can change the resolution in real time, report statistics about the video and much more (see details in README).
-- Ability to use any video capture device.
-- Extensible authorization methods - you can configure multiple KVMs so that they use a common password database.
-- IPMI BMC support (you can use ipmitool for power management in your existing network infrastructure).
-- Mass-storage device based on flash drive (but! I can implement OTG for backend). Now I use a regular USB drive whose contacts switch between PI and computer using relay.
-- One arduino for keyboard and mouse. The firmware implements a protocol with a check for transmission errors - it can never just hang. Can be replaced by OTG.
-- A ready-to-use operating system that can be assembled using make build and installed to flash using make install.
-- All components in packages have their own repository. In addition, I developed a special tool that allows you to build the operating system as if it were a regular docker container. It is very convenient and makes debugging easier.
+- Plugin architecture to support a variety of hardware. In the future, we'll be able to support other HID, ATX, and MSD devices. For example, now we are planning to change HID from using the serial port to SPI.
+- Backend with clear API that can be used for scripts and alternative UI (for example, you can make a desktop application);
+- A ready-to-use operating system that can be assembled just using `make build` and installed to memory card using `make install`.
 
 
 ## Minimal hardware implementation
@@ -30,8 +31,8 @@ Stand-alone IP KVM device with web interface with various video capture options 
 - B101 HDMI to CSI-2 Bridge (https://auvidea.eu/b101-hdmi-to-csi-2-bridge-15-pin-fpc/)
 
 **HID Subsystem and ATX control**
-- Arduino Pro Micro with hardware USB for HID sub-system
-- GPIO cables for connections (Dupont or identical, suitable for PLS pins and breadboards)
+- Arduino Pro Micro (ATMega32u4) with hardware USB for HID sub-system
+- GPIO cables for connections (Dupont or identical, suitable for PLS pins and breadboards; for example https://www.amazon.com/gp/product/B01BV2A54G)
 - Logic level converter module https://www.sparkfun.com/products/12009
 - 2-Channel Relay Module for Power and Reset buttons emulation (can be replaced with solid state relays or optocouples)
 - Optocouplers for receive ATX Leds statuses (almost any NPN transistor optocouplers: PC817, PC123, etc)
