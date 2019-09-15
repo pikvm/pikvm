@@ -18,6 +18,7 @@ Stand-alone IP KVM device with web interface with various video capture options 
 **HID Subsystem and ATX control**
 - Arduino Pro Micro with hardware USB for HID sub-system
 - GPIO cables for connections (Dupont or identical, suitable for PLS pins and breadboards)
+- Logic level converter module https://www.sparkfun.com/products/12009
 - 2-Channel Relay Module for Power and Reset buttons emulation (can be replaced with solid state relays or optocouples)
 - Optocouplers for receive ATX Leds statuses (almost any NPN transistor optocouplers: PC817, PC123, etc)
 - NPN transistor for HID reser (almost any NPN transistor: 2n2222 or similar) 
