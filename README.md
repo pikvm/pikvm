@@ -58,12 +58,10 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
 
 0. For clean OS (Like Ubuntu 18) you need to install and configure docker (after adding user in docker group relogin is needed), as well as git and make.
     ```shell
-    $ sudo apt-get install curl -y
+    $ sudo apt-get install git make curl -y
     $ curl -fsSL https://get.docker.com -o get-docker.sh
     $ sudo sh get-docker.sh
     $ sudo usermod -aG docker user
-    $ sudo apt-get install git -y
-    $ sudo apt-get install make -y
     ```
 
 1. Checkout build toolchain:
@@ -115,7 +113,7 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     $ make install
     ```
     
-6. After installation remove the SD card and insert it into Raspberry Pi. Turn on the power. Raspberry Pi will try to get the address using DHCP in your LAN. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>`) and HTTPS (try to open using browser `https://<addr`). For HTTPS used a self-signed certificate by default.
+6. After installation remove the SD card and insert it into Raspberry Pi. Turn on the power. Raspberry Pi will try to get the address using DHCP in your LAN. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>`) and HTTPS (try to open using browser `https://<addr>`). For HTTPS used a self-signed certificate by default.
 
 7. If you cannot find the device address, try using the following command:
     ```shell
