@@ -1,4 +1,4 @@
-# DIY IP-KVM with Web-UI based Raspberry Pi
+# DIY IP-KVM with Web-UI based on Raspberry Pi
 Stand-alone IP KVM device with a web interface with various video capture options and a bunch of features like keyboard/mouse control, ATX control (power/reset/HDD activity), Mass-Storage Device emulation.
 
 ![Screenshot](image1.png)
