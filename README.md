@@ -25,7 +25,7 @@ Stand-alone IP KVM device with a web interface with various video capture option
 
 **Video capture side for lowcost S-Video**
 - Easycap UTV007 device (https://www.amazon.com/dp/B0126O0RDC)
-- HDMI to S-Video (not all options work, but these two have been tested) (https://www.amazon.com/dp/B012MDMWLM or https://www.amazon.com/gp/product/B01E56CV42 or https://aliexpress.com/item/32847786071.html)
+- HDMI to S-Video (not all options work, but these three have been tested) (https://aliexpress.com/item/32847786071.html (for PCB (see bellow)) or https://www.amazon.com/dp/B012MDMWLM or https://www.amazon.com/gp/product/B01E56CV42)
   
 **Video capture side for HDMI**
 - B101 HDMI to CSI-2 Bridge (https://auvidea.eu/b101-hdmi-to-csi-2-bridge-15-pin-fpc/)
