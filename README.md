@@ -1,9 +1,9 @@
-# DIY IP KVM System with WEB-interface using Raspberry Pi
-Stand-alone IP KVM device with a web interface with various video capture options and a bunch of features like keyboard/mouse control, ATX control (power/reset/HDD activity), Mass-Storage Device emulation. 
+# DIY IP-KVM with Web-UI based Raspberry Pi
+Stand-alone IP KVM device with a web interface with various video capture options and a bunch of features like keyboard/mouse control, ATX control (power/reset/HDD activity), Mass-Storage Device emulation.
 
 ![Screenshot](image1.png)
 
-## Featurs
+## Features
 - Extra-lightweight and fancy Web-UI.
 - Advanced HID emulator based on one Arduino board. It has mouse support; keyboard works perfectly in a BIOS. The firmware implements a protocol with a check for transmission errors, it will never just hang.
 - Control the power of the server through the ATX button connectors on the motherboard and get the status of the power LEDs and hard drive activity.
@@ -19,7 +19,7 @@ Stand-alone IP KVM device with a web interface with various video capture option
 
 
 ## Minimal hardware implementation
-- Raspberry Pi 2, 3 or 4(work in progress)
+- Raspberry Pi 2, 3 or 4 (work in progress)
 - MicroSD card
 - Raspberry Pi power supply
 
@@ -42,21 +42,22 @@ Stand-alone IP KVM device with a web interface with various video capture option
 
 
 ## Setting up the hardware
-Here is a diagram of how you connect all of the pieces:
+Here is a diagram of how you connect all of the pieces (click to full size):
 
-![Screenshot](image2.png)
+<img src="image2.png" alt="drawing" width="400"/>
 
 Or if you can make a DIY PCB - make one!
 
-![Screenshot](image3.jpg)
+<img src="image3.jpg" alt="drawing" height="400"/>
 
-The details are in our Discord chat. Files in https://github.com/pikvm/hardware
+The details are in our [Discord chat](https://discord.gg/bpmXfz5
+). Files in https://github.com/pikvm/hardware
 
-## ATTENTION !
+## ATTENTION!
 
 The S-video capture device must be connected to the USB port shown, not anything else. It is bound in software.
 
-![Screenshot](image4.jpg)
+<img src="image4.jpg" alt="drawing" width="300"/>
 
 ## Building OS
 Pi-KVM OS is based on Arch Linux ARM and contains all required packages and configs to work. To build the OS you will need any Linux machine with a fresh version of Docker (we recommand >= 1:19) with privileged mode (for fdisk and some other commands, check Makefiles if you don't trust us :) )
@@ -130,6 +131,8 @@ Everything will be done for the Pi3 and Pi0 automatically with the video input d
 Be sure to check the bottom of this README for [Tips](#tips) and [Troubleshooting](#troubleshooting)!
 
 ## Tips
+...
 
 ## Troubleshooting
+If you have any problems or questions, you can contact us using Discord: https://discord.gg/bpmXfz5
 
