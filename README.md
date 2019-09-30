@@ -28,7 +28,7 @@ Stand-alone IP KVM device with a web interface with various video capture option
 - HDMI to S-Video converter (not all options work, but these three has been tested) ([1](https://aliexpress.com/item/32847786071.html) (for PCB (see bellow)) or [2](https://www.amazon.com/dp/B012MDMWLM) or [3](https://www.amazon.com/gp/product/B01E56CV42))
   
 **Video capture side for HDMI**
-- [Auvidea B101 HDMI to CSI-2 Bridge](https://auvidea.eu/b101-hdmi-to-csi-2-bridge-15-pin-fpc)
+- HDMI to CSI-2 Bridge board ([Original Auvidea B101](https://auvidea.eu/b101-hdmi-to-csi-2-bridge-15-pin-fpc) or any analog based Toshiba TC358743 chip like [Lusya bridge](https://aliexpress.com/item/4000102166176.html)).
 
 **HID Subsystem and ATX control**
 - Arduino Pro Micro (ATMega32u4) with hardware USB for HID sub-system
