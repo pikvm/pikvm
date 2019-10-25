@@ -1,25 +1,25 @@
 # DIY IP-KVM with Web-UI based on Raspberry Pi
-Stand-alone IP KVM device with a web interface with various video capture options and a bunch of features like keyboard/mouse control, ATX control (power/reset/HDD activity), Mass-Storage Device emulation (PCB version only (`v1-hdmi` or `v1-vga1`)).
+Stand-alone IP KVM device with a web interface with various video capture options and a bunch of features like keyboard/mouse control, ATX control (power/reset/HDD activity), Mass-Storage Device emulation and more.
 
 ![Screenshot](image1.png)
 
 ## Features
 - Extra-lightweight and fancy Web-UI.
-- Advanced HID emulator based on one Arduino board. It has mouse support; keyboard works perfectly in a BIOS. The firmware implements a protocol with a check for transmission errors, it will never just hang.
+- Advanced HID emulator based on OTG (RPi4 and ZeroW) or using one Arduino board (other boards). Mouse supported; keyboard works perfectly in BIOS.
 - Control the power of the server through the ATX button connectors on the motherboard and get the status of the power LEDs and hard drive activity.
-- Mass-storage device based on a flash drive. Now we use a regular USB drive whose contacts switch between the Pi and server using a relay.
+- Mass-storage device based on OTG (RPi4 and ZeroW) or a regular USB flash drive (other boards).
 - The ability to use any video capture device.
-- [Our own MJPG streamer](https://github.com/pikvm/ustreamer) written on C with support for multi-threading and GPU video encoding. It can change the resolution in real time for an HDMI source, report statistics about the video and much more (see [README](https://github.com/pikvm/ustreamer/blob/master/README.md) for detalis).
+- [Own MJPG streamer](https://github.com/pikvm/ustreamer) written on C with support for multi-threading and GPU video encoding. It can change the resolution in real time for an HDMI source, report statistics about the video and much more (see [README](https://github.com/pikvm/ustreamer/blob/master/README.md) for detalis).
 - IPMI BMC support. You can use `ipmitool` for power management in your existing network infrastructure.
 - Extensible authorization methods - you can configure multiple KVMs so that they use a common authorization service.
 - Microservice architecture - the system consists of separated parts that each perform a strictly defined task.
-- Plugin architecture to support a variety of hardware. In the future, we'll be able to support other HID, ATX, and MSD devices. For example, now we are planning to change HID from using the serial port to SPI.
+- Plugin architecture to support a variety of hardware.
 - Backend with clear API that can be used for scripts and alternative UI (for example, you can make a desktop application);
 - A ready-to-use operating system that can be assembled just using `make build` and installed to a memory card using `make install`.
 
 
-## Minimal hardware
-- Raspberry Pi 2, 3 or 4 (work in progress)
+## Required hardware
+- Raspberry Pi 2, 3, 4 (recommended) or ZeroW
 - MicroSD card
 - Raspberry Pi power supply
 
