@@ -51,7 +51,7 @@ Here is a diagram of how you connect all of the pieces (click to full size):
 
 **ATTENTION!**
 The Zero board is drawn here just to show which pins to connect your circuit to. Also S-video capture device must be connected to the USB port shown, not anything else. It is bound in software.
-<img src="v0usbcap.jpg" alt="drawing" width="300"/>
+<img src="v0usbcap.png" alt="drawing" width="300"/>
 
 ## v2 Diagram
 <img src="v2.png" alt="drawing" width="400"/>
