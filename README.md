@@ -35,12 +35,14 @@ We support a variety of implementation choices of hardware (we call it platform)
 **Video capture side for HDMI (for v0 and v2 platforms)**
 - HDMI to CSI-2 Bridge board ([Original Auvidea B101](https://auvidea.eu/b101-hdmi-to-csi-2-bridge-15-pin-fpc) or any analog based Toshiba TC358743 chip like [Lusya bridge](https://aliexpress.com/item/4000102166176.html)).
 
-**HID Subsystem and ATX control**
-- **Only for v0**: Arduino Pro Micro (ATMega32u4) with hardware USB for HID sub-system
-- GPIO cables for connections (Dupont or identical, suitable for PLS pins and breadboards; for example https://www.amazon.com/gp/product/B01BV2A54G)
+**HID Subsystem (only for v0)**
+- Arduino Pro Micro (ATMega32u4) with hardware USB for HID sub-system
 - Logic level converter module https://www.sparkfun.com/products/12009
 - [4x MOSFET relay OMRON G3VM-61A1](https://www.digikey.com/products/en?keywords=G3VM-61A1)
-- NPN transistor for HID reset (almost any NPN transistor: 2n2222 or similar) 
+- NPN transistor (almost any NPN transistor: 2n2222 or similar) 
+
+**ATX control and other**
+- GPIO cables for connections (Dupont or identical, suitable for PLS pins and breadboards; for example https://www.amazon.com/gp/product/B01BV2A54G)
 - Constant resistors, for transistor/relay (to Raspberry Pi) 220Ohm-1kOhm, those from ATX to relay need to be matched for your motherboard (supposedly 330-470 Ohm)
 
 # Setting up the hardware
