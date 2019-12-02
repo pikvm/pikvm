@@ -1,14 +1,14 @@
 # DIY IP-KVM with Web-UI based on Raspberry Pi
 Stand-alone IP KVM device with a web interface with various video capture options and a bunch of features like keyboard/mouse control, ATX control (power/reset/HDD activity), Mass-Storage Device emulation and more.
 
-![Screenshot](image1.png)
+![Screenshot](screen1.png)
 
 ## Features
 - Extra-lightweight and fancy Web-UI.
-- Advanced HID emulator based on OTG (RPi4 and ZeroW) or using one Arduino board (other boards). Mouse supported; keyboard works perfectly in BIOS.
+- Advanced HID emulator based on OTG (RPi4 and ZeroW) or using one Arduino board (RPi2 and RPi3). Mouse supported; keyboard works perfectly in BIOS.
 - Control the power of the server through the ATX button connectors on the motherboard and get the status of the power LEDs and hard drive activity.
-- Mass-storage device based on OTG (RPi4 and ZeroW) or a regular USB flash drive (other boards).
-- The ability to use any video capture device.
+- Mass-storage device based on OTG (only for RPi4 and ZeroW)
+- The ability to use any video capture device (include HDMI-to-CSI2 bridge).
 - [Own MJPG streamer](https://github.com/pikvm/ustreamer) written on C with support for multi-threading and GPU video encoding. It can change the resolution in real time for an HDMI source, report statistics about the video and much more (see [README](https://github.com/pikvm/ustreamer/blob/master/README.md) for detalis).
 - IPMI BMC support. You can use `ipmitool` for power management in your existing network infrastructure.
 - Extensible authorization methods - you can configure multiple KVMs so that they use a common authorization service.
@@ -19,45 +19,42 @@ Stand-alone IP KVM device with a web interface with various video capture option
 
 
 ## Required hardware
-- Raspberry Pi 2, 3, 4 (recommended) or ZeroW
-- MicroSD card
-- Raspberry Pi power supply
+We support a variety of implementation choices of hardware (we call it platform). The two main are called **v0** and **v2**.
+- **v0** platform is designed to work with raspberry Pi that do not have OTG (Raspberry Pi 2 and 3), and requires a little more spare parts for the basic implementation. Also there does not work mass-storage device.
+- **v2** platform is the most modern implementation supporting all the features of Pi-KVM. It is designed to work with Raspberry Pi 4 and ZeroW (but we recommend using 4 because ZeroW is very slow).
 
-**Video capture side for lowcost S-Video**
+**Basic hardware**
+- Raspberry Pi 2 or 3
+- MicroSD card
+- Raspberry Pi power supply 3A
+
+**Video capture side for lowcost S-Video (only for v0 platform)**
 - [Easycap UTV007 device](https://www.amazon.com/dp/B0126O0RDC)
 - HDMI to S-Video converter (not all options work, but these three has been tested) ([1](https://aliexpress.com/item/32847786071.html) (for PCB (see bellow)) or [2](https://www.amazon.com/dp/B012MDMWLM) or [3](https://www.amazon.com/gp/product/B01E56CV42))
   
-**Video capture side for HDMI**
+**Video capture side for HDMI (for v0 and v2 platforms)**
 - HDMI to CSI-2 Bridge board ([Original Auvidea B101](https://auvidea.eu/b101-hdmi-to-csi-2-bridge-15-pin-fpc) or any analog based Toshiba TC358743 chip like [Lusya bridge](https://aliexpress.com/item/4000102166176.html)).
 
 **HID Subsystem and ATX control**
-- Arduino Pro Micro (ATMega32u4) with hardware USB for HID sub-system
+- Only for **v0**: Arduino Pro Micro (ATMega32u4) with hardware USB for HID sub-system
 - GPIO cables for connections (Dupont or identical, suitable for PLS pins and breadboards; for example https://www.amazon.com/gp/product/B01BV2A54G)
 - Logic level converter module https://www.sparkfun.com/products/12009
-- 2-Channel Relay Module for Power and Reset buttons emulation (can be replaced with solid state relays or optocouplers)
-- Optocouplers for receive ATX Leds statuses (almost any NPN transistor optocouplers: PC817, PC123, etc)
+- [4x MOSFET relay OMRON G3VM-61A1](https://www.digikey.com/products/en?keywords=G3VM-61A1)
 - NPN transistor for HID reset (almost any NPN transistor: 2n2222 or similar) 
-- Constant resistors, for transistor/optocoupler (to Raspberry Pi) 220Ohm-1kOhm, those from ATX to optocoupler need to be matched for your motherboard (supposedly 330-470 Ohm)
-- Capacitors to prevent a power loss caused by the relays and for Arduino stability (rated for 10V or more, 220uF or more)
+- Constant resistors, for transistor/relay (to Raspberry Pi) 220Ohm-1kOhm, those from ATX to relay need to be matched for your motherboard (supposedly 330-470 Ohm)
 
 
-## Setting up the hardware
+# Setting up the hardware
 Here is a diagram of how you connect all of the pieces (click to full size):
 
-<img src="image2.png" alt="drawing" width="400"/>
-
-Or if you can make a DIY PCB - make one!
-
-<img src="image3.jpg" alt="drawing" height="400"/>
-
-The details are in our [Discord chat](https://discord.gg/bpmXfz5
-). Files in https://github.com/pikvm/hardware
-
-## ATTENTION!
-
+## v0 Diagram
+<img src="v0.png" alt="drawing" width="400"/>
+### ATTENTION!
 The S-video capture device must be connected to the USB port shown, not anything else. It is bound in software.
+<img src="v0usbcap.jpg" alt="drawing" width="300"/>
 
-<img src="image4.jpg" alt="drawing" width="300"/>
+## v2 Diagram
+<img src="v2.png" alt="drawing" width="400"/>
 
 ## Building OS
 Pi-KVM OS is based on Arch Linux ARM and contains all required packages and configs to work. To build the OS you will need any Linux machine with a fresh version of Docker (we recommand >= 1:19) with privileged mode (for fdisk and some other commands, check Makefiles if you don't trust us :) )
