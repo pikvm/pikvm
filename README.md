@@ -36,21 +36,21 @@ We support a variety of implementation choices of hardware (we call it platform)
 - HDMI to CSI-2 Bridge board ([Original Auvidea B101](https://auvidea.eu/b101-hdmi-to-csi-2-bridge-15-pin-fpc) or any analog based Toshiba TC358743 chip like [Lusya bridge](https://aliexpress.com/item/4000102166176.html)).
 
 **HID Subsystem and ATX control**
-- Only for **v0**: Arduino Pro Micro (ATMega32u4) with hardware USB for HID sub-system
+- **Only for v0**: Arduino Pro Micro (ATMega32u4) with hardware USB for HID sub-system
 - GPIO cables for connections (Dupont or identical, suitable for PLS pins and breadboards; for example https://www.amazon.com/gp/product/B01BV2A54G)
 - Logic level converter module https://www.sparkfun.com/products/12009
 - [4x MOSFET relay OMRON G3VM-61A1](https://www.digikey.com/products/en?keywords=G3VM-61A1)
 - NPN transistor for HID reset (almost any NPN transistor: 2n2222 or similar) 
 - Constant resistors, for transistor/relay (to Raspberry Pi) 220Ohm-1kOhm, those from ATX to relay need to be matched for your motherboard (supposedly 330-470 Ohm)
 
-
 # Setting up the hardware
 Here is a diagram of how you connect all of the pieces (click to full size):
 
 ## v0 Diagram
 <img src="v0.png" alt="drawing" width="400"/>
-### ATTENTION!
-The S-video capture device must be connected to the USB port shown, not anything else. It is bound in software.
+
+**ATTENTION!**
+The Zero board is drawn here just to show which pins to connect your circuit to. Also S-video capture device must be connected to the USB port shown, not anything else. It is bound in software.
 <img src="v0usbcap.jpg" alt="drawing" width="300"/>
 
 ## v2 Diagram
@@ -61,7 +61,7 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
 
 0. For a clean OS (Like Ubuntu 18) you need to install and configure docker (after adding user in the docker group a relogin is needed), as well as git and make.
     ```shell
-    [user@localhost ~]$ sudo apt-get install git make curl -y
+    [user@localhost ~]$ sudo apt-get install git make curl binutils -y
     [user@localhost ~]$ curl -fsSL https://get.docker.com -o get-docker.sh
     [user@localhost ~]$ sudo sh get-docker.sh
     [user@localhost ~]$ sudo usermod -aG docker user
@@ -73,16 +73,16 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     [user@localhost ~]$ cd os
     ```
 
-2. Determine the target hardware configuration (platform). If you are using an analog VGA video capture device, choose `v0-vga`. If you want to use HDMI with Auvidea B101, choose `v0-hdmi`. Other options are for specialized Pi-KVM boards (WIP).
+2. Determine the target hardware configuration (platform). If you are using an analog VGA video capture device, choose `PLATFORM=v0-vga`. If you want to use HDMI with Auvidea B101, choose `PLATFORM=v0-hdmi`. Both options work with boards `BOARD=rpi2` and `BOARD=rpi3`. For Raspberry Pi 4 or ZeroW you can choose `PLATFORM=v2-hdmi` only and `BOARD=rpi4` or `BOARD=zerow`. Other options are for specialized Pi-KVM boards (WIP).
 
 3. Create config file `config.mk` for the target system. You must specify the path to the SD card on your local computer (this will be used to format and install the system) and the version of your Raspberry Pi and platform. You can change other parameters as you wish:
     ```Makefile
-    [user@localhost ~]$ cat config.mk
-    # rpi3 for any Raspberry Pi 3, rpi2 for version 2.
-    BOARD = rpi3
+    [user@localhost os]$ cat config.mk
+    # rpi3 for Raspberry Pi 3; rpi2 for the version 2, zerow for ZeroW
+    BOARD = rpi4
     
     # Hardware configuration
-    PLATFORM = v0-vga
+    PLATFORM = v2-hdmi
     
     # Target hostname
     HOSTNAME = pikvm
@@ -108,24 +108,24 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
 
 4. Build OS. It may take about an hour depending on your Internet connection:
     ```shell
-    [user@localhost ~]$ make os
+    [user@localhost os]$ make os
     ```
     
 5. Put SD card into card reader and install OS:
     ```shell
-    [user@localhost ~]$ make install
+    [user@localhost os]$ make install
     ```
     
 6. After installation remove the SD card and insert it into your RPi. Turn on the power. RPi will try to get ad IP address using DHCP on your LAN. It will be available via SSH.
 
 7. If you can't find the device's address, try using the following command:
     ```shell
-    [user@localhost ~]$ make scan
+    [user@localhost os]$ make scan
     ```
 
-8. Now you need to flash Arduino. This can be done using your RPi. **Before starting this operation, disconnect the RESET wire from Arduino, otherwise the firmware will not be uploaded. Connect the Arduino and RPi with a suitable USB cable.** Log in to RPi and upload the firmware. Then connect RESET wire back, disconnect USB and reboot RPi.
+8. **Only for v0**. Now you need to flash Arduino. This can be done using your RPi. **Before starting this operation, disconnect the RESET wire from Arduino, otherwise the firmware will not be uploaded. Connect the Arduino and RPi with a suitable USB cable.** Log in to RPi and upload the firmware. Then connect RESET wire back, disconnect USB and reboot RPi.
     ```
-    [user@localhost ~]$ ssh root@<addr>
+    [user@localhost os]$ ssh root@<addr>
     [root@pikvm ~]# rw
     [root@pikvm ~]# systemctl stop kvmd
     [root@pikvm ~]# cp -r /usr/share/kvmd/hid ~
