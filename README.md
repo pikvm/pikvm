@@ -132,9 +132,9 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     [root@pikvm ~]# systemctl stop kvmd
     [root@pikvm ~]# cp -r /usr/share/kvmd/hid ~
     [root@pikvm ~]# cd ~/hid
-    [root@pikvm ~]# make
-    [root@pikvm ~]# make install
-    [root@pikvm ~]# reboot
+    [root@pikvm hid]# make
+    [root@pikvm hid]# make install
+    [root@pikvm hid]# reboot
     ```
 9. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>`) and HTTPS (try to open it in a browser at `https://<addr>`). For HTTPS a self-signed certificate is used by default.
 
