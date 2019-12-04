@@ -107,6 +107,12 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     # SD card device
     CARD = /dev/mmcblk0
     ```
+    
+    If you want to configure wifi (for ZeroW board for example) you must add these lines to `config.mk`:
+    ```Makefile
+    WIFI_ESSID = "my-network"
+    WIFI_PASSWD = "P@$$word"
+    ```
 
 4. Build OS. It may take about an hour depending on your Internet connection:
     ```shell
