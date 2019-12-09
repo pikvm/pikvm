@@ -38,11 +38,11 @@ We support a variety of implementation choices of hardware (we call it platform)
 **HID Subsystem (only for v0)**
 - Arduino Pro Micro (ATMega32u4) with hardware USB for HID sub-system
 - Logic level converter module https://www.sparkfun.com/products/12009
-- [4x MOSFET relay OMRON G3VM-61A1](https://www.digikey.com/products/en?keywords=G3VM-61A1)
 - NPN transistor (almost any NPN transistor: 2n2222 or similar) 
 
 **ATX control and other**
 - GPIO cables for connections (Dupont or identical, suitable for PLS pins and breadboards; for example https://www.amazon.com/gp/product/B01BV2A54G)
+- [4x MOSFET relay OMRON G3VM-61A1](https://www.digikey.com/products/en?keywords=G3VM-61A1)
 - Constant resistors, for transistor/relay (to Raspberry Pi) 220Ohm-1kOhm, those from ATX to relay need to be matched for your motherboard (supposedly 330-470 Ohm)
 
 # Setting up the hardware
