@@ -58,7 +58,7 @@ Here is a diagram of how you connect all of the pieces (click to full size):
 ## v2 Diagram
 <img src="v2.png" alt="drawing" width="400"/>
 
-Since RPi4 uses one USB-C female connector to giving power and keyboard/mouse/drive emulation you also need to make a special cable to split DATA and POWER lines from USB-C. You can make it from two suitable connecting cables, or solder from scratch. Be sure to check the circuit diagram, otherwise you may damage your devices. Pinout specific used connectors you can easily find on request "USB pinout" in Google. Please note that if you will make a cable based on the two factory ones, the colors of the wires may not match those shown in the picture. Use a multimeter to make sure the connections are correct.
+**RPi4 only**: since it uses one USB-C female connector to giving power and keyboard/mouse/drive emulation you also need to make a special cable to split DATA and POWER lines from USB-C. You can make it from two suitable connecting cables, or solder from scratch. Be sure to check the circuit diagram, otherwise you may damage your devices. Pinout specific used connectors you can easily find on request "USB pinout" in Google. Please note that if you will make a cable based on the two factory ones, the colors of the wires may not match those shown in the picture. Use a multimeter to make sure the connections are correct.
 
 <img src="v2_splitter.png" alt="drawing" width="400"/>
 
