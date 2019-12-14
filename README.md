@@ -156,13 +156,13 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
 * Almost all KVMD (the main daemon controlling Pi-KVM) configuration files use [YAML](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) syntax. Read about it if you don't know how to use it.
 
 * If you want to disable the web terminal use these commands:
-    ```
+    ```yaml
     [root@pikvm ~]# systemctl disable kvmd-webterm
     [root@pikvm ~]# systemctl stop kvmd-webterm
     ```
     
 * To disable authorization completely edit file `/etc/kvmd/override.yaml`:
-    ```
+    ```yaml
     kvmd:
         auth:
             disabled: true
@@ -173,7 +173,7 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     ```
 
 * If you don't need to control ATX you can disable relevant web menu in `/etc/kvmd/override.yaml`:
-    ```
+    ```yaml
     kvmd:
         atx:
             type: disabled
@@ -181,13 +181,13 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     then restart kvmd.
     
 * To use Wake-on-LAN on your server you must define some options such as server MAC and (optional) IP address. Use `/etc/kvmd/override.yaml`. Write this:
-    ```
+    ```yaml
     kvmd:
         wol:
             mac: ff:ff:ff:ff:ff:ff
     ```
     Replace `ff:ff:ff:ff:ff:ff` to MAC of your server. By default, a packet is sent by a broadcast request to the entire IPv4 network (`255.255.255.255`, port `9`), but you can address it to a specific static address:
-    ```
+    ```yaml
     kvmd:
         wol:
             mac: ff:ff:ff:ff:ff:ff
@@ -195,7 +195,7 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
             # port: 9  # By default
     ```
     
-* To use IPMI BMC you need to set up an appropriate account and run the `kvmd-ipmi` daemon. Although Pi-KVM supports the IPMI protocol, we strongly recommend that you do not use outside trusted of networks due to its [insecurity](https://github.com/NitescuLucian/nliplace.com.blog.drafts). Refer to the file `/etc/kvmd/ipmipasswd` to configure IPMI account.
+* To use IPMI BMC you need to set up an appropriate account and run the `kvmd-ipmi` daemon (`systemctl start kvmd-ipmi` and `systemctl enable kvmd-ipmi`). Although Pi-KVM supports the IPMI protocol, we strongly recommend that you do not use outside trusted of networks due to its [insecurity](https://github.com/NitescuLucian/nliplace.com.blog.drafts). Refer to the file `/etc/kvmd/ipmipasswd` to configure IPMI account.
 
 ## Troubleshooting
 * In step 8 (`make install`), you may encounter the following error:
