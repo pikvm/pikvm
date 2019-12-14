@@ -149,7 +149,51 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
 9. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>`) and HTTPS (try to open it in a browser at `https://<addr>`). For HTTPS a self-signed certificate is used by default.
 
 ## Tips
-...
+* The Pi-KVM file system is always mounted in read-only mode. This prevents it from being damaged by a sudden power outage. To change the configuration you must first switch FS to write mode using the command `rw` from root. After the changes, be sure to run the command `ro` to switch it back to read-only.
+
+* NEVER edit `/etc/kvmd/main.yaml`. Use `/etc/kvmd/main.yaml` to redefine the system parameters. All other files that are also not recommended for editing have read-only permissions. If you edit any of these files, you will need to manually make changes to them when you upgrade your system.
+
+* Almost all KVMD (the main daemon controlling Pi-KVM) configuration files use [YAML](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) syntax. Read about it if you don't know how to use it.
+
+* If you want to disable the web terminal use these commands:
+    ```
+    [root@pikvm ~]# systemctl disable kvmd-webterm
+    [root@pikvm ~]# systemctl stop kvmd-webterm
+    ```
+    
+* To disable authorization completely edit file `/etc/kvmd/override.yaml`:
+    ```
+    kvmd:
+        auth:
+            disabled: true
+    ```
+    then restart `kvmd`:
+    ```
+    [root@pikvm ~]# systemctl restart kvmd
+    ```
+
+* If you don't need to control ATX you can disable relevant web menu in `/etc/kvmd/override.yaml`:
+    ```
+    kvmd:
+        atx:
+            type: disabled
+    ```
+    then restart kvmd.
+    
+* To use Wake-on-LAN on your server you must define some options such as server MAC and (optional) IP address. Use `/etc/kvmd/override.yaml`. Write this:
+    ```
+    kvmd:
+        wol:
+            mac: ff:ff:ff:ff:ff:ff
+    ```
+    Replace `ff:ff:ff:ff:ff:ff` to MAC of your server. By default, a packet is sent by a broadcast request to the entire IPv4 network (`255.255.255.255`, port `9`), but you can address it to a specific static address:
+    ```
+    kvmd:
+        wol:
+            mac: ff:ff:ff:ff:ff:ff
+            ip: 192.168.0.100
+            # port: 9  # By default
+    ```
 
 ## Troubleshooting
 * In step 8 (`make install`), you may encounter the following error:
