@@ -24,7 +24,7 @@ We support a variety of implementation choices of hardware (we call it platform)
 - **v2** platform is the most modern implementation supporting all the features of Pi-KVM. It is designed to work with **Raspberry Pi 4 and ZeroW** (but we recommend using 4 because ZeroW is very slow).
 
 **Basic hardware**
-- Raspberry Pi 2 or 3
+- Raspberry Pi 2, 3, 4 or ZeroW
 - MicroSD card
 - Raspberry Pi power supply 3A
 
