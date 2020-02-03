@@ -208,5 +208,20 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     ```
     And run `make install` again.
 
+
+* **Glitchy/Wrong BIOS resolution**
+
+    On some motherboards, the BIOS may be displayed at a lower resolution, or with some rendering issues/glitches, specially on newer ASUS ones.
+
+    e.g
+
+    <img src="bios_glitch.png" alt="ASUS BIOS glitch" width="400"/>
+
+    This can be solved by enabling **Compatibility Support Module (CSM)** on your BIOS, usually under the **Boot** options.
+
+    If you can't or don't want to enable CSM, you can try connecting a DisplayPort monitor, or a [dummy plug](http://amazon.com/s?k=displayport+dummy+plug). If you remove the DP cable/adapter the bug will show up again.
+
+    If none of this works, try connecting the DP cable first, boot into the BIOS, disable CSM and shutdown (do not restart) your PC. Boot into the BIOS and enable CSM then shutdown your PC. Then connect the HDMI and turn it on again.
+
 * If you have any problems or questions, you can contact us using Discord: https://discord.gg/bpmXfz5
 
