@@ -11,7 +11,7 @@ Stand-alone IP KVM device with a web interface with various video capture option
 - The ability to use any video capture device (include HDMI-to-CSI2 bridge).
 - [Own MJPG streamer](https://github.com/pikvm/ustreamer) written on C with support for multi-threading and GPU video encoding. It can change the resolution in real time for an HDMI source, report statistics about the video and much more (see [README](https://github.com/pikvm/ustreamer/blob/master/README.md) for detalis).
 - IPMI BMC support. You can use `ipmitool` for power management in your existing network infrastructure.
-- Extensible authorization methods - you can configure multiple KVMs so that they use a common authorization service.
+- Extensible authorization methods - you can configure multiple KVMs so that they use a [common authorization service](https://github.com/pikvm/kvmd-auth-server).
 - Microservice architecture - the system consists of separated parts that each perform a strictly defined task.
 - Plugin architecture to support a variety of hardware.
 - Backend with clear API that can be used for scripts and alternative UI (for example, you can make a desktop application);
