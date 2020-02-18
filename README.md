@@ -70,7 +70,7 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     [user@localhost ~]$ sudo apt-get install git make curl binutils -y
     [user@localhost ~]$ curl -fsSL https://get.docker.com -o get-docker.sh
     [user@localhost ~]$ sudo sh get-docker.sh
-    [user@localhost ~]$ sudo usermod -aG docker user
+    [user@localhost ~]$ sudo usermod -aG docker $USER
     ```
 
 1. Checkout build toolchain:
