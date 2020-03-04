@@ -123,7 +123,7 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     [user@localhost os]$ make os
     ```
     
-5. Put SD card into card reader and install OS:
+5. Put SD card into card reader and install OS (**you should have automatic mounting disabled: `systemctl stop udisk2` or something like that**):
     ```shell
     [user@localhost os]$ make install
     ```
