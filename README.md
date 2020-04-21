@@ -211,7 +211,7 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
           vncauth:
               enabled: true
   ```
-  After that you can enable `kvmd-vnc` daemon (`systemctl start kvmd-ipmi` and `systemctl enable kvmd-ipmi`). VNC will be available on port 5900 by default.
+  After that you can enable `kvmd-vnc` daemon (`systemctl start kvmd-vnc` and `systemctl enable kvmd-vnc`). VNC will be available on port 5900 by default.
   Please note: we strongly don't recommend you to use VNC in untrusted networks. The current implementation does not use encryption, and your passwords are transmitted over the network in a plain text.
 
 ## Troubleshooting
