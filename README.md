@@ -5,13 +5,13 @@ Stand-alone IP KVM device with a web interface with various video capture option
 
 ## Features
 - Extra-lightweight and fancy Web-UI.
+- IPMI BMC support. You can use `ipmitool` for power management in your existing network infrastructure.
+- VNC support. You can any suitable VNC client (see tips) to access the server.
 - Advanced HID emulator based on OTG (on RPi4 and ZeroW) or using a single Arduino board (on RPi2 and RPi3). Mouse supported; keyboard works perfectly in BIOS; keyboard LEDs are supported too.
 - Control the power of the server through ATX button connectors on the motherboard and get the status of the power LEDs and hard drive activity.
 - Mass-storage device based on OTG (only for RPi4 and ZeroW)
 - The ability to use any video capture device (include HDMI-to-CSI2 bridge).
 - [Own MJPG streamer](https://github.com/pikvm/ustreamer) written on C with multi-threading and GPU video encoding. It can change the resolution in real time by signal from HDMI source, report statistics about the video and much more (see [README](https://github.com/pikvm/ustreamer/blob/master/README.md) for detalis).
-- IPMI BMC support. You can use `ipmitool` for power management in your existing network infrastructure.
-- VNC support. You can any suitable VNC client (see tips) to access the server
 - Extensible authorization methods - you can configure multiple KVMs so that they use a [common authorization service](https://github.com/pikvm/kvmd-auth-server).
 - Microservice architecture - the system consists of separated parts that each perform a strictly defined task.
 - Plugin architecture to support a variety of hardware.
