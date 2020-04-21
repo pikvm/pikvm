@@ -11,6 +11,7 @@ Stand-alone IP KVM device with a web interface with various video capture option
 - The ability to use any video capture device (include HDMI-to-CSI2 bridge).
 - [Own MJPG streamer](https://github.com/pikvm/ustreamer) written on C with multi-threading and GPU video encoding. It can change the resolution in real time by signal from HDMI source, report statistics about the video and much more (see [README](https://github.com/pikvm/ustreamer/blob/master/README.md) for detalis).
 - IPMI BMC support. You can use `ipmitool` for power management in your existing network infrastructure.
+- VNC support. You can any suitable VNC client (see tips) to access the server
 - Extensible authorization methods - you can configure multiple KVMs so that they use a [common authorization service](https://github.com/pikvm/kvmd-auth-server).
 - Microservice architecture - the system consists of separated parts that each perform a strictly defined task.
 - Plugin architecture to support a variety of hardware.
@@ -197,6 +198,21 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     ```
     
 * To use IPMI BMC you need to set up an appropriate account and run the `kvmd-ipmi` daemon (`systemctl start kvmd-ipmi` and `systemctl enable kvmd-ipmi`). Although Pi-KVM supports the IPMI protocol, we strongly recommend that you do not use outside trusted of networks due to its [insecurity](https://github.com/NitescuLucian/nliplace.com.blog.drafts). Refer to the file `/etc/kvmd/ipmipasswd` to configure IPMI account.
+
+* To use VNC you need to change the keyboard layout for non-US client keyboard using `/etc/kvmd/override.yaml`. For example:
+  ```yaml
+  vnc:
+      keymap: /usr/share/kvmd/keymaps/ru
+  ```
+  By default the username and password authorization is used. This is not supported by all clients (we recommend [TigerVNC](https://tigervnc.org)). To enable passphrase authorization, you need to edit the file `/etc/kvmd/vncpasswd` to set passphrases and enable this feature in `/etc/kvmd/override.yaml`:
+  ```yaml
+  vnc:
+      auth:
+          vncauth:
+              enabled: true
+  ```
+  After that you can enable `kvmd-vnc` daemon (`systemctl start kvmd-ipmi` and `systemctl enable kvmd-ipmi`). VNC will be available on port 5900 by default.
+  Please note: we strongly don't recommend you to use VNC in untrusted networks. The current implementation does not use encryption, and your passwords are transmitted over the network in a plain text.
 
 ## Troubleshooting
 * In step 8 (`make install`), you may encounter the following error:
