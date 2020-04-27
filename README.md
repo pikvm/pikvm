@@ -6,7 +6,7 @@ Stand-alone IP KVM device with a web interface with various video capture option
 ## Features
 - Extra-lightweight and fancy Web-UI.
 - IPMI BMC support. You can use `ipmitool` for power management in your existing network infrastructure.
-- VNC support. You can any suitable VNC client (see tips) to access the server.
+- VNC support. You can use any suitable VNC client (see tips) to access the server.
 - Advanced HID emulator based on OTG (on RPi4 and ZeroW) or using a single Arduino board (on RPi2 and RPi3). Mouse supported; keyboard works perfectly in BIOS; keyboard LEDs are supported too.
 - Control the power of the server through ATX button connectors on the motherboard and get the status of the power LEDs and hard drive activity.
 - Mass-storage device based on OTG (only for RPi4 and ZeroW)
