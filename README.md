@@ -167,7 +167,7 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     ```yaml
     kvmd:
         auth:
-            disabled: true
+            enabled: false
     ```
     then restart `kvmd`:
     ```
