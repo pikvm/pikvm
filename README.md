@@ -63,6 +63,10 @@ Here is a diagram of how you connect all of the pieces (click to full size):
 
 <img src="v2_splitter.png" alt="drawing" width="400"/>
 
+See this video tutorial for details: https://www.youtube.com/watch?v=uLuBuQUF61o
+
+Also check out small instruction about soldering the ATX controller: https://www.youtube.com/watch?v=hKnKOuH_f8M
+
 ## Building OS
 Pi-KVM OS is based on Arch Linux ARM and contains all required packages and configs to work. To build the OS you will need any Linux machine with a fresh version of Docker (we recommand >= 1:19) with privileged mode (for fdisk and some other commands, check Makefiles if you don't trust us :) )
 
