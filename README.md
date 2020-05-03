@@ -6,7 +6,7 @@ Stand-alone IP KVM device with a web interface with various video capture option
 ## Disclaimer
 **Q**: What is the status of this project?
 
-**A:** Although this documentation page is rarely updated, the project is maintained and developed. You can verify this by checking the activity in other repositories in our organization. Unfortunately, all our time is spent on code. We will be happy if someone can help us make a large and beautiful documentation on readthedocs.
+**A:** Although this documentation page is rarely updated, the project is maintained and developed. You can verify it by checking the activity in other repositories in our organization. Unfortunately, all our time is spent to code. We will be happy if someone can help us make a large and beautiful documentation on readthedocs.
 
 ## Features
 - Extra-lightweight and fancy Web-UI.
