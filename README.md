@@ -3,6 +3,11 @@ Stand-alone IP KVM device with a web interface with various video capture option
 
 ![Screenshot](screen1.png)
 
+## Disclaimer
+**Q**: What is the status of this project?
+
+**A:** Although this documentation page is rarely updated, the project is maintained and developed. You can verify this by checking the activity in other repositories in our organization. Unfortunately, all our time is spent on code. We will be happy if someone can help us make a large and beautiful documentation on readthedocs.
+
 ## Features
 - Extra-lightweight and fancy Web-UI.
 - IPMI BMC support. You can use `ipmitool` for power management in your existing network infrastructure.
