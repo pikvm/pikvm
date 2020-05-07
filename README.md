@@ -235,6 +235,11 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     [root@pikvm ~]# ln -s /usr/lib/libtinfo.so.6 /usr/lib/libtinfo.so.5
     ```
     And run `make install` again.
+    
+    
+* **Unexpected interruption of loading the image to Mass Storage Drive**
+
+    If problems occur when uploading even a small disk image it may be due to unstable network operation or antivirus software. It is well known that Kaspersky antivirus cuts off Pi-KVM connections for uploading, so you should add the site to the list of exceptions or not filter web requests with the antivirus. Antivirus can also affect the performance of certain interface elements, for example the quality slider.
 
 
 * **Glitchy/Wrong BIOS resolution**
