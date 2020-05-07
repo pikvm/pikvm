@@ -241,6 +241,8 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
 
     If problems occur when uploading even a small disk image it may be due to unstable network operation or antivirus software. It is well known that Kaspersky antivirus cuts off Pi-KVM connections for uploading, so you should add the site to the list of exceptions or not filter web requests with the antivirus. Antivirus can also affect the performance of certain interface elements, for example the quality slider.
 
+    Regarding Kaspersky...the solution is to set the website of pikvm in network in the exclusion list (**Protection -> Private browsing -> Categories and exclusions -> Exclusions**).
+
 
 * **Glitchy/Wrong BIOS resolution**
 
