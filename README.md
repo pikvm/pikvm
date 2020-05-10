@@ -94,7 +94,7 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
 
 2. Determine the target hardware configuration (platform). If you are using an analog VGA video capture device, choose `PLATFORM=v0-vga`. If you want to use HDMI with Auvidea B101, choose `PLATFORM=v0-hdmi`. Both options work with boards `BOARD=rpi2` and `BOARD=rpi3`. For Raspberry Pi 4 or ZeroW you can choose `PLATFORM=v2-hdmi` only and `BOARD=rpi4` or `BOARD=zerow`. Other options are for specialized Pi-KVM boards (WIP).
 
-3. Create config file `config.mk` for the target system. You must specify the path to the SD card on your local computer (this will be used to format and install the system) and the version of your Raspberry Pi and platform. You can change other parameters as you wish:
+3. Create config file `config.mk` for the target system. You must specify the path to the SD card on your local computer (this will be used to format and install the system) and the version of your Raspberry Pi and platform. You can change other parameters as you wish. Please note: if your password contains the # character, you must escape it using a backslash like `ROOT_PASSWD = pass\#word`.
     ```Makefile
     [user@localhost os]$ cat config.mk
     # rpi3 for Raspberry Pi 3; rpi2 for the version 2, zerow for ZeroW
