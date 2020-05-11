@@ -54,6 +54,7 @@ We support a variety of implementation choices of hardware (we call it platform)
 - Constant resistors, for transistor/relay (to Raspberry Pi) 220Ohm-1kOhm, those from ATX to relay need to be matched for your motherboard (supposedly 330-470 Ohm)
 
 **ATTENTION!** Don't use random relay modules or random optocouplers. Some relays or optocouplers may not be sensitive enough for the Raspberry Pi, some others may be low-level controlled. Either use relays that are controlled by a high level, or follow the scheme and buy an OMRON. See details: https://github.com/pikvm/pikvm/issues/13
+
 <img src="no_relays.png" alt="drawing" width="200"/>
 
 # Setting up the hardware
