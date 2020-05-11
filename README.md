@@ -1,4 +1,6 @@
 # DIY IP-KVM with Web-UI based on Raspberry Pi
+[![Discord](https://img.shields.io/discord/580094191938437144?logo=discord)](https://discord.gg/bpmXfz5)
+
 Stand-alone IP KVM device with a web interface with various video capture options and a bunch of features like keyboard/mouse control, ATX control (power/reset/HDD activity), Mass-Storage Device emulation and more.
 
 ![Screenshot](screen1.png)
