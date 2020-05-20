@@ -10,7 +10,7 @@ This project is developed on a non-commercial basis by Open Source enthusiasts. 
 
 If you found Pi-KVM useful or it saved you from a long trip to a dead computer, you can support the main developer by [donating a few bucks](https://www.patreon.com/pikvm). With this money, he will be able to buy new hardware (Raspberry Pi and other things) to support and test various configurations of Pi-KVM, and generally devote much more time to this project.
 
-If you want to use Pi-KVM in production, we are ready to accept an order for modification for your needs and implementation of various features specifically for you. Contact us via live chat or email from the main developer: mdevaev@gmail.com
+If you want to use Pi-KVM in production, we are ready to accept an order for modification for your needs and implementation of various features specifically for you. Contact us via live chat or email of the main developer: mdevaev@gmail.com
 
 **Q**: What is the status of this project?
 
