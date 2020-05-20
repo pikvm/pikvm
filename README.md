@@ -6,6 +6,12 @@ Stand-alone IP KVM device with a web interface with various video capture option
 ![Screenshot](screen1.png)
 
 ## Disclaimer
+This project is developed on a non-commercial basis by Open Source enthusiasts. The goal is to create a cheap and functional alternative to expensive closed IP-KVM devices. As part of this project, a full stack of programs required for KVM is being developed: the operating system based on Arch Linux ARM, the fast video server, the VNC server, Web UI, and much more. We also provide assistance and support to Pi-KVM users via [Discord chat](https://discord.gg/bpmXfz5):
+
+If you found Pi-KVM useful or it saved you from a long trip to a dead computer, you can support the main developer by [donating a few bucks](https://www.patreon.com/pikvm). With this money, he will be able to buy new hardware (Raspberry Pi and other things) to support and test various configurations of Pi-KVM, and generally devote much more time to this project.
+
+If you want to use Pi-KVM in production, we are ready to accept an order for modification for your needs and implementation of various features specifically for you. Contact us via live chat or email from the main developer: mdevaev@gmail.com
+
 **Q**: What is the status of this project?
 
 **A:** Although this documentation page is rarely updated, the project is maintained and developed. You can verify it by checking the activity in other repositories in our organization. Unfortunately, all our time is spent to code. We will be happy if someone can help us make a large and beautiful documentation on readthedocs.
