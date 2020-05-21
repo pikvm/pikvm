@@ -8,7 +8,7 @@ Stand-alone IP KVM device with a web interface with various video capture option
 ## Disclaimer
 This project is developed on a non-commercial basis by Open Source enthusiasts. The goal is to create a cheap and functional alternative to expensive closed IP-KVM devices. As part of this project, a full stack of software required for KVM is being developed: the operating system based on Arch Linux ARM, the fast video server, the VNC server, Web UI, and much more. We also provide assistance and support for Pi-KVM users via [Discord chat](https://discord.gg/bpmXfz5).
 
-If you found Pi-KVM useful or it saved you from a long trip to a dead computer, you can support the main developer by [donating a few bucks](https://www.patreon.com/pikvm). With this money, he will be able to buy new hardware (Raspberry Pi and other things) to support and test various configurations of Pi-KVM, and generally devote much more time to this project.
+If you found Pi-KVM useful or it saved you from a long trip to a dead computer, you can support the main developer by [donating a few bucks](https://www.patreon.com/pikvm). With this money, he will be able to buy new hardware (Raspberry Pi and other things) to support and test various configurations of Pi-KVM, and generally devote much more time to this project. At the bottom of this page are listed the names of all the people who helped this project develop with their donations. Our gratitude knows no bounds!
 
 If you want to use Pi-KVM in production, we are ready to accept an order for modification for your needs and implementation of various features specifically for you. Contact us via live chat or email of the main developer: mdevaev@gmail.com
 
@@ -272,3 +272,13 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
 
 * If you have any problems or questions, you can contact us using Discord: https://discord.gg/bpmXfz5
 
+## Special thanks
+These kind people donated money to the Pi-KVM project and supported the work on it. We are very grateful for their help, and memorializing their names is the least we can do in gratitude.
+* Arthur Woimbée
+* David Howell
+* Denis Yatsenko
+* Grey Cynic
+* Jason Toland
+* John McGovern
+* Mauricio Allende
+* Walter_Ego
