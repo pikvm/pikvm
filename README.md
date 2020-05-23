@@ -281,4 +281,5 @@ These kind people donated money to the Pi-KVM project and supported the work on 
 * Jason Toland
 * John McGovern
 * Mauricio Allende
+* Truman Kilen
 * Walter_Ego
