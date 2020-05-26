@@ -234,8 +234,9 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
           vncauth:
               enabled: true
   ```
-  After that you can enable `kvmd-vnc` daemon (`systemctl start kvmd-vnc` and `systemctl enable kvmd-vnc`). VNC will be available on port 5900 by default.
-  Please note: we strongly don't recommend you to use VNC in untrusted networks. The current implementation does not use encryption, and your passwords are transmitted over the network in a plain text.
+  After that you can enable `kvmd-vnc` daemon (`systemctl start kvmd-vnc` and `systemctl enable kvmd-vnc`). VNC will be available on port 5900 by default.  
+  We recommend disabling automatic quality adjust if there is one in your client (this is called "Auto-Select"in TigerVNC).  
+  Please note: we strongly don't recommend you to use VNC in untrusted networks. The current implementation does not use encryption, and your passwords are transmitted over the network in a plain text. The existing anonymous TLS mode is also not secure enough.
 
 ## Troubleshooting
 * In step 8 (`make install`), you may encounter the following error:
