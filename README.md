@@ -35,7 +35,7 @@ If you want to use Pi-KVM in production, we are ready to accept an order for mod
 ## Required hardware
 We support a variety of implementation choices of hardware (we call it platform). The two main are called **v0** and **v2**.
 - **v0** platform is designed to work with Raspberry Pi that do not have OTG (**Raspberry Pi 2 and 3**), and requires a little more spare parts for the basic implementation. Also there does not work mass-storage device.
-- **v2** platform is the most modern implementation supporting all the features of Pi-KVM. It is designed to work with **Raspberry Pi 4 and ZeroW** (but we recommend using 4 because ZeroW is very slow).
+- **v2** platform is the most modern implementation supporting all the features of Pi-KVM. It is designed to work with **Raspberry Pi 4 and ZeroW** but we recommend using 4 because ZeroW is very slow. **RPi4 with 2Gb RAM is pretty enough**.
 
 **Basic hardware**
 - Raspberry Pi 2, 3, 4 or ZeroW
