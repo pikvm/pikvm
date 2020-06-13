@@ -290,6 +290,7 @@ These kind people donated money to the Pi-KVM project and supported the work on 
 * Mark Gilbert
 * Mark Robinson
 * Mauricio Allende
+* Michael Lynch
 * Samed Ozoglu
 * Truman Kilen
 * Walter_Ego
