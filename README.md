@@ -279,6 +279,7 @@ These kind people donated money to the Pi-KVM project and supported the work on 
 * Arthur Woimbée
 * Ben Gordon
 * Branden Shaulis
+* Brian White
 * Christof Maluck
 * Corey Lista
 * David Howell
