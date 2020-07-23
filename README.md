@@ -286,6 +286,7 @@ These kind people donated money to the Pi-KVM project and supported the work on 
 * Denis Yatsenko
 * Ge Men
 * Grey Cynic
+* Jacob Morgan
 * Jason Toland
 * Jeff Bowman
 * John McGovern
