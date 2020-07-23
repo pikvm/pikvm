@@ -16,6 +16,10 @@ If you want to use Pi-KVM in production, we are ready to accept an order for mod
 
 **A:** Although this documentation page is rarely updated, the project is maintained and developed. You can verify it by checking the activity in other repositories in our organization. Unfortunately, all our time is spent to code. We will be happy if someone can help us make a large and beautiful documentation on readthedocs.
 
+**Q:** Does this support HDMI-USB dongle from AliExpress? https://aliexpress.ru/item/4001043540669.html?
+
+**A:** **YES**, but not out of the box right now. After installation, you will have to manually add a couple of options and everything will work fine (contact us at discord to find out more). In the next couple of weeks, we will add a fully maintained conifiguration. However, it should be noted that the USB dongle has several disadvantages compared to the HDMI-CSI bridge: USB gives you a lot of latency (200ms vs 100ms for CSI2); it doesn't support stream compression control (you won't be able to use KVM in a place with a poor internet connection); it can't automatically detect screen resolution. You can use it, but is the $10 savings worth losing all of these features? The choice is yours.
+
 ## Features
 - Extra-lightweight and fancy Web-UI.
 - IPMI BMC support. You can use `ipmitool` for power management in your existing network infrastructure.
