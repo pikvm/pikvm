@@ -1,7 +1,7 @@
 # Open and cheap DIY IP-KVM based on Raspberry Pi
 [![Discord](https://img.shields.io/discord/580094191938437144?logo=discord)](https://discord.gg/bpmXfz5)
 
-A simple and fully functional IP-KVM based on Raspberry Pi that you can make with your own hands in a hour. This device will help you to manage your server or workstation remotely, regardless of the operating system's health. You can fix remotely any problem, configure the BIOS and even reinstall the OS using the CD-ROM and Flash Drive emulator.
+A very simple and fully functional IP-KVM based on Raspberry Pi that you can make with your own hands. This device will help you to manage your server or workstation remotely, regardless of the operating system's health. You can fix remotely any problem, configure the BIOS and even reinstall the OS using the CD-ROM and Flash Drive emulator.
 
 ![Screenshot](screen1.png)
 
