@@ -37,6 +37,8 @@ A very simple and fully functional IP-KVM based on Raspberry Pi that you can mak
   The managed server and its BIOS can be accessed using a regular VNC client which supports JPEG compression.
 * **IPMI BMC**  
   Use `ipmitool`, `ipmiutil` or any thing in your network infrastructure that supports IPMI to monitor and manage the server's power.
+* **Wake-on-LAN**
+  Pi-KVM can be configured to power up a managed server using WoL. This will be available in the Web menu.
 * **Extensible authorization methods**  
   Multiple Pi-KVMs can be configured to use a [common authorization service](https://github.com/pikvm/kvmd-auth-server). You can also use PAM and its rich authorization mechanisms to integrate Pi-KVM into your existing auth infrastructure.
 * **Macro scripts**  
@@ -68,62 +70,75 @@ If you want to use Pi-KVM in production, we are ready to accept an order for mod
 **A:** In short, **YES**, but not out of the box right now. After installation, you will have to manually add a couple of options and everything will work fine (contact us at discord to find out more). In the next couple of weeks, we will add a fully maintained conifiguration. If you want to do it right now, write to us in discord and we will help you set it up. **However, it should be noted that the USB dongle has several disadvantages compared to the HDMI-CSI bridge: USB gives you a lot of latency (200ms vs 100ms for CSI2); it doesn't support stream compression control (you won't be able to use KVM in a place with a poor internet connection); it can't automatically detect screen resolution.** You can use it, but is the $10 savings worth losing all of these features? The choice is yours.
 
 
-## Required hardware
+# Required hardware
 Pi-KVM supports several different hardware configurations, which called **platforms**. At the moment, there are two main ones: **v0** and **v2**.
-* **v0** platform was designed to work with Raspberry Pi that do not have OTG (**Raspberry Pi 2** and **3**) and requires a little more spare parts for the basic implementation. Also there does not work mass-storage device.
-- **v2** platform is the most modern implementation supporting all the features of Pi-KVM. It was designed to work with **Raspberry Pi 4** and **ZeroW** but we recommend using 4 because ZeroW is very slow. **RPi4 with 1Gb RAM is pretty enough**.
+* **v0** platform was designed to work with Raspberry Pi that do not have OTG (**Raspberry Pi 2** and **3**) and requires a little more spare parts for the basic implementation. Also there does not work mass-storage drive.
+* **v2** is recommed platform is the most modern implementation supporting all the features of Pi-KVM. It was designed to work with **Raspberry Pi 4** and **ZeroW**.
 
-**Basic hardware**
-- Raspberry Pi 2, 3, 4 or ZeroW
-- MicroSD card
-- Raspberry Pi power supply 3A
+**We recommend v2 since it supports all features including the Mass Storage Drive. It's also easiest to make.**
 
-**Video capture side for lowcost S-Video (only for v0 platform)**
-- [Easycap UTV007 device](https://www.amazon.com/dp/B0126O0RDC)
-- HDMI to S-Video converter (not all options work, but these three has been tested) ([1](https://aliexpress.com/item/32847786071.html) (for PCB (see bellow)) or [2](https://www.amazon.com/dp/B012MDMWLM) or [3](https://www.amazon.com/gp/product/B01E56CV42))
+**Hardware for v2**
+* Raspberry Pi 4 (1Gb is enough) or ZeroW. We recommend 4 because Zero is very slow.
+* MicroSD card (min 16 Gb recommended).
+* USB-A 3A charger or power supply.
+* HDMI to CSI-2 bridge board: [Lusya or any other based on Toshiba TC358743](https://aliexpress.com/item/4000102166176.html).
+* Only for Raspberry Pi 4:
+  * Parts for Y-splitter cable (Raspberry Pi 4 only):
+    - One USB-A to USB-C cable.
+    - One another cable USB-A to any.
+* Only for Raspberry Pi Zero W:
+  * Two USB A-to-micro cables (for power and HID).
+* ATX control (optional):
+  - [4x MOSFET relay OMRON G3VM-61A1](https://www.digikey.com/products/en?keywords=G3VM-61A1).
+  - 4x 390 Ohm resistors.
+  - 2x 4.7k Ohm resistors.
+  - Breadboard.
   
-**Video capture side for HDMI (for v0 and v2 platforms)**
-- HDMI to CSI-2 Bridge board ([Original Auvidea B101](https://auvidea.eu/b101-hdmi-to-csi-2-bridge-15-pin-fpc) or any analog based Toshiba TC358743 chip like [Lusya bridge](https://aliexpress.com/item/4000102166176.html)).
+**Hardware for v0**
+* Raspberry Pi 2 or 3.
+* MicroSD card (8GB is enough).
+* USB-A 3A charger or power supply.
+* Keyboard & mouse emulator (HID):
+  - Arduino Pro Micro (based on ATMega32u4).
+  - [Logic levels shifter](https://www.sparkfun.com/products/12009).
+  - NPN transistor (almost any NPN transistor: 2n2222 or similar).
+  - 1x 390 Ohm resistor.
+  - Breadboard.
+* Two USB A-to-micro cables (for power and HID).
+* HDMI capture device: see v2 description.
+* ATX control (optional): see v2 description.
 
-**HID Subsystem (only for v0)**
-- Arduino Pro Micro (ATMega32u4) with hardware USB for HID sub-system
-- Logic level converter module https://www.sparkfun.com/products/12009
-- NPN transistor (almost any NPN transistor: 2n2222 or similar) 
+**Addition**
+* If you want to capture VGA, buy the [VGA-to-HDMI converter](https://aliexpress.ru/item/4000553298530.html).
 
-**ATX control and other**
-- GPIO cables for connections (Dupont or identical, suitable for PLS pins and breadboards; for example https://www.amazon.com/gp/product/B01BV2A54G)
-- [4x MOSFET relay OMRON G3VM-61A1](https://www.digikey.com/products/en?keywords=G3VM-61A1)
-- Constant resistors, for transistor/relay (to Raspberry Pi) 220Ohm-1kOhm, those from ATX to relay need to be matched for your motherboard (supposedly 330-470 Ohm)
+**PS: Don't use random relay modules or random optocouplers!** Some relays or optocouplers may not be sensitive enough for the Raspberry Pi, some others may be low-level controlled. Either use relays that are controlled by a high level, or follow the scheme and buy an OMRON. See details [here](https://github.com/pikvm/pikvm/issues/13).
 
-**ATTENTION!** Don't use random relay modules or random optocouplers. Some relays or optocouplers may not be sensitive enough for the Raspberry Pi, some others may be low-level controlled. Either use relays that are controlled by a high level, or follow the scheme and buy an OMRON. See details: https://github.com/pikvm/pikvm/issues/13
-
-<img src="no_relays.png" alt="drawing" width="200"/>
+<img src="no_relays.png" alt="drawing" width="100"/>
 
 # Setting up the hardware
-Here is a diagram of how you connect all of the pieces (click to full size):
+Here is a diagram of how you connect all of the pieces (click to full size). Build everything as shown in the diagram and insert the flexible cable of HDMI bridge into the narrow white connector on the Raspberry Pi (the closest one to the USB).
 
-## v0 Diagram
-<img src="v0.png" alt="drawing" width="400"/>
-
-**ATTENTION!** The S-video capture device must be connected to the USB port shown, not anything else. It is bound in software.
-
-<img src="v0_usbcap.png" alt="drawing" width="300"/>
 
 ## v2 Diagram
 <img src="v2.png" alt="drawing" width="400"/>
 
-**RPi4 only**: since it uses one USB-C female connector to giving power and keyboard/mouse/drive emulation you also need to make a special cable to split DATA and POWER lines from USB-C ([reasons](https://github.com/pikvm/docs/issues/11)). You can make it from two suitable connecting cables, or solder from scratch. Be sure to check the circuit diagram, otherwise you may damage your devices. Pinout specific used connectors you can easily find on request "USB pinout" in Google. Please note that if you will make a cable based on the two factory ones, the colors of the wires may not match those shown in the picture. Use a multimeter to make sure the connections are correct.
+**Raspberry Pi 4 note**: since it uses one USB-C female connector to giving power and keyboard/mouse/drive emulation you also need to make a special Y-cable to split DATA and POWER lines of USB-C (see [reasons](https://github.com/pikvm/docs/issues/11)). You can make it from two suitable connecting cables, or solder from scratch. Be sure to check the circuit diagram, otherwise you may damage your devices. Pinout specific used connectors you can easily find on request "USB pinout" in Google. Please note that if you will make a cable based on the two different manufecturers, the colors of the wires may not match those shown in the picture. Use a multimeter to make sure the connections are correct.
 
 <img src="v2_splitter.png" alt="drawing" width="400"/>
 
-See this video tutorial for details: https://www.youtube.com/watch?v=uLuBuQUF61o
+See video howtos:
+* [Making USB Y-splitter cable](https://www.youtube.com/watch?v=uLuBuQUF61o).
+* [Soldering ATX controller](https://www.youtube.com/watch?v=hKnKOuH_f8M).
 
-Also check out small instruction about soldering the ATX controller: https://www.youtube.com/watch?v=hKnKOuH_f8M
+Also check out small PCB for ATX (if you know how to make PCBs): https://easyeda.com/mark.gilbert/zerow-kvm-v1
 
-Thirdparty PCB for ATX: https://easyeda.com/mark.gilbert/zerow-kvm-v1
+
+## v0 Diagram
+<img src="v0.png" alt="drawing" width="400"/>
+
 
 ## Building OS
-Pi-KVM OS is based on Arch Linux ARM and contains all required packages and configs to work. To build the OS you will need any Linux machine with a fresh version of Docker (we recommand >= 1:19) with privileged mode (for fdisk and some other commands, check Makefiles if you don't trust us :) )
+Pi-KVM OS is based on Arch Linux ARM and contains all required packages and configs to work. To build the OS you will need any Linux machine with a fresh version of Docker (we recommand >= 1:19) with privileged mode (for fdisk and some other commands, check Makefiles if you don't trust us :).
 
 0. For a clean OS (Like Ubuntu 18) you need to install and configure docker (after adding user in the docker group a relogin is needed), as well as git and make.
     ```shell
@@ -140,7 +155,7 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     [user@localhost ~]$ cd os
     ```
 
-2. Determine the target hardware configuration (platform). If you are using an analog VGA video capture device, choose `PLATFORM=v0-vga`. If you want to use HDMI with Auvidea B101, choose `PLATFORM=v0-hdmi`. Both options work with boards `BOARD=rpi2` and `BOARD=rpi3`. For Raspberry Pi 4 or ZeroW you can choose `PLATFORM=v2-hdmi` only and `BOARD=rpi4` or `BOARD=zerow`. Other options are for specialized Pi-KVM boards (WIP).
+2. Determine the target hardware configuration (platform). Choose the board (`BOARD=rpi4` for Raspberry Pi 4 or `BOARD=zerow`, `BOARD=rpi2`, `BOARD=rpi3` for other options). Next, choose the platform: `PLATFORM=v2-hdmi` for RPi4 or ZeroW; `PLATFORM=v0-hdmi` for RPi 2 or 3. Other options are for legacy or specialized Pi-KVM boards (WIP).
 
 3. Create config file `config.mk` for the target system. You must specify the path to the SD card on your local computer (this will be used to format and install the system) and the version of your Raspberry Pi and platform. You can change other parameters as you wish. Please note: if your password contains the # character, you must escape it using a backslash like `ROOT_PASSWD = pass\#word`.
     ```Makefile
@@ -179,12 +194,12 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     WIFI_PASSWD = "P@$$word"
     ```
 
-4. Build OS. It may take about an hour depending on your Internet connection:
+4. Build OS. It may take about one hour depending on your Internet connection:
     ```shell
     [user@localhost os]$ make os
     ```
     
-5. Put SD card into card reader and install OS (**you should disable automounting: `systemctl stop udisk2` or something like that**):
+5. Put SD card into card reader and install OS (**you should disable automounting before: `systemctl stop udisk2` or something like that**):
     ```shell
     [user@localhost os]$ make install
     ```
@@ -209,7 +224,7 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     ```
 9. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>`) and HTTPS (try to open it in a browser at `https://<addr>`). For HTTPS a self-signed certificate is used by default.
 
-## Tips
+# Tips
 * The Pi-KVM file system is always mounted in read-only mode. This prevents it from being damaged by a sudden power outage. To change the configuration you must first switch FS to write mode using the command `rw` from root. After the changes, be sure to run the command `ro` to switch it back to read-only.
 
 * NEVER edit `/etc/kvmd/main.yaml`. Use `/etc/kvmd/override.yaml` to redefine the system parameters. All other files that are also not recommended for editing have read-only permissions. If you edit any of these files, you will need to manually make changes to them when you upgrade your system. You can view the current configuration and all available KVMD parameters using the command `kvmd -m`.
@@ -233,7 +248,7 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     [root@pikvm ~]# systemctl restart kvmd
     ```
 
-* If you don't need to control ATX you can disable relevant web menu in `/etc/kvmd/override.yaml`:
+* If you don't need to control ATX you can disable relevant Web-UI menu in `/etc/kvmd/override.yaml`:
     ```yaml
     kvmd:
         atx:
@@ -274,8 +289,8 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
   We recommend disabling automatic quality adjust if there is one in your client (this is called "Auto-Select"in TigerVNC).  
   Please note: we strongly don't recommend you to use VNC in untrusted networks. The current implementation does not use encryption, and your passwords are transmitted over the network in a plain text. The existing anonymous TLS mode is also not secure enough.
 
-## Troubleshooting
-* In step 8 (`make install`), you may encounter the following error:
+# Troubleshooting
+* On step 8 (`make install`), you may encounter the following error:
     ```
     /root/.platformio/packages/tool-avrdude/avrdude: error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory
     ```
@@ -309,7 +324,7 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
 
 * If you have any problems or questions, you can contact us using Discord: https://discord.gg/bpmXfz5
 
-## Special thanks
+# Special thanks
 These kind people donated money to the Pi-KVM project and supported the work on it. We are very grateful for their help, and memorializing their names is the least we can do in gratitude.
 * Aleksei Brusianskii
 * Arthur Woimbée
