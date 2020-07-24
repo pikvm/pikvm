@@ -8,8 +8,8 @@ A simple and fully functional IP-KVM based on Raspberry Pi that you can make wit
 ## Full-featured and modern IP-KVM
 * **The widest hardware support**  
   There are many ways to build KVM. You can use the video capture device CSI-2 or USB, Raspberry Pi of different models: 2, 3, 4 or Zero W. Any build is supported, and Pi-KVM implements its maximum possible set of features.
-* **Low latency**
-  100 milliseconds of video latency. This is the smallest delay of all existing solutions.
+* **Low latency**  
+  ~100 milliseconds of video latency. This is the smallest delay of all existing solutions.
 * **Easy to build**  
   A ready-to-use OS that can be assembled just using `make build` and installed to SD-card using `make install`.
 * **Extra lightweight and fancy Web-UI**  
