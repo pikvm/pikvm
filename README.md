@@ -22,7 +22,7 @@ A very simple and fully functional IP-KVM based on Raspberry Pi that you can mak
   With a very simple circuit that can be assembled on a breadboard you can control the power of your server using the buttons and ATX LEDs on the motherboard.
 * **Authorization**  
   You can put Pi-KVM on the Internet and be sure that no one will get access to your server without permission. SSL encryption protects your traffic from being intercepted by third parties.
-* **Local monitoring**
+* **Local monitoring**  
   The system monitors the health of the Raspberry Pi and will tell you if it's too hot or not enough power.
 
 ## Production-ready
