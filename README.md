@@ -10,7 +10,7 @@ A very simple and fully functional IP-KVM based on Raspberry Pi that you can mak
   You will spend between from $30 to $100 depending on what you want. Even the most expensive configuration will be cheaper than a commercial IP-KVM for $500.
 * **The widest hardware support**  
   There are many ways to build KVM. You can use the video capture device with CSI-2 or USB interface; the Raspberry Pi of different models: 2, 3, 4 or Zero W. Any build is supported, and Pi-KVM implements its maximum possible set of features.
-* **Low latency**  
+* **Very low latency**  
   ~100 milliseconds of video latency. This is the smallest delay of all existing solutions.
 * **Easy to build**  
   A ready-to-use OS that can be assembled just using `make build` and installed to SD-card using `make install`.
