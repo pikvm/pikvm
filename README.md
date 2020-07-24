@@ -42,7 +42,7 @@ A very simple and fully functional IP-KVM based on Raspberry Pi that you can mak
   The managed server and its BIOS can be accessed using a regular VNC client which supports JPEG compression.
 * **IPMI BMC**  
   Use `ipmitool`, `ipmiutil` or any thing in your network infrastructure that supports IPMI to monitor and manage the server's power.
-* **Wake-on-LAN**
+* **Wake-on-LAN**  
   Pi-KVM can be configured to power up a managed server using WoL. This will be available in the Web menu.
 * **Extensible authorization methods**  
   Multiple Pi-KVMs can be configured to use a [common authorization service](https://github.com/pikvm/kvmd-auth-server). You can also use PAM and its rich authorization mechanisms to integrate Pi-KVM into your existing auth infrastructure.
@@ -82,7 +82,7 @@ Pi-KVM supports several different hardware configurations, which called **platfo
 **We recommend v2 since it supports all features including the Mass Storage Drive. It's also easiest to make.**
 
 **Hardware for v2**
-* Raspberry Pi 4 (1Gb is enough) or ZeroW. We recommend 4 because Zero is very slow.
+* Raspberry Pi 4 (2Gb model is enough) or ZeroW. We recommend 4 because ZeroW is very slow.
 * MicroSD card (min 16 Gb recommended).
 * USB-A 3A charger or power supply.
 * HDMI to CSI-2 bridge board: [Lusya or any other based on Toshiba TC358743](https://aliexpress.com/item/4000102166176.html).
@@ -92,7 +92,7 @@ Pi-KVM supports several different hardware configurations, which called **platfo
     - 1x another cable USB-A to any.
 * Only for Raspberry Pi Zero W:
   * 2x USB A-to-micro cables (for power and keyboard & mouse emulator).
-* ATX control (optional):
+* For ATX control (optional):
   - [4x MOSFET relay OMRON G3VM-61A1](https://www.digikey.com/products/en?keywords=G3VM-61A1).
   - 4x 390 Ohm resistors.
   - 2x 4.7k Ohm resistors.
@@ -102,7 +102,7 @@ Pi-KVM supports several different hardware configurations, which called **platfo
 * Raspberry Pi 2 or 3.
 * MicroSD card (8GB is enough).
 * USB-A 3A charger or power supply.
-* Keyboard & mouse emulator (HID):
+* For keyboard & mouse emulator (HID):
   - Arduino Pro Micro (based on ATMega32u4).
   - [Logic levels shifter](https://www.sparkfun.com/products/12009).
   - NPN transistor (almost any NPN transistor: 2n2222 or similar).
@@ -114,8 +114,8 @@ Pi-KVM supports several different hardware configurations, which called **platfo
 
 **Addition**
 * If you want to capture VGA, buy the [VGA-to-HDMI converter](https://aliexpress.ru/item/4000553298530.html).
-
-**PS: Don't use random relay modules or random optocouplers!** Some relays or optocouplers may not be sensitive enough for the Raspberry Pi, some others may be low-level controlled. Either use relays that are controlled by a high level, or follow the scheme and buy an OMRON. See details [here](https://github.com/pikvm/pikvm/issues/13).
+* You can power your Pi-KVM using PoE, but we do not recommend using the official PoE HAT: it is unreliable and [not compatible with the HDMI bridge](https://github.com/pikvm/pikvm/issues/6). Use any other one without I2C fan controller.
+* **Don't use random relay modules or random optocouplers!** Some relays or optocouplers may not be sensitive enough for the Raspberry Pi, some others may be low-level controlled. Either use relays that are controlled by a high level, or follow the scheme and buy an OMRON. See details [here](https://github.com/pikvm/pikvm/issues/13).
 
 <img src="no_relays.png" alt="drawing" width="100"/>
 
