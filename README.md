@@ -15,39 +15,44 @@ A very simple and fully functional IP-KVM based on Raspberry Pi that you can mak
 * **Very low latency**  
   ~100 milliseconds of video latency. This is the smallest delay of all existing solutions.
 * **Extra lightweight and fancy Web-UI**  
-  No weird proprietary Windows-only clients. No ugly Java applets. Just use your favorite browser to connect to Pi-KVM. Oh, and no flash plugin either!
+  No weird proprietary clients. No ugly Java applets. Just use your favorite browser to connect to Pi-KVM. Oh, and no flash plugin either!
 * **Keyboard and mouse**  
   The mouse works directly in the browser. And the keyboard emulator supports displaying the key LEDs state.
 * **Mass Storage Drive**  
   On the Raspberry Pi 4 and Zero Pi-KVM can emulate the virtual CD-ROM or Flash Drive. You can upload a live image and boot your server from it.
-* **Power management**  
+* **ATX power management**  
   With a very simple circuit that can be assembled on a breadboard you can control the power of your server using the ATX buttons on the motherboard.
-* **Authorization**  
-  You can put Pi-KVM on the Internet and be sure that no one will get access to your server without permission. SSL encryption protects your traffic from being intercepted by third parties.
+* **Security**  
+  You can open Pi-KVM to the Internet and be sure that no one will get access to your server without password. SSL encryption protect the traffic from being intercepted by third parties. 
 * **Local monitoring**  
-  The system monitors the health of the Raspberry Pi board and will tell you if it's too hot or not enough power.
+  Pi-KVM monitors the health of the Raspberry Pi board and will tell you if it's too hot or not enough power.
 
 ## Production-ready
 * **Linux-based embedded OS**  
-  The Pi-KVM OS is based on [Arch Linux ARM](https://archlinuxarm.org). It can be customized for any needs. You can use thousands of pre-built binary packages. Update with a single command!
+  The Pi-KVM OS is based on [Arch Linux ARM](https://archlinuxarm.org). It can be customized for any needs. Thousands of pre-built binary packages at your service. Update with a single command!
 * **Read-only filesystem**  
   By default, the OS runs in read-only mode, as an embedded system should. You don't have to worry about the memory card being damaged due to a sudden power outage.
 * **VNC server**  
-  The managed server and its BIOS can be accessed using a regular VNC client that supports JPEG compression.
+  The managed server and its BIOS can be accessed using a regular VNC client which supports JPEG compression.
 * **IPMI BMC**  
   Use `ipmitool`, `ipmiutil` or any thing in your network infrastructure that supports IPMI to monitor and manage the server's power.
 * **Extensible authorization methods**  
   Multiple Pi-KVMs can be configured to use a [common authorization service](https://github.com/pikvm/kvmd-auth-server). You can also use PAM and its rich authorization mechanisms to integrate Pi-KVM into your existing auth infrastructure.
 * **Macro scripts**  
-  If you need to perform repetitive actions on your server (or on different servers), you can record the keyboard & mouse actions macro and then play it back many times.
+  If you need to perform repetitive actions on your server (or on different servers), you can record the macro with keyboard & mouse actions and play it back many times.
 
-## 100% Open Source
+## Open Source
+* **Community & support**  
+  Pi-KVM has a large community. Join the [discord chat](https://discord.gg/bpmXfz5) chat if you have any questions.
 * **GPL**  
   All software components are fully open - PR welcome!
 * **Extensible**  
-  Pi-KVM is designed as a set of microservices with a plug-in architecture. It's very easy to fix and modify.
-* **uStreamer**  
-  We created [our own MJPG video server](https://github.com/pikvm/ustreamer) written on C with multi-threading and GPU video encoding. It can change the resolution in real time by signal from HDMI source, report statistics about the stream and [much more](https://github.com/pikvm/ustreamer/blob/master/README.md). This is the fastest streaming solution available.
+  Pi-KVM was designed as a set of microservices with a plug-in architecture. It's very easy to fix and modify.
+* **Handy API**  
+  Everything that can be done via the interface can also be done via the powerful HTTP API.
+* **Know-how**  
+  We created a lot of cool stuff, without which Pi-KVM would not be as good as it is.
+  We created [very own MJPG video server](https://github.com/pikvm/ustreamer) written on C with multi-threading and GPU video encoding - fastest streaming solution available to to provide the best video quality for Pi-KVM. We also made many other things and tested a lot of hardware so that you could just assemble the device and it would work immediately without any problems.
 
 
 ## Disclaimer
