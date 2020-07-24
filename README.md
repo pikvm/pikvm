@@ -87,16 +87,16 @@ Pi-KVM supports several different hardware configurations, which called **platfo
 * USB-A 3A charger or power supply.
 * HDMI to CSI-2 bridge board: [Lusya or any other based on Toshiba TC358743](https://aliexpress.com/item/4000102166176.html).
 * Only for Raspberry Pi 4:
-  * Parts for Y-splitter cable (Raspberry Pi 4 only):
-    - One USB-A to USB-C cable.
-    - One another cable USB-A to any.
+  * Parts for Y-splitter cable:
+    - 1x USB-A to USB-C cable.
+    - 1x another cable USB-A to any.
 * Only for Raspberry Pi Zero W:
-  * Two USB A-to-micro cables (for power and HID).
+  * 2x USB A-to-micro cables (for power and keyboard & mouse emulator).
 * ATX control (optional):
   - [4x MOSFET relay OMRON G3VM-61A1](https://www.digikey.com/products/en?keywords=G3VM-61A1).
   - 4x 390 Ohm resistors.
   - 2x 4.7k Ohm resistors.
-  - Breadboard.
+  - A breadboard.
   
 **Hardware for v0**
 * Raspberry Pi 2 or 3.
@@ -107,8 +107,8 @@ Pi-KVM supports several different hardware configurations, which called **platfo
   - [Logic levels shifter](https://www.sparkfun.com/products/12009).
   - NPN transistor (almost any NPN transistor: 2n2222 or similar).
   - 1x 390 Ohm resistor.
-  - Breadboard.
-* Two USB A-to-micro cables (for power and HID).
+  - A breadboard.
+* 2x USB A-to-micro cables (for power and HID).
 * HDMI capture device: see v2 description.
 * ATX control (optional): see v2 description.
 
@@ -122,13 +122,13 @@ Pi-KVM supports several different hardware configurations, which called **platfo
 -----
 
 # Setting up the hardware
-Here is a diagram of how you connect all of the pieces (click to full size). Build everything as shown in the diagram and insert the flexible cable of HDMI bridge into the narrow white connector on the Raspberry Pi (the closest one to the USB).
+Here is a diagram shows that how to connect all of the pieces (click to full size). Build everything as shown in the diagram and insert the flexible cable of the HDMI bridge into the narrow white connector on the Raspberry Pi (the closest one to the USB).
 
 
 ## v2 Diagram
 <img src="v2.png" alt="drawing" width="400"/>
 
-**Raspberry Pi 4 note**: since it uses one USB-C female connector to giving power and keyboard/mouse/drive emulation you also need to make a special Y-cable to split DATA and POWER lines of USB-C (see [reasons](https://github.com/pikvm/docs/issues/11)). You can make it from two suitable connecting cables, or solder from scratch. Be sure to check the circuit diagram, otherwise you may damage your devices. Pinout specific used connectors you can easily find on request "USB pinout" in Google. Please note that if you will make a cable based on the two different manufecturers, the colors of the wires may not match those shown in the picture. Use a multimeter to make sure the connections are correct.
+**Raspberry Pi 4 note**: since it uses one USB-C female connector to giving power and keyboard/mouse/drive emulation you also need to make a special Y-cable to split DATA and POWER lines of USB-C (see [reasons](https://github.com/pikvm/docs/issues/11)). You can make it from two suitable connecting cables, or solder from scratch. Be sure to check the circuit diagram, otherwise you may damage your devices. You can easily find USB pinout in Google. Please note that if you will make Y-cable from two noname cables, the colors of the wires may not match those shown in the picture. Use a multimeter to make sure the connections are correct.
 
 <img src="v2_splitter.png" alt="drawing" width="400"/>
 
@@ -136,7 +136,7 @@ See video howtos:
 * [Making USB Y-splitter cable](https://www.youtube.com/watch?v=uLuBuQUF61o).
 * [Soldering ATX controller](https://www.youtube.com/watch?v=hKnKOuH_f8M).
 
-Also check out small PCB for ATX (if you know how to make PCBs): https://easyeda.com/mark.gilbert/zerow-kvm-v1
+Also check out the small PCB for ATX (if you know how to make PCBs): https://easyeda.com/mark.gilbert/zerow-kvm-v1
 
 
 ## v0 Diagram
@@ -145,7 +145,7 @@ Also check out small PCB for ATX (if you know how to make PCBs): https://easyeda
 -----
 
 # Building OS
-Pi-KVM OS is based on Arch Linux ARM and contains all required packages and configs to work. To build the OS you will need any Linux machine with a fresh version of Docker (we recommand >= 1:19) with privileged mode (for fdisk and some other commands, check Makefiles if you don't trust us :).
+Pi-KVM OS is based on Arch Linux ARM and contains all required packages and configs to work. To build the OS you will need any Linux machine with a fresh Docker (>= 1:19) with enabled privileged mode (for fdisk and some other commands, check Makefiles if you don't trust us :).
 
 0. For a clean OS (Like Ubuntu 18) you need to install and configure docker (after adding user in the docker group a relogin is needed), as well as git and make.
     ```shell
@@ -164,7 +164,7 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
 
 2. Determine the target hardware configuration (platform). Choose the board (`BOARD=rpi4` for Raspberry Pi 4 or `BOARD=zerow`, `BOARD=rpi2`, `BOARD=rpi3` for other options). Next, choose the platform: `PLATFORM=v2-hdmi` for RPi4 or ZeroW; `PLATFORM=v0-hdmi` for RPi 2 or 3. Other options are for legacy or specialized Pi-KVM boards (WIP).
 
-3. Create config file `config.mk` for the target system. You must specify the path to the SD card on your local computer (this will be used to format and install the system) and the version of your Raspberry Pi and platform. You can change other parameters as you wish. Please note: if your password contains the # character, you must escape it using a backslash like `ROOT_PASSWD = pass\#word`.
+3. Create the config file `config.mk` for the target system. You must specify the path to the SD card on your local computer (this will be used to format and install the system) and the version of your Raspberry Pi and platform. You can change other parameters as you wish. Please note: if your password contains the # character, you must escape it using a backslash like `ROOT_PASSWD = pass\#word`.
     ```Makefile
     [user@localhost os]$ cat config.mk
     # rpi3 for Raspberry Pi 3; rpi2 for the version 2, zerow for ZeroW
@@ -333,7 +333,7 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
 
     If none of this works, try connecting the DP cable first, boot into the BIOS, disable CSM and shutdown (do not restart) your PC. Boot into the BIOS and enable CSM then shutdown your PC. Then connect the HDMI and turn it on again.
 
-* If you have any problems or questions, you can contact us using Discord: https://discord.gg/bpmXfz5
+* If you have any problems or questions, contact us using Discord: https://discord.gg/bpmXfz5
 
 -----
 
