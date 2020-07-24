@@ -1,9 +1,52 @@
 # Open and cheap DIY IP-KVM based on Raspberry Pi
 [![Discord](https://img.shields.io/discord/580094191938437144?logo=discord)](https://discord.gg/bpmXfz5)
 
-Stand-alone IP KVM device with a web interface with various video capture options and a bunch of features like keyboard/mouse control, ATX control (power/reset/HDD activity), Mass-Storage Drive and more.
+A simple and fully functional IP-KVM based on Raspberry Pi that you can make with your own hands in a hour. This device will help you to manage your server or workstation remotely, regardless of the operating system's health. You can fix remotely any problem, configure the BIOS and even reinstall the OS using the CD-ROM and Flash Drive emulator.
 
 ![Screenshot](screen1.png)
+
+## Full-featured and modern IP-KVM
+* **The widest hardware support**  
+  There are many ways to build KVM. You can use the video capture device CSI-2 or USB, Raspberry Pi of different models: 2, 3, 4 or Zero W. Any build is supported, and Pi-KVM implements its maximum possible set of features.
+* **Low latency**
+  100 milliseconds of video latency. This is the smallest delay of all existing solutions.
+* **Easy to build**  
+  A ready-to-use OS that can be assembled just using `make build` and installed to SD-card using `make install`.
+* **Extra lightweight and fancy Web-UI**  
+  No weird proprietary Windows-only clients. No ugly Java applets. Just use your favorite browser to connect to Pi-KVM. Oh, and no flash plugin either!
+* **Keyboard and mouse**  
+  The mouse works directly in the browser. And the keyboard emulator supports displaying the key LEDs state.
+* **Mass Storage Drive**  
+  On the Raspberry Pi 4 and Zero Pi-KVM can emulate virtual CD-ROM or Flash Drive. You can upload a live ISO or drive image and boot your server from it.
+* **Power management**  
+  With a very simple circuit that can be assembled on a breadboard you can control the power of your server using the buttons and ATX LEDs on the motherboard.
+* **Authorization**  
+  You can put Pi-KVM on the Internet and be sure that no one will get access to your server without permission. SSL encryption protects your traffic from being intercepted by third parties.
+* **Local monitoring**
+  The system monitors the health of the Raspberry Pi and will tell you if it's too hot or not enough power.
+
+## Production-ready
+* **Linux-based embedded OS**  
+  The Pi-KVM OS is based on [Arch Linux ARM](https://archlinuxarm.org). It can be customized for any needs. You can use thousands of binary packages that have already been built, our own repository, and [AUR](https://aur.archlinux.org). Update with a single command!
+* **Read-only filesystem**  
+  By default, the OS runs in read-only mode, as an embedded system should. You don't have to worry about the memory card being damaged due to a sudden power outage.
+* **VNC server**  
+  The managed server can be accessed using a regular VNC client that supports JPEG compression.
+* **IPMI BMC**  
+  Use `ipmitool`, `ipmiutil` or any thing in your network infrastructure that supports IPMI to monitor and manage server's power.
+* **Extensible authorization methods**  
+  Multiple Pi-KVMs can be configured to use a [common authorization service](https://github.com/pikvm/kvmd-auth-server). You can also use PAM and its rich authorization mechanisms to integrate Pi-KVM into your existing infrastructure.
+* **Macro scripts**  
+  If you need to perform repetitive actions on your server (or on different servers), you can record the macro and then play it back many times.
+
+## 100% Open Source
+* **GPL**  
+  All software components are fully open - PR welcome!
+* **Extensible**  
+  Pi-KVM is designed as a set of microservices with a plug-in architecture. It's very easy to fix and modify.
+* **uStreamer**  
+  We created [our own MJPG video server](https://github.com/pikvm/ustreamer) written on C with multi-threading and GPU video encoding. It can change the resolution in real time by signal from HDMI source, report statistics about the stream and [much more](https://github.com/pikvm/ustreamer/blob/master/README.md). This is the fastest streaming solution available.
+
 
 ## Disclaimer
 This project is developed on a non-commercial basis by Open Source enthusiasts. The goal is to create a cheap and functional alternative to expensive closed IP-KVM devices. As part of this project, a full stack of software required for KVM is being developed: the operating system based on Arch Linux ARM, the fast video server, the VNC server, Web UI, and much more. We also provide assistance and support for Pi-KVM users via [Discord chat](https://discord.gg/bpmXfz5).
@@ -19,21 +62,6 @@ If you want to use Pi-KVM in production, we are ready to accept an order for mod
 **Q:** **Does this support HDMI-USB dongle from AliExpress? https://aliexpress.ru/item/4001043540669.html?**
 
 **A:** **YES**, but not out of the box right now. After installation, you will have to manually add a couple of options and everything will work fine (contact us at discord to find out more). In the next couple of weeks, we will add a fully maintained conifiguration. **However, it should be noted that the USB dongle has several disadvantages compared to the HDMI-CSI bridge: USB gives you a lot of latency (200ms vs 100ms for CSI2); it doesn't support stream compression control (you won't be able to use KVM in a place with a poor internet connection); it can't automatically detect screen resolution.** You can use it, but is the $10 savings worth losing all of these features? The choice is yours.
-
-## Features
-- Extra-lightweight and fancy Web-UI.
-- IPMI BMC support. You can use `ipmitool` for power management in your existing network infrastructure.
-- VNC support. You can use any suitable VNC client (see tips) to access the server.
-- Advanced HID emulator based on OTG (on RPi4 and ZeroW) or using a single Arduino board (on RPi2 and RPi3). Mouse supported; keyboard works perfectly in BIOS; keyboard LEDs are supported too.
-- Control the power of the server through ATX button connectors on the motherboard and get the status of the power LEDs and hard drive activity.
-- Mass-storage device based on OTG (only for RPi4 and ZeroW)
-- The ability to use any video capture device (include HDMI-to-CSI2 bridge).
-- [Own MJPG streamer](https://github.com/pikvm/ustreamer) written on C with multi-threading and GPU video encoding. It can change the resolution in real time by signal from HDMI source, report statistics about the video and much more (see [README](https://github.com/pikvm/ustreamer/blob/master/README.md) for detalis).
-- Extensible authorization methods - you can configure multiple KVMs so that they use a [common authorization service](https://github.com/pikvm/kvmd-auth-server).
-- Microservice architecture - the system consists of separated parts that each perform a strictly defined task.
-- Plugin architecture to support a variety of hardware.
-- Backend with clear API that can be used for scripts and alternative UI (for example you can make a desktop application or some scripts);
-- A ready-to-use operating system that can be assembled just using `make build` and installed to SD-card using `make install`.
 
 
 ## Required hardware
