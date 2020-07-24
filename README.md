@@ -1,9 +1,10 @@
 # Open and cheap DIY IP-KVM based on Raspberry Pi
-[![Discord](https://img.shields.io/discord/580094191938437144?logo=discord)](https://discord.gg/bpmXfz5)
+Community chat: [![Discord](https://img.shields.io/discord/580094191938437144?logo=discord)](https://discord.gg/bpmXfz5) for questions and support.
 
-A very simple and fully functional IP-KVM based on Raspberry Pi that you can make with your own hands. This device will help you to manage your server or workstation remotely, regardless of the operating system's health. You can fix remotely any, configure the BIOS and even reinstall the OS using the CD-ROM and Flash Drive emulator.
+A very simple and fully functional IP-KVM based on Raspberry Pi that you can make with your own hands. This device will help you to manage your server or workstation remotely, regardless of the operating system's health. You can fix any problem, configure the BIOS and even reinstall the OS using the CD-ROM and Flash Drive emulator.
 
 ![Screenshot](screen1.png)
+
 
 ## Fully-featured and modern IP-KVM
 * **Cheaper, but better than commercial solutions**  
@@ -41,6 +42,7 @@ A very simple and fully functional IP-KVM based on Raspberry Pi that you can mak
 * **Macro scripts**  
   If you need to perform repetitive actions on your server (or on different servers), you can record the macro with keyboard & mouse actions and play it back many times.
 
+
 ## Open Source
 * **Community & support**  
   Pi-KVM has a large community. Join the [discord chat](https://discord.gg/bpmXfz5) chat if you have any questions.
@@ -54,26 +56,22 @@ A very simple and fully functional IP-KVM based on Raspberry Pi that you can mak
   We created [very own MJPG video server](https://github.com/pikvm/ustreamer) written on C with multi-threading and GPU video encoding - fastest streaming solution available to provide the best video quality for Pi-KVM. We also made many other things and tested a lot of hardware so that you could just assemble the device and it would work immediately without any problems.
 
 
-## Disclaimer
-This project is developed on a non-commercial basis by Open Source enthusiasts. The goal is to create a cheap and functional alternative to expensive closed IP-KVM devices. As part of this project, a full stack of software required for KVM is being developed: the operating system based on Arch Linux ARM, the fast video server, the VNC server, Web UI, and much more. We also provide assistance and support for Pi-KVM users via [Discord chat](https://discord.gg/bpmXfz5).
-
-If you found Pi-KVM useful or it saved you from a long trip to a dead computer, you can support the main developer by donating a few bucks via [Patreon](https://www.patreon.com/pikvm) or [PayPal](https://www.paypal.me/mdevaev). With this money, he will be able to buy new hardware (Raspberry Pi and other things) to support and test various configurations of Pi-KVM, and generally devote much more time to this project. At the bottom of this page are listed the names of all the people who helped this project develop with their donations. Our gratitude knows no bounds!
+## Note
+This project is developing on a non-commercial basis by Open Source enthusiasts. The goal is to create a cheap and functional alternative to expensive closed IP-KVM devices. If you found Pi-KVM useful or it saved you from a long trip to a dead computer, you can support the main developer by donating a few bucks via [Patreon](https://www.patreon.com/pikvm) or [PayPal](https://www.paypal.me/mdevaev). With this money, he will be able to buy a new hardware (Raspberry Pi and other) to test and maintain various configurations of Pi-KVM, and generally devote much more time to this project. At the bottom of this page are listed the names of all the people who helped this project develop with their donations. Our gratitude knows no bounds!
 
 If you want to use Pi-KVM in production, we are ready to accept an order for modification for your needs and implementation of various features specifically for you. Contact us via live chat or email of the main developer: mdevaev@gmail.com
 
-**Q**: What is the status of this project?
+**Q**: **What is the status of this project?**  
+**A:** Although this documentation page is rarely updated, the project is maintained and developed. You can verify it by checking the activity in other repositories in our organization.
 
-**A:** Although this documentation page is rarely updated, the project is maintained and developed. You can verify it by checking the activity in other repositories in our organization. Unfortunately, all our time is spent to code. We will be happy if someone can help us make a large and beautiful documentation on readthedocs.
-
-**Q:** **Does this support HDMI-USB dongle from AliExpress? https://aliexpress.ru/item/4001043540669.html?**
-
-**A:** **YES**, but not out of the box right now. After installation, you will have to manually add a couple of options and everything will work fine (contact us at discord to find out more). In the next couple of weeks, we will add a fully maintained conifiguration. **However, it should be noted that the USB dongle has several disadvantages compared to the HDMI-CSI bridge: USB gives you a lot of latency (200ms vs 100ms for CSI2); it doesn't support stream compression control (you won't be able to use KVM in a place with a poor internet connection); it can't automatically detect screen resolution.** You can use it, but is the $10 savings worth losing all of these features? The choice is yours.
+**Q:** **Does this support the cheap HDMI-USB dongle from [AliExpress](https://aliexpress.ru/item/4001043540669.html)?**  
+**A:** In short, **YES**, but not out of the box right now. After installation, you will have to manually add a couple of options and everything will work fine (contact us at discord to find out more). In the next couple of weeks, we will add a fully maintained conifiguration. If you want to do it right now, write to us in discord and we will help you set it up. **However, it should be noted that the USB dongle has several disadvantages compared to the HDMI-CSI bridge: USB gives you a lot of latency (200ms vs 100ms for CSI2); it doesn't support stream compression control (you won't be able to use KVM in a place with a poor internet connection); it can't automatically detect screen resolution.** You can use it, but is the $10 savings worth losing all of these features? The choice is yours.
 
 
 ## Required hardware
-We support a variety of implementation choices of hardware (we call it platform). The two main are called **v0** and **v2**.
-- **v0** platform is designed to work with Raspberry Pi that do not have OTG (**Raspberry Pi 2 and 3**), and requires a little more spare parts for the basic implementation. Also there does not work mass-storage device.
-- **v2** platform is the most modern implementation supporting all the features of Pi-KVM. It is designed to work with **Raspberry Pi 4 and ZeroW** but we recommend using 4 because ZeroW is very slow. **RPi4 with 2Gb RAM is pretty enough**.
+Pi-KVM supports several different hardware configurations, which called **platforms**. At the moment, there are two main ones: **v0** and **v2**.
+* **v0** platform was designed to work with Raspberry Pi that do not have OTG (**Raspberry Pi 2** and **3**) and requires a little more spare parts for the basic implementation. Also there does not work mass-storage device.
+- **v2** platform is the most modern implementation supporting all the features of Pi-KVM. It was designed to work with **Raspberry Pi 4** and **ZeroW** but we recommend using 4 because ZeroW is very slow. **RPi4 with 1Gb RAM is pretty enough**.
 
 **Basic hardware**
 - Raspberry Pi 2, 3, 4 or ZeroW
