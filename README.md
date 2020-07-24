@@ -1,10 +1,14 @@
 # Open and cheap DIY IP-KVM based on Raspberry Pi
-Community chat: [![Discord](https://img.shields.io/discord/580094191938437144?logo=discord)](https://discord.gg/bpmXfz5) for questions and support.
+Join to comunity chat for questions and support!
+[![Discord](https://img.shields.io/discord/580094191938437144?logo=discord)](https://discord.gg/bpmXfz5)
+
+-----
 
 A very simple and fully functional IP-KVM based on Raspberry Pi that you can make with your own hands. This device will help you to manage your server or workstation remotely, regardless of the operating system's health. You can fix any problem, configure the BIOS and even reinstall the OS using the CD-ROM and Flash Drive emulator.
 
 ![Screenshot](screen1.png)
 
+-----
 
 ## Fully-featured and modern IP-KVM
 * **Cheaper, but better than commercial solutions**  
@@ -69,6 +73,7 @@ If you want to use Pi-KVM in production, we are ready to accept an order for mod
 **Q:** **Does this support the cheap HDMI-USB dongle from [AliExpress](https://aliexpress.ru/item/4001043540669.html)?**  
 **A:** In short, **YES**, but not out of the box right now. After installation, you will have to manually add a couple of options and everything will work fine (contact us at discord to find out more). In the next couple of weeks, we will add a fully maintained conifiguration. If you want to do it right now, write to us in discord and we will help you set it up. **However, it should be noted that the USB dongle has several disadvantages compared to the HDMI-CSI bridge: USB gives you a lot of latency (200ms vs 100ms for CSI2); it doesn't support stream compression control (you won't be able to use KVM in a place with a poor internet connection); it can't automatically detect screen resolution.** You can use it, but is the $10 savings worth losing all of these features? The choice is yours.
 
+-----
 
 # Required hardware
 Pi-KVM supports several different hardware configurations, which called **platforms**. At the moment, there are two main ones: **v0** and **v2**.
@@ -115,6 +120,8 @@ Pi-KVM supports several different hardware configurations, which called **platfo
 
 <img src="no_relays.png" alt="drawing" width="100"/>
 
+-----
+
 # Setting up the hardware
 Here is a diagram of how you connect all of the pieces (click to full size). Build everything as shown in the diagram and insert the flexible cable of HDMI bridge into the narrow white connector on the Raspberry Pi (the closest one to the USB).
 
@@ -136,8 +143,9 @@ Also check out small PCB for ATX (if you know how to make PCBs): https://easyeda
 ## v0 Diagram
 <img src="v0.png" alt="drawing" width="400"/>
 
+-----
 
-## Building OS
+# Building OS
 Pi-KVM OS is based on Arch Linux ARM and contains all required packages and configs to work. To build the OS you will need any Linux machine with a fresh version of Docker (we recommand >= 1:19) with privileged mode (for fdisk and some other commands, check Makefiles if you don't trust us :).
 
 0. For a clean OS (Like Ubuntu 18) you need to install and configure docker (after adding user in the docker group a relogin is needed), as well as git and make.
@@ -224,6 +232,8 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     ```
 9. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>`) and HTTPS (try to open it in a browser at `https://<addr>`). For HTTPS a self-signed certificate is used by default.
 
+-----
+
 # Tips
 * The Pi-KVM file system is always mounted in read-only mode. This prevents it from being damaged by a sudden power outage. To change the configuration you must first switch FS to write mode using the command `rw` from root. After the changes, be sure to run the command `ro` to switch it back to read-only.
 
@@ -289,6 +299,8 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
   We recommend disabling automatic quality adjust if there is one in your client (this is called "Auto-Select"in TigerVNC).  
   Please note: we strongly don't recommend you to use VNC in untrusted networks. The current implementation does not use encryption, and your passwords are transmitted over the network in a plain text. The existing anonymous TLS mode is also not secure enough.
 
+-----
+
 # Troubleshooting
 * On step 8 (`make install`), you may encounter the following error:
     ```
@@ -323,6 +335,8 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     If none of this works, try connecting the DP cable first, boot into the BIOS, disable CSM and shutdown (do not restart) your PC. Boot into the BIOS and enable CSM then shutdown your PC. Then connect the HDMI and turn it on again.
 
 * If you have any problems or questions, you can contact us using Discord: https://discord.gg/bpmXfz5
+
+-----
 
 # Special thanks
 These kind people donated money to the Pi-KVM project and supported the work on it. We are very grateful for their help, and memorializing their names is the least we can do in gratitude.
