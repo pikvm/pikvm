@@ -115,9 +115,8 @@ Pi-KVM supports several different hardware configurations, which called **platfo
 **Addition**
 * If you want to capture VGA, buy the [VGA-to-HDMI converter](https://aliexpress.ru/item/4000553298530.html).
 * You can power your Pi-KVM using PoE, but we do not recommend using the official PoE HAT: it is unreliable and [not compatible with the HDMI bridge](https://github.com/pikvm/pikvm/issues/6). Use any other one without I2C fan controller.
-* **Don't use random relay modules or random optocouplers!** Some relays or optocouplers may not be sensitive enough for the Raspberry Pi, some others may be low-level controlled. Either use relays that are controlled by a high level, or follow the scheme and buy an OMRON. See details [here](https://github.com/pikvm/pikvm/issues/13).
-
-<img src="no_relays.png" alt="drawing" width="100"/>
+* **Don't use random relay modules or random optocouplers!** Some relays or optocouplers may not be sensitive enough for the Raspberry Pi, some others may be low-level controlled. Either use relays that are controlled by a high level, or follow the scheme and buy an OMRON. See details [here](https://github.com/pikvm/pikvm/issues/13).  
+  <img src="no_relays.png" alt="drawing" width="100"/>
 
 -----
 
