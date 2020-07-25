@@ -121,6 +121,24 @@ Pi-KVM supports several different hardware configurations, which called **platfo
 
 -----
 
+# The future v3 platform (work in progress)
+
+<img src="v3_board.png" alt="drawing" width=250/></td>
+
+Also we are currently developing our own HAT for Raspberry Pi 4. It will have all the features of the v2 platform, including many important things:
+* Ability to simulate "pull and insert" for USB.
+* Onboard ATX controller.
+* RTC clock.
+* CISCO-style and USB serial console port (to manage Pi-KVM OS or to connect with the server).
+* Optional AVR-based HID (for some rare and strange motherboards whose BIOS doesn't understand the OTG keyboard).
+* Optional OLED screen to display network information or what you want.
+* It does not need to be soldered. It's a ready-made, reliable board which you can use yourself or provide to your clients. And of course, it also uses Pi-KVM OS - all the software will be fully open.
+* It will cost about $100 - or less, we are working to make it as cheap as possible.
+
+Sounds interesting? Subscribe to https://discord.gg/bpmXfz5 and you will be the first to know about the release. Prototypes will be ready in Q4 2020, and pre-orders will be available sooner.
+
+-----
+
 # Setting up the hardware
 Here is a diagram shows that how to connect all of the pieces (click to full size). Build everything as shown in the diagram and insert the flexible cable of the HDMI bridge into the narrow white connector on the Raspberry Pi (the closest one to the USB).
 
