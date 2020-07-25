@@ -72,8 +72,8 @@ If you want to use Pi-KVM in production, we are ready to accept an order for mod
 **Q:** **Does this support the cheap HDMI-USB dongle from [AliExpress](https://aliexpress.ru/item/4001043540669.html)?**  
 **A:** In short, **YES**, but not out of the box right now. After installation, you will have to manually add a couple of options and everything will work fine (contact us at discord to find out more). In the next couple of weeks, we will add a fully maintained conifiguration. If you want to do it right now, write to us in discord and we will help you set it up. **However, it should be noted that the USB dongle has several disadvantages compared to the HDMI-CSI bridge: USB gives you a lot of latency (200ms vs 100ms for CSI2); it doesn't support stream compression control (you won't be able to use KVM in a place with a poor internet connection); it can't automatically detect screen resolution.** You can use it, but is the $10 savings worth losing all of these features? The choice is yours.
 
-**Q:** **Can I connect multiple servers to a single KVM?**  
-**A:** Yes, but it will require additional work from you. You can connect Pi-KVM to multi-port HDMI/USB switch and wire its buttons via opto-couplers to the GPIO to switch channels. If your KVM switches channels using keyboard shortcuts, there is a chance that it will not be able to work OTG (v2 platform, see bellow), since it does not fully implement the USB stack. In this case, you will have to use Arduino to emulate the keyboard & mouse (Pi-KVM supports this).
+**Q:** **Can I connect multiple servers to a single Pi-KVM?**  
+**A:** Yes, but it will require additional work from you. You can connect Pi-KVM to multi-port HDMI/USB switch and wire its buttons via optocouplers to RPi's GPIO to switch channels. If your KVM switches channels using keyboard shortcuts, there is a chance that it will not be able to work OTG (v2 platform, see bellow), since it does not fully implement the USB stack. In this case, you will have to use Arduino to emulate the keyboard & mouse (Pi-KVM supports this).
 
 -----
 
