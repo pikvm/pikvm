@@ -123,9 +123,11 @@ Pi-KVM supports several different hardware configurations, which called **platfo
 
 # The future v3 platform (work in progress)
 
-<img src="v3_board.png" alt="drawing" width=250/></td>
+<img src="v3_board.png" alt="drawing" width=300/></td>
 
 Also we are currently developing our own HAT for Raspberry Pi 4. It will have all the features of the v2 platform, including many important things:
+* HDMI capture based on TC358743 (extra low latency and many features like compression control).
+* OTG Keyboard & mouse; Mass-Storage Drive emulation.
 * Ability to simulate "pull and insert" for USB.
 * Onboard ATX controller.
 * RTC clock.
