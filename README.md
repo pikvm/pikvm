@@ -80,38 +80,38 @@ If you wish to use Pi-KVM in production, we accept orders to modify it for your 
 # Required hardware
 Pi-KVM supports several different hardware configurations, referred to as **platforms**. At the moment, there are two main ones: **v0** and **v2**.
 * **v0** was designed to work with Raspberry Pi boards that do not have OTG (**Raspberry Pi 2** and **3**) and requires a few more components for a basic implementation. It also does not support the Mass Storage Drive feature.
-* **v2** is is the most modern implementation supporting all of the features of Pi-KVM. It was designed to work with the **Raspberry Pi 4** and **Zero W**.
+* **v2** is the most modern implementation supporting all of the features of Pi-KVM. It was designed to work with the **Raspberry Pi 4** and **Zero W**.
 
 **It is reccomended to buid v2 since it supports all features including the Mass Storage Drive feature. It is also the easiest to make.**
 
 **Hardware for v2**
 * Raspberry Pi 4 (2 GB model is enough) or Zero W. The Pi 4 is reccomended because the Zero W is very slow.
 * MicroSD card (min 16 GB recommended).
-* USB-A 3A charger or power supply.
+* USB-A 3A charger (female socket) or power supply.
 * HDMI to CSI-2 bridge board: [Lusya or any other based on the Toshiba TC358743](https://aliexpress.com/item/4000102166176.html).
 * Only for Raspberry Pi 4:
   * Parts for Y-splitter cable:
-    - 1x USB-A to USB-C cable.
-    - 1x another cable USB-A to any.
+    - 1x USB-A to USB-C cable (male-male).
+    - 1x another cable USB-A to any (male-...).
 * Only for Raspberry Pi Zero W:
-  * 2x USB A-to-micro cables (for power and keyboard & mouse emulator).
+  * 2x USB A-to-micro cables (male-male, for power and keyboard & mouse emulator).
 * For ATX control (optional):
   - [4x MOSFET relays OMRON G3VM-61A1](https://www.digikey.com/products/en?keywords=G3VM-61A1).
   - 4x 390 Ohm resistors.
   - 2x 4.7k Ohm resistors.
-  - A breadboard.
+  - A breadboard and wires.
   
 **Hardware for v0**
 * Raspberry Pi 2 or 3.
 * MicroSD card (8 GB is enough).
-* USB-A 3A charger or power supply.
+* USB-A 3A charger (female socket) or power supply.
 * For keyboard & mouse emulator (HID):
   - Arduino Pro Micro (based on an ATMega32u4).
   - [Logic level shifter](https://www.sparkfun.com/products/12009).
   - NPN transistor (almost any NPN transistor: 2n2222 or similar).
   - 1x 390 Ohm resistor.
-  - A breadboard.
-* 2x USB A-to-micro cables (for power and HID).
+  - A breadboard and wires.
+* 2x USB A-to-micro cables (male-male, for power and HID).
 * HDMI capture device: see v2 description.
 * ATX control (optional): see v2 description.
 
