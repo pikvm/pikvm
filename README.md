@@ -158,7 +158,9 @@ Insert the flexible cable of the HDMI bridge into the narrow white connector on 
 
 **For HDMI-USB dongle**
 Connect USB dongle to exactly this port. It is bound in the software so the OS does not confuse the video device with something else.
-<img src="v2_usbcap_rpi4.png" alt="drawing" width="400"/>
+
+
+<img src="v2_usbcap_rpi4.png" alt="drawing" width="200"/>
 
 **Raspberry Pi 4 note**: since one USB-C female connector is used to receive power and perform keyboard/mouse/drive emulation a special Y-cable must be made that splits the DATA and POWER lines of USB-C (see [reasons](https://github.com/pikvm/docs/issues/11)). It can be made from two suitable connecting cables, or soldered together from scratch. Be sure to check the circuit diagram below, otherwise you may damage your devices. The appropriate USB pinout(s) can easily be found on Google. Please note that if you make a Y-cable from two no-name cables, the colors of the wires may not match those shown. Use a multimeter to make sure the connections are correct.
 
