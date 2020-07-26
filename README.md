@@ -70,7 +70,7 @@ If you wish to use Pi-KVM in production, we accept orders to modify it for your 
 **A:** Although this page is rarely updated, the project is actively maintained and developed. You can verify this by checking the activity in our other repositories.
 
 **Q:** **Does this support the cheap HDMI-USB dongle from [AliExpress](https://aliexpress.ru/item/4001043540669.html)?**  
-**A:** In short, **YES**, but not currently out-of-the-box. After installation, you will have to manually add a couple of options for things to work correctly.  In the next couple of weeks, we will add a fully maintained conifiguration. If you want to do it right now, write to us on Discord and we will help you set it up. **However, it should be noted that the USB dongle has several disadvantages compared to the HDMI-CSI bridge:** USB gives a lot of latency (200ms vs 100ms for CSI2) and it doesn't support stream compression control (you won't be able to use KVM in a place with a poor internet connection). It also cannot automatically detect screen resolution. **It may be used, but the loss of these features is probably not worth the ten dollars saved.**
+**A:** Yes, and Pi-KVM works great with it. **However, it should be noted that the USB dongle has several disadvantages compared to the HDMI-CSI bridge:** USB gives a lot of latency (200ms vs 100ms for the bridge) and it doesn't support stream compression control (you won't be able to use Pi-KVM in a place with a poor internet connection). It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself. **It may be used, but the loss of these features is probably not worth the ten dollars saved.**
 
 **Q:** **Can I connect multiple servers to a single Pi-KVM?**  
 **A:** Yes, but it will require additional work to set up. Pi-KVM can be connected to a multi-port HDMI/USB switch and the switch's buttons can be connected via optocouplers to the Pi's GPIO pins to switch channels. If your KVM switches channels using keyboard shortcuts, there is a chance that it will not be able to work with OTG (v2 platform, see bellow), since it does not fully implement the USB stack. In this case, you will have to use an Arduino board to emulate the keyboard & mouse. (Pi-KVM supports this configuration)
@@ -82,13 +82,15 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
 * **v0** was designed to work with Raspberry Pi boards that do not have OTG (**Raspberry Pi 2** and **3**) and requires a few more components for a basic implementation. It also does not support the Mass Storage Drive feature.
 * **v2** is the most modern implementation supporting all of the features of Pi-KVM. It was designed to work with the **Raspberry Pi 4** and **Zero W**.
 
-**It is reccomended to buid v2 since it supports all features including the Mass Storage Drive feature. It is also the easiest to make.**
+**It is recomended to buid v2 since it supports all features including the Mass Storage Drive feature. It's also the easiest to make.**
 
 **Hardware for v2**
 * Raspberry Pi 4 (2 GB model is enough) or Zero W. The Pi 4 is reccomended because the Zero W is very slow.
 * MicroSD card (min 16 GB recommended).
 * USB-A 3A charger (female socket) or power supply.
-* HDMI to CSI-2 bridge board: [Lusya or any other based on the Toshiba TC358743](https://aliexpress.com/item/4000102166176.html).
+* Video capture device:
+  * HDMI to CSI-2 bridge board: [Lusya or any other based on the Toshiba TC358743](https://aliexpress.com/item/4000102166176.html) (**recommended**: compression control, lowest video latency for ~100ms, can determine the source resolution; see the FAQ above for the explanation)
+  * HDMI to USB dongle (RPi4 only): [AliExpress](https://aliexpress.ru/item/4001043540669.html) (high video latency for ~200ms, no compression control, can't detect the source resolution)
 * Only for Raspberry Pi 4:
   * Parts for Y-splitter cable:
     - 1x USB-A to USB-C cable (male-male).
@@ -140,7 +142,7 @@ We are also currently developing our own HAT for the Raspberry Pi 4. It will hav
 * Continued use of Pi-KVM OS - all the software will be fully open.
 * It will cost about $100 - or less, we are working to make it as cheap as possible.
 
-Sounds interesting? Subscribe to https://discord.gg/bpmXfz5 and you will be the first to know about the release. Prototypes will be ready in Q4 2020, and pre-orders will be available sooner.
+Sounds interesting? Subscribe to https://discord.gg/bpmXfz5 and you will be the first to know about the release. Prototypes will be ready in Q4 2020, and pre-orders will be available sooner. Or just email to mdevaev@gmail.com. We will let you know when you can purchase this board.
 
 -----
 
@@ -150,6 +152,13 @@ Here is a diagram shows that how to connect all of the pieces (click to full siz
 
 ## v2 Diagram
 <img src="v2.png" alt="drawing" width="400"/>
+
+**For HDMI-CSI bridge**
+Insert the flexible cable of the HDMI bridge into the narrow white connector on the Raspberry Pi (the closest one to the USB). Use only the cable that was included with the device package, or make sure that the third-party cable has the correct pinout.
+
+**For HDMI-USB dongle**
+Connect USB dongle to exactly this port. It is bound in the software so the OS does not confuse the video device with something else.
+<img src="v2_usbcap_rpi4.png" alt="drawing" width="400"/>
 
 **Raspberry Pi 4 note**: since one USB-C female connector is used to receive power and perform keyboard/mouse/drive emulation a special Y-cable must be made that splits the DATA and POWER lines of USB-C (see [reasons](https://github.com/pikvm/docs/issues/11)). It can be made from two suitable connecting cables, or soldered together from scratch. Be sure to check the circuit diagram below, otherwise you may damage your devices. The appropriate USB pinout(s) can easily be found on Google. Please note that if you make a Y-cable from two no-name cables, the colors of the wires may not match those shown. Use a multimeter to make sure the connections are correct.
 
@@ -163,6 +172,8 @@ Also check out this small PCB for ATX (if you know how to make PCBs): https://ea
 
 ## v0 Diagram
 <img src="v0.png" alt="drawing" width="400"/>
+
+Insert the flexible cable of the HDMI bridge into the narrow white connector on the Raspberry Pi (the closest one to the USB). Use only the cable that was included with the device package, or make sure that the third-party cable has the correct pinout.
 
 -----
 
@@ -184,7 +195,7 @@ The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages 
     [user@localhost ~]$ cd os
     ```
 
-2. Determine the target hardware configuration (platform). Choose the board (`BOARD=rpi4` for Raspberry Pi 4 or `BOARD=zerow`, `BOARD=rpi2`, `BOARD=rpi3` for other options). Next, choose the platform: `PLATFORM=v2-hdmi` for RPi4 or ZeroW; `PLATFORM=v0-hdmi` for RPi 2 or 3. Other options are for legacy or specialized Pi-KVM boards (WIP).
+2. Determine the target hardware configuration (platform). Choose the board (`BOARD=rpi4` for Raspberry Pi 4 or `BOARD=zerow`, `BOARD=rpi2`, `BOARD=rpi3` for other options). Next, choose the platform: `PLATFORM=v2-hdmi` for RPi4 or ZeroW with HDMI-CSI bridge; `PLATFORM=v2-hdmiusb` for RPi4 with HDMI-USB dongle; `PLATFORM=v0-hdmi` for RPi 2 or 3  with HDMI-CSI bridge. Other options are for legacy or specialized Pi-KVM boards (WIP).
 
 3. Create the config file `config.mk` for the target system. You must specify the path to the SD card on your local computer (this will be used to format and install the system) and the version of your Raspberry Pi and platform. You can change other parameters as you wish. Please note: if your password contains the # character, you must escape it using a backslash like `ROOT_PASSWD = pass\#word`.
     ```Makefile
