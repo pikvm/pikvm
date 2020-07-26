@@ -17,7 +17,7 @@ A very simple and fully functional Raspberry Pi-based IP-KVM that you can make w
 * **Easy to build**  
   A ready-to-use OS that can be created just by running `make build` and installed to an SD-card using `make install`. The hardware can be made in half an hour and without soldering.
 * **The widest hardware support**  
-  There are many ways to build a Pi-KVM. Video capture devices can be attached using the CSI-2 or USB interfaces. Raspberry Pi models 2, 3, 4, or Zero W may be used. Any combination of hardware is supported, and Pi-KVM implements the maximum possible set of features.
+  There are many ways to build a Pi-KVM. Video capture devices can be attached using the CSI-2 or USB interfaces. Raspberry Pi models 2, 3, 4, or ZeroW may be used. Any combination of hardware is supported, and Pi-KVM implements the maximum possible set of features.
 * **Very low latency**  
   ~100 milliseconds of video latency. This is the smallest delay of all existing solutions.
 * **Extra lightweight and fancy Web UI**  
@@ -25,7 +25,7 @@ A very simple and fully functional Raspberry Pi-based IP-KVM that you can make w
 * **Keyboard and mouse**  
   Mouse usage works directly in the browser. The keyboard emulator supports displaying the state of the keyboard LEDs.
 * **Mass Storage Drive**  
-  On the Raspberry Pi 4 and Zero, Pi-KVM can emulate a virtual CD-ROM or Flash Drive. A live image can be uploaded to boot the attached server.
+  On the Raspberry Pi 4 and ZeroW, Pi-KVM can emulate a virtual CD-ROM or Flash Drive. A live image can be uploaded to boot the attached server.
 * **ATX power management**  
   With a very simple circuit that can be assembled on a breadboard, the power button of the attached server can be controlled using the ATX button headers on the motherboard.
 * **Security**  
@@ -80,12 +80,12 @@ If you wish to use Pi-KVM in production, we accept orders to modify it for your 
 # Required hardware
 Pi-KVM supports several different hardware configurations, referred to as **platforms**. At the moment, there are two main ones: **v0** and **v2**.
 * **v0** was designed to work with Raspberry Pi boards that do not have OTG (**Raspberry Pi 2** and **3**) and requires a few more components for a basic implementation. It also does not support the Mass Storage Drive feature.
-* **v2** is the most modern implementation supporting all of the features of Pi-KVM. It was designed to work with the **Raspberry Pi 4** and **Zero W**.
+* **v2** is the most modern implementation supporting all of the features of Pi-KVM. It was designed to work with the **Raspberry Pi 4** and **ZeroW**.
 
 **It is recomended to buid v2 since it supports all features including the Mass Storage Drive feature. It's also the easiest to make.**
 
 **Hardware for v2**
-* Raspberry Pi 4 (2 GB model is enough) or Zero W. The Pi 4 is reccomended because the Zero W is very slow.
+* Raspberry Pi 4 (2 GB model is enough) or ZeroW. The Pi 4 is reccomended because the ZeroW is very slow.
 * MicroSD card (min 16 GB recommended).
 * USB-A 3A charger (female socket) or power supply.
 * Video capture device:
@@ -95,7 +95,7 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
   * Parts for Y-splitter cable:
     - 1x USB-A to USB-C cable (male-male).
     - 1x another cable USB-A to any (male-...).
-* Only for Raspberry Pi Zero W:
+* Only for Raspberry Pi ZeroW:
   * 2x USB A-to-micro cables (male-male, for power and keyboard & mouse emulator).
 * For ATX control (optional):
   - [4x MOSFET relays OMRON G3VM-61A1](https://www.digikey.com/products/en?keywords=G3VM-61A1).
