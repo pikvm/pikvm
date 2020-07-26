@@ -89,8 +89,8 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
 * MicroSD card (min 16 GB recommended).
 * USB-A 3A charger (female socket) or power supply.
 * Video capture device:
-  * HDMI to CSI-2 bridge board: [Lusya or any other based on the Toshiba TC358743](https://aliexpress.com/item/4000102166176.html) (**recommended**: compression control, lowest video latency for ~100ms, can determine the source resolution; see the FAQ above for the explanation)
-  * HDMI to USB dongle (RPi4 only): [AliExpress](https://aliexpress.ru/item/4001043540669.html) (high video latency for ~200ms, no compression control, can't detect the source resolution)
+  * **Recommended**: HDMI to CSI-2 bridge board: [Lusya or any other based on the Toshiba TC358743](https://aliexpress.com/item/4000102166176.html) (it supports the compression control, has a lowest video latency for ~100ms, and may determine the source resolution; see the FAQ above for the explanation)
+  * HDMI to USB dongle (RPi4 only): [AliExpress](https://aliexpress.ru/item/4001043540669.html) (high video latency ~200ms, no compression control, can't detect the source resolution)
 * Only for Raspberry Pi 4:
   * Parts for Y-splitter cable:
     - 1x USB-A to USB-C cable (male-male).
