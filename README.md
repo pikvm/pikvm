@@ -89,13 +89,13 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
 
 **It is recomended to buid v2 since it supports all features including the Mass Storage Drive feature. It's also the easiest to make.**
 
-## Hardware for v2**
+## Hardware for v2
 * Raspberry Pi 4 (2 GB model is enough) or ZeroW. The Pi 4 is recomended because the ZeroW is very slow.
 * MicroSD card (min 16 GB recommended).
 * USB-A 3A charger (female socket) or power supply.
 * Video capture device:
   * **Recommended**: [HDMI to CSI-2 bridge based on TC358743](https://aliexpress.com/item/4000102166176.html) - it supports the compression control, has a lowest video latency for ~100ms, and may determine the source resolution; see the FAQ above for the explanation.
-  * An alternative for RPi4: [HDMI to USB dongle](https://aliexpress.ru/item/4001043540669.html) - high video latency ~200ms, no compression control, can't detect the source resolution
+  * An alternative (not available for ZeroW): [HDMI to USB dongle](https://aliexpress.ru/item/4001043540669.html) - high video latency ~200ms, no compression control, can't detect the source resolution.
 * Only for Raspberry Pi 4:
   * Parts for Y-splitter cable:
     - 1x USB-A to USB-C cable (male-male).
@@ -108,7 +108,7 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
   - 2x 4.7k Ohm resistors.
   - A breadboard and wires.
   
-**Hardware for v0**
+## Hardware for v0
 * Raspberry Pi 2 or 3.
 * MicroSD card (8 GB is enough).
 * USB-A 3A charger (female socket) or power supply.
@@ -122,7 +122,7 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
 * HDMI capture device: see v2 description.
 * ATX control (optional): see v2 description.
 
-**Addition**
+## Addition
 * If you want to capture VGA from your server instead of HDMI, buy the [VGA-to-HDMI converter](https://aliexpress.ru/item/4000553298530.html).
 * Pi-KVM can be powered using PoE, but it is not recommend to use the official PoE HAT: it is unreliable and [not compatible with the HDMI bridge](https://github.com/pikvm/pikvm/issues/6). Use any other PoE hat without an I2C fan controller.
 * **Don't use random relay modules or random optocouplers!** Some relays or optocouplers may not be sensitive enough for the Raspberry Pi, some others may be low-level controlled. Either use relays that are activated by a high logic level, or follow the design provided and buy an OMRON. See details [here](https://github.com/pikvm/pikvm/issues/13).  
@@ -152,20 +152,20 @@ Sounds interesting? Subscribe to https://discord.gg/bpmXfz5 and you will be the 
 -----
 
 # Setting up the hardware
-Here is a diagram shows that how to connect all of the pieces (click to full size). Build everything as shown in the diagram and insert the flexible cable of the HDMI bridge into the narrow white connector on the Raspberry Pi (the closest one to the USB).
+## Connecting the video capture
+#### For the HDMI-CSI bridge
+Insert the flexible flat cable of the HDMI bridge into the narrow white connector on the Raspberry Pi (the closest one to big USB sockets). Use only the cable that was included with the device package, or make sure that the third-party cable has the correct pinout.
 
+#### For the HDMI-USB dongle
+Connect USB dongle to exactly this port. It is bound in the software so the OS does not confuse the video device with something else.
+| Raspberry Pi 2 and 3 | Raspberry Pi 4 |
+|----------------------|----------------|
+| <img src="v2_usbcap_rpi2.png" alt="drawing" width="200"/> | <img src="v2_usbcap_rpi4.png" alt="drawing" width="200"/> |
 
 ## v2 Diagram
+Here is a diagram shows that how to connect all of the pieces (click to full size).
+
 <img src="v2.png" alt="drawing" width="400"/>
-
-**For HDMI-CSI bridge**
-Insert the flexible cable of the HDMI bridge into the narrow white connector on the Raspberry Pi (the closest one to the USB). Use only the cable that was included with the device package, or make sure that the third-party cable has the correct pinout.
-
-**For HDMI-USB dongle**
-Connect USB dongle to exactly this port. It is bound in the software so the OS does not confuse the video device with something else.
-
-
-<img src="v2_usbcap_rpi4.png" alt="drawing" width="200"/>
 
 **Raspberry Pi 4 note**: since one USB-C female connector is used to receive power and perform keyboard/mouse/drive emulation a special Y-cable must be made that splits the DATA and POWER lines of USB-C (see [reasons](https://github.com/pikvm/docs/issues/11)). It can be made from two suitable connecting cables, or soldered together from scratch. Be sure to check the circuit diagram below, otherwise you may damage your devices. The appropriate USB pinout(s) can easily be found on Google. Please note that if you make a Y-cable from two no-name cables, the colors of the wires may not match those shown. Use a multimeter to make sure the connections are correct.
 
@@ -179,8 +179,6 @@ Also check out this small PCB for ATX (if you know how to make PCBs): https://ea
 
 ## v0 Diagram
 <img src="v0.png" alt="drawing" width="400"/>
-
-Insert the flexible cable of the HDMI bridge into the narrow white connector on the Raspberry Pi (the closest one to the USB). Use only the cable that was included with the device package, or make sure that the third-party cable has the correct pinout.
 
 -----
 
@@ -202,7 +200,14 @@ The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages 
     [user@localhost ~]$ cd os
     ```
 
-2. Determine the target hardware configuration (platform). Choose the board (`BOARD=rpi4` for Raspberry Pi 4 or `BOARD=zerow`, `BOARD=rpi2`, `BOARD=rpi3` for other options). Next, choose the platform: `PLATFORM=v2-hdmi` for RPi4 or ZeroW with HDMI-CSI bridge; `PLATFORM=v2-hdmiusb` for RPi4 with HDMI-USB dongle; `PLATFORM=v0-hdmi` for RPi 2 or 3  with HDMI-CSI bridge. Other options are for legacy or specialized Pi-KVM boards (WIP).
+2. Determine the target hardware configuration (platform):
+  * Choose the board: `BOARD=rpi4` for Raspberry Pi 4 or `BOARD=zerow`, `BOARD=rpi2`, `BOARD=rpi3` for other options.
+  * Choose the platform:
+    - `PLATFORM=v2-hdmi` for RPi4 or ZeroW with HDMI-CSI bridge.
+    - `PLATFORM=v0-hdmi` for RPi 2 or 3 with HDMI-CSI bridge and Arduino HID.
+    - `PLATFORM=v2-hdmiusb` for RPi4 with HDMI-USB dongle.
+    - `PLATFORM=v0-hdmiusb` for RPi 2 or 3 with HDMI-USB dongle and Arduino HID.
+    - Other options are for legacy or specialized Pi-KVM boards (WIP).
 
 3. Create the config file `config.mk` for the target system. You must specify the path to the SD card on your local computer (this will be used to format and install the system) and the version of your Raspberry Pi and platform. You can change other parameters as you wish. Please note: if your password contains the # character, you must escape it using a backslash like `ROOT_PASSWD = pass\#word`.
     ```Makefile
@@ -246,7 +251,7 @@ The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages 
     [user@localhost os]$ make os
     ```
     
-5. Put SD card into card reader and install OS (**you should disable automounting beforehand: `systemctl stop udisk2` or something like that**):
+5. Put SD card into card reader and install OS (**you should disable automounting beforehand**: `systemctl stop udisk2` or something like that):
     ```shell
     [user@localhost os]$ make install
     ```
@@ -258,7 +263,7 @@ The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages 
     [user@localhost os]$ make scan
     ```
 
-8. **Only for v0**. Now you need to flash the Arduino. This can be done using your RPi. **Before starting this operation, disconnect the RESET wire from the Arduino board, otherwise the firmware will not be uploaded. Connect the Arduino and RPi with a suitable USB cable.** Log in to the RPi and upload the firmware. Then reconnect the RESET wire, disconnect the USB cable, and reboot the RPi.
+8. **Only for v0**. Now you need to flash the Arduino. This can be done using your RPi. **Before starting this operation, disconnect the RESET wire from the Arduino board, otherwise the firmware will not be uploaded.** Connect the Arduino and RPi with a suitable USB cable. Log in to the RPi and upload the firmware. Then connect the RESET wire, disconnect the USB cable, and reboot the RPi.
     ```
     [user@localhost os]$ ssh root@<addr>
     [root@pikvm ~]# rw
@@ -276,7 +281,7 @@ The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages 
 # Tips
 * The Pi-KVM file system is always mounted in read-only mode. This prevents it from being damaged by a sudden power outage. To change the configuration you must first switch the filesystem to write mode using the command `rw` from root. After the changes, be sure to run the command `ro` to switch it back to read-only.
 
-* NEVER edit `/etc/kvmd/main.yaml`. Use `/etc/kvmd/override.yaml` to redefine the system parameters. All other files that are also not recommended for editing have read-only permissions. If you edit any of these files, you will need to manually make changes to them when you upgrade your system. You can view the current configuration and all available KVMD parameters using the command `kvmd -m`.
+* **NEVER** edit `/etc/kvmd/main.yaml`. Use `/etc/kvmd/override.yaml` to redefine the system parameters. All other files that are also not recommended for editing have read-only permissions. If you edit any of these files, you will need to manually make changes to them when you upgrade your system. You can view the current configuration and all available KVMD parameters using the command `kvmd -m`.
 
 * Almost all KVMD (the main daemon controlling Pi-KVM) configuration files use [YAML](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) syntax. Information on the format's syntax can be found at the link provided.
 
