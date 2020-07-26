@@ -1,94 +1,94 @@
-# Open and cheap DIY IP-KVM based on Raspberry Pi
-Join to comunity chat for questions and support!
+# Open and cheap DIY IP-KVM based on Raspberry Pi  
+Join the comunity chat for questions and support!
 
 [![Discord](https://img.shields.io/discord/580094191938437144?logo=discord)](https://discord.gg/bpmXfz5)
 
 -----
 
-A very simple and fully functional IP-KVM based on Raspberry Pi that you can make with your own hands. This device will help you to manage your server or workstation remotely, regardless of the operating system's health. You can fix any problem, configure the BIOS and even reinstall the OS using the CD-ROM and Flash Drive emulator.
+A very simple and fully functional Raspberry Pi-based IP-KVM that you can make with your own hands. This device helps to manage servers or workstations remotely, regardless of the health of the operating system or whether one is installed. You can fix any problem, configure the BIOS, or even reinstall the OS using the included CD-ROM or Flash Drive emulation.
 
 ![Screenshot](screen1.png)
 
 -----
 
-## Fully-featured and modern IP-KVM
+## Fully-featured and modern IP-KVM  
 * **Cheaper, but better than commercial solutions**  
-  You will spend from $30 to $100 depending on what you want. Even the most expensive configuration will be cheaper than a commercial IP-KVM for $500.
+  Costs between $30 and $100 depending on the features desired. Even the most expensive configuration will be cheaper than a $500 commercial IP-KVM.
 * **Easy to build**  
-  A ready-to-use OS that can be assembled just using `make build` and installed to SD-card using `make install`. Hardware can be maked in half an hour without soldering.
+  A ready-to-use OS that can be created just by running `make build` and installed to an SD-card using `make install`. The hardware can be made in half an hour and without soldering.
 * **The widest hardware support**  
-  There are many ways to build KVM. You can use the video capture device with CSI-2 or USB interface; the Raspberry Pi of different models: 2, 3, 4 or Zero W. Any build is supported, and Pi-KVM implements its maximum possible set of features.
+  There are many ways to build a Pi-KVM. Video capture devices can be attached using the CSI-2 or USB interfaces. Raspberry Pi models 2, 3, 4, or Zero W may be used. Any combination of hardware is supported, and Pi-KVM implements the maximum possible set of features.
 * **Very low latency**  
   ~100 milliseconds of video latency. This is the smallest delay of all existing solutions.
-* **Extra lightweight and fancy Web-UI**  
-  No weird proprietary clients. No ugly Java applets. Just use your favorite browser to connect to Pi-KVM. Oh, and no flash plugin either!
+* **Extra lightweight and fancy Web UI**  
+  No weird proprietary clients. No ugly Java applets. Just use your favorite browser to connect to the Pi-KVM. No flash plugins either!
 * **Keyboard and mouse**  
-  The mouse works directly in the browser. And the keyboard emulator supports displaying the key LEDs state.
+  Mouse usage works directly in the browser. The keyboard emulator supports displaying the state of the keyboard LEDs.
 * **Mass Storage Drive**  
-  On the Raspberry Pi 4 and Zero Pi-KVM can emulate the virtual CD-ROM or Flash Drive. You can upload a live image and boot your server from it.
+  On the Raspberry Pi 4 and Zero, Pi-KVM can emulate a virtual CD-ROM or Flash Drive. A live image can be uploaded to boot the attached server.
 * **ATX power management**  
-  With a very simple circuit that can be assembled on a breadboard you can control the power of your server using the ATX buttons on the motherboard.
+  With a very simple circuit that can be assembled on a breadboard, the power button of the attached server can be controlled using the ATX button headers on the motherboard.
 * **Security**  
-  You can open Pi-KVM to the Internet and be sure that no one will get access to your server without password. SSL encryption protect the traffic from being intercepted by third parties. 
+  Pi-KVM can be opened to the Internet and no one will get access without the password. SSL encryption is used to protect traffic from being intercepted by third parties.
 * **Local monitoring**  
-  Pi-KVM monitors the health of the Raspberry Pi board and will tell you if it's too hot or not enough power.
+  Pi-KVM monitors the health of the Raspberry Pi board and will warn you if it's too hot or is not receiving enough power.
 
-## Production-ready
+## Production-ready  
 * **Linux-based embedded OS**  
-  The Pi-KVM OS is based on [Arch Linux ARM](https://archlinuxarm.org). It can be customized for any needs. Thousands of pre-built binary packages at your service. Update with a single command!
+  The Pi-KVM OS is based on [Arch Linux ARM](https://archlinuxarm.org) and can be customized for any needs. Thousands of pre-built binary packages are at your service and can be updated with a single command!
 * **Read-only filesystem**  
-  By default, the OS runs in read-only mode, as an embedded system should. You don't have to worry about the memory card being damaged due to a sudden power outage.
+  By default the OS runs in read-only mode, as an embedded system should. This prevents damage to the memory card due to a sudden power outage.
 * **VNC server**  
   The managed server and its BIOS can be accessed using a regular VNC client which supports JPEG compression.
 * **IPMI BMC**  
-  Use `ipmitool`, `ipmiutil` or any thing in your network infrastructure that supports IPMI to monitor and manage the server's power.
+  Use `ipmitool`, `ipmiutil` or any existing network infrastructure that supports IPMI to monitor and manage the server's power.
 * **Wake-on-LAN**  
   Pi-KVM can be configured to power up a managed server using WoL. This will be available in the Web menu.
 * **Extensible authorization methods**  
-  Multiple Pi-KVMs can be configured to use a [common authorization service](https://github.com/pikvm/kvmd-auth-server). You can also use PAM and its rich authorization mechanisms to integrate Pi-KVM into your existing auth infrastructure.
+  Multiple Pi-KVMs can be configured to use a [common authorization service](https://github.com/pikvm/kvmd-auth-server). PAM and its rich authorization mechanisms can also be used to integrate Pi-KVM into your existing authentication infrastructure.
 * **Macro scripts**  
-  If you need to perform repetitive actions on your server (or on different servers), you can record the macro with keyboard & mouse actions and play it back many times.
+  If repetitive actions must be perfromed on the attached server (or on several different servers), a macro can be recorded with keyboard & mouse actions and can be played back mutiple times.
 
 
 ## Open Source
 * **Community & support**  
-  Pi-KVM has a large community. Join the [discord chat](https://discord.gg/bpmXfz5) chat if you have any questions.
+  Pi-KVM has a large community. Join the [discord chat](https://discord.gg/bpmXfz5) if you have any questions.
 * **Extensible**  
-  Pi-KVM was designed as a set of microservices with a plug-in architecture. It's very easy to fix and modify.
-* **Handy API**  
-  Everything that can be done via the interface can also be done via the powerful HTTP API.
+  Pi-KVM was designed as a set of microservices with a plug-in architecture. It's very easy to modify and maintain.
+* **Comprehensive API**  
+  Everything that can be done via the user interface can also be done via a powerful HTTP API.
 * **Know-how**  
-  We created [very own MJPG video server](https://github.com/pikvm/ustreamer) written on C with multi-threading and GPU video encoding - fastest streaming solution available to provide the best video quality for Pi-KVM. We also made many other things and tested a lot of hardware so that you could just assemble the device and it would work immediately without any problems.
+  We created [our very own MJPG video server](https://github.com/pikvm/ustreamer) written in C with multi-threading support and GPU video encoding - the fastest streaming solution available to provide the best video quality for Pi-KVM. We also tested a lot of hardware configurations so that you can be sure devices you assemble will work reliably.
 
 
 ## Note
-This project is developing on a non-commercial basis by Open Source enthusiasts. If you found Pi-KVM useful or it saved you from a long trip to a dead computer, you can support the main developer by donating a few bucks via [Patreon](https://www.patreon.com/pikvm) or [PayPal](https://www.paypal.me/mdevaev). With this money, he will be able to buy a new hardware (Raspberry Pi and other) to test and maintain various configurations of Pi-KVM, and generally devote much more time to this project. At the bottom of this page are listed the names of all the people who helped this project develop with their donations. Our gratitude knows no bounds!
+This project is developed on a non-commercial basis by Open Source enthusiasts. If you find Pi-KVM useful or it has saved you a long trip to check on an unresponsive server, you can support the lead developer by donating a few dollars via [Patreon](https://www.patreon.com/pikvm) or [PayPal](https://www.paypal.me/mdevaev). With this money, he will be able to buy new hardware (Raspberry Pi boards and other components) to test and maintain various configurations of Pi-KVM, and generally devote significantly more time to the project. At the bottom of this page are the names of all the people who have helped this project develop with their donations. Our gratitude knows no bounds!
 
-If you want to use Pi-KVM in production, we are ready to accept an order for modification for your needs and implementation of various features specifically for you. Contact us via live chat or email of the main developer: mdevaev@gmail.com
+If you wish to use Pi-KVM in production, we accept orders to modify it for your needs or implement custom features you require. Contact us via live chat or email  the lead developer at: mdevaev@gmail.com
 
 **Q**: **What is the status of this project?**  
-**A:** Although this documentation page is rarely updated, the project is maintained and developed. You can verify it by checking the activity in other repositories in our organization.
+**A:** Although this page is rarely updated, the project is actively maintained and developed. You can verify this by checking the activity in our other repositories.
 
 **Q:** **Does this support the cheap HDMI-USB dongle from [AliExpress](https://aliexpress.ru/item/4001043540669.html)?**  
-**A:** In short, **YES**, but not out of the box right now. After installation, you will have to manually add a couple of options and everything will work fine (contact us at discord to find out more). In the next couple of weeks, we will add a fully maintained conifiguration. If you want to do it right now, write to us in discord and we will help you set it up. **However, it should be noted that the USB dongle has several disadvantages compared to the HDMI-CSI bridge: USB gives you a lot of latency (200ms vs 100ms for CSI2); it doesn't support stream compression control (you won't be able to use KVM in a place with a poor internet connection); it can't automatically detect screen resolution.** You can use it, but is the $10 savings worth losing all of these features? The choice is yours.
+**A:** In short, **YES**, but not currently out-of-the-box. After installation, you will have to manually add a couple of options for things to work correctly.  In the next couple of weeks, we will add a fully maintained conifiguration. If you want to do it right now, write to us on Discord and we will help you set it up. **However, it should be noted that the USB dongle has several disadvantages compared to the HDMI-CSI bridge:** USB gives a lot of latency (200ms vs 100ms for CSI2) and it doesn't support stream compression control (you won't be able to use KVM in a place with a poor internet connection). It also cannot automatically detect screen resolution. **It may be used, but the loss of these features is probably not worth the ten dollars saved.**
 
 **Q:** **Can I connect multiple servers to a single Pi-KVM?**  
-**A:** Yes, but it will require additional work from you. You can connect Pi-KVM to multi-port HDMI/USB switch and wire its buttons via optocouplers to RPi's GPIO to switch channels. If your KVM switches channels using keyboard shortcuts, there is a chance that it will not be able to work OTG (v2 platform, see bellow), since it does not fully implement the USB stack. In this case, you will have to use Arduino to emulate the keyboard & mouse (Pi-KVM supports this).
+**A:** Yes, but it will require additional work to set up. Pi-KVM can be connected to a multi-port HDMI/USB switch and the switch's buttons can be connected via optocouplers to the Pi's GPIO pins to switch channels. If your KVM switches channels using keyboard shortcuts, there is a chance that it will not be able to work with OTG (v2 platform, see bellow), since it does not fully implement the USB stack. In this case, you will have to use an Arduino board to emulate the keyboard & mouse. (Pi-KVM supports this configuration)
 
 -----
 
 # Required hardware
-Pi-KVM supports several different hardware configurations, which called **platforms**. At the moment, there are two main ones: **v0** and **v2**.
-* **v0** platform was designed to work with Raspberry Pi that do not have OTG (**Raspberry Pi 2** and **3**) and requires a little more spare parts for the basic implementation. Also there does not work mass-storage drive.
-* **v2** is is the most modern implementation supporting all the features of Pi-KVM. It was designed to work with **Raspberry Pi 4** and **ZeroW**.
+Pi-KVM supports several different hardware configurations, referred to as **platforms**. At the moment, there are two main ones: **v0** and **v2**.
+* **v0** was designed to work with Raspberry Pi boards that do not have OTG (**Raspberry Pi 2** and **3**) and requires a few more components for a basic implementation. It also does not support the Mass Storage Drive feature.
+* **v2** is is the most modern implementation supporting all of the features of Pi-KVM. It was designed to work with the **Raspberry Pi 4** and **Zero W**.
 
-**We recommend v2 since it supports all features including the Mass Storage Drive. It's also easiest to make.**
+**It is reccomended to buid v2 since it supports all features including the Mass Storage Drive feature. It is also the easiest to make.**
 
 **Hardware for v2**
-* Raspberry Pi 4 (2Gb model is enough) or ZeroW. We recommend 4 because ZeroW is very slow.
-* MicroSD card (min 16 Gb recommended).
+* Raspberry Pi 4 (2 GB model is enough) or Zero W. The Pi 4 is reccomended because the Zero W is very slow.
+* MicroSD card (min 16 GB recommended).
 * USB-A 3A charger or power supply.
-* HDMI to CSI-2 bridge board: [Lusya or any other based on Toshiba TC358743](https://aliexpress.com/item/4000102166176.html).
+* HDMI to CSI-2 bridge board: [Lusya or any other based on the Toshiba TC358743](https://aliexpress.com/item/4000102166176.html).
 * Only for Raspberry Pi 4:
   * Parts for Y-splitter cable:
     - 1x USB-A to USB-C cable.
@@ -96,18 +96,18 @@ Pi-KVM supports several different hardware configurations, which called **platfo
 * Only for Raspberry Pi Zero W:
   * 2x USB A-to-micro cables (for power and keyboard & mouse emulator).
 * For ATX control (optional):
-  - [4x MOSFET relay OMRON G3VM-61A1](https://www.digikey.com/products/en?keywords=G3VM-61A1).
+  - [4x MOSFET relays OMRON G3VM-61A1](https://www.digikey.com/products/en?keywords=G3VM-61A1).
   - 4x 390 Ohm resistors.
   - 2x 4.7k Ohm resistors.
   - A breadboard.
   
 **Hardware for v0**
 * Raspberry Pi 2 or 3.
-* MicroSD card (8GB is enough).
+* MicroSD card (8 GB is enough).
 * USB-A 3A charger or power supply.
 * For keyboard & mouse emulator (HID):
-  - Arduino Pro Micro (based on ATMega32u4).
-  - [Logic levels shifter](https://www.sparkfun.com/products/12009).
+  - Arduino Pro Micro (based on an ATMega32u4).
+  - [Logic level shifter](https://www.sparkfun.com/products/12009).
   - NPN transistor (almost any NPN transistor: 2n2222 or similar).
   - 1x 390 Ohm resistor.
   - A breadboard.
@@ -116,9 +116,9 @@ Pi-KVM supports several different hardware configurations, which called **platfo
 * ATX control (optional): see v2 description.
 
 **Addition**
-* If you want to capture VGA, buy the [VGA-to-HDMI converter](https://aliexpress.ru/item/4000553298530.html).
-* You can power your Pi-KVM using PoE, but we do not recommend using the official PoE HAT: it is unreliable and [not compatible with the HDMI bridge](https://github.com/pikvm/pikvm/issues/6). Use any other one without I2C fan controller.
-* **Don't use random relay modules or random optocouplers!** Some relays or optocouplers may not be sensitive enough for the Raspberry Pi, some others may be low-level controlled. Either use relays that are controlled by a high level, or follow the scheme and buy an OMRON. See details [here](https://github.com/pikvm/pikvm/issues/13).  
+* If you want to capture VGA from your server instead of HDMI, buy the [VGA-to-HDMI converter](https://aliexpress.ru/item/4000553298530.html).
+* Pi-KVM can be powered using PoE, but it is not recommend to use the official PoE HAT: it is unreliable and [not compatible with the HDMI bridge](https://github.com/pikvm/pikvm/issues/6). Use any other PoE hat without an I2C fan controller.
+* **Don't use random relay modules or random optocouplers!** Some relays or optocouplers may not be sensitive enough for the Raspberry Pi, some others may be low-level controlled. Either use relays that are activated by a high logic level, or follow the design provided and buy an OMRON. See details [here](https://github.com/pikvm/pikvm/issues/13).  
   <img src="no_relays.png" alt="drawing" width="100"/>
 
 -----
@@ -127,16 +127,17 @@ Pi-KVM supports several different hardware configurations, which called **platfo
 
 <img src="v3_board.png" alt="drawing" width=300/></td>
 
-Also we are currently developing our own HAT for Raspberry Pi 4. It will have all the features of the v2 platform, including many important things:
-* HDMI capture based on TC358743 (extra low latency and many features like compression control).
-* OTG Keyboard & mouse; Mass-Storage Drive emulation.
-* Ability to simulate "pull and insert" for USB.
-* Onboard ATX controller.
-* RTC clock.
+We are also currently developing our own HAT for the Raspberry Pi 4. It will have all the features of the v2 platform, including:
+* HDMI capture based on the TC358743 (extra low latency and many features like compression control).
+* OTG Keyboard & mouse; Mass Storage Drive emulation.
+* Ability to simulate "removal and insertion" for USB.
+* Onboard ATX power control.
+* An RTC clock.
 * CISCO-style and USB serial console port (to manage Pi-KVM OS or to connect with the server).
-* Optional AVR-based HID (for some rare and strange motherboards whose BIOS doesn't understand the OTG keyboard).
-* Optional OLED screen to display network information or what you want.
-* It does not need to be soldered. It's a ready-made, reliable board which you can use yourself or provide to your clients. And of course, it also uses Pi-KVM OS - all the software will be fully open.
+* Optional AVR-based HID (for some rare and strange motherboards whose BIOS doesn't understand the OTG emulated keyboard).
+* Optional OLED screen to display network status or other desired information.
+* No need for soldering or other assembly. It's a ready-made, reliable board which you can use yourself or provide to your clients.
+* Continued use of Pi-KVM OS - all the software will be fully open.
 * It will cost about $100 - or less, we are working to make it as cheap as possible.
 
 Sounds interesting? Subscribe to https://discord.gg/bpmXfz5 and you will be the first to know about the release. Prototypes will be ready in Q4 2020, and pre-orders will be available sooner.
@@ -150,7 +151,7 @@ Here is a diagram shows that how to connect all of the pieces (click to full siz
 ## v2 Diagram
 <img src="v2.png" alt="drawing" width="400"/>
 
-**Raspberry Pi 4 note**: since it uses one USB-C female connector to giving power and keyboard/mouse/drive emulation you also need to make a special Y-cable to split DATA and POWER lines of USB-C (see [reasons](https://github.com/pikvm/docs/issues/11)). You can make it from two suitable connecting cables, or solder from scratch. Be sure to check the circuit diagram, otherwise you may damage your devices. You can easily find USB pinout in Google. Please note that if you will make Y-cable from two noname cables, the colors of the wires may not match those shown in the picture. Use a multimeter to make sure the connections are correct.
+**Raspberry Pi 4 note**: since one USB-C female connector is used to receive power and perform keyboard/mouse/drive emulation a special Y-cable must be made that splits the DATA and POWER lines of USB-C (see [reasons](https://github.com/pikvm/docs/issues/11)). It can be made from two suitable connecting cables, or soldered together from scratch. Be sure to check the circuit diagram below, otherwise you may damage your devices. The appropriate USB pinout(s) can easily be found on Google. Please note that if you make a Y-cable from two no-name cables, the colors of the wires may not match those shown. Use a multimeter to make sure the connections are correct.
 
 <img src="v2_splitter.png" alt="drawing" width="400"/>
 
@@ -158,27 +159,26 @@ See video howtos:
 * [Making USB Y-splitter cable](https://www.youtube.com/watch?v=uLuBuQUF61o).
 * [Soldering ATX controller](https://www.youtube.com/watch?v=hKnKOuH_f8M).
 
-Also check out the small PCB for ATX (if you know how to make PCBs): https://easyeda.com/mark.gilbert/zerow-kvm-v1
-
+Also check out this small PCB for ATX (if you know how to make PCBs): https://easyeda.com/mark.gilbert/zerow-kvm-v1
 
 ## v0 Diagram
 <img src="v0.png" alt="drawing" width="400"/>
 
 -----
 
-# Building OS
-Pi-KVM OS is based on Arch Linux ARM and contains all required packages and configs to work. To build the OS you will need any Linux machine with a fresh Docker (>= 1:19) with enabled privileged mode (for fdisk and some other commands, check Makefiles if you don't trust us :).
+# Building the OS
+The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages and configs for it to work. To build the OS you will need any Linux machine with a recent version of Docker (>= 1:19) with privileged mode enabled. (used for fdisk and some other commands, have a look through our Makefiles if you don't trust us :) )
 
-0. For a clean OS (Like Ubuntu 18) you need to install and configure docker (after adding user in the docker group a relogin is needed), as well as git and make.
+0. When starting with a clean OS (Like Ubuntu 18) you need to install and configure docker (after adding your user to the docker group you must log out and log back in), as well as git and make.
     ```shell
     [user@localhost ~]$ sudo apt-get install git make curl binutils -y
     [user@localhost ~]$ curl -fsSL https://get.docker.com -o get-docker.sh
     [user@localhost ~]$ sudo sh get-docker.sh
     [user@localhost ~]$ sudo usermod -aG docker $USER
     ```
-    Re-login to apply changes.
+    Re-login to apply the changes.
 
-1. Checkout build toolchain:
+1. Git checkout the build toolchain:
     ```shell
     [user@localhost ~]$ git clone https://github.com/pikvm/os
     [user@localhost ~]$ cd os
@@ -223,24 +223,24 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     WIFI_PASSWD = "P@$$word"
     ```
 
-4. Build OS. It may take about one hour depending on your Internet connection:
+4. Build the OS. It may take about one hour depending on your Internet connection:
     ```shell
     [user@localhost os]$ make os
     ```
     
-5. Put SD card into card reader and install OS (**you should disable automounting before: `systemctl stop udisk2` or something like that**):
+5. Put SD card into card reader and install OS (**you should disable automounting beforehand: `systemctl stop udisk2` or something like that**):
     ```shell
     [user@localhost os]$ make install
     ```
     
-6. After installation remove the SD card and insert it into your RPi. Turn on the power. RPi will try to get ad IP address using DHCP on your LAN. It will be available via SSH.
+6. After installation remove the SD card and insert it into your RPi. Turn on the power. The RPi will try to get an IP address using DHCP on your LAN. It will then be available via SSH.
 
 7. If you can't find the device's address, try using the following command:
     ```shell
     [user@localhost os]$ make scan
     ```
 
-8. **Only for v0**. Now you need to flash Arduino. This can be done using your RPi. **Before starting this operation, disconnect the RESET wire from Arduino, otherwise the firmware will not be uploaded. Connect the Arduino and RPi with a suitable USB cable.** Log in to RPi and upload the firmware. Then connect RESET wire back, disconnect USB and reboot RPi.
+8. **Only for v0**. Now you need to flash the Arduino. This can be done using your RPi. **Before starting this operation, disconnect the RESET wire from the Arduino board, otherwise the firmware will not be uploaded. Connect the Arduino and RPi with a suitable USB cable.** Log in to the RPi and upload the firmware. Then reconnect the RESET wire, disconnect the USB cable, and reboot the RPi.
     ```
     [user@localhost os]$ ssh root@<addr>
     [root@pikvm ~]# rw
@@ -251,16 +251,16 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     [root@pikvm hid]# make install
     [root@pikvm hid]# reboot
     ```
-9. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>`) and HTTPS (try to open it in a browser at `https://<addr>`). For HTTPS a self-signed certificate is used by default.
+9. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>`) and HTTPS (try to open it in a browser at `https://<IP addr>`). For HTTPS a self-signed certificate is used by default.
 
 -----
 
 # Tips
-* The Pi-KVM file system is always mounted in read-only mode. This prevents it from being damaged by a sudden power outage. To change the configuration you must first switch FS to write mode using the command `rw` from root. After the changes, be sure to run the command `ro` to switch it back to read-only.
+* The Pi-KVM file system is always mounted in read-only mode. This prevents it from being damaged by a sudden power outage. To change the configuration you must first switch the filesystem to write mode using the command `rw` from root. After the changes, be sure to run the command `ro` to switch it back to read-only.
 
 * NEVER edit `/etc/kvmd/main.yaml`. Use `/etc/kvmd/override.yaml` to redefine the system parameters. All other files that are also not recommended for editing have read-only permissions. If you edit any of these files, you will need to manually make changes to them when you upgrade your system. You can view the current configuration and all available KVMD parameters using the command `kvmd -m`.
 
-* Almost all KVMD (the main daemon controlling Pi-KVM) configuration files use [YAML](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) syntax. Read about it if you don't know how to use it.
+* Almost all KVMD (the main daemon controlling Pi-KVM) configuration files use [YAML](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) syntax. Information on the format's syntax can be found at the link provided.
 
 * If you want to disable the web terminal use these commands:
     ```yaml
@@ -268,7 +268,7 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     [root@pikvm ~]# systemctl stop kvmd-webterm
     ```
     
-* To disable authorization completely edit file `/etc/kvmd/override.yaml`:
+* To disable authorization completely edit the file `/etc/kvmd/override.yaml`:
     ```yaml
     kvmd:
         auth:
@@ -279,7 +279,7 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     [root@pikvm ~]# systemctl restart kvmd
     ```
 
-* If you don't need to control ATX you can disable relevant Web-UI menu in `/etc/kvmd/override.yaml`:
+* If you don't need ATX power control you can disable the relevant Web-UI menu in `/etc/kvmd/override.yaml`:
     ```yaml
     kvmd:
         atx:
@@ -287,13 +287,13 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     ```
     then restart kvmd.
     
-* To use Wake-on-LAN on your server you must define some options such as server MAC and (optional) IP address. Use `/etc/kvmd/override.yaml`. Write this:
+* To use Wake-on-LAN with your server you must define some options such as the server's MAC address and (optionaly) IP address. Use `/etc/kvmd/override.yaml`. The format is:
     ```yaml
     kvmd:
         wol:
             mac: ff:ff:ff:ff:ff:ff
     ```
-    Replace `ff:ff:ff:ff:ff:ff` to MAC of your server. By default, a packet is sent by a broadcast request to the entire IPv4 network (`255.255.255.255`, port `9`), but you can address it to a specific static address:
+    Replace `ff:ff:ff:ff:ff:ff` with the MAC of your server. By default, a packet is sent via a broadcast request to the entire IPv4 network (`255.255.255.255`, port `9`), but you can address it to a specific static address:
     ```yaml
     kvmd:
         wol:
@@ -302,23 +302,23 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
             # port: 9  # By default
     ```
     
-* To use IPMI BMC you need to set up an appropriate account and run the `kvmd-ipmi` daemon (`systemctl start kvmd-ipmi` and `systemctl enable kvmd-ipmi`). Although Pi-KVM supports the IPMI protocol, we strongly recommend that you do not use outside trusted of networks due to its [insecurity](https://github.com/NitescuLucian/nliplace.com.blog.drafts). Refer to the file `/etc/kvmd/ipmipasswd` to configure IPMI account.
+* To use IPMI BMC you need to set up an appropriate account and run the `kvmd-ipmi` daemon (`systemctl start kvmd-ipmi` and `systemctl enable kvmd-ipmi`). Although Pi-KVM supports the IPMI protocol, we strongly recommend that you do not use it outside of trusted networks due to the protocol's [insecurity](https://github.com/NitescuLucian/nliplace.com.blog.drafts). Refer to the file `/etc/kvmd/ipmipasswd` to configure IPMI account.
 
-* To use VNC you need to change the keyboard layout for non-US client keyboard using `/etc/kvmd/override.yaml`. For example:
+* To use VNC you need to change the keyboard layout for non-US client keyboards using `/etc/kvmd/override.yaml`. For example:
   ```yaml
   vnc:
       keymap: /usr/share/kvmd/keymaps/ru
   ```
-  By default the username and password authorization is used. This is not supported by all clients (we recommend [TigerVNC](https://tigervnc.org)). To enable passphrase authorization, you need to edit the file `/etc/kvmd/vncpasswd` to set passphrases and enable this feature in `/etc/kvmd/override.yaml`:
+  By default username and password authentication is used. This is not supported by all clients (we recommend [TigerVNC](https://tigervnc.org)). To enable passphrase authentication, you need to edit the file `/etc/kvmd/vncpasswd` to set passphrases and enable this feature in `/etc/kvmd/override.yaml`:
   ```yaml
   vnc:
       auth:
           vncauth:
               enabled: true
   ```
-  After that you can enable `kvmd-vnc` daemon (`systemctl start kvmd-vnc` and `systemctl enable kvmd-vnc`). VNC will be available on port 5900 by default.  
-  We recommend disabling automatic quality adjust if there is one in your client (this is called "Auto-Select"in TigerVNC).  
-  Please note: we strongly don't recommend you to use VNC in untrusted networks. The current implementation does not use encryption, and your passwords are transmitted over the network in a plain text. The existing anonymous TLS mode is also not secure enough.
+  After that you can enable the `kvmd-vnc` daemon (`systemctl start kvmd-vnc` and `systemctl enable kvmd-vnc`). VNC will be available on port 5900 by default.  
+  It is reccomended to disable the automatic quality adjust setting if there is one in your client (this is called "Auto-Select"in TigerVNC).  
+  Please note: **we strongly discourage the use of VNC on untrusted networks.** The current implementation does not use encryption, and your passwords are transmitted over the network in a plain text. The existing anonymous TLS mode is also not secure enough.
 
 -----
 
@@ -334,11 +334,11 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
     And run `make install` again.
     
     
-* **Unexpected interruption of loading the image to Mass Storage Drive**
+* **Unexpected interruption while loading the image for Mass Storage Drive**
 
-    If problems occur when uploading even a small disk image it may be due to unstable network operation or antivirus software. It is well known that Kaspersky antivirus cuts off Pi-KVM connections for uploading, so you should add the site to the list of exceptions or not filter web requests with the antivirus. Antivirus can also affect the performance of certain interface elements, for example the quality slider.
+    If problems occur when uploading even a small disk image it may be due to unstable network operation or antivirus software. It is well known that Kaspersky antivirus cuts off Pi-KVM connections during uploading, so you should add the Pi-KVM website to Kaspersky's list of exceptions or not filter web requests with the antivirus. Antivirus programs can also affect the performance of certain interface elements, for example the quality slider.
 
-    Regarding Kaspersky...the solution is to set the website of pikvm in network in the exclusion list (**Protection -> Private browsing -> Categories and exclusions -> Exclusions**).
+    For Kaspersky, the steps to add the network address of Pi-KVM's website to the exclusion list is: **Protection -> Private browsing -> Categories and exclusions -> Exclusions**
 
 
 * **Glitchy/Wrong BIOS resolution**
@@ -349,18 +349,18 @@ Pi-KVM OS is based on Arch Linux ARM and contains all required packages and conf
 
     <img src="bios_glitch.png" alt="ASUS BIOS glitch" width="400"/>
 
-    This can be solved by enabling **Compatibility Support Module (CSM)** on your BIOS, usually under the **Boot** options.
+    This can be solved by enabling the **Compatibility Support Module (CSM)** in your BIOS, usually under the **Boot** options.
 
-    If you can't or don't want to enable CSM, you can try connecting a DisplayPort monitor, or a [dummy plug](http://amazon.com/s?k=displayport+dummy+plug). If you remove the DP cable/adapter the bug will show up again.
+    If you can't or don't want to enable the CSM, you can try connecting a DisplayPort monitor, or a [dummy plug](http://amazon.com/s?k=displayport+dummy+plug). If you remove the DP cable/adapter the bug will reappear.
 
-    If none of this works, try connecting the DP cable first, boot into the BIOS, disable CSM and shutdown (do not restart) your PC. Boot into the BIOS and enable CSM then shutdown your PC. Then connect the HDMI and turn it on again.
+    If none of this works, try connecting the DP cable first, boot into the BIOS, disable the CSM and shutdown (do not restart) your PC. Then, boot into the BIOS and enable the CSM before shutting down your PC. Then connect the HDMI and turn your PC on again.
 
 * If you have any problems or questions, contact us using Discord: https://discord.gg/bpmXfz5
 
 -----
 
 # Special thanks
-These kind people donated money to the Pi-KVM project and supported the work on it. We are very grateful for their help, and memorializing their names is the least we can do in gratitude.
+These kind people donated money to the Pi-KVM project and supported work on it. We are very grateful for their help, and commemorating their names is the least we can do in return.
 * Aleksei Brusianskii
 * Arthur Woimbée
 * Ben Gordon
@@ -376,7 +376,6 @@ These kind people donated money to the Pi-KVM project and supported the work on 
 * Jason Toland
 * Jeff Bowman
 * John McGovern
-* Jozef Riha
 * Mark Gilbert
 * Mark Robinson
 * Mauricio Allende
