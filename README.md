@@ -147,7 +147,7 @@ We are also currently developing our own HAT for the Raspberry Pi 4. It will hav
 * Continued use of Pi-KVM OS - all the software will be fully open.
 * It will cost about $100 - or less, we are working to make it as cheap as possible.
 
-Sounds interesting? Subscribe to https://discord.gg/bpmXfz5 and you will be the first to know about the release. Prototypes will be ready in Q4 2020, and pre-orders will be available sooner. Or just email to mdevaev@gmail.com. We will let you know when you can purchase this board.
+Sounds interesting? [Subscribe in this form](https://docs.google.com/forms/d/1LA6iEYVtbJULvMDNktyNQMI4N9SYdNG03Wh9WK-80cM) or join to https://discord.gg/bpmXfz5 and we will let you know when you can purchase the board. Prototypes will be ready in Q4 2020, and pre-orders will be available sooner. If you are considering ordering a wholesale lot, please email to mdevaev@gmail.com.
 
 -----
 
