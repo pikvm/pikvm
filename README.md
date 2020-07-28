@@ -67,7 +67,6 @@ This project is developed on a non-commercial basis by Open Source enthusiasts. 
 If you wish to use Pi-KVM in production, we accept orders to modify it for your needs or implement custom features you require. Contact us via live chat or email  the lead developer at: mdevaev@gmail.com
 
 # FAQ
-
 **Q**: **What is the status of this project?**  
 **A:** Although this page is rarely updated, the project is actively maintained and developed. You can verify this by checking the activity in our other repositories.
 
@@ -79,6 +78,14 @@ If you wish to use Pi-KVM in production, we accept orders to modify it for your 
 
 **Q:** **Can I use Pi-KVM with non-Raspberry Pi boards?**  
 **A:** Yes, but you will have to prepare the board OS yourself. As for the Pi-KVM software, you will need to replace the RPi.GPIO module and some files (such as UDEV rules). If you are a developer or an experienced system administrator, you will not have any problems with this. In addition, we are open to patches. If you need help with this, please contact us via Discod: https://discord.gg/bpmXfz5
+
+-----
+
+# Limitations
+* In very rare cases, old motherboards contain a buggy BIOS that not understand the keyboard of **v2** platform (bellow). The reason is that BIOS doesn't fully implement the USB HID stack for composite devices correctly. Meanwhile, Mass Storage Drive will be detected. For this case, we suggest using the Arduino HID from the **v0** platform with **v2**. Thus the Pi-KVM will be connected by two USB cables to the motherboard: one of them will be responsible for the keyboard and mouse, the other for everything else. See **Tips** bellow for details.
+* A similar problem can be observed on devices with UEFI: the keyboard works fine, but the mouse does not work. This problem is much less significant, since all UEFI can be configured using the keyboard and hotkeys, without the mouse. If you want to get a mouse, the solution will be the same: using an Arduino HID, as in the advice above.
+
+Our future **v3** platform (bellow) will contain an optional HID module for such cases, so you won't have to build anything yourself.
 
 -----
 
