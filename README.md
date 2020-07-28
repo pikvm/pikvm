@@ -82,10 +82,10 @@ If you wish to use Pi-KVM in production, we accept orders to modify it for your 
 -----
 
 # Limitations
-* In very rare cases, old motherboards contain a buggy BIOS that not understand the keyboard of **v2** platform (bellow). The reason is that BIOS doesn't fully implement the USB HID stack for composite devices correctly. Meanwhile, Mass Storage Drive will be detected. For this case, we suggest using the Arduino HID from the **v0** platform with **v2**. Thus the Pi-KVM will be connected by two USB cables to the motherboard: one of them will be responsible for the keyboard and mouse, the other for everything else. See **Tips** bellow for details.
+* In very rare cases, old motherboards contain a buggy BIOS that not understand the keyboard of **v2** platform (bellow). The reason is that BIOS doesn't fully implement the USB HID stack for composite devices correctly. Meanwhile, Mass Storage Drive will be detected. For this case, we suggest using the Arduino HID from the **v0** platform with **v2**. Thus the Pi-KVM will be connected by two USB cables to the motherboard: one of them will be responsible for the keyboard and mouse, the other for everything else. See [Tips](#tips) for details.
 * A similar problem can be observed on devices with UEFI: the keyboard works fine, but the mouse does not work. This problem is much less significant, since all UEFI can be configured using the keyboard and hotkeys, without the mouse. If you want to get a mouse, the solution will be the same: using an Arduino HID, as in the advice above.
 
-Our future **v3** platform (bellow) will contain an optional HID module for such cases, so you won't have to build anything yourself.
+Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain an optional HID module for such cases, so you won't have to build anything yourself.
 
 -----
 
@@ -349,6 +349,26 @@ The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages 
   After that you can enable the `kvmd-vnc` daemon (`systemctl start kvmd-vnc` and `systemctl enable kvmd-vnc`). VNC will be available on port 5900 by default.  
   It is reccomended to disable the automatic quality adjust setting if there is one in your client (this is called "Auto-Select"in TigerVNC).  
   Please note: **we strongly discourage the use of VNC on untrusted networks.** The current implementation does not use encryption, and your passwords are transmitted over the network in a plain text. The existing anonymous TLS mode is also not secure enough.
+  
+* To use Arduino HID with **v2** platform:
+  1. Build and connect HID according to the [diagram](#v0-diagram).
+  2. Switch to RW-mode using command `rw`.
+  3. Add these lines to `/etc/kvmd/override.yaml` (remove `{}` in the file before):
+     ```yaml
+     kvmd:
+         hid:
+             type: serial
+             reset_pin: 4
+             device: /dev/kvmd-hid
+     ```
+  4. Add this line to `/etc/udev/rules.d/99-kvmd.rules`:
+     ```udev
+     KERNEL=="ttyAMA0", SYMLINK+="kvmd-hid"
+     ```
+  5. Run `systemctl disable getty@ttyGS0.service`.
+  6. Remove `console=ttyAMA0,115200` and `kgdboc=ttyAMA0,115200` from `/boot/cmdline.txt`.
+  7. Flash the Arduino (see [here](#building-the-os), step 8).
+  8. Run `reboot`.
 
 -----
 
