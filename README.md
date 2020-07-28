@@ -420,6 +420,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Corey Lista
 * David Howell
 * Denis Yatsenko
+* Dmitry Shilov
 * Ge Men
 * Grey Cynic
 * Jacob Morgan
