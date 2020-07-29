@@ -414,10 +414,12 @@ The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages 
 # Special thanks
 These kind people donated money to the Pi-KVM project and supported work on it. We are very grateful for their help, and commemorating their names is the least we can do in return.
 * Aleksei Brusianskii
+* Alucard
 * Arthur Woimbée
 * Ben Gordon
 * Branden Shaulis
 * Brian White
+* Bryan Adams
 * Christof Maluck
 * Corey Lista
 * David Howell
@@ -433,6 +435,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Mark Gilbert
 * Mark Robinson
 * Mauricio Allende
+* Michael Kovacs
 * Michael Lynch
 * Samed Ozoglu
 * Scott
