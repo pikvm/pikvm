@@ -293,7 +293,13 @@ The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages 
     [root@pikvm ~]# rw
     ```
   * Edit file `/etc/securetty` and remove line `ttyGS0`.
-  * Run:
+  * Add these lines to `/etc/kvmd/override.yaml` (remove `{}` in the file before):
+    ```yaml
+    otg:
+        acm:
+            enabled: false
+    ```
+  * Execute:
     ```shell
     [root@pikvm ~]# systemctl enable getty@ttyGS0.service
     [root@pikvm ~]# rm -rf /etc/systemd/system/getty@ttyGS0.service.d
