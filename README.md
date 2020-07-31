@@ -285,28 +285,28 @@ The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages 
     ```
 9. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with user `root` and password `root` by default) and HTTPS (try to open it in a browser at `https://<IP addr>` with user `admin` and password `admin`). For HTTPS a self-signed certificate is used by default.
 
-10. **security note**: To change root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`.
+10. **Security note**: To change root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`.
 
 11. **Security note for v2 platform before 31.07.2020 and KVMD < 1.83**: After installation, Pi-KVM was available via USB OTG from the managed server via the virtual serial console port. This was very helpful if SSH is unavailable (and you don't have a UART cable), so you could login to the device using something like mingetty or PuTTY and find out what's wrong. The login was protected by the same password that is used for the root login.
 
-  For all build, in some cases (if different networks are used for servers and KVM for security reasons) you may want to disable this feature. To do this:
-  * Switch device to RW-mode:
-    ```shell
-    [root@pikvm ~]# rw
-    ```
-  * Edit file `/etc/securetty` and remove line `ttyGS0`.
-  * Add these lines to `/etc/kvmd/override.yaml` (remove `{}` in the file before):
-    ```yaml
-    otg:
-        acm:
-            enabled: false
-    ```
-  * Execute:
-    ```shell
-    [root@pikvm ~]# systemctl enable getty@ttyGS0.service
-    [root@pikvm ~]# rm -rf /etc/systemd/system/getty@ttyGS0.service.d
-    [root@pikvm ~]# reboot
-    ```
+    For all build, in some cases (if different networks are used for servers and KVM for security reasons) you may want to disable this feature. To do this:
+    * Switch device to RW-mode:
+      ```shell
+      [root@pikvm ~]# rw
+      ```
+    * Edit file `/etc/securetty` and remove line `ttyGS0`.
+    * Add these lines to `/etc/kvmd/override.yaml` (remove `{}` in the file before):
+      ```yaml
+      otg:
+          acm:
+              enabled: false
+      ```
+    * Execute:
+      ```shell
+      [root@pikvm ~]# systemctl enable getty@ttyGS0.service
+      [root@pikvm ~]# rm -rf /etc/systemd/system/getty@ttyGS0.service.d
+      [root@pikvm ~]# reboot
+      ```
 
 -----
 
