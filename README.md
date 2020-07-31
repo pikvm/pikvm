@@ -285,7 +285,17 @@ The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages 
     ```
 9. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with user `root` and password `root` by default) and HTTPS (try to open it in a browser at `https://<IP addr>` with user `admin` and password `admin`). For HTTPS a self-signed certificate is used by default.
 
-10. To change root password use command `passwd` via ssh or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`.
+10. **Common security note**: To change root password use command `passwd` via ssh or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`.
+
+11. **Security note for v2**: Immediately after installation, Pi-KVM will be available via USB OTG from the managed server via the virtual serial console port. This is very helpful if SSH is unavailable (and you don't have a UART cable), so you can login to the device using something like mingetty or PuTTY and find out what's wrong. The login is protected by the same password that is used for the root login. In some cases (if different networks are used for servers and KVM for security reasons), you may want to disable this feature. To do this:
+  * Edit file `/etc/securetty` and remove line `ttyGS0`.
+  * Run:
+    ```bash
+    [root@pikvm ~]# rw
+    [root@pikvm ~]# systemctl enable getty@ttyGS0.service
+    [root@pikvm ~]# rm -rf /etc/systemd/system/getty@ttyGS0.service.d
+    [root@pikvm ~]# reboot
+    ```
 
 -----
 
