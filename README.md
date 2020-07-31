@@ -192,121 +192,10 @@ Also check out this small PCB for ATX (if you know how to make PCBs): https://ea
 -----
 
 # Building the OS
-The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages and configs for it to work. To build the OS you will need any Linux machine with a recent version of Docker (>= 1:19) with privileged mode enabled. (used for fdisk and some other commands, have a look through our Makefiles if you don't trust us :) )
+See [here](building_os.md) for complete instructions.
 
-0. When starting with a clean OS (Like Ubuntu 18) you need to install and configure docker (after adding your user to the docker group you must log out and log back in), as well as git and make.
-    ```shell
-    [user@localhost ~]$ sudo apt-get install git make curl binutils -y
-    [user@localhost ~]$ curl -fsSL https://get.docker.com -o get-docker.sh
-    [user@localhost ~]$ sudo sh get-docker.sh
-    [user@localhost ~]$ sudo usermod -aG docker $USER
-    ```
-    Re-login to apply the changes.
-
-1. Git checkout the build toolchain:
-    ```shell
-    [user@localhost ~]$ git clone https://github.com/pikvm/os
-    [user@localhost ~]$ cd os
-    ```
-
-2. Determine the target hardware configuration (platform):
-  * Choose the board: `BOARD=rpi4` for Raspberry Pi 4 or `BOARD=zerow`, `BOARD=rpi2`, `BOARD=rpi3` for other options.
-  * Choose the platform:
-    - `PLATFORM=v2-hdmi` for RPi4 or ZeroW with HDMI-CSI bridge.
-    - `PLATFORM=v0-hdmi` for RPi 2 or 3 with HDMI-CSI bridge and Arduino HID.
-    - `PLATFORM=v2-hdmiusb` for RPi4 with HDMI-USB dongle.
-    - `PLATFORM=v0-hdmiusb` for RPi 2 or 3 with HDMI-USB dongle and Arduino HID.
-    - Other options are for legacy or specialized Pi-KVM boards (WIP).
-
-3. Create the config file `config.mk` for the target system. You must specify the path to the SD card on your local computer (this will be used to format and install the system) and the version of your Raspberry Pi and platform. You can change other parameters as you wish. Please note: if your password contains the # character, you must escape it using a backslash like `ROOT_PASSWD = pass\#word`.
-    ```Makefile
-    [user@localhost os]$ cat config.mk
-    # rpi3 for Raspberry Pi 3; rpi2 for the version 2, zerow for ZeroW
-    BOARD = rpi4
-    
-    # Hardware configuration
-    PLATFORM = v2-hdmi
-    
-    # Target hostname
-    HOSTNAME = pikvm
-    
-    # ru_RU, etc. UTF-8 only
-    LOCALE = en_US
-    
-    # See /usr/share/zoneinfo
-    TIMEZONE = Europe/Moscow
-    
-    # For SSH root user
-    ROOT_PASSWD = root
-    
-    # Web UI credentials: user=admin, password=<this>
-    WEBUI_ADMIN_PASSWD = admin
-    
-    # IPMI credentials: user=admin, password=<this>
-    IPMI_ADMIN_PASSWD = admin
-    
-    # SD card device
-    CARD = /dev/mmcblk0
-    ```
-    
-    If you want to configure wifi (for ZeroW board for example) you must add these lines to `config.mk`:
-    ```Makefile
-    WIFI_ESSID = "my-network"
-    WIFI_PASSWD = "P@$$word"
-    ```
-
-4. Build the OS. It may take about one hour depending on your Internet connection:
-    ```shell
-    [user@localhost os]$ make os
-    ```
-    
-5. Put SD card into card reader and install OS (**you should disable automounting beforehand**: `systemctl stop udisk2` or something like that):
-    ```shell
-    [user@localhost os]$ make install
-    ```
-    
-6. After installation remove the SD card and insert it into your RPi. Turn on the power. The RPi will try to get an IP address using DHCP on your LAN. It will then be available via SSH.
-
-7. If you can't find the device's address, try using the following command:
-    ```shell
-    [user@localhost os]$ make scan
-    ```
-
-8. **Only for v0**. Now you need to flash the Arduino. This can be done using your RPi. **Before starting this operation, disconnect the RESET wire from the Arduino board, otherwise the firmware will not be uploaded.** Connect the Arduino and RPi with a suitable USB cable. Log in to the RPi and upload the firmware. Then connect the RESET wire, disconnect the USB cable, and reboot the RPi.
-    ```shell
-    [user@localhost os]$ ssh root@<addr>
-    [root@pikvm ~]# rw
-    [root@pikvm ~]# systemctl stop kvmd
-    [root@pikvm ~]# cp -r /usr/share/kvmd/hid ~
-    [root@pikvm ~]# cd ~/hid
-    [root@pikvm hid]# make
-    [root@pikvm hid]# make install
-    [root@pikvm hid]# reboot
-    ```
-9. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with password `root` by default) and HTTPS (try to open in a browser the URL `https://<IP addr>`, use login `admin` and password `admin`). For HTTPS a self-signed certificate is used by default.
-
-10. **Security note**: To change root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`.
-
-11. **Security note for v2 platform before 31.07.2020 and KVMD < 1.83**: After installation, Pi-KVM was available via USB OTG from the managed server via the virtual serial console port. This was very helpful if SSH is unavailable (and you don't have a UART cable), so you could login to the device using something like mingetty or PuTTY and find out what's wrong. The login was protected by the same password that is used for the root login.
-
-    For all build, in some cases (if different networks are used for servers and KVM for security reasons) you may want to disable this feature. To do this:
-    * Switch device to RW-mode:
-      ```shell
-      [root@pikvm ~]# rw
-      ```
-    * Edit file `/etc/securetty` and remove line `ttyGS0`.
-    * Add these lines to `/etc/kvmd/override.yaml` (remove `{}` in the file before):
-      ```yaml
-      otg:
-          acm:
-              enabled: false
-      ```
-    * Execute:
-      ```shell
-      [root@pikvm ~]# systemctl enable getty@ttyGS0.service
-      [root@pikvm ~]# rm -rf /etc/systemd/system/getty@ttyGS0.service.d
-      [root@pikvm ~]# reboot
-      ```
+# You're breathtaking!
+Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with password `root` by default) and HTTPS (try to open in a browser the URL `https://<IP addr>`, use login `admin` and password `admin`). For HTTPS a self-signed certificate is used by default.
 
 -----
 
@@ -392,32 +281,19 @@ The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages 
     ```
   - Run `systemctl disable getty@ttyAMA0.service`.
   - Remove `console=ttyAMA0,115200` and `kgdboc=ttyAMA0,115200` from `/boot/cmdline.txt`.
-  - Flash the Arduino (see [here](#building-the-os), step 8).
+  - [Flash the Arduino HID](flashing_hid.md).
   - Run `reboot`.
 
 -----
 
 # Troubleshooting
-* On step 8 (`make install`), you may encounter the following error:
-    ```
-    /root/.platformio/packages/tool-avrdude/avrdude: error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory
-    ```
-    Create a symlink for this library:
-    ```bash
-    [root@pikvm ~]# ln -s /usr/lib/libtinfo.so.6 /usr/lib/libtinfo.so.5
-    ```
-    And run `make install` again.
-    
-    
 * **Unexpected interruption while loading the image for Mass Storage Drive**
-
     If problems occur when uploading even a small disk image it may be due to unstable network operation or antivirus software. It is well known that Kaspersky antivirus cuts off Pi-KVM connections during uploading, so you should add the Pi-KVM website to Kaspersky's list of exceptions or not filter web requests with the antivirus. Antivirus programs can also affect the performance of certain interface elements, for example the quality slider.
 
     For Kaspersky, the steps to add the network address of Pi-KVM's website to the exclusion list is: **Protection -> Private browsing -> Categories and exclusions -> Exclusions**
 
 
 * **Glitchy/Wrong BIOS resolution**
-
     On some motherboards, the BIOS may be displayed at a lower resolution, or with some rendering issues/glitches, specially on newer ASUS ones.
 
     e.g
@@ -433,39 +309,3 @@ The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages 
 * **Awesome WM on Linux** sometimes can't recognize a video output change on a cable. That is, if the cable was first inserted into the monitor, and then you reconnected it to Pi-KVM - it may happen that you will not see the image. It seems that the problem is Awesome WM, since for example with KDE it does not reproducing. If you turn on your workstation with Pi-KVM already connected, everything will work fine.
 
 * If you have any problems or questions, contact us using Discord: https://discord.gg/bpmXfz5
-
------
-
-# Special thanks
-These kind people donated money to the Pi-KVM project and supported work on it. We are very grateful for their help, and commemorating their names is the least we can do in return.
-* Aleksei Brusianskii
-* Alucard
-* Arthur Woimbée
-* Ben Gordon
-* Branden Shaulis
-* Brian White
-* Bryan Adams
-* Christof Maluck
-* Corey Lista
-* David Howell
-* Denis Yatsenko
-* Dmitry Shilov
-* Ge Men
-* Grey Cynic
-* Jacob Morgan
-* Jason Toland
-* Jeff Bowman
-* John McGovern
-* Jozef Riha
-* Mark Gilbert
-* Mark Robinson
-* Mauricio Allende
-* Michael Kovacs
-* Michael Lynch
-* Nils Orbat
-* Samed Ozoglu
-* Scott
-* Steven Richter
-* Truman Kilen
-* Walter_Ego
-* zgen
