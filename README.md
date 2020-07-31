@@ -283,7 +283,7 @@ The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages 
     [root@pikvm hid]# make install
     [root@pikvm hid]# reboot
     ```
-9. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with user `root` and password `root` by default) and HTTPS (try to open it in a browser at `https://<IP addr>` with user `admin` and password `admin`). For HTTPS a self-signed certificate is used by default.
+9. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with password `root` by default) and HTTPS (try to open in a browser the URL `https://<IP addr>`, use login `admin` and password `admin`). For HTTPS a self-signed certificate is used by default.
 
 10. **Security note**: To change root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`.
 
