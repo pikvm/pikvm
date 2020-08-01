@@ -7,7 +7,7 @@ This operation can be done using your RPi. Here the common steps:
 * Upload the firmware.
 * Connect the RESET wire, disconnect the USB cable, and reboot the RPi.
 
-Here the commands to SSH and upload:
+Here the commands to SSH and upload the firmware:
 
 ```shell
 [user@localhost os]$ ssh root@<addr>
