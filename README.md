@@ -169,6 +169,8 @@ Connect USB dongle to exactly this port. It is bound in the software so the OS d
 |----------------------|----------------|
 | <img src="v2_usbcap_rpi2.png" alt="drawing" width="200"/> | <img src="v2_usbcap_rpi4.png" alt="drawing" width="200"/> |
 
+Note: there are many revisions of the Raspberry Pi boards and you may come across one that we haven't tested. If the binding fails, the device will be available for all ports. Everything will work, but if you use a webcam and Linux mistakes it for a dongle, [write to us](https://discord.gg/bpmXfz5) and we will fix it.
+
 ## v2 Diagram
 Here is a diagram shows that how to connect all of the pieces (click to full size).
 
