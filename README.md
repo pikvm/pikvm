@@ -309,3 +309,40 @@ Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with p
 * **Awesome WM on Linux** sometimes can't recognize a video output change on a cable. That is, if the cable was first inserted into the monitor, and then you reconnected it to Pi-KVM - it may happen that you will not see the image. It seems that the problem is Awesome WM, since for example with KDE it does not reproducing. If you turn on your workstation with Pi-KVM already connected, everything will work fine.
 
 * If you have any problems or questions, contact us using Discord: https://discord.gg/bpmXfz5
+
+-----
+
+# Special thanks
+These kind people donated money to the Pi-KVM project and supported work on it. We are very grateful for their help, and commemorating their names is the least we can do in return.
+* Aleksei Brusianskii
+* Alucard
+* Arthur Woimbée
+* Ben Gordon
+* Branden Shaulis
+* Brian White
+* Bryan Adams
+* Christof Maluck
+* Corey Lista
+* David Howell
+* Denis Yatsenko
+* Dmitry Shilov
+* Ge Men
+* Grey Cynic
+* Jacob Morgan
+* Jason Toland
+* Jeff Bowman
+* John McGovern
+* Jozef Riha
+* Justin Waters
+* Mark Gilbert
+* Mark Robinson
+* Mauricio Allende
+* Michael Kovacs
+* Michael Lynch
+* Nils Orbat
+* Samed Ozoglu
+* Scott
+* Steven Richter
+* Truman Kilen
+* Walter_Ego
+* zgen
