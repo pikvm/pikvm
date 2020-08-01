@@ -123,8 +123,8 @@ It's completely supported and Pi-KVM works great with it. But it has some disadv
   - 1x 390 Ohm resistor.
   - A breadboard and wires.
 * 2x USB A-to-micro cables (male-male, for power and HID).
-* HDMI capture device: [see v2 description](hardware-for-v2).
-* ATX control (optional): [see v2 description](hardware-for-v2).
+* HDMI capture device: [see v2 description](#hardware-for-v2).
+* ATX control (optional): [see v2 description](#hardware-for-v2).
 
 #### Addition
 * If you want to capture VGA from your server instead of HDMI, buy the [VGA-to-HDMI converter](https://aliexpress.ru/item/4000553298530.html).
