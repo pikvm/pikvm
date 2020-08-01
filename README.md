@@ -3,7 +3,11 @@ Join the comunity chat for questions and support: [![Discord](https://img.shield
 
 The official website: http://pikvm.org
 
-**[>>> DIY Getting Started <<<](#diy-getting-started)**
+* **[>>> DIY Getting Started <<<](#diy-getting-started)**
+* **[Our Raspberry Pi-KVM hat](#the-future-v3-platform-work-in-progress)**
+* [Limitations](#limitations)
+* [Tips](#tips)
+* [FAQ](#faq)
 
 -----
 
@@ -290,13 +294,6 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
 
 -----
 
-# FAQ
-**Q:** **Can I connect multiple servers to a single Pi-KVM?**  
-**A:** Yes, but it will require additional work to set up. Pi-KVM can be connected to a multi-port HDMI/USB switch and the switch's buttons can be connected via optocouplers to the Pi's GPIO pins to switch channels. If your KVM switches channels using keyboard shortcuts, there is a chance that it will not be able to work with OTG (v2 platform, see bellow), since it does not fully implement the USB stack. In this case, you will have to use an Arduino board to emulate the keyboard & mouse. (Pi-KVM supports this configuration)
-
-**Q:** **Can I use Pi-KVM with non-Raspberry Pi boards?**  
-**A:** Yes, but you will have to prepare the board OS yourself. As for the Pi-KVM software, you will need to replace the RPi.GPIO module and some files (such as UDEV rules). If you are a developer or an experienced system administrator, you will not have any problems with this. In addition, we are open to patches. If you need help with this, please contact us via Discord: https://discord.gg/bpmXfz5
-
 # Troubleshooting
 * **Unexpected interruption while loading the image for Mass Storage Drive**
     If problems occur when uploading even a small disk image it may be due to unstable network operation or antivirus software. It is well known that Kaspersky antivirus cuts off Pi-KVM connections during uploading, so you should add the Pi-KVM website to Kaspersky's list of exceptions or not filter web requests with the antivirus. Antivirus programs can also affect the performance of certain interface elements, for example the quality slider.
@@ -320,6 +317,15 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
 * **Awesome WM on Linux** sometimes can't recognize a video output change on a cable. That is, if the cable was first inserted into the monitor, and then you reconnected it to Pi-KVM - it may happen that you will not see the image. It seems that the problem is Awesome WM, since for example with KDE it does not reproducing. If you turn on your workstation with Pi-KVM already connected, everything will work fine.
 
 * If you have any problems or questions, contact us using Discord: https://discord.gg/bpmXfz5
+
+-----
+
+# FAQ
+**Q:** **Can I connect multiple servers to a single Pi-KVM?**  
+**A:** Yes, but it will require additional work to set up. Pi-KVM can be connected to a multi-port HDMI/USB switch and the switch's buttons can be connected via optocouplers to the Pi's GPIO pins to switch channels. If your KVM switches channels using keyboard shortcuts, there is a chance that it will not be able to work with OTG (v2 platform, see bellow), since it does not fully implement the USB stack. In this case, you will have to use an Arduino board to emulate the keyboard & mouse. (Pi-KVM supports this configuration)
+
+**Q:** **Can I use Pi-KVM with non-Raspberry Pi boards?**  
+**A:** Yes, but you will have to prepare the board OS yourself. As for the Pi-KVM software, you will need to replace the RPi.GPIO module and some files (such as UDEV rules). If you are a developer or an experienced system administrator, you will not have any problems with this. In addition, we are open to patches. If you need help with this, please contact us via Discord: https://discord.gg/bpmXfz5
 
 -----
 
