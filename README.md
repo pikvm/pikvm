@@ -10,6 +10,7 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 * [Limitations](#limitations)
 * [Tips](#tips)
 * [FAQ](#faq)
+* [Donate](#donate)
 
 ### Features
 * Supported **Raspberry Pi 2**, **3**, **4** and **ZeroW**;
@@ -326,10 +327,10 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
 
 -----
 
-# Note
+# Donate
 This project is developed on a non-commercial basis by Open Source enthusiasts. If you find Pi-KVM useful or it has saved you a long trip to check on an unresponsive server, you can support the lead developer by donating a few dollars via [Patreon](https://www.patreon.com/pikvm) or [PayPal](https://www.paypal.me/mdevaev). With this money, he will be able to buy new hardware (Raspberry Pi boards and other components) to test and maintain various configurations of Pi-KVM, and generally devote significantly more time to the project. At the bottom of this page are the names of all the people who have helped this project develop with their donations. Our gratitude knows no bounds!
 
-If you wish to use Pi-KVM in production, we accept orders to modify it for your needs or implement custom features you require. Contact us via live chat or email  the lead developer at: mdevaev@gmail.com
+If you wish to use Pi-KVM in production, we accept orders to modify it for your needs or implement custom features you require. Contact us via [live chat](https://discord.gg/bpmXfz5) or email the lead developer at: mdevaev@gmail.com
 
 -----
 
