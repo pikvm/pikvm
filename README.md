@@ -1,10 +1,8 @@
 # Open and cheap DIY IP-KVM based on Raspberry Pi  
-Join the comunity chat for questions and support: [![Discord](https://img.shields.io/discord/580094191938437144?logo=discord)](https://discord.gg/bpmXfz5)
-
-The official website: http://pikvm.org
+Join the comunity chat for questions and support: [![Discord](https://img.shields.io/discord/580094191938437144?logo=discord)](https://discord.gg/bpmXfz5), also here the our website: http://pikvm.org
 
 * **[>>> DIY Getting Started <<<](#diy-getting-started)**
-* **[Our Raspberry Pi-KVM hat](#the-future-v3-platform-work-in-progress)**
+* [Our Raspberry Pi-KVM hat](#the-future-v3-platform-work-in-progress)
 * [Limitations](#limitations)
 * [Tips](#tips)
 * [FAQ](#faq)
