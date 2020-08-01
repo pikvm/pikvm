@@ -20,8 +20,6 @@ A very simple and fully functional Raspberry Pi-based IP-KVM that you can make w
 * It only costs between $30 and $100 for parts!
 * 100% Open Source!
 
-<img src="screen1.png" alt="drawing" height="300"/>
-
 <details>
   <summary><b>Detailed about the Pi-KVM features</b></summary>
 
@@ -74,6 +72,8 @@ A very simple and fully functional Raspberry Pi-based IP-KVM that you can make w
 * **Know-how**  
   We created [our very own MJPG video server](https://github.com/pikvm/ustreamer) written in C with multi-threading support and GPU video encoding - the fastest streaming solution available to provide the best video quality for Pi-KVM. We also tested a lot of hardware configurations so that you can be sure devices you assemble will work reliably.
 </details>
+
+<img src="screen1.png" alt="drawing" height="300"/>
 
 -----
 
