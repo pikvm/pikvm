@@ -158,8 +158,8 @@ Sounds interesting? [Subscribe in this form](https://docs.google.com/forms/d/1LA
 
 -----
 
-## Setting up the hardware
-### Connecting the video capture
+# Setting up the hardware
+## Connecting the video capture
 #### For the HDMI-CSI bridge
 Insert the flexible flat cable of the HDMI bridge into the narrow white connector on the Raspberry Pi (the closest one to big USB sockets). Use only the cable that was included with the device package, or make sure that the third-party cable has the correct pinout.
 
@@ -189,7 +189,7 @@ Also check out this small PCB for ATX (if you know how to make PCBs): https://ea
 
 -----
 
-## Building the OS
+# Building the OS
 See [here](building_os.md) for complete instructions.
 
 #### You're breathtaking!
