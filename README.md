@@ -3,6 +3,8 @@ Join the comunity chat for questions and support: [![Discord](https://img.shield
 
 The official website: http://pikvm.org
 
+**[>>> DIY Getting Started <<<](#diy-getting-started)**
+
 -----
 
 A very simple and fully functional Raspberry Pi-based IP-KVM that you can make with your own hands. This device helps to manage servers or workstations remotely, regardless of the health of the operating system or whether one is installed. You can fix any problem, configure the BIOS, or even reinstall the OS using the included CD-ROM or Flash Drive emulation.
@@ -77,7 +79,8 @@ A very simple and fully functional Raspberry Pi-based IP-KVM that you can make w
 
 -----
 
-# Required hardware
+# DIY Getting Started
+## Required hardware
 Pi-KVM supports several different hardware configurations, referred to as **platforms**. At the moment, there are two main ones: **v0** and **v2**.
 * **v0** was designed to work with Raspberry Pi boards that do not have OTG (**Raspberry Pi 2** and **3**) and requires a few more components for a basic implementation. It also does not support the Mass Storage Drive feature.
 * **v2** is the most modern implementation supporting all of the features of Pi-KVM. It was designed to work with the **Raspberry Pi 4** and **ZeroW**.
