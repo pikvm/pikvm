@@ -84,7 +84,7 @@ A very simple and fully functional Raspberry Pi-based IP-KVM that you can make w
 # DIY Getting Started
 ## Required hardware
 Pi-KVM supports several different hardware configurations, referred to as **platforms**. Now available: **v2** and **v0**.
-* **v2** is the recommended most modern implementation for **Raspberry Pi 4** and **ZeroW** supporting all of the features of Pi-KVM including the **Mass Storage Drive**. **It's also the easiest to make**
+* **v2** is the recommended and most modern implementation for **Raspberry Pi 4** and **ZeroW** supporting all of the features of Pi-KVM including the **Mass Storage Drive**. **It's also the easiest to make**
 * v0 was designed to work with Raspberry Pi 2 and 3 that do not have OTG and requires a few more components for a basic implementation. It also does not support the Mass Storage Drive feature.
 
 ## Hardware for v2
