@@ -78,7 +78,7 @@ The website: http://pikvm.org. Also join to the [Discord Community Chat](https:/
   We created [our very own MJPG video server](https://github.com/pikvm/ustreamer) written in C with multi-threading support and GPU video encoding - the fastest streaming solution available to provide the best video quality for Pi-KVM. We also tested a lot of hardware configurations so that you can be sure devices you assemble will work reliably.
 </details>
 
-<img src="screen1.png" alt="drawing" height="300"/>
+<img src="img/screen1.png" alt="drawing" height="300"/>
 
 -----
 
@@ -130,13 +130,13 @@ It's completely supported and Pi-KVM works great with it. But it has some disadv
 * If you want to capture VGA from your server instead of HDMI, buy the [VGA-to-HDMI converter](https://aliexpress.ru/item/4000553298530.html).
 * Pi-KVM can be powered using PoE, but it is not recommend to use the official PoE HAT: it is unreliable and [not compatible with the HDMI bridge](https://github.com/pikvm/pikvm/issues/6). Use any other PoE hat without an I2C fan controller.
 * **Don't use random relay modules or random optocouplers!** Some relays or optocouplers may not be sensitive enough for the Raspberry Pi, some others may be low-level controlled. Either use relays that are activated by a high logic level, or follow the design provided and buy an OMRON. See details [here](https://github.com/pikvm/pikvm/issues/13).  
-  <img src="no_relays.png" alt="drawing" width="100"/>
+  <img src="img/no_relays.png" alt="drawing" width="100"/>
 
 -----
 
 # The future v3 platform (work in progress)
 
-<img src="v3_board.png" alt="drawing" width=200/></td>
+<img src="img/v3_board.png" alt="drawing" width=200/></td>
 
 We are also currently developing our own HAT for the Raspberry Pi 4. It will have all the features of the v2 platform, including:
 * HDMI capture based on the TC358743 (extra low latency and many features like compression control).
@@ -164,18 +164,18 @@ Insert the flexible flat cable of the HDMI bridge into the narrow white connecto
 Connect USB dongle to exactly this port. It is bound in the software so the OS does not confuse the video device with something else.
 | Raspberry Pi 2 and 3 | Raspberry Pi 4 |
 |----------------------|----------------|
-| <img src="v2_usbcap_rpi2.png" alt="drawing" width="200"/> | <img src="v2_usbcap_rpi4.png" alt="drawing" width="200"/> |
+| <img src="img/v2_usbcap_rpi2.png" alt="drawing" width="200"/> | <img src="img/v2_usbcap_rpi4.png" alt="drawing" width="200"/> |
 
 Note: there are many revisions of the Raspberry Pi boards and you may come across one that we haven't tested. If the binding fails, the device will be available for all ports. Everything will work, but if you use a webcam and Linux mistakes it for a dongle, [write to us](https://discord.gg/bpmXfz5) and we will fix it.
 
 ## Setting up the v2
 Here is a diagram shows that how to connect all of the pieces (click to full size).
 
-<img src="v2.png" alt="drawing" width="400"/>
+<img src="img/v2.png" alt="drawing" width="400"/>
 
 **Raspberry Pi 4 note**: since one USB-C female connector is used to receive power and perform keyboard/mouse/drive emulation a special Y-cable must be made that splits the DATA and POWER lines of USB-C (see [reasons](https://github.com/pikvm/docs/issues/11)). It can be made from two suitable connecting cables, or soldered together from scratch. Be sure to check the circuit diagram below, otherwise you may damage your devices. The appropriate USB pinout(s) can easily be found on Google. Please note that if you make a Y-cable from two no-name cables, the colors of the wires may not match those shown. Use a multimeter to make sure the connections are correct.
 
-<img src="v2_splitter.png" alt="drawing" width="400"/>
+<img src="img/v2_splitter.png" alt="drawing" width="400"/>
 
 See video howtos:
 * [Making USB Y-splitter cable](https://www.youtube.com/watch?v=uLuBuQUF61o).
@@ -184,12 +184,12 @@ See video howtos:
 Also check out this small PCB for ATX (if you know how to make PCBs): https://easyeda.com/mark.gilbert/zerow-kvm-v1
 
 ## Setting up the v0
-<img src="v0.png" alt="drawing" width="400"/>
+<img src="img/v0.png" alt="drawing" width="400"/>
 
 -----
 
 # Installing the OS
-See [here](building_os.md) for complete instructions.
+See [here](pages/building_os.md) for complete instructions.
 
 #### You're amazing!
 Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with password `root` by default) and HTTPS (try to open in a browser the URL `https://<IP addr>`, use login `admin` and password `admin`). For HTTPS a self-signed certificate is used by default.
@@ -286,7 +286,7 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
     ```
   - Run `systemctl disable getty@ttyAMA0.service`.
   - Remove `console=ttyAMA0,115200` and `kgdboc=ttyAMA0,115200` from `/boot/cmdline.txt`.
-  - [Flash the Arduino HID](flashing_hid.md).
+  - [Flash the Arduino HID](pages/flashing_hid.md).
   - Run `reboot`.
 
 -----
@@ -303,7 +303,7 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
 
     e.g
 
-    <img src="bios_glitch.png" alt="ASUS BIOS glitch" width="400"/>
+    <img src="img/bios_glitch.png" alt="ASUS BIOS glitch" width="400"/>
 
     This can be solved by enabling the **Compatibility Support Module (CSM)** in your BIOS, usually under the **Boot** options.
 
