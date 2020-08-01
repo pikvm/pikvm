@@ -3,10 +3,10 @@
 
 A very simple and fully functional Raspberry Pi-based IP-KVM that you can make with your own hands. This device helps to manage servers or workstations remotely, regardless of the health of the operating system or whether one is installed. You can fix any problem, configure the BIOS, or even reinstall the OS using the included CD-ROM or Flash Drive emulation.
 
-The website: http://pikvm.org
+The website: http://pikvm.org. Also join to the [Discord Community Chat](https://discord.gg/bpmXfz5) for news, questions and support!
 
 * **[>>> DIY Getting Started <<<](#diy-getting-started)**
-* [Our custom board for the Raspberry Pi](#the-future-v3-platform-work-in-progress)
+* [Pro Series v3 Preorder Today!](#the-future-v3-platform-work-in-progress)
 * [Limitations](#limitations)
 * [Tips](#tips)
 * [FAQ](#faq)
@@ -151,7 +151,7 @@ We are also currently developing our own HAT for the Raspberry Pi 4. It will hav
 * Continued use of Pi-KVM OS - all the software will be fully open.
 * It will cost about $100 - or less, we are working to make it as cheap as possible.
 
-Sounds interesting? [Subscribe in this form](https://docs.google.com/forms/d/1LA6iEYVtbJULvMDNktyNQMI4N9SYdNG03Wh9WK-80cM) or join to https://discord.gg/bpmXfz5 and we will let you know when you can purchase the board. Prototypes will be ready in Q4 2020, and pre-orders will be available sooner. If you are considering ordering a wholesale lot, please email to mdevaev@gmail.com.
+**Sounds interesting? [Subscribe in this form](https://docs.google.com/forms/d/1LA6iEYVtbJULvMDNktyNQMI4N9SYdNG03Wh9WK-80cM)** or join to https://discord.gg/bpmXfz5 and we will let you know when you can purchase the board. **Prototypes will be ready in Q4 2020**, and pre-orders will be available sooner. If you are considering ordering a wholesale lot, please email to mdevaev@gmail.com.
 
 -----
 
