@@ -19,8 +19,9 @@ A very simple and fully functional Raspberry Pi-based IP-KVM that you can make w
 * **Keyboard** and **mouse** (with leds and the wheel);
 * **Control the server power** using ATX functions;
 * Access via **Web UI** or **VNC**, ability to use **IPMI BMC** and **Wake-on-LAN** to control the server;
-* **The ready-made OS** and packages;
-* **Authorization** and SSL encryption;
+* **The ready-made OS** with read-only filesystem;
+* **Extensible authorization** and SSL encryption;
+* **Health monitoring** of the Pi;
 * It only costs between $30 and $100 for parts!
 * 100% Open Source!
 
@@ -84,7 +85,7 @@ A very simple and fully functional Raspberry Pi-based IP-KVM that you can make w
 # DIY Getting Started
 ## Required hardware
 Pi-KVM supports several different hardware configurations, referred to as **platforms**. Now available: **v2** and **v0**.
-* **v2** is the recommended and most modern implementation for **Raspberry Pi 4** and **ZeroW** supporting all of the features of Pi-KVM including the **Mass Storage Drive**. **It's also the easiest to make**
+* **Recommended**: **v2** is the most modern implementation for **Raspberry Pi 4** and **ZeroW** supporting all of the features of Pi-KVM including the **Mass Storage Drive**. **It's also the easiest to make**
 * v0 was designed to work with Raspberry Pi 2 and 3 that do not have OTG and requires a few more components for a basic implementation. It also does not support the Mass Storage Drive feature.
 
 ## Hardware for v2
@@ -94,8 +95,8 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
 * MicroSD card (min 16 GB recommended).
 * USB-A 3A charger (female socket) or power supply.
 * Video capture device:
-  * **Recommended**: [HDMI to CSI-2 bridge based on TC358743](https://aliexpress.com/item/4000102166176.html) - low latency ~100ms; compression control; more reliable.
-  * ... or [HDMI to USB dongle](https://aliexpress.ru/item/4001043540669.html) (not available for ZeroW) - high latency ~200ms, no compression control, slower alternative (see [bellow](a-few-words-about-hdmi-usb-dongle)).
+  * **Recommended**: [HDMI to CSI-2 bridge based on TC358743](https://aliexpress.com/item/4000102166176.html) - low latency ~100ms, more reliable.
+  * ... or [HDMI to USB dongle](https://aliexpress.ru/item/4001043540669.html) (not available for ZeroW) - high latency ~200ms, [not very reliable](#a-few-words-about-hdmi-usb-dongle)).
 * Only for Raspberry Pi 4:
   * Parts for Y-splitter cable:
     - 1x USB-A to USB-C cable (male-male).
@@ -107,6 +108,9 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
   - 4x 390 Ohm resistors.
   - 2x 4.7k Ohm resistors.
   - A breadboard and wires.
+  
+  #### A few words about HDMI-USB dongle
+  It's completely supported and Pi-KVM works great with it. But it has some disadvantages compared with recommended [HDMI-CSI bridge](https://aliexpress.ru/item/4000102166176.html): USB gives a lot of latency (200ms vs 100ms) and it doesn't support stream compression control (you won't be able to use Pi-KVM in a place with a poor internet connection). It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself. In addition, some users report hardware problems: the dongle may not work in the BIOS or simply stop working after a while. It's a black box, and no one knows what's inside it. If you have problems with it, it will not be possible to fix them.
   
 ## Hardware for v0
 * Raspberry Pi 2 or 3.
@@ -121,13 +125,6 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
 * 2x USB A-to-micro cables (male-male, for power and HID).
 * HDMI capture device: see v2 description.
 * ATX control (optional): see v2 description.
-
-#### A few words about HDMI-USB dongle
-It's completely supported and Pi-KVM works great with it. However, we recommend to use [HDMI-CSI bridge](https://aliexpress.ru/item/4000102166176.html) because the USB dongle has several major disadvantages compared to it: USB gives a lot of latency (200ms vs 100ms) and it doesn't support stream compression control (you won't be able to use Pi-KVM in a place with a poor internet connection).
-
-It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself.
-
-In addition, some users report hardware problems: the dongle may not work in the BIOS or simply stop working after a while. It's a black box, and no one knows what's inside it. If you have problems with it, it will not be possible to fix them.
 
 #### Addition
 * If you want to capture VGA from your server instead of HDMI, buy the [VGA-to-HDMI converter](https://aliexpress.ru/item/4000553298530.html).
