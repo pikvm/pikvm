@@ -83,19 +83,21 @@ A very simple and fully functional Raspberry Pi-based IP-KVM that you can make w
 
 # DIY Getting Started
 ## Required hardware
-Pi-KVM supports several different hardware configurations, referred to as **platforms**. At the moment, there are two main ones: **v0** and **v2**.
-* **v0** was designed to work with Raspberry Pi boards that do not have OTG (**Raspberry Pi 2** and **3**) and requires a few more components for a basic implementation. It also does not support the Mass Storage Drive feature.
-* **v2** is the most modern implementation supporting all of the features of Pi-KVM. It was designed to work with the **Raspberry Pi 4** and **ZeroW**.
+Pi-KVM supports several different hardware configurations, referred to as **platforms**. At the moment, there are two main ones: **v2** and **v0**.
+* **v2** is the most modern implementation for **Raspberry Pi 4** and **ZeroW** supporting all of the features of Pi-KVM.
+* **v0** was designed to work with **Raspberry Pi 2** and **3** that do not have OTG and requires a few more components for a basic implementation. It also does not support the Mass Storage Drive feature.
 
 **It is recomended to buid v2 since it supports all features including the Mass Storage Drive feature. It's also the easiest to make.**
 
 ## Hardware for v2
-* Raspberry Pi 4 (2 GB model is enough) or ZeroW. The Pi 4 is recomended because the ZeroW is very slow.
+* Raspberry Pi board:
+  * **Recommended**: Raspberry Pi 4 (2 GB model is enough) for the best pefrormance.
+  * Raspberry Pi ZeroW (slower alternative, no ethernet).
 * MicroSD card (min 16 GB recommended).
 * USB-A 3A charger (female socket) or power supply.
 * Video capture device:
-  * **Recommended**: [HDMI to CSI-2 bridge based on TC358743](https://aliexpress.com/item/4000102166176.html) - it supports the compression control, has a lowest video latency for ~100ms, and may determine the source resolution; see the FAQ above for the explanation.
-  * An alternative (not available for ZeroW): [HDMI to USB dongle](https://aliexpress.ru/item/4001043540669.html) - high video latency ~200ms, no compression control, can't detect the source resolution.
+  * **Recommended**: [HDMI to CSI-2 bridge based on TC358743](https://aliexpress.com/item/4000102166176.html) - low latency ~100ms; compression control; more reliable.
+  * [HDMI to USB dongle](https://aliexpress.ru/item/4001043540669.html) (not available for ZeroW) - high latency ~200ms, no compression control, slower alternative (see [bellow](a-few-words-about-hdmi-usb-dongle)).
 * Only for Raspberry Pi 4:
   * Parts for Y-splitter cable:
     - 1x USB-A to USB-C cable (male-male).
@@ -139,7 +141,7 @@ In addition, some users report hardware problems: the dongle may not work in the
 
 # The future v3 platform (work in progress)
 
-<img src="v3_board.png" alt="drawing" width=300/></td>
+<img src="v3_board.png" alt="drawing" width=200/></td>
 
 We are also currently developing our own HAT for the Raspberry Pi 4. It will have all the features of the v2 platform, including:
 * HDMI capture based on the TC358743 (extra low latency and many features like compression control).
@@ -171,7 +173,7 @@ Connect USB dongle to exactly this port. It is bound in the software so the OS d
 
 Note: there are many revisions of the Raspberry Pi boards and you may come across one that we haven't tested. If the binding fails, the device will be available for all ports. Everything will work, but if you use a webcam and Linux mistakes it for a dongle, [write to us](https://discord.gg/bpmXfz5) and we will fix it.
 
-## v2 Diagram
+## Setting up the v2
 Here is a diagram shows that how to connect all of the pieces (click to full size).
 
 <img src="v2.png" alt="drawing" width="400"/>
@@ -186,15 +188,15 @@ See video howtos:
 
 Also check out this small PCB for ATX (if you know how to make PCBs): https://easyeda.com/mark.gilbert/zerow-kvm-v1
 
-## v0 Diagram
+## Setting up the v0
 <img src="v0.png" alt="drawing" width="400"/>
 
 -----
 
-# Building the OS
+# Installing the OS
 See [here](building_os.md) for complete instructions.
 
-#### You're breathtaking!
+#### You're amazing!
 Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with password `root` by default) and HTTPS (try to open in a browser the URL `https://<IP addr>`, use login `admin` and password `admin`). For HTTPS a self-signed certificate is used by default.
 
 -----
