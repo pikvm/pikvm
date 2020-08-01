@@ -1,5 +1,15 @@
 # Flashing the Arduino HID
-This operation can be done using your RPi. **Before starting, disconnect the RESET wire from the Arduino board, otherwise the firmware will not be uploaded.** Connect the Arduino and RPi with a suitable USB cable. Log in to the RPi and upload the firmware. Then connect the RESET wire, disconnect the USB cable, and reboot the RPi.
+This operation can be done using your RPi.
+
+**Before starting, disconnect the RESET wire from the Arduino board, otherwise the firmware will not be uploaded.**
+
+* Connect the Arduino and RPi with a suitable USB cable.
+* Log in to the Raspberry Pi using SSH (`ssh root@<addr>` with password `root` by default).
+* Upload the firmware.
+* Connect the RESET wire, disconnect the USB cable, and reboot the RPi.
+
+Here the commands to SSH and upload:
+
 ```shell
 [user@localhost os]$ ssh root@<addr>
 [root@pikvm ~]# rw
@@ -11,7 +21,7 @@ This operation can be done using your RPi. **Before starting, disconnect the RES
 [root@pikvm hid]# reboot
 ```
 
-On this you may encounter the following error:
+On `make install` you may encounter the following error:
 ```
 /root/.platformio/packages/tool-avrdude/avrdude: error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory
 ```
