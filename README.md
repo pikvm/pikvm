@@ -2,7 +2,7 @@
 Join the comunity chat for questions and support: [![Discord](https://img.shields.io/discord/580094191938437144?logo=discord)](https://discord.gg/bpmXfz5) Also here the our website: http://pikvm.org
 
 * **[>>> DIY Getting Started <<<](#diy-getting-started)**
-* [Our Raspberry Pi-KVM hat](#the-future-v3-platform-work-in-progress)
+* [Our custom board hat for for Raspberry](#the-future-v3-platform-work-in-progress)
 * [Limitations](#limitations)
 * [Tips](#tips)
 * [FAQ](#faq)
