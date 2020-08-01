@@ -117,7 +117,7 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
 * HDMI capture device: see v2 description.
 * ATX control (optional): see v2 description.
 
-## A few words aboit HDMI-USB dongle
+## A few words about HDMI-USB dongle
 It's completely supported Pi-KVM works great with it. However, we recommend to use [HDMI-CSI bridge](https://aliexpress.ru/item/4000102166176.html) because the USB dongle has several major disadvantages compared to it: USB gives a lot of latency (200ms vs 100ms) and it doesn't support stream compression control (you won't be able to use Pi-KVM in a place with a poor internet connection). It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself. In addition, some users report hardware problems: the dongle may not work in the BIOS or simply stop working after a while. It's a black box, and no one knows what's inside it. If you have problems with it, it will not be possible to fix them.
 
 ## Addition
