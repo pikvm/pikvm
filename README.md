@@ -1,7 +1,5 @@
 # Open and cheap DIY IP-KVM based on Raspberry Pi  
-Join the comunity chat for questions and support!
-
-[![Discord](https://img.shields.io/discord/580094191938437144?logo=discord)](https://discord.gg/bpmXfz5)
+Join the comunity chat for questions and support: [![Discord](https://img.shields.io/discord/580094191938437144?logo=discord)](https://discord.gg/bpmXfz5)
 
 The official website: http://pikvm.org
 
@@ -9,19 +7,21 @@ The official website: http://pikvm.org
 
 A very simple and fully functional Raspberry Pi-based IP-KVM that you can make with your own hands. This device helps to manage servers or workstations remotely, regardless of the health of the operating system or whether one is installed. You can fix any problem, configure the BIOS, or even reinstall the OS using the included CD-ROM or Flash Drive emulation.
 
-* Supported Raspberry Pi 2, 3, 4 and ZeroW;
-* FullHD video using HDMI-to-CSI bridge or USB dongle;
-* Extra low latency 100ms;
-* Virtual CD-ROM and Flash Drive emulation;
-* Keyboard and mouse (with leds and the wheel);
-* Control the server power using ATX functions;
-* Access via Web or VNC, ability to use IPMI BMC and Wake-on-LAN to control the server;
-* Ready-made OS and packages;
-* Authorization and SSL encryption;
+### Features
+* Supported **Raspberry Pi 2**, **3**, **4** and **ZeroW**;
+* **FullHD video** using advanced **HDMI-to-CSI bridge** or **USB dongle**;
+* Extra low **100ms video latency** (for CSI bridge);
+* **Virtual CD-ROM** and **Flash Drive** emulation;
+* **Keyboard** and **mouse** (with leds and the wheel);
+* **Control the server power** using ATX functions;
+* Access via **Web UI** or **VNC**, ability to use **IPMI BMC** and **Wake-on-LAN** to control the server;
+* **The ready-made OS** and packages;
+* **Authorization** and SSL encryption;
 * It only costs between $30 and $100 for parts depending on the features desired!
+* 100% Open Source!
 
 <details>
-  <summary>Detailed about the Pi-KVM features</summary>
+  <summary><b>Detailed about the Pi-KVM features</b></summary>
 
 ## Fully-featured and modern IP-KVM
 * **Cheaper, but better than commercial solutions**  
