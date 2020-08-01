@@ -17,8 +17,10 @@ A very simple and fully functional Raspberry Pi-based IP-KVM that you can make w
 * Access via **Web UI** or **VNC**, ability to use **IPMI BMC** and **Wake-on-LAN** to control the server;
 * **The ready-made OS** and packages;
 * **Authorization** and SSL encryption;
-* It only costs between $30 and $100 for parts depending on the features desired!
+* It only costs between $30 and $100 for parts!
 * 100% Open Source!
+
+<img src="screen1.png" alt="drawing" height="300"/>
 
 <details>
   <summary><b>Detailed about the Pi-KVM features</b></summary>
@@ -73,8 +75,6 @@ A very simple and fully functional Raspberry Pi-based IP-KVM that you can make w
   We created [our very own MJPG video server](https://github.com/pikvm/ustreamer) written in C with multi-threading support and GPU video encoding - the fastest streaming solution available to provide the best video quality for Pi-KVM. We also tested a lot of hardware configurations so that you can be sure devices you assemble will work reliably.
 </details>
 
-![Screenshot](screen1.png)
-
 -----
 
 # Required hardware
@@ -116,6 +116,9 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
 * 2x USB A-to-micro cables (male-male, for power and HID).
 * HDMI capture device: see v2 description.
 * ATX control (optional): see v2 description.
+
+## A few words aboit HDMI-USB dongle
+It's completely supported Pi-KVM works great with it. However, we recommend to use [HDMI-CSI bridge](https://aliexpress.ru/item/4000102166176.html) because the USB dongle has several major disadvantages compared to it: USB gives a lot of latency (200ms vs 100ms) and it doesn't support stream compression control (you won't be able to use Pi-KVM in a place with a poor internet connection). It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself. In addition, some users report hardware problems: the dongle may not work in the BIOS or simply stop working after a while. It's a black box, and no one knows what's inside it. If you have problems with it, it will not be possible to fix them.
 
 ## Addition
 * If you want to capture VGA from your server instead of HDMI, buy the [VGA-to-HDMI converter](https://aliexpress.ru/item/4000553298530.html).
@@ -281,12 +284,6 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
 -----
 
 # FAQ
-**Q**: **What is the status of this project?**  
-**A:** Although this page is rarely updated, the project is actively maintained and developed. You can verify this by checking the activity in our other repositories.
-
-**Q:** **Does this support the HDMI-USB dongle from [AliExpress](https://aliexpress.ru/item/4001043540669.html)?**  
-**A:** Yes, and Pi-KVM works great with it. However, we recommend to use [HDMI-CSI bridge](https://aliexpress.ru/item/4000102166176.html) because the USB dongle has several major disadvantages compared to it: USB gives a lot of latency (200ms vs 100ms) and it doesn't support stream compression control (you won't be able to use Pi-KVM in a place with a poor internet connection). It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself. **It may be used, but the loss of these features is probably not worth the ten dollars saved.**
-
 **Q:** **Can I connect multiple servers to a single Pi-KVM?**  
 **A:** Yes, but it will require additional work to set up. Pi-KVM can be connected to a multi-port HDMI/USB switch and the switch's buttons can be connected via optocouplers to the Pi's GPIO pins to switch channels. If your KVM switches channels using keyboard shortcuts, there is a chance that it will not be able to work with OTG (v2 platform, see bellow), since it does not fully implement the USB stack. In this case, you will have to use an Arduino board to emulate the keyboard & mouse. (Pi-KVM supports this configuration)
 
