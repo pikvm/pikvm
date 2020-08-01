@@ -9,11 +9,21 @@ The official website: http://pikvm.org
 
 A very simple and fully functional Raspberry Pi-based IP-KVM that you can make with your own hands. This device helps to manage servers or workstations remotely, regardless of the health of the operating system or whether one is installed. You can fix any problem, configure the BIOS, or even reinstall the OS using the included CD-ROM or Flash Drive emulation.
 
-![Screenshot](screen1.png)
+* Supported Raspberry Pi 2, 3, 4 and ZeroW;
+* FullHD video using HDMI-to-CSI bridge or USB dongle;
+* Extra low latency 100ms;
+* Virtual CD-ROM and Flash Drive emulation;
+* Keyboard and mouse (with leds and the wheel);
+* Control the server power using ATX functions;
+* Access via Web or VNC, ability to use IPMI BMC and Wake-on-LAN to control the server;
+* Ready-made OS and packages;
+* Authorization and SSL encryption;
+* It only costs between $30 and $100 for parts depending on the features desired!
 
------
+<details>
+  <summary>Detailed about the Pi-KVM features</summary>
 
-## Fully-featured and modern IP-KVM  
+## Fully-featured and modern IP-KVM
 * **Cheaper, but better than commercial solutions**  
   Costs between $30 and $100 depending on the features desired. Even the most expensive configuration will be cheaper than a $500 commercial IP-KVM.
 * **Easy to build**  
@@ -61,33 +71,9 @@ A very simple and fully functional Raspberry Pi-based IP-KVM that you can make w
   Everything that can be done via the user interface can also be done via a powerful HTTP API.
 * **Know-how**  
   We created [our very own MJPG video server](https://github.com/pikvm/ustreamer) written in C with multi-threading support and GPU video encoding - the fastest streaming solution available to provide the best video quality for Pi-KVM. We also tested a lot of hardware configurations so that you can be sure devices you assemble will work reliably.
+</details>
 
-
-# Note
-This project is developed on a non-commercial basis by Open Source enthusiasts. If you find Pi-KVM useful or it has saved you a long trip to check on an unresponsive server, you can support the lead developer by donating a few dollars via [Patreon](https://www.patreon.com/pikvm) or [PayPal](https://www.paypal.me/mdevaev). With this money, he will be able to buy new hardware (Raspberry Pi boards and other components) to test and maintain various configurations of Pi-KVM, and generally devote significantly more time to the project. At the bottom of this page are the names of all the people who have helped this project develop with their donations. Our gratitude knows no bounds!
-
-If you wish to use Pi-KVM in production, we accept orders to modify it for your needs or implement custom features you require. Contact us via live chat or email  the lead developer at: mdevaev@gmail.com
-
-# FAQ
-**Q**: **What is the status of this project?**  
-**A:** Although this page is rarely updated, the project is actively maintained and developed. You can verify this by checking the activity in our other repositories.
-
-**Q:** **Does this support the HDMI-USB dongle from [AliExpress](https://aliexpress.ru/item/4001043540669.html)?**  
-**A:** Yes, and Pi-KVM works great with it. However, we recommend to use [HDMI-CSI bridge](https://aliexpress.ru/item/4000102166176.html) because the USB dongle has several major disadvantages compared to it: USB gives a lot of latency (200ms vs 100ms) and it doesn't support stream compression control (you won't be able to use Pi-KVM in a place with a poor internet connection). It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself. **It may be used, but the loss of these features is probably not worth the ten dollars saved.**
-
-**Q:** **Can I connect multiple servers to a single Pi-KVM?**  
-**A:** Yes, but it will require additional work to set up. Pi-KVM can be connected to a multi-port HDMI/USB switch and the switch's buttons can be connected via optocouplers to the Pi's GPIO pins to switch channels. If your KVM switches channels using keyboard shortcuts, there is a chance that it will not be able to work with OTG (v2 platform, see bellow), since it does not fully implement the USB stack. In this case, you will have to use an Arduino board to emulate the keyboard & mouse. (Pi-KVM supports this configuration)
-
-**Q:** **Can I use Pi-KVM with non-Raspberry Pi boards?**  
-**A:** Yes, but you will have to prepare the board OS yourself. As for the Pi-KVM software, you will need to replace the RPi.GPIO module and some files (such as UDEV rules). If you are a developer or an experienced system administrator, you will not have any problems with this. In addition, we are open to patches. If you need help with this, please contact us via Discord: https://discord.gg/bpmXfz5
-
------
-
-# Limitations
-* In very rare cases, old motherboards contain a buggy BIOS that does not understand the keyboard of the **v2** platform (bellow). The reason for this is that the BIOS doesn't fully implement the USB HID stack for composite devices correctly. Meanwhile, Mass Storage Drive will be detected. For this case, we suggest using the Arduino HID from the **v0** platform with **v2**. Thus the Pi-KVM will be connected by two USB cables to the motherboard: one of them will be responsible for the keyboard and mouse, the other for everything else. See [Tips](#tips) for details.
-* A similar problem can be observed on devices with UEFI: the keyboard works fine, but the mouse does not work. This problem is much less significant, since all UEFI can be configured using the keyboard and hotkeys, without the mouse. If you want to get a mouse, the solution will be the same: using an Arduino HID, as in the advice above.
-
-Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain an optional HID module for such cases, so you won't have to build anything yourself.
+![Screenshot](screen1.png)
 
 -----
 
@@ -199,6 +185,14 @@ Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with p
 
 -----
 
+# Limitations
+* In very rare cases, old motherboards contain a buggy BIOS that does not understand the keyboard of the **v2** platform (bellow). The reason for this is that the BIOS doesn't fully implement the USB HID stack for composite devices correctly. Meanwhile, Mass Storage Drive will be detected. For this case, we suggest using the Arduino HID from the **v0** platform with **v2**. Thus the Pi-KVM will be connected by two USB cables to the motherboard: one of them will be responsible for the keyboard and mouse, the other for everything else. See [Tips](#tips) for details.
+* A similar problem can be observed on devices with UEFI: the keyboard works fine, but the mouse does not work. This problem is much less significant, since all UEFI can be configured using the keyboard and hotkeys, without the mouse. If you want to get a mouse, the solution will be the same: using an Arduino HID, as in the advice above.
+
+Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain an optional HID module for such cases, so you won't have to build anything yourself.
+
+-----
+
 # Tips
 * The Pi-KVM file system is always mounted in read-only mode. This prevents it from being damaged by a sudden power outage. To change the configuration you must first switch the filesystem to write mode using the command `rw` from root. After the changes, be sure to run the command `ro` to switch it back to read-only.
 
@@ -286,6 +280,19 @@ Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with p
 
 -----
 
+# FAQ
+**Q**: **What is the status of this project?**  
+**A:** Although this page is rarely updated, the project is actively maintained and developed. You can verify this by checking the activity in our other repositories.
+
+**Q:** **Does this support the HDMI-USB dongle from [AliExpress](https://aliexpress.ru/item/4001043540669.html)?**  
+**A:** Yes, and Pi-KVM works great with it. However, we recommend to use [HDMI-CSI bridge](https://aliexpress.ru/item/4000102166176.html) because the USB dongle has several major disadvantages compared to it: USB gives a lot of latency (200ms vs 100ms) and it doesn't support stream compression control (you won't be able to use Pi-KVM in a place with a poor internet connection). It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself. **It may be used, but the loss of these features is probably not worth the ten dollars saved.**
+
+**Q:** **Can I connect multiple servers to a single Pi-KVM?**  
+**A:** Yes, but it will require additional work to set up. Pi-KVM can be connected to a multi-port HDMI/USB switch and the switch's buttons can be connected via optocouplers to the Pi's GPIO pins to switch channels. If your KVM switches channels using keyboard shortcuts, there is a chance that it will not be able to work with OTG (v2 platform, see bellow), since it does not fully implement the USB stack. In this case, you will have to use an Arduino board to emulate the keyboard & mouse. (Pi-KVM supports this configuration)
+
+**Q:** **Can I use Pi-KVM with non-Raspberry Pi boards?**  
+**A:** Yes, but you will have to prepare the board OS yourself. As for the Pi-KVM software, you will need to replace the RPi.GPIO module and some files (such as UDEV rules). If you are a developer or an experienced system administrator, you will not have any problems with this. In addition, we are open to patches. If you need help with this, please contact us via Discord: https://discord.gg/bpmXfz5
+
 # Troubleshooting
 * **Unexpected interruption while loading the image for Mass Storage Drive**
     If problems occur when uploading even a small disk image it may be due to unstable network operation or antivirus software. It is well known that Kaspersky antivirus cuts off Pi-KVM connections during uploading, so you should add the Pi-KVM website to Kaspersky's list of exceptions or not filter web requests with the antivirus. Antivirus programs can also affect the performance of certain interface elements, for example the quality slider.
@@ -309,6 +316,13 @@ Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with p
 * **Awesome WM on Linux** sometimes can't recognize a video output change on a cable. That is, if the cable was first inserted into the monitor, and then you reconnected it to Pi-KVM - it may happen that you will not see the image. It seems that the problem is Awesome WM, since for example with KDE it does not reproducing. If you turn on your workstation with Pi-KVM already connected, everything will work fine.
 
 * If you have any problems or questions, contact us using Discord: https://discord.gg/bpmXfz5
+
+-----
+
+# Note
+This project is developed on a non-commercial basis by Open Source enthusiasts. If you find Pi-KVM useful or it has saved you a long trip to check on an unresponsive server, you can support the lead developer by donating a few dollars via [Patreon](https://www.patreon.com/pikvm) or [PayPal](https://www.paypal.me/mdevaev). With this money, he will be able to buy new hardware (Raspberry Pi boards and other components) to test and maintain various configurations of Pi-KVM, and generally devote significantly more time to the project. At the bottom of this page are the names of all the people who have helped this project develop with their donations. Our gratitude knows no bounds!
+
+If you wish to use Pi-KVM in production, we accept orders to modify it for your needs or implement custom features you require. Contact us via live chat or email  the lead developer at: mdevaev@gmail.com
 
 -----
 
