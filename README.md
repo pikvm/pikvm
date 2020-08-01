@@ -15,7 +15,7 @@ The website: http://pikvm.org
 * Supported **Raspberry Pi 2**, **3**, **4** and **ZeroW**;
 * **FullHD video** using advanced **HDMI-to-CSI bridge** or **USB dongle**;
 * Extra low **100ms video latency** (for CSI bridge);
-* **Virtual CD-ROM** and **Flash Drive** emulation;
+* Bootable **Virtual CD-ROM** and **Flash Drive**;
 * **Keyboard** and **mouse** (with leds and the wheel);
 * **Control the server power** using ATX functions;
 * Access via **Web UI** or **VNC**, ability to use **IPMI BMC** and **Wake-on-LAN** to control the server;
