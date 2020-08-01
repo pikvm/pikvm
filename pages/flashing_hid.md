@@ -1,8 +1,7 @@
 # Flashing the Arduino HID
-This operation can be done using your RPi.
+This operation can be done using your RPi. Here the common steps:
 
-**Before starting, disconnect the RESET wire from the Arduino board, otherwise the firmware will not be uploaded.**
-
+* Disconnect the RESET wire from the Arduino board.
 * Connect the Arduino and RPi with a suitable USB cable.
 * Log in to the Raspberry Pi using SSH (`ssh root@<addr>` with password `root` by default).
 * Upload the firmware.
