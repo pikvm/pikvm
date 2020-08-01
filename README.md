@@ -122,14 +122,14 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
 * HDMI capture device: see v2 description.
 * ATX control (optional): see v2 description.
 
-### A few words about HDMI-USB dongle
+#### A few words about HDMI-USB dongle
 It's completely supported and Pi-KVM works great with it. However, we recommend to use [HDMI-CSI bridge](https://aliexpress.ru/item/4000102166176.html) because the USB dongle has several major disadvantages compared to it: USB gives a lot of latency (200ms vs 100ms) and it doesn't support stream compression control (you won't be able to use Pi-KVM in a place with a poor internet connection).
 
 It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself.
 
 In addition, some users report hardware problems: the dongle may not work in the BIOS or simply stop working after a while. It's a black box, and no one knows what's inside it. If you have problems with it, it will not be possible to fix them.
 
-### Addition
+#### Addition
 * If you want to capture VGA from your server instead of HDMI, buy the [VGA-to-HDMI converter](https://aliexpress.ru/item/4000553298530.html).
 * Pi-KVM can be powered using PoE, but it is not recommend to use the official PoE HAT: it is unreliable and [not compatible with the HDMI bridge](https://github.com/pikvm/pikvm/issues/6). Use any other PoE hat without an I2C fan controller.
 * **Don't use random relay modules or random optocouplers!** Some relays or optocouplers may not be sensitive enough for the Raspberry Pi, some others may be low-level controlled. Either use relays that are activated by a high logic level, or follow the design provided and buy an OMRON. See details [here](https://github.com/pikvm/pikvm/issues/13).  
@@ -158,8 +158,8 @@ Sounds interesting? [Subscribe in this form](https://docs.google.com/forms/d/1LA
 
 -----
 
-# Setting up the hardware
-## Connecting the video capture
+## Setting up the hardware
+### Connecting the video capture
 #### For the HDMI-CSI bridge
 Insert the flexible flat cable of the HDMI bridge into the narrow white connector on the Raspberry Pi (the closest one to big USB sockets). Use only the cable that was included with the device package, or make sure that the third-party cable has the correct pinout.
 
@@ -189,10 +189,10 @@ Also check out this small PCB for ATX (if you know how to make PCBs): https://ea
 
 -----
 
-# Building the OS
+## Building the OS
 See [here](building_os.md) for complete instructions.
 
-# You're breathtaking!
+#### You're breathtaking!
 Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with password `root` by default) and HTTPS (try to open in a browser the URL `https://<IP addr>`, use login `admin` and password `admin`). For HTTPS a self-signed certificate is used by default.
 
 -----
