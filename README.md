@@ -190,10 +190,12 @@ Also check out this small PCB for ATX (if you know how to make PCBs): https://ea
 -----
 
 # Installing the OS
-See [here](pages/building_os.md) for complete instructions.
+Here the final steps. There are two ways to get the Pi-KVM OS:
+  * We provide the ready-made images for **Raspberry Pi 4** for platforms **v2-hdmi** (the CSI-2 bridge) and **v2-hdmiusb** (the USB dongle). [Follow these instructions](pages/flashing_os.md) to install the OS quickly.
+  * For the other boards and platforms, you need to build the operating system manually. Don't worry, it's very simple! [Just follow these instructions](pages/building_os.md). You can also build the OS for RPi4 manually if you really want to :)
 
-#### You're amazing!
-Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with password `root` by default) and HTTPS (try to open in a browser the URL `https://<IP addr>`, use login `admin` and password `admin`). For HTTPS a self-signed certificate is used by default.
+# You're amazing!
+It's done! Happy using of Pi-KVM :)
 
 -----
 

@@ -3,8 +3,8 @@ This operation can be done using your RPi. Here the common steps:
 
 * Disconnect the RESET wire from the Arduino board.
 * Connect the Arduino and RPi with a suitable USB cable.
-* Log in to the Raspberry Pi using SSH (`ssh root@<addr>` with password `root` by default).
-* Upload the firmware.
+* Log in to the Raspberry Pi using SSH (`ssh root@<addr>` with password `root` by default) or using keyboard and monitor. The Raspberry Pi obtains the network address over DHCP.
+* Next, upload the firmware.
 * Connect the RESET wire, disconnect the USB cable, and reboot the RPi.
 
 Here the commands to SSH and upload the firmware:
