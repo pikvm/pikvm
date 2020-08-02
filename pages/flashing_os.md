@@ -14,16 +14,21 @@ If you prefer a graphical interface or don't have Linux at hand install [Balena 
 1. Decomress the image using your File Manager. If you don't have an archiver (on Windows for example) - the [7-Zip](https://www.7-zip.org) is a great choice.
 
 2. Run Balena Etcher:
+
     <img src="../img/balena-1.png" alt="drawing" height="300"/>
 
 3. Press **Flash from file** and choose the image:
+
     <img src="../img/balena-2.png" alt="drawing" height="300"/>
 
 4. Insert memory card to the card reader. Press **Select target** and choose your memory card:
+
     <img src="../img/balena-3.png" alt="drawing" height="300"/>
+
     <img src="../img/balena-4.png" alt="drawing" height="300"/>
 
 5. Press **Flash!** button and wait for the finish. If an error occurs during flashing, repeat the process:
+
     <img src="../img/balena-5.png" alt="drawing" height="300"/>
 
 6. When the process is complete, pull out the memory card and insert it into the Raspberry Pi. Turn the power on. Your device will obtain the IP address via DHCP automatically.
