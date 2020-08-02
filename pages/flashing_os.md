@@ -28,7 +28,7 @@ If you prefer a graphical interface or don't have Linux at hand install [Balena 
 5. Press **Flash!** button and wait for the finish. If an error occurs during flashing, repeat the process:
 
     <img src="../img/balena-4.png" alt="drawing" height="300"/>
-
+    
     <img src="../img/balena-5.png" alt="drawing" height="300"/>
 
 6. When the process is complete, pull out the memory card and insert it into the Raspberry Pi. Turn the power on. Your device will obtain the IP address via DHCP automatically.
