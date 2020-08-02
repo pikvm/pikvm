@@ -3,45 +3,51 @@ Download the appropriate memory card image from https://pikvm.org/download.html.
 
 Note: right now, pre-compiled images are only available for the Raspberry Pi 4. In all other cases, you will need to build the operating system yourself. But don't worry, it's [very simple](building_os.md).
 
-For Linux guru: decompress and flash image to the memory card using CLI. Be careful be careful when choosing your device path:
+
+## Using Linux CLI
+Decompress and flash image to the memory card using CLI and follow to the [final steps](#the-final-steps). Be careful be careful when choosing your device path:
 ```bash
 $ bzip2 -d v2-hdmi-rpi4.img.bz2
 $ sudo dd if=v2-hdmi-rpi4.img of=/dev/mmcblk0
 ```
 
-If you prefer a graphical interface or don't have Linux at hand install [Balena Etcher](https://www.balena.io/etcher). It's available for the Linux, MacOS and Windows. Follow the instructions bellow:
 
-1. Decomress the image using your File Manager. If you don't have an archiver (on Windows for example) - the [7-Zip](https://www.7-zip.org) is a great choice.
+## Using Balena Etcher (Linux, MacOS and Windows)
+1. Download and install [Balena Etcher](https://www.balena.io/etcher).
 
-2. Run Balena Etcher:
+2. Decomress the image using your File Manager. If you don't have an archiver (on Windows for example) - the [7-Zip](https://www.7-zip.org) is a great choice.
+
+3. Run Balena Etcher:
 
     <img src="../img/balena-1.png" alt="drawing" height="300"/>
 
-3. Press **Flash from file** and choose the image:
+4. Press **Flash from file** and choose the image:
 
     <img src="../img/balena-2.png" alt="drawing" height="300"/>
 
-4. Insert memory card to the card reader. Press **Select target** and choose your memory card:
+5. Insert memory card to the card reader. Press **Select target** and choose your memory card:
 
     <img src="../img/balena-3.png" alt="drawing" height="300"/>
 
-5. Press **Flash!** button.
+6. Press **Flash!** button.
 
     <img src="../img/balena-4.png" alt="drawing" height="300"/>
 
-6. Wait for the finish. If an error occurs during flashing, repeat the process:
+7. Wait for the finish. If an error occurs during flashing, repeat the process:
 
     <img src="../img/balena-5.png" alt="drawing" height="300"/>
 
-7. When the process is complete, pull out the memory card and insert it into the Raspberry Pi. Turn the power on. Your device will obtain the IP address via DHCP automatically.
 
-8. After power-up, Pi-KVM OS generates unique SSH keys and certificates. Do not turn off the Raspberry Pi until it's fully booted.
+## The final steps
+1. When the process is complete, pull out the memory card and insert it into the Raspberry Pi. Turn the power on. Your device will obtain the IP address via DHCP automatically.
 
-9. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with password `root` by default) and HTTPS (try to open in a browser the URL `https://<IP addr>`, the login `admin` and password `admin` by default). For HTTPS a self-signed certificate is used by default.
+2. After power-up, Pi-KVM OS generates unique SSH keys and certificates. Do not turn off the Raspberry Pi until it's fully booted.
 
-10. To change root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`.
+3. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with password `root` by default) and HTTPS (try to open in a browser the URL `https://<IP addr>`, the login `admin` and password `admin` by default). For HTTPS a self-signed certificate is used by default.
 
-11. After installation, we recommend that you update your operating system:
+4. To change root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`.
+
+5. After installation, we recommend that you update your operating system:
     ```shell
     # rw
     # pacman -Syu
