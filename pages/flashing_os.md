@@ -25,21 +25,23 @@ If you prefer a graphical interface or don't have Linux at hand install [Balena 
 
     <img src="../img/balena-3.png" alt="drawing" height="300"/>
 
-5. Press **Flash!** button and wait for the finish. If an error occurs during flashing, repeat the process:
+5. Press **Flash!** button.
 
     <img src="../img/balena-4.png" alt="drawing" height="300"/>
-    
+
+6. Wait for the finish. If an error occurs during flashing, repeat the process:
+
     <img src="../img/balena-5.png" alt="drawing" height="300"/>
 
-6. When the process is complete, pull out the memory card and insert it into the Raspberry Pi. Turn the power on. Your device will obtain the IP address via DHCP automatically.
+7. When the process is complete, pull out the memory card and insert it into the Raspberry Pi. Turn the power on. Your device will obtain the IP address via DHCP automatically.
 
-7. After power-up, Pi-KVM OS generates unique SSH keys and certificates. Do not turn off the Raspberry Pi until it's fully booted.
+8. After power-up, Pi-KVM OS generates unique SSH keys and certificates. Do not turn off the Raspberry Pi until it's fully booted.
 
-8. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with password `root` by default) and HTTPS (try to open in a browser the URL `https://<IP addr>`, the login `admin` and password `admin` by default). For HTTPS a self-signed certificate is used by default.
+9. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with password `root` by default) and HTTPS (try to open in a browser the URL `https://<IP addr>`, the login `admin` and password `admin` by default). For HTTPS a self-signed certificate is used by default.
 
-9. To change root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`.
+10. To change root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`.
 
-10. After installation, we recommend that you update your operating system:
+11. After installation, we recommend that you update your operating system:
     ```shell
     # rw
     # pacman -Syu
