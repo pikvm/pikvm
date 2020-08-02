@@ -186,6 +186,7 @@ Also check out this small [PCB for ATX](https://easyeda.com/mark.gilbert/zerow-k
 
 ## Setting up the v0
 | ATX control board and Arduino HID (keyboard & mouse) |
+|------------------------------------------------------|
 | <img src="img/v0.png" alt="drawing" width="400"/> |
 
 -----
