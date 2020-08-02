@@ -273,7 +273,7 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
   Please note: **we strongly discourage the use of VNC on untrusted networks.** The current implementation does not use encryption, and your passwords are transmitted over the network in a plain text. The existing anonymous TLS mode is also not secure enough.
   
 * To use Arduino HID with **v2** platform:
-  - Build and connect HID according to the [diagram](#setting-up-the-v2) (the bottom part with transistor, level-shifter and Arduino).
+  - Build and connect HID according to the [diagram](#setting-up-the-v0) (the bottom part with transistor, level-shifter and Arduino).
   - Switch to RW-mode using command `rw`.
   - Add these lines to `/etc/kvmd/override.yaml` (remove `{}` in the file before):
     ```yaml
