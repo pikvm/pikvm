@@ -172,7 +172,7 @@ Note: there are many revisions of the Raspberry Pi boards and you may come acros
 ## Setting up the v2
 Here is a diagram shows that how to connect all of the pieces (click to full size).
 
-| ATX control board | USB power splitter cable |
+| ATX control board | USB splitter cable (only for Raspberry Pi 4) |
 |-------------------|--------------------------|
 | <img src="img/v2.png" alt="drawing" width="400"/> | <img src="img/v2_splitter.png" alt="drawing" width="400"/> |
 
