@@ -1,24 +1,20 @@
 # Flashing the Arduino HID
 This operation can be done using your RPi. Here the common steps:
 
-* Disconnect the RESET wire from the Arduino board.
-* Connect the Arduino and RPi with a suitable USB cable.
-* Log in to the Raspberry Pi using SSH (`ssh root@<addr>` with password `root` by default) or using keyboard and monitor. The Raspberry Pi obtains the network address over DHCP.
-* Next, upload the firmware.
-* Connect the RESET wire, disconnect the USB cable, and reboot the RPi.
-
-Here the commands to SSH and upload the firmware:
-
-```shell
-[user@localhost os]$ ssh root@<addr>
-[root@pikvm ~]# rw
-[root@pikvm ~]# systemctl stop kvmd
-[root@pikvm ~]# cp -r /usr/share/kvmd/hid ~
-[root@pikvm ~]# cd ~/hid
-[root@pikvm hid]# make
-[root@pikvm hid]# make install
-[root@pikvm hid]# reboot
-```
+1. Disconnect the RESET wire from the Arduino board.
+2. Connect the Arduino and RPi with a suitable USB cable.
+3. Log in to the Raspberry Pi using SSH (`ssh root@<addr>` with password `root` by default) or using keyboard and monitor. The Raspberry Pi obtains the network address over DHCP.
+4. Upload the firmware:
+    ```shell
+    [root@pikvm ~]# rw
+    [root@pikvm ~]# systemctl stop kvmd
+    [root@pikvm ~]# cp -r /usr/share/kvmd/hid ~
+    [root@pikvm ~]# cd ~/hid
+    [root@pikvm hid]# make
+    [root@pikvm hid]# make install
+    [root@pikvm hid]# reboot
+    ```
+5. Connect the RESET wire, disconnect the USB cable, and reboot the RPi.
 
 On `make install` you may encounter the following error:
 ```
