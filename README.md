@@ -159,7 +159,7 @@ We are also currently developing our own HAT for the Raspberry Pi 4. It will hav
 # Setting up the hardware
 ## Connecting the video capture
 #### For the HDMI-CSI bridge
-Insert the flexible flat cable of the HDMI bridge into the narrow white connector on the Raspberry Pi (the closest one to big USB sockets). Use only the cable that was included with the device package, or make sure that the third-party cable has the correct pinout.
+Insert the flexible flat cable of the HDMI bridge into the narrow white connector on the Raspberry Pi (the closest one to big USB sockets). Make sure that the cable is inserted on the correct side and until it stops, and then snap the black latch. Never connect or disconnect the flat cable from a powered device. This is not Plug-and-Play, and you can damage it. Also use only the cable that was included with the device package, or make sure that the third-party cable has the correct pinout.
 
 #### For the HDMI-USB dongle
 Connect USB dongle to exactly this port. It is bound in the software so the OS does not confuse the video device with something else.
@@ -167,7 +167,7 @@ Connect USB dongle to exactly this port. It is bound in the software so the OS d
 |----------------------|----------------|
 | <img src="img/v2_usbcap_rpi2.png" alt="drawing" width="200"/> | <img src="img/v2_usbcap_rpi4.png" alt="drawing" width="200"/> |
 
-Note: there are many revisions of the Raspberry Pi boards and you may come across one that we haven't tested. If the binding fails, the device will be available for all ports. Everything will work, but if you use a webcam and Linux mistakes it for a dongle, [write to us](https://discord.gg/bpmXfz5) and we will fix it.
+There are many revisions of the Raspberry Pi boards and you may come across one that we haven't tested. If the binding fails, the device will be available for all ports. Everything will work, but if you use a webcam and Linux mistakes it for a dongle, [write to us](https://discord.gg/bpmXfz5) and we will fix it.
 
 ## Setting up the v2
 Here is a diagram shows that how to connect all of the pieces (click to full size).
