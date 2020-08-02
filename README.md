@@ -172,20 +172,21 @@ Note: there are many revisions of the Raspberry Pi boards and you may come acros
 ## Setting up the v2
 Here is a diagram shows that how to connect all of the pieces (click to full size).
 
-<img src="img/v2.png" alt="drawing" width="400"/>
+| ATX control board | USB power splitter cable |
+|-------------------|--------------------------|
+| <img src="img/v2.png" alt="drawing" width="400"/> | <img src="img/v2_splitter.png" alt="drawing" width="400"/> |
 
 **Raspberry Pi 4 note**: since one USB-C female connector is used to receive power and perform keyboard/mouse/drive emulation a special Y-cable must be made that splits the DATA and POWER lines of USB-C (see [reasons](https://github.com/pikvm/docs/issues/11)). It can be made from two suitable connecting cables, or soldered together from scratch. Be sure to check the circuit diagram below, otherwise you may damage your devices. The appropriate USB pinout(s) can easily be found on Google. Please note that if you make a Y-cable from two no-name cables, the colors of the wires may not match those shown. Use a multimeter to make sure the connections are correct.
-
-<img src="img/v2_splitter.png" alt="drawing" width="400"/>
 
 See video howtos:
 * [Making USB Y-splitter cable](https://www.youtube.com/watch?v=uLuBuQUF61o).
 * [Soldering ATX controller](https://www.youtube.com/watch?v=hKnKOuH_f8M).
 
-Also check out this small PCB for ATX (if you know how to make PCBs): https://easyeda.com/mark.gilbert/zerow-kvm-v1
+Also check out this small [PCB for ATX](https://easyeda.com/mark.gilbert/zerow-kvm-v1) (if you know how to make PCBs).
 
 ## Setting up the v0
-<img src="img/v0.png" alt="drawing" width="400"/>
+| ATX control board and Arduino HID (keyboard & mouse) |
+| <img src="img/v0.png" alt="drawing" width="400"/> |
 
 -----
 
