@@ -81,8 +81,8 @@ The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages 
 
 8. **Only for v0**: [Flash the Arduino HID](flashing_hid.md).
 
-9. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with password `root` by default) and HTTPS (try to open in a browser the URL `https://<IP addr>`, the login `admin` and password `admin` by default). For HTTPS a self-signed certificate is used by default.
+9. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with password `root` by default) and HTTPS (try to open in a browser the URL `https://<addr>`, the login `admin` and password `admin` by default). For HTTPS a self-signed certificate is used by default.
 
-10. To change root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`.
+10. To change the root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`.
 
 If you have any problems or questions, contact us using Discord: https://discord.gg/bpmXfz5
