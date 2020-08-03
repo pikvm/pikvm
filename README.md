@@ -356,6 +356,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Bryan Adams
 * Christof Maluck
 * Corey Lista
+* Clifford Coleman
 * David Howell
 * Denis Yatsenko
 * Dmitry Shilov
@@ -367,6 +368,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * John McGovern
 * Jozef Riha
 * Justin Waters
+* Malcolm Cameron
 * Mark Gilbert
 * Mark Robinson
 * Mauricio Allende
