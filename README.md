@@ -82,7 +82,7 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 
 | DIY Device | Web UI |
 |------------|--------|
-| <img src="img/v2_example.jpg" alt="drawing" height="300"/> | <img src="img/screen1.png" alt="drawing" height="300"/> |
+| <img src="img/v2_example.jpg" alt="drawing"/> | <img src="img/screen1.png" alt="drawing"/> |
 
 -----
 
