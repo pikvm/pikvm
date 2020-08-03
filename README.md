@@ -6,6 +6,7 @@ A very simple and fully functional Raspberry Pi-based IP-KVM that you can make w
 The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community Chat](https://discord.gg/bpmXfz5) for news, questions and support!
 
 * **[>>> DIY Getting Started <<<](#diy-getting-started)**
+* Watch the video: https://youtu.be/9YhPWjWv5gw
 * [Pro Series v3 Preorder Today!](#the-future-v3-platform-work-in-progress)
 * [Limitations](#limitations)
 * [Tips](#tips)
