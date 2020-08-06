@@ -1,4 +1,4 @@
-# Hardware arduino HID instead the OTG
+# Hardware Arduino HID instead of the OTG
 Using Arduino HID on non-v0 platforms is useful if you need a simple and primitive keyboard emulation device. For example, when used with a hardware KVM switch. You can use the firmware to emulate a USB keyboard and mouse, or for the PS/2 keyboard only.
 
 ## USB keyboard & mouse
@@ -44,4 +44,4 @@ Next, you need to connect the Arduino pins to the female PS/2 port of your mothe
 Follow this diagram:
 | Female PS/2 port (front view) | Pinout |
 |-------------------------------|--------|
-| <img src="../img/ps2_kdb.png" alt="drawing"/> | Arduino pin 3 <-> PS/2 CLOCK<br>Arduino pin 2 <-> PS/2 DATA |
+| <img src="/img/ps2_kbd.png" alt="drawing" width="200"/> | Arduino pin 3 <-> PS/2 CLOCK<br>Arduino pin 2 <-> PS/2 DATA |
