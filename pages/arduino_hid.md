@@ -39,7 +39,7 @@ Use commands:
 # make install
 ```
 
-Next, you need to connect the Arduino pins to the female PS/2 port of your motherboard. Choose a purple port. If you only have one port, it is probably universal and can be used either for the keyboard or for the mouse. Most likely, it is painted in two colors: green and purple. You can use it either.
+Next, you need to connect the Arduino pins to the female PS/2 port of your motherboard. Choose the purple port. If your motherboard only have one port, it's probably universal and can be used either for the keyboard or for the mouse. Most likely, it is painted in two colors: green and purple. You can use it either.
 
 Follow this diagram:
 | Female PS/2 port (front view) | Pinout |
