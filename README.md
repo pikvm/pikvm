@@ -351,10 +351,12 @@ If you wish to use Pi-KVM in production, we accept orders to modify it for your 
 These kind people donated money to the Pi-KVM project and supported work on it. We are very grateful for their help, and commemorating their names is the least we can do in return.
 * Aleksei Brusianskii
 * Alucard
+* Anton Kovalenko
 * Arthur Woimbée
 * Ben Gordon
 * Branden Shaulis
 * Brian White
+* Bruno Gomes
 * Bryan Adams
 * Christof Maluck
 * Corey Lista
@@ -370,6 +372,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jason Toland
 * Jeff Bowman
 * John McGovern
+* Jonathan Vaughn
 * Jozef Riha
 * Justin Waters
 * Malcolm Cameron
