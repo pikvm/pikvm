@@ -4,7 +4,7 @@ This operation can be done using your RPi. Here the common steps:
 1. Disconnect the RESET wire from the Arduino board.
 2. Connect the Arduino and RPi with a suitable USB cable.
 3. Log in to the Raspberry Pi using SSH (`ssh root@<addr>` with password `root` by default) or using keyboard and monitor. The Raspberry Pi obtains the network address over DHCP.
-4. Upload the firmware (USB keyboard & mouse is used by default, on this step [you can choose PS/2 keyboard](arduino_hid.md#ps_2_keyboard)):
+4. Upload the firmware (USB keyboard & mouse is used by default, on this step [you can choose PS/2 keyboard](arduino_hid.md#ps2-keyboard)):
     ```shell
     [root@pikvm ~]# rw
     [root@pikvm ~]# systemctl stop kvmd
