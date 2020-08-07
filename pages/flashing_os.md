@@ -5,7 +5,7 @@ Note: right now, pre-compiled images are only available for the Raspberry Pi 4. 
 
 
 ## Using Linux CLI
-Decompress and flash image and follow to the [final steps](#the-final-steps). Be careful be careful when choosing your device path:
+Decompress and flash image and follow to the [final steps](#the-final-steps). Be careful when choosing your device path:
 ```bash
 $ bzip2 -d v2-hdmi-rpi4.img.bz2
 $ sudo dd if=v2-hdmi-rpi4.img of=/dev/mmcblk0
