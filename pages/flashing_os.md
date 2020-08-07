@@ -47,7 +47,7 @@ $ sudo dd if=v2-hdmi-rpi4.img of=/dev/mmcblk0
 
 4. To change the root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`.
 
-5. After installation, we recommend that you update your operating system:
+5. After installation, we recommend you to update your operating system:
     ```shell
     # rw
     # pacman -Syu
