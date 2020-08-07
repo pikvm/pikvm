@@ -15,13 +15,13 @@ $ sudo dd if=v2-hdmi-rpi4.img of=/dev/mmcblk0
 ## Using Balena Etcher (Linux, MacOS and Windows)
 1. Download and install [Balena Etcher](https://www.balena.io/etcher).
 
-2. Decomress the image using your File Manager. If you don't have an archiver (on Windows for example) - the [7-Zip](https://www.7-zip.org) is a great choice.
+2. The downloaded OS image is compressed. Balena Etcher can flash compressed images, but it consumes more RAM and this process slower than with uncompressed image. If possible, we recommend you to decompress the image (from `*img.bz2` to `*.img` file). You can do this using any archiver or your file manager. If you don't have any archiver (on Windows for example) - the [7-Zip](https://www.7-zip.org) is a great choice.
 
 3. Run Balena Etcher:
 
     <img src="../img/balena-1.png" alt="drawing" height="300"/>
 
-4. Press **Flash from file** and choose the image:
+4. Press **Flash from file** and choose the compressed or uncompressed image:
 
     <img src="../img/balena-2.png" alt="drawing" height="300"/>
 
