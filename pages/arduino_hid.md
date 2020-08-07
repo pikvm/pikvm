@@ -44,4 +44,4 @@ Next, you need to connect the Arduino pins to the female PS/2 port of your mothe
 Follow this diagram:
 | Female PS/2 port (front view) | Pinout |
 |-------------------------------|--------|
-| <img src="/img/ps2_kbd.png" alt="drawing" width="200"/> | Arduino pin 3 <-> PS/2 CLOCK<br>Arduino pin 2 <-> PS/2 DATA<br>Arduino GND pin <-> PS/2 GND |
+| <img src="/img/ps2_kbd.png" alt="drawing" width="200"/> | Arduino pin 7 <-> PS/2 CLOCK<br>Arduino pin 5 <-> PS/2 DATA<br>Arduino GND pin <-> PS/2 GND |
