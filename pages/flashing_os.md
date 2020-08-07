@@ -21,7 +21,7 @@ $ sudo dd if=v2-hdmi-rpi4.img of=/dev/mmcblk0
 
     <img src="../img/balena-1.png" alt="drawing" height="300"/>
 
-4. Press **Flash from file** and choose the compressed or uncompressed image:
+4. Press **Flash from file** and choose the image:
 
     <img src="../img/balena-2.png" alt="drawing" height="300"/>
 
