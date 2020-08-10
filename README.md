@@ -101,15 +101,14 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
 * Video capture device:
   - **Recommended**: [HDMI to CSI-2 bridge based on TC358743](https://aliexpress.com/item/4000102166176.html) - low latency ~100ms, more reliable.
   - ... or [HDMI to USB dongle](https://aliexpress.ru/item/4001043540669.html) (not available for ZeroW) - high latency ~200ms, [not very reliable](#a-few-words-about-hdmi-usb-dongle)).
-* Only for Raspberry Pi 4:
-  * Parts for Y-splitter cable:
-    * Option #1: DIY (for soldering or twist):
-      - 1x USB-A to USB-C cable (male-male).
-      - 1x another cable USB-A to any (male-any).
-    * Option #2: Ready-made:
-      - [USB/PWR Splitter Module](https://www.tindie.com/products/8086net/usbpwr-splitter),
-      - 1x USB-A to USB-C cable (male-male).
-      - 2x USB-A to USB-micro cable (male-male).
+* Only for Raspberry Pi 4: parts for Y-splitter cable:
+  * Option #1: DIY (for soldering or twist):
+    - 1x USB-A to USB-C cable (male-male).
+    - 1x another cable USB-A to any (male-any).
+  * Option #2: Ready-made:
+    - 1x [USB/PWR Splitter Module](https://www.tindie.com/products/8086net/usbpwr-splitter)\;,
+    - 1x USB-A to USB-C cable (male-male).
+    - 2x USB-A to USB-micro cable (male-male).
 * Only for Raspberry Pi ZeroW:
   * 2x USB A-to-micro cables (male-male, for power and keyboard & mouse emulator).
 * For ATX control (optional):
