@@ -24,7 +24,7 @@ Using Arduino HID on non-v0 platforms is useful if you need a simple and primiti
 ## PS/2 keyboard
 Using the PS/2 firmware currently has the following limitations:
 * The possibility of using USB HID is excluded.
-* Mouse is not supported due to features of the PS / 2 Protocol.
+* Mouse is not supported due to features of the [PS/2 protocol](https://wiki.osdev.org/PS/2_Mouse).
 
 Both of these problems will be solved one way or another in the future and the two different firmware versions will be combined into one universal one.
 
