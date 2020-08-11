@@ -229,10 +229,9 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
 
 * Almost all KVMD (the main daemon controlling Pi-KVM) configuration files use [YAML](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) syntax. Information on the format's syntax can be found at the link provided.
 
-* If you want to disable the web terminal use these commands:
+* If you want to disable the web terminal use this command:
     ```yaml
-    [root@pikvm ~]# systemctl disable kvmd-webterm
-    [root@pikvm ~]# systemctl stop kvmd-webterm
+    [root@pikvm ~]# systemctl disable --now kvmd-webterm
     ```
     
 * To disable authorization completely edit the file `/etc/kvmd/override.yaml`:
@@ -269,7 +268,7 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
             # port: 9  # By default
     ```
     
-* To use IPMI BMC you need to set up an appropriate account and run the `kvmd-ipmi` daemon (`systemctl start kvmd-ipmi` and `systemctl enable kvmd-ipmi`). Although Pi-KVM supports the IPMI protocol, we strongly recommend that you do not use it outside of trusted networks due to the protocol's [insecurity](https://github.com/NitescuLucian/nliplace.com.blog.drafts). Refer to the file `/etc/kvmd/ipmipasswd` to configure IPMI account.
+* To use IPMI BMC you need to set up an appropriate account and run the `kvmd-ipmi` daemon (`systemctl enable --now kvmd-ipmi`). Although Pi-KVM supports the IPMI protocol, we strongly recommend that you do not use it outside of trusted networks due to the protocol's [insecurity](https://github.com/NitescuLucian/nliplace.com.blog.drafts). Refer to the file `/etc/kvmd/ipmipasswd` to configure IPMI account.
 
 * To use VNC you need to change the keyboard layout for non-US client keyboards using `/etc/kvmd/override.yaml`. For example:
   ```yaml
@@ -283,7 +282,7 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
           vncauth:
               enabled: true
   ```
-  After that you can enable the `kvmd-vnc` daemon (`systemctl start kvmd-vnc` and `systemctl enable kvmd-vnc`). VNC will be available on port 5900 by default.  
+  After that you can enable the `kvmd-vnc` daemon (`systemctl enable --now kvmd-vnc`). VNC will be available on port 5900 by default.  
   It is reccomended to disable the automatic quality adjust setting if there is one in your client (this is called "Auto-Select"in TigerVNC).  
   Please note: **we strongly discourage the use of VNC on untrusted networks.** The current implementation does not use encryption, and your passwords are transmitted over the network in a plain text. The existing anonymous TLS mode is also not secure enough.
   
