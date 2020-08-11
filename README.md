@@ -287,7 +287,7 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
   It is reccomended to disable the automatic quality adjust setting if there is one in your client (this is called "Auto-Select"in TigerVNC).  
   Please note: **we strongly discourage the use of VNC on untrusted networks.** The current implementation does not use encryption, and your passwords are transmitted over the network in a plain text. The existing anonymous TLS mode is also not secure enough.
   
-* To use Arduino HID with **v2** platform see [here](pages/arduino_hid.md).
+* To use Arduino HID (for USB or PS/2) with **v2** platform see [here](pages/arduino_hid.md).
 
 -----
 
