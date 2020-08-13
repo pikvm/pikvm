@@ -208,6 +208,9 @@ Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with p
 
 To change the root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`.
 
+# Access to Pi-KVM from the Internet
+You can use port forwarding for port 443 on your router if it has an external IP address. In all other cases, you can use the excellent free VPN service [Tailscale](pages/tailscale.md), which is configured on Pi-KVM with a [few simple commands](pages/tailscale.md).
+
 If you have any problems or questions, contact us using Discord: https://discord.gg/bpmXfz5
 
 Happy using of Pi-KVM :)
