@@ -338,6 +338,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Alucard
 * Anton Kovalenko
 * Arthur Woimbée
+* baddog
 * Ben Gordon
 * Branden Shaulis
 * Brian White
