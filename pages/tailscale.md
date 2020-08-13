@@ -4,7 +4,7 @@ You can use [Tailscale](https://tailscale.com/) to access Pi-KVM on the internal
 # Installation
 ## On the Pi-KVM side
 1. Use this commands:
-  ```shell
+  ```
   # rw
   # pacman -Syy
   # pacman -S tailscale
