@@ -377,6 +377,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Nils Orbat
 * Nithin Philips
 * pozitron03
+* Ranc1d
 * Samed Ozoglu
 * Scott
 * Steven Richter
