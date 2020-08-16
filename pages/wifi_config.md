@@ -24,13 +24,16 @@ You can create WiFi profiles either manually or by using `wifi-menu` - GUI. This
 wifi-menu -o
 ```
 The `-o` makes sure that the WiFi passphrase is stored encrypted. Otherwise it will be stored in cleartext in the profile file. `wifi-menu` will scan for all available WiFi networks and provide you a list:
-![Wifi Menu 1](/img/wifi-1.png)
+
+<img align="left" alt="Wifi Menu 1" src="/img/wifi-1.png">
 
 Select the WiFi you want to connect to and give the profile file a name. The default name is wlan0-wifiname:
-![Wifi Menu 2](/img/wifi-2.png)
+
+<img align="left" alt="Wifi Menu 2" src="/img/wifi-2.png">
 
 Enter the WPA-Passphrase:
-![Wifi Menu 3](/img/wifi-3.png)
+
+<img align="left" alt="Wifi Menu 3" src="/img/wifi-3.png">
 
 Afterwards `wifi-menu` will try to connect to the WiFi. If you're connected via ssh or the Web Terminal you'll loose connection to the Raspberry Pi. Most DHCP server will give the Raspberry Pi a new (and usually different) IP address for each interface (LAN / WLAN).
 
@@ -41,7 +44,9 @@ If you want to store the WiFi passphrase encrypted you have to generate it via `
 ```
 wpa_passphrase wifiname this_is_my_great_and_secure_key_1234567890
 ```
-![Wifi Menu 4](/img/wifi-4.png)
+
+<img align="left" alt="WPA Passphrase Generation" src="/img/wifi-4.png">
+
 Copy the second hexadecimal string without *psk=*. In this example _814c45d0f88f60636532b034c463639a506670f8ba3c7965e62cdbc1989f6d66_.
 Create a new file with the editor of your choice:
 ```
@@ -71,5 +76,6 @@ Do this by typing `ro` in the console
 ```
 ro
 ```
-Additional resources
-[Arch Linux Wiki for netctl](https://wiki.archlinux.org/index.php/Netctl)
+## Additional resources
+
+- [Arch Linux Wiki for netctl](https://wiki.archlinux.org/index.php/Netctl)
