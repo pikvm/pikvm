@@ -291,7 +291,7 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
   
 * To use Arduino HID (for USB or PS/2) with **v2** platform see [here](pages/arduino_hid.md).
 
-* [Wi-Fi configuration after install.](pages/wifi_config.md).
+* [Wi-Fi configuration after install](pages/wifi_config.md).
 
 -----
 
