@@ -1,5 +1,5 @@
 # Hardware Arduino HID instead of the OTG
-Using Arduino HID on non-v0 platforms is useful if you need a simple and primitive keyboard emulation device. For example, when used with a hardware KVM switch. You can use the firmware to emulate:
+Using Arduino HID on non-v0 platforms is useful if you need a simple and primitive keyboard emulation device. For example, when used with a hardware KVM switch wich [does not recognize composite HID](https://github.com/pikvm/pikvm/issues/7). You can use the Arduino HID firmware to emulate (at your choice):
 * [USB keyboard & mouse](#usb-keyboard--mouse)
 * [PS/2 keyboard only](#ps2-keyboard)
 * [PS/2 keyboard & USB mouse](#ps2-keyboard--usb-mouse)
