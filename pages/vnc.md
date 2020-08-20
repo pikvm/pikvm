@@ -3,7 +3,7 @@ As an alternative to the web interface, you can use VNC with various desktop cli
 
 **Please note: we strongly don't recomment the use of VNC in untrusted networks.** The current implementation uses either weak TLS encryption or no encryption at all (depending on your client). In the latter case, your password will be transmitted over the network in plain text. Unfortunately, this is the reality of the VNC protocol.
 
-# Enabling VNC on Pi-KVM side
+# Enabling VNC on the Pi-KVM side
 1. Switch Pi-KVM filesystem to the read-write mode using command `rw`.
 2. Optional: change client's keyboard layout if you're using an non-US keyboard. To do this edit file `/etc/kvmd/override.yaml` (remove `{}` before adding lines):
     ```yaml
