@@ -49,6 +49,8 @@ Follow this diagram:
 |-------------------------------|--------|
 | <img src="/img/ps2_kbd.png" alt="drawing" width="200"/> | Arduino pin 7 <-> PS/2 CLOCK<br>Arduino pin 5 <-> PS/2 DATA<br>Arduino GND pin <-> PS/2 GND |
 
+**Connect VIN pin of Arduino to any Raspberry's 5v pin.**
+
 
 ## PS/2 keyboard & USB mouse
 This is a mixed mode of HID which is a compromise for old computers. Connections are made simultaneously by both USB and PS/2 pins, as shown in the diagram above. Follow the [PS/2 instructions](#ps2-keyboard), but use these commands to build and install the firmware:
@@ -56,3 +58,5 @@ This is a mixed mode of HID which is a compromise for old computers. Connections
 # make mixed
 # make install
 ```
+
+**You don't need to connect the Arduino VIN pin if you connected USB (the Arduino will get power through it)**.
