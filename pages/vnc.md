@@ -6,18 +6,18 @@ As an alternative to the web interface, you can use VNC with various desktop cli
 # Enabling VNC on Pi-KVM side
 1. Switch Pi-KVM filesystem to the read-write mode using command `rw`.
 2. Optional: change client's keyboard layout if you're using an non-US keyboard. To do this edit file `/etc/kvmd/override.yaml` (remove `{}` before adding lines):
-  ```yaml
-  vnc:
-      keymap: /usr/share/kvmd/keymaps/ru
-  ```
+    ```yaml
+    vnc:
+        keymap: /usr/share/kvmd/keymaps/ru
+    ```
 3. Optional: some VNC clients (for example TightVNC) can't use user/password authentication. In this case you can enable passhrases mode in `/etc/kvmd/override.yaml`:
-  ```yaml
-  vnc:
-      auth:
-          vncauth:
-              enabled: true
-  ```
-  To set passphrases edit file `/etc/kvmd/vncpasswd`.
+    ```yaml
+    vnc:
+        auth:
+            vncauth:
+                enabled: true
+    ```
+    To set passphrases edit file `/etc/kvmd/vncpasswd`.
 4. Enable `kvmd-vnc` daemon. VNC will be available on the port 5900: `systemctl enable --now kvmd-vnc`.
 5. Switch filesystem to the read-only: `ro`.
 
