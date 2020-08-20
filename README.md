@@ -272,24 +272,10 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
     ```
     
 * To use IPMI BMC you need to set up an appropriate account and run the `kvmd-ipmi` daemon (`systemctl enable --now kvmd-ipmi`). Although Pi-KVM supports the IPMI protocol, we strongly recommend that you do not use it outside of trusted networks due to the protocol's [insecurity](https://github.com/NitescuLucian/nliplace.com.blog.drafts). Refer to the file `/etc/kvmd/ipmipasswd` to configure IPMI account.
-
-* To use VNC you need to change the keyboard layout for non-US client keyboards using `/etc/kvmd/override.yaml`. For example:
-  ```yaml
-  vnc:
-      keymap: /usr/share/kvmd/keymaps/ru
-  ```
-  By default username and password authentication is used. This is not supported by all clients (we recommend [TigerVNC](https://tigervnc.org)). To enable passphrase authentication, you need to edit the file `/etc/kvmd/vncpasswd` to set passphrases and enable this feature in `/etc/kvmd/override.yaml`:
-  ```yaml
-  vnc:
-      auth:
-          vncauth:
-              enabled: true
-  ```
-  After that you can enable the `kvmd-vnc` daemon (`systemctl enable --now kvmd-vnc`). VNC will be available on port 5900 by default.  
-  It is reccomended to disable the automatic quality adjust setting if there is one in your client (this is called "Auto-Select"in TigerVNC).  
-  Please note: **we strongly discourage the use of VNC on untrusted networks.** The current implementation does not use encryption, and your passwords are transmitted over the network in a plain text. The existing anonymous TLS mode is also not secure enough.
   
-* To use Arduino HID (for USB or PS/2) with **v2** platform see [here](pages/arduino_hid.md).
+* [Enabling VNC](pages/vnc.md).
+  
+* [Using Arduino HID (for USB or PS/2) with **v2** platform](pages/arduino_hid.md).
 
 * [Wi-Fi configuration after install](pages/wifi_config.md).
 
