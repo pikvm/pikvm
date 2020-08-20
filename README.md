@@ -100,7 +100,7 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
 * USB-A 3A charger (female socket) or power supply.
 * Video capture device:
   - **Recommended**: [HDMI to CSI-2 bridge based on TC358743](https://aliexpress.com/item/4000102166176.html) - low latency ~100ms, more reliable.
-  - ... or [HDMI to USB dongle](https://aliexpress.ru/item/4001043540669.html) (not available for ZeroW) - high latency ~200ms, [not very reliable](#a-few-words-about-hdmi-usb-dongle)).
+  - ... or [HDMI to USB dongle](https://aliexpress.com/item/4001043540669.html) (not available for ZeroW) - high latency ~200ms, [not very reliable](#a-few-words-about-hdmi-usb-dongle)).
 * Only for Raspberry Pi 4: parts for Y-splitter cable:
   * Option #1: DIY (for soldering or twist):
     - 1x USB-A to USB-C cable (male-male).
@@ -118,7 +118,7 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
   - A breadboard and wires.
   
 #### A few words about HDMI-USB dongle
-It's completely supported and Pi-KVM works great with it. But it has some disadvantages compared with recommended [HDMI-CSI bridge](https://aliexpress.ru/item/4000102166176.html): USB gives a lot of latency (200ms vs 100ms) and it doesn't support stream compression control (you won't be able to use Pi-KVM in a place with a poor internet connection). It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself. In addition, some users report hardware problems: the dongle may not work in the BIOS or simply stop working after a while. It's a black box, and no one knows what's inside it. If you have problems with it, it will not be possible to fix them.
+It's completely supported and Pi-KVM works great with it. But it has some disadvantages compared with recommended [HDMI-CSI bridge](https://aliexpress.com/item/4000102166176.html): USB gives a lot of latency (200ms vs 100ms) and it doesn't support stream compression control (you won't be able to use Pi-KVM in a place with a poor internet connection). It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself. In addition, some users report hardware problems: the dongle may not work in the BIOS or simply stop working after a while. It's a black box, and no one knows what's inside it. If you have problems with it, it will not be possible to fix them.
   
 ## Hardware for v0
 * Raspberry Pi 2 or 3.
@@ -135,7 +135,7 @@ It's completely supported and Pi-KVM works great with it. But it has some disadv
 * ATX control (optional): [see v2 description](#hardware-for-v2).
 
 #### Addition
-* If you want to capture VGA from your server instead of HDMI, buy the [VGA-to-HDMI converter](https://aliexpress.ru/item/4000553298530.html).
+* If you want to capture VGA from your server instead of HDMI, buy the [VGA-to-HDMI converter](https://aliexpress.com/item/4000553298530.html).
 * Pi-KVM can be powered using PoE, but it is not recommend to use the official PoE HAT: it is unreliable and [not compatible with the HDMI bridge](https://github.com/pikvm/pikvm/issues/6). Use any other PoE hat without an I2C fan controller.
 * **Don't use random relay modules or random optocouplers!** Some relays or optocouplers may not be sensitive enough for the Raspberry Pi, some others may be low-level controlled. Either use relays that are activated by a high logic level, or follow the design provided and buy an OMRON. See details [here](https://github.com/pikvm/pikvm/issues/13).  
   <img src="img/no_relays.png" alt="drawing" width="100"/>
@@ -208,6 +208,9 @@ Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with p
 
 To change the root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`.
 
+# Access to Pi-KVM from the Internet
+You can use port forwarding for port 443 on your router if it has an external IP address. In all other cases, you can use the excellent free VPN service [Tailscale](pages/tailscale.md), which is configured on Pi-KVM with a [few simple commands](pages/tailscale.md).
+
 If you have any problems or questions, contact us using Discord: https://discord.gg/bpmXfz5
 
 Happy using of Pi-KVM :)
@@ -269,24 +272,12 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
     ```
     
 * To use IPMI BMC you need to set up an appropriate account and run the `kvmd-ipmi` daemon (`systemctl enable --now kvmd-ipmi`). Although Pi-KVM supports the IPMI protocol, we strongly recommend that you do not use it outside of trusted networks due to the protocol's [insecurity](https://github.com/NitescuLucian/nliplace.com.blog.drafts). Refer to the file `/etc/kvmd/ipmipasswd` to configure IPMI account.
-
-* To use VNC you need to change the keyboard layout for non-US client keyboards using `/etc/kvmd/override.yaml`. For example:
-  ```yaml
-  vnc:
-      keymap: /usr/share/kvmd/keymaps/ru
-  ```
-  By default username and password authentication is used. This is not supported by all clients (we recommend [TigerVNC](https://tigervnc.org)). To enable passphrase authentication, you need to edit the file `/etc/kvmd/vncpasswd` to set passphrases and enable this feature in `/etc/kvmd/override.yaml`:
-  ```yaml
-  vnc:
-      auth:
-          vncauth:
-              enabled: true
-  ```
-  After that you can enable the `kvmd-vnc` daemon (`systemctl enable --now kvmd-vnc`). VNC will be available on port 5900 by default.  
-  It is reccomended to disable the automatic quality adjust setting if there is one in your client (this is called "Auto-Select"in TigerVNC).  
-  Please note: **we strongly discourage the use of VNC on untrusted networks.** The current implementation does not use encryption, and your passwords are transmitted over the network in a plain text. The existing anonymous TLS mode is also not secure enough.
   
-* To use Arduino HID (for USB or PS/2) with **v2** platform see [here](pages/arduino_hid.md).
+* [Enabling VNC](pages/vnc.md).
+  
+* [Using Arduino HID (for USB or PS/2) with **v2** platform](pages/arduino_hid.md).
+
+* [Wi-Fi configuration after install](pages/wifi_config.md).
 
 -----
 
@@ -337,7 +328,9 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Aleksei Brusianskii
 * Alucard
 * Anton Kovalenko
+* Aron Perelman
 * Arthur Woimbée
+* baddog
 * Ben Gordon
 * Branden Shaulis
 * Brian White
@@ -355,6 +348,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Grey Cynic
 * Guido Bernacchi
 * HimKo
+* Ivan Shapovalov
 * Jacob Morgan
 * Jason Toland
 * Jeff Bowman
@@ -369,9 +363,12 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Mauricio Allende
 * Michael Kovacs
 * Michael Lynch
+* Morgan Helton
 * Nicholas Jeppson
 * Nils Orbat
 * Nithin Philips
+* pozitron03
+* Ranc1d
 * Samed Ozoglu
 * Scott
 * Steven Richter
