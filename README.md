@@ -362,6 +362,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Grey Cynic
 * Guido Bernacchi
 * HimKo
+* Ivan Shapovalov
 * Jacob Morgan
 * Jason Toland
 * Jeff Bowman
