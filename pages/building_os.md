@@ -21,7 +21,7 @@ The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages 
   * Choose the platform:
     - `PLATFORM=v2-hdmi` for RPi4 or ZeroW with HDMI-CSI bridge.
     - `PLATFORM=v0-hdmi` for RPi 2 or 3 with HDMI-CSI bridge and Arduino HID.
-    - `PLATFORM=v2-hdmiusb` for RPi4 with HDMI-USB dongle.
+    - `PLATFORM=v2-hdmiusb` for RPi4 or ZeroW with HDMI-USB dongle.
     - `PLATFORM=v0-hdmiusb` for RPi 2 or 3 with HDMI-USB dongle and Arduino HID.
     - Other options are for legacy or specialized Pi-KVM boards (WIP).
 
