@@ -14,7 +14,8 @@ The current VNC implementation uses either weak TLS encryption or no encryption 
     vnc:
         keymap: /usr/share/kvmd/keymaps/ru
     ```
-    _All available keymaps are located in /usr/share/kvmd/keymaps:_ 
+    _All available keymaps are located in /usr/share/kvmd/keymaps:_
+
     ![VNC keymaps](/img/vnc-keymaps.png)
 
 3. _Optional:_ Some VNC clients (for example TightVNC) can't use user/password authentication. In this case you can enable passhrases mode in `/etc/kvmd/override.yaml`:
