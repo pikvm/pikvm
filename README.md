@@ -111,6 +111,7 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
     - 2x USB-A to USB-micro cable (male-male).
 * Only for Raspberry Pi ZeroW:
   * 2x USB A-to-micro cables (male-male, for power and keyboard & mouse emulator).
+  * 1x Raspberry Pi Zero Camera Cable (if using HDMI to CSI-2 Bridge)
 * For ATX control (optional):
   - [4x MOSFET relays OMRON G3VM-61A1](https://www.digikey.com/products/en?keywords=G3VM-61A1).
   - 4x 390 Ohm resistors.
