@@ -345,6 +345,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * David Howell
 * Denis Yatsenko
 * Dmitry Shilov
+* Foamy
 * Ge Men
 * Grey Cynic
 * Guido Bernacchi
@@ -377,6 +378,5 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Steven Richter
 * Truman Kilen
 * Walter_Ego
-* Wouter Backx
 * YURI LEE
 * zgen
