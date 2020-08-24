@@ -371,6 +371,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Ranc1d
 * Samed Ozoglu
 * Scott
+* Sergey Lukjanov
 * Steven Richter
 * Truman Kilen
 * Walter_Ego
