@@ -54,7 +54,7 @@ Decompress and flash image and follow to the [final steps](#the-final-steps). Be
     # reboot
     ```
     
-6. **27.08.2020 note about update**: the latest version of Arch Linux has a slightly broken systemd. The problem is that the SSH login to your Pi-KVM may not work the first time, but the second or third. This issue does not affect the core functionality of Pi-KVM and will be fixed by Arch developers in the near future. However, if you want, you can use a temporary workaround for this problem:
+6. **27.08.2020 note (READ BEFORE UPDATE)**: the latest version of Arch Linux has a slightly broken systemd. The problem is that the SSH login to your Pi-KVM may not work the first time, but the second or third. This issue does not affect the core functionality of Pi-KVM and will be fixed by Arch developers in the near future. However, if you want, you can use a temporary workaround for this problem:
     * Switch OS to RW-mode: `rw`
     * Edit file `/etc/pam.d/system-login` and comment line `-session   optional   pam_systemd.so` (prepend `#` character at the beginning).
     * Perform `reboot`.
