@@ -353,6 +353,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * HimKo
 * Ivan Shapovalov
 * Jacob Morgan
+* Jan Niehusmann
 * Jason Toland
 * Jeff Bowman
 * John McGovern
