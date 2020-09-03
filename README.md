@@ -1,5 +1,5 @@
 # Open and cheap DIY IP-KVM based on Raspberry Pi  
-[![Discord](https://img.shields.io/discord/580094191938437144?logo=discord)](https://discord.gg/bpmXfz5)
+[![Discord](https://img.shields.io/discord/580094191938437144?logo=discord)](https://discord.gg/bpmXfz5) [![Reddit](https://img.shields.io/badge/reddit-join-orange?logo=reddit)](https://www.reddit.com/r/pikvm)
 
 A very simple and fully functional Raspberry Pi-based IP-KVM that you can make with your own hands. This device helps to manage servers or workstations remotely, regardless of the health of the operating system or whether one is installed. You can fix any problem, configure the BIOS, and even reinstall the OS using the virtual CD-ROM or Flash Drive.
 
@@ -213,6 +213,8 @@ To change the root password use command `passwd` via SSH or webterm. To change P
 You can use port forwarding for port 443 on your router if it has an external IP address. In all other cases, you can use the excellent free VPN service [Tailscale](pages/tailscale.md), which is configured on Pi-KVM with a [few simple commands](pages/tailscale.md).
 
 If you have any problems or questions, contact us using Discord: https://discord.gg/bpmXfz5
+
+Subscribe to our Subreddit to follow news and releases: https://www.reddit.com/r/pikvm
 
 Happy using of Pi-KVM :)
 
