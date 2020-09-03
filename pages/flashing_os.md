@@ -57,3 +57,5 @@ Decompress and flash image and follow to the [final steps](#the-final-steps). Be
 6. **27.08.2020 note about systemd**: the latest version of Arch Linux has a slightly broken systemd. The problem is that SSH to the Pi-KVM host may not work the first time, but the second or third. The Pi-KVM build environment contains a workaround for this problem: in the file `/etc/pam.d/system-login` line `-session   optional   pam_systemd.so` is commented. This does not have any negative impact on the PI-KVM functionality, but if you want to, after fixing the systemd (in a couple of months with the next update), you can uncomment this line.
 
 If you have any problems or questions, contact us using Discord: https://discord.gg/bpmXfz5
+
+Subscribe to our Subreddit to follow news and releases: https://www.reddit.com/r/pikvm
