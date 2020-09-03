@@ -18,7 +18,7 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 * **FullHD video** using advanced **HDMI-to-CSI bridge** or **USB dongle**;
 * Extra low **100ms video latency** (for CSI bridge);
 * Bootable **Virtual CD-ROM** and **Flash Drive**;
-* **Keyboard** and **mouse** (with leds and the wheel);
+* USB **Keyboard** and **mouse** (with leds and the wheel), PS/2 keyboard;
 * **Control the server power** using ATX functions;
 * Access via **Web UI** or **VNC**, ability to use **IPMI BMC** and **Wake-on-LAN** to control the server;
 * **The ready-made OS** with read-only filesystem;
