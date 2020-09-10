@@ -9,8 +9,10 @@ that can also be used transparently by emulating abstract GPIO API.
 # Configuration
 Setting up GPIO is quite complex. The interface is divided into several layers for flexibility. All configuration is performed using a file `/etc/kvmd/override.yaml` which has the [YAML syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html). We will look at each part of the configuration separately in a small test example.
 
-* **Drivers** is the first layer that reflects the hardware that represents the IO ports (standard GPIO of Raspberry Pi, USB relay, and so on). Each driver has a type (a plugin that implements the hardware support) and an unique name. Multiple drivers of the same type can be defined at the same time.  
+* **Drivers** is the first layer that reflects the hardware that represents the IO ports (standard GPIO of Raspberry Pi, USB relay, and so on). Each driver has a type (a plugin that implements the hardware support) and an unique name. Multiple drivers of the same type can be defined at the same time.
+
     For example, you can connect multiple relays and give each one its own name. By default, one driver is configured with the name `__gpio__`, representing the physical GPIO interface of the Raspberry Pi (type `gpio`).
+
     ```yaml
     kvmd:
         gpio:
@@ -30,9 +32,13 @@ Setting up GPIO is quite complex. The interface is divided into several layers f
                     type: hidrelay
                     device: /dev/hidraw0
     ```
-* **Scheme** is the second layer that reflects how the various driver ports are configured. Each port has a unique name, mode (**input** or **output**), pin number, and refers to the driver that provides it.  
-    Two interaction modes are available for outputs: **pulse** and **switch**. In pulse mode, the output quickly switches its state to logical 1 and back, and in switch mode, it saves the state that the user set. When KVMD starts and finishes, all output ports are reset to 0. This can be avoided using the `initial` parameter.  
+
+* **Scheme** is the second layer that reflects how the various driver ports are configured. Each port has a unique name, mode (**input** or **output**), pin number, and refers to the driver that provides it.
+
+    Two interaction modes are available for outputs: **pulse** and **switch**. In pulse mode, the output quickly switches its state to logical 1 and back, and in switch mode, it saves the state that the user set. When KVMD starts and finishes, all output ports are reset to 0. This can be avoided using the `initial` parameter.
+
     If no driver is specified for the port in the scheme, then `__gpio__` will be used.
+
     ```yaml
     kvmd:
         gpio:
