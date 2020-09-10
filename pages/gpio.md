@@ -11,14 +11,14 @@ Setting up GPIO is quite complex. The interface is divided into several layers f
 
 * **Drivers** is the first layer that reflects the hardware that represents the IO ports (standard GPIO of Raspberry Pi, USB relay, and so on). Each driver has a type (a plugin that implements the hardware support) and an unique name. Multiple drivers of the same type can be defined at the same time.
 
-    For example, you can connect multiple relays and give each one its own name. By default, one driver is configured with the name `__gpio__`, representing the physical GPIO interface of the Raspberry Pi (type `gpio`).
+    For example, you can connect multiple relays and give each one its own name. By default, one driver is configured with the name `__gpio__`, representing the physical GPIO interface of the Raspberry Pi.
 
     ```yaml
     kvmd:
         gpio:
             drivers:
                 # This example shows how the __gpio__ driver is defined. You don't need to write it in your configuration.
-                __gpio__: # Names that start and end with two underscores are reserved. You don't have to define similar names yourself.
+                __gpio__:  # Names that start and end with two underscores are reserved. You don't have to define similar names yourself.
                     type: gpio
                     state_poll: 0.1
 
@@ -33,11 +33,11 @@ Setting up GPIO is quite complex. The interface is divided into several layers f
                     device: /dev/hidraw0
     ```
 
-* **Scheme** is the second layer that reflects how the various driver ports are configured. Each port has a unique name, mode (**input** or **output**), pin number, and refers to the driver that provides it.
+* **Scheme** is the second layer that reflects how the various driver ports are configured. Each port has a unique name, mode (`input` or `output`), a pin number, and refers to the driver that provides it.
 
-    Two interaction modes are available for outputs: **pulse** and **switch**. In pulse mode, the output quickly switches its state to logical 1 and back, and in switch mode, it saves the state that the user set. When KVMD starts and finishes, all output ports are reset to 0. This can be avoided using the `initial` parameter.
+    Two interaction modes are available for outputs: `pulse` and `switch`. In pulse mode, the output quickly switches its state to logical 1 and back (just like a button). In switch mode, it saves the state that the user set. When KVMD starts and finishes, all output ports are reset to 0. This can be avoided using the `initial` parameter.
 
-    If no driver is specified for the port in the scheme, then `__gpio__` will be used.
+    If no driver is specified for the port in the scheme, `__gpio__` will be used as default.
 
     ```yaml
     kvmd:
@@ -70,6 +70,34 @@ Setting up GPIO is quite complex. The interface is divided into several layers f
                     mode: output
                     initial: null
                     pulse:
-                        delay: 2 # Default pulse value
+                        delay: 2  # Default pulse value
                         max_delay: 2  # The pulse interval can be between min_pulse (0.1 by default) and max_pulse=5
     ```
+
+* **View** is the visualization layer of the scheme. It describes what the menu with GPIO functions will look like. It is easier to show by example.
+
+    ```yaml
+    kvmd:
+        gpio:
+            view:
+                header:
+                    title: Switches  # Menu title
+                table:  # The menu items are rendered in the form of a table of text labels and controls
+                    - ["#Generic GPIO leds"]  # Text starting with the sharp symbol will be a label
+                    - []  # Horizontal separator and start of a new table
+                    - ["#Test 1:", led1, button1]  # Text label, one input, one button with text "Click"
+                    - ["#Test 2:", led2, button2]
+                    - []
+                    - ["#HID Relays /dev/hidraw0"]
+                    - []
+                    - ["#Relay #1:", "relay1,Boop 0.1"]  # Text label and button with alternative text
+                    - ["#Relay #2:", "relay2,Boop 2.0"]
+    ```
+
+    <img src="../img/gpio_menu.png" alt="drawing" />
+
+    Here the rules:
+    - The inputs are displayed as round LEDs.
+    - The outputs are displayed as a switch AND a button.
+    - If the switch mode is disabled, only the I button will be displayed. If ripple is turned off, only the switch will be shown.
+    - To rename the output button, write some its identifier using comma like "relay1,My cool relay".
