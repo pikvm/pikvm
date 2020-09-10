@@ -24,6 +24,7 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 * **The ready-made OS** with read-only filesystem;
 * **Extensible authorization** and SSL encryption;
 * **Health monitoring** of the Pi;
+* Control **GPIO** ports and **USB relays**;
 * It only costs between $30 and $100 for parts!
 * 100% Open Source!
 
@@ -278,11 +279,13 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
   
 * [Enabling VNC](pages/vnc.md).
   
-* [Using Arduino HID (for USB or PS/2) with **v2** platform](pages/arduino_hid.md).
+* [Using Arduino HID (for USB or PS/2) with v2 platform](pages/arduino_hid.md).
 
 * [Wi-Fi configuration after install](pages/wifi_config.md).
 
 * [Export monitoring metrics to Prometheus](pages/prometheus.md).
+
+* [Control GPIO ports and USB relays](pages/gpio.md).
 
 -----
 
