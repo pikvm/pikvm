@@ -95,6 +95,7 @@ Setting up GPIO is quite complex. The interface is divided into several layers f
     ```
 
     This will be rendered as:
+
     <img src="../img/gpio_menu.png" alt="drawing" />
 
     Here the rules:
