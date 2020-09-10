@@ -19,7 +19,7 @@ scrape_configs:
 ```
 
 # Output example
-This example includes the GPIO from the PI-KVM's [test config](https://github.com/pikvm/kvmd/blob/master/testenv/v2-hdmi-rpi4.override.yaml).
+This example includes the GPIO from the PI-KVM's [test config](https://github.com/pikvm/kvmd/blob/905bcf555f00d191654982cca80e294363efecc1/testenv/v2-hdmi-rpi4.override.yaml#L40).
 ```bash
 $ curl -k -HX-KVMD-User:admin -HX-KVMD-Passwd:admin https://pikvm/api/export/prometheus/metrics
 
