@@ -107,4 +107,4 @@ Here the rules:
 - The inputs are displayed as round LEDs.
 - The outputs are displayed as a switch AND a button.
 - If the switch mode is disabled, only a button will be displayed. If pulse is disabled, only a switch will be shown.
-- To rename the output button, write some its identifier using comma like `"relay1,My cool relay"`.
+- To change title of the button, write some its name using comma like `"relay1,My cool relay"`.
