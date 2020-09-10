@@ -1,7 +1,7 @@
 # GPIO
 [GPIO (general-purpose input/output)](https://en.wikipedia.org/wiki/General-purpose_input/output) is a series of digital interfaces that can be used to connect relays, LEDs, sensors, and other components.
 
-:exclamation: **Note**: Using GPIO on a Pi-KVM was designed as a feature for advanced users, so please familiarize yourself with the topic to make sure you understand how to use use it before setting it up. Otherwise you might damage your Raspberry Pi or components.
+:exclamation: Note: Using GPIO on a Pi-KVM was designed as a feature for advanced users, so please familiarize yourself with the topic to make sure you understand how to use use it before setting it up. Otherwise you might damage your Raspberry Pi or components.
 
 When talking about Pi-KVM and GPIO it refers not solely to the [physical interface of the Raspberry Pi](https://www.raspberrypi.org/documentation/usage/gpio), but also to various plugins (for example, for [USB relays](http://vusb.wikidot.com/project:driver-less-usb-relays-hid-interface)) that can also be used transparently by emulating an abstract GPIO API.
 
@@ -50,7 +50,7 @@ If you don't specify a driver for the channel in the scheme the default driver, 
 |-----------------------------------|-----------|--------------------------|---------|-----------------------|
 | `led1`, `button1`, `relay1`, etc. | `string`  | `a-Z`, numbers, `_`, `-` |         | A section for the named channel |
 | `pin`       | `integer` | `X >= 0`            | | Refers to a GPIO pin or driver's pin/port |
-| `mode`      | `enum`    | `input` or `output` | | Defines if a channel is used for input or output (relays can't be inputs) |
+| `mode`      | `enum`    | `input` or `output` | | Defines if a channel is used for input or output, may be limited by driver plugin |
 | `switch`    | `bool  `  | `true` or `false`   | `true` | Enables or disables the switch mode on the channel (enabled by default).  |
 | `initial`   | `nullable bool` | `true`, `false` or `null` | `false` | Defines the initial state of the switch upon boot, `null` for don't make changes |
 | `pulse`     |         |            | | A section header to define switch pulse configuration |
