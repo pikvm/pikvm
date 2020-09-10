@@ -46,17 +46,17 @@ Two interaction modes are available for outputs: `pulse` and `switch`. In pulse 
 
 If you don't specify a driver for the channel in the scheme the default driver, `__gpio__` will be used.
 
-| Parameter                         | Type      | Allowed values           |   Description                   |
-|-----------------------------------|-----------|--------------------------|---------------------------------|
-| `led1`, `button1`, `relay1`, etc. | `string`  | `a-Z`, numbers, `_`, `-` | A section for the named channel |
-| `pin`       | `integer` | `X >= 0`            | Refers to a GPIO pin or driver's pin/port |
-| `mode`      | `enum`    | `input` or `output` | Defines if a channel is used for input or output (relays can't be inputs) |
-| `switch`    | `bool  `  | `true` or `false`   | Enables or disables the switch mode on the channel (enabled by default).  |
-| `initial`   | `nullable bool` | `true`, `false` or `null` | Defines the initial state of the switch upon boot, `null` for don't make changes |
-| `pulse`     |         |            | A section header to define switch pulse configuration |
-| `delay`     | `float` | `X >= 0`   | Defines the pulse time in seconds, 0 for disable pulsing |
-| `min_delay` | `float` | `X >= 0.1` | |
-| `max_delay` | `float` | `X >= 0.1` | |
+| Parameter                         | Type      | Allowed values           | Default |  Description                   |
+|-----------------------------------|-----------|--------------------------|---------|-----------------------|
+| `led1`, `button1`, `relay1`, etc. | `string`  | `a-Z`, numbers, `_`, `-` |         | A section for the named channel |
+| `pin`       | `integer` | `X >= 0`            | | Refers to a GPIO pin or driver's pin/port |
+| `mode`      | `enum`    | `input` or `output` | | Defines if a channel is used for input or output (relays can't be inputs) |
+| `switch`    | `bool  `  | `true` or `false`   | `true` | Enables or disables the switch mode on the channel (enabled by default).  |
+| `initial`   | `nullable bool` | `true`, `false` or `null` | `false` | Defines the initial state of the switch upon boot, `null` for don't make changes |
+| `pulse`     |         |            | | A section header to define switch pulse configuration |
+| `delay`     | `float` | `X >= 0`   | `0.1` | Defines the pulse time in seconds, `0` for disable pulsing |
+| `min_delay` | `float` | `X >= 0.1` | `0.1` |
+| `max_delay` | `float` | `X >= 0.1` | `0.1` |
 
 __Example configuration__
 ```yaml
@@ -111,8 +111,8 @@ kvmd:
                 - []  # creates a horizontal separator and starts a new table
                 - ["#HID Relays /dev/hidraw0"]
                 - []  # creates a horizontal separator and starts a new table
-                - ["#Relay #1:", "relay1,Boop 0.1"]  # Text label and button with alternative text
-                - ["#Relay #2:", "relay2,Boop 2.0"]  # Text label and button with alternative text
+                - ["#Relay #1:", "relay1|Boop 0.1"]  # Text label and button with alternative text
+                - ["#Relay #2:", "relay2|Boop 2.0"]  # Text label and button with alternative text
 ```
 
 This will be rendered as:
