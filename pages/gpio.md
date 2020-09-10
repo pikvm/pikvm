@@ -1,6 +1,7 @@
 # GPIO
 [GPIO (general-purpose input/output)](https://en.wikipedia.org/wiki/General-purpose_input/output) is a series of digital interfaces that can be used to connect relays, LEDs, sensors, and other components.
-:exclamation: Note: Using GPIO on a Pi-KVM was designed as a feature for advanced users, so please familiarize yourself with the topic to make sure you understand how to use use it before setting it up. Otherwise you might damage your Raspberry Pi or components.
+
+:exclamation: **Note**: Using GPIO on a Pi-KVM was designed as a feature for advanced users, so please familiarize yourself with the topic to make sure you understand how to use use it before setting it up. Otherwise you might damage your Raspberry Pi or components.
 
 When talking about Pi-KVM and GPIO it refers not solely to the [physical interface of the Raspberry Pi](https://www.raspberrypi.org/documentation/usage/gpio), but also to various plugins (for example, for [USB relays](http://vusb.wikidot.com/project:driver-less-usb-relays-hid-interface)) that can also be used transparently by emulating an abstract GPIO API.
 
@@ -8,11 +9,9 @@ When talking about Pi-KVM and GPIO it refers not solely to the [physical interfa
 Setting up GPIO is considerably complex. The interface is divided into several layers for flexibility. Any configuration is performed using a file `/etc/kvmd/override.yaml` which uses the [YAML syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html). We will look at each part of the configuration individually with an example for each.
 
 ### Drivers
-The first part of the configuration refers to the hardware layer, which defines which IO ports are used (standard GPIO pins of the Raspberry Pi, an USB relay, and so on). 
-If you just want to use GPIO with the default settings you can skip to the next section [Scheme](#Scheme)
+The first part of the configuration refers to the hardware layer, which defines which IO channels are used (standard GPIO pins of the Raspberry Pi, an USB relay, and so on). If you just want to use GPIO with the default settings you can skip to the next section [Scheme](#Scheme).
 
-Each hardware input / output requires a individual driver configuration entry. Each driver has a type (which refers to the plugin that handles the communication between Pi-KVM and the hardware) and a unique name. 
-This allows you to either can add multiple drivers of the same type with different settings or connect multiple USB HID relays.
+Each hardware input/output requires a individual driver configuration entry. Each driver has a type (which refers to the plugin that handles the communication between Pi-KVM and the hardware) and a unique name. This allows you to either can add multiple drivers of the same type with different settings or connect multiple USB HID relays.
 
 :exclamation: Each driver requires a unique name. Names surrounded by doube underscore are system reserved and should not be used.
 
@@ -24,38 +23,40 @@ kvmd:
         drivers:
             # This example shows how the default __gpio__ driver settings can be changed. It can be omitted if you are fine with the defaults.
             __gpio__:  # Names surrounded by doube underscore are system reserved
-                type: gpio # refers to the plugin name handling the communication
-                state_poll: 0.1 # seconds
+                type: gpio  # Refers to the plugin name handling the communication
+                state_poll: 0.1  # Seconds
 
             # You can define another gpio driver with a different polling interval
             my_gpio: 
-                type: gpio # refers to the plugin name handling the communication
-                state_poll: 1.5 # seconds
+                type: gpio  # Refers to the plugin name handling the communication
+                state_poll: 1.5  # Seconds
                     
             # Example for a USB HID relay connected to Pi-KVM
             relay:
-                type: hidrelay # refers to the plugin name handling the communication
-                device: /dev/hidraw0 # the path to the linux device
+                type: hidrelay  # Eefers to the plugin name handling the communication
+                device: /dev/hidraw0  # The path to the linux device
 ```
 
 ### Scheme
-The second part defines how the various driver ports are configured. Each port has a unique name, a mode (`input` or `output`), a pin number, and a reference to the driver configured in the previous part.
+The second part defines how the various driver channels are configured. Each channel has a unique name, a mode (`input` or `output`), a pin number, and a reference to the driver configured in the previous part.
 
-Two interaction modes are available for outputs: `pulse` and `switch`. In pulse mode, the output quickly switches its state to logical 1 and back (just like pressing a button). In switch mode, it saves (toggles) the state that the user set. When Pi-KVM is started / rebooted (any time the KVMD daemon is started or stopped) all output ports are reset to 0. This can be avoided using the `initial` parameter.
+:exclamation: Names that starts and ends with two underscores (like `__magic__`) are reserved.
 
-If you don't specify a driver for the port in the scheme the default driver, `__gpio__` will be used.
+Two interaction modes are available for outputs: `pulse` and `switch`. In pulse mode, the output quickly switches its state to logical 1 and back (just like pressing a button). In switch mode, it saves (toggles) the state that the user set. When Pi-KVM is started/rebooted (any time the KVMD daemon is started or stopped) all output channels are reset to 0. This can be avoided using the `initial` parameter.
 
-|  name                         |   Type      |   Allowed values       |   description                          |
-|---                            |---          |---                     |---                                     |
-| led1, button1, relay1, etc.   | varchar     | a-Z, numbers, "_", "-" | a name for the port                    |
-| pin                           | integer     | integer numbers        | refers to a GPIO pin                   |
-| mode | predefined| input or output | defines if a port is used for input or output (Relays can't be inputs)|
-| switch | bool | true or false | sets the port to switch (true) or pulse (false) mode.  |
-| initial | bool | true, false or null | defines the initial state of the switch upon boot (only usable for USB HID relays |
-| pulse | none | - | a section header to define switch pulse configuration  |
-| delay | float | positive float values | defines the pulse time in seconds |
-| min_delay | float | positive float values | |
-| max_delay | float | positive float values | |
+If you don't specify a driver for the channel in the scheme the default driver, `__gpio__` will be used.
+
+| Parameter                         | Type      | Allowed values           |   Description                   |
+|-----------------------------------|-----------|--------------------------|---------------------------------|
+| `led1`, `button1`, `relay1`, etc. | `string`  | `a-Z`, numbers, `_`, `-` | A section for the named channel |
+| `pin`       | `integer` | `X >= 0`            | Refers to a GPIO pin or driver's pin/port |
+| `mode`      | `enum`    | `input` or `output` | Defines if a channel is used for input or output (relays can't be inputs) |
+| `switch`    | `bool  `  | `true` or `false`   | Enables or disables the switch mode on the channel (enabled by default).  |
+| `initial`   | `nullable bool` | `true`, `false` or `null` | Defines the initial state of the switch upon boot, `null` for don't make changes |
+| `pulse`     |         |            | A section header to define switch pulse configuration |
+| `delay`     | `float` | `X >= 0`   | Defines the pulse time in seconds, 0 for disable pulsing |
+| `min_delay` | `float` | `X >= 0.1` | |
+| `max_delay` | `float` | `X >= 0.1` | |
 
 __Example configuration__
 ```yaml
@@ -90,11 +91,11 @@ kvmd:
                 initial: null
                 pulse:
                     delay: 2  # Default pulse value
-                    max_delay: 2  # The pulse interval can be between min_pulse (0.1 by default) and max_pulse=5
+                    max_delay: 2  # The pulse interval can be between min_delay=0.1 (by default) and max_delay=2
 ```
 
 ### View
-This is the last part of the required configuration. It defines how the previous driver and port configuration is rendered on the Web interface. Here's an example for the example configuration above:
+This is the last part of the required configuration. It defines how the previous driver and channel configuration is rendered on the Web interface. Here's an example for the example configuration above:
 
 ```yaml
 kvmd:
@@ -120,8 +121,9 @@ This will be rendered as:
 
 Some rules and customization options:
 - Text starting with the `#` symbol will be a label.
-- To place a port in a cell, use the name you defined in the scheme.
+- To place a channel in a cell, use the name you defined in the scheme.
 - Inputs are displayed as round LEDs.
 - Outputs are displayed as a switch AND a button.
 - If the switch mode is disabled, only a button will be displayed. If pulse is disabled, only a switch will be shown.
-- To change title of the button, write some its name using comma like `"relay1,My cool relay"`.
+- To change the LED's color specify it after the channel name like `"led1|red"`. Available: `green`, `yellow` and `red`.
+- To change title of the button, write some its name like `"relay1|My cool relay"`.
