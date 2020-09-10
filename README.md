@@ -282,6 +282,8 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
 
 * [Wi-Fi configuration after install](pages/wifi_config.md).
 
+* [Export monitoring metrics to Prometheus](pages/prometheus.md).
+
 -----
 
 # Troubleshooting
