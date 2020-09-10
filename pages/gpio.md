@@ -94,10 +94,13 @@ Setting up GPIO is quite complex. The interface is divided into several layers f
                     - ["#Relay #2:", "relay2,Boop 2.0"]
     ```
 
+    This will be rendered as:
     <img src="../img/gpio_menu.png" alt="drawing" />
 
     Here the rules:
+    - Text starting with the `#` symbol will be a label.
+    - To place a port in a cell, just put its name from the scheme.
     - The inputs are displayed as round LEDs.
     - The outputs are displayed as a switch AND a button.
-    - If the switch mode is disabled, only the I button will be displayed. If ripple is turned off, only the switch will be shown.
-    - To rename the output button, write some its identifier using comma like "relay1,My cool relay".
+    - If the switch mode is disabled, only a button will be displayed. If pulse is disabled, only a switch will be shown.
+    - To rename the output button, write some its identifier using comma like `"relay1,My cool relay"`.
