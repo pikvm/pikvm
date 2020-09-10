@@ -1,67 +1,84 @@
 # GPIO
-GPIO (general-purpose input/output) is a series of digital interfaces that can be used to connect relays, LEDs, or sensors.
-Using GPIO on a Pi-KVM is a feature designed for advanced users, so make sure you understand exactly what it is.
+[GPIO (general-purpose input/output)](https://en.wikipedia.org/wiki/General-purpose_input/output) is a series of digital interfaces that can be used to connect relays, LEDs, sensors, and other components.
+:exclamation: Note: Using GPIO on a Pi-KVM was designed as a feature for advanced users, so please familiarize yourself with the topic to make sure you understand how to use use it before setting it up. Otherwise you might damage your Raspberry Pi or components.
 
-In the case of Pi-KVM, the general term GPIO refers not only to the [physical interface of the Raspberry Pi](https://www.raspberrypi.org/documentation/usage/gpio),
-but also to various plugins (for example, for [USB relays](http://vusb.wikidot.com/project:driver-less-usb-relays-hid-interface))
-that can also be used transparently by emulating abstract GPIO API.
+When talking about Pi-KVM and GPIO it refers not solely to the [physical interface of the Raspberry Pi](https://www.raspberrypi.org/documentation/usage/gpio), but also to various plugins (for example, for [USB relays](http://vusb.wikidot.com/project:driver-less-usb-relays-hid-interface)) that can also be used transparently by emulating an abstract GPIO API.
 
 # Configuration
-Setting up GPIO is quite complex. The interface is divided into several layers for flexibility. All configuration is performed using a file `/etc/kvmd/override.yaml` which has the [YAML syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html). We will look at each part of the configuration separately in a small test example.
+Setting up GPIO is considerably complex. The interface is divided into several layers for flexibility. Any configuration is performed using a file `/etc/kvmd/override.yaml` which uses the [YAML syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html). We will look at each part of the configuration individually with an example for each.
 
 ### Drivers
-The first layer that reflects the hardware that represents the IO ports (standard GPIO of Raspberry Pi, USB relay, and so on). Each driver has a type (a plugin that implements the hardware support) and an unique name. Multiple drivers of the same type can be defined at the same time.
+The first part of the configuration refers to the hardware layer, which defines which IO ports are used (standard GPIO pins of the Raspberry Pi, an USB relay, and so on). 
+If you just want to use GPIO with the default settings you can skip to the next section [Scheme](#Scheme)
 
-For example, you can connect multiple relays and give each one its own name. By default, one driver is configured with the name `__gpio__`, representing the physical GPIO interface of the Raspberry Pi.
+Each hardware input / output requires a individual driver configuration entry. Each driver has a type (which refers to the plugin that handles the communication between Pi-KVM and the hardware) and a unique name. 
+This allows you to either can add multiple drivers of the same type with different settings or connect multiple USB HID relays.
+
+:exclamation: Each driver requires a unique name. Names surrounded by doube underscore are system reserved and should not be used.
+
+The only exception to this is the default GPIO driver with the name `__gpio__`, representing the physical GPIO interface of the Raspberry Pi. The configuration section for `__gpio__` is only required in your `/etc/kvmd/override.yaml` if you want to change the default settings. It can be omitted if you are fine with the defaults.
 
 ```yaml
 kvmd:
     gpio:
         drivers:
-            # This example shows how the __gpio__ driver is defined. You don't need to write it in your configuration.
-            __gpio__:  # Names that start and end with two underscores are reserved. You don't have to define similar names yourself.
-                type: gpio
-                state_poll: 0.1
+            # This example shows how the default __gpio__ driver settings can be changed. It can be omitted if you are fine with the defaults.
+            __gpio__:  # Names surrounded by doube underscore are system reserved
+                type: gpio # refers to the plugin name handling the communication
+                state_poll: 0.1 # seconds
 
             # You can define another gpio driver with a different polling interval
-            my_gpio:
-                type: gpio
-                state_poll: 1.5
+            my_gpio: 
+                type: gpio # refers to the plugin name handling the communication
+                state_poll: 1.5 # seconds
                     
-            # We have HID relay connected to Pi-KVM
+            # Example for a USB HID relay connected to Pi-KVM
             relay:
-                type: hidrelay
-                device: /dev/hidraw0
+                type: hidrelay # refers to the plugin name handling the communication
+                device: /dev/hidraw0 # the path to the linux device
 ```
 
 ### Scheme
-The second layer that reflects how the various driver ports are configured. Each port has a unique name, mode (`input` or `output`), a pin number, and refers to the driver that provides it.
+The second part defines how the various driver ports are configured. Each port has a unique name, a mode (`input` or `output`), a pin number, and a reference to the driver configured in the previous part.
 
-Two interaction modes are available for outputs: `pulse` and `switch`. In pulse mode, the output quickly switches its state to logical 1 and back (just like a button). In switch mode, it saves the state that the user set. When KVMD starts and finishes, all output ports are reset to 0. This can be avoided using the `initial` parameter.
+Two interaction modes are available for outputs: `pulse` and `switch`. In pulse mode, the output quickly switches its state to logical 1 and back (just like pressing a button). In switch mode, it saves (toggles) the state that the user set. When Pi-KVM is started / rebooted (any time the KVMD daemon is started or stopped) all output ports are reset to 0. This can be avoided using the `initial` parameter.
 
-If no driver is specified for the port in the scheme, `__gpio__` will be used as default.
+If you don't specify a driver for the port in the scheme the default driver, `__gpio__` will be used.
 
+|  name                         |   Type      |   Allowed values       |   description                          |
+|---                            |---          |---                     |---                                     |
+| led1, button1, relay1, etc.   | varchar     | a-Z, numbers, "_", "-" | a name for the port                    |
+| pin                           | integer     | integer numbers        | refers to a GPIO pin                   |
+| mode | predefined| input or output | defines if a port is used for input or output (Relays can't be inputs)|
+| switch | bool | true or false | sets the port to switch (true) or pulse (false) mode.  |
+| initial | bool | true, false or null | defines the initial state of the switch upon boot (only usable for USB HID relays |
+| pulse | none | - | a section header to define switch pulse configuration  |
+| delay | float | positive float values | defines the pulse time in seconds |
+| min_delay | float | positive float values | |
+| max_delay | float | positive float values | |
+
+__Example configuration__
 ```yaml
 kvmd:
     gpio:
         scheme:
             # A certain device sends signals to the RPi and we want the Pi-KVM to display this as an led
             led1:
-                pin: 19
-                mode: input
+                pin: 19 # GPIO pin number on the RPi
+                mode: input 
             led2:
-                pin: 16
-                mode: input
+                pin: 16 # GPIO pin number on the RPi
+                mode: input 
 
             # Two outputs of RPi's GPIO
             button1:
-                pin: 26
+                pin: 26 # GPIO pin number on the RPi
                 mode: output
                 switch: false  # Disable switching, only pulse available
             button2:
-                pin: 20
+                pin: 20 # GPIO pin number on the RPi
                 mode: output
-                switch: false
+                switch: false # Disable switching, only pulse available
 
             relay1:  # Channel 1 of the relay /dev/hidraw0
                 pin: 0  # Numerating starts from 0
@@ -69,7 +86,7 @@ kvmd:
                 initial: null  # Don't reset the state to 0 when initializing and terminating KVMD
             relay2:  # Channel 2
                 pin: 1
-                mode: output
+                mode: output # Relays can't be inputs
                 initial: null
                 pulse:
                     delay: 2  # Default pulse value
@@ -77,34 +94,34 @@ kvmd:
 ```
 
 ### View
-This is the last layer of the scheme. It describes what the menu with GPIO functions will look like. It is easier to show by example.
+This is the last part of the required configuration. It defines how the previous driver and port configuration is rendered on the Web interface. Here's an example for the example configuration above:
 
 ```yaml
 kvmd:
     gpio:
         view:
             header:
-                title: Switches  # Menu title
+                title: Switches  # the menu title
             table:  # The menu items are rendered in the form of a table of text labels and controls
                 - ["#Generic GPIO leds"]  # Text starting with the sharp symbol will be a label
-                - []  # Horizontal separator and start of a new table
+                - []  # creates a horizontal separator and starts a new table
                 - ["#Test 1:", led1, button1]  # Text label, one input, one button with text "Click"
                 - ["#Test 2:", led2, button2]
-                - []
+                - []  # creates a horizontal separator and starts a new table
                 - ["#HID Relays /dev/hidraw0"]
-                - []
+                - []  # creates a horizontal separator and starts a new table
                 - ["#Relay #1:", "relay1,Boop 0.1"]  # Text label and button with alternative text
-                - ["#Relay #2:", "relay2,Boop 2.0"]
+                - ["#Relay #2:", "relay2,Boop 2.0"]  # Text label and button with alternative text
 ```
 
 This will be rendered as:
 
 <img src="../img/gpio_menu.png" alt="drawing" />
 
-Here the rules:
+Some rules and customization options:
 - Text starting with the `#` symbol will be a label.
-- To place a port in a cell, just put its name from the scheme.
-- The inputs are displayed as round LEDs.
-- The outputs are displayed as a switch AND a button.
+- To place a port in a cell, use the name you defined in the scheme.
+- Inputs are displayed as round LEDs.
+- Outputs are displayed as a switch AND a button.
 - If the switch mode is disabled, only a button will be displayed. If pulse is disabled, only a switch will be shown.
 - To change title of the button, write some its name using comma like `"relay1,My cool relay"`.
