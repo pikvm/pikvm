@@ -6,7 +6,23 @@
 When talking about Pi-KVM and GPIO it refers not solely to the [physical interface of the Raspberry Pi](https://www.raspberrypi.org/documentation/usage/gpio), but also to various plugins (for example, for [USB relays](http://vusb.wikidot.com/project:driver-less-usb-relays-hid-interface)) that can also be used transparently by emulating an abstract GPIO API.
 
 # Configuration
-Setting up GPIO is considerably complex. The interface is divided into several layers for flexibility. Any configuration is performed using a file `/etc/kvmd/override.yaml` which uses the [YAML syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html). We will look at each part of the configuration individually with an example for each.
+Setting up GPIO is considerably complex. The interface is divided into several layers for flexibility. Any configuration is performed using a file `/etc/kvmd/override.yaml` which uses the [YAML syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html). We will look at each part of the configuration individually with an example for each. Sections should be combined under shared keys.
+Wrong:
+```yaml
+kvmd:
+    gpio:
+        drivers: ...
+kvmd:
+    gpio:
+        scheme: ...
+```
+Correct:
+```yaml
+kvmd:
+    gpio:
+        drivers: ...
+        scheme: ...
+```
 
 ### Drivers
 The first part of the configuration refers to the hardware layer, which defines which IO channels are used (standard GPIO pins of the Raspberry Pi, an USB relay, and so on). If you just want to use GPIO with the default settings you can skip to the next section [Scheme](#Scheme).
@@ -127,3 +143,18 @@ Some rules and customization options:
 - If the switch mode is disabled, only a button will be displayed. If pulse is disabled, only a switch will be shown.
 - To change the LED's color specify it after the channel name like `"led1|red"`. Available: `green`, `yellow` and `red`.
 - To change title of the button, write some its name like `"relay1|My cool relay"`.
+
+# Hardware modules
+
+### Raspberry's GPIO
+The driver `gpio` provides access to regular GPIO pins with input and output modes. Input pins are read by periodically polling the input channels every 0.1 seconds. This interval can be changed using the `state_poll` parameter.
+
+You can use the [interactive scheme](https://pinout.xyz/) when selecting the pins to use. Please note that when selecting a pin for a channel, you need to use a logical number instead of a physical number. That is, if you want to use a physical pin with the number 40, the channel must have the number 21 corresponding to the logical GPIO21.
+
+### USB HID Relay
+The driver `hidrelay` provides access to cheap managed [USB HID relays](http://vusb.wikidot.com/project:driver-less-usb-relays-hid-interface) that can be found on AliExpress. This driver does not support input mode, only output. To use it, you need to specify the path to the device file (like `/dev/hidraw0`) using the `device` parameter.
+
+Additionally, we recommend to configure access rights and static device name using [UDEV rules](https://wiki.archlinux.org/index.php/udev). For example, create `/etc/udev/rules.d/99-kvmd-extra.rules`:
+```
+SUBSYSTEM=="usb", ATTR{idVendor}=="16c0", ATTR{idProduct}=="05df", MODE="666"
+```
