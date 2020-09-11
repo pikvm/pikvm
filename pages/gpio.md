@@ -7,6 +7,7 @@ When talking about Pi-KVM and GPIO it refers not solely to the [physical interfa
 
 # Configuration
 Setting up GPIO is considerably complex. The interface is divided into several layers for flexibility. Any configuration is performed using a file `/etc/kvmd/override.yaml` which uses the [YAML syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html). We will look at each part of the configuration individually with an example for each. Sections should be combined under shared keys.
+
 Wrong:
 ```yaml
 kvmd:
