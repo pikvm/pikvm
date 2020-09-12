@@ -344,6 +344,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Brian White
 * Bruno Gomes
 * Bryan Adams
+* Carl Mercier
 * Christian Schlögl
 * Christof Maluck
 * Corey Lista
