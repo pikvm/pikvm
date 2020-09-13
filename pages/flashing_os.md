@@ -12,20 +12,20 @@ Decompress and flash image and follow to the [final steps](#the-final-steps). Be
 ```
 
 
-## Using Balena Etcher (Linux, MacOS and Windows)
-1. Download and install [Balena Etcher](https://www.balena.io/etcher).
+## Using balenaEtcher (Linux, MacOS and Windows)
+1. Download and install [balenaEtcher](https://www.balena.io/etcher).
 
-2. Decomress the image using your File Manager. If you don't have an archiver (on Windows for example) - the [7-Zip](https://www.7-zip.org) is a great choice. Please note: Balena Etcher have ability to flash compressed images directly, but it is much slower and the process consumes a huge amount of RAM. We strongly recommend you to decompress the image first.
+2. Even on modern computers it might be faster to first extract the compressed image first. A bug in a balenaEtcher prior to version 1.5.108 caused it to use large amounts of RAM and a tediously slow flashing process. Extract the image using your favorite archive software. If you don't have one that supports .bz2 images (on Windows for example) - [7-Zip](https://www.7-zip.org) is a great (free) choice.<br><br>_Flashing the compressed image directly: ~12 minutes; extracting first (~1 minute on an SSD) and flashing afterwards only takes ~3 minutes._
 
 3. Run Balena Etcher:
 
     <img src="../img/balena-1.png" alt="drawing" height="300"/>
 
-4. Press **Flash from file** and choose the image:
+4. Press **Flash from file** and select the image:
 
     <img src="../img/balena-2.png" alt="drawing" height="300"/>
 
-5. Insert memory card to the card reader. Press **Select target** and choose your memory card:
+5. Insert the memory card into the card reader. Press **Select target** and choose your memory card:
 
     <img src="../img/balena-3.png" alt="drawing" height="300"/>
 
@@ -33,19 +33,19 @@ Decompress and flash image and follow to the [final steps](#the-final-steps). Be
 
     <img src="../img/balena-4.png" alt="drawing" height="300"/>
 
-7. Wait for the finish. If an error occurs during flashing, repeat the process:
+7. Wait for the process to finish. Get yourself a coffee or do some stretching. :wink: If an error occurs during flashing, repeat the process:
 
     <img src="../img/balena-5.png" alt="drawing" height="300"/>
 
 
 ## The final steps
-1. When the process is complete, pull out the memory card and insert it into the Raspberry Pi. Turn the power on. Your device will obtain the IP address via DHCP automatically.
+1. When the process is complete, pull out the memory card and insert it into the Raspberry Pi. Connect the Raspberry Pi to the power supply. Your device will obtain the IP address via DHCP automatically. <br>:exclamation:Windows users: balenaEtcher will automatically safely remove the memory card. If you are using a Windows version prior to Windows 10 1809 and a different flashing software, you should do the safe remove manually.
 
 2. After power-up, Pi-KVM OS generates unique SSH keys and certificates. Do not turn off the Raspberry Pi until it's fully booted.
 
-3. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with password `root` by default) and HTTPS (try to open in a browser the URL `https://<addr>`, the login `admin` and password `admin` by default). For HTTPS a self-signed certificate is used by default.
+3. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<ip-address>` with the password `root` by default) and HTTPS. In most networks you should be able to reach Pi-KVM via any browser with the URL `https://pikvm/`. If that doesn't work you'll need to find the IP address manually in your router and try it via `https://<ip-address>`. The default login username is `admin` with `admin` as the password). For HTTPS a self-signed certificate is used by default. Your browser will give you a warning about an invalid SSL certificate which you can safely ignore.
 
-4. To change the root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`. As indicated on the login screen use `rw` to make the root filesystem writable, before issuing these commands. After making changes, make sure to run the command `ro`.
+4. To change the root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`. As indicated on the login screen, you need to use `rw` to make the root filesystem writable before issuing these commands. After making changes, make sure to run the command `ro` to switch the filesystem back to read-only.
 
 5. After installation, we recommend you to update your operating system:
     ```shell
