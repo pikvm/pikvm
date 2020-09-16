@@ -3,10 +3,10 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 
 ## Hardware
 ### LEDs / Switches do not work in ATX control.
-- Double check your wiring as per [the documentation](https://github.com/tryallthethings/pikvm/tree/documentation#setting-up-the-v2). Make sure you placed the relays (G3VM-61A1) in the correct orientation. The relays for switches (Power, Reset) have a different orientation than the ones for LEDs.
+- Double check your wiring as per [the documentation](/README.md#setting-up-the-v2). Make sure you placed the relays (G3VM-61A1) in the correct orientation. The relays for switches (Power, Reset) have a different orientation than the ones for LEDs.
 
 ### Pi-KVM does not show any image from the connected computer.
-- Double check if you connected the HDMI-CSI-2 bridge cable correctly. [Check the documentation for details](https://github.com/tryallthethings/pikvm/tree/documentation#for-the-hdmi-csi-bridge) A red LED will light up on the bridge if it is connected properly. 
+- Double check if you connected the HDMI-CSI-2 bridge cable correctly. [Check the documentation for details](/README.md#for-the-hdmi-csi-bridge) A red LED will light up on the bridge if it is connected properly. 
 - Some laptops do not output any signal until you switched the ouput (usually via the FN + and an F5 key on the keyboard). 
 
 ## Software
