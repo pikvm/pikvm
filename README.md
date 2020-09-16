@@ -168,6 +168,8 @@ We are also currently developing our own HAT for the Raspberry Pi 4. It will hav
 # Setting up the hardware
 ## Connecting the video capture
 #### For the HDMI-CSI bridge
+<details>
+  <summary>Click to show the instructions</summary>
 Insert the flexible flat cable of the HDMI bridge into the narrow white connector on the Raspberry Pi (the closest one to big USB sockets). It is labeled CAMERA. To insert you need to open the connector first. On the Raspberry Pi side you can gently lift the black part up and a little bit sideways:
 
 | Opening the MIPI CSI-2 slot on the Raspberry Pi |
@@ -180,15 +182,22 @@ For the HDMI-CSI bridge it depends on the version you bought. Either pull it gen
 |------------------------------------------------------|
 | <img src="img/rpi4-hdmi-csi-connection.png" alt="HDMI-CSI-2 bridge connected to Raspberry Pi 4" width="350">|
 
+</details>
+
 #### For the HDMI-USB dongle
+<details>
+  <summary>Click to show the instructions</summary>
 Connect USB dongle to exactly this port. It is bound in the software so the OS does not confuse the video device with something else.
 | Raspberry Pi 2 and 3 | Raspberry Pi 4 |
 |----------------------|----------------|
 | <img src="img/v2_usbcap_rpi2.png" alt="drawing" width="200"/> | <img src="img/v2_usbcap_rpi4.png" alt="drawing" width="200"/> |
 
 There are many revisions of the Raspberry Pi boards and you may come across one that we haven't tested. If the binding fails, the device will be available for all ports. Everything will work, but if you use a webcam and Linux mistakes it for a dongle, [write to us](https://discord.gg/bpmXfz5) and we will fix it.
+</details>
 
 ## Setting up the v2
+<details>
+  <summary>Click to show the instructions</summary>
 Here is a diagram shows that how to connect all of the pieces (click to full size).
 
 | ATX control board | USB splitter cable (only for Raspberry Pi 4) |
@@ -203,10 +212,17 @@ See video howtos:
 
 Also check out this small [PCB for ATX](https://easyeda.com/mark.gilbert/zerow-kvm-v1) (if you know how to make PCBs).
 
+</details>
+
 ## Setting up the v0
+<details>
+  <summary>Click to show the instructions</summary>
+
 | ATX control board and Arduino HID (keyboard & mouse) |
 |------------------------------------------------------|
 | <img src="img/v0.png" alt="drawing" width="400"/> |
+
+</details>
 
 -----
 
