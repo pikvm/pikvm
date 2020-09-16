@@ -25,7 +25,7 @@ reboot
 ### Glitchy/wrong BIOS resolution
 On some motherboards, the BIOS may be displayed at a lower resolution, or with some rendering issues/glitches, specially on newer ASUS ones. Like this:
 
-<img src="img/bios_glitch.png" alt="ASUS BIOS glitch" width="400"/>
+<img src="../img/bios_glitch.png" alt="ASUS BIOS glitch" width="400"/>
 
 This can be solved by enabling the **Compatibility Support Module (CSM)** in your BIOS, usually under the **Boot** options.
 
