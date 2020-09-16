@@ -170,11 +170,15 @@ We are also currently developing our own HAT for the Raspberry Pi 4. It will hav
 #### For the HDMI-CSI bridge
 Insert the flexible flat cable of the HDMI bridge into the narrow white connector on the Raspberry Pi (the closest one to big USB sockets). It is labeled CAMERA. To insert you need to open the connector first. On the Raspberry Pi side you can gently lift the black part up and a little bit sideways:
 
-<img src="img/open-MIPI-CSI2-Slot.png" alt="detailed picture of the MIPI-CSI2 slot" width="300">
+| Opening the MIPI CSI-2 slot on the Raspberry Pi |
+|------------------------------------------------------|
+| <img src="img/open-MIPI-CSI2-Slot.png" alt="detailed picture of the MIPI-CSI2 slot" width="350"> |
 
 For the HDMI-CSI bridge it depends on the version you bought. Either pull it gently up as on the Raspberry or push it sideways. Make sure that the cable is inserted on the correct side and until it stops, and then push the black latch back. Never connect or disconnect the flat cable from a powered device. This is not Plug-and-Play, and you can damage it. Also use only the cable that was included with the device package, or make sure that the third-party cable has the correct pinout.
 
-<img src="img/rpi4-hdmi-csi-connection.png" alt="HDMI-CSI-2 bridge connected to Raspberry Pi 4" width="300">
+| HDMI-CSI-2 bridge connected to Raspberry Pi 4 |
+|------------------------------------------------------|
+| <img src="img/rpi4-hdmi-csi-connection.png" alt="HDMI-CSI-2 bridge connected to Raspberry Pi 4" width="350">|
 
 #### For the HDMI-USB dongle
 Connect USB dongle to exactly this port. It is bound in the software so the OS does not confuse the video device with something else.
