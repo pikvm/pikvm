@@ -188,6 +188,7 @@ For the HDMI-CSI bridge it depends on the version you bought. Either pull it gen
 <details>
   <summary>Click to show the instructions</summary>
 Connect USB dongle to exactly this port. It is bound in the software so the OS does not confuse the video device with something else.
+
 | Raspberry Pi 2 and 3 | Raspberry Pi 4 |
 |----------------------|----------------|
 | <img src="img/v2_usbcap_rpi2.png" alt="drawing" width="200"/> | <img src="img/v2_usbcap_rpi4.png" alt="drawing" width="200"/> |
