@@ -297,31 +297,14 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
 
 * [Control GPIO ports and USB relays](pages/gpio.md).
 
+* [Cookbook](pages/cookbook.md).
+
 -----
 
 # Troubleshooting
-* **Unexpected interruption while loading the image for Mass Storage Drive**
-    If problems occur when uploading even a small disk image it may be due to unstable network operation or antivirus software. It is well known that Kaspersky antivirus cuts off Pi-KVM connections during uploading, so you should add the Pi-KVM website to Kaspersky's list of exceptions or not filter web requests with the antivirus. Antivirus programs can also affect the performance of certain interface elements, for example the quality slider.
+If you encounter any problems, take a look at [this page](pages/troubleshooting.md). We've probably already found a solution for it :)
 
-    For Kaspersky, the steps to add the network address of Pi-KVM's website to the exclusion list is: **Protection -> Private browsing -> Categories and exclusions -> Exclusions**
-
-
-* **Glitchy/Wrong BIOS resolution**
-    On some motherboards, the BIOS may be displayed at a lower resolution, or with some rendering issues/glitches, specially on newer ASUS ones.
-
-    e.g
-
-    <img src="img/bios_glitch.png" alt="ASUS BIOS glitch" width="400"/>
-
-    This can be solved by enabling the **Compatibility Support Module (CSM)** in your BIOS, usually under the **Boot** options.
-
-    If you can't or don't want to enable the CSM, you can try connecting a DisplayPort monitor, or a [dummy plug](http://amazon.com/s?k=displayport+dummy+plug). If you remove the DP cable/adapter the bug will reappear.
-
-    If none of this works, try connecting the DP cable first, boot into the BIOS, disable the CSM and shutdown (do not restart) your PC. Then, boot into the BIOS and enable the CSM before shutting down your PC. Then connect the HDMI and turn your PC on again.
-    
-* **Awesome WM on Linux** sometimes can't recognize a video output change on a cable. That is, if the cable was first inserted into the monitor, and then you reconnected it to Pi-KVM - it may happen that you will not see the image. It seems that the problem is Awesome WM, since for example with KDE it does not reproducing. If you turn on your workstation with Pi-KVM already connected, everything will work fine.
-
-* If you have any problems or questions, contact us using Discord: https://discord.gg/bpmXfz5
+For any help, you can contact our discord chat: https://discord.gg/bpmXfz5
 
 -----
 
