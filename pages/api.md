@@ -11,7 +11,7 @@ There are two options here:
     $ curl -k -H X-KVMD-User:admin -H X-KVMD-Passwd:admin https://pikvm/api/auth/check
     ```
 * Using HTTP Basic Auth. Please note: contrary to the standard, this method DOES NOT use the `WWW-Authenticate` header.
-  HTTP Basic Auth in this implementation is intended only for compatibility with other systems, such as Prometheus.
+  HTTP Basic Auth in this implementation is intended only for compatibility with other systems, such as [Prometheus](prometheus.md).
     ```
     $ curl -k --user admin:admin https://pikvm/api/auth/check
     ```
