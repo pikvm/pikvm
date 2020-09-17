@@ -5,50 +5,50 @@ and even PCB and case designs for Pi-KVM.
 
 # Software
 ## Pi-KVM port to x86 using docker
-|Link to project | Contact | Status |
-|---|---|---|
-| https://github.com/purplepalmdash/pikvmx86 | | Work in progress |
+|Link to project | Status |
+|---|---|
+| https://github.com/purplepalmdash/pikvmx86 | Work in progress |
 
 ## Serial HID using STM32
-|Link to project | Contact | Status |
-|---|---|---|
-| https://github.com/jannic/pikvm-hid-stm32 | | Work in progress |
+|Link to project |  Status |
+|---|---|
+| https://github.com/jannic/pikvm-hid-stm32 | Work in progress |
 
 # Hardware
 ## Power splitter, ATX controller and front panel
-|Link to project | Contact | Status |
-|---|---|---|
-https://github.com/akhlut/PiKVM_Parts| @akhlut on Discord | Work in progress |
+|Link to project | Status |
+|---|---|
+https://github.com/akhlut/PiKVM_Parts| Work in progress |
 
 ## USB data / power splitter with 2x Micro USB-B / Barrel
-| Link to project | Contact | Status | 
-|---|---|---|
-| https://www.tindie.com/products/8086net/usbpwr-splitter/ | @burtyb on Discord | Completed |
+| Link to project | Status | 
+|---|---|
+| https://www.tindie.com/products/8086net/usbpwr-splitter/ | Completed |
 
 ## Raspberry Pi hat with ATX-control, HDMI-CSI adapter mount for multiple variants and SPI-support
-|Link to project | Contact | Status |
-|---|---|---|
-| | @conix on Discord | Work in progress |
+|Link to project | Status |
+|---|---|
+| | Work in progress |
 
 ## Raspberry Pi hat with ATX-control, HDMI-CSI adapter mount and power / data splitter
-|Link to project | Contact | Status |
-|---|---|---|
-| | @roots on Discord | Work in progress |
+|Link to project |  Status |
+|---|---|
+| | Work in progress |
 
 ## Raspberry Pi hat with ATX-control and power / data splitter
-|Link to project | Contact | Status |
-|---|---|---|
-| | @t3hn3rd on Discord | Work in progress |
+|Link to project |  Status |
+|---|---|
+|  | Work in progress |
 
 ## Raspberry Pi hat with ATX-control and power / data splitter
-|Link to project | Contact | Status |
-|---|---|---|
-| | @zeroflow on Discord | Work in progress |
+|Link to project | Status |
+|---|---|
+| | Work in progress |
 
 # Mounting options / cases
-## PCI slot Raspberry Pi + HDMI-CSI Module mount by 
-|Link to project | Contact | Status |
-|---|---|---|
-| | @coreylista on Discord | Work in progress |
+## PCI slot Raspberry Pi + HDMI-CSI Module
+|Link to project | Status |
+|---|---|
+|  | Work in progress |
 
 # other
