@@ -66,6 +66,9 @@ If you don't specify a driver for the channel in the scheme the default driver, 
 | `led1`, `button1`, `relay1`, etc. | `string`  | `a-Z`, numbers, `_`, `-` |         | A section for the named channel |
 | `pin`       | `integer` | `X >= 0`            | | Refers to a GPIO pin or driver's pin/port |
 | `mode`      | `enum`    | `input` or `output` | | Defines if a channel is used for input or output, may be limited by driver plugin |
+| **Input only** | | | | |
+| `debounce` | `float` | `x >= 0` | `0.1` | [Debounce](https://www.arduino.cc/en/Tutorial/Debounce) time in seconds. `0` for disable debounce |
+| **Output only** | | | | |
 | `switch`    | `bool  `  | `true` or `false`   | `true` | Enables or disables the switch mode on the channel (enabled by default).  |
 | `initial`   | `nullable bool` | `true`, `false` or `null` | `false` | Defines the initial state of the switch upon boot, `null` for don't make changes (the last one does not supported by generic GPIO) |
 | `pulse`     |         |            | | A section header to define switch pulse configuration |
