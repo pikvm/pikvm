@@ -41,12 +41,10 @@ kvmd:
             # This example shows how the default __gpio__ driver settings can be changed. It can be omitted if you are fine with the defaults.
             __gpio__:  # Names surrounded by doube underscore are system reserved
                 type: gpio  # Refers to the plugin name handling the communication
-                state_poll: 0.1  # Seconds
 
-            # You can define another gpio driver with a different polling interval
+            # You can define another gpio driver for some reason
             my_gpio: 
                 type: gpio  # Refers to the plugin name handling the communication
-                state_poll: 1.5  # Seconds
                     
             # Example for a USB HID relay connected to Pi-KVM
             relay:
@@ -59,7 +57,7 @@ The second part defines how the various driver channels are configured. Each cha
 
 :exclamation: Names that starts and ends with two underscores (like `__magic__`) are reserved.
 
-Two interaction modes are available for outputs: `pulse` and `switch`. In pulse mode, the output quickly switches its state to logical 1 and back (just like pressing a button). In switch mode, it saves (toggles) the state that the user set. When Pi-KVM is started/rebooted (any time the KVMD daemon is started or stopped) all output channels are reset to 0. This can be avoided using the `initial` parameter.
+Two interaction modes are available for outputs: `pulse` and `switch`. In pulse mode, the output quickly switches its state to logical 1 and back (just like pressing a button). In switch mode, it saves (toggles) the state that the user set. When Pi-KVM is started/rebooted (any time the KVMD daemon is started or stopped) all output channels are reset to 0. This can be changed using the `initial` parameter. For example, `initial=true` for logic 1 on startup.
 
 If you don't specify a driver for the channel in the scheme the default driver, `__gpio__` will be used.
 
@@ -69,7 +67,7 @@ If you don't specify a driver for the channel in the scheme the default driver, 
 | `pin`       | `integer` | `X >= 0`            | | Refers to a GPIO pin or driver's pin/port |
 | `mode`      | `enum`    | `input` or `output` | | Defines if a channel is used for input or output, may be limited by driver plugin |
 | `switch`    | `bool  `  | `true` or `false`   | `true` | Enables or disables the switch mode on the channel (enabled by default).  |
-| `initial`   | `nullable bool` | `true`, `false` or `null` | `false` | Defines the initial state of the switch upon boot, `null` for don't make changes |
+| `initial`   | `nullable bool` | `true`, `false` or `null` | `false` | Defines the initial state of the switch upon boot, `null` for don't make changes (the last one does not supported by generic GPIO) |
 | `pulse`     |         |            | | A section header to define switch pulse configuration |
 | `delay`     | `float` | `X >= 0`   | `0.1` | Defines the pulse time in seconds, `0` for disable pulsing |
 | `min_delay` | `float` | `X >= 0.1` | `0.1` |
@@ -148,7 +146,7 @@ Some rules and customization options:
 # Hardware modules
 
 ### Raspberry's GPIO
-The driver `gpio` provides access to regular GPIO pins with input and output modes. Input pins are read by periodically polling the input channels every 0.1 seconds. This interval can be changed using the `state_poll` parameter.
+The driver `gpio` provides access to regular GPIO pins with input and output modes. It uses `/dev/gpiochip0` and the libgpiod library to communicate with the hardware. Does not support saving state between KVMD restarts (meaning `initial=null`).
 
 You can use the [interactive scheme](https://pinout.xyz/) when selecting the pins to use. Please note that when selecting a pin for a channel, you need to use a logical number instead of a physical number. That is, if you want to use a physical pin with the number 40, the channel must have the number 21 corresponding to the logical GPIO21.
 
