@@ -1,4 +1,5 @@
 # API
+This document describes the Pi-KVM API. Since the system consists of microservices, here is a common API with a common entry point provided by Nginx. The examples above use `curl` and `websocat` with the `-k` parameter to disable SSL certificate verification, since the self-signed certificateis used in the default installation.
 
 ## Authorization: `/api/auth`
 All APIs are restricted to authorization. To make requests, you either need to authorize each request individually,
