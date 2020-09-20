@@ -314,6 +314,8 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
 
 * [Control GPIO ports and USB relays](pages/gpio.md).
 
+* [Centralized authorization for multiple Pi-KVMs](https://github.com/pikvm/kvmd-auth-server).
+
 * [Cookbook](pages/cookbook.md).
 
 -----
