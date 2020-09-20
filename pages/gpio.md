@@ -163,4 +163,4 @@ Additionally, we recommend to configure access rights and static device name usi
 SUBSYSTEM=="usb", ATTR{idVendor}=="16c0", ATTR{idProduct}=="05df", MODE="666"
 ```
 
-Channels should not use duplicate physical numbers.
+Channels should not use duplicate physical numbers. The driver supports saving state between KVMD restarts (meaning `initial=null`).
