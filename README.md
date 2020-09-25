@@ -360,6 +360,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Carl Mercier
 * Christian Schlögl
 * Christof Maluck
+* Christoffer Lund
 * Corey Lista
 * Clifford Coleman
 * Clinton Lee Taylor
