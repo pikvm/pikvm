@@ -102,21 +102,21 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
 * Video capture device:
   - **Recommended**: [HDMI to CSI-2 bridge based on TC358743](https://aliexpress.com/item/4000102166176.html) - low latency ~100ms, more reliable.
   - ... or [HDMI to USB dongle](https://aliexpress.com/item/4001043540669.html) (not available for ZeroW) - high latency ~200ms, [not very reliable](#a-few-words-about-hdmi-usb-dongle)).
-* Only for Raspberry Pi 4: parts for Y-splitter cable:
-  * <details><summary>Option #1: DIY for soldering or twist.</summary>
+* Only for Raspberry Pi 4: parts for Y-splitter cable (**one variant at your choice**):
+  * <details><summary>Variant #1: DIY for soldering or twist.</summary>
     <ul>
       <li>1x USB-A to USB-C cable (male-male).</li>
       <li>1x another cable USB-A to any (male-any).</li>
     </ul>
     </details>
-  * <details><summary>Option #2: Ready-made using USB-micro splitter.</summary>
+  * <details><summary>Variant #2: Ready-made using USB-micro splitter.</summary>
     <ul>
       <li>1x <a href="https://www.tindie.com/products/8086net/usbpwr-splitter">USB/Power Splitter Module</a>.</li>
       <li>1x USB-A to USB-C cable (male-male).</li>
       <li>2x USB-A to USB-micro cable (male-male).</li>
     </ul>
     </details>
-  * <details><summary>Option #3: Ready-made using USB-C splitter.</summary>
+  * <details><summary>Variant #3: Ready-made using USB-C splitter.</summary>
     <ul>
       <li>1x <a href="https://www.tindie.com/products/8086net/usb-cpwr-splitter">USB-C/Power Splitter Module</a>.</li>
       <li>3x USB-A to USB-C cable (male-male).</li>
