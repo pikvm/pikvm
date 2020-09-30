@@ -103,13 +103,26 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
   - **Recommended**: [HDMI to CSI-2 bridge based on TC358743](https://aliexpress.com/item/4000102166176.html) - low latency ~100ms, more reliable.
   - ... or [HDMI to USB dongle](https://aliexpress.com/item/4001043540669.html) (not available for ZeroW) - high latency ~200ms, [not very reliable](#a-few-words-about-hdmi-usb-dongle)).
 * Only for Raspberry Pi 4: parts for Y-splitter cable:
-  * Option #1: DIY (for soldering or twist):
-    - 1x USB-A to USB-C cable (male-male).
-    - 1x another cable USB-A to any (male-any).
-  * Option #2: Ready-made:
-    - 1x [USB/PWR Splitter Module](https://www.tindie.com/products/8086net/usbpwr-splitter).
-    - 1x USB-A to USB-C cable (male-male).
-    - 2x USB-A to USB-micro cable (male-male).
+  * <details><summary>Option #1: DIY for soldering or twist.</summary>
+    <ul>
+      <li>1x USB-A to USB-C cable (male-male).</li>
+      <li>1x another cable USB-A to any (male-any).</li>
+    </ul>
+    </details>
+  * <details><summary>Option #2: Ready-made using USB-micro splitter.</summary>
+    <ul>
+      <li>1x <a href="https://www.tindie.com/products/8086net/usbpwr-splitter">USB/Power Splitter Module</a>.</li>
+      <li>1x USB-A to USB-C cable (male-male).</li>
+      <li>2x USB-A to USB-micro cable (male-male).</li>
+    </ul>
+    </details>
+  * <details><summary>Option #3: Ready-made using USB-C splitter.</summary>
+    <ul>
+      <li>1x <a href="https://www.tindie.com/products/8086net/usb-cpwr-splitter">USB-C/Power Splitter Module</a>.</li>
+      <li>3x USB-A to USB-C cable (male-male).</li>
+      <li>For this option you can buy the official Raspberry Pi Power Supply with USB-C and get rid of one USB-C cable and the USB-A charger.</li>
+    </ul>
+    </details>
 * Only for Raspberry Pi ZeroW:
   * 2x USB A-to-micro cables (male-male, for power and keyboard & mouse emulator).
   * 1x [Raspberry Pi Zero Camera Cable](https://aliexpress.com/item/32953696917.html) (if using HDMI to CSI-2 Bridge, but not compatible with Auvidea B101, check pinout).
