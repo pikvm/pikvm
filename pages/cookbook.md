@@ -28,8 +28,9 @@
 1. Edit `/etc/kvmd/override.yaml` (Remove `{}` if this your first configuration entry) and add these lines:
     ``` yaml
     otg:
-        acm:
-            enabled: true
+        devices:
+            serial:
+                enabled: true
     ```
 2. Run the following command:
     ```
