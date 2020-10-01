@@ -20,7 +20,7 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 * Bootable **Virtual CD-ROM** and **Flash Drive**;
 * USB **Keyboard** and **mouse** (with leds and the wheel), PS/2 keyboard;
 * **Control the server power** using ATX functions;
-* Access via **Web UI** or **VNC**, ability to use **IPMI BMC**, **Redfish** and **Wake-on-LAN** to control the server;
+* Access via **Web UI** or **VNC**, ability to use **IPMI BMC** and **Wake-on-LAN** to control the server;
 * **The ready-made OS** with read-only filesystem;
 * **Extensible authorization** and SSL encryption;
 * **Health monitoring** of the Pi;
@@ -60,8 +60,8 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
   By default the OS runs in read-only mode, as an embedded system should. This prevents damage to the memory card due to a sudden power outage.
 * **VNC server**  
   The managed server and its BIOS can be accessed using a regular VNC client which supports JPEG compression.
-* **IPMI BMC and Redfish**  
-  Use `ipmitool`, `ipmiutil` or any existing network infrastructure that supports IPMI to monitor and manage the server's power. Redfish and `redfishtool` supported too.
+* **IPMI BMC**  
+  Use `ipmitool`, `ipmiutil` or any existing network infrastructure that supports IPMI to monitor and manage the server's power.
 * **Wake-on-LAN**  
   Pi-KVM can be configured to power up a managed server using WoL. This will be available in the Web menu.
 * **Extensible authorization methods**  
@@ -314,10 +314,10 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
             ip: 192.168.0.100
             # port: 9  # By default
     ```
-
-* [Using IPMI and Redfish](pages/ipmi.md).
+    
+* To use IPMI BMC you need to set up an appropriate account and run the `kvmd-ipmi` daemon (`systemctl enable --now kvmd-ipmi`). Although Pi-KVM supports the IPMI protocol, we strongly recommend that you do not use it outside of trusted networks due to the protocol's [insecurity](https://github.com/NitescuLucian/nliplace.com.blog.drafts). Refer to the file `/etc/kvmd/ipmipasswd` to configure IPMI account.
   
-* [Using VNC](pages/vnc.md).
+* [Enabling VNC](pages/vnc.md).
   
 * [Using Arduino HID (for USB or PS/2) with v2 platform](pages/arduino_hid.md).
 
