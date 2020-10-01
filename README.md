@@ -1,9 +1,9 @@
 # Open and cheap DIY IP-KVM based on Raspberry Pi  
 [![Discord](https://img.shields.io/discord/580094191938437144?logo=discord)](https://discord.gg/bpmXfz5) [![Reddit](https://img.shields.io/badge/reddit-join-orange?logo=reddit)](https://www.reddit.com/r/pikvm)
 
-A very simple and fully functional Raspberry Pi-based IP-KVM that you can make with your own hands. This device helps to manage servers or workstations remotely, regardless of the health of the operating system or whether one is installed. You can fix any problem, configure the BIOS, and even reinstall the OS using the virtual CD-ROM or Flash Drive.
+A very simple and fully functional Raspberry Pi-based IP-KVM that you can make with your own hands. This device helps manage servers or workstations remotely, regardless of the health of the operating system or whether one is installed. You can fix any problem, configure the BIOS, and even reinstall the OS using the virtual CD-ROM or Flash Drive.
 
-The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community Chat](https://discord.gg/bpmXfz5) for news, questions and support!
+The website: [pikvm.org](https://pikvm.org). Also join the [Discord Community Chat](https://discord.gg/bpmXfz5) for news, questions and support!
 
 * **[>>> DIY Getting Started <<<](#diy-getting-started)**
 * Watch the video: https://youtu.be/9YhPWjWv5gw
@@ -133,7 +133,7 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
   - A breadboard and wires.
   
 #### A few words about HDMI-USB dongle
-It's completely supported and Pi-KVM works great with it. But it has some disadvantages compared with recommended [HDMI-CSI bridge](https://aliexpress.com/item/4000102166176.html): USB gives a lot of latency (200ms vs 100ms) and it doesn't support stream compression control (you won't be able to use Pi-KVM in a place with a poor internet connection). It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself. In addition, some users report hardware problems: the dongle may not work in the BIOS or simply stop working after a while. It's a black box, and no one knows what's inside it. If you have problems with it, it will not be possible to fix them.
+It's completely supported and Pi-KVM works great with it. But it has some disadvantages compared to the recommended [HDMI-CSI bridge](https://aliexpress.com/item/4000102166176.html): USB gives a lot of latency (200ms vs 100ms) and it doesn't support stream compression control (you won't be able to use Pi-KVM in a place with a poor internet connection). It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself. In addition, some users report hardware problems: the dongle may not work in the BIOS or simply stop working after a while. It's a black box, and no one knows what's inside it. If you have problems with it, it will not be possible to fix them.
   
 ## Hardware for v0
 * Raspberry Pi 2 or 3.
