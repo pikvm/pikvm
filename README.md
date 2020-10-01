@@ -384,6 +384,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Eric Phenix
 * Fergus McKay
 * Foamy
+* Fredrik Idréus
 * Ge Men
 * Grey Cynic
 * Guido Bernacchi
