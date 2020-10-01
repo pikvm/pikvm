@@ -395,6 +395,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jari Hiltunen
 * Jason Toland
 * Jeff Bowman
+* Jennifer Rowlett
 * John McGovern
 * Jonathan Vaughn
 * Josh Ricker
