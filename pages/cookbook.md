@@ -24,7 +24,7 @@
     # kvmd-helper-otgmsd-remount ro
     ```
 
-## Enable serial console on Pi-KVM
+## Enable Serial-over-USB connection/console between the server and Pi-KVM
 This can be used for terminal access from the managed server to the pikvm, or for any other purpose that requires a serial connection. In the last case, you only need to perform step 1 and reboot.
 
 1. Edit `/etc/kvmd/override.yaml` (remove `{}` if this your first configuration entry) and add these lines:
