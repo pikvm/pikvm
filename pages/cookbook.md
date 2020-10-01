@@ -1,4 +1,4 @@
-# This Pi-KVM cookbook has some undocumented recipes for your Pi-KVM
+# Some random and useful recipes
 ## Take a HDMI screenshot via console on Pi-KVM
 ```
 # curl --unix-socket /run/kvmd/ustreamer.sock http://localhost/snapshot -o screen.jpg
