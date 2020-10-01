@@ -25,7 +25,9 @@
     ```
 
 ## Enable serial console on Pi-KVM
-1. Edit `/etc/kvmd/override.yaml` (Remove `{}` if this your first configuration entry) and add these lines:
+This can be used for terminal access from the managed server to the pikvm, or for any other purpose that requires a serial connection. In the last case, you only need to perform step 1 and reboot.
+
+1. Edit `/etc/kvmd/override.yaml` (remove `{}` if this your first configuration entry) and add these lines:
     ``` yaml
     otg:
         devices:
@@ -49,3 +51,21 @@
     # reboot
     ```
 5. Once Pi-KVM is rebooted you will have access to a virtual serial port on the server that the USB is connected to. Use mingetty, screen, putty, or something like this to access the kvm from the server. The port is called `/dev/ttyAMA0`.
+
+## Enable Ethernet-over-USB connection between the server and Pi-KVM
+When combined with configuring a DNS server, FTP, or SMB (for example), this is a powerful way to extend the capabilities of Pi-KVM.
+
+1. Edit `/etc/kvmd/override.yaml` (remove `{}` if this your first configuration entry) and add these lines:
+    ``` yaml
+    otg:
+        devices:
+            ethernet:
+                enabled: true
+                driver: ecm
+                host_mac: 48:6f:73:74:50:43
+                kvm_mac: 42:61:64:55:53:42
+    ```
+    The `host_mac` address will be used on the server's network interface. The `kvm_mac` means the address that will be assigned to the local interface on the Pi-KVM. The KVM interface will be called `usb0`.r's network interface. If the `host_mac` or `kvm_mac` is not specified, a random value will be used. The `driver` parameter means the protocol that will be used for the USB network. The default value is `ecm` so it can be passed it this example. Other possible values are `eem`, `ncm` and `rndis`.
+2. Perform `reboot`.
+
+:exclamation: When this feature is activated, the Pi-KVM interface and other ports will be available to the host. Use iptables for restrictions.
