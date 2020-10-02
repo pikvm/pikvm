@@ -364,6 +364,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Anton Kovalenko
 * Aron Perelman
 * Arthur Woimbée
+* Augusto Becciu
 * baddog
 * Bao Tin Hoang
 * Ben Gordon
