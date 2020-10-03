@@ -24,8 +24,8 @@
     # kvmd-helper-otgmsd-remount ro
     ```
 
-## Enable Serial-over-USB connection/console between the server and Pi-KVM
-This can be used for terminal access from the managed server to the pikvm, or for any other purpose that requires a serial connection. In the last case, you only need to perform step 1 and reboot.
+## Enable Serial-over-USB connection
+Specifically to v2. This can be used for terminal access from the managed server to the Pi-KVM, or for any other purpose that requires a serial connection. In the last case, you only need to perform step 1 and reboot.
 
 1. Edit `/etc/kvmd/override.yaml` (remove `{}` if this your first configuration entry) and add these lines:
     ``` yaml
@@ -52,8 +52,8 @@ This can be used for terminal access from the managed server to the pikvm, or fo
     ```
 5. Once Pi-KVM is rebooted you will have access to a virtual serial port on the server that the USB is connected to. Use mingetty, screen, putty, or something like this to access the kvm from the server. The port is called `/dev/ttyAMA0`.
 
-## Enable Ethernet-over-USB connection between the server and Pi-KVM
-When combined with configuring a DNS server, FTP, or SMB (for example), this is a powerful way to extend the capabilities of Pi-KVM.
+## Enable Ethernet-over-USB network
+Specifically to v2. When combined with configuring a DNS server, FTP, or SMB (for example), this is a powerful way to extend the capabilities of Pi-KVM.
 
 1. Edit `/etc/kvmd/override.yaml` (remove `{}` if this your first configuration entry) and add these lines:
     ``` yaml
