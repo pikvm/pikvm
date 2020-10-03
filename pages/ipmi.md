@@ -19,6 +19,11 @@ To enable ipmi IPMI BMC follow these steps:
     ```
     # ro
     ```
+5. Here some examples (on a remote PC:
+    ```
+    $ ipmitool -I lanplus -U admin -P admin -H pikvm power status
+    $ ipmitool -I lanplus -U admin -P admin -H pikvm power on
+    ```
 
 # Redfish
 [Redfish](https://www.dmtf.org/standards/redfish) is a more modern server management protocol designed to replace IPMI.
@@ -47,4 +52,10 @@ If there is a file in your system after the update `/etc/kvmd/nginx/kvmd.ctx-ser
 
 :exclamation: Be careful not to lose your local changes if you have done anything with this file before.
 
-To access the Redfish API, use HTTP Basic Auth.
+To access the Redfish API, use HTTP Basic Auth. Also you can use the [redfishtool](https://github.com/DMTF/Redfishtool):
+
+```
+$ redfishtool -S Never -r pikvm2 root
+$ redfishtool -S Never -u admin -p admin -r pikvm Systems
+$ redfishtool -S Never -u admin -p admin -r pikvm Systems reset ForceOff
+```
