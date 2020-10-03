@@ -330,6 +330,11 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
 * [Centralized authorization for multiple Pi-KVMs](https://github.com/pikvm/kvmd-auth-server).
 
 * [Cookbook](pages/cookbook.md).
+    - [Take a HDMI screenshot via console on Pi-KVM](pages/cookbook.md#take-a-hdmi-screenshot-via-console-on-pi-kvm).
+    - [Get installed KVMD version via console](pages/cookbook.md#get-installed-kvmd-version-via-console).
+    - [Upload .ISO images manually](pages/cookbook.md#upload-iso-images-manually).
+    - [Enable Serial-over-USB connection](pages/cookbook.md#enable-serial-over-usb-connection).
+    - [Enable Ethernet-over-USB network](pages/cookbook.md#enable-ethernet-over-usb-network).
 
 -----
 
