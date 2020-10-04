@@ -55,7 +55,7 @@ If there is a file in your system after the update `/etc/kvmd/nginx/kvmd.ctx-ser
 To access the Redfish API, use HTTP Basic Auth. Also you can use the [redfishtool](https://github.com/DMTF/Redfishtool):
 
 ```
-$ redfishtool -S Never -r pikvm2 root
+$ redfishtool -S Never -r pikvm root
 $ redfishtool -S Never -u admin -p admin -r pikvm Systems
 $ redfishtool -S Never -u admin -p admin -r pikvm Systems reset ForceOff
 ```
