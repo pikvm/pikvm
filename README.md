@@ -426,6 +426,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * nybble
 * pozitron03
 * Ranc1d
+* Robin Gfatter
 * Samed Ozoglu
 * Scott
 * Scott Spicola
