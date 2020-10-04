@@ -145,6 +145,7 @@ Some rules and customization options:
 - If the switch mode is disabled, only a button will be displayed. If pulse is disabled, only a switch will be shown.
 - To change the LED's color specify it after the channel name like `"led1|red"`. Available: `green`, `yellow` and `red`.
 - To change title of the button, write some its name like `"relay1|My cool relay"`.
+- Buttons and switches can request confirmation on acting. To do this write its name like `"relay1|confirm|My cool relay"`. The third argument with a title is required in this case.
 
 # Hardware modules
 
