@@ -20,7 +20,8 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 * Bootable **Virtual CD-ROM** and **Flash Drive**;
 * USB **Keyboard** and **mouse** (with leds and the wheel), PS/2 keyboard;
 * **Control the server power** using ATX functions;
-* Access via **Web UI** or **VNC**, ability to use **IPMI BMC**, **Redfish** and **Wake-on-LAN** to control the server;
+* Access via **Web UI** or **VNC**;
+* Ability to use **IPMI BMC**, **Redfish** and **Wake-on-LAN** to control the server;
 * **The ready-made OS** with read-only filesystem;
 * **Extensible authorization** and SSL encryption;
 * **Health monitoring** of the Pi;
