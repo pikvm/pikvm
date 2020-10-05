@@ -53,6 +53,8 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
   Pi-KVM can be opened to the Internet and no one will get access without the password. SSL encryption is used to protect traffic from being intercepted by third parties.
 * **Local monitoring**  
   Pi-KVM monitors the health of the Raspberry Pi board and will warn you if it's too hot or is not receiving enough power.
+* **GPIO management**
+  You can control GPIO and USB relays via the web interface. The extensible interface allows you to make anything out of it.
 
 ## Production-ready  
 * **Linux-based embedded OS**  
@@ -263,8 +265,8 @@ Happy using of Pi-KVM :)
 -----
 
 # Limitations
-* In very rare cases, old motherboards contain a buggy BIOS that does not understand the keyboard of the **v2** platform (bellow). The reason for this is that the BIOS doesn't fully implement the USB HID stack for composite devices correctly. Meanwhile, Mass Storage Drive will be detected. For this case, we suggest using the Arduino HID from the **v0** platform with **v2**. Thus the Pi-KVM will be connected by two USB cables to the motherboard: one of them will be responsible for the keyboard and mouse, the other for everything else. See [here](pages/arduino_hid.md).
-* A similar problem can be observed on devices with UEFI: the keyboard works fine, but the mouse does not work. This problem is much less significant, since all UEFI can be configured using the keyboard and hotkeys, without the mouse. If you want to get a mouse, the solution will be the same: using an Arduino HID, as in the advice above.
+* In very rare cases, some motherboards contain a buggy BIOS that does not understand the keyboard of the **v2** platform (bellow). The reason for this is that the BIOS doesn't fully implement the USB HID stack for composite devices correctly. Meanwhile, Mass Storage Drive can be detected. For this case, we suggest using the Arduino HID from the **v0** platform with **v2**. Thus the Pi-KVM will be connected by two USB cables to the motherboard: one of them will be responsible for the keyboard and mouse, the other for everything else. See [here](pages/arduino_hid.md).
+* A similar problem can be observed on devices with UEFI: the keyboard works fine, but the mouse does not work. This problem is much less significant, since all UEFI can be configured using the keyboard and hotkeys, without the mouse. If you want to get a mouse, the solution can be the same: using an Arduino HID, as in the advice above.
 
 Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain an optional HID module for such cases, so you won't have to build anything yourself.
 
