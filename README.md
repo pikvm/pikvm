@@ -409,6 +409,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * John McGovern
 * Jonathan Vaughn
 * Josh Ricker
+* Jordi Pakey-Rodriguez
 * Jozef Riha
 * Justin Waters
 * Krzysztof Żelaśkiewicz
