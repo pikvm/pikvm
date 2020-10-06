@@ -118,7 +118,7 @@ How to create RW flash drive:
     ```
     # kvmd-otgmsd -i 1 --unlock --eject
     ```
-    :exclamation: this command will interrupt the current IO operation on **ALL DRIVES** including the one that is managed via the web interface. The same result is achieved by clicking the disable media button in the web interface. Right now, the Linux kernel does not allow to distinguish between internal threads that manage different drives. It is recommended to eject the media when you know that this will not cause problems for the other media.
+    :exclamation: This command will interrupt the current IO operation on **ALL DRIVES** including the one that is managed via the web interface. The same result is achieved by clicking the disable media button in the web interface. Right now, the Linux kernel does not allow to distinguish between internal threads that manage different drives. It is recommended to eject the media when you know that this will not cause problems for the other media.
 6. Don't forget to remount the root filesystem to read-only mode:
     ```
     # ro
