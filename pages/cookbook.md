@@ -75,7 +75,7 @@ Specifically to v2. When combined with configuring a DNS server, FTP, or SMB (fo
 ## Adding extra Mass Storage Drives
 Specifically to v2. By default, Pi-KVM creates only one drive for Mass Storage emulation. However, you can create additional drives and manage them manually via the terminal. This is useful if you want to boot the server from a ISO CD (specified in the web interface), then connect a virtual flash drive to the server and download some files from to Pi-KVM from it.
 
-:exclamation: The presence of an additional Mass Storage device should not interfere with the download, but for reasons of compatibility paranoia, this is disabled by default. We recommend setting up the drives in advance, making sure that booting from the ISO CD is still working, and then using the drives as needed.
+:exclamation: The presence of an additional Mass Storage device should not interfere with the boot, but for reasons of compatibility paranoia, this is disabled by default. We recommend setting up the drives in advance, making sure that booting from the ISO CD is still working, and then using the drives as needed.
 
 How to enable extra drives:
 1. Switch the root filesystem to `rw` mode.
