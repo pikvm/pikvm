@@ -44,3 +44,6 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 
 ### I can't copy clipboard contents from the server (the machine controlled via Pi-KVM) to the client.
 - The clipboard only works from the client to the server not vice versa. There is currently no way to do it.
+
+### Big mouse latency on RPi as managed server
+- Unusual case: RPi4 is used as a Pi-KVM to control RPi3. In this case, the mouse delay may be several seconds. To fix it, just add line `usbhid.mousepoll=0` to `/boot/config.txt` to the server (i.e. RPI3 in our case) and reboot it.
