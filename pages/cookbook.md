@@ -75,10 +75,10 @@ Specifically to v2. When combined with configuring a DNS server, FTP, or SMB (fo
             allow_tcp: [80, 443]
     ```
     To view other available configuration parameters, use the command `kvmd -m`.
-3. To enable the service, use the command `systemctl enable --now kvmd-otgnet`.
+3. To enable the service, use the command `systemctl enable kvmd-otgnet`.
 4. Perform `reboot`.
 
-:exclamation: The USB-Ethernet features are experimental, so some of the default settings may be changed in future releases
+:exclamation: The USB-Ethernet features are experimental, so some of the default settings may be changed in future releases.
 
 ## Adding extra Mass Storage Drives
 Specifically to v2. By default, Pi-KVM creates only one drive for Mass Storage emulation. However, you can create additional drives and manage them manually via the terminal. This is useful if you want to boot the server from a ISO CD (specified in the web interface), then connect a virtual flash drive to the server and download some files from to Pi-KVM from it.
