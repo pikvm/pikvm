@@ -11,6 +11,9 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 - Double check if you connected the HDMI-CSI-2 bridge cable correctly. [Check the documentation for details](/README.md#for-the-hdmi-csi-bridge) A red LED will light up on the bridge if it is connected properly. 
 - Some laptops do not output any signal until you switched the ouput (usually via the FN + and an F5 key on the keyboard). 
 
+### HDMI-CSI bridge not working with official RPi PoE HAT
+Details [here](https://github.com/pikvm/pikvm/issues/6). The reason is that the [HAT](https://www.raspberrypi.org/products/poe-hat) has a built-in fan controller that conflicts with the TC358743 chip. The solution is to disable the fan control and connect it to the power line so that it works continuously. To turn off the controller you need to add the line `disable_poe_fan=1` to `/boot/config.txt`.
+
 -----
 
 # Software
