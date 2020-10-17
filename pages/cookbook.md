@@ -124,3 +124,57 @@ How to create RW flash drive:
     # ro
     ```
 7. You can download the resulting image via SCP or mount it as a loop device on the Pi-KVM.
+
+## Create a Microsoft Windows based Flash disk image
+This procedure requires sufficient space on your SD card.
+Without resising, the full size of the USB stick will be used, so keep it as small as possible (e.g. 4GB or 8GB).
+You can also do this on a separate unix machine and transfer the image over to pikvm.
+On Windows you could use a program like PassMark ImageUSB or 'dd' for Windows to create the image.
+
+You can use a tool like "EaseUS Partition Master Free" or "GParted" to resize the main FAT32 partition. This will save on PiKVM used storage space.
+
+1. Insert Windows based USB stick into Pi4, generated with Microsoft USB creation tool. SSH to PiKVM as root.
+    ```
+    # dmesg
+    [ 3025.025401] usb-storage 2-1:1.0: USB Mass Storage device detected
+    [ 3025.038911] scsi host0: usb-storage 2-1:1.0
+    [ 3026.132248] scsi 0:0:0:0: Direct-Access     Kingston DataTraveler 3.0 PMAP PQ: 0 ANSI: 6
+    [ 3026.771425] sd 0:0:0:0: [sda] 15360000 512-byte logical blocks: (7.86 GB/7.32 GiB)
+    [ 3026.790276] sd 0:0:0:0: [sda] Write Protect is off
+    [ 3026.802530] sd 0:0:0:0: [sda] Mode Sense: 23 00 00 00
+    [ 3026.804450] sd 0:0:0:0: [sda] No Caching mode page found
+    [ 3026.814082] sd 0:0:0:0: [sda] Assuming drive cache: write through
+    [ 3026.908712]  sda: sda1
+    [ 3026.922794] sd 0:0:0:0: [sda] Attached SCSI removable disk
+    [root@pikvm ~]#
+    ```
+    USB devices shows as "sda". We will use "sda1" as the Microsoft Windows (TM) partition.
+
+2. mount msd folder as read/write
+    ```
+    # kvmd-helper-otgmsd-remount rw
+    ```
+3. Create image of USB data PARTITION to an image file, this will take some time, in this case about 12 minutes (RPi4).
+    ```
+    # dd if=/dev/sda1 of=/var/lib/kvmd/msd/images/windows10-2004.bin bs=8M status=progress
+    4458545152 bytes (4.5 GB, 4.2 GiB) copied, 736 s, 6.1 MB/s
+    531+1 records in
+    531+1 records out
+    4458545152 bytes (4.5 GB, 4.2 GiB) copied, 736.213 s, 6.1 MB/s
+    ````
+4. Correct ownership of new image and make sure the website reports the file as complete (pay attention to the different folder).
+    ```
+    # chown kvmd:kvmd /var/lib/kvmd/msd/images/windows10-2004.bin
+    # touch /var/lib/kvmd/msd/meta/windows10-2004.bin.complete
+    ```
+5. Remount msd folder as read only
+    ```
+    # kvmd-helper-otgmsd-remount ro
+    ````
+
+6. On PiKVM webpage, under Mass Storage select the new image and connect it in Drive Mode: Flash to the server.
+
+    Boot the server and select boot device like you normally would.
+    E.g. in a AMI BIOS the boot device is called "Linux File-CD Gadget 0504".
+
+    
