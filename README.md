@@ -338,6 +338,7 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
     - [Upload .ISO images manually](pages/cookbook.md#upload-iso-images-manually).
     - [Enable Serial-over-USB connection](pages/cookbook.md#enable-serial-over-usb-connection).
     - [Enable Ethernet-over-USB network](pages/cookbook.md#enable-ethernet-over-usb-network).
+    - [Create a Microsoft Windows based flash disk image](pages/cookbook.md#create-a-microsoft-windows-based-flash-disk-image).
 
 -----
 
