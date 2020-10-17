@@ -68,9 +68,17 @@ Specifically to v2. When combined with configuring a DNS server, FTP, or SMB (fo
                 kvm_mac: 42:61:64:55:53:42
     ```
     The `host_mac` address will be used on the server's network interface. The `kvm_mac` means the address that will be assigned to the local interface on the Pi-KVM. The KVM interface will be called `usb0`.r's network interface. If the `host_mac` or `kvm_mac` is not specified, a random value will be used. The `driver` parameter means the protocol that will be used for the USB network. The default value is `ecm` so it can be passed it this example. Other possible values are `eem`, `ncm` and `rndis`.
-2. Perform `reboot`.
+2. To automatically configure the USB network on the server recommended using the service `kvmd-otgnet`. It configures the firewall, assigns an address to the local Pi-KVM interface `usb0` and starts DHCP so the managed server can get the IPv4 address. By default, the address `169.254.0.1/28` to interface `usb0` will be assigned. One of the other addresses from the network `169.254.0.0./28` will be assigned to the server when it requests it via DHCP. For security reasons, all incoming connections from the server to the Pi-KVM side are blocked (except for ICMP and UDP port 67 which is used for DHCP). If you want to allow access from the server to the Pi-KVM interface, then you need to add ports 80 and 443 to the whitelist using `/etc/kvmd/override.yaml` file like this:
+    ```yaml
+    otgnet:
+        firewall:
+            allow_tcp: [80, 443]
+    ```
+    To view other available configuration parameters, use the command `kvmd -m`.
+3. To enable the service, use the command `systemctl enable --now kvmd-otgnet`.
+4. Perform `reboot`.
 
-:exclamation: When this feature is activated, the Pi-KVM interface and other ports will be available to the host. Use iptables for restrictions.
+:exclamation: The USB-Ethernet features are experimental, so some of the default settings may be changed in future releases
 
 ## Adding extra Mass Storage Drives
 Specifically to v2. By default, Pi-KVM creates only one drive for Mass Storage emulation. However, you can create additional drives and manage them manually via the terminal. This is useful if you want to boot the server from a ISO CD (specified in the web interface), then connect a virtual flash drive to the server and download some files from to Pi-KVM from it.
