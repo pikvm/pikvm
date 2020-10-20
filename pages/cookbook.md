@@ -134,12 +134,18 @@ How to create RW flash drive:
 7. You can download the resulting image via SCP or mount it as a loop device on the Pi-KVM.
 
 ## Create a Microsoft Windows based Flash disk image
-This procedure requires sufficient space on your SD card.
-Without resising, the full size of the USB stick will be used, so keep it as small as possible (e.g. 4GB or 8GB).
-You can also do this on a separate unix machine and transfer the image over to pikvm.
-On Windows you could use a program like PassMark ImageUSB or 'dd' for Windows to create the image.
+This procedure will create a disk image of a USB stick. This is mostly required for Microsoft Windows (TM) based images since they are larger than the CDROM based limit of 2.2GB.
+You can create a bootable USB stick with the normal Microsoft tools, e.g. Media Creation Tool.
+Creating a bootable USB stick can also be made from an ISO file with other tools like Rufus.
 
-You can use a tool like "EaseUS Partition Master Free" or "GParted" to resize the main FAT32 partition. This will save on PiKVM used storage space.
+Without resizing, the full size of the USB stick will be used, so keep the stick as small as possible (e.g. 4GB or 8GB) but still large enough for all Windows files. The Media Creation tool will tell you what the minum size is.
+
+Before creating the image file, you can use a tool like "EaseUS Partition Master Free" or "GParted" to resize the main FAT32 partition on the USB stick. This will save space on PiKVM.
+
+You can also perform these steps on a separate unix machine and transfer the image over to pikvm with e.g. SCP.
+Or, on Windows you could use a program like PassMark ImageUSB (only for full USB size images) or 'dd' for Windows to create the image. Then use WinSCP to tranfer the image over to PiKVM.
+
+Once you have the desired USB stick perform the following on the RPi to create the image directly to the PiKVM image storage folder.
 
 1. Insert Windows based USB stick into Pi4, generated with Microsoft USB creation tool. SSH to PiKVM as root.
     ```
@@ -180,7 +186,7 @@ You can use a tool like "EaseUS Partition Master Free" or "GParted" to resize th
     # kvmd-helper-otgmsd-remount ro
     ````
 
-6. On PiKVM webpage, under Mass Storage select the new image and connect it in Drive Mode: Flash to the server.
+6. On PiKVM webpage, under Storage select the new image and connect it in Drive Mode: Flash to the server.
 
     Boot the server and select boot device like you normally would.
     E.g. in a AMI BIOS the boot device is called "Linux File-CD Gadget 0504".
