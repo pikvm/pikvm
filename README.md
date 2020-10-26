@@ -448,6 +448,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Steven Richter
 * Tejun Heo
 * Truman Kilen
+* Tyler
 * Walter_Ego
 * YURI LEE
 * zgen
