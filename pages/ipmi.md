@@ -19,7 +19,7 @@ To enable ipmi IPMI BMC follow these steps:
     ```
     # ro
     ```
-5. Here some examples (on a remote PC:
+5. Here some examples (on the remote PC):
     ```
     $ ipmitool -I lanplus -U admin -P admin -H pikvm power status
     $ ipmitool -I lanplus -U admin -P admin -H pikvm power on
