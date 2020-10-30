@@ -386,6 +386,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Christian Schlögl
 * Christof Maluck
 * Christoffer Lund
+* Corey Layton
 * Corey Lista
 * Clifford Coleman
 * Clinton Lee Taylor
@@ -423,6 +424,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Malcolm Cameron
 * Mark Gilbert
 * Mark Robinson
+* Markus Schicker
 * Markus Sobczack
 * Martin Gasser
 * Mauricio Allende
