@@ -96,8 +96,9 @@ The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages 
           streamer:
               forever: true
       ```
-    * Restart KVMD:
+    * Finish:
       ```
+      # ro
       # systemctl restart kvmd
       ```
 
