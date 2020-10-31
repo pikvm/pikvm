@@ -63,6 +63,7 @@ Decompress and flash image and follow to the [final steps](#the-final-steps). Be
       kvmd:
           streamer:
               forever: true
+              cmd_append: [--slowdown]
       ```
     * Finish:
       ```
