@@ -24,6 +24,25 @@ To enable ipmi IPMI BMC follow these steps:
     $ ipmitool -I lanplus -U admin -P admin -H pikvm power status
     $ ipmitool -I lanplus -U admin -P admin -H pikvm power on
     ```
+    
+# IPMI SoL
+
+IPMI supports the ability to get console access to the server using Serial-over-LAN. Pi-KVM can act as a proxy for your server's COM port.
+
+To use this feature, you will need a USB-COM adapter that you need to connect to the Pi-KVM. The COM port of the adapter need to be connected to the server. As with IPMI BMC, you need to configure `kvmd-vnc` and add the following configuration to `/etc/kvmd/override.yaml`:
+
+```yaml
+ipmi:
+    sol:
+        device: /dev/ttyUSB0  # Path of your USB-COM adapter
+        speed: 115200
+```
+
+After enabling `kvmd-ipmi`, all requests that it receives over the network regarding the COM port will be forwarded to your server. For example:
+
+```
+$ ipmitool -I lanplus -U admin -P admin -H pikvm sol activate
+```
 
 # Redfish
 [Redfish](https://www.dmtf.org/standards/redfish) is a more modern server management protocol designed to replace IPMI.
