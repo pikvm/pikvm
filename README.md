@@ -70,7 +70,7 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 * **Extensible authorization methods**  
   Multiple Pi-KVMs can be configured to use a [common authorization service](https://github.com/pikvm/kvmd-auth-server). PAM and its rich authorization mechanisms can also be used to integrate Pi-KVM into your existing authentication infrastructure.
 * **Macro scripts**  
-  If repetitive actions must be perfromed on the attached server (or on several different servers), a macro can be recorded with keyboard & mouse actions and can be played back mutiple times.
+  If repetitive actions must be performed on the attached server (or on several different servers), a macro can be recorded with keyboard & mouse actions and can be played back multiple times.
 
 
 ## Open Source
@@ -98,7 +98,7 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
 
 ## Hardware for v2
 * Raspberry Pi board:
-  - **Recommended**: Raspberry Pi 4 (2 GB model is enough) for the best pefrormance.
+  - **Recommended**: Raspberry Pi 4 (2 GB model is enough) for the best performance.
   - ... or Raspberry Pi ZeroW (slower alternative, no ethernet).
 * MicroSD card (min 16 GB recommended).
 * USB-A 3A charger (female socket) or power supply.
@@ -223,7 +223,7 @@ Here is a diagram shows that how to connect all of the pieces (click to full siz
 
 **Raspberry Pi 4 note**: since one USB-C female connector is used to receive power and perform keyboard/mouse/drive emulation a special Y-cable must be made that splits the DATA and POWER lines of USB-C (see [reasons](https://github.com/pikvm/docs/issues/11)). It can be made from two suitable connecting cables, or soldered together from scratch. Be sure to check the circuit diagram below, otherwise you may damage your devices. The appropriate USB pinout(s) can easily be found on Google. Please note that if you make a Y-cable from two no-name cables, the colors of the wires may not match those shown. Use a multimeter to make sure the connections are correct.
 
-See video howtos:
+See video how-tos:
 * [Making USB Y-splitter cable](https://www.youtube.com/watch?v=uLuBuQUF61o).
 * [Soldering ATX controller](https://www.youtube.com/watch?v=hKnKOuH_f8M).
 
@@ -303,7 +303,7 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
     ```
     then restart kvmd.
     
-* To use Wake-on-LAN with your server you must define some options such as the server's MAC address and (optionaly) IP address. Use `/etc/kvmd/override.yaml`. The format is:
+* To use Wake-on-LAN with your server you must define some options such as the server's MAC address and (optionally) IP address. Use `/etc/kvmd/override.yaml`. The format is:
     ```yaml
     kvmd:
         wol:
