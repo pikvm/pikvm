@@ -318,6 +318,8 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
             # port: 9  # By default
     ```
 
+* [Multiport KVM over IP](pages/multiport.md).
+
 * [Using IPMI and Redfish](pages/ipmi.md).
   
 * [Using VNC](pages/vnc.md).
@@ -351,7 +353,7 @@ For any help, you can contact our discord chat: https://discord.gg/bpmXfz5
 
 # FAQ
 **Q:** **Can I connect multiple servers to a single Pi-KVM?**  
-**A:** Yes, but it will require additional work to set up. Pi-KVM can be connected to a multi-port HDMI/USB switch and the switch's buttons can be connected via optocouplers to [the Pi's GPIO to switch channels](pages/gpio.md). If your KVM switches channels using keyboard shortcuts, there is a chance that it will not be able to work with OTG (v2 platform, see bellow), since it does not fully implement the USB stack. In this case, you will have to [use an Arduino board](pages/arduino_hid.md) to emulate the keyboard & mouse (Pi-KVM supports this configuration)
+**A:** Yes, but it will require additional work to set up. See [this page](pages/multiport.md).
 
 **Q:** **Can I use Pi-KVM with non-Raspberry Pi boards?**  
 **A:** Yes, but you will have to prepare the operating system yourself. As for the Pi-KVM software, you will need to replace some config files (such as UDEV rules). If you are a developer or an experienced system administrator, you will not have any problems with this. In addition, we are open to patches. If you need help with this, please contact us via Discord: https://discord.gg/bpmXfz5
