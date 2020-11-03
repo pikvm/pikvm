@@ -18,7 +18,7 @@ Details [here](https://github.com/pikvm/pikvm/issues/6). The reason is that the 
 
 # Software
 ### How do I update Pi-KVM with the latest software?
-- Connect to your Pi-KVM via ssh and run 
+- Connect to your Pi-KVM via ssh and run:
   ```
   rw
   pacman -Syu
