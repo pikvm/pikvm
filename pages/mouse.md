@@ -19,7 +19,7 @@ We expect to implement this in [TigerVNC](https://github.com/TigerVNC/tigervnc/i
 
 :exclamation: The relative mode is also not supported by mobile browsers.
 
-# Enabling relative mouse on v2 platform (OTG HID)
+# Enabling the relative mouse on the v2 platform (OTG HID)
 * Switch filesystem to RW-mode using command `rw`.
 * Edit `/etc/kvmd/override.yaml` and add these lines:
   ```yaml
@@ -39,5 +39,5 @@ We expect to implement this in [TigerVNC](https://github.com/TigerVNC/tigervnc/i
   ```
 * Don't forget to perform `reboot`.
 
-# Enabling relative mouse on v0 platform (serial HID)
+# Enabling the relative mouse on the v0 platform (serial HID)
 :exclamation: This is not currently supported but will be added in a future release. The reason is that we are working on improving the HID protocol.
