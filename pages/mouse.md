@@ -27,16 +27,15 @@ We expect to implement this in [TigerVNC](https://github.com/TigerVNC/tigervnc/i
               absolute: false
   ```
 * Perform `reboot`.
-
-If the mouse is still not detected by the BIOS/UEFI, try disabling horizontal scrolling to ensure maximum compatibility:
-```yaml
-kvmd:
-    hid:
-        mouse:
-            absolute: false
-            horizontal_wheel: false
-```
-Don't forget to perform `reboot`.
+* If the mouse is still not detected by the BIOS/UEFI, try disabling horizontal scrolling to ensure maximum compatibility:
+  ```yaml
+  kvmd:
+      hid:
+          mouse:
+              absolute: false
+              horizontal_wheel: false
+  ```
+* Don't forget to perform `reboot`.
 
 # Enabling relative mouse on v0 platform (serial HID)
 This is not currently supported but will be added in a future release. The reason is that we are working on improving the HID protocol.
