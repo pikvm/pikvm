@@ -392,6 +392,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Corey Lista
 * Clifford Coleman
 * Clinton Lee Taylor
+* Damon Meledones
 * David Howell
 * Denis Andreev
 * Denis Yatsenko
