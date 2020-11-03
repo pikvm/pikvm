@@ -36,6 +36,7 @@ kvmd:
             absolute: false
             horizontal_wheel: false
 ```
+Don't forget to perform `reboot`.
 
 # Enabling relative mouse on v0 platform (serial HID)
 This is not currently supported but will be added in a future release. The reason is that we are working on improving the HID protocol.
