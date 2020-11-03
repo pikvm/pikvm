@@ -6,7 +6,7 @@ Note: right now, pre-compiled images are only available for the Raspberry Pi 4. 
 
 ## Using Linux CLI
 Decompress and flash image and follow to the [final steps](#the-final-steps). Be careful when choosing your device path:
-```bash
+```
 # bzip2 -d v2-hdmi-rpi4.img.bz2
 # dd if=v2-hdmi-rpi4.img of=/dev/mmcblkX
 ```
@@ -48,7 +48,7 @@ Decompress and flash image and follow to the [final steps](#the-final-steps). Be
 4. To change the root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`. As indicated on the login screen, you need to use `rw` to make the root filesystem writable before issuing these commands. After making changes, make sure to run the command `ro` to switch the filesystem back to read-only.
 
 5. After installation, we recommend you to update your operating system:
-    ```shell
+    ```
     # rw
     # pacman -Syu
     # reboot
