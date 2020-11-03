@@ -2,7 +2,7 @@
 
 There are two modes of pointer device: absolute and relative.
 
-In absolute mode, the input device transmits the exact coordinates (X,Y) where the cursor should be moved. This is how touchscreens or drawing tablets work
+In absolute mode, the input device transmits the exact coordinates (X,Y) where the cursor should be moved. This is how touchscreens or drawing tablets work.
 
 In relative mode, only the relative offset (dX,dY) to the current position is transmitted, which is unknown to the input device itself. This is a regular mouse.
 
