@@ -29,7 +29,7 @@ We expect to implement this in [TigerVNC](https://github.com/TigerVNC/tigervnc/i
               absolute: false
   ```
 * Perform `reboot`. After that reboot your PC.
-* If the mouse is still not detected by the BIOS/UEFI, try disabling horizontal scrolling to ensure maximum compatibility:
+* If the mouse is still not detected by the BIOS/UEFI, try disabling horizontal scrolling to achieve the maximum compatibility:
   ```yaml
   kvmd:
       hid:
