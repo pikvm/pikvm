@@ -2,7 +2,7 @@
 
 EDID is information about the video modes supported by the video capture device.
 In the case of Pi-KVM, this is an HDMI CSI bridge. Usually, you don't need to change this, since the default configuration is quite flexible,
-but sometimes, for example for strange UEFIs/BIOSes, this may be necessary.
+but sometimes, for example for strange UEFIs/BIOSes, this may be necessary (the [story](https://github.com/pikvm/pikvm/issues/78)).
 
 The EDID is stored on the Pi-KVM in the file `/etc/kvmd/tc358743-edid.hex`. If you write new data there, it will be applied on the Pi-KVM reboot.
 
