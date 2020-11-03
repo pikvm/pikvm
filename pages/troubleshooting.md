@@ -24,6 +24,7 @@ Details [here](https://github.com/pikvm/pikvm/issues/6). The reason is that the 
   pacman -Syu
   reboot
   ```
+  :exclamation: Pacman saves all installed packages in a compressed format so that you can roll back to the old version if something goes wrong. After you've updated and made sure everything works, it makes sense to clear the package cache so that it doesn't take up space on the SD card: `rw; pacman -Sc; ro`.
 
 ### Glitchy/wrong BIOS resolution
 - On some motherboards, the BIOS may be displayed at a lower resolution, or with some rendering issues/glitches, specially on newer ASUS ones. Like this:
