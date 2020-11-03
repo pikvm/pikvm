@@ -13,11 +13,11 @@ For such cases, support is provided for the relative mode of operation, which ca
 When using relative mode, the browser will exclusively capture your mouse when you click on the stream window in Pi-KVM once.
 When you press `Esc`, the browser releases the mouse.
 
-:exclamation: Currently, relative mouse mode is not supported by [Pi-KVM VNC server](vnc.md).
+:exclamation: Currently, the relative mouse mode is not supported by [Pi-KVM VNC server](vnc.md) yet.
 The reason is that none of the recommended clients support the [QEMU Pointer Motion Change](https://github.com/rfbproto/rfbproto/blob/master/rfbproto.rst#qemu-pointer-motion-change-pseudo-encoding) extension. 
 We expect to implement this in [TigerVNC](https://github.com/TigerVNC/tigervnc/issues/619).
 
-:exclamation: This mode is also not supported by mobile browsers.
+:exclamation: The relative mode is also not supported by mobile browsers.
 
 # Enabling relative mouse on v2 platform (OTG HID)
 * Switch filesystem to RW-mode using command `rw`.
