@@ -1,10 +1,10 @@
 # Mouse modes
 
-There are two modes of mouse operation: absolute and relative.
+There are two modes of pointer device: absolute and relative.
 
-In absolute mode, the input device transmits the exact coordinates (X,Y) where the cursor should be moved.
+In absolute mode, the input device transmits the exact coordinates (X,Y) where the cursor should be moved. This is how touchscreens or drawing tablets work
 
-In relative mode, only the relative offset (dX,dY) to the current position is transmitted, which is unknown to the input device itself.
+In relative mode, only the relative offset (dX,dY) to the current position is transmitted, which is unknown to the input device itself. This is a regular mouse.
 
 By default, Pi-KVM uses absolute positioning mode as the most convenient for the user and software.
 However, this is not always supported by the BIOS/UEFI.
@@ -16,6 +16,8 @@ When you press `Esc`, the browser releases the mouse.
 :exclamation: Currently, relative mouse mode is not supported by [Pi-KVM VNC server](vnc.md).
 The reason is that none of the recommended clients support the [QEMU Pointer Motion Change](https://github.com/rfbproto/rfbproto/blob/master/rfbproto.rst#qemu-pointer-motion-change-pseudo-encoding) extension. 
 We expect to implement this in [TigerVNC](https://github.com/TigerVNC/tigervnc/issues/619).
+
+:exclamation: This mode is also not supported by mobile browsers.
 
 # Enabling relative mouse on v2 platform (OTG HID)
 * Switch filesystem to RW-mode using command `rw`.
@@ -38,4 +40,4 @@ We expect to implement this in [TigerVNC](https://github.com/TigerVNC/tigervnc/i
 * Don't forget to perform `reboot`.
 
 # Enabling relative mouse on v0 platform (serial HID)
-This is not currently supported but will be added in a future release. The reason is that we are working on improving the HID protocol.
+:exclamation: This is not currently supported but will be added in a future release. The reason is that we are working on improving the HID protocol.
