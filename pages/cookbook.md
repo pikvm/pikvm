@@ -1,3 +1,4 @@
+
 # Some random and useful recipes
 ## Take a HDMI screenshot via console on Pi-KVM
 ```
@@ -80,8 +81,8 @@ Specifically to v2. When combined with configuring a DNS server, FTP, or SMB (fo
 
 :exclamation: The USB-Ethernet features are experimental, so some of the default settings may be changed in future releases.
 
-## Adding extra Mass Storage Drives
-Specifically to v2. By default, Pi-KVM creates only one drive for Mass Storage emulation. However, you can create additional drives and manage them manually via the terminal. This is useful if you want to boot the server from a ISO CD (specified in the web interface), then connect a virtual flash drive to the server and download some files from to Pi-KVM from it.
+## Mass Storage Drives
+Specifically to v2. Unless explicitly [disabled](#disable-mass-storage-emulation) by default, Pi-KVM creates only one drive for Mass Storage emulation. However, you can create additional drives and manage them manually via the terminal. This is useful if you want to boot the server from a ISO CD (specified in the web interface), then connect a virtual flash drive to the server and download some files from to Pi-KVM from it.
 
 :exclamation: The presence of an additional Mass Storage device should not interfere with the boot, but for reasons of compatibility paranoia, this is disabled by default. We recommend setting up the drives in advance, making sure that booting from the ISO CD is still working, and then using the drives as needed.
 
@@ -132,6 +133,14 @@ How to create RW flash drive:
     # ro
     ```
 7. You can download the resulting image via SCP or mount it as a loop device on the Pi-KVM.
+
+### Disable mass storage emulation
+To disable mass storage emulation altogether, you can place the following piece of configuration into /etc/kvmd/override.yaml 
+``` yaml
+    kvmd:
+        msd:
+            type:  disabled
+```   
 
 ## Create a Microsoft Windows based Flash disk image
 This procedure will create a disk image of a USB stick. This is mostly required for Microsoft Windows (TM) based images since they are larger than the CDROM based limit of 2.2GB.
