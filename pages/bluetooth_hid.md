@@ -53,6 +53,6 @@ since it will be used by Bluetooth. Also, Bluetooth operation was tested only on
 7. Perform reboot: `reboot`.
 
 ### Using Bluetooth HID
-* After a reboot, the Pi-KVM will be ready for detection and peering. You will see the `Pi-KVM HID` device.
-* Once the server is connected, Pi-KVM will no longer be discoverable and available to other clients until you unpair the server.
+* After a reboot, the Pi-KVM will be ready for detection and pairing with no auth. You will see the `Pi-KVM HID` device.
+* Once the server is connected, Pi-KVM will no longer be discoverable and pairable to other clients until you unpair the server.
 * If something went wrong, use the web menu `System -> Reset keyboard & mouse`. This will cause unpair the device and switch the Pi-KVM to public mode before the first client is connected.
