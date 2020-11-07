@@ -18,7 +18,7 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 * **FullHD video** using advanced **HDMI-to-CSI bridge** or **USB dongle**;
 * Extra low **100ms video latency** (for CSI bridge);
 * Bootable **Virtual CD-ROM** and **Flash Drive**;
-* USB **Keyboard** and **mouse** (with leds and the wheel), PS/2 keyboard;
+* USB **Keyboard** and **mouse** (with leds and the wheel), PS/2 keyboard, Bluetooth HID;
 * **Control the server power** using ATX functions;
 * Access via **Web UI** or **VNC**;
 * Ability to use **IPMI BMC**, **IPMI SoL**, **Redfish** and **Wake-on-LAN** to control the server;
@@ -326,7 +326,9 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
   
 * [Using VNC](pages/vnc.md).
   
-* [Using Arduino HID (for USB or PS/2) with v2 platform](pages/arduino_hid.md).
+* [Using Arduino HID (for USB or PS/2) on v2 platform](pages/arduino_hid.md).
+
+* [Using Bluetooth HID](pages/bluetooth_hid.md).
 
 * [Wi-Fi configuration after install](pages/wifi_config.md).
 
