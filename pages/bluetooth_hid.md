@@ -7,7 +7,7 @@ since it will be used by Bluetooth. Also, Bluetooth operation was tested only on
 
 :exclamation: Bluetooth mouse can work only in [relative mode](mouse.md). The reason is that many Bluetooth host drivers do not correctly implement HID descriptors.
 
-### Configuring
+### Configuring OS
 1. Switch filesystem to RW-mode, perform update and install some packages:
     ```
     # rw
@@ -44,3 +44,15 @@ since it will be used by Bluetooth. Also, Bluetooth operation was tested only on
     CapabilityBoundingSet=CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_ADMIN CAP_SETUID CAP_SETGID CAP_CHOWN
     EOF
     ```
+6. Add following lines to `/etc/kvmd/override.yaml`:
+    ```yaml
+    kvmd:
+        hid:
+            type: bt
+    ```
+7. Perform reboot: `reboot`.
+
+### Using Bluetooth HID
+* After a reboot, the Pi-KVM will be ready for detection and peering. You will see the `Pi-KVM HID` device.
+* Once the server is connected, Pi-KVM will no longer be discoverable and available to other clients until you unpair the server.
+* If something went wrong, use the web menu `System -> Reset keyboard & mouse`. This will cause unpair the device and switch the Pi-KVM to public mode before the first client is connected.
