@@ -5,7 +5,7 @@ This is not the main case of using Pi-KVM since you still need it to pair with a
 :exclamation: Using Bluetooth HID requires additional configuration of the operating system. For v2, this means losing the UART port,
 since it will be used by Bluetooth. Also, Bluetooth operation was tested only on RPi4 and v2 platform. Other boards may require different system service settings.
 
-:exclamation: Bluetooth mouse can work only in [relative mode](mouse.md). The reason is that many Bluetooth host drivers do not correctly implement HID descriptors.
+:exclamation: Bluetooth mouse can work only in [relative mode](mouse.md). The reason is that many Bluetooth host drivers do not correctly implement HID descriptors. Horizontal scrolling is not supported for the same reason.
 
 ### Configuring OS
 1. Switch filesystem to RW-mode, perform update and install some packages:
