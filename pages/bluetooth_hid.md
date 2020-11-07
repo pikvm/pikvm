@@ -38,7 +38,7 @@ since it will be used by Bluetooth. Also, Bluetooth operation was tested only on
 5. Override `kvmd` service:
     ```
     # mkdir /etc/systemd/system/kvmd.service.d
-    # cat << EOF > /etc/systemd/system/bluetooth.service.d/override.conf
+    # cat << EOF > /etc/systemd/system/kvmd.service.d/override.conf
     [Service]
     AmbientCapabilities=CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_ADMIN CAP_SETUID CAP_SETGID CAP_CHOWN
     CapabilityBoundingSet=CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_ADMIN CAP_SETUID CAP_SETGID CAP_CHOWN
