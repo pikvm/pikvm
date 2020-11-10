@@ -71,7 +71,7 @@ If you don't specify a driver for the channel in the scheme the default driver, 
 | **Output only** | | | | |
 | `switch`    | `bool`  | `true` or `false`   | `true` | Enables or disables the switch mode on the channel (enabled by default).  |
 | `initial`   | `nullable bool` | `true`, `false` or `null` | `false` | Defines the initial state of the switch upon boot, `null` for don't make changes (the last one does not supported by generic GPIO) |
-| `intverted` | `bool` | `true` or `false` | `false` | Inverts the active logical level |
+| `inverted` | `bool` | `true` or `false` | `false` | Inverts the active logical level |
 | `pulse`     |         |            | | A section header to define switch pulse configuration |
 | `delay`     | `float` | `X >= 0`   | `0.1` | Defines the pulse time in seconds, `0` for disable pulsing |
 | `min_delay` | `float` | `X >= 0.1` | `0.1` |
