@@ -168,4 +168,4 @@ SUBSYSTEM=="usb", ATTR{idVendor}=="16c0", ATTR{idProduct}=="05df", MODE="666"
 Channels should not use duplicate physical numbers. The driver supports saving state between KVMD restarts (meaning `initial=null`).
 
 ### ezCoo KVM switch
-You can use GPIO to control switch port switching. This usually requires the use of relays and buttons, but for the [ezCoo switch](https://github.com/pikvm/pikvm/blob/master/pages/ezcoo.md) there is a special `ezcoo` driver that simulates GPIO by sending commands to the switch via serial port. So you can make a menu in Pi-KVM to control the multiport switch.
+You can use GPIO to control KVM port switching. This usually requires the use of relays and buttons, but for the [ezCoo switch](https://github.com/pikvm/pikvm/blob/master/pages/ezcoo.md) there is a special `ezcoo` driver that simulates GPIO by sending commands to the switch via serial port. So you can make a menu in Pi-KVM to control the multiport switch.
