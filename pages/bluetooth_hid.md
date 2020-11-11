@@ -7,7 +7,7 @@ since it will be used by Bluetooth. Also, Bluetooth operation was tested only on
 
 :exclamation: Bluetooth mouse can work only in [relative mode](mouse.md). The reason is that many Bluetooth host drivers do not correctly implement HID descriptors. Horizontal scrolling is not supported for the same reason.
 
-### Configuring OS
+# Configuring the OS
 1. Switch filesystem to RW-mode, perform update and install some packages:
     ```
     # rw
@@ -52,7 +52,7 @@ since it will be used by Bluetooth. Also, Bluetooth operation was tested only on
     ```
 7. Perform reboot: `reboot`.
 
-### Using Bluetooth HID
+# Using Bluetooth HID
 * After a reboot, the Pi-KVM will be ready for detection and pairing with no auth. You will see the `Pi-KVM HID` device.
 * Once the server is connected, Pi-KVM will no longer be discoverable and pairable to other clients until you unpair the server.
 * If something went wrong, use the web menu `System -> Reset keyboard & mouse`. This will cause unpair the device and switch the Pi-KVM to public mode before the first client is connected.
