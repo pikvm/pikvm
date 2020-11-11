@@ -18,7 +18,7 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 * **FullHD video** using advanced **HDMI-to-CSI bridge** or **USB dongle**;
 * Extra low **100ms video latency** (for CSI bridge);
 * Bootable **Virtual CD-ROM** and **Flash Drive**;
-* USB **Keyboard** and **mouse** (with leds and the wheel), PS/2 keyboard;
+* USB **Keyboard** and **mouse** (with leds and the wheel), PS/2 keyboard, Bluetooth HID;
 * **Control the server power** using ATX functions;
 * Access via **Web UI** or **VNC**;
 * Ability to use **IPMI BMC**, **IPMI SoL**, **Redfish** and **Wake-on-LAN** to control the server;
@@ -266,7 +266,7 @@ Happy using of Pi-KVM :)
 
 # Limitations
 * In very rare cases, some motherboards contain a buggy BIOS that does not understand the keyboard of the **v2** platform (bellow). The reason for this is that the BIOS doesn't fully implement the USB HID stack for composite devices correctly. Meanwhile, Mass Storage Drive can be detected. For this case, we suggest using the Arduino HID from the **v0** platform with **v2**. Thus the Pi-KVM will be connected by two USB cables to the motherboard: one of them will be responsible for the keyboard and mouse, the other for everything else. See [here](pages/arduino_hid.md).
-* A similar problem can be observed on devices with UEFI: the keyboard works fine, but the mouse does not work. This problem is much less significant, since all UEFI can be configured using the keyboard and hotkeys, without the mouse. If you want to get a mouse, the solution can be the same: using an Arduino HID, as in the advice above.
+* A similar problem can be observed on devices with UEFI: the keyboard works fine, but the mouse does not work. This situation occurs when UEFI does not support absolute mouse mode, which prefers to use Pi-KVM. To solve this problem, [you can enable relative mouse mode](pages/mouse.md).
 
 Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain an optional HID module for such cases, so you won't have to build anything yourself.
 
@@ -318,13 +318,17 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
             # port: 9  # By default
     ```
 
+* [Mouse modes (if the mouse doesn't work in UEFI)](pages/mouse.md).
+
 * [Multiport KVM over IP](pages/multiport.md).
 
 * [Using IPMI and Redfish](pages/ipmi.md).
   
 * [Using VNC](pages/vnc.md).
   
-* [Using Arduino HID (for USB or PS/2) with v2 platform](pages/arduino_hid.md).
+* [Using Arduino HID (for USB or PS/2) on v2 platform](pages/arduino_hid.md).
+
+* [Using Bluetooth HID](pages/bluetooth_hid.md).
 
 * [Wi-Fi configuration after install](pages/wifi_config.md).
 

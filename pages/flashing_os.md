@@ -6,7 +6,7 @@ Note: right now, pre-compiled images are only available for the Raspberry Pi 4. 
 
 ## Using Linux CLI
 Decompress and flash image and follow to the [final steps](#the-final-steps). Be careful when choosing your device path:
-```bash
+```
 # bzip2 -d v2-hdmi-rpi4.img.bz2
 # dd if=v2-hdmi-rpi4.img of=/dev/mmcblkX
 ```
@@ -48,12 +48,18 @@ Decompress and flash image and follow to the [final steps](#the-final-steps). Be
 4. To change the root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`. As indicated on the login screen, you need to use `rw` to make the root filesystem writable before issuing these commands. After making changes, make sure to run the command `ro` to switch the filesystem back to read-only.
 
 5. After installation, we recommend you to update your operating system:
-    ```shell
+    ```
     # rw
     # pacman -Syu
     # reboot
     ```
-6. Important **note for HDMI-USB dongle** users only. Because of this, many video capture devices tell the server's video card that the HDMI cable is supposedly disconnected. This may lead to the fact that if you boot the server without an active stream, the server will not detect your capture card. This is easy to fix:
+6. Pacman saves all installed packages in a compressed format so that you can roll back to the old version if something goes wrong. After you've updated and made sure everything works, it makes sense to clear the package cache so that it doesn't take up space on the SD card:
+    ```
+    # rw
+    # pacman -Sc
+    # ro
+    ```
+7. Important **note for HDMI-USB dongle** users only. Because of this, many video capture devices tell the server's video card that the HDMI cable is supposedly disconnected. This may lead to the fact that if you boot the server without an active stream, the server will not detect your capture card. This is easy to fix:
     * Switch filesystem to RW-mode:
       ```
       # rw
@@ -71,7 +77,7 @@ Decompress and flash image and follow to the [final steps](#the-final-steps). Be
       # systemctl restart kvmd
       ```
 
-7. **27.08.2020 note about systemd**: the latest version of Arch Linux has a slightly broken systemd. The problem is that SSH to the Pi-KVM host may not work the first time, but the second or third. The Pi-KVM build environment contains a workaround for this problem: in the file `/etc/pam.d/system-login` line `-session   optional   pam_systemd.so` is commented. This does not have any negative impact on the PI-KVM functionality, but if you want to, after fixing the systemd (in a couple of months with the next update), you can uncomment this line.
+8. **27.08.2020 note about systemd**: the latest version of Arch Linux has a slightly broken systemd. The problem is that SSH to the Pi-KVM host may not work the first time, but the second or third. The Pi-KVM build environment contains a workaround for this problem: in the file `/etc/pam.d/system-login` line `-session   optional   pam_systemd.so` is commented. This does not have any negative impact on the PI-KVM functionality, but if you want to, after fixing the systemd (in a couple of months with the next update), you can uncomment this line.
 
 If you have any problems or questions, contact us using Discord: https://discord.gg/bpmXfz5
 
