@@ -454,6 +454,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Scott
 * Scott Spicola
 * Sergey Lukjanov
+* Stefan Bautz
 * Stefan Müller
 * Stefan Stemmer
 * Steve Ovens
