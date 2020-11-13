@@ -166,3 +166,6 @@ Each category is represented by its own event in the websocket (`info_hw_state`,
 
 ## System log: `/api/log`
 On `GET` this handle will display messages from all KVMD services as plain text. The `follow=1` request parameter turns the request into an infinite one and you will receive new log messages in real time. The seek parameter runs the log for the specified time in seconds. For example, `seek=3600` will show the log for the last hour. Both the `seek` and `follow` parameters can be used together.
+
+# To be continued ===>
+Unfortunately, the developer doesn't have enough time to fully describe the API. You can find all existing APIs in the [KVMD source tree](https://github.com/pikvm/kvmd/tree/master/kvmd/apps/kvmd/api). We would appreciate your help with documentation.
