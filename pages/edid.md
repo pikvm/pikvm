@@ -7,10 +7,12 @@ but sometimes, for example for strange UEFIs/BIOSes, this may be necessary (the 
 The EDID is stored on the Pi-KVM in the file `/etc/kvmd/tc358743-edid.hex`. If you write new data there, it will be applied on the Pi-KVM reboot.
 
 You can also apply the new EDID without rebooting to make sure it works:
+* Switch filesystem to RW-mode: `rw`.
 * Create file with EDID `/root/edid.hex` (examples of file contents are shown below).
 * Apply EDID using the command `v4l2-ctl --device=/dev/kvmd-video --set-edid=file=/root/edid.hex --fix-edid-checksums`.
 * DO NOT REBOOT the Pi-KVM. Just your PC. Check the UEFI/BIOS.
 * If everything works, you can write the same data to `/etc/kvmd/tc358743-edid.hex`.
+* Switch filesystem to RO-mode: `ro`.
 
 The examples below are tested on these devices, but they are also suitable for others. To edit or create EDID you can use [AW EDID Editor](https://www.analogway.com/emea/products/software-tools/aw-edid-editor).
 
