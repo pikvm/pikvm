@@ -428,6 +428,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Justin Waters
 * Krzysztof Żelaśkiewicz
 * Lars
+* LeeNX
 * Lothar Schweikle-Droll
 * Lukas Söder
 * Malcolm Cameron
