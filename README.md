@@ -227,8 +227,6 @@ See video how-tos:
 * [Making USB Y-splitter cable](https://www.youtube.com/watch?v=uLuBuQUF61o).
 * [Soldering ATX controller](https://www.youtube.com/watch?v=hKnKOuH_f8M).
 
-Also check out this small [PCB for ATX](https://easyeda.com/mark.gilbert/zerow-kvm-v1) (if you know how to make PCBs).
-
 </details>
 
 ## Setting up the v0
