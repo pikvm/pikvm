@@ -379,6 +379,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Anton Kovalenko
 * Aron Perelman
 * Arthur Woimbée
+* Ashlesh Chaudhari
 * Augusto Becciu
 * baddog
 * Bao Tin Hoang
@@ -401,6 +402,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Denis Yatsenko
 * Dmitry Shilov
 * Eric Phenix
+* ewook
 * Fergus McKay
 * Foamy
 * Fredrik Idréus
@@ -450,11 +452,14 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * pozitron03
 * Quentin Peten
 * Ranc1d
+* Richard Freemantle
 * Robin Gfatter
 * Samed Ozoglu
 * Scott
 * Scott Spicola
+* Seonwoo Lee
 * Sergey Lukjanov
+* Simplistic Realities
 * Stefan Bautz
 * Stefan Müller
 * Stefan Stemmer
