@@ -104,7 +104,7 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
 * MicroSD card (min 16 GB recommended).
 * USB-A 3A charger (female socket) or power supply.
 * Video capture device:
-  - **Recommended**: [HDMI to CSI-2 bridge based on TC358743](https://aliexpress.com/item/4000102166176.html) - low latency ~100ms, more reliable.
+  - **Recommended**: [HDMI to CSI-2 bridge based on TC358743](https://aliexpress.com/item/4000102166176.html) - low latency ~100ms, more reliable. The store features two models, the slightly larger "Color: Silver" with 2 CSI ports (and 2 cables), and the "Color: Black" with 1 CSI port (and 1 cable). Most people seem to have picked up the larger "Color: Silver" variant and cases (including [this](https://discord.com/channels/580094191938437144/580094193834131456/779849061931024404) which is a case just for the CSI bridge) etc have been designed based on that.
   - ... or [HDMI to USB dongle](https://aliexpress.com/item/4001043540669.html) (not available for ZeroW) - high latency ~200ms, [not very reliable](#a-few-words-about-hdmi-usb-dongle)).
 * Only for Raspberry Pi 4: parts for Y-splitter cable (**one variant at your choice**):
   * <details><summary>Variant #1: DIY for soldering or twist.</summary>
