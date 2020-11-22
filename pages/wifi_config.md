@@ -71,6 +71,12 @@ Save the file and you're good to go. You can manually connect to the profile you
 ```
 netctl-auto switch-to wlan0-wifiname
 ```
+### 5GHz WiFi in the US
+If you want to connect to a 5GHz WiFi in the US and it's not listed, create `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf` with a single line `country=US`, and enable it with:
+```
+systemctl enable wpa_supplicant@wlan0
+```
+
 ## Make filesystem read-only again
 Do this by typing `ro` in the console
 ```
