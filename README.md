@@ -389,7 +389,9 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Bruno Gomes
 * Bryan Adams
 * Carl Mercier
+* Chris Burton
 * Christian Schlögl
+* Christoph Dette
 * Christof Maluck
 * Christoffer Lund
 * Corey Layton
@@ -434,6 +436,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Lothar Schweikle-Droll
 * Lukas Söder
 * Malcolm Cameron
+* Marcos Wolf
 * Mark Gilbert
 * Mark Robinson
 * Markus Schicker
@@ -460,6 +463,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Scott Spicola
 * Seonwoo Lee
 * Sergey Lukjanov
+* Shichun Chen
 * Simplistic Realities
 * Stefan Bautz
 * Stefan Müller
