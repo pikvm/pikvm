@@ -170,6 +170,7 @@ We are also currently developing our own HAT for the Raspberry Pi 4. It will hav
 * OTG Keyboard & mouse; Mass Storage Drive emulation.
 * Ability to simulate "removal and insertion" for USB.
 * Onboard ATX power control.
+* Onboard fan controller.
 * A real-time clock.
 * CISCO-style and USB serial console port (to manage Pi-KVM OS or to connect with the server).
 * Optional AVR-based HID (for some rare and strange motherboards whose BIOS doesn't understand the OTG emulated keyboard).
