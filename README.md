@@ -471,6 +471,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Steve Ovens
 * Steven Richter
 * Tejun Heo
+* Timothee Besset
 * Tristan Schoening
 * Truman Kilen
 * Tyler
