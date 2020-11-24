@@ -454,6 +454,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Nithin Philips
 * Nod Swal
 * nybble
+* posicat
 * pozitron03
 * Quentin Peten
 * Ranc1d
@@ -479,5 +480,6 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Walter_Ego
 * William Stearns
 * YURI LEE
+* Yurii Ostapchuk
 * zgen
 * Zsombor Vari
