@@ -385,6 +385,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * baddog
 * Bao Tin Hoang
 * Ben Gordon
+* Ben Scott
 * Brainspore Networks
 * Branden Shaulis
 * Brian White
@@ -401,6 +402,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Clifford Coleman
 * Clinton Lee Taylor
 * Damon Meledones
+* Dan Brakeley
 * David Howell
 * Denis Andreev
 * Denis Yatsenko
@@ -415,6 +417,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Guido Bernacchi
 * Heikki Tiittanen
 * HimKo
+* iks
 * Ivan Shapovalov
 * Jacob Morgan
 * James Cadd
@@ -444,6 +447,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Markus Schicker
 * Markus Sobczack
 * Martin Gasser
+* Mateusz Grabowski
 * Mauricio Allende
 * Mehmet Aydoğdu
 * Michael Kovacs
