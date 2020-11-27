@@ -388,6 +388,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Ben Scott
 * Brainspore Networks
 * Branden Shaulis
+* Brian Vecchiarelli
 * Brian White
 * Bruno Gomes
 * Bryan Adams
