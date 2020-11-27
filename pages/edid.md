@@ -24,3 +24,7 @@ The examples below are tested on these devices, but they are also suitable for o
 
 ### 1920x1080 as preferred resolution, Intel NUC
 `00 FF FF FF FF FF FF 00 52 62 88 88 00 88 88 88 1C 15 01 03 80 00 00 78 0A EE 91 A3 54 4C 99 26 0F 50 54 25 40 00 01 00 01 00 01 00 01 00 01 00 01 00 01 01 01 01 D3 2C 80 A0 70 38 1A 40 30 20 35 00 40 44 21 00 00 1E 7E 1D 00 A0 50 00 19 40 30 20 37 00 80 00 10 00 00 1E 00 00 00 FC 00 50 49 2D 4B 56 4D 20 56 69 64 65 6F 0A 00 00 00 FD 00 32 3D 0F 2E 0F 00 00 00 00 00 00 00 00 01 C4 02 03 04 00 DE 0D 20 A0 30 58 12 20 30 20 34 00 F0 B4 00 00 00 18 E0 15 00 A0 40 00 16 30 30 20 34 00 00 00 00 00 00 18 B4 14 00 A0 50 D0 11 20 30 20 35 00 80 D8 10 00 00 18 AB 22 A0 A0 50 84 1A 30 30 20 36 00 B0 0E 11 00 00 18 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 45`
+
+# Default EDID
+
+If for some reason you need to go back to the default EDID (changing attached device etc), you can find it locally on the Pi at `/usr/share/kvmd/configs.default/kvmd/tc358743-edid.hex` (`cp /usr/share/kvmd/configs.default/kvmd/tc358743-edid.hex /etc/kvmd/tc358743-edid.hex`) or in the [kvmd repo](https://github.com/pikvm/kvmd/blob/master/configs/kvmd/tc358743-edid.hex]).
