@@ -377,6 +377,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Aleksei Brusianskii
 * Alucard
 * Andrzej V
+* Anix
 * Anton Kovalenko
 * Aron Perelman
 * Arthur Woimbée
@@ -407,6 +408,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * David Howell
 * Denis Andreev
 * Denis Yatsenko
+* dixon wong
 * Dmitry Shilov
 * Eric Phenix
 * ewook
@@ -422,6 +424,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Ivan Shapovalov
 * Jacob Morgan
 * James Cadd
+* James Cobb
 * Jamie Murphy
 * Jan Niehusmann
 * Jari Hiltunen
@@ -436,6 +439,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Josh Ricker
 * Jordi Pakey-Rodriguez
 * Jozef Riha
+* Julian Forero
 * Justin Waters
 * Krzysztof Żelaśkiewicz
 * Lars
@@ -480,6 +484,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Steve Ovens
 * Steven Richter
 * Tejun Heo
+* Thomas Søfteland
 * Timothee Besset
 * Tomas Kuchta
 * Tristan Schoening
