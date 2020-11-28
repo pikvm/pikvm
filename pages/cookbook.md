@@ -200,4 +200,15 @@ Once you have the desired USB stick perform the following on the RPi to create t
     Boot the server and select boot device like you normally would.
     E.g. in a AMI BIOS the boot device is called "Linux File-CD Gadget 0504".
 
-    
+## Create a drive image on macOS
+1. Open Disk Utility.
+2. File > New Image > Blank Image.
+3. Save As: `pikvm-image.dmg`. Name: `pikvm-image`. Size: 100 MB (or whatever size you want). Format: `MS-DOS (FAT)`. Partitions: `Single partition - GUID Partition Map`. Image Format: `read/write disk image`.
+4. Click Save.
+5. The drive will automatically be mounted.
+6. Copy files (such as BIOS updates) onto the new image (via terminal or drag and drop in Finder).
+7. Eject image.
+8. Upload image to Pi-KVM interface under "Drive".
+9. Select Drive Mode: `Flash` and then `Connect drive to Server`.
+
+You should be able to then mount it locally on the server, or reboot the device to do things like BIOS updates.
