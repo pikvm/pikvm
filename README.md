@@ -387,6 +387,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Bao Tin Hoang
 * Ben Gordon
 * Ben Scott
+* Benjamin Melancon
 * Brainspore Networks
 * Branden Shaulis
 * Brian Vecchiarelli
