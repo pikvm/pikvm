@@ -456,6 +456,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Markus Sobczack
 * Martin Gasser
 * Mateusz Grabowski
+* Matthew Cameron
 * Mauricio Allende
 * Mehmet Aydoğdu
 * Michael Kovacs
