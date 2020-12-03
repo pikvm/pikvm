@@ -377,6 +377,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Alberto Bassi
 * Aleksei Brusianskii
 * Alucard
+* Andrew Reusch
 * Andrzej V
 * Anix
 * Anton Kovalenko
@@ -454,6 +455,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Mark Robinson
 * Markus Schicker
 * Markus Sobczack
+* Marten Hermans
 * Martin Gasser
 * Mateusz Grabowski
 * Matthew Cameron
