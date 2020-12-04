@@ -115,14 +115,14 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
     </details>
   * <details><summary>Variant #2: Ready-made using USB-micro splitter.</summary>
     <ul>
-      <li>1x <a href="https://www.tindie.com/products/8086net/usbpwr-splitter">USB/Power Splitter Module</a>.</li>
+      <li>1x USB/Power Splitter Module (<a href="https://www.tindie.com/products/8086net/usbpwr-splitter">UK</a>/<a href="https://www.pishop.us/product/usb-pwr-splitter/">US</a>/<a href="https://www.buyapi.ca/product/usb-pwr-splitter/">CA</a>).</li>
       <li>1x USB-A to USB-C cable (male-male).</li>
       <li>2x USB-A to USB-micro cable (male-male).</li>
     </ul>
     </details>
   * <details><summary>Variant #3: Ready-made using USB-C splitter.</summary>
     <ul>
-      <li>1x <a href="https://www.tindie.com/products/8086net/usb-cpwr-splitter">USB-C/Power Splitter Module</a>.</li>
+      <li>1x USB-C/Power Splitter Module (<a href="https://www.tindie.com/products/8086net/usb-cpwr-splitter">UK</a>/<a href="https://www.pishop.us/product/usb-c-pwr-splitter/">US</a>/<a href="https://www.buyapi.ca/product/usb-c-pwr-splitter/">CA</a>).</li>
       <li>3x USB-A to USB-C cable (male-male).</li>
       <li>For this option you can buy the official Raspberry Pi Power Supply with USB-C and get rid of one USB-C cable and the USB-A charger.</li>
     </ul>
