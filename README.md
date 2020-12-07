@@ -385,6 +385,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Arthur Woimbée
 * Ashlesh Chaudhari
 * Augusto Becciu
+* AVS Computer
 * baddog
 * Bao Tin Hoang
 * Ben Gordon
