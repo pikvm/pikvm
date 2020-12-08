@@ -45,6 +45,8 @@ Decompress and flash image and follow to the [final steps](#the-final-steps). Be
 
 3. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<ip-address>` with the password `root` by default) and HTTPS. In most networks you should be able to reach Pi-KVM via any browser with the URL `https://pikvm/`. If that doesn't work you'll need to find the IP address manually in your router and try it via `https://<ip-address>`. The default login username is `admin` with `admin` as the password). For HTTPS a self-signed certificate is used by default. Your browser will give you a warning about an invalid SSL certificate which you can safely ignore.
 
+*The latest versions of Chrome do not allow access to the page with a self signed certificate. You can proceed by typing ```thisisunsafe``` and Chrome will then load the page*
+
 4. To change the root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`. As indicated on the login screen, you need to use `rw` to make the root filesystem writable before issuing these commands. After making changes, make sure to run the command `ro` to switch the filesystem back to read-only.
 
 5. After installation, we recommend you to update your operating system:
