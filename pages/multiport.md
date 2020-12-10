@@ -8,10 +8,10 @@ If your KVM switches channels using keyboard shortcuts, there is a chance that i
 
 # List of tested KVMs
 Here the status is:
-* ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) - Everything is working as expected. There may be some subtleties.
+* ![#00aa00](https://placehold.it/15/00aa00/000000?text=+) - Everything is working as expected. There may be some subtleties.
 * ![#ffaa00](https://placehold.it/15/ffaa00/000000?text=+) - The switch does not work with OTG (**v2**) and requires an [Arduino HID](arduino_hid.md) or soldering [GPIO](gpio.md) to switch channels or something like that.
 * ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) - The keyboard or mouse does not work at all, the switch loses the image, etc.
 
 | Model | Status | Notes |
 |:------|:-------|:------|
-| [ezCoo SW41HA HDMI 4x1 switch](https://www.easycoolav.com/products/hdmi20-switch-4x1-with-usb20-kvm-4-port-usbsupport-4k60hz-444-and-hdr-audio-breakout) | ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) | [Using with Pi-KVM](ezcoo.md) |
+| [ezCoo SW41HA HDMI 4x1 switch](https://www.easycoolav.com/products/hdmi20-switch-4x1-with-usb20-kvm-4-port-usbsupport-4k60hz-444-and-hdr-audio-breakout) | ![#00aa00](https://placehold.it/15/00aa00/000000?text=+) | [Using with Pi-KVM](ezcoo.md) |
