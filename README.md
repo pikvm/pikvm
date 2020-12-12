@@ -426,6 +426,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Grey Cynic
 * Guido Bernacchi
 * Heikki Tiittanen
+* Henry Hood
 * HimKo
 * iks
 * Ivan Shapovalov
@@ -467,6 +468,8 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Mehmet Aydoğdu
 * Michael Kovacs
 * Michael Lynch
+* Michael Sage
+* Miles Davis
 * Morgan Helton
 * Nicholas Jeppson
 * Nick Leffler
