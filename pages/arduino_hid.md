@@ -50,7 +50,7 @@ Follow this diagram:
 |-------------------------------|--------|
 | <img src="/img/ps2_kbd.png" alt="drawing" width="200"/> | Arduino pin 7 <-> PS/2 CLOCK<br>Arduino pin 5 <-> PS/2 DATA<br>Arduino GND pin <-> PS/2 GND |
 
-**Connect VIN pin of Arduino to any Raspberry's 5v pin.**
+**Connect VIN pin of Arduino to any Raspberry's 5V pin.**
 
 
 ## PS/2 keyboard & USB mouse
@@ -65,21 +65,45 @@ This is a mixed mode of HID which is a compromise for old computers. Connections
 ## SPI connection to Arduino Micro
 Using an SPI connection, an Arduino Micro or compatible can be flashed from the Pi and used as an HID keyboard and mouse. Unlike UART, SPI does not share pins with Bluetooth on the Raspberry Pi so the Bluetooth radio does not need to be disabled.
 
-<img src="/img/arduino_spi_hid.png" alt="Diagram of the Arduino SPI wiring for HID keyboard and mouse." width="1308"/>
+<img src="/img/arduino_spi_hid.png" alt="Diagram of the Arduino SPI wiring for HID keyboard and mouse." width="654"/>
 
-Before powering either device, double-check the connections. The following should be wired from the Pi to either the level shifter or the Arduino. While the Arduino tolerates 3.3v logic input, 5v outputs from the Arduino can damage or destroy the Raspberry Pi and must not be connected directly to 3.3v GPIO pins directly.
+Before powering either device, double-check the connections. The following should be wired from the Pi to either the level shifter or the Arduino. While the Arduino tolerates 3.3V logic input, 5V outputs from the Arduino can damage or destroy the Raspberry Pi and must not be connected directly to 3.3V GPIO pins directly.
 
-* 5V to HV and Arduino VCC if USB is not connected to the Arduino
+### Parts List
+
+There are very few parts needed besides the Raspberry Pi to build the solution. Some parts may be purchased with or without headers, if headers are not pre-soldered, it may be necessary to order some breakaway header strips and solder them to the boards prior to assembly unless the wires will be soldered directly to the boards.
+
+* Raspberry Pi Zero W or Pi 4 are the most popular boards for this solution, pre-soldered headers recommended
+* Arduino Micro (or compatible) microcontroller board with pre-soldered headers recommended
+* Logic Level Converter. This may be RX/TX, Bidirectional, or Single Supply
+* Dupont wires (female to male pin) recommended for breadboard or other suitable means of making the connections
+* ***Optional:*** Breakaway headers for the logic level converter
+* ***Optional:*** Breadboard large enough to accomodate the parts
+* ***Optional:*** Header pins for connection to a breadboard
+
+***Note:*** A smaller "Pro Micro" board is available in a 3.3V model but the SS connection (RX_LED) is not available as a separate pin or solderable hole. If using this board, a jumper wire can be soldered to the resistor for the RX_LED but there is risk of burning the resistor, the LED, the board, or other components in the process. Advantages of this board include not requiring a logic level converter and reduced breadboard or board space for building the solution.
+
+### List of connections to be made
+
+There are a total of 9 connections to be made for the typical setup, not including any jumpers that may need to be made from the 3.3V, 5V, or ground rails on the breadboard. A few connections to pay particular attention to have been ***emphasized*** with a different font below.
+
+* ***Optional: 5V to HV and Arduino VCC, for programming the microcontroller without an active USB connection***
 * Pi 3v3 to LV on the level shifter
 * Pi Ground to LV GND, HV GND, and Arduino GND
-* GPIO 10 to MOSI on the Arduino
-* GPIO 9 to LV3 or Channel 2 RX on the level shifter
-* GPIO 25 to RST on the Arduino
-* GPIO 11 to SCK on the Arduino
-* HV3 or Channel 2 RX to MISO on the Arduino
-* GPIO 7 to SS or RX_LED on the Arduino
+* GPIO10 (MOSI) to MOSI on the Arduino
+* ***GPIO9 (MISO) to LV3 or Channel 2 RX on the logic level shifter***
+* GPIO25 to RST on the Arduino
+* GPIO11 (SPIO_SCLK) to SCK on the Arduino
+* ***HV3 or Channel 2 RX on the logic level shifter to MISO on the Arduino***
+* GPIO7 (SPIO_CE1_N) to SS or RX_LED on the Arduino
 
-There is a smaller Pro Micro board available in 3.3v and 5v versions but the SS pin is absent on these boards. It is possible to solder a lead to the RX LED but damage to the LED or the board may occur. Even on the 3.3v board, 5v exists on the RAW pin. Please take care not to connect this to either the Raspberry Pi or short to any pins on the Pro Micro board as damage will occur.
+Pictures of this setup are also available in full resolution for download to assist for both the Raspberry Pi and the microcontroller board. A smaller version of the images has been included on this page and can be downloaded.
+
+| Raspberry Pi Closeup | Breadboard with Arduino |
+|------------|--------|
+| <img src="/img/arduino_spi_hid_rpi.jpg" alt="A closeup of the Raspberry Pi wired to the breadboard." width=300/> | <img src="/img/arduino_spi_hid_bb.jpg" alt="Arduino on a breadboard fully wired to the Pi." width=300/> |
+
+If the microcontroller will be powered by USB for programming, the 5V connection is not required and should be disconnected unless the Arduino will be programmed using the Raspberry Pi's power before connecting it to a host. While leaving this wire may not cause damage, the Raspberry Pi does not have backcurrent protection so it is recommended the 5V connection in the diagram and pictures be removed prior to host connection.
 
 ### Preparing the installation for SPI devices and programming
 
@@ -95,7 +119,9 @@ As of the latest package release, the kdmd service supports SPI. It should be su
 
 Instructions on flashing the microcontroller can be found on the page [Flash the Arduino HID](flashing_hid.md).
 
-If programming fails, ensure the Arduino is powered and check the wiring again. If there is a misconfiguration, power off the Pi and the Arduino, correct the wiring, and try again. Help is available via chat on Discord at https://discord.gg/bpmXfz5.
+If programming fails, ensure the Arduino is powered and check the wiring again. If there is a misconfiguration, power off the Pi and the Arduino, correct the wiring, and try again. Note it is not recommended or required to supply 5V power from the Raspberry Pi if the microcontroller is USB powered, if the issue appears to be power related it may be removed from the solution and replaced with a powered USB connection if it will aid in troubleshooting but check all other wires first to ensure there are no shorts.
+
+Wiring problems are a common issue but there could be other reasons for programming not to complete. While it is not possible to list every possible problem and solution here, there is an active user community on Discord at https://discord.gg/bpmXfz5 with others familiar with the solution and willing to help.
 
 ### Enable the SPI configuration and restart kvmd
 
@@ -119,4 +145,3 @@ systemctl restart kvmd
 
 If your device is still in read-write mode, `ro` will put the SD back in read-only mode.
 
-If you have any problems or questions, there is an active user chat community on Discord at https://discord.gg/bpmXfz5.
