@@ -437,15 +437,18 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jan Niehusmann
 * Jari Hiltunen
 * Jason Toland
+* Jay Davis
 * Jeff Bowman
 * Jennifer Rowlett
 * Jerremy Holland
 * Joachim Bruening
+* John F Glenn
 * John Kelley
 * John McGovern
 * Jonathan Vaughn
 * Josh Ricker
 * Jordi Pakey-Rodriguez
+* Joris van Embden
 * Jozef Riha
 * Julian Forero
 * Justin Waters
