@@ -15,3 +15,4 @@ Here the status is:
 | Model | Status | Notes |
 |:------|:-------|:------|
 | [ezCoo SW41HA HDMI 4x1 switch](https://www.easycoolav.com/products/hdmi20-switch-4x1-with-usb20-kvm-4-port-usbsupport-4k60hz-444-and-hdr-audio-breakout) | ![#00aa00](https://placehold.it/15/00aa00/000000?text=+) | [Using with Pi-KVM](ezcoo.md) |
+| [Ali's noname](https://a.aliexpress.com/_BSpS8t) | ![#00aa00](https://placehold.it/15/00aa00/000000?text=+) | [Here the details](https://github.com/pikvm/pikvm/issues/128) |
