@@ -380,6 +380,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Alucard
 * Andrew Reusch
 * Andrzej V
+* Anish Patel
 * Anix
 * Anton Kovalenko
 * Aron Perelman
@@ -509,6 +510,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Timothee Besset
 * Tomas Kuchta
 * Tomáš hrubý
+* Tobias Schafferhans
 * Tristan Schoening
 * Truman Kilen
 * Tyler
