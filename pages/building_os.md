@@ -1,7 +1,13 @@
 # Building the OS
-The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages and configs for it to work. To build the OS you will need any Linux machine with a recent version of Docker (>= 1:19) with privileged mode enabled. (used for fdisk and some other commands, have a look through our Makefiles if you don't trust us :)). The build must be performed on the x86_64 host.
+The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages and configs for it to work. 
 
-0. When starting with a clean OS (like **Ubuntu 20.04**, please not that Ubuntu 18.04 does not working) you need to install and configure docker (after adding your user to the docker group you must log out and log back in), as well as git and make.
+To build the OS you will need any Linux machine with a recent version of Docker (>= 1:19) with privileged mode enabled (used for fdisk and some other commands, have a look through our Makefiles if you don't trust us :)). 
+
+The build must be performed on the target x86_64 Linux image.
+
+**Ubuntu 20.04** is recommended and has been tested, please note that Ubuntu 18.04 does not work.
+
+0. When starting with a clean OS you need to install and configure docker (after adding your user to the docker group you must log out and log back in), as well as git and make.
     ```shell
     [user@localhost ~]$ sudo apt-get install git make curl binutils -y
     [user@localhost ~]$ curl -fsSL https://get.docker.com -o get-docker.sh
@@ -67,17 +73,11 @@ The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages 
     [user@localhost os]$ make os
     ```
     
-5a. Put SD card into card reader and install OS (**you should disable automounting beforehand**: `systemctl stop udisk2` or something like that):
+5. Put SD card into card reader and install OS (**you should disable automounting beforehand**: `systemctl stop udisk2` or something like that):
     ```shell
     [user@localhost os]$ make install
     ```
-
-5b. Make the image to copy elsewhere and burn on to SD
-    ```shell
-    [user@localhost os]$ make image
-    ```
-    Image is then available as a bziped file in images/
-
+    
 6. After installation remove the SD card and insert it into your RPi. Turn on the power. The RPi will try to get an IP address using DHCP on your LAN. It will then be available via SSH.
 
 7. If you can't find the device's address, try using the following command:
@@ -91,25 +91,7 @@ The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages 
 
 10. To change the root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`. As indicated on the login screen use `rw` to make the root filesystem writable, before issuing these commands. After making changes, make sure to run the command `ro`.
 
-11. Important **note for HDMI-USB dongle** users only. Because of this, many video capture devices tell the server's video card that the HDMI cable is supposedly disconnected. This may lead to the fact that if you boot the server without an active stream, the server will not detect your capture card. This is easy to fix:
-    * Switch filesystem to RW-mode:
-      ```
-      # rw
-      ```
-    * Edit file `/etc/kvmd/override.yaml` and add these lines:
-      ```yaml
-      kvmd:
-          streamer:
-              forever: true
-              cmd_append: [--slowdown]
-      ```
-    * Finish:
-      ```
-      # ro
-      # systemctl restart kvmd
-      ```
-
-12. **27.08.2020 note about systemd**: the latest version of Arch Linux has a slightly broken systemd. The problem is that SSH to the Pi-KVM host may not work the first time, but the second or third. The Pi-KVM build environment contains a workaround for this problem: in the file `/etc/pam.d/system-login` line `-session   optional   pam_systemd.so` is commented. This does not have any negative impact on the PI-KVM functionality, but if you want to, after fixing the systemd (in a couple of months with the next update), you can uncomment this line.
+11. **27.08.2020 note about systemd**: the latest version of Arch Linux has a slightly broken systemd. The problem is that SSH to the Pi-KVM host may not work the first time, but the second or third. The Pi-KVM build environment contains a workaround for this problem: in the file `/etc/pam.d/system-login` line `-session   optional   pam_systemd.so` is commented. This does not have any negative impact on the PI-KVM functionality, but if you want to, after fixing the systemd (in a couple of months with the next update), you can uncomment this line.
 
 If you have any problems or questions, contact us using Discord: https://discord.gg/bpmXfz5
 
