@@ -95,6 +95,8 @@ The build must be performed on the target x86_64 Linux image.
 
 9. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with password `root` by default) and HTTPS (try to open in a browser the URL `https://<addr>`, the login `admin` and password `admin` by default). For HTTPS a self-signed certificate is used by default.
 
+    *The latest versions of Chrome do not allow access to the page with a self signed certificate. You can proceed by typing ```thisisunsafe``` and Chrome will then load the page*
+
 10. To change the root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`. As indicated on the login screen use `rw` to make the root filesystem writable, before issuing these commands. After making changes, make sure to run the command `ro`.
 
 11. Important **note for HDMI-USB dongle** users only. Because of this, many video capture devices tell the server's video card that the HDMI cable is supposedly disconnected. This may lead to the fact that if you boot the server without an active stream, the server will not detect your capture card. This is easy to fix:
