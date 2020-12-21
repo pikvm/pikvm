@@ -5,7 +5,7 @@ To build the OS you will need any Linux machine with a recent version of Docker 
 
 The build must be performed on the target x86_64 Linux image.
 
-**Ubuntu 20.04** is recommended and has been tested, please note that Ubuntu 18.04 does not work.
+**Ubuntu 20.04** is recommended and has been tested. *please note that Ubuntu 18.04 does not work.*
 
 0. When starting with a clean OS you need to install and configure docker (after adding your user to the docker group you must log out and log back in), as well as git and make.
     ```shell
