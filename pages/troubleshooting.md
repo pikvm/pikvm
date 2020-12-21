@@ -61,6 +61,6 @@ Details [here](https://github.com/pikvm/pikvm/issues/6). The reason is that the 
 ### Chrome Certificate Issue
 - The latest versions of Chrome do not allow access to the page with a self signed certificat, so if you see the following screen when loading the pi-kvm website:
 
-  <img src="img/chrome.png" alt="drawing" width="100"/>
+  <img src="../img/chrome.png" alt="Chrome Blocking" width="400"/>
 - You can proceed by typing ```thisisunsafe``` and Chrome will then load the page.
 
