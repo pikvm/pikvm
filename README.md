@@ -489,6 +489,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * posicat
 * pozitron03
 * Quentin Peten
+* Ralph Borchers
 * Ranc1d
 * Richard Bernarts
 * Richard Freemantle
