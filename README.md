@@ -454,6 +454,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jozef Riha
 * Julian Forero
 * Justin Waters
+* Kenny Hui
 * Krzysztof Żelaśkiewicz
 * Lars
 * LeeNX
@@ -494,6 +495,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Richard Bernarts
 * Richard Freemantle
 * Robin Gfatter
+* Rolfs 3D UG
 * Samed Ozoglu
 * Scott
 * Scott Spicola
