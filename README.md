@@ -116,7 +116,7 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
     </details>
   * <details><summary>Variant #2: Ready-made using USB-micro splitter.</summary>
     <ul>
-      <li>1x <a href="https://www.tindie.com/products/8086net/usbpwr-splitter">USB/Power Splitter Module</a>.</li>
+      <li>1x USB/Power Splitter Module (<a href="https://www.tindie.com/products/8086net/usbpwr-splitter">UK</a>/<a href="https://www.pishop.us/product/usb-pwr-splitter/">US</a>/<a href="https://www.buyapi.ca/product/usb-pwr-splitter/">CA</a>).</li>
       <li>1x USB-A to USB-C cable (male-male) for connecting the Raspberry Pi to the splitter.</li>
       <li>1x USB-A to micro USB-B cable (male-male) for connecting the server to the splitter.</li>
       <li>1x USB-A to micro USB-B cable (male-male) to connect into a USB-A wall charger. Or you also can buy the official Raspberry Pi Power Supply with micro USB-B instead.</li>
@@ -124,7 +124,7 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
     </details>
   * <details><summary>Variant #3: Ready-made using USB-C splitter.</summary>
     <ul>
-      <li>1x <a href="https://www.tindie.com/products/8086net/usb-cpwr-splitter">USB-C/Power Splitter Module</a>.</li>
+      <li>1x USB-C/Power Splitter Module (<a href="https://www.tindie.com/products/8086net/usb-cpwr-splitter">UK</a>/<a href="https://www.pishop.us/product/usb-c-pwr-splitter/">US</a>/<a href="https://www.buyapi.ca/product/usb-c-pwr-splitter/">CA</a>).</li>
       <li>1x USB-C to USB-C cable (male-male) for connecting the Raspberry Pi to the splitter.</li>
       <li>1x USB-A to USB-C cable (male-male) for connecting the server to the splitter.</li>
       <li>1x USB-A to USB-C cable (male-male) to connect into a USB-A wall charger. Or 1x USB-C to USB-C cable to connect into a USB-C wall charger. Or you also can buy the official Raspberry Pi Power Supply with USB-C instead.</li>
@@ -173,6 +173,7 @@ We are also currently developing our own HAT for the Raspberry Pi 4. It will hav
 * OTG Keyboard & mouse; Mass Storage Drive emulation.
 * Ability to simulate "removal and insertion" for USB.
 * Onboard ATX power control.
+* Onboard fan controller.
 * A real-time clock.
 * CISCO-style and USB serial console port (to manage Pi-KVM OS or to connect with the server).
 * Optional AVR-based HID (for some rare and strange motherboards whose BIOS doesn't understand the OTG emulated keyboard).
@@ -269,6 +270,7 @@ Happy using of Pi-KVM :)
 # Limitations
 * In very rare cases, some motherboards contain a buggy BIOS that does not understand the keyboard of the **v2** platform (below). The reason for this is that the BIOS doesn't fully implement the USB HID stack for composite devices correctly. Meanwhile, Mass Storage Drive can be detected. For this case, we suggest using the Arduino HID from the **v0** platform with **v2**. Thus the Pi-KVM will be connected by two USB cables to the motherboard: one of them will be responsible for the keyboard and mouse, the other for everything else. See [here](pages/arduino_hid.md).
 * A similar problem can be observed on devices with UEFI: the keyboard works fine, but the mouse does not work. This situation occurs when UEFI does not support absolute mouse mode, which prefers to use Pi-KVM. To solve this problem, [you can enable relative mouse mode](pages/mouse.md).
+* To use Pi-KVM with Apple UEFI, use the [Arduino HID](pages/arduino_hid.md) even with **v2**. Apple UEFI wants the most blunt keyboard possible.
 
 Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain an optional HID module for such cases, so you won't have to build anything yourself.
 
@@ -375,24 +377,36 @@ If you wish to use Pi-KVM in production, we accept orders to modify it for your 
 
 # Special thanks
 These kind people donated money to the Pi-KVM project and supported work on it. We are very grateful for their help, and commemorating their names is the least we can do in return.
+* Accalia
 * Alberto Bassi
 * Aleksei Brusianskii
 * Alucard
+* Andrew Reusch
 * Andrzej V
+* Anish Patel
+* Anix
 * Anton Kovalenko
 * Aron Perelman
 * Arthur Woimbée
 * Ashlesh Chaudhari
 * Augusto Becciu
+* AVS Computer
 * baddog
 * Bao Tin Hoang
 * Ben Gordon
+* Ben Scott
+* Benjamin Melancon
+* Bits and Bytes Computers LLC
+* Brainspore Networks
 * Branden Shaulis
+* Brian Vecchiarelli
 * Brian White
 * Bruno Gomes
 * Bryan Adams
 * Carl Mercier
+* Chris Burton
 * Christian Schlögl
+* Christoph Dette
 * Christof Maluck
 * Christoffer Lund
 * Corey Layton
@@ -400,68 +414,97 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Clifford Coleman
 * Clinton Lee Taylor
 * Damon Meledones
+* Dan Brakeley
 * David Howell
 * Denis Andreev
 * Denis Yatsenko
+* dixon wong
 * Dmitry Shilov
 * Eric Phenix
 * ewook
 * Fergus McKay
 * Foamy
+* Francisco Pavon
 * Fredrik Idréus
 * Ge Men
 * Grey Cynic
 * Guido Bernacchi
 * Heikki Tiittanen
+* Henry Hood
 * HimKo
+* iks
 * Ivan Shapovalov
 * Jacob Morgan
 * James Cadd
+* James Cobb
+* Jamie Murphy
 * Jan Niehusmann
 * Jari Hiltunen
+* Jason Downey
 * Jason Toland
+* Jay Davis
 * Jeff Bowman
 * Jennifer Rowlett
+* Jerremy Holland
 * Joachim Bruening
+* John F Glenn
 * John Kelley
 * John McGovern
 * Jonathan Vaughn
 * Josh Ricker
 * Jordi Pakey-Rodriguez
+* Joris van Embden
 * Jozef Riha
+* Julian Forero
 * Justin Waters
+* Kenny Hui
 * Krzysztof Żelaśkiewicz
 * Lars
 * LeeNX
 * Lothar Schweikle-Droll
 * Lukas Söder
 * Malcolm Cameron
+* Marcos Wolf
 * Mark Gilbert
 * Mark Robinson
 * Markus Schicker
 * Markus Sobczack
+* Marten Hermans
 * Martin Gasser
+* Mateusz Grabowski
+* Matthew Cameron
 * Mauricio Allende
 * Mehmet Aydoğdu
 * Michael Kovacs
 * Michael Lynch
+* Michael Sage
+* Miles Davis
 * Morgan Helton
 * Nicholas Jeppson
 * Nick Leffler
+* Nick Roethemeier
 * Nils Orbat
 * Nithin Philips
 * Nod Swal
 * nybble
+* Oh Be
+* Paul Bishop
+* Philip Merricks
+* posicat
 * pozitron03
 * Quentin Peten
+* Ralph Borchers
 * Ranc1d
+* Richard Bernarts
 * Richard Freemantle
 * Robin Gfatter
+* Rolfs 3D UG
 * Samed Ozoglu
 * Scott
 * Scott Spicola
 * Seonwoo Lee
 * Sergey Lukjanov
+* Shichun Chen
 * Simplistic Realities
 * Stefan Bautz
 * Stefan Müller
@@ -469,9 +512,18 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Steve Ovens
 * Steven Richter
 * Tejun Heo
+* Thomas Søfteland
+* Timothee Besset
+* Tomas Kuchta
+* Tomáš hrubý
+* Tobias Schafferhans
+* Tristan Schoening
 * Truman Kilen
 * Tyler
+* Udo Schroeter
 * Walter_Ego
+* William Stearns
 * YURI LEE
+* Yurii Ostapchuk
 * zgen
 * Zsombor Vari

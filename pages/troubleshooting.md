@@ -57,3 +57,10 @@ Details [here](https://github.com/pikvm/pikvm/issues/6). The reason is that the 
 
 ### I can't copy clipboard contents from the server (the machine controlled via Pi-KVM) to the client
 - The clipboard only works from the client to the server not vice versa. There is currently no way to do it.
+
+### Chrome Certificate Issue
+- The latest versions of Chrome do not allow access to the page with a self signed certificat, so if you see the following screen when loading the pi-kvm website:
+
+  <img src="../img/chrome.png" alt="Chrome Blocking" width="400"/>
+- You can proceed by typing ```thisisunsafe``` and Chrome will then load the page.
+
