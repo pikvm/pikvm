@@ -523,6 +523,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Udo Schroeter
 * Walter_Ego
 * William Stearns
+* Yethal
 * YURI LEE
 * Yurii Ostapchuk
 * zgen
