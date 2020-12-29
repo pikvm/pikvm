@@ -415,6 +415,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Clinton Lee Taylor
 * Damon Meledones
 * Dan Brakeley
+* David
 * David Howell
 * Denis Andreev
 * Denis Yatsenko
@@ -502,6 +503,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Samed Ozoglu
 * Scott
 * Scott Spicola
+* Sean
 * Seonwoo Lee
 * Sergey Lukjanov
 * Shichun Chen
@@ -524,6 +526,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Walter_Ego
 * William Stearns
 * Yethal
+* Yevgeniy Kuksenko
 * YURI LEE
 * Yurii Ostapchuk
 * zgen
