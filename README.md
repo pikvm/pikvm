@@ -111,20 +111,23 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
     <ul>
       <li>1x USB-A to USB-C cable (male-male).</li>
       <li>1x another cable USB-A to any (male-any).</li>
+      <li>1x appropriate Power Supply (USB-A or USB-C) depending on what cable you choose above.<li>
     </ul>
     </details>
   * <details><summary>Variant #2: Ready-made using USB-micro splitter.</summary>
     <ul>
       <li>1x USB/Power Splitter Module (<a href="https://www.tindie.com/products/8086net/usbpwr-splitter">UK</a>/<a href="https://www.pishop.us/product/usb-pwr-splitter/">US</a>/<a href="https://www.buyapi.ca/product/usb-pwr-splitter/">CA</a>).</li>
-      <li>1x USB-A to USB-C cable (male-male).</li>
-      <li>2x USB-A to USB-micro cable (male-male).</li>
+      <li>1x USB-A to USB-C cable (male-male) for connecting the Raspberry Pi to the splitter.</li>
+      <li>1x USB-A to micro USB-B cable (male-male) for connecting the server to the splitter.</li>
+      <li>1x USB-A to micro USB-B cable (male-male) to connect into a USB-A wall charger. Or you also can buy the official Raspberry Pi Power Supply with micro USB-B instead.</li>
     </ul>
     </details>
   * <details><summary>Variant #3: Ready-made using USB-C splitter.</summary>
     <ul>
       <li>1x USB-C/Power Splitter Module (<a href="https://www.tindie.com/products/8086net/usb-cpwr-splitter">UK</a>/<a href="https://www.pishop.us/product/usb-c-pwr-splitter/">US</a>/<a href="https://www.buyapi.ca/product/usb-c-pwr-splitter/">CA</a>).</li>
-      <li>3x USB-A to USB-C cable (male-male).</li>
-      <li>For this option you can buy the official Raspberry Pi Power Supply with USB-C and get rid of one USB-C cable and the USB-A charger.</li>
+      <li>1x USB-C to USB-C cable (male-male) for connecting the Raspberry Pi to the splitter.</li>
+      <li>1x USB-A to USB-C cable (male-male) for connecting the server to the splitter.</li>
+      <li>1x USB-A to USB-C cable (male-male) to connect into a USB-A wall charger. Or 1x USB-C to USB-C cable to connect into a USB-C wall charger. Or you also can buy the official Raspberry Pi Power Supply with USB-C instead.</li>
     </ul>
     </details>
 * Only for Raspberry Pi ZeroW:
@@ -267,6 +270,7 @@ Happy using of Pi-KVM :)
 # Limitations
 * In very rare cases, some motherboards contain a buggy BIOS that does not understand the keyboard of the **v2** platform (below). The reason for this is that the BIOS doesn't fully implement the USB HID stack for composite devices correctly. Meanwhile, Mass Storage Drive can be detected. For this case, we suggest using the Arduino HID from the **v0** platform with **v2**. Thus the Pi-KVM will be connected by two USB cables to the motherboard: one of them will be responsible for the keyboard and mouse, the other for everything else. See [here](pages/arduino_hid.md).
 * A similar problem can be observed on devices with UEFI: the keyboard works fine, but the mouse does not work. This situation occurs when UEFI does not support absolute mouse mode, which prefers to use Pi-KVM. To solve this problem, [you can enable relative mouse mode](pages/mouse.md).
+* To use Pi-KVM with Apple UEFI, use the [Arduino HID](pages/arduino_hid.md) even with **v2**. Apple UEFI wants the most blunt keyboard possible.
 
 Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain an optional HID module for such cases, so you won't have to build anything yourself.
 
@@ -379,6 +383,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Alucard
 * Andrew Reusch
 * Andrzej V
+* Anish Patel
 * Anix
 * Anton Kovalenko
 * Aron Perelman
@@ -410,6 +415,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Clinton Lee Taylor
 * Damon Meledones
 * Dan Brakeley
+* David
 * David Howell
 * Denis Andreev
 * Denis Yatsenko
@@ -419,11 +425,13 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * ewook
 * Fergus McKay
 * Foamy
+* Francisco Pavon
 * Fredrik Idréus
 * Ge Men
 * Grey Cynic
 * Guido Bernacchi
 * Heikki Tiittanen
+* Henry Hood
 * HimKo
 * iks
 * Ivan Shapovalov
@@ -433,19 +441,24 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jamie Murphy
 * Jan Niehusmann
 * Jari Hiltunen
+* Jason Downey
 * Jason Toland
+* Jay Davis
 * Jeff Bowman
 * Jennifer Rowlett
 * Jerremy Holland
 * Joachim Bruening
+* John F Glenn
 * John Kelley
 * John McGovern
 * Jonathan Vaughn
 * Josh Ricker
 * Jordi Pakey-Rodriguez
+* Joris van Embden
 * Jozef Riha
 * Julian Forero
 * Justin Waters
+* Kenny Hui
 * Krzysztof Żelaśkiewicz
 * Lars
 * LeeNX
@@ -465,6 +478,8 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Mehmet Aydoğdu
 * Michael Kovacs
 * Michael Lynch
+* Michael Sage
+* Miles Davis
 * Morgan Helton
 * Nicholas Jeppson
 * Nick Leffler
@@ -474,17 +489,21 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Nod Swal
 * nybble
 * Oh Be
+* Paul Bishop
 * Philip Merricks
 * posicat
 * pozitron03
 * Quentin Peten
+* Ralph Borchers
 * Ranc1d
 * Richard Bernarts
 * Richard Freemantle
 * Robin Gfatter
+* Rolfs 3D UG
 * Samed Ozoglu
 * Scott
 * Scott Spicola
+* Sean
 * Seonwoo Lee
 * Sergey Lukjanov
 * Shichun Chen
@@ -499,12 +518,15 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Timothee Besset
 * Tomas Kuchta
 * Tomáš hrubý
+* Tobias Schafferhans
 * Tristan Schoening
 * Truman Kilen
 * Tyler
 * Udo Schroeter
 * Walter_Ego
 * William Stearns
+* Yethal
+* Yevgeniy Kuksenko
 * YURI LEE
 * Yurii Ostapchuk
 * zgen
