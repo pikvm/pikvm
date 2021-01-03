@@ -378,6 +378,7 @@ If you wish to use Pi-KVM in production, we accept orders to modify it for your 
 # Special thanks
 These kind people donated money to the Pi-KVM project and supported work on it. We are very grateful for their help, and commemorating their names is the least we can do in return.
 * Accalia
+* adipisicing
 * Alberto Bassi
 * Aleksei Brusianskii
 * Alucard
@@ -419,6 +420,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * David Howell
 * Denis Andreev
 * Denis Yatsenko
+* Derek Yap
 * dixon wong
 * Dmitry Shilov
 * Eric Phenix
@@ -516,6 +518,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Tejun Heo
 * Thomas Søfteland
 * Timothee Besset
+* Tom York
 * Tomas Kuchta
 * Tomáš hrubý
 * Tobias Schafferhans
