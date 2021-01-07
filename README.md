@@ -396,7 +396,9 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Bao Tin Hoang
 * Ben Gordon
 * Ben Scott
+* Benedikt Heine
 * Benjamin Melancon
+* Bernhard Fitzke
 * Bits and Bytes Computers LLC
 * Brainspore Networks
 * Branden Shaulis
@@ -404,6 +406,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Brian White
 * Bruno Gomes
 * Bryan Adams
+* C P ELSE
 * Carl Mercier
 * Chris Burton
 * Christian Schlögl
@@ -415,6 +418,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Clifford Coleman
 * Clinton Lee Taylor
 * Damon Meledones
+* Dan Berkowitz
 * Dan Brakeley
 * David
 * David Howell
@@ -455,6 +459,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * John McGovern
 * Jonathan Vaughn
 * Josh Ricker
+* Joshua Futterer
 * Jordi Pakey-Rodriguez
 * Joris van Embden
 * Jozef Riha
