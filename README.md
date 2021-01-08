@@ -409,6 +409,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * C P ELSE
 * Carl Mercier
 * Chris Burton
+* Chris Rizio
 * Christian Schlögl
 * Christoph Dette
 * Christof Maluck
@@ -505,6 +506,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Ranc1d
 * Richard Bernarts
 * Richard Freemantle
+* Rob Tongue
 * Robin Gfatter
 * Rolfs 3D UG
 * Samed Ozoglu
