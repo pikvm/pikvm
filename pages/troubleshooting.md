@@ -11,6 +11,9 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 - Double check if you connected the HDMI-CSI-2 bridge cable correctly. [Check the documentation for details](/README.md#for-the-hdmi-csi-bridge) A red LED will light up on the bridge if it is connected properly. 
 - Some laptops do not output any signal until you switched the ouput (usually via the FN + and an F5 key on the keyboard). 
 
+### BIOS/UEFI does not recognize Pi-KVM USB
+- If you are using a USB hub or USB PCI controller, this may not be handled by your BIOS. Try using motherboard's USB ports.
+
 ### No mouse in UEFI/BIOS
 - The BIOS does not support absolute mouse mode, which is preferred by Pi-KVM. In this case, [you can enable relative positioning mode](mouse.md).
 
