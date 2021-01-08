@@ -444,6 +444,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Heikki Tiittanen
 * Henry Hood
 * HimKo
+* Icculus
 * iks
 * Ivan Shapovalov
 * Jacob Morgan
