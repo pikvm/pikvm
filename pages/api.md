@@ -167,5 +167,20 @@ Each category is represented by its own event in the websocket (`info_hw_state`,
 ## System log: `/api/log`
 On `GET` this handle will display messages from all KVMD services as plain text. The `follow=1` request parameter turns the request into an infinite one and you will receive new log messages in real time. The seek parameter runs the log for the specified time in seconds. For example, `seek=3600` will show the log for the last hour. Both the `seek` and `follow` parameters can be used together.
 
+## Get ATX state: `/api/atx`
+On `GET` it will show current ATX state
+
+## Set ATX PSU state: `/api/atx/power`
+On `POST` it will change ATX power supply state to desired.
+Parameters:
+- `action` describes desired state: `on` — turned on (do nothing in case PSU is already on), `off` — turned off (aka soft-off). Emulates short-press on POWER button, `off_hard` — will emulate long (4+ seconds) press on power button, `reset_hard` — emulates pressing RESET button (hardware cold reset)
+- `wait` Boolean. Says if call should return immediately or just after finishing operation
+
+## Emulate pressing buttons on computer case: `/api/atx/click`
+On `POST` send button press events to {front-}panel header (like you pressing buttins on your computer's case).
+Parameters:
+- `button` specifies the desired computer case button you would like to press. Currently supported options are: `power` — for short press on power button, `power_long` — for pressing POWER button for 4+ seconds (force OFF), `reset` — to initiate cold-reset
+- `wait` Boolean. Says if call should return immediately or just after finishing operation
+
 # To be continued ===>
 Unfortunately, the developer doesn't have enough time to fully describe the API. You can find all existing APIs in the [KVMD source tree](https://github.com/pikvm/kvmd/tree/master/kvmd/apps/kvmd/api). We would appreciate your help with documentation.
