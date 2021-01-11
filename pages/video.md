@@ -21,7 +21,7 @@ To do this, uStreamer supports simultaneous MJPEG and H264 encoding since versio
           cmd_append:
               - "--h264-sink=kvmd::ustreamer::h264"
   ```
-* Restart kvmd: `systemctl restart kvmd`.
+* Restart kvmd: `systemctl restart kvmd`. H264 encoding is almost CPU-free, so if you use RPi4 or RPi3, you can leave the option permanently.
 * To record a video, you need to enable the stream (open the web interface or connect via VNC). Then run something like this in the console:
   ```
   rw
