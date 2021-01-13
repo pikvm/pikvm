@@ -4,6 +4,9 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 -----
 
 # Hardware
+### No Wi-Fi on Pi Zero
+- Some Zeros contain a defective Wi-Fi chip. You can either return the device to the store, or try the [software workaround](https://github.com/pikvm/pikvm/issues/137).
+
 ### LEDs / Switches do not work in ATX control
 - Double check your wiring as per [the documentation](/README.md#setting-up-the-v2). Make sure you placed the relays (G3VM-61A1) in the correct orientation. The relays for switches (Power, Reset) have a different orientation than the ones for LEDs.
 
