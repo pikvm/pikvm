@@ -24,7 +24,7 @@ There are two options here:
     < Set-Cookie: auth_token=796cb83b11de4fcb749bc1bad14a91fb06dede84672b2f847fef1e988e6900de; Path=/
     ...
     ```
-    On success the cookie `auth_token` will be recieved with `200 OK`. On invalid user or password you will get `403 Forbidden`.
+    On success the cookie `auth_token` will be received with `200 OK`. On invalid user or password you will get `403 Forbidden`.
 2. The handle `GET /api/auth/check` can be used for check the auth status. If the user is logged in, you will see `200 OK`.
   If the token or any of the single-request auth methods are missing, `401 Unauthorized` will be returned.
   On incorrect credentials or token, `403 Forbidden` will be returned.

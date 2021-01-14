@@ -96,7 +96,7 @@ How to enable extra drives:
                 enabled: true  # Set it to true to enable
                 count: 1  # +1 drive, default value
                 default:  # Default configuration for the all extra drives
-                    cdrom: false  # Defaut value (false for the generic flash drive)
+                    cdrom: false  # Default value (false for the generic flash drive)
                     rw: false # Read-only by default
     ```
     If you specify `count: N`, you will create `N` additional drives configured the same way, as described in the `default` section.
@@ -147,12 +147,12 @@ This procedure will create a disk image of a USB stick. This is mostly required 
 You can create a bootable USB stick with the normal Microsoft tools, e.g. Media Creation Tool.
 Creating a bootable USB stick can also be made from an ISO file with other tools like Rufus.
 
-Without resizing, the full size of the USB stick will be used, so keep the stick as small as possible (e.g. 4GB or 8GB) but still large enough for all Windows files. The Media Creation tool will tell you what the minum size is.
+Without resizing, the full size of the USB stick will be used, so keep the stick as small as possible (e.g. 4GB or 8GB) but still large enough for all Windows files. The Media Creation tool will tell you what the minimum size is.
 
 Before creating the image file, you can use a tool like "EaseUS Partition Master Free" or "GParted" to resize the main FAT32 partition on the USB stick. This will save space on PiKVM.
 
 You can also perform these steps on a separate unix machine and transfer the image over to pikvm with e.g. SCP.
-Or, on Windows you could use a program like PassMark ImageUSB (only for full USB size images) or 'dd' for Windows to create the image. Then use WinSCP to tranfer the image over to PiKVM.
+Or, on Windows you could use a program like PassMark ImageUSB (only for full USB size images) or 'dd' for Windows to create the image. Then use WinSCP to transfer the image over to PiKVM.
 
 Once you have the desired USB stick perform the following on the RPi to create the image directly to the PiKVM image storage folder.
 
