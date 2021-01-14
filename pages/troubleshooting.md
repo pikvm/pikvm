@@ -12,7 +12,7 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 
 ### Pi-KVM does not show any image from the connected computer
 - Double check if you connected the HDMI-CSI-2 bridge cable correctly. [Check the documentation for details](/README.md#for-the-hdmi-csi-bridge) A red LED will light up on the bridge if it is connected properly. 
-- Some laptops do not output any signal until you switched the ouput (usually via the FN + and an F5 key on the keyboard). 
+- Some laptops do not output any signal until you switched the output (usually via the FN + and an F5 key on the keyboard). 
 
 ### BIOS/UEFI does not recognize Pi-KVM USB
 - If you are using a USB hub or USB PCI controller, this may not be handled by your BIOS. Try using motherboard's USB ports.
@@ -65,7 +65,7 @@ Details [here](https://github.com/pikvm/pikvm/issues/6). The reason is that the 
 - The clipboard only works from the client to the server not vice versa. There is currently no way to do it.
 
 ### Chrome Certificate Issue
-- The latest versions of Chrome do not allow access to the page with a self signed certificat, so if you see the following screen when loading the pi-kvm website:
+- The latest versions of Chrome do not allow access to the page with a self signed certificate, so if you see the following screen when loading the pi-kvm website:
 
   <img src="../img/chrome.png" alt="Chrome Blocking" width="400"/>
 - You can proceed by typing ```thisisunsafe``` and Chrome will then load the page.
