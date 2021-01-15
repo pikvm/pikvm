@@ -423,10 +423,11 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Christoph Dette
 * Christof Maluck
 * Christoffer Lund
-* Corey Layton
-* Corey Lista
 * Clifford Coleman
 * Clinton Lee Taylor
+* Corey Layton
+* Corey Lista
+* ctag
 * DeMentor
 * Damon Meledones
 * Dan Berkowitz
@@ -442,6 +443,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Eric Phenix
 * ewook
 * Fergus McKay
+* fo0bar
 * Foamy
 * Francisco Pavon
 * Fredrik Idréus
@@ -480,6 +482,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jozef Riha
 * Julian Forero
 * Justin Waters
+* Ken Lee
 * Kenny Hui
 * Krzysztof Żelaśkiewicz
 * Lars
@@ -514,6 +517,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * nybble
 * Oh Be
 * Paul Bishop
+* Peter Farrelly
 * Philip Merricks
 * posicat
 * pozitron03
@@ -533,6 +537,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Seonwoo Lee
 * Sergey Lukjanov
 * Shichun Chen
+* Simon Evans
 * Simplistic Realities
 * Stefan Bautz
 * Stefan Müller
