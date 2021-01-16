@@ -5,7 +5,7 @@ This document describes the Pi-KVM API. Since the system consists of microservic
 All APIs are restricted to authorization. To make requests, you either need to authorize each request individually,
 or get a token and pass it as a cookie with each request.
 
-#### Single request auth
+### Single request auth
 There are two options here:
 * Using X-headers. Just pass `X-KVMD-User` and `X-KVMD-Passwd` with the request:
     ```
@@ -16,7 +16,7 @@ There are two options here:
     ```
     $ curl -k --user admin:admin https://pikvm/api/auth/check
     ```
-#### Session-based cookie auth
+### Session-based cookie auth
 1. Authorize and get token for the user using `POST /api/auth/login`:
     ```
     $ curl -k -v -X POST --data user=admin --data passwd=admin https://pikvm/api/auth/login
@@ -25,10 +25,10 @@ There are two options here:
     ...
     ```
     On success the cookie `auth_token` will be received with `200 OK`. On invalid user or password you will get `403 Forbidden`.
-2. The handle `GET /api/auth/check` can be used for check the auth status. If the user is logged in, you will see `200 OK`.
+2. The handle `GET /api/auth/check` can be used for check the auth status. Return of `200 OK` will signal that user is authenticated.
   If the token or any of the single-request auth methods are missing, `401 Unauthorized` will be returned.
-  On incorrect credentials or token, `403 Forbidden` will be returned.
-3. The handle `POST /api/auth/logout` can be used for invalidate session token. The response codes will be similar to the previous handle.
+  In case of incorrect credentials or token, `403 Forbidden` will be returned.
+3. The handle `POST /api/auth/logout` can be used to invalidate session token. The response codes will be similar to the previous handle.
 
 ## The main web socket: `/api/ws`
 Most of the data during the user's work with pikvm is transmitted over a web socket. This includes mouse events, keyboard input, change the state of the various subsystems (such as ATX and Mass Storage Drive). Each event type will be described in the corresponding paragraph for its component. When connecting via a web socket, the client receives current states as separate events. Then, as the states change, it will receive new events.
