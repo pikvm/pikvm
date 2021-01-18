@@ -13,7 +13,9 @@ To do this, uStreamer supports simultaneous MJPEG and H264 encoding since versio
   rw
   pacman -Syu
   pacman -S ffmpeg
-  reboot
+  ```
+* For USB dongle only: Add line `gpu_mem=256` to `/boot/config.txt`.
+* Perform `reboot` command.
 * Add memory sink options to `/etc/kvmd/override.yaml`. This is necessary to get a dump of the video stream:
   ```yaml
   kvmd:
