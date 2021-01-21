@@ -166,7 +166,7 @@ It's completely supported and Pi-KVM works great with it. But it has some disadv
 
 # The future v3 platform (work in progress)
 
-<img src="img/v3_board.png" alt="drawing" width=200/></td>
+<img src="img/v3_board.png" alt="drawing" width=250/></td>
 
 We are also currently developing our own HAT for the Raspberry Pi 4. It will have all the features of the v2 platform, including:
 * HDMI capture based on the TC358743 (extra low latency and many features like compression control).
@@ -182,7 +182,9 @@ We are also currently developing our own HAT for the Raspberry Pi 4. It will hav
 * Continued use of Pi-KVM OS - all the software will be fully open.
 * It will cost about $100 - or less, we are working to make it as cheap as possible.
 
-**Sounds interesting? [Subscribe in this form](https://docs.google.com/forms/d/1LA6iEYVtbJULvMDNktyNQMI4N9SYdNG03Wh9WK-80cM)** or join to https://discord.gg/bpmXfz5 and we will let you know when you can purchase the board. **Prototypes will be ready in Q4 2020**, and pre-orders will be available sooner. If you are considering ordering a wholesale lot, please email to mdevaev@gmail.com.
+**Sounds interesting? [Subscribe in this form](https://docs.google.com/forms/d/1LA6iEYVtbJULvMDNktyNQMI4N9SYdNG03Wh9WK-80cM)** or join to [Discord](https://discord.gg/bpmXfz5) and we will let you know when you can purchase the board.
+
+**Status as of January 2021**: We have ready-made samples and **we are starting production**! **Sales are expected to start in February 2021*.
 
 -----
 
