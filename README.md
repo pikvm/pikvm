@@ -410,6 +410,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Benedikt Heine
 * Benjamin Melancon
 * Bernhard Fitzke
+* bitjoe
 * Bits and Bytes Computers LLC
 * Bootstrapper - Programmierung erklärt
 * Brainspore Networks
