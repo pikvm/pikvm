@@ -466,6 +466,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Icculus
 * iks
 * Ivan Shapovalov
+* J L
 * Jacob Morgan
 * James Cadd
 * James Cobb
@@ -476,6 +477,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jason Toland
 * Jay Davis
 * Jeff Bowman
+* Jeff Urlwin
 * Jennifer Rowlett
 * Jerremy Holland
 * Joachim Bruening
