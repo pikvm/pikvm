@@ -530,6 +530,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * nybble
 * Oh Be
 * Oliver Schwarz
+* Oliver Zimmer
 * Paul Bishop
 * Peter Farrelly
 * Philip Merricks
