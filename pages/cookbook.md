@@ -1,4 +1,3 @@
-
 # Some random and useful recipes
 ## Take a HDMI screenshot via console on Pi-KVM
 ```
@@ -212,3 +211,6 @@ Once you have the desired USB stick perform the following on the RPi to create t
 9. Select Drive Mode: `Flash` and then `Connect drive to Server`.
 
 You should be able to then mount it locally on the server, or reboot the device to do things like BIOS updates.
+
+## Using Ethernet wiznet w5500 with ZeroW
+Read [here](https://github.com/pikvm/pikvm/issues/158#issuecomment-768305834)
