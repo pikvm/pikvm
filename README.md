@@ -575,6 +575,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * William Stearns
 * Yethal
 * Yevgeniy Kuksenko
+* Yigal Dar
 * YURI LEE
 * Yurii Ostapchuk
 * zgen
