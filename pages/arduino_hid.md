@@ -28,7 +28,7 @@ Using the PS/2 firmware currently has the following limitations:
 
 Both of these problems will be solved in the nearest future and the two different firmware versions will be combined into one universal one.
 
-To select the PS/2 firmware, you need to follow the instructions for USB, but with one exception. Befor `make` you need to edit file `platformio.ini`. Open it and find these lines:
+To select the PS/2 firmware, you need to follow the instructions for USB, but with one exception. Before `make` you need to edit file `platformio.ini`. Open it and find these lines:
 ```ini
 [_common]
 build_flags =
@@ -55,7 +55,7 @@ build_flags =
 #   -DHID_SET_USB_MOUSE_REL
 ```
 
-By default, the firmware works with USB HID and supports dynamic mode switching. You can choose one of the other modes by commenting some lines and uncomenting others. This example to use a USB mouse and PS/2 keyboard:
+By default, the firmware works with USB HID and supports dynamic mode switching. You can choose one of the other modes by commenting some lines and uncommenting others. This example to use a USB mouse and PS/2 keyboard:
 ```ini
 ...
 # ----- The default config with dynamic switching -----

@@ -5,7 +5,7 @@ This document describes the Pi-KVM API. Since the system consists of microservic
 All APIs are restricted to authorization. To make requests, you either need to authorize each request individually,
 or get a token and pass it as a cookie with each request.
 
-#### Single request auth
+### Single request auth
 There are two options here:
 * Using X-headers. Just pass `X-KVMD-User` and `X-KVMD-Passwd` with the request:
     ```
@@ -16,7 +16,7 @@ There are two options here:
     ```
     $ curl -k --user admin:admin https://pikvm/api/auth/check
     ```
-#### Session-based cookie auth
+### Session-based cookie auth
 1. Authorize and get token for the user using `POST /api/auth/login`:
     ```
     $ curl -k -v -X POST --data user=admin --data passwd=admin https://pikvm/api/auth/login
@@ -24,11 +24,11 @@ There are two options here:
     < Set-Cookie: auth_token=796cb83b11de4fcb749bc1bad14a91fb06dede84672b2f847fef1e988e6900de; Path=/
     ...
     ```
-    On success the cookie `auth_token` will be recieved with `200 OK`. On invalid user or password you will get `403 Forbidden`.
-2. The handle `GET /api/auth/check` can be used for check the auth status. If the user is logged in, you will see `200 OK`.
+    On success the cookie `auth_token` will be received with `200 OK`. On invalid user or password you will get `403 Forbidden`.
+2. The handle `GET /api/auth/check` can be used for check the auth status. Return of `200 OK` will signal that user is authenticated.
   If the token or any of the single-request auth methods are missing, `401 Unauthorized` will be returned.
-  On incorrect credentials or token, `403 Forbidden` will be returned.
-3. The handle `POST /api/auth/logout` can be used for invalidate session token. The response codes will be similar to the previous handle.
+  In case of incorrect credentials or token, `403 Forbidden` will be returned.
+3. The handle `POST /api/auth/logout` can be used to invalidate session token. The response codes will be similar to the previous handle.
 
 ## The main web socket: `/api/ws`
 Most of the data during the user's work with pikvm is transmitted over a web socket. This includes mouse events, keyboard input, change the state of the various subsystems (such as ATX and Mass Storage Drive). Each event type will be described in the corresponding paragraph for its component. When connecting via a web socket, the client receives current states as separate events. Then, as the states change, it will receive new events.
@@ -166,6 +166,42 @@ Each category is represented by its own event in the websocket (`info_hw_state`,
 
 ## System log: `/api/log`
 On `GET` this handle will display messages from all KVMD services as plain text. The `follow=1` request parameter turns the request into an infinite one and you will receive new log messages in real time. The seek parameter runs the log for the specified time in seconds. For example, `seek=3600` will show the log for the last hour. Both the `seek` and `follow` parameters can be used together.
+
+## Get ATX state: `/api/atx`
+On `GET` it will show current ATX state.
+<details>
+    <summary>Example</summary>
+
+```js
+{
+    "ok": true,
+    "result": {
+        "busy": false, // True if ATX is busy performing an operation and does not accept commands
+        "enabled": true,
+        "leds": {
+            "hdd": false,
+            "power": false
+        }
+    }
+}
+```
+</details>
+
+## Set ATX PSU state: `/api/atx/power`
+On `POST` it will change ATX power supply state to desired.
+Parameters:
+- `action` describes desired state:
+  * `on` - turned on (do nothing in case PSU is already on);
+  * `off` - turned off (aka soft-off), emulates short-press on the power button;
+  * `off_hard` - emulates long (5+ seconds) press on the power button;
+  * `reset_hard`  emulates pressing reset button (hardware hot reset).
+- `wait` - boolean. Says if call should return immediately or just after finishing operation.
+
+## Emulate pressing buttons on computer case: `/api/atx/click`
+On `POST` send button press events to {front-}panel header (like you pressing buttins on your computer's case).
+Parameters:
+- `button` specifies the desired computer case button you would like to press. Currently supported options are: `power` — for short press on power button, `power_long` — for pressing POWER button for 4+ seconds (force OFF), `reset` — to initiate cold-reset
+- `wait` Boolean. Says if call should return immediately or just after finishing operation.
 
 # To be continued ===>
 Unfortunately, the developer doesn't have enough time to fully describe the API. You can find all existing APIs in the [KVMD source tree](https://github.com/pikvm/kvmd/tree/master/kvmd/apps/kvmd/api). We would appreciate your help with documentation.

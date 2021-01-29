@@ -30,7 +30,7 @@ The first part of the configuration refers to the hardware layer, which defines 
 
 Each hardware input/output requires a individual driver configuration entry. Each driver has a type (which refers to the plugin that handles the communication between Pi-KVM and the hardware) and a unique name. This allows you to either can add multiple drivers of the same type with different settings or connect multiple USB HID relays.
 
-:exclamation: Each driver requires a unique name. Names surrounded by doube underscore are system reserved and should not be used.
+:exclamation: Each driver requires a unique name. Names surrounded by double underscore are system reserved and should not be used.
 
 The only exception to this is the default GPIO driver with the name `__gpio__`, representing the physical GPIO interface of the Raspberry Pi. The configuration section for `__gpio__` is only required in your `/etc/kvmd/override.yaml` if you want to change the default settings. It can be omitted if you are fine with the defaults.
 
@@ -39,7 +39,7 @@ kvmd:
     gpio:
         drivers:
             # This example shows how the default __gpio__ driver settings can be changed. It can be omitted if you are fine with the defaults.
-            __gpio__:  # Names surrounded by doube underscore are system reserved
+            __gpio__:  # Names surrounded by double underscore are system reserved
                 type: gpio  # Refers to the plugin name handling the communication
 
             # You can define another gpio driver for some reason

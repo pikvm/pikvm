@@ -166,7 +166,7 @@ It's completely supported and Pi-KVM works great with it. But it has some disadv
 
 # The future v3 platform (work in progress)
 
-<img src="img/v3_board.png" alt="drawing" width=200/></td>
+<img src="img/v3_board.png" alt="drawing" width=250/></td>
 
 We are also currently developing our own HAT for the Raspberry Pi 4. It will have all the features of the v2 platform, including:
 * HDMI capture based on the TC358743 (extra low latency and many features like compression control).
@@ -182,7 +182,9 @@ We are also currently developing our own HAT for the Raspberry Pi 4. It will hav
 * Continued use of Pi-KVM OS - all the software will be fully open.
 * It will cost about $100 - or less, we are working to make it as cheap as possible.
 
-**Sounds interesting? [Subscribe in this form](https://docs.google.com/forms/d/1LA6iEYVtbJULvMDNktyNQMI4N9SYdNG03Wh9WK-80cM)** or join to https://discord.gg/bpmXfz5 and we will let you know when you can purchase the board. **Prototypes will be ready in Q4 2020**, and pre-orders will be available sooner. If you are considering ordering a wholesale lot, please email to mdevaev@gmail.com.
+**Sounds interesting? [Subscribe in this form](https://docs.google.com/forms/d/1LA6iEYVtbJULvMDNktyNQMI4N9SYdNG03Wh9WK-80cM)** or join to [Discord](https://discord.gg/bpmXfz5) and we will let you know when you can purchase the board.
+
+**Status as of January 2021**: We have ready-made samples and **we are starting production**! **Sales are expected to start in February 2021**.
 
 -----
 
@@ -322,7 +324,11 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
             # port: 9  # By default
     ```
 
+* [Video modes of HDMI CSI brodge (if no video in UEFI)](pages/edid.md).
+
 * [Mouse modes (if the mouse doesn't work in UEFI)](pages/mouse.md).
+
+* [Recording screen video](pages/video.md).
 
 * [Multiport KVM over IP](pages/multiport.md).
 
@@ -377,11 +383,17 @@ If you wish to use Pi-KVM in production, we accept orders to modify it for your 
 
 # Special thanks
 These kind people donated money to the Pi-KVM project and supported work on it. We are very grateful for their help, and commemorating their names is the least we can do in return.
+
+<details>
+  <summary>View all people!</summary>
+
 * Accalia
+* adipisicing
 * Alberto Bassi
 * Aleksei Brusianskii
 * Alucard
 * Andrew Reusch
+* Andrew Ruan
 * Andrzej V
 * Anish Patel
 * Anix
@@ -395,46 +407,66 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Bao Tin Hoang
 * Ben Gordon
 * Ben Scott
+* Benedikt Heine
 * Benjamin Melancon
+* Bernhard Fitzke
+* bitjoe
 * Bits and Bytes Computers LLC
+* Bootstrapper - Programmierung erklärt
 * Brainspore Networks
 * Branden Shaulis
+* Brian Moses
 * Brian Vecchiarelli
 * Brian White
 * Bruno Gomes
 * Bryan Adams
+* C P ELSE
 * Carl Mercier
 * Chris Burton
+* Chris Rizio
 * Christian Schlögl
 * Christoph Dette
 * Christof Maluck
 * Christoffer Lund
-* Corey Layton
-* Corey Lista
 * Clifford Coleman
 * Clinton Lee Taylor
+* Cole Imhoff
+* Corey Layton
+* Corey Lista
+* ctag
+* DeMentor
 * Damon Meledones
+* Dan Berkowitz
 * Dan Brakeley
 * David
 * David Howell
+* David York
+* Denis
 * Denis Andreev
 * Denis Yatsenko
+* Derek Yap
 * dixon wong
 * Dmitry Shilov
 * Eric Phenix
 * ewook
 * Fergus McKay
+* fo0bar
 * Foamy
 * Francisco Pavon
 * Fredrik Idréus
 * Ge Men
+* Genkinger Andreas
+* Georgy Brodsky
+* Gregory Treantos
 * Grey Cynic
 * Guido Bernacchi
 * Heikki Tiittanen
 * Henry Hood
 * HimKo
+* Icculus
 * iks
 * Ivan Shapovalov
+* J L
 * Jacob Morgan
 * James Cadd
 * James Cobb
@@ -445,19 +477,24 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jason Toland
 * Jay Davis
 * Jeff Bowman
+* Jeff Urlwin
 * Jennifer Rowlett
 * Jerremy Holland
 * Joachim Bruening
+* Joe Ventura
+* Joel Jacobs
 * John F Glenn
 * John Kelley
 * John McGovern
 * Jonathan Vaughn
 * Josh Ricker
+* Joshua Futterer
 * Jordi Pakey-Rodriguez
 * Joris van Embden
 * Jozef Riha
 * Julian Forero
 * Justin Waters
+* Ken Lee
 * Kenny Hui
 * Krzysztof Żelaśkiewicz
 * Lars
@@ -468,6 +505,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Marcos Wolf
 * Mark Gilbert
 * Mark Robinson
+* Markus Halm
 * Markus Schicker
 * Markus Sobczack
 * Marten Hermans
@@ -478,7 +516,9 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Mehmet Aydoğdu
 * Michael Kovacs
 * Michael Lynch
+* Michael Pennington
 * Michael Sage
+* Milan Múčka
 * Miles Davis
 * Morgan Helton
 * Nicholas Jeppson
@@ -489,7 +529,10 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Nod Swal
 * nybble
 * Oh Be
+* Oliver Schwarz
+* Oliver Zimmer
 * Paul Bishop
+* Peter Farrelly
 * Philip Merricks
 * posicat
 * pozitron03
@@ -498,15 +541,19 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Ranc1d
 * Richard Bernarts
 * Richard Freemantle
+* Rob Tongue
 * Robin Gfatter
 * Rolfs 3D UG
+* rotx
 * Samed Ozoglu
+* Satish Alwani
 * Scott
 * Scott Spicola
 * Sean
 * Seonwoo Lee
 * Sergey Lukjanov
 * Shichun Chen
+* Simon Evans
 * Simplistic Realities
 * Stefan Bautz
 * Stefan Müller
@@ -516,6 +563,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Tejun Heo
 * Thomas Søfteland
 * Timothee Besset
+* Tom York
 * Tomas Kuchta
 * Tomáš hrubý
 * Tobias Schafferhans
@@ -531,3 +579,4 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Yurii Ostapchuk
 * zgen
 * Zsombor Vari
+</details>

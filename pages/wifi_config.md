@@ -3,7 +3,7 @@ The following describes how to setup a WiFi connection on the default pikvm buil
 I'd recommend to do this while having a display and keyboard connected directly to the Raspberry Pi as you will loose network connectivity once you connect to a WiFi.
 Alternatively you can connect to the pikvm via ssh. The build-in Terminal (available through the browser) should also work.
 
-**Note:** I'm ommiting any sudo prefix for commands as the default installation runs as root anyway. If your installation does not run as root you'll have to add `sudo` in front of each command.
+**Note:** I'm omitting any sudo prefix for commands as the default installation runs as root anyway. If your installation does not run as root you'll have to add `sudo` in front of each command.
 
 ## Make filesystem writeable
 By default the pikvm filesystem is read-only. In order to make changes you'll need to switch to read-write mode. Do this by typing `rw` in the console.
