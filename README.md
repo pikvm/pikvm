@@ -573,6 +573,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Truman Kilen
 * Tyler
 * Udo Schroeter
+* Uli Fahrer
 * Walter_Ego
 * William Hooper
 * William Stearns
