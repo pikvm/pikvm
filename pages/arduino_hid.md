@@ -106,17 +106,19 @@ There are very few parts needed besides the Raspberry Pi to build the solution. 
 
 ### List of connections to be made
 
-There are a total of 9 connections to be made for the typical setup, not including any jumpers that may need to be made from the 3.3V, 5V, or ground rails on the breadboard. A few connections to pay particular attention to have been ***emphasized*** with a different font below.
-
-* ***Optional: 5V to HV and Arduino VCC, for programming the microcontroller without an active USB connection***
+For the primary functionality, most connections are made using a 4-channel bidirectional level shifter
 * Pi 3v3 to LV on the level shifter
-* Pi Ground to LV GND, HV GND, and Arduino GND
-* GPIO10 (MOSI) to MOSI on the Arduino
-* ***GPIO9 (MISO) to LV3 or Channel 2 RX on the logic level shifter***
-* GPIO25 to RST on the Arduino
-* GPIO11 (SPIO_SCLK) to SCK on the Arduino
-* ***HV3 or Channel 2 RX on the logic level shifter to MISO on the Arduino***
-* GPIO7 (SPIO_CE1_N) to SS or RX_LED on the Arduino
+* Pi Ground to LV GND
+* Arduino GND to HV GND
+* GPIO10 (MOSI) via the level shifter to MOSI on the Arduino
+* GPIO9 (MISO) via the level shifter to MISO on the Arduino
+* GPIO11 (SPIO_SCLK) via the level shifter to SCK on the Arduino
+* GPIO7 (SPIO_CE1_N) via the level shifter to SS (or RX_LED) on the Arduino
+
+An additional circuit is used with a transistor to reset the HID for mode changes and for SPI programming as follows:
+* GPIO25 to PNP base on transistor
+* PNP emitter to ground
+* PNP collector to  RST on the Arduino
 
 Pictures of this setup are also available in full resolution for download to assist for both the Raspberry Pi and the microcontroller board. A smaller version of the images has been included on this page and can be downloaded.
 
@@ -124,7 +126,7 @@ Pictures of this setup are also available in full resolution for download to ass
 |------------|--------|
 | <img src="/img/arduino_spi_hid_rpi.jpg" alt="A closeup of the Raspberry Pi wired to the breadboard." width=300/> | <img src="/img/arduino_spi_hid_bb.jpg" alt="Arduino on a breadboard fully wired to the Pi." width=300/> |
 
-If the microcontroller will be powered by USB for programming, the 5V connection is not required and should be disconnected unless the Arduino will be programmed using the Raspberry Pi's power before connecting it to a host. While leaving this wire may not cause damage, the Raspberry Pi does not have backcurrent protection so it is recommended the 5V connection in the diagram and pictures be removed prior to host connection.
+Programming assumes the Arduino is powered via USB, either from the connected host or the Pi itself. If the USB is not connected, 5 V may be provided by the Raspberry Pi GPIO but should be disconnected prior to connecting USB to the microcontroller's USB port. The Raspberry Pi does not have backcurrent protection, a circuit using one or more Schottky diodes can be built to OR power from multiple sources but it's easier and more cost effective to avoid conflict and voltage differences between power supplies by leaving the 5 V wire disconnected.
 
 ### Preparing the installation for SPI devices and programming
 
