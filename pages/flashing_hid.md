@@ -69,7 +69,9 @@ And run `make install` again.
 If you have any problems or questions, contact us using Discord: https://discord.gg/bpmXfz5
 
 ### Example SPI build + Flash
-Here's an end-to-end build and flash of the SPI HID firmware using the default options as described above.
+<details>
+ <summary>Here's an end-to-end build and flash of the SPI HID firmware using the default options as described above.</summary>
+
 ```bash
 [root@pikvm ~]# rw
 [root@pikvm ~]# systemctl stop kvmd
@@ -337,3 +339,5 @@ spi            SUCCESS   00:00:07.536
 =================================================== 1 succeeded in 00:00:07.536 ===================================================
 [root@pikvm hid]# reboot
 ```
+
+</details>
