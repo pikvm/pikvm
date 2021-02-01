@@ -1,6 +1,6 @@
 # Flashing the Arduino HID
 
-## TTL Firmware
+## TTL Firmware (the default option for v0 or v2)
 This operation can be done using your RPi (except Pi Zero W). Here the common steps:
 
  1. Disconnect the RESET wire from the Arduino board.
