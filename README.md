@@ -8,7 +8,7 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 * **[>>> DIY Getting Started <<<](#diy-getting-started)**
 * **Great project review by Novaspirit Tech**: https://youtu.be/plP9Y1likRg
 * Boring technical details from the developer: https://youtu.be/9YhPWjWv5gw
-* [Pro Series v3 Preorder Today!](#the-future-v3-platform-work-in-progress)
+* **[Pro Series v3 Preorder Today!](#the-future-v3-platform-work-in-progress) / Video review**: https://youtu.be/dTchVKxx7Fo
 * [Limitations](#limitations)
 * [Tips](#tips)
 * [FAQ](#faq)
@@ -181,6 +181,8 @@ We are also currently developing our own HAT for the Raspberry Pi 4. It will hav
 * No need for soldering or other assembly. It's a ready-made, reliable board which you can use yourself or provide to your clients.
 * Continued use of Pi-KVM OS - all the software will be fully open.
 * It will cost about $100 - or less, we are working to make it as cheap as possible.
+
+**YouTube Review of the v3 board**: https://youtu.be/dTchVKxx7Fo
 
 **Sounds interesting? [Subscribe in this form](https://docs.google.com/forms/d/1LA6iEYVtbJULvMDNktyNQMI4N9SYdNG03Wh9WK-80cM)** or join to [Discord](https://discord.gg/bpmXfz5) and we will let you know when you can purchase the board.
 
