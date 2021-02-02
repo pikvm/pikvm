@@ -414,6 +414,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * bitjoe
 * Bits and Bytes Computers LLC
 * Bootstrapper - Programmierung erklärt
+* Bradford King
 * Brainspore Networks
 * Branden Shaulis
 * Brian Moses
@@ -447,6 +448,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Denis Yatsenko
 * Derek Yap
 * dixon wong
+* dizztrukshin
 * Dmitry Shilov
 * Eric Phenix
 * ewook
@@ -461,7 +463,9 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Gregory Treantos
 * Grey Cynic
 * Guido Bernacchi
+* Gustin Johnson
 * Heikki Tiittanen
+* Henrik Ählström
 * Henry Hood
 * HimKo
 * Icculus
@@ -471,6 +475,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jacob Morgan
 * James Cadd
 * James Cobb
+* James Kocher
 * Jamie Murphy
 * Jan Niehusmann
 * Jari Hiltunen
@@ -497,6 +502,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Justin Waters
 * Ken Lee
 * Kenny Hui
+* Kevin Schwartz
 * Krzysztof Żelaśkiewicz
 * Lars
 * LeeNX
@@ -535,9 +541,11 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Oliver Zimmer
 * Paul Bishop
 * Peter Farrelly
+* Petri Heiskanen
 * Philip Merricks
 * posicat
 * pozitron03
+* Qteal
 * Quentin Peten
 * Ralph Borchers
 * Ranc1d
@@ -551,6 +559,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Satish Alwani
 * Scott
 * Scott Spicola
+* Scott Tusing
 * Sean
 * Seonwoo Lee
 * Sergey Lukjanov
@@ -562,7 +571,9 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Stefan Stemmer
 * Steve Ovens
 * Steven Richter
+* sudo34
 * Tejun Heo
+* Thomas Price
 * Thomas Søfteland
 * Timothee Besset
 * Tom York
