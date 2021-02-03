@@ -474,6 +474,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * HimKo
 * Icculus
 * iks
+* IT Lifesaver
 * Ivan Shapovalov
 * J L
 * Jacob Morgan
