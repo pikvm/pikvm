@@ -546,6 +546,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Oliver Schwarz
 * Oliver Zimmer
 * Paul Bishop
+* Pawel Trofimiuk
 * Peter Farrelly
 * Petri Heiskanen
 * Philip Merricks
