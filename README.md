@@ -505,6 +505,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jozef Riha
 * Julian Forero
 * Justin Waters
+* Karl Dunne
 * Ken Lee
 * Kenny Hui
 * Kevin Schwartz
