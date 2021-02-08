@@ -3,7 +3,7 @@ You can use [Tailscale](https://tailscale.com/) to access Pi-KVM on the internal
 
 # Installation
 ## On the Pi-KVM side
-1. Use this commands:
+1. Use these commands:
   ```
   # rw
   # pacman -Syy
@@ -17,5 +17,5 @@ You can use [Tailscale](https://tailscale.com/) to access Pi-KVM on the internal
 
 ## On the workstation side
 * Download and install tailscale for your OS: https://tailscale.com/download
-* Check tha page https://login.tailscale.com/admin/machines to view your VPN network.
+* Check the page https://login.tailscale.com/admin/machines to view your VPN network.
 * Follow the URL in the web browser: `https://<tailscale_kvm_ip>` and you will see Pi-KVM web interface.
