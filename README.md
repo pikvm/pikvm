@@ -577,6 +577,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Stefan Bautz
 * Stefan Müller
 * Stefan Stemmer
+* Steve Kerr
 * Steve Ovens
 * Steven Richter
 * sudo34
