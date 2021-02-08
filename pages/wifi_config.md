@@ -1,7 +1,7 @@
 # Setting up WiFi / WLAN
 The following describes how to setup a WiFi connection on the default pikvm builds based on Arch Linux. The process might vary for other Linux distros.
 I'd recommend to do this while having a display and keyboard connected directly to the Raspberry Pi as you will loose network connectivity once you connect to a WiFi.
-Alternatively you can connect to the pikvm via ssh. The build-in Terminal (available through the browser) should also work.
+Alternatively you can connect to the pikvm via ssh. The built-in Terminal (available through the browser) should also work.
 
 **Note:** I'm omitting any sudo prefix for commands as the default installation runs as root anyway. If your installation does not run as root you'll have to add `sudo` in front of each command.
 
@@ -12,7 +12,7 @@ rw
 ```
 
 ## Enable WiFi auto roaming mode
-If you want your Raspberry Pi to automatically connect to any configured and available WiFi network you have to set the following option. On Raspberry Pis wlan0 is the default name of the wlan device.
+If you want your Raspberry Pi to automatically connect to any configured and available WiFi networks you have to set the following option. On Raspberry Pis wlan0 is the default name of the wlan device.
 ```
 systemctl enable netctl-auto@wlan0.service
 ```
@@ -35,7 +35,7 @@ Enter the WPA-Passphrase:
 
 ![Wifi Menu 3](/img/wifi-3.png)
 
-Afterwards `wifi-menu` will try to connect to the WiFi. If you're connected via ssh or the Web Terminal you'll loose connection to the Raspberry Pi. Most DHCP server will give the Raspberry Pi a new (and usually different) IP address for each interface (LAN / WLAN).
+Afterwards `wifi-menu` will try to connect to the WiFi. If you're connected via ssh or the Web Terminal you'll loose connection to the Raspberry Pi. Most DHCP servers will give the Raspberry Pi a new (and usually different) IP address for each interface (LAN / WLAN).
 
 If everything worked out you should be connected to your WiFi now. `wifi-menu` created a new profile file for you in */etc/netctl*. 
 
