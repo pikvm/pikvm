@@ -1,11 +1,13 @@
 # Building the OS
 The Pi-KVM OS is based on Arch Linux ARM and contains all the required packages and configs for it to work. 
 
-To build the OS you will need any Linux machine with a recent version of Docker (>= 1:19) with privileged mode enabled (used for fdisk and some other commands, have a look through our Makefiles if you don't trust us :)). 
+To build the OS you will need x86_64 Linux machine with:
+* kernel >= 5.8
+* glibc >= 2.33
+* docker >= 19.03.13
+Docker must be enabled in privileged mode.
 
-The build must be performed on the target x86_64 Linux image.
-
-**Ubuntu 20.04** is recommended and has been tested. *please note that Ubuntu 18.04 does not work.*
+Latest Arch Linux and Ubuntu 20.10.x is working.
 
 0. When starting with a clean OS you need to install and configure docker (after adding your user to the docker group you must log out and log back in), as well as git and make.
     ```shell
