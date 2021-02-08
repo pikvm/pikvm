@@ -5,7 +5,7 @@ This page provides a basic overview of correct YAML syntax, which is how Ansible
 
 We use YAML because it is easier for humans to read and write than other common data formats like XML or JSON. Further, there are libraries available in most programming languages for working with YAML.
 
-You may also wish to read working\_with\_playbooks at the same time to see how this is used in practice.
+You may also wish to read [working with playbooks](https://docs.ansible.com/ansible/latest/user_guide/playbooks.html) at the same time to see how this is used in practice.
 
 YAML Basics
 -----------
