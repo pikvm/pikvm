@@ -473,6 +473,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Henrik Ählström
 * Henry Hood
 * HimKo
+* HouseFPV
 * Icculus
 * iks
 * IT Lifesaver
@@ -498,6 +499,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * John F Glenn
 * John Kelley
 * John McGovern
+* Johnny Henson
 * Jonathan Vaughn
 * Josh Ricker
 * Joshua Futterer
