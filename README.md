@@ -597,6 +597,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Tyler
 * Udo Schroeter
 * Uli Fahrer
+* Vicente Salvador Cubedo
 * Viktor Aschenbrenner
 * Walter_Ego
 * William Hooper
