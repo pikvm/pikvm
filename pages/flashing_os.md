@@ -45,7 +45,7 @@ Decompress and flash image and follow to the [final steps](#the-final-steps). Be
     WIFI_ESSID="mynet"
     WIFI_PASSWD="p@s$$w0rd"
     ```
-    Unmount and eject memory card. Follow next steps.
+    Save, unmount and follow the next step.
 
 2. When the process is complete, pull out the memory card and insert it into the Raspberry Pi. Connect the Raspberry Pi to the power supply. Your device will obtain the IP address via DHCP automatically. <br>:exclamation:Windows users: balenaEtcher will automatically safely remove the memory card. If you are using a Windows version prior to Windows 10 1809 and a different flashing software, you should do the safe remove manually.
 
