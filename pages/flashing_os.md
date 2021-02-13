@@ -40,12 +40,12 @@ Decompress and flash image and follow to the [final steps](#the-final-steps). Be
 
 ## The final steps
 1. **Important for ZeroW**. In order for your device to connect to Wi-Fi, you will have to tell it which network to use with which password. To do this, mount the first partition of the memory card (FAT32) and edit the `pikvm.txt` file there. Do not remove line `FIRSTBOOT=1`, just add your wifi settings like this:
-```
-FIRSTBOOT=1
-WIFI_ESSID="mynet"
-WIFI_PASSWD="p@s$$w0rd"
-```
-Unmount and eject memory card. Follow next steps.
+    ```
+    FIRSTBOOT=1
+    WIFI_ESSID="mynet"
+    WIFI_PASSWD="p@s$$w0rd"
+    ```
+    Unmount and eject memory card. Follow next steps.
 
 2. When the process is complete, pull out the memory card and insert it into the Raspberry Pi. Connect the Raspberry Pi to the power supply. Your device will obtain the IP address via DHCP automatically. <br>:exclamation:Windows users: balenaEtcher will automatically safely remove the memory card. If you are using a Windows version prior to Windows 10 1809 and a different flashing software, you should do the safe remove manually.
 
