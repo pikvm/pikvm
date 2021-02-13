@@ -402,6 +402,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Anish Patel
 * Anix
 * Anton Kovalenko
+* Aron Green
 * Aron Perelman
 * Arthur Woimbée
 * Ashlesh Chaudhari
@@ -413,6 +414,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Ben Scott
 * Benedikt Heine
 * Benjamin Melancon
+* Benni Stauder
 * Bernhard Fitzke
 * bitjoe
 * Bits and Bytes Computers LLC
