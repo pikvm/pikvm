@@ -1,7 +1,7 @@
 # Flashing the OS image
 Download the appropriate memory card image from https://pikvm.org/download.html. Select it based on the board, platform, and the video capture device you are using. For example: choose **v2-hdmi-rpi4.img.bz2** for Raspberry Pi 4 with HDMI-to-CSI capture bridge.
 
-Note: right now, pre-compiled images are only available for the Raspberry Pi 4. In all other cases, you will need to build the operating system yourself. But don't worry, it's [very simple](building_os.md).
+Note: right now, pre-compiled images are only available for the Raspberry Pi 4 and ZeroW. In all other cases, you will need to build the operating system yourself. But don't worry, it's [very simple](building_os.md).
 
 
 ## Using Linux CLI
@@ -39,27 +39,35 @@ Decompress and flash image and follow to the [final steps](#the-final-steps). Be
 
 
 ## The final steps
-1. When the process is complete, pull out the memory card and insert it into the Raspberry Pi. Connect the Raspberry Pi to the power supply. Your device will obtain the IP address via DHCP automatically. <br>:exclamation:Windows users: balenaEtcher will automatically safely remove the memory card. If you are using a Windows version prior to Windows 10 1809 and a different flashing software, you should do the safe remove manually.
+1. **Important for ZeroW**. In order for your device to connect to Wi-Fi, you will have to tell it which network to use with which password. To do this, mount the first partition of the memory card (FAT32) and edit the `pikvm.txt` file there. Do not remove line `FIRSTBOOT=1`, just add your wifi settings like this:
+```
+FIRSTBOOT=1
+WIFI_ESSID="mynet"
+WIFI_PASSWD="p@s$$w0rd"
+```
+Unmount and eject memory card. Follow next steps.
 
-2. After power-up, Pi-KVM OS generates unique SSH keys and certificates. Do not turn off the Raspberry Pi until it's fully booted.
+2. When the process is complete, pull out the memory card and insert it into the Raspberry Pi. Connect the Raspberry Pi to the power supply. Your device will obtain the IP address via DHCP automatically. <br>:exclamation:Windows users: balenaEtcher will automatically safely remove the memory card. If you are using a Windows version prior to Windows 10 1809 and a different flashing software, you should do the safe remove manually.
 
-3. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<ip-address>` with the password `root` by default) and HTTPS. In most networks you should be able to reach Pi-KVM via any browser with the URL `https://pikvm/`. If that doesn't work you'll need to find the IP address manually in your router and try it via `https://<ip-address>`. The default login username is `admin` with `admin` as the password). For HTTPS a self-signed certificate is used by default. Your browser will give you a warning about an invalid SSL certificate which you can safely ignore.
+3. After power-up, Pi-KVM OS generates unique SSH keys and certificates. Do not turn off the Raspberry Pi until it's fully booted. If you set up Wi-Fi in step 1, it won't be able to connect to the network on the first boot. You need to wait 10 minutes for all the OS preparations to complete, then just restart the device. On the second boot, the Raspberry will connect to the network without any problems.
 
-4. To change the root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`. As indicated on the login screen, you need to use `rw` to make the root filesystem writable before issuing these commands. After making changes, make sure to run the command `ro` to switch the filesystem back to read-only.
+4. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<ip-address>` with the password `root` by default) and HTTPS. In most networks you should be able to reach Pi-KVM via any browser with the URL `https://pikvm/`. If that doesn't work you'll need to find the IP address manually in your router and try it via `https://<ip-address>`. The default login username is `admin` with `admin` as the password). For HTTPS a self-signed certificate is used by default. Your browser will give you a warning about an invalid SSL certificate which you can safely ignore.
 
-5. After installation, we recommend you to update your operating system:
+5. To change the root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`. As indicated on the login screen, you need to use `rw` to make the root filesystem writable before issuing these commands. After making changes, make sure to run the command `ro` to switch the filesystem back to read-only.
+
+6. After installation, we recommend you to update your operating system:
     ```
     # rw
     # pacman -Syu
     # reboot
     ```
-6. Pacman saves all installed packages in a compressed format so that you can roll back to the old version if something goes wrong. After you've updated and made sure everything works, it makes sense to clear the package cache so that it doesn't take up space on the SD card:
+7. Pacman saves all installed packages in a compressed format so that you can roll back to the old version if something goes wrong. After you've updated and made sure everything works, it makes sense to clear the package cache so that it doesn't take up space on the SD card:
     ```
     # rw
     # pacman -Sc
     # ro
     ```
-7. Important **note for HDMI-USB dongle** users only. Because of this, many video capture devices tell the server's video card that the HDMI cable is supposedly disconnected. This may lead to the fact that if you boot the server without an active stream, the server will not detect your capture card. This is easy to fix:
+8. **Important note for HDMI-USB dongle** users only. Because of this, many video capture devices tell the server's video card that the HDMI cable is supposedly disconnected. This may lead to the fact that if you boot the server without an active stream, the server will not detect your capture card. This is easy to fix:
     * Switch filesystem to RW-mode:
       ```
       # rw
@@ -76,8 +84,6 @@ Decompress and flash image and follow to the [final steps](#the-final-steps). Be
       # ro
       # systemctl restart kvmd
       ```
-
-8. **27.08.2020 note about systemd**: the latest version of Arch Linux has a slightly broken systemd. The problem is that SSH to the Pi-KVM host may not work the first time, but the second or third. The Pi-KVM build environment contains a workaround for this problem: in the file `/etc/pam.d/system-login` line `-session   optional   pam_systemd.so` is commented. This does not have any negative impact on the PI-KVM functionality, but if you want to, after fixing the systemd (in a couple of months with the next update), you can uncomment this line.
 
 If you have any problems or questions, contact us using Discord: https://discord.gg/bpmXfz5
 

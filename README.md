@@ -252,7 +252,7 @@ See video how-tos:
 
 # Installing the OS
 Here the final steps. There are two ways to get the Pi-KVM OS:
-  * We provide the ready-made images for **Raspberry Pi 4** for platforms **v2-hdmi** (the CSI-2 bridge) and **v2-hdmiusb** (the USB dongle). [Follow these instructions](pages/flashing_os.md) to install the OS quickly.
+  * We provide the ready-made images for **Raspberry Pi 4** for platforms **v2-hdmi** (the CSI-2 bridge) and **v2-hdmiusb** (the USB dongle); and for **ZeroW** for **v2-hdmi** [Follow these instructions](pages/flashing_os.md) to install the OS quickly.
   * For the other boards and platforms, you need to build the operating system manually. Don't worry, it's very simple! [Just follow these instructions](pages/building_os.md). You can also build the OS for RPi4 manually if you really want to :)
 
 # You're amazing!
