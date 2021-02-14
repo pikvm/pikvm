@@ -451,6 +451,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Denis
 * Denis Andreev
 * Denis Yatsenko
+* Dennis Becker
 * Derek Yap
 * dixon wong
 * dizztrukshin
