@@ -483,6 +483,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * IT Lifesaver
 * Ivan Shapovalov
 * J L
+* Jaanus
 * Jacob Morgan
 * James Cadd
 * James Cobb
@@ -592,6 +593,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Thomas Price
 * Thomas Søfteland
 * Timothee Besset
+* Tom Lawson
 * Tom York
 * Tomas Kuchta
 * Tomáš hrubý
