@@ -597,6 +597,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Tobias Schafferhans
 * Tristan Schoening
 * Truman Kilen
+* turbochris
 * Tyler
 * Udo Schroeter
 * Uli Fahrer
