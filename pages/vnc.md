@@ -1,7 +1,7 @@
 # VNC
 As an alternative to the web interface, you can use VNC with various desktop clients. The main advantage of VNC over the browser is the ability to expand the image to the full screen, as well as complete interception of all keyboard keys. In some cases, VNC will be more responsive than the browser, especially on weak computers.
 
-:exclamation: **Please note: we strongly advise against using VNC without X.509 or TLS encryption on untrusted networks! (i.e. Internet, public WiFi and similar networks)** Otherwise your password will be transmitted over the network in plain text. Unfortunately, this is the reality of the VNC protocol.
+:exclamation: **Please note: we strongly advise against using VNC without X.509 or TLS encryption on untrusted networks!** Otherwise your password will be transmitted over the network in plain text. Unfortunately, this is the reality of the VNC protocol.
 
 # Enabling VNC on the Pi-KVM side
 1. Switch Pi-KVM filesystem to read-write mode using command `rw`.
