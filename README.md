@@ -468,6 +468,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Ge Men
 * Genkinger Andreas
 * Georgy Brodsky
+* Gernot Neuschröer
 * Gregory Treantos
 * Grey Cynic
 * Guido Bernacchi
