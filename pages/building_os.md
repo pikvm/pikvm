@@ -7,7 +7,7 @@ To build the OS you will need x86_64 Linux machine with:
 * docker >= 19.03.13
 Docker must be enabled in privileged mode.
 
-Latest Arch Linux and Ubuntu 20.10.x is working.
+Latest Arch Linux is working.
 
 0. When starting with a clean OS you need to install and configure docker (after adding your user to the docker group you must log out and log back in), as well as git and make.
     ```shell
