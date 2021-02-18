@@ -28,7 +28,7 @@ As an alternative to the web interface, you can use VNC with various desktop cli
 5. Switch filesystem back to read-only: `ro`.
 
 # Configuring the client
-We recommend [TigerVNC](https://tigervnc.org) for a better experience.
+We recommend [TigerVNC](https://tigervnc.org) for a better experience on desktop.
 Here are our recommended settings for TigerVNC:
 * **Compression** tab:
   - Choose **Tight** encoding as preferred and color-level **Full**.
@@ -37,3 +37,7 @@ Here are our recommended settings for TigerVNC:
 * **Security** tab:
   - Enable **None**, **X.509 TLS** and **Anonymous TLS** encryption (or choose one preferred mode).
   - Enable **Username and password** authentication.
+
+For iOS and Android the recommended application is bVNC:
+* [Google Play](https://play.google.com/store/apps/details?id=com.iiordanov.bVNC)
+* [App Store](https://apps.apple.com/us/app/bvnc-pro/id1506461202)
