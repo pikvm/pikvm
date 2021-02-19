@@ -5,6 +5,7 @@ To build the OS you will need x86_64 Linux machine with:
 * kernel >= 5.8
 * glibc >= 2.33
 * docker >= 19.03.13
+
 Docker must be enabled in privileged mode.
 
 Latest Arch Linux is working.
