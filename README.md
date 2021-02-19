@@ -428,6 +428,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Bruno Gomes
 * Bryan Adams
 * C P ELSE
+* Cameron Tacklind
 * Carl Mercier
 * Chris Burton
 * Chris Rizio
