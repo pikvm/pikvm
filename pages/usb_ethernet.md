@@ -25,7 +25,7 @@ Specifically to v2. When combined with configuring a DNS server, FTP, or SMB (fo
 3. To enable the service, use the command `systemctl enable kvmd-otgnet`.
 4. Perform `reboot`.
 
-How to enable full network access from the server.
+## Routing via Pi-KVM
 
 By default, `kvmd-otgnet` will configure network connection between Pi-KVM and the server host only. The server host will not be able to reach other hosts beyond Pi-KVM. If the full network access is required from the server host through the USB-Ethernet feature (access all hosts Pi-KVM can access), additional settings are needed in `/etc/kvmd/override.yaml`.
 
