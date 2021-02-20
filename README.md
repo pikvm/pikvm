@@ -430,6 +430,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * C P ELSE
 * Cameron Tacklind
 * Carl Mercier
+* cbad536
 * Chris Burton
 * Chris Rizio
 * Christian Schlögl
@@ -503,6 +504,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Joachim Bruening
 * Joe Ventura
 * Joel Jacobs
+* John Andersen
 * John F Glenn
 * John Kelley
 * John McGovern
