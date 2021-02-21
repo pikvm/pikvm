@@ -520,6 +520,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Karl Dunne
 * Ken Lee
 * Kenny Hui
+* Kevin Bajohr
 * Kevin Schwartz
 * Krzysztof Żelaśkiewicz
 * Lars
@@ -560,6 +561,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Oh Be
 * Oliver Schwarz
 * Oliver Zimmer
+* Patrick McDowell
 * Paul Bishop
 * Pawel Trofimiuk
 * Peter Farrelly
@@ -599,6 +601,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * TheTechGiant
 * Thomas Price
 * Thomas Søfteland
+* Tim Wilkinson
 * Timothee Besset
 * Tom Lawson
 * Tom York
