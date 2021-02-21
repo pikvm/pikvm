@@ -545,9 +545,11 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Michael Lynch
 * Michael Pennington
 * Michael Sage
+* MichaelZ
 * Milan Múčka
 * Miles Davis
 * Morgan Helton
+* Nelson Lee
 * Nicholas Jeppson
 * Nick Leffler
 * Nick Roethemeier
