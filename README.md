@@ -394,6 +394,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Adrian Basham
 * Alberto Bassi
 * Aleksei Brusianskii
+* Alessio Curri
 * Alexandre Jablonski
 * Alucard
 * Andrew Reusch
@@ -459,6 +460,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * dizztrukshin
 * Dmitry Shilov
 * Egan Ford
+* Elliot Woo
 * Eric Phenix
 * ewook
 * Fabiano Sidler
@@ -498,6 +500,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jason Downey
 * Jason Toland
 * Jay Davis
+* Jay Isaacs
 * Jeff Bowman
 * Jeff Urlwin
 * Jennifer Rowlett
