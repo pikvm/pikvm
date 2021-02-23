@@ -438,6 +438,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Christoph Dette
 * Christof Maluck
 * Christoffer Lund
+* Chucktastic
 * Clifford Coleman
 * Clinton Lee Taylor
 * Cole Imhoff
