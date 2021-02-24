@@ -491,6 +491,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Ivan Shapovalov
 * J L
 * Jaanus
+* Jackson Wyatt
 * Jacob Morgan
 * James Cadd
 * James Cobb
@@ -532,6 +533,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * LeeNX
 * Lordbob75
 * Lothar Schweikle-Droll
+* Louis Müller
 * Lukas Söder
 * Malcolm Cameron
 * Marcos Wolf
@@ -554,6 +556,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * MichaelZ
 * Milan Múčka
 * Miles Davis
+* Moez Tharani
 * Morgan Helton
 * Nelson Lee
 * Nicholas Jeppson
