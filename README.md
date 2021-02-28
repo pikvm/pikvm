@@ -111,7 +111,7 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
     <ul>
       <li>1x USB-A to USB-C cable (male-male).</li>
       <li>1x another cable USB-A to any (male-any).</li>
-      <li>1x appropriate Power Supply (USB-A or USB-C) depending on what cable you choose above.<li>
+      <li>1x appropriate Power Supply (USB-A or USB-C) depending on what cable you choose above.</li>
     </ul>
     </details>
   * <details><summary>Variant #2: Ready-made using USB-micro splitter.</summary>
