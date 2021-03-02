@@ -465,6 +465,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Eric Phenix
 * ewook
 * Fabiano Sidler
+* Far Pin Solutions, LLC
 * Fergus McKay
 * fo0bar
 * Foamy
