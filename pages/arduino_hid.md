@@ -17,7 +17,7 @@ Using Arduino HID on non-v0 platforms is useful if you need a simple and primiti
   KERNEL=="ttyAMA0", SYMLINK+="kvmd-hid"
   ```
 * Run `systemctl disable getty@ttyAMA0.service`.
-* Remove `console=ttyAMA0,115200` and `kgdboc=ttyAMA0,115200` from `/boot/cmdline.txt`.
+* Remove `console=ttyAMA0,115200`or `console=serial0,115200` and `kgdboc=ttyAMA0,115200` or `kgdboc=serial0,115200` from `/boot/cmdline.txt`.
 * [Flash the Arduino HID](flashing_hid.md).
 * Run `reboot`.
 
