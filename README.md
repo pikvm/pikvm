@@ -451,6 +451,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Dan Berkowitz
 * Dan Brakeley
 * David
+* David Godibadze
 * David Howell
 * David York
 * Denis
@@ -465,12 +466,15 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Elliot Woo
 * Eric Phenix
 * ewook
+* eye-catcher.com
 * Fabiano Sidler
 * Far Pin Solutions, LLC
+* Felyx Gabryel
 * Fergus McKay
 * fo0bar
 * Foamy
 * Francisco Pavon
+* Frank
 * Fredrik Idréus
 * Ge Men
 * Genkinger Andreas
