@@ -8,13 +8,13 @@ If your KVM switches channels using keyboard shortcuts, there is a chance that i
 
 # List of tested KVMs
 Here the status is:
-* ![#00aa00](https://placehold.it/15/00aa00/000000?text=+) - Everything is working as expected. There may be some subtleties.
-* ![#ffaa00](https://placehold.it/15/ffaa00/000000?text=+) - The switch does not work with OTG (**v2**) and requires an [Arduino HID](arduino_hid.md) or soldering [GPIO](gpio.md) to switch channels or something like that.
-* ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) - The keyboard or mouse does not work at all, the switch loses the image, etc.
+* ✔ - Everything is working as expected. There may be some subtleties.
+* ☹ - The switch does not work with OTG (**v2**) and requires an [Arduino HID](arduino_hid.md) or soldering [GPIO](gpio.md) to switch channels or something like that.
+* ✘ - The keyboard or mouse does not work at all, the switch loses the image, etc.
 
 | Model | Status | Notes |
 |:------|:-------|:------|
-| [ezCoo SW41HA HDMI 4x1 switch](https://www.easycoolav.com/products/hdmi20-switch-4x1-with-usb20-kvm-4-port-usbsupport-4k60hz-444-and-hdr-audio-breakout) | ![#00aa00](https://placehold.it/15/00aa00/000000?text=+) | [Using with Pi-KVM](ezcoo.md) |
-| [Ali's noname](https://a.aliexpress.com/_BSpS8t) | ![#00aa00](https://placehold.it/15/00aa00/000000?text=+) | [Here are the details](https://github.com/pikvm/pikvm/issues/128) |
-| [Aimos 8-port HDMI USB-C KVM Switch](https://www.amazon.de/AIMOS-Umschalter-Tastatur-unterst%C3%BCtzen-verbunden/dp/B08FR5K111/) | ![#00aa00](https://placehold.it/15/00aa00/000000?text=+) | Similar to Ali's noname model, available in 4/8port editions, has same HDMI bridge boot problem/solution using a Marmitek 312 UHD HDMI splitter [See here for details](https://github.com/pikvm/pikvm/issues/128) |
-| [TESmart 8 PORT - HDMI KVM SWITCH](https://buytesmart.com/collections/8-ports) |  ![#00aa00](https://placehold.it/15/00aa00/000000?text=+) | Use OTG with USB 2.0 Hub only, no hotkey support. Switching available with serial or IP-to-serial interface using fixed IP (/31 peer-to-peer addressing supported). [Sample script on GitHub](https://github.com/bbeaudoin/bash/tree/master/tesmart) |
+| [ezCoo SW41HA HDMI 4x1 switch](https://www.easycoolav.com/products/hdmi20-switch-4x1-with-usb20-kvm-4-port-usbsupport-4k60hz-444-and-hdr-audio-breakout) | ✔ | [Using with Pi-KVM](ezcoo.md) |
+| [Ali's noname](https://a.aliexpress.com/_BSpS8t) | ✔ | [Here are the details](https://github.com/pikvm/pikvm/issues/128) |
+| [Aimos 8-port HDMI USB-C KVM Switch](https://www.amazon.de/AIMOS-Umschalter-Tastatur-unterst%C3%BCtzen-verbunden/dp/B08FR5K111/) | ✔ | Similar to Ali's noname model, available in 4/8port editions, has same HDMI bridge boot problem/solution using a Marmitek 312 UHD HDMI splitter [See here for details](https://github.com/pikvm/pikvm/issues/128) |
+| [TESmart 8 PORT - HDMI KVM SWITCH](https://buytesmart.com/collections/8-ports) |  ✔ | Use OTG with USB 2.0 Hub only, no hotkey support. Switching available with serial or IP-to-serial interface using fixed IP (/31 peer-to-peer addressing supported). [Sample script on GitHub](https://github.com/bbeaudoin/bash/tree/master/tesmart) |
