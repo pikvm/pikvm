@@ -55,7 +55,7 @@ Decompress and flash image and follow to the [final steps](#the-final-steps). Be
 
 5. To change the root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`. As indicated on the login screen, you need to use `rw` to make the root filesystem writable before issuing these commands. After making changes, make sure to run the command `ro` to switch the filesystem back to read-only. If you are using a web terminal, use the `su -` command to get root access (enter the root password).
 
-6. ~~After installation, we recommend you to update your operating system:~~ The upstream distribution has broken the wifi driver, so don't do it yet.
+6. After installation, we recommend you to update your operating system:
     ```
     # rw
     # pacman -Syu
