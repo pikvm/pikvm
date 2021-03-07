@@ -186,7 +186,7 @@ We are also currently developing our own HAT for the Raspberry Pi 4. It will hav
 
 **Sounds interesting? [Subscribe in this form](https://docs.google.com/forms/d/1LA6iEYVtbJULvMDNktyNQMI4N9SYdNG03Wh9WK-80cM)** or join to [Discord](https://discord.gg/bpmXfz5) and we will let you know when you can purchase the board.
 
-**Status as of Feb 2021**: We have ready-made samples and **we are in production**! **Sales are expected to start in March 2021**.
+**Status as of March 2021: We are waiting for the first batch from the factory. Sales are expected to start in March-April 2021.**
 
 -----
 
