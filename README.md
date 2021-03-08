@@ -618,6 +618,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Thomas Price
 * Thomas Søfteland
 * Tim Wilkinson
+* Timo Brinkmann
 * Timothee Besset
 * Tom Lawson
 * Tom York
