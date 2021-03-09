@@ -230,7 +230,10 @@ Here is a diagram shows that how to connect all of the pieces (click to full siz
 |-------------------|--------------------------|
 | <img src="img/v2.png" alt="drawing" width="400"/> | <img src="img/v2_splitter.png" alt="drawing" width="400"/> |
 
-**Raspberry Pi 4 note**: since one USB-C female connector is used to receive power and perform keyboard/mouse/drive emulation a special Y-cable must be made that splits the DATA and POWER lines of USB-C (see [reasons](https://github.com/pikvm/docs/issues/11)). It can be made from two suitable connecting cables, or soldered together from scratch. Be sure to check the circuit diagram below, otherwise you may damage your devices. The appropriate USB pinout(s) can easily be found on Google. Please note that if you make a Y-cable from two no-name cables, the colors of the wires may not match those shown. Use a multimeter to make sure the connections are correct.
+**Raspberry Pi 4**: since one USB-C female connector is used to receive power and perform keyboard/mouse/drive emulation a special Y-cable must be made that splits the DATA and POWER lines of USB-C (see [reasons](https://github.com/pikvm/docs/issues/11)). It can be made from two suitable connecting cables, or soldered together from scratch. Be sure to check the circuit diagram below, otherwise you may damage your devices. The appropriate USB pinout(s) can easily be found on Google. Please note that if you make a Y-cable from two no-name cables, the colors of the wires may not match those shown. Use a multimeter to make sure the connections are correct.
+
+**Raspberry Pi Zero W**: This board has two USB micro connectors: one for power supply, the second for emulating a USB OTG device. You need to prevent backpowering as in the RPi4 case. To do this, you need to cut off the red power wire in the OTG wire, or seal the +5v pin in the USB-A connector with electrical tape like this:
+<img src="img/v2_tape_off.png" alt="drawing" width="300"/>
 
 See video how-tos:
 * [Making USB Y-splitter cable](https://www.youtube.com/watch?v=uLuBuQUF61o).
