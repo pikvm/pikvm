@@ -601,6 +601,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Ronald LeBaron
 * rotx
 * Samed Ozoglu
+* Sameul Davies
 * Satish Alwani
 * Scott
 * Scott Spicola
