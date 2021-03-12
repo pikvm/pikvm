@@ -392,6 +392,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 <details>
   <summary>View all people!</summary>
 
+* Aaron Heise
 * Accalia
 * adipisicing
 * Adrian Basham
@@ -484,6 +485,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Genkinger Andreas
 * Georgy Brodsky
 * Gernot Neuschröer
+* Glen Dragon
 * Gregory Smith
 * Gregory Treantos
 * Grey Cynic
@@ -619,6 +621,8 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Steve Ovens
 * Steven Richter
 * sudo34
+* Tarlak Desaydrone
+* Ted
 * Tejun Heo
 * TheTechGiant
 * Thomas Price
