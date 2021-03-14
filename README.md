@@ -587,6 +587,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Patrick McDowell
 * Paul Bishop
 * Pawel Trofimiuk
+* Peder Madsen
 * Peter Farrelly
 * Petri Heiskanen
 * Philip Merricks
@@ -605,6 +606,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Rolfs 3D UG
 * Ronald LeBaron
 * rotx
+* Russell Scott
 * Samed Ozoglu
 * Sameul Davies
 * Satish Alwani
