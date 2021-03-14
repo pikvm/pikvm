@@ -516,6 +516,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jason Toland
 * Jay Davis
 * Jay Isaacs
+* Jean-Philippe Guilbault
 * Jeff Bowman
 * Jeff Urlwin
 * Jennifer Rowlett
