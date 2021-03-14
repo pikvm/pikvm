@@ -85,7 +85,7 @@ How to create RW flash drive:
     ```
 2. Create the empty image file of the desire size (1Gb in this example).
     ```
-    # dd if=/dev/zero of=/root/flash.img bs=1024
+    # dd if=/dev/zero of=/root/flash.img bs=1M count=1000 status=progress
     ```
 3. Connect it to the drive 1:
     ```
