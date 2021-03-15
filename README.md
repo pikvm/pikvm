@@ -407,6 +407,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Andrzej V
 * Anish Patel
 * Anix
+* anonymous
 * Anton Kovalenko
 * Aron Green
 * Aron Perelman
