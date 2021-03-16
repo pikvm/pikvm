@@ -547,6 +547,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Kevin Schwartz
 * Krzysztof Żelaśkiewicz
 * Lars
+* Lee Wilkinson
 * LeeNX
 * Lordbob75
 * Lothar Schweikle-Droll
@@ -602,6 +603,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Richard Bernarts
 * Richard Fancher
 * Richard Freemantle
+* Richard Michael
 * Rob Tongue
 * Robin Gfatter
 * Rodion DENISYUK
