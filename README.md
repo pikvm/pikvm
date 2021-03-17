@@ -462,6 +462,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * David
 * David Godibadze
 * David Howell
+* David Ye
 * David York
 * Denis
 * Denis Andreev
