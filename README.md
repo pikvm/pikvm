@@ -453,6 +453,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Cole Imhoff
 * Corey Layton
 * Corey Lista
+* Crossfactor
 * ctag
 * DeMentor
 * Damon Meledones
@@ -613,6 +614,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Russell Scott
 * Samed Ozoglu
 * Sameul Davies
+* Samuel Vetsch
 * Satish Alwani
 * Scott
 * Scott Spicola
