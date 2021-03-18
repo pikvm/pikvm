@@ -392,6 +392,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 <details>
   <summary>View all people!</summary>
 
+* A. Isenring
 * Aaron Heise
 * Accalia
 * adipisicing
@@ -456,6 +457,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Crossfactor
 * ctag
 * DeMentor
+* Desmond Whitt
 * Damon Meledones
 * Dan Berkowitz
 * Dan Brakeley
@@ -512,6 +514,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jacob Morgan
 * James Cadd
 * James Cobb
+* James Edwards
 * James Kocher
 * Jamie Murphy
 * Jan Niehusmann
@@ -580,6 +583,8 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Morgan Helton
 * Nelson Lee
 * Nicholas Jeppson
+* Nicholas Kopas
+* Nicolai Kragh-Hansen
 * Nick Leffler
 * Nick Roethemeier
 * Nils Orbat
@@ -626,6 +631,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Shichun Chen
 * Simon Evans
 * Simplistic Realities
+* srepac
 * Stefan Bautz
 * Stefan Müller
 * Stefan Stemmer
