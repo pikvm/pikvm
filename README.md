@@ -489,6 +489,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Foamy
 * Francisco Pavon
 * Frank
+* Frederick Czajka
 * Fredrik Idréus
 * Ge Men
 * Genkinger Andreas
