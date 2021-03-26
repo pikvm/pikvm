@@ -1,11 +1,13 @@
 Can I power the Pi via POE?
     Yes! But you will still need to ensure you isolate the 5v connection between the Raspberry Pi and host PC to prevent backpower issues that can cause instability or damage to either the host PC or the Pi.
+
 Do I need a power splitter? Why do I need one?
     Yes for RPi4, No for Zerow
-    Yes otherwise you could back power the pi and or the target
+    Yes, otherwise you could back power the pi and or the target
     You can get a Y cable from amazon and mod one of the leads - Please see getting start guide
     You can get a power splitter board from Tindi or PiShop (Links provided below)
     If you have the v3 HAT - This is built in
+
 I can't get the KVM KB to work on my ZeroW!
     Make sure that you did NOT modify your config.txt file, this is the default: 
       # See /boot/overlays/README for all available options
@@ -16,10 +18,12 @@ I can't get the KVM KB to work on my ZeroW!
       dtoverlay=tc358743,i2c_pins_28_29=1
       dtoverlay=disable-bt
       dtoverlay=dwc2,dr_mode=peripheral
+
 Can I use a KB on my ZeroW?
     Yes but kb/mouse passthrough will not work. Its one or the other
       Host mode - Comment out dtoverlay=dwc2
       Passthrough mode - Uncomment out dtoverlay=dwc2
+
 Can you have the pi-kvm(RPi4) connected along with a monitor?
       If you have two outputs, you may be able to use screen mirroring from the OS but not BIOS
       If you have one output or need access from both a local monitor or Pi-KVM at boot time, one of the following options may work:
@@ -27,28 +31,37 @@ Can you have the pi-kvm(RPi4) connected along with a monitor?
         Depending on your capture device, an HDMI splitter may work but will need what is called an EDID (Extended Device ID) generator, the monitor and capture device both generate EDID so the splitter must produce its own separate EDID for the host.
         Look for HDMI splitters - although there have been reports that these are not stable
           Please use the search function in Discord, some users have has sucess in getting this to work but your mileage may vary
-        The better solution is to capture the stream in a dir and then use VLC to stream to that capture on another computer. This will result in fps loss.
+      The better solution is to capture the stream in a dir and then use VLC to stream to that capture on another computer. This will result in fps loss.
+
 Wouldn't it be good to have different hostnames for your multitude of pi-kvms?
       Enter read write mode of the PiKVM by executing the `rw` command
       Execute: `hostnamectl set-hostname yournewhostname.domain`
       Optional: Edit `/etc/kvmd/meta.yaml` to alter the displayed hostname in the web UI
       Reboot the pikvm
+
 I can't make edits?!?!?
       Did you issue a `rw` before updating/editing?
+
 In the Web Terminal, how do I get root?
       Type `su -`
       Put `root` for the password
+
 Why are you using Arch Linux?
       The developer was more familiar with Arch Linux so this was chosen as the base operating system. As a Linux distribution, it has more in common than not with other distributions.
       As an appliance, users are not expected to interact with the host operating system often, if at all. There are some distribution-specific differences, by default networking is done using either systemd-networkd or netctl but NetworkManager can be used as a replacement if one prefers.
+
 Is Pi-KVM an OS?
       No, this is merely riding on top of an existing OS
+
 I want to do something not related to Pi-KVM
       It's recommended that you review Arch documents related to what you want to do, while there are several folks in discord who can help, there is no obligation...they do it for the feels. So if you don't get an answer within the time frame you are looking for, it's advised you start google searching for what you want.
+
 Can this be used in any other distro’s like Rasbian?
       Not at this time, maybe in the future
+
 My Pi keeps disconnecting from my wireless! What do I do?
       Edit "/etc/conf.d/wireless-regdom" and look for your region and uncomment it. Example: WIRELESS_REGDOM="US"
+
 I want a static IP!!
       You can configure systemd-networkd for a static address for ethernet NIC. Config file is /etc/systemd/network/eth0.network
       For wireless adapter, config file is /etc/netctl/wlan0-<wifiname>
@@ -58,12 +71,15 @@ I want a static IP!!
         Gateway=('192.168.X.X')
         DNS=("192.168.X.X 1.0.0.1 1.1.1.1")
       You can also reserve the IP in your dhcp server (Quicker)
+
 Why do I keep getting a different IP?
-      The most likely reason is piKVM root FS is RO, so it cannot cache its lease and ask for the same one next time
-      DHCP servers look at a variety of things to determine if the same host is asking for the same IP, some look at MAC addresses, some look at the session string
-      Add to, /etc/systemd/network/eth0.network
-        [DHCP]
-        ClientIdentifier=mac
+        Add to, /etc/systemd/network/eth0.network
+        '[DHCP]
+        ClientIdentifier=mac'
+	Reserve the DHCP ip in your server/router
+      	The most likely reason is piKVM root FS is RO, so it cannot cache its lease and ask for the same one next time
+      	DHCP servers look at a variety of things to determine if the same host is asking for the same IP, some look at MAC addresses, some look at the session string
+
 HELP!! I can't find the IP on the ZeroW/RPi4
       Open a browser and type: pikvm, still doesnt work?
       Use the FING mobile app to scan your network, its free
@@ -85,20 +101,24 @@ Help! I ran out of room! What now?
          rm -rf /var/cache/pacman/pkg/*
       Exit read/write mode by executing ro as root
       You can also use gparted to resize partitions without losing data, although
+
 Can you connect a camera to this and still make pikvm functional?
       Yes, any cheapo webcam can be used in place of the usb dongle, please use the usb image
+
 I have a question that is not answered here!! Now what?
       Please look at all pins on Discord
       Please look in #news on Discord
+
 I want the v3 hat!! Where do I get it??
       At this time it is not available, due to the current pandemic the factories are running at a much slower rate
+
 HELP!! Something isn't working!!
       What was the last thing or most recent thing you did? Did you undo it?
       Did you hook this to anything else? If not why not?
       Did you try different cables?
       
 Things to do after initial install:
-	Fix date timedatectl set-timezone America/Los_Angeles
+	Fix date: 'timedatectl list-timezones' then 'timedatectl set-timezone America/Los_Angeles' (Change to your location)
 	Update Pi-KVM, follow #news on Discord for instructions
 	pacman -S avahi nss-mdns gtk3 python-dbus python-gobject
 	Enable the Avahi daemon in order to make it persistent after reboot:
@@ -107,7 +127,7 @@ Things to do after initial install:
 		systemctl start dbus.service
 		systemctl start avahi-daemon.service
 
-	https://linuxhint.com/install_configure_nfs/
+	Source https://linuxhint.com/install_configure_nfs/
 		pacman -S nfs-utils
 		showmount -e 192.168.1.XXX
 		mount -t nfs 192.168.1.XXX:/volume1/Data /mnt/Data
@@ -131,8 +151,8 @@ Did you connect the PIKVM to the target directly? Does it work?
 
 Common Commands for troubleshooting Pi-KVM
 	journalctl -u kvmd
-  journalctl -u kvmd-vnc
-  journalctl -u kvmd-ipmi
+  	journalctl -u kvmd-vnc
+  	journalctl -u kvmd-ipmi
 
 
 Common ARCH commands
@@ -152,13 +172,16 @@ Common wifi commands
 
 Bootup/power issues
     PiKVM won’t boot past “rainbow” screen
-    Are you plugged into the right HDMI port? Needs to be the one next to the power
+    	Are you plugged into the right HDMI port? Needs to be the one next to the power
     Have you reflashed your SD card?
+
 PiKVM Complains about low power warnings
     Are you using a `proper` power supply? Not one you hacked together
     Some USB power bricks advertise 5V @ 2.1A or higher, but can’t deliver consistent 5V.  Best to use rpi foundation recommended power supplies
+
 USB Video Capture Issues
     TBD
+
 HDMI-CSI Capture issues
 	Are you sure it's a bridge and not an extender? There is a difference
 	Did you make sure it's plugged into the right port? It needs to say Camera NOT Display
@@ -168,24 +191,26 @@ HDMI-CSI Capture issues
 
 Capturing video from non HDMI sources
     TBD
+
 Keyboard/Mouse Issues
     TBD
+
 OTG Keyboard/Mouse Connection
     TBD
+
 Arduino Keyboard Mouse Connection (UART wiring)
     TBD
+
 Arduino Keyboard/Mouse Connection (SPI Wiring)
     TBD
+
 ATX Control Issues
     TBD
+
 HDMI KVM Interface Issues
     TBD
 
 Connection issues
-
-
-
-
 
 Misc stuff
 Fully working example of a Pi4 USB-HDMI KVM attached to AIMOS 4-port HDMI KVM switch, with keyboard hotkey switching between inputs, and mass storage media emulation on a Pi Zero W
@@ -195,9 +220,10 @@ Useful links
 	Pi-KVM Power/Data OTG splitter boards
 		https://www.pishop.us/product/usb-pwr-splitter/
 		https://www.pishop.us/product/usb-c-pwr-splitter/
-		https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi - Very good article on PI-KVM setup
+	https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi - Very good article on PI-KVM setup
 
-Out of Stock or hard to get, all have exceptionally long shipping dates - Could try AliExpress or get a usb2hdmi dongle, please ask or search in Discord for the best known working one
+As of March 2021, Out of Stock or hard to get, all have exceptionally LONG shipping dates - Could try AliExpress or get a usb2hdmi dongle from Amazon, please ask or search in Discord for the best known working one
+
 Ezcoo KVM
 CSI2-HDMI bridge w/ TC358743XBG chip
 Alternative names for the same devices:
