@@ -64,6 +64,20 @@ Why do I keep getting a different IP?
       Add to, /etc/systemd/network/eth0.network
         [DHCP]
         ClientIdentifier=mac
+HELP!! I can't find the IP on the ZeroW/RPi4
+      Open a browser and type: pikvm, still doesnt work?
+      Use the FING mobile app to scan your network, its free
+      Install Angry IP scanner, tools/preferences/Display results in the results list/Select Alive hosts, modify IP range, hit start
+      Using FF, navigate to https://pikvm
+        Open web terminal and go to root, rw then nano /etc/issue
+        add ‘IP: \4’
+        Once you reboot, you will now see the IP in the upper right
+	arp -a | grep below is a list of MAC's for Raspberry Pi
+		B8:27:EB:xx:xx:xx	B8-27-EB-xx-xx-xx	B827.EBxx.xxxx
+		DC:A6:32:xx:xx:xx	DC-A6-32-xx-xx-xx	DCA6.32xx.xxxx
+		E4:5F:01:xx:xx:xx	E4-5F-01-xx-xx-xx	E45F.01xx.xxxx
+	Power shell: arp -a | findstr 'b8-27-eb' (Replace with the above, all lower case)
+
 Help! I ran out of room! What now?
       You’ve cached package updates you no longer need.
       Enter read/write mode by executing rw as root
@@ -78,20 +92,39 @@ I have a question that is not answered here!! Now what?
       Please look in #news on Discord
 I want the v3 hat!! Where do I get it??
       At this time it is not available, due to the current pandemic the factories are running at a much slower rate
-HELP!! I can't find the IP on the ZeroW
-      Open a browser and type: pikvm, still doesnt work?
-      Use the FING mobile app to scan your network, its free
-      Install Angry IP scanner, tools/preferences/Display results in the results list/Select Alive hosts, modify IP range, hit start
-      Using FF, navigate to https://pikvm
-        Open web terminal and go to root, rw then nano /etc/issue
-        add ‘IP: \4’
-        Once you reboot, you will now see the IP in the upper right
 HELP!! Something isn't working!!
       What was the last thing or most recent thing you did? Did you undo it?
       Did you hook this to anything else? If not why not?
       Did you try different cables?
+      
+Things to do after initial install:
+	Fix date timedatectl set-timezone America/Los_Angeles
+	Update Pi-KVM, follow #news on Discord for instructions
+	pacman -S avahi nss-mdns gtk3 python-dbus python-gobject
+	Enable the Avahi daemon in order to make it persistent after reboot:
+		systemctl enable avahi-daemon.service
+    	Start the DBus (if not already running) & Avahi daemons:
+		systemctl start dbus.service
+		systemctl start avahi-daemon.service
+
+	https://linuxhint.com/install_configure_nfs/
+		pacman -S nfs-utils
+		showmount -e 192.168.1.XXX
+		mount -t nfs 192.168.1.XXX:/volume1/Data /mnt/Data
+		nano /etc/fstab
+			192.168.1.XXX:/volume1/Data /mnt/Data nfs      auto,rw,soft    0 0
+
 
 Troubleshooting
+	It is expected that you are aware of basic networking while working on this project and that you have read up on the project prior to going to Discord
+	Do you know the IP?
+	Can you ping the IP?
+	Did you swap cables?
+	Did you swap the eth port to a known working eth port?
+	Do you have access to another router or switch?
+	Did you change ports on the router/switch?
+	RPi4 - Did you hook up a monitor? Once logged in, can you ping to your gateway? Other IP's on the same network?
+
 
 Did you connect a monitor to the target? Does it work?
 Did you connect the PIKVM to the target directly? Does it work?
@@ -108,14 +141,14 @@ Common ARCH commands
 
 Common wifi commands
 	iwconfig manipulate the basic wireless parameters
-  iwlist  allow to initiate scanning and list frequencies, bit-rates, encryption keys…
-  iwspy allow to get per node link quality
-  iwpriv allow to manipulate the Wireless Extensions specific to a driver (private)
+  	iwlist   allow to initiate scanning and list frequencies, bit-rates, encryption keys…
+  	iwspy    allow to get per node link quality
+  	iwpriv   allow to manipulate the Wireless Extensions specific to a driver (private)
     Some examples
-      iw dev wlan0 scan | egrep "signal:|SSID:" | sed -e "s/\tsignal: //" -e "s/\tSSID: //" | awk '{ORS = (NR % 2 == 0)? "\n" : " "; print}' | sort
-	    iwlist wlan0 scan | egrep "Cell|ESSID|Signal|Rates"
-      iwlist wlan0 scan
-      iw wlan0 info
+      	iw dev wlan0 scan | egrep "signal:|SSID:" | sed -e "s/\tsignal: //" -e "s/\tSSID: //" | awk '{ORS = (NR % 2 == 0)? "\n" : " "; print}' | sort
+	iwlist wlan0 scan | egrep "Cell|ESSID|Signal|Rates"
+      	iwlist wlan0 scan
+      	iw wlan0 info
 
 Bootup/power issues
     PiKVM won’t boot past “rainbow” screen
@@ -151,32 +184,27 @@ HDMI KVM Interface Issues
 Connection issues
 
 
-Fully working example of a Pi4 USB-HDMI KVM attached to AIMOS 4-port HDMI KVM switch, with keyboard hotkey switching between inputs, and mass storage media emulation on a Pi Zero W
-	https://docs.google.com/document/d/1wgBZHxwpbJWkJBD3I8ZkZxSDxt0DdNDDYRNtVoL_vK4
+
 
 
 Misc stuff
-Very good article on PI-KVM setup - https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi
+Fully working example of a Pi4 USB-HDMI KVM attached to AIMOS 4-port HDMI KVM switch, with keyboard hotkey switching between inputs, and mass storage media emulation on a Pi Zero W
+	https://docs.google.com/document/d/1wgBZHxwpbJWkJBD3I8ZkZxSDxt0DdNDDYRNtVoL_vK4
+	
 Useful links
 	Pi-KVM Power/Data OTG splitter boards
-https://www.pishop.us/product/usb-pwr-splitter/
-https://www.pishop.us/product/usb-c-pwr-splitter/
+		https://www.pishop.us/product/usb-pwr-splitter/
+		https://www.pishop.us/product/usb-c-pwr-splitter/
+		https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi - Very good article on PI-KVM setup
 
-Out of Stock or hard to get, all have exceptionally long shipping dates - Could try AliExpress
+Out of Stock or hard to get, all have exceptionally long shipping dates - Could try AliExpress or get a usb2hdmi dongle, please ask or search in Discord for the best known working one
 Ezcoo KVM
 CSI2-HDMI bridge w/ TC358743XBG chip
-	Alternative names for the same devices:
+Alternative names for the same devices:
 Tiamu	  	Sling	    	Yazan	    	Ningwang	Essenc	  	Geekworm
 Fauge	  	Haudang	  	AKAT	    	Docoop	    	Katigan	  	Lyusa (recommended by mdevaev)
 LNIMI	  	cherrypop	Lopbinte	Uang	      	Tuneway	  	Mustwell
 Facibom		Binchil	  	Cobeky	  	Ctzrzyt	    	Davitu	
 
-Contributors -
-	Accalia
-	Arch1mede
-	Baddog
-	Srepac
 
-Developers
-	Mdevaev - Software 
-	Amt921 - Hardware
+
