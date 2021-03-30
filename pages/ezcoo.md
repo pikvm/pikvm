@@ -76,6 +76,7 @@ kvmd:
   ```
 4. Return to read-only mode for the sd card via `ro`
 5. Restart the kvmd service: `systemctl restart kvmd`
+6. If you are still not getting KB output, issue a ```ls -la /dev/tty* | grep USB``` , if no output change cables (Alot of cables are power only)
 
 ## Switching between hosts in the UI
 
