@@ -6,7 +6,7 @@
 ### Do I need a power splitter? Why do I need one?
 - Yes for RPi4, No for Zerow
 - Yes, otherwise you could back power the pi and or the target
-- You can get a Y cable from amazon and mod one of the leads - Please see getting start guide
+- You can get a Y cable from amazon and mod one of the leads - Please see getting started guide
 - You can get a power splitter board from Tindi or PiShop (Links provided below)
 - If you have the v3 HAT - This is built in
 
@@ -34,7 +34,7 @@ dtoverlay=dwc2,dr_mode=peripheral
   - Passthrough HDMI capture devices (sometimes referred to as a loop capture device). The Elgato devices DO NOT WORK! Look for Linux OS support when choosing a device, the expected price range is about $35-$70 US.
   - Depending on your capture device, an HDMI splitter may work but will need what is called an EDID (Extended Device ID) generator, the monitor and capture device both generate EDID so the splitter must produce its own separate EDID for the host.
   - Look for HDMI splitters - although there have been reports that these are not stable
-    - Please use the search function in Discord, some users have has sucess in getting this to work but your mileage may vary
+    - Please use the search function in Discord, some users have had sucess in getting this to work but your mileage may vary
   - The better solution is to capture the stream in a dir and then use VLC to stream to that capture on another computer. This will result in fps loss.
 
 ### Wouldn't it be good to have different hostnames for your multitude of pi-kvms?
@@ -90,6 +90,8 @@ ClientIdentifier=mac
 - Reserve the DHCP ip in your server/router
 - The most likely reason is piKVM root FS is RO, so it cannot cache its lease and ask for the same one next time
 - DHCP servers look at a variety of things to determine if the same host is asking for the same IP, some look at MAC addresses, some look at the session string
+- __[ADVANCED]__ If you want to replace systemd-networkd with NetworkManager
+  - ```rw; pacman -Sy networkmanager``` and use ```nmcli``` or ```nmtui``` to configure your interface. Then ```systemctl disable --now systemd-networkd``` and ```systemctl disable --now systemd-resolved``` ```systemctl enable --now NetworkManager```  ```ln -sf /run/NetworkManager/resolv.conf /etc/resolv.conf``` and should be good, reboot to make sure services stay on or off (as desired) or put system back in RO mode with ro
 
 ### HELP!! I can't find the IP on the ZeroW/RPi4
 - Open a browser and type: pikvm, still doesnt work?
@@ -155,6 +157,11 @@ Add To the bottom of the file
 ```
 192.168.1.XXX:/volume1/Data /mnt/Data nfs      auto,rw,soft    0 0
 ```
+### Can you use an iPad on PiKVM?
+- Yes, with the correct hardware you can control an iPad
+- Yes, activate VNC and use JUMP app(Full featured but more expensive), or bVNC(Not recommended, lack luster features but cheap). RealVNC does NOT work
+### Can I use RealVNC to connect to PiKVM?
+- No, RealVNC is not a real vnc so will not work
 
 
 ### Troubleshooting
@@ -184,10 +191,10 @@ Add To the bottom of the file
 - install - `pacman -S 'the thing'`
 
 ### Common wifi commands
--  iwconfig manipulate the basic wireless parameters
-  - iwlist   allow to initiate scanning and list frequencies, bit-rates, encryption keys…
-  - iwspy    allow to get per node link quality
-  - iwpriv   allow to manipulate the Wireless Extensions specific to a driver (private)
+-  `iwconfig` manipulate the basic wireless parameters
+  - `iwlist`   allow to initiate scanning and list frequencies, bit-rates, encryption keys…
+  - `iwspy`    allow to get per node link quality
+  - `iwpriv`   allow to manipulate the Wireless Extensions specific to a driver (private)
   - Some examples
 ```
 iw dev wlan0 scan | egrep "signal:|SSID:" | sed -e "s/\tsignal: //" -e "s/\tSSID: //" | awk '{ORS = (NR % 2 == 0)? "\n" : " "; print}' | sort
