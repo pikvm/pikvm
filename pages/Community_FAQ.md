@@ -99,12 +99,13 @@ ClientIdentifier=mac
   - Open web terminal and go to root, rw then nano /etc/issue
   - add ‘IP: \4’
   - Once you reboot, you will now see the IP in the upper right
-  **Arch1mede, not sure how you want this formatted - Accalia**
-	arp -a | grep below is a list of MAC's for Raspberry Pi
-		B8:27:EB:xx:xx:xx	B8-27-EB-xx-xx-xx	B827.EBxx.xxxx
-		DC:A6:32:xx:xx:xx	DC-A6-32-xx-xx-xx	DCA6.32xx.xxxx
-		E4:5F:01:xx:xx:xx	E4-5F-01-xx-xx-xx	E45F.01xx.xxxx
-	Power shell: arp -a | findstr 'b8-27-eb' (Replace with the above, all lower case)
+```
+arp -a | grep below is a list of MAC's for Raspberry Pi
+	B8:27:EB:xx:xx:xx	B8-27-EB-xx-xx-xx	B827.EBxx.xxxx
+	DC:A6:32:xx:xx:xx	DC-A6-32-xx-xx-xx	DCA6.32xx.xxxx
+	E4:5F:01:xx:xx:xx	E4-5F-01-xx-xx-xx	E45F.01xx.xxxx
+Power shell: arp -a | findstr 'b8-27-eb' (Replace with the above, all lower case)
+```
 
 ### Help! I ran out of room! What now?
 - You’ve cached package updates you no longer need.
