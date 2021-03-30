@@ -135,24 +135,27 @@ rm -rf /var/cache/pacman/pkg/*
 ### Things to do after initial install:
 - Fix date: 'timedatectl list-timezones' then 'timedatectl set-timezone America/Los_Angeles' (Change to your location)
 - Update Pi-KVM, follow #news on Discord for instructions
-- `pacman -S avahi nss-mdns gtk3 python-dbus python-gobject` **Arch1mede, shoudl we include the motivation for this one? - Accalia**
-- Enable the Avahi daemon in order to make it persistent after reboot:
+- Enable Avahi-Daemon (A Zeroconf daemon) to allow finding the pikvm via mDNS queries as `pikvm.local`
+  - `pacman -S avahi nss-mdns gtk3 python-dbus python-gobject`
+  - Enable the Avahi daemon in order to make it persistent after reboot:
 ```
 systemctl enable avahi-daemon.service
 ```
-- Start the DBus (if not already running) & Avahi daemons:
+  - Start the DBus (if not already running) & Avahi daemons:
 ```
 systemctl start dbus.service
 systemctl start avahi-daemon.service
 ```
-- Source https://linuxhint.com/install_configure_nfs/ **Arch1mede, Motivation for this one too? - Accalia**
+- Setup a NFS share to give read/write storage on the read only pikvm
+  - Note this does assume you already have a NFS server on your network and accessible to pikvm
+  - Source https://linuxhint.com/install_configure_nfs/
 ```
 pacman -S nfs-utils
 showmount -e 192.168.1.XXX
 mount -t nfs 192.168.1.XXX:/volume1/Data /mnt/Data
 nano /etc/fstab
 ```
-Add To the bottom of the file
+  Add To the bottom of the file
 ```
 192.168.1.XXX:/volume1/Data /mnt/Data nfs      auto,rw,soft    0 0
 ```
@@ -174,7 +177,6 @@ Add To the bottom of the file
 
 ### Common Commands for troubleshooting Pi-KVM
 
-**Arch1mede, Include briefd description of what these journals are? - Accalia**
 - `journalctl -u kvmd`
 - `journalctl -u kvmd-vnc`
 - `journalctl -u kvmd-ipmi`
