@@ -100,7 +100,8 @@ ClientIdentifier=mac
 - Using FF, navigate to https://pikvm
   - Open web terminal and go to root, rw then nano /etc/issue
   - add ‘IP: \4’
-  - Once you reboot, you will now see the IP in the upper right
+  - Once you reboot, you will now see the IP in the upper left
+  - The below commands will verify that your Pi on on your network
 ```
 arp -a | grep below is a list of MAC's for Raspberry Pi
 	B8:27:EB:xx:xx:xx	B8-27-EB-xx-xx-xx	B827.EBxx.xxxx
@@ -117,7 +118,7 @@ Power shell: arp -a | findstr 'b8-27-eb' (Replace with the above, all lower case
 rm -rf /var/cache/pacman/pkg/*
 ```
 - Exit read/write mode by executing ro as root
-- You can also use gparted to resize partitions without losing data, although
+- You can also use gparted to resize partitions without losing data, although this may delete all of your data
 
 ### Can you connect a camera to this and still make pikvm functional?
 - Yes, any cheapo webcam can be used in place of the usb dongle, please use the usb image
@@ -256,6 +257,8 @@ iw wlan0 info
 
 ### Misc stuff
 - Fully working example of a Pi4 USB-HDMI KVM attached to AIMOS 4-port HDMI KVM switch, with keyboard hotkey switching between inputs, and mass storage media emulation on a Pi Zero W https://docs.google.com/document/d/1wgBZHxwpbJWkJBD3I8ZkZxSDxt0DdNDDYRNtVoL_vK4
+- Useful scripts that enhance the Pi-KVM's functionality ```https://pastebin.com/u/srepac```
+
 	
 ### Useful links
 - Pi-KVM Power/Data OTG splitter boards
