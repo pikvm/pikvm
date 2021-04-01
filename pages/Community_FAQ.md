@@ -142,11 +142,11 @@ rm -rf /var/cache/pacman/pkg/*
 
 ### How do I add my own SSL cert?
 - If you have a certificate(**Making a cert falls outside the scope of PIKVM - Please reference Linux documentation**), replace the public key in /etc/kvmd/nginx/ssl/server.crt and private key in /etc/kvmd/nginx/ssl/server.key and restart the kvmd-nginx service.
-- It shoukd look like the following:
+- It should look like the following:
 
 ```
 cd /etc/kvmd/nginx
-[root@pikvm nginx]# cat ssl.conf
+cat ssl.conf (Expection of what's inside the file)
 ssl_protocols TLSv1.3 TLSv1.2 TLSv1.1 TLSv1;
 ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
 ssl_certificate /etc/kvmd/nginx/ssl/server.crt;
