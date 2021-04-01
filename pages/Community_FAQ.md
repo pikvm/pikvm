@@ -134,6 +134,25 @@ rm -rf /var/cache/pacman/pkg/*
 - What was the last thing or most recent thing you did? Did you undo it?
 - Did you hook this to anything else? If not why not?
 - Did you try different cables?
+### Can you use an iPad on PiKVM?
+- Yes, with the correct hardware you can control an iPad
+- Yes, activate VNC and use JUMP app(Full featured but more expensive), or bVNC(Not recommended, lack luster features but cheap). RealVNC does NOT work
+### Can I use RealVNC to connect to PiKVM?
+- No, RealVNC is not a real vnc so will not work
+
+### How do I add my own SSL cert?
+- If you have a certificate(**Making a cert falls outside the scope of PIKVM - Please reference Linux documentation**), replace the public key in /etc/kvmd/nginx/ssl/server.crt and private key in /etc/kvmd/nginx/ssl/server.key and restart the kvmd-nginx service.
+- It shoukd look like the following:
+
+```
+cd /etc/kvmd/nginx
+[root@pikvm nginx]# cat ssl.conf
+ssl_protocols TLSv1.3 TLSv1.2 TLSv1.1 TLSv1;
+ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
+ssl_certificate /etc/kvmd/nginx/ssl/server.crt;
+ssl_certificate_key /etc/kvmd/nginx/ssl/server.key;
+add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+```
 
 ### Things to do after initial install:
 - Fix date: 'timedatectl list-timezones' then 'timedatectl set-timezone America/Los_Angeles' (Change to your location)
@@ -162,12 +181,6 @@ nano /etc/fstab
 ```
 192.168.1.XXX:/volume1/Data /mnt/Data nfs      auto,rw,soft    0 0
 ```
-### Can you use an iPad on PiKVM?
-- Yes, with the correct hardware you can control an iPad
-- Yes, activate VNC and use JUMP app(Full featured but more expensive), or bVNC(Not recommended, lack luster features but cheap). RealVNC does NOT work
-### Can I use RealVNC to connect to PiKVM?
-- No, RealVNC is not a real vnc so will not work
-
 
 ### Troubleshooting
 - It is expected that you are aware of basic networking while working on this project and that you have read up on the project prior to going to Discord
