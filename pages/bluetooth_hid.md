@@ -51,7 +51,7 @@ since it will be used by Bluetooth. Also, Bluetooth operation was tested only on
             type: bt
     ```
 7. Perform reboot: `reboot`.
-8. To reverse, uncomment lines from Step 2 amd remove lines in Step 6, ```reboot```
+8. To reverse, uncomment lines from Step 2 and remove lines in Step 6, ```reboot```
 
 # Using Bluetooth HID
 * After a reboot, the Pi-KVM will be ready for detection and pairing with no auth. You will see the `Pi-KVM HID` device.
