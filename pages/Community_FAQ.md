@@ -22,6 +22,7 @@ dtoverlay=tc358743,i2c_pins_28_29=1
 dtoverlay=disable-bt
 dtoverlay=dwc2,dr_mode=peripheral
 ```
+Ensure that you have the cable(Needs to support both power/data) plugged into the right port, the one closest to the mini HDMI is the correct port
 
 ### Can I use a KB on my ZeroW?
 - Yes but kb/mouse passthrough will not work. Its one or the other
@@ -141,7 +142,7 @@ rm -rf /var/cache/pacman/pkg/*
 - No, RealVNC is not a real vnc so will not work
 
 ### How do I add my own SSL cert?
-- If you have a certificate(**Making a cert falls outside the scope of PIKVM - Please reference Linux documentation**), replace the public key in /etc/kvmd/nginx/ssl/server.crt and private key in /etc/kvmd/nginx/ssl/server.key and restart the kvmd-nginx service.
+- If you have a certificate(:exclamation:**Making a cert falls outside the scope of PIKVM - Please reference Linux documentation**:exclamation:), replace the public key in /etc/kvmd/nginx/ssl/server.crt and private key in /etc/kvmd/nginx/ssl/server.key and restart the kvmd-nginx service.
 - It shoukd look like the following:
 
 ```
@@ -206,6 +207,7 @@ nano /etc/fstab
 ### Common ARCH commands
 - search - `pacman -Ss 'the thing'`
 - install - `pacman -S 'the thing'`
+- remove - `pacman -Rscnd 'the thing'`
 
 ### Common wifi commands
 -  `iwconfig` manipulate the basic wireless parameters
