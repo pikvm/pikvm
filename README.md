@@ -194,7 +194,7 @@ We are also currently developing our own HAT for the Raspberry Pi 4. It will hav
 ## Connecting the video capture
 #### For the HDMI-CSI bridge
 <details>
-  <summary>Click to show the instructions</summary>
+  <summary>:exclamation:Click to show the instructions:exclamation:</summary>
 Insert the flexible flat cable of the HDMI bridge into the narrow white connector on the Raspberry Pi (the closest one to big USB sockets). It is labeled CAMERA. To insert you need to open the connector first. On the Raspberry Pi side you can gently lift the black part up and a little bit sideways:
 
 | Opening the MIPI CSI-2 slot on the Raspberry Pi |
@@ -211,7 +211,7 @@ For the HDMI-CSI bridge it depends on the version you bought. Either pull it gen
 
 #### For the HDMI-USB dongle
 <details>
-  <summary>Click to show the instructions</summary>
+  <summary>:exclamation:Click to show the instructions:exclamation:</summary>
 Connect USB dongle to exactly this port. It is bound in the software so the OS does not confuse the video device with something else.
 
 | Raspberry Pi 2 and 3 | Raspberry Pi 4 |
@@ -223,7 +223,7 @@ There are many revisions of the Raspberry Pi boards and you may come across one 
 
 ## Setting up the v2
 <details>
-  <summary>Click to show the instructions</summary>
+  <summary>:exclamation:Click to show the instructions:exclamation:</summary>
 Here is a diagram shows that how to connect all of the pieces (click to full size).
 
 | ATX control board | USB splitter cable (only for Raspberry Pi 4) |
@@ -243,7 +243,7 @@ See video how-tos:
 
 ## Setting up the v0
 <details>
-  <summary>Click to show the instructions</summary>
+  <summary>:exclamation:Click to show the instructions:exclamation:</summary>
 
 | ATX control board and Arduino HID (keyboard & mouse) |
 |------------------------------------------------------|
