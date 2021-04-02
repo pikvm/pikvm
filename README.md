@@ -473,6 +473,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Denis Yatsenko
 * Dennis Becker
 * Derek Yap
+* Didrik
 * dixon wong
 * dizztrukshin
 * Dmitry Shilov
@@ -519,6 +520,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * James Cobb
 * James Edwards
 * James Kocher
+* James Mayhugh
 * Jamie Murphy
 * Jan Niehusmann
 * Jari Hiltunen
@@ -635,6 +637,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Sergey Lukjanov
 * Shichun Chen
 * Simon Evans
+* Simon Sundgaard
 * Simplistic Realities
 * srepac
 * Stefan Bautz
