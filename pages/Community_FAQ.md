@@ -1,5 +1,16 @@
 # Community FAQ
 
+### Can this be used for gaming? Why not?
+- ❗No:exclamation:, the max bus lanes the Pi provides, is not enough to support anything faster then 30 FPS. Your better off looking at other solutions for this.
+- ❗No:exclamation:, PiKVM does not capture and transmit audio at this time. The ddevelopers have indicated that this may be available for the v3 hat at some point in the future, but it is not a priority for development at this time.
+
+### Can this do 4K?
+- For the CSI Bridge, ❗No:exclamation:. there is not enough bandwidth in the CSI bus for that much data. 1080p50 will max out the bandwidth
+- For the USB capture devices: Technically yes, but they will downsample to something smaller to meet the usb2.0 bandwidth limitations, so the source may be 4k, but the stream will not.
+
+### Is Pi-KVM an OS?
+- ❗No:exclamation:, this is merely riding on top of an existing OS (ARCH Linux)
+
 ### Can I power the Pi via POE?
 - Yes! But you will still need to ensure you isolate the 5v connection between the Raspberry Pi and host PC to prevent backpower issues that can cause instability or damage to either the host PC or the Pi.
 
@@ -57,9 +68,6 @@ Yes! And it's easy to do! Using a SSH session or the web terminal:
 - The developer was more familiar with Arch Linux so this was chosen as the base operating system. As a Linux distribution, it has more in common than not with other distributions.
 <br/><br/>
 As an appliance, users are not expected to interact with the host operating system often, if at all. There are some distribution-specific differences, by default networking is done using either systemd-networkd or netctl but NetworkManager can be used as a replacement if one prefers.
-
-### Is Pi-KVM an OS?
-- No, this is merely riding on top of an existing OS
 
 ### I want to do something not related to Pi-KVM
 - It's recommended that you review Arch documents related to what you want to do, while there are several folks in discord who can help, there is no obligation...they do it for the feels. So if you don't get an answer within the time frame you are looking for, it's advised you start google searching for what you want.
