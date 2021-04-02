@@ -9,13 +9,13 @@
 - For the USB capture devices: Technically yes, but they will downsample to something smaller to meet the usb2.0 bandwidth limitations, so the source may be 4k, but the stream will not.
 
 ### Is Pi-KVM an OS?
-- ❗No:exclamation:, this is merely riding on top of an existing OS (ARCH Linux)
+- ❗No:exclamation:, this is merely riding on top of an existing [Arch Linux ARM](https://archlinuxarm.org/).
 
 ### Can I power the Pi via POE?
 - Yes! But you will still need to ensure you isolate the 5v connection between the Raspberry Pi and host PC to prevent backpower issues that can cause instability or damage to either the host PC or the Pi.
 
 ### Do I need a power splitter? Why do I need one?
-- Yes for RPi4, No for Zerow
+- Yes for RPi4, No for Zero@
 - Yes, otherwise you could back power the pi and or the target
 - You can get a Y cable from amazon and mod one of the leads - Please see getting started guide
 - You can get a power splitter board from Tindi or PiShop (Links provided below)
