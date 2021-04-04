@@ -1,8 +1,8 @@
 # Community FAQ
 
 ### Can this be used for gaming? Why not?
-- ❗No:exclamation:, the max bus lanes the Pi provides, is not enough to support anything faster then 30 FPS. Your better off looking at other solutions for this.
-- ❗No:exclamation:, PiKVM does not capture and transmit audio at this time. The ddevelopers have indicated that this may be available for the v3 hat at some point in the future, but it is not a priority for development at this time.
+- ❗No:exclamation:, the max bus lanes the Pi provides, is not enough to support anything faster than 30 FPS. Your better off looking at other solutions for this.
+- ❗No:exclamation:, PiKVM does not capture and transmit audio at this time. The developers have indicated that this may be available for the v3 hat at some point in the future, but it is not a priority for development at this time.
 
 ### Can this do 4K?
 - For the CSI Bridge, ❗No:exclamation:. there is not enough bandwidth in the CSI bus for that much data. 1080p50 will max out the bandwidth
@@ -48,6 +48,7 @@ Ensure that you have the cable(Needs to support both power/data) plugged into th
   - Look for HDMI splitters - although there have been reports that these are not stable
     - Please use the search function in Discord, some users have had sucess in getting this to work but your mileage may vary
   - The better solution is to capture the stream in a dir and then use VLC to stream to that capture on another computer. This will result in fps loss.
+  - A community member has had success with the following: https://www.amazon.com/gp/product/B08DQWLXF1
 
 ### Wouldn't it be good to have different hostnames for your multitude of pi-kvms?
 Yes! And it's easy to do! Using a SSH session or the web terminal:
@@ -97,16 +98,14 @@ DNS=("192.168.X.X 1.0.0.1 1.1.1.1")
 ClientIdentifier=mac
 ```
 - Reserve the DHCP ip in your server/router
-- The most likely reason is piKVM root FS is RO, so it cannot cache its lease and ask for the same one next time
-- DHCP servers look at a variety of things to determine if the same host is asking for the same IP, some look at MAC addresses, some look at the session string
-- __[ADVANCED]__ If you want to replace systemd-networkd with NetworkManager
-  - ```rw; pacman -Sy networkmanager``` and use ```nmcli``` or ```nmtui``` to configure your interface. Then ```systemctl disable --now systemd-networkd``` and ```systemctl disable --now systemd-resolved``` ```systemctl enable --now NetworkManager```  ```ln -sf /run/NetworkManager/resolv.conf /etc/resolv.conf``` and should be good, reboot to make sure services stay on or off (as desired) or put system back in RO mode with ro
+- __[ADVANCED]__ You can replace systemd-networkd with NetworkManager
+  - ```rw; pacman -Sy networkmanager``` and use ```nmcli``` or ```nmtui``` to configure your interface. Then ```systemctl disable --now systemd-networkd``` and ```systemctl disable --now systemd-resolved``` ```systemctl enable --now NetworkManager```  ```ln -sf /run/NetworkManager/resolv.conf /etc/resolv.conf``` and should be good, reboot to make sure services stay on or off (as desired) or put system back in RO mode with ```ro```
 
 ### HELP!! I can't find the IP on the ZeroW/RPi4
 - Open a browser and type: pikvm, still doesnt work?
 - Use the FING mobile app to scan your network, its free
 - Install Angry IP scanner, tools/preferences/Display results in the results list/Select Alive hosts, modify IP range, hit start
-- Using FF, navigate to https://pikvm
+- Using FF, navigate to https://pikvm (Depends on your network if this actually works, in most case's will work))
   - Open web terminal and go to root, rw then nano /etc/issue
   - add ‘IP: \4’
   - Once you reboot, you will now see the IP in the upper left
@@ -192,7 +191,7 @@ nano /etc/fstab
 ```
 
 ### Troubleshooting
-- It is expected that you are aware of basic networking while working on this project and that you have read up on the project prior to going to Discord
+- **It is expected that you are aware of basic networking while working on this project and that you have read up on the project prior to going to Discord**
   - Do you know the IP?
   - Can you ping the IP?
   - Did you swap cables?
@@ -284,10 +283,11 @@ iw wlan0 info
 
 	
 ### Useful links
+- https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi - Very good article on PI-KVM setup
 - Pi-KVM Power/Data OTG splitter boards
-  - https://www.pishop.us/product/usb-pwr-splitter/
-  - https://www.pishop.us/product/usb-c-pwr-splitter/
-  - https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi - Very good article on PI-KVM setup
+  - https://www.pishop.us/product/usb-pwr-splitter/ (Look on Tindi for the same thing in the UK)
+  - https://www.pishop.us/product/usb-c-pwr-splitter/ (Look on Tindi for the same thing in the UK)
+- Current cases https://www.thingiverse.com/search?q=pi-kvm&type=things&sort=relevant
 
 As of March 2021, Out of Stock or hard to get, all have exceptionally LONG shipping dates - Could try AliExpress or get a usb2hdmi dongle from Amazon, please ask or search in Discord for the best known working one
 
