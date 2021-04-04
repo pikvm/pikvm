@@ -621,6 +621,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Rob Tongue
 * Robin Gfatter
 * Rodion DENISYUK
+* Rohit Priyadarshi
 * Rolfs 3D UG
 * Ronald LeBaron
 * rotx
