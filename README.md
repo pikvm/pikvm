@@ -582,6 +582,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Michael Pennington
 * Michael Sage
 * MichaelZ
+* Michel Bissonnette
 * Milan Múčka
 * Miles Davis
 * Moez Tharani
