@@ -191,7 +191,7 @@ nano /etc/fstab
 ```
 
 ### Troubleshooting
-- **It is expected that you are aware of basic networking while working on this project and that you have read up on the project prior to going to Discord**
+- :exclamation:**It is expected that you are aware of basic networking while working on this project and that you have read up on the project prior to going to Discord**:exclamation:
   - Do you know the IP?
   - Can you ping the IP?
   - Did you swap cables?
@@ -199,10 +199,38 @@ nano /etc/fstab
   - Do you have access to another router or switch?
   - Did you change ports on the router/switch?
   - RPi4 - Did you hook up a monitor? Once logged in, can you ping to your gateway? Other IP's on the same network?
-
-
   - Did you connect a monitor to the target? Does it work?
   - Did you connect the PIKVM to the target directly? Does it work?
+
+- Reboot target
+- Try default image, do not update and test
+
+-copy/paste into a file, call it pi-info.sh, chmod +x pi-info.sh, ./pi-info.sh
+```TMPFILE="/tmp/pacmanquery"; /bin/rm -f $TMPFILE
+pacman -Q | awk '{print $2, $1}' > $TMPFILE
+chmod go+w $TMPFILE
+
+pistat && echo
+
+printf "%-18s\t%s\n" "Version" "Package-Name" "----------------------" "-----------------------------"
+
+PACKAGES="firmware bootloader kvmd ustreamer nginx wpa wireless"
+for PKG in $( echo $PACKAGES ); do
+        printf "%-18s\t%s\n" $(grep $PKG $TMPFILE | sed 's/-[1-9]//g')
+done
+```
+```dmesg | grep tc35``` - CSI
+<br/><br/>
+```dmesg | egrep '1-1.[245]|uvc'``` - USB
+
+- Keyboard/Mouse icons orange? Try a different cable, try a different usb port
+
+- Should see the following if everything is in place
+```ls -l /dev/kvmd*
+lrwxrwxrwx 1 root root 5 Apr  5 21:33 /dev/kvmd-hid-keyboard -> hidg0
+lrwxrwxrwx 1 root root 5 Apr  5 21:33 /dev/kvmd-hid-mouse -> hidg1
+lrwxrwxrwx 1 root root 6 Mar 15 09:07 /dev/kvmd-video -> video0
+```
 
 ### Common Commands for troubleshooting Pi-KVM
 
@@ -248,6 +276,7 @@ iw wlan0 info
 - TBD
 
 ### HDMI-CSI Capture issues
+- Have you reset the Target PC?
 - Are you sure it's a bridge and not an extender? There is a difference
 - Did you make sure it's plugged into the right port? It needs to say Camera NOT Display
 - Did you try another ribbon cable?
