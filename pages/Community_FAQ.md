@@ -166,7 +166,7 @@ add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" alway
 - Fix date: 'timedatectl list-timezones' then 'timedatectl set-timezone America/Los_Angeles' (Change to your location)
 - Update Pi-KVM, follow #news on Discord for instructions
 - Enable Avahi-Daemon (A Zeroconf daemon) to allow finding the pikvm via mDNS queries as `pikvm.local`
-  - `pacman -S avahi nss-mdns gtk3 python-dbus python-gobject`
+  - `pacman -S avahi nss-mdns`
   - Enable the Avahi daemon in order to make it persistent after reboot:
 ```
 systemctl enable avahi-daemon.service
