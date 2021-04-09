@@ -222,8 +222,9 @@ done
 ```dmesg | grep tc35``` - CSI
 <br/><br/>
 ```dmesg | egrep '1-1.[245]|uvc'``` - USB
+- **hint:**  look at kvmd-platform line of the output... make sure it matches the image they expect for the capture device and platform
 
-- Keyboard/Mouse icons orange? Try a different cable, try a different usb port
+- Keyboard/Mouse icons orange? Try a different cable (ALLOT are power only), try a different usb port
 
 - Should see the following if everything is in place
 ```ls -l /dev/kvmd*
