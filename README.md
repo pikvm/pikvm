@@ -349,7 +349,7 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
 
 * [Export monitoring metrics to Prometheus](pages/prometheus.md).
 
-* [Control GPIO ports and USB relays](pages/gpio.md).
+* [Control GPIO ports, USB relays, IPMI hosts](pages/gpio.md).
 
 * [Centralized authorization for multiple Pi-KVMs](https://github.com/pikvm/kvmd-auth-server).
 
