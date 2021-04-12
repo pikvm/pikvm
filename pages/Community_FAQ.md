@@ -48,7 +48,7 @@ Ensure that you have the cable(Needs to support both power/data) plugged into th
   - Look for HDMI splitters - although there have been reports that these are not stable
     - Please use the search function in Discord, some users have had sucess in getting this to work but your mileage may vary
   - The better solution is to capture the stream in a dir and then use VLC to stream to that capture on another computer. This will result in fps loss.
-  - A community member has had success with the following: https://www.amazon.com/gp/product/B08DQWLXF1
+  - **A community member has had success with the following: https://www.amazon.com/gp/product/B08DQWLXF1**
 
 ### Wouldn't it be good to have different hostnames for your multitude of pi-kvms?
 Yes! And it's easy to do! Using a SSH session or the web terminal:
@@ -73,7 +73,7 @@ As an appliance, users are not expected to interact with the host operating syst
 ### I want to do something not related to Pi-KVM
 - It's recommended that you review Arch documents related to what you want to do, while there are several folks in discord who can help, there is no obligation...they do it for the feels. So if you don't get an answer within the time frame you are looking for, it's advised you start google searching for what you want.
 
-### Can this be used in any other distro’s like Rasbian?
+### Can this be used in any other distro’s like Rasbian? Run this in a Docker?
 - Not at this time, maybe in the future
 
 ### My Pi keeps disconnecting from my wireless! What do I do?
@@ -98,7 +98,7 @@ DNS=("192.168.X.X 1.0.0.1 1.1.1.1")
 ClientIdentifier=mac
 ```
 - Reserve the DHCP ip in your server/router
-- __[ADVANCED]__ You can replace systemd-networkd with NetworkManager
+- __:exclamation:[ADVANCED]:exclamation:__ You can replace systemd-networkd with NetworkManager, this has proven to fix the IP issue with DHCP for some routers
   - ```rw; pacman -Sy networkmanager``` and use ```nmcli``` or ```nmtui``` to configure your interface. Then ```systemctl disable --now systemd-networkd``` and ```systemctl disable --now systemd-resolved``` ```systemctl enable --now NetworkManager```  ```ln -sf /run/NetworkManager/resolv.conf /etc/resolv.conf``` and should be good, reboot to make sure services stay on or off (as desired) or put system back in RO mode with ```ro```
 
 ### HELP!! I can't find the IP on the ZeroW/RPi4
@@ -166,7 +166,8 @@ add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" alway
 - Fix date: 'timedatectl list-timezones' then 'timedatectl set-timezone America/Los_Angeles' (Change to your location)
 - Update Pi-KVM, follow #news on Discord for instructions
 - Enable Avahi-Daemon (A Zeroconf daemon) to allow finding the pikvm via mDNS queries as `pikvm.local`
-  - `pacman -S avahi nss-mdns gtk3 python-dbus python-gobject`
+  - `pacman -S avahi nss-mdns` 
+  - `gtk3 python-dbus python-gobject` (You may or may not need this to make it work)
   - Enable the Avahi daemon in order to make it persistent after reboot:
 ```
 systemctl enable avahi-daemon.service
@@ -206,7 +207,8 @@ nano /etc/fstab
 - Try default image, do not update and test
 
 -copy/paste into a file, call it pi-info.sh, chmod +x pi-info.sh, ./pi-info.sh
-```TMPFILE="/tmp/pacmanquery"; /bin/rm -f $TMPFILE
+```
+TMPFILE="/tmp/pacmanquery"; /bin/rm -f $TMPFILE
 pacman -Q | awk '{print $2, $1}' > $TMPFILE
 chmod go+w $TMPFILE
 
@@ -222,6 +224,11 @@ done
 ```dmesg | grep tc35``` - CSI
 <br/><br/>
 ```dmesg | egrep '1-1.[245]|uvc'``` - USB
+
+```systemctl status kvmd```
+
+```systemctl status kvmd-otg```
+
 - **hint:**  look at kvmd-platform line of the output... make sure it matches the image they expect for the capture device and platform
 
 - Keyboard/Mouse icons orange? Try a different cable (ALLOT are power only), try a different usb port
@@ -274,7 +281,7 @@ iw wlan0 info
 - Some USB power bricks advertise 5V @ 2.1A or higher, but can’t deliver consistent 5V.  Best to use rpi foundation recommended power supplies
 
 ### USB Video Capture Issues
-- TBD
+- Make sure this is a capture card and not an adapter (HDMI->USB)
 
 ### HDMI-CSI Capture issues
 - Have you reset the Target PC?
