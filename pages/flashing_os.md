@@ -65,6 +65,7 @@ Decompress and flash image and follow to the [final steps](#the-final-steps). Be
     pacman -Su
     reboot
     ```
+    - **NOTE:** ```pacman -S linux-firmware=20210221.b79d239-1``` line can be ignored if using image dated 4/3 and above, this line is only nessessary for older images
 7. Pacman saves all installed packages in a compressed format so that you can roll back to the old version if something goes wrong. After you've updated and made sure everything works, it makes sense to clear the package cache so that it doesn't take up space on the SD card:
     ```
     # rw
