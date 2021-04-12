@@ -8,14 +8,19 @@
 - For the CSI Bridge, ❗No:exclamation:. there is not enough bandwidth in the CSI bus for that much data. 1080p50 will max out the bandwidth
 - For the USB capture devices: Technically yes, but they will downsample to something smaller to meet the usb2.0 bandwidth limitations, so the source may be 4k, but the stream will not.
 
-### Is Pi-KVM an OS?
-- ❗No:exclamation:, this is merely riding on top of an existing [Arch Linux ARM](https://archlinuxarm.org/).
+### Is Pi-KVM an OS or its own Distro?
+- Yes and No, Other than the some repacking and patches, its heavly based off an existing [Arch Linux ARM](https://archlinuxarm.org/).
+
+### Why are you using Arch Linux?
+- The developer was more familiar with Arch Linux so this was chosen as the base operating system. As a Linux distribution, it has more in common than not with other distributions.
+<br/><br/>
+As an appliance, users are not expected to interact with the host operating system often, if at all. There are some distribution-specific differences, by default networking is done using either systemd-networkd or netctl but NetworkManager can be used as a replacement if one prefers.
 
 ### Can I power the Pi via POE?
 - Yes! But you will still need to ensure you isolate the 5v connection between the Raspberry Pi and host PC to prevent backpower issues that can cause instability or damage to either the host PC or the Pi.
 
 ### Do I need a power splitter? Why do I need one?
-- Yes for RPi4, No for Zero@
+- Yes for RPi4, No for ZeroW
 - Yes, otherwise you could back power the pi and or the target
 - You can get a Y cable from amazon and mod one of the leads - Please see getting started guide
 - You can get a power splitter board from Tindi or PiShop (Links provided below)
@@ -41,14 +46,16 @@ Ensure that you have the cable(Needs to support both power/data) plugged into th
   - Passthrough mode - Uncomment out dtoverlay=dwc2
 
 ### Can you have the pi-kvm(RPi4) connected along with a monitor?
-- If you have two outputs, you may be able to use screen mirroring from the OS but not BIOS
-- If you have one output or need access from both a local monitor or Pi-KVM at boot time, one of the following options may work:
+- **A community member has had success with the following: https://www.amazon.com/gp/product/B08DQWLXF1**
+- Some Alternitives
+  - If you have two outputs, you may be able to use screen mirroring from the OS but not BIOS
+  - If you have one output or need access from both a local monitor or Pi-KVM at boot time, one of the following options may work:
   - Passthrough HDMI capture devices (sometimes referred to as a loop capture device). The Elgato devices DO NOT WORK! Look for Linux OS support when choosing a device, the expected price range is about $35-$70 US.
   - Depending on your capture device, an HDMI splitter may work but will need what is called an EDID (Extended Device ID) generator, the monitor and capture device both generate EDID so the splitter must produce its own separate EDID for the host.
   - Look for HDMI splitters - although there have been reports that these are not stable
     - Please use the search function in Discord, some users have had sucess in getting this to work but your mileage may vary
   - The better solution is to capture the stream in a dir and then use VLC to stream to that capture on another computer. This will result in fps loss.
-  - **A community member has had success with the following: https://www.amazon.com/gp/product/B08DQWLXF1**
+  
 
 ### Wouldn't it be good to have different hostnames for your multitude of pi-kvms?
 Yes! And it's easy to do! Using a SSH session or the web terminal:
@@ -65,11 +72,6 @@ Yes! And it's easy to do! Using a SSH session or the web terminal:
 - Type `su -`
 - Put `root` for the password
 
-### Why are you using Arch Linux?
-- The developer was more familiar with Arch Linux so this was chosen as the base operating system. As a Linux distribution, it has more in common than not with other distributions.
-<br/><br/>
-As an appliance, users are not expected to interact with the host operating system often, if at all. There are some distribution-specific differences, by default networking is done using either systemd-networkd or netctl but NetworkManager can be used as a replacement if one prefers.
-
 ### I want to do something not related to Pi-KVM
 - It's recommended that you review Arch documents related to what you want to do, while there are several folks in discord who can help, there is no obligation...they do it for the feels. So if you don't get an answer within the time frame you are looking for, it's advised you start google searching for what you want.
 
@@ -77,7 +79,7 @@ As an appliance, users are not expected to interact with the host operating syst
 - Not at this time, maybe in the future
 
 ### My Pi keeps disconnecting from my wireless! What do I do?
-- Edit "/etc/conf.d/wireless-regdom" and look for your region and uncomment it. Example: WIRELESS_REGDOM="US"
+- You can try the following: Edit "/etc/conf.d/wireless-regdom" and look for your region and uncomment it. Example: WIRELESS_REGDOM="US"
 
 ### I want a static IP!!
 - You can configure systemd-networkd for a static address for ethernet NIC. Config file is /etc/systemd/network/eth0.network
@@ -178,7 +180,7 @@ systemctl start dbus.service
 systemctl start avahi-daemon.service
 ```
 - Setup a NFS share to give read/write storage on the read only pikvm
-  - Note this does assume you already have a NFS server on your network and accessible to pikvm
+  - Note: this does assume you already have an NFS server on your network and accessible to pikvm
   - Source https://linuxhint.com/install_configure_nfs/
 ```
 pacman -S nfs-utils
@@ -206,8 +208,10 @@ nano /etc/fstab
 - Reboot target
 - Try default image, do not update and test
 
--copy/paste into a file, call it pi-info.sh, chmod +x pi-info.sh, ./pi-info.sh
+-copy/paste into a file, call it pi-info.sh, chmod +x pi-info.sh, ./pi-info.sh **Same script is located [here](https://pastebin.com/u/srepac)**
 ```
+#!/bin/bash
+uptime
 TMPFILE="/tmp/pacmanquery"; /bin/rm -f $TMPFILE
 pacman -Q | awk '{print $2, $1}' > $TMPFILE
 chmod go+w $TMPFILE
@@ -254,10 +258,11 @@ lrwxrwxrwx 1 root root 6 Mar 15 09:07 /dev/kvmd-video -> video0
 
 ### Common wifi commands
 -  `iwconfig` manipulate the basic wireless parameters
-  - `iwlist`   allow to initiate scanning and list frequencies, bit-rates, encryption keys…
-  - `iwspy`    allow to get per node link quality
-  - `iwpriv`   allow to manipulate the Wireless Extensions specific to a driver (private)
-  - Some examples
+- `iwlist`   allow's you to initiate scanning and list frequencies, bit-rates, encryption keys…
+- `iwspy`    displays per node link quality
+- `iwpriv`   allow's you to manipulate the Wireless Extensions specific to a driver (private)
+
+- Some examples
 ```
 iw dev wlan0 scan | egrep "signal:|SSID:" | sed -e "s/\tsignal: //" -e "s/\tSSID: //" | awk '{ORS = (NR % 2 == 0)? "\n" : " "; print}' | sort
 ```
@@ -313,9 +318,10 @@ iw wlan0 info
 - TBD
 
 ### Connection issues
+- TBD
 
 ### Misc stuff
-- Fully working example of a Pi4 USB-HDMI KVM attached to AIMOS 4-port HDMI KVM switch, with keyboard hotkey switching between inputs, and mass storage media emulation on a Pi Zero W https://docs.google.com/document/d/1wgBZHxwpbJWkJBD3I8ZkZxSDxt0DdNDDYRNtVoL_vK4
+- Fully working example of a Pi4 USB-HDMI KVM attached to AIMOS 4-port HDMI KVM switch (8 port is on AliExpress), with keyboard hotkey switching between inputs, and mass storage media emulation on a Pi Zero W https://docs.google.com/document/d/1wgBZHxwpbJWkJBD3I8ZkZxSDxt0DdNDDYRNtVoL_vK4
 - Useful scripts that enhance the Pi-KVM's functionality ```https://pastebin.com/u/srepac```
 
 	
@@ -324,13 +330,13 @@ iw wlan0 info
 - Pi-KVM Power/Data OTG splitter boards
   - https://www.pishop.us/product/usb-pwr-splitter/ (Look on Tindi for the same thing in the UK)
   - https://www.pishop.us/product/usb-c-pwr-splitter/ (Look on Tindi for the same thing in the UK)
-- Current cases https://www.thingiverse.com/search?q=pi-kvm&type=things&sort=relevant
+- Current 3D cases that support the various Pi-KVM hardware configurations https://www.thingiverse.com/search?q=pi-kvm&type=things&sort=relevant
 
 As of March 2021, Out of Stock or hard to get, all have exceptionally LONG shipping dates - Could try AliExpress or get a usb2hdmi dongle from Amazon, please ask or search in Discord for the best known working one
 
 ```
-Ezcoo KVM
-CSI2-HDMI bridge w/ TC358743XBG chip
+Ezcoo KVM - Goes out of stock frequently
+CSI2-HDMI bridge w/ TC358743XBG chip - Goes out of stock freqently 
 Alternative names for the same devices:
 Tiamu	  	Sling	    	Yazan	    	Ningwang	Essenc	  	Geekworm
 Fauge	  	Haudang	  	AKAT	    	Docoop	    	Katigan	  	Lyusa (recommended by mdevaev)
