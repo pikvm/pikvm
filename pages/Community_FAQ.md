@@ -344,4 +344,5 @@ LNIMI	  	cherrypop	Lopbinte	Uang	      	Tuneway	  	Mustwell
 Facibom		Binchil	  	Cobeky	  	Ctzrzyt	    	Davitu	
 ```
 
-
+- Community recommended USB capture [card](https://www.amazon.com/gp/product/B08FG54QPH)
+- Community recommended Loop device that allows [Monitor+PiKVM](https://www.amazon.com/gp/product/B08DQWLXF1)
