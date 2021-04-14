@@ -100,8 +100,7 @@ DNS=("192.168.X.X 1.0.0.1 1.1.1.1")
 ClientIdentifier=mac
 ```
 - Reserve the DHCP ip in your server/router
-- __:exclamation:[ADVANCED]:exclamation:__ You can replace systemd-networkd with NetworkManager, this has proven to fix the IP issue with DHCP for some routers
-  - ```rw; pacman -Sy networkmanager``` and use ```nmcli``` or ```nmtui``` to configure your interface. Then ```systemctl disable --now systemd-networkd``` and ```systemctl disable --now systemd-resolved``` ```systemctl enable --now NetworkManager```  ```ln -sf /run/NetworkManager/resolv.conf /etc/resolv.conf``` and should be good, reboot to make sure services stay on or off (as desired) or put system back in RO mode with ```ro```
+- You can replace systemd-networkd with NetworkManager, this has proven to fix the IP issue with DHCP for some routers
 
 ### HELP!! I can't find the IP on the ZeroW/RPi4
 - Open a browser and type: pikvm, still doesnt work?
