@@ -581,6 +581,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Matthew Cameron
 * Mauricio Allende
 * Mehmet Aydoğdu
+* Michael Bombe
 * Michael Kovacs
 * Michael Lynch
 * Michael Pennington
@@ -625,6 +626,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Richard Freemantle
 * Richard Michael
 * Rob Tongue
+* Robert Klauco
 * Robin Gfatter
 * Rodion DENISYUK
 * Rohit Priyadarshi
