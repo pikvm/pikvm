@@ -403,6 +403,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Alexandre Jablonski
 * Alucard
 * Andreas Marufke
+* Andreas Schmid
 * Andrew Reusch
 * Andrew Ruan
 * Andrzej V
@@ -559,6 +560,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Kenny Hui
 * Kevin Bajohr
 * Kevin Schwartz
+* Koloman
 * Krzysztof Żelaśkiewicz
 * Larry Meaney
 * Lars
