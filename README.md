@@ -572,7 +572,9 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Lucio De Carli
 * Lukas Söder
 * Malcolm Cameron
+* Marcio Zimbres
 * Marcos Wolf
+* Marius
 * Mark Gilbert
 * Mark Robinson
 * Markrosoft
