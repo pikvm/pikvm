@@ -181,6 +181,7 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 * Safari on iOS contains an old bug that prevents a web application from connecting over a web socket if you use a self-signed certificate on the server (the default for Pi-KVM). There are two solutions:
   - Install a valid SSL certificate for Pi-KVM host to `/etc/kvmd/nginx/ssl`.
   - Disable HTTPS at all in `/etc/kvmd/nginx/nginx.conf`. To do this, comment some lines [like in this file](https://github.com/pikvm/kvmd/blob/master/configs/nginx/nginx.conf#L39) and restart web server: `systemctl restart kvmd-nginx`.
+
     :exclamation: Don't do this for insecure networks or the Internet. Your passwords and what you type on the keyboard will be transmitted in unencrypted form.
 </details>
 
