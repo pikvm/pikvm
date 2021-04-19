@@ -36,7 +36,7 @@ The Pi-KVM file system is always mounted in read-only mode. This measure prevent
 <details>
   <summary><b>How do I update Pi-KVM with the latest software?</b></summary>
 
-  Pi-KVM OS is based on Arch Linux ARM and is fully updated from the repository by a regular package manager. Connect to your Pi-KVM via ssh and run:
+* Pi-KVM OS is based on Arch Linux ARM and is fully updated from the repository by a regular package manager. Connect to your Pi-KVM via ssh and run:
   ```
   rw
   pacman -Syu
