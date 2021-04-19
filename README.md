@@ -415,6 +415,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Ben Gordon
 * Ben Scott
 * Benedikt Heine
+* Benedikt Meier
 * Benjamin Melancon
 * Benni Stauder
 * Bernhard Fitzke
@@ -552,12 +553,14 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Kenny Hui
 * Kevin Bajohr
 * Kevin Schwartz
+* Kiran Schuler
 * Koloman
 * Krzysztof Żelaśkiewicz
 * Larry Meaney
 * Lars
 * Lee Wilkinson
 * LeeNX
+* Leonard Feineis
 * Lordbob75
 * Lothar Schweikle-Droll
 * Louis Müller
@@ -575,6 +578,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Markus Sobczack
 * Marten Hermans
 * Martin Gasser
+* Martin Suelmann
 * Mateusz Grabowski
 * Matthew Cameron
 * Mauricio Allende
