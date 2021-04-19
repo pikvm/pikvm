@@ -20,6 +20,27 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 
 ## First steps
 <details>
+  <summary>What is the default password? How do I change it?</summary>
+
+* There are two types of accounts: OS and Pi-KVM (web interface) accounts. The system account `root` can be used for SSH/UART access and has the password `root`. The web interface account is called `admin` and has the password `admin`. The Pi-KVM account cannot be used for SSH access and vice versa.
+
+  To change passwords, use the following commands (under root):
+  ```bash
+  su -  # If you're in the webterm
+  rw  # Switch filesystem to read-write mode
+  passwd root  # Change OS root password
+  kvmd-passwd set admin  # Change web ui admin password
+  ro  # Back to read-only
+  ```
+</details>
+
+<details>
+  <summary><b>How do I get <i>root</i> access in the web terminal?</b></summary>
+
+* The web terminal works with the account `kvmd-webterm`. This is a regular user with no administrator privileges. In addition, `sudo` is disabled for this user for security reasons. To get `root` access, you need to use the `su -` command (minus is important) and **enter the root password**.
+</details>
+
+<details>
   <summary><b>Where is the Pi-KVM configuration located?</b></summary>
 
 * Almost all KVMD (the main daemon controlling Pi-KVM) configuration files located in `/etc/kvmd`. You can also find nginx configs and SSL certificates there. KVMD configs use [YAML](config.md) syntax. The specific platform parameters can be found in the file `/etc/kvmd/main.yaml` and **you should never edit it**. Use `/etc/kvmd/override.yaml` to redefine the system parameters.
