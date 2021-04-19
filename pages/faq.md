@@ -139,7 +139,7 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 </details>
 
 <details>
-  <summary><b>Mass-storage device working (I can boot an image from Pi-KVM v2+), but keyboard/mouse does not</b></summary>
+  <summary><b>Mass storage drive working (I can boot an image from Pi-KVM v2+), but keyboard/mouse does not</b></summary>
 
 * In very rare cases, some motherboards contain a buggy BIOS that does not understand the composite USB device because BIOS doesn't implement the USB stack correctly. In this case, we can suggest the [Arduino HID emulator](arduino_hid.md) from v0 platform with v2+. Thus the Pi-KVM will be connected by two USB cables to the motherboard: one of them will be responsible for the keyboard and mouse, the other for everything else.
 </details>
@@ -192,7 +192,7 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 </details>
 
 <details>
-  <summary><b>Unexpected interruption while loading the image for Mass Storage Drive</b></summary>
+  <summary><b>Unexpected interruption while loading the image for Mass storage drive</b></summary>
 
 * If problems occur when uploading even a small disk image it may be due to unstable network operation or antivirus software. It is well known that Kaspersky antivirus cuts off Pi-KVM connections during uploading, so you should add the Pi-KVM website to Kaspersky's list of exceptions or not filter web requests with the antivirus. Antivirus programs can also affect the performance of certain interface elements, for example the quality slider. For Kaspersky, the steps to add the network address of Pi-KVM's website to the exclusion list is: **Protection -> Private browsing -> Categories and exclusions -> Exclusions**.
 </details>
