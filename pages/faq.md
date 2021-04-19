@@ -202,3 +202,18 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 
 * The clipboard only works from the client to the server not vice versa. There is currently no way to do it.
 </details>
+
+-----
+# Hardware problems
+
+<details>
+  <summary><b>No Wi-Fi on Raspberry Pi Zero W</b></summary>
+
+* Some Zeros contain a defective Wi-Fi chip. You can either return the device to the store, or try the [software workaround](https://github.com/pikvm/pikvm/issues/137).
+</details>
+
+<details>
+  <summary><b>LEDs/Switches does not work in ATX control</b></summary>
+
+* Double check your wiring as per [the documentation](/README.md#setting-up-the-v2). Make sure you placed the relays (G3VM-61A1) in the correct orientation. The relays for switches (Power, Reset) have a different orientation than the ones for LEDs.
+</details>
