@@ -2,8 +2,8 @@
 As a first step we recommend carefully reading our documentation on [GitHub](https://github.com/pikvm/pikvm). Most steps to successfully set up your Pi-KVM are already described there. If you run into any issues you can check this page which will list common errors. If that still doesn't help you you're welcome to raise an [issue ticket](https://github.com/pikvm/pikvm/issues) or [join our Discord](https://discord.gg/bpmXfz5) for further help.
 
 -----
-
 ## Common questions
+
 <details>
   <summary><b>Can I connect multiple servers to a single Pi-KVM?</b></summary>
 
@@ -23,8 +23,8 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 </details>
 
 -----
-
 ## First steps
+
 <details>
   <summary><b>What is the default password? How do I change it?</b></summary>
 
@@ -71,4 +71,68 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
   ```
   
   :exclamation: Pacman saves all installed packages in a compressed format so that you can roll back to the old version if something goes wrong. After you've updated and made sure everything works, it makes sense to clear the package cache so that it doesn't take up space on the SD card: `rw; rm -rf /var/cache/pacman/pkg; ro`.
+</details>
+
+-----
+## Video problems
+
+<details>
+  <summary><b>Pi-KVM does not show the video from the computer at all</b></summary>
+  
+* - Double-check that the video capture device is connected correctly. For the [CSI bridge](/README.md#for-the-hdmi-csi-bridge), this should be exactly the camera port, for the [USB dongle](/README.md#for-the-hdmi-usb-dongle), strictly the port indicated in the picture.
+  - Some laptops do not output any signal until you switched the output (usually via the FN + and an F5 key on the keyboard).
+  - Your computer may have turned on sleep mode for the monitor. Move the mouse and turn it off.
+</details>
+
+<details>
+  <summary><b>The video works in the booted OS, but not in the BIOSUEFI</b></summary>
+
+* The problem appears on Intel NUC, GA-H77-DS3H, and some other devices with using CSI bridge. All you need to do is [change the EDID data](edid.md). This is the information about supported resolutions that the CSI bridge reports to your computer.
+</details>
+
+<details>
+  <summary><b>Glitchy or wrong BIOS/UEFI resolution</b></summary>
+
+* On some motherboards, the BIOS may be displayed at a lower resolution, or with some rendering issues/glitches, specially on newer ASUS ones. Like this:
+
+  <img src="../img/bios_glitch.png" alt="ASUS BIOS glitch" width="400"/>
+
+  This can be solved by enabling the **Compatibility Support Module (CSM)** in your BIOS, usually under the **Boot** options.
+
+  If you can't or don't want to enable the CSM, you can try connecting a DisplayPort monitor, or a [dummy plug](http://amazon.com/s?k=displayport+dummy+plug). If you remove the DP cable/adapter the bug will reappear.
+
+  If none of this works, try connecting the DP cable first, boot into the BIOS, disable the CSM and shutdown (do not restart) your PC. Then, boot into the BIOS and enable the CSM before shutting down your PC. Then connect the HDMI and turn your PC on again.
+</details>
+
+<details>
+  <summary><b>CSI bridge does not work with official Raspberry Pi PoE HAT</b></summary>
+
+* Details [here](https://github.com/pikvm/pikvm/issues/6). The reason is that the [official HAT](https://www.raspberrypi.org/products/poe-hat) has a built-in fan controller that conflicts with the TC358743 chip of the bridge. The solution is to disable the fan control and connect it to the power line so that it works continuously. To turn off the controller you need to add the line `disable_poe_fan=1` to `/boot/config.txt`.
+</details>
+
+<details>
+  <summary><b>No image from computer with Linux + Awesome WM</b></summary>
+
+* Sometimes Awesome WM on Linux can't recognize a video output change on a cable. That is, if the cable was first inserted into the monitor, and then you reconnected it to Pi-KVM - it may happen that you will not see the image. It seems that the problem is Awesome WM, since for example with KDE it does not reproducing. If you turn on your workstation with Pi-KVM already connected, everything will work fine.
+</details>
+
+-----
+# USB problems (keyboard, mouse, mass storage)
+
+<details>
+  <summary><b>My computer does not recognize Pi-KVM USB at all</b></summary>
+
+* Make sure that you have used the correct USB cable with DATA lines to connect the OTG port for the Raspberry to the computer. You may have decided to use a USB hub instead of a Y-cable, and **it won't work**. Use good cables and follow the instructions :)
+</details>
+
+<details>
+  <summary><b>BIOS/UEFI does not recognize Pi-KVM USB, but computer does</b></summary>
+
+* If you are using a USB hub or USB PCI controller, this may not be handled by your BIOS. Try to use another USB port. Some ports may have a built-in hub on the motherboard and a buggy BIOS that can't handle it.
+</details>
+
+<details>
+  <summary><b>The keyboard works in BIOS/UEFI, but the mouse does not</b></summary>
+
+* The BIOS does not support absolute mouse mode, which is preferred by Pi-KVM. In this case, [you can enable relative positioning mode](mouse.md).
 </details>
