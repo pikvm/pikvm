@@ -111,6 +111,19 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 </details>
 
 <details>
+  <summary><b>The video freezes a few seconds after the start, restarting the Web UI or VNC does not help</b></summary>
+
+* The story is [here](https://github.com/raspberrypi/firmware/issues/1562). Very-very rarely, Raspberry boards can have a hardware defect that causes some of the chip blocks to be unstable under normal power. The solution is to slightly increase the power supply, as in overclocking. Add `over_voltage=1` (or `over_voltage=2` if previous doesn't help) to `/boot/config.txt` and perform `reboot`.
+
+  To make sure that you are facing this particular problem, first perform a diagnostic:
+  - Boot the Pi-KVM without the specified options.
+  - Open Web-UI and wait for freezing.
+  - Click **System -> Reset Stream**.
+  - Click **System -> Open log** and make sure that the log contains messages like `H264: Can't wait for the VCOS semaphore`.
+  - Make sure that the last message from ustreamer was `H264: Configuring MMAL encoder` (not counting messages about connecting and disconnecting stream clients).
+</details>
+
+<details>
   <summary><b>No image from computer with Linux + Awesome WM</b></summary>
 
 * Sometimes Awesome WM on Linux can't recognize a video output change on a cable. That is, if the cable was first inserted into the monitor, and then you reconnected it to Pi-KVM - it may happen that you will not see the image. It seems that the problem is Awesome WM, since for example with KDE it does not reproducing. If you turn on your workstation with Pi-KVM already connected, everything will work fine.
