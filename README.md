@@ -363,19 +363,10 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
 
 -----
 
-# Troubleshooting
-If you encounter any problems, take a look at [this page](pages/troubleshooting.md). We've probably already found a solution for it :)
+# FAQ & Troubleshooting
+If you have any questions or run into problems, take a look at [this page](pages/faq.md). We've probably already found a solution for it :)
 
 For any help, you can contact our discord chat: https://discord.gg/bpmXfz5
-
------
-
-# FAQ
-**Q:** **Can I connect multiple servers to a single Pi-KVM?**  
-**A:** Yes, but it will require additional work to set up. See [this page](pages/multiport.md).
-
-**Q:** **Can I use Pi-KVM with non-Raspberry Pi boards?**  
-**A:** Yes, but you will have to prepare the operating system yourself. As for the Pi-KVM software, you will need to replace some config files (such as UDEV rules). If you are a developer or an experienced system administrator, you will not have any problems with this. In addition, we are open to patches. If you need help with this, please contact us via Discord: https://discord.gg/bpmXfz5
 
 -----
 
