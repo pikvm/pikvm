@@ -120,13 +120,14 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 # USB problems (keyboard, mouse, mass storage)
 
 <details>
-  <summary><b>My computer does not recognize Pi-KVM USB at all</b></summary>
+  <summary><b>My computer does not recognize USB of Pi-KVM v2+ at all</b></summary>
 
-* Make sure that you have used the correct USB cable with DATA lines to connect the OTG port for the Raspberry to the computer. You may have decided to use a USB hub instead of a Y-cable, and **it won't work**. Use good cables and follow the instructions :)
+* - Make sure that you have used the correct USB cable with DATA lines to connect the OTG port for the Raspberry to the computer. You may have decided to use a USB hub instead of a Y-cable, and **it won't work**. Use good cables and follow the instructions :)
+  - In very rare cases, some motherboards contain a buggy BIOS that does not understand the composite USB device because BIOS doesn't implement the USB stack correctly. In this case, we can suggest the [Arduino HID emulator](arduino_hid.md) from v0 platform with v2.
 </details>
 
 <details>
-  <summary><b>BIOS/UEFI does not recognize Pi-KVM USB, but computer does</b></summary>
+  <summary><b>BIOS/UEFI does not recognize USB of v2+, but computer does</b></summary>
 
 * If you are using a USB hub or USB PCI controller, this may not be handled by your BIOS. Try to use another USB port. Some ports may have a built-in hub on the motherboard and a buggy BIOS that can't handle it.
 </details>
@@ -135,4 +136,16 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
   <summary><b>The keyboard works in BIOS/UEFI, but the mouse does not</b></summary>
 
 * The BIOS does not support absolute mouse mode, which is preferred by Pi-KVM. In this case, [you can enable relative positioning mode](mouse.md).
+</details>
+
+<details>
+  <summary><b>Mass-storage device working (I can boot an image from Pi-KVM v2+), but keyboard/mouse does not</b></summary>
+
+* In very rare cases, some motherboards contain a buggy BIOS that does not understand the composite USB device because BIOS doesn't implement the USB stack correctly. In this case, we can suggest the [Arduino HID emulator](arduino_hid.md) from v0 platform with v2+. Thus the Pi-KVM will be connected by two USB cables to the motherboard: one of them will be responsible for the keyboard and mouse, the other for everything else.
+</details>
+
+<details>
+  <summary><b>I can't get into UEFI/FileVault when booting my Mac using Pi-KVM v2+</b></summary>
+  
+* The problem is specific to early-model Macs and does not occur on ARM-based Macs (Apple M1 or so). UEFI does not initialize the keyboard of the composite device during boot, however, if you use the standard keyboard to get to the UEFI/FileVault menu, you will see that the keyboard, mouse, and mass storage will work fine. In this case, we can suggest the [Arduino HID emulator](arduino_hid.md) from v0 platform with v2+. Thus the Pi-KVM will be connected by two USB cables to the Mac: one of them will be responsible for the keyboard and mouse, the other for everything else.
 </details>
