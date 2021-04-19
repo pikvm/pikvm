@@ -37,7 +37,7 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 <details>
   <summary><b>How do I get <i>root</i> access in the web terminal?</b></summary>
 
-* The web terminal works with the account `kvmd-webterm`. This is a regular user with no administrator privileges. In addition, `sudo` is disabled for this user for security reasons. To get `root` access, you need to use the `su -` command (minus is important) and **enter the root password**.
+* The web terminal works with the account `kvmd-webterm`. This is a regular user with no administrator privileges and. In addition, `sudo` and login are disabled for this user for security reasons. To get `root` access, you need to use the `su -` command (minus is important) and **enter the root password**.
 </details>
 
 <details>
