@@ -11,7 +11,7 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 </details>
 
 <details>
-  <summary><b>Can I use Pi-KVM with non-Raspberry Pi boards?</b></summary>
+  <summary><b>Can I use Pi-KVM with non-Raspberry Pi boards (Orange, Nano, etc)?</b></summary>
 
 * Yes, but you will have to prepare the operating system yourself. As for the Pi-KVM software, you will need to replace some config files (such as UDEV rules). If you are a developer or an experienced system administrator, you will not have any problems with this. In addition, we are open to patches. If you need help with this, please contact us via [Discord](https://discord.gg/bpmXfz5).
 </details>
