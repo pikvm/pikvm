@@ -400,6 +400,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Alberto Bassi
 * Aleksei Brusianskii
 * Alessio Curri
+* Alex T
 * Alexandre Jablonski
 * Alucard
 * Andreas Marufke
