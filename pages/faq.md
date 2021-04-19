@@ -20,7 +20,7 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 
 ## First steps
 <details>
-  <summary>What is the default password? How do I change it?</summary>
+  <summary><b>What is the default password? How do I change it?</b></summary>
 
 * There are two types of accounts: OS and Pi-KVM (web interface) accounts. The system account `root` can be used for SSH/UART access and has the password `root`. The web interface account is called `admin` and has the password `admin`. The Pi-KVM account cannot be used for SSH access and vice versa.
 
