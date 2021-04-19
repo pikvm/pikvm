@@ -30,7 +30,7 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 <details>
   <summary><b>I can't edit any file on Pi-KVM. Why is the system in read-only mode?</b></summary>
 
-The Pi-KVM file system is always mounted in read-only mode. This measure prevents it from being damaged by a sudden power outage. To change the configuration you must first switch the filesystem to write mode using the command `rw` from root. After the changes, be sure to run the command `ro` to switch it back to read-only.
+* The Pi-KVM file system is always mounted in read-only mode. This measure prevents it from being damaged by a sudden power outage. To change the configuration you must first switch the filesystem to write mode using the command `rw` from root. After the changes, be sure to run the command `ro` to switch it back to read-only.
 </details>
 
 <details>
