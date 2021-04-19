@@ -79,9 +79,9 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 <details>
   <summary><b>Pi-KVM does not show the video from the computer at all</b></summary>
   
-* - Double-check that the video capture device is connected correctly. For the [CSI bridge](/README.md#for-the-hdmi-csi-bridge), this should be exactly the camera port, for the [USB dongle](/README.md#for-the-hdmi-usb-dongle), strictly the port indicated in the picture.
-  - Some laptops do not output any signal until you switched the output (usually via the FN + and an F5 key on the keyboard).
-  - Your computer may have turned on sleep mode for the monitor. Move the mouse and turn it off.
+* Double-check that the video capture device is connected correctly. For the [CSI bridge](/README.md#for-the-hdmi-csi-bridge), this should be exactly the camera port, for the [USB dongle](/README.md#for-the-hdmi-usb-dongle), strictly the port indicated in the picture.
+* Some laptops do not output any signal until you switched the output (usually via the FN + and an F5 key on the keyboard).
+* Your computer may have turned on sleep mode for the monitor. Move the mouse and turn it off.
 </details>
 
 <details>
@@ -122,8 +122,8 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 <details>
   <summary><b>My computer does not recognize USB of Pi-KVM v2+ at all</b></summary>
 
-* - Make sure that you have used the correct USB cable with DATA lines to connect the OTG port for the Raspberry to the computer. You may have decided to use a USB hub instead of a Y-cable, and **it won't work**. Use good cables and follow the instructions :)
-  - In very rare cases, some motherboards contain a buggy BIOS that does not understand the composite USB device because BIOS doesn't implement the USB stack correctly. In this case, we can suggest the [Arduino HID emulator](arduino_hid.md) from v0 platform with v2.
+* Make sure that you have used the correct USB cable with DATA lines to connect the OTG port for the Raspberry to the computer. You may have decided to use a USB hub instead of a Y-cable, and **it won't work**. Use good cables and follow the instructions :)
+* In very rare cases, some motherboards contain a buggy BIOS that does not understand the composite USB device because BIOS doesn't implement the USB stack correctly. In this case, we can suggest the [Arduino HID emulator](arduino_hid.md) from v0 platform with v2.
 </details>
 
 <details>
