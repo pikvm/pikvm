@@ -2,7 +2,7 @@
 As a first step we recommend carefully reading our documentation on [GitHub](https://github.com/pikvm/pikvm). Most steps to successfully set up your Pi-KVM are already described there. If you run into any issues you can check this page which will list common errors. If that still doesn't help you you're welcome to raise an [issue ticket](https://github.com/pikvm/pikvm/issues) or [join our Discord](https://discord.gg/bpmXfz5) for further help.
 
 -----
-## Common questions
+# Common questions
 
 <details>
   <summary><b>Can I connect multiple servers to a single Pi-KVM?</b></summary>
@@ -23,7 +23,7 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 </details>
 
 -----
-## First steps
+# First steps
 
 <details>
   <summary><b>What is the default password? How do I change it?</b></summary>
@@ -74,7 +74,7 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 </details>
 
 -----
-## Video problems
+# Video problems
 
 <details>
   <summary><b>Pi-KVM does not show the video from the computer at all</b></summary>
