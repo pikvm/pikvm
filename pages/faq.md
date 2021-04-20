@@ -85,7 +85,7 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 # Video problems
 
 <details>
-  <summary><b>Pi-KVM does not show the video from the computer at all</b></summary>
+  <summary><b><a name="test">Pi-KVM does not show the video from the computer at all</a></b></summary>
   
 * Double-check that the video capture device is connected correctly. For the [CSI bridge](/README.md#for-the-hdmi-csi-bridge), this should be exactly the camera port, for the [USB dongle](/README.md#for-the-hdmi-usb-dongle), strictly the port indicated in the picture.
 * Some laptops do not output any signal until you switched the output (usually via the FN + and an F5 key on the keyboard).
