@@ -2,6 +2,15 @@
 As a first step we recommend carefully reading our documentation on [GitHub](https://github.com/pikvm/pikvm). Most steps to successfully set up your Pi-KVM are already described there. If you run into any issues you can check this page which will list common errors. If that still doesn't help you you're welcome to raise an [issue ticket](https://github.com/pikvm/pikvm/issues) or [join our Discord](https://discord.gg/bpmXfz5) for further help.
 
 -----
+# Navigation
+[Common questions](#common-questions)
+[First steps](#first-steps)
+[Video problems](#video-problems)
+[USB problems (keyboard, mouse, mass storage)](#usb-problems-keyboard-mouse-mass-storage)
+[Web UI problems](#web-ui-problems)
+[Hardware problems](#hardware-problems)
+
+-----
 # Common questions
 
 ### Can I connect multiple servers to a single Pi-KVM?
