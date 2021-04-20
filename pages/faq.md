@@ -8,7 +8,7 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 * [Video problems](#video-problems)
 * [USB problems (keyboard, mouse, mass storage)](#usb-problems-keyboard-mouse-mass-storage-etc)
 * [Web UI problems](#web-ui-problems)
-* [Hardware problems (Wi-Fi, ATX, etc](#hardware-problems-wi-fi-atx-etc)
+* [Hardware problems (Wi-Fi, ATX, etc)](#hardware-problems-wi-fi-atx-etc)
 
 -----
 # Common questions
