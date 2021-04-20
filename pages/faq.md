@@ -3,12 +3,12 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 
 -----
 # Navigation
-[Common questions](#common-questions)
-[First steps](#first-steps)
-[Video problems](#video-problems)
-[USB problems (keyboard, mouse, mass storage)](#usb-problems-keyboard-mouse-mass-storage)
-[Web UI problems](#web-ui-problems)
-[Hardware problems](#hardware-problems)
+* [Common questions](#common-questions)
+* [First steps](#first-steps)
+* [Video problems](#video-problems)
+* [USB problems (keyboard, mouse, mass storage)](#usb-problems-keyboard-mouse-mass-storage)
+* [Web UI problems](#web-ui-problems)
+* [Hardware problems](#hardware-problems)
 
 -----
 # Common questions
