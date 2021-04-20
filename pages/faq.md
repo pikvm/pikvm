@@ -6,9 +6,9 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 * [Common questions](#common-questions)
 * [First steps](#first-steps)
 * [Video problems](#video-problems)
-* [USB problems (keyboard, mouse, mass storage)](#usb-problems-keyboard-mouse-mass-storage)
+* [USB problems (keyboard, mouse, mass storage)](#usb-problems-keyboard-mouse-mass-storage-etc)
 * [Web UI problems](#web-ui-problems)
-* [Hardware problems](#hardware-problems)
+* [Hardware problems](#hardware-problems-wi-fi-atx-atc)
 
 -----
 # Common questions
@@ -153,7 +153,7 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 </details>
 
 -----
-# USB problems (keyboard, mouse, mass storage)
+# USB problems (keyboard, mouse, mass storage, etc)
 
 ### My computer does not recognize USB of Pi-KVM v2+ at all
 <details>
@@ -252,7 +252,7 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 </details>
 
 -----
-# Hardware problems
+# Hardware problems (Wi-Fi, ATX, etc)
 
 ### No Wi-Fi on Raspberry Pi Zero W
 <details>
