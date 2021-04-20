@@ -84,22 +84,25 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 -----
 # Video problems
 
+### Pi-KVM does not show the video from the computer at all
 <details>
-  <summary><b><a name="test">Pi-KVM does not show the video from the computer at all</a></b></summary>
+  <summary>Click to view</summary>
   
 * Double-check that the video capture device is connected correctly. For the [CSI bridge](/README.md#for-the-hdmi-csi-bridge), this should be exactly the camera port, for the [USB dongle](/README.md#for-the-hdmi-usb-dongle), strictly the port indicated in the picture.
 * Some laptops do not output any signal until you switched the output (usually via the FN + and an F5 key on the keyboard).
 * Your computer may have turned on sleep mode for the monitor. Move the mouse and turn it off.
 </details>
 
+### The video works in the booted OS, but not in the BIOSUEFI
 <details>
-  <summary><b>The video works in the booted OS, but not in the BIOSUEFI</b></summary>
+  <summary>Click to view</summary>
 
 * The problem appears on Intel NUC, GA-H77-DS3H, and some other devices with using CSI bridge. All you need to do is [change the EDID data](edid.md). This is the information about supported resolutions that the CSI bridge reports to your computer.
 </details>
 
+### Glitchy or wrong BIOS/UEFI resolution
 <details>
-  <summary><b>Glitchy or wrong BIOS/UEFI resolution</b></summary>
+  <summary>Click to view</summary>
 
 * On some motherboards, the BIOS may be displayed at a lower resolution, or with some rendering issues/glitches, specially on newer ASUS ones. Like this:
 
@@ -112,14 +115,16 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
   If none of this works, try connecting the DP cable first, boot into the BIOS, disable the CSM and shutdown (do not restart) your PC. Then, boot into the BIOS and enable the CSM before shutting down your PC. Then connect the HDMI and turn your PC on again.
 </details>
 
+### CSI bridge does not work with official Raspberry Pi PoE HAT
 <details>
-  <summary><b>CSI bridge does not work with official Raspberry Pi PoE HAT</b></summary>
+  <summary>Click to view</summary>
 
 * Details [here](https://github.com/pikvm/pikvm/issues/6). The reason is that the [official HAT](https://www.raspberrypi.org/products/poe-hat) has a built-in fan controller that conflicts with the TC358743 chip of the bridge. The solution is to disable the fan control and connect it to the power line so that it works continuously. To turn off the controller you need to add the line `disable_poe_fan=1` to `/boot/config.txt`.
 </details>
 
+### The video freezes a few seconds after the start, restarting the Web UI or VNC does not help
 <details>
-  <summary><b>The video freezes a few seconds after the start, restarting the Web UI or VNC does not help</b></summary>
+  <summary>Click to view</summary>
 
 * The story is [here](https://github.com/raspberrypi/firmware/issues/1562). Very-very rarely, Raspberry boards can have a hardware defect that causes some of the chip blocks to be unstable under normal power. The solution is to slightly increase the power supply, as in overclocking. Add `over_voltage=1` (or `over_voltage=2` if previous doesn't help) to `/boot/config.txt` and perform `reboot`.
 
@@ -131,8 +136,9 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
   - Make sure that the last message from ustreamer was `H264: Configuring MMAL encoder` (not counting messages about connecting and disconnecting stream clients).
 </details>
 
+### No image from computer with Linux + Awesome WM
 <details>
-  <summary><b>No image from computer with Linux + Awesome WM</b></summary>
+  <summary>Click to view</summary>
 
 * Sometimes Awesome WM on Linux can't recognize a video output change on a cable. That is, if the cable was first inserted into the monitor, and then you reconnected it to Pi-KVM - it may happen that you will not see the image. It seems that the problem is Awesome WM, since for example with KDE it does not reproducing. If you turn on your workstation with Pi-KVM already connected, everything will work fine.
 </details>
@@ -140,39 +146,45 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 -----
 # USB problems (keyboard, mouse, mass storage)
 
+### My computer does not recognize USB of Pi-KVM v2+ at all
 <details>
-  <summary><b>My computer does not recognize USB of Pi-KVM v2+ at all</b></summary>
+  <summary>Click to view</summary>
 
 * Make sure that you have used the correct USB cable with DATA lines to connect the OTG port for the Raspberry to the computer. You may have decided to use a USB hub instead of a Y-cable, and **it won't work**. Use good cables and follow the instructions :)
 * In very rare cases, some motherboards contain a buggy BIOS that does not understand the composite USB device because BIOS doesn't implement the USB stack correctly. In this case, we can suggest the [Arduino HID emulator](arduino_hid.md) from v0 platform with v2.
 </details>
 
+### BIOS/UEFI does not recognize USB of v2+, but computer does
 <details>
-  <summary><b>BIOS/UEFI does not recognize USB of v2+, but computer does</b></summary>
+  <summary>Click to view</summary>
 
 * If you are using a USB hub or USB PCI controller, this may not be handled by your BIOS. Try to use another USB port. Some ports may have a built-in hub on the motherboard and a buggy BIOS that can't handle it.
 </details>
 
+### The keyboard works in BIOS/UEFI, but the mouse does not
 <details>
-  <summary><b>The keyboard works in BIOS/UEFI, but the mouse does not</b></summary>
+  <summary>Click to view</summary>
 
 * The BIOS does not support absolute mouse mode, which is preferred by Pi-KVM. In this case, [you can enable relative positioning mode](mouse.md).
 </details>
 
+### Mass storage drive working (I can boot an image from Pi-KVM v2+), but keyboard/mouse does not
 <details>
-  <summary><b>Mass storage drive working (I can boot an image from Pi-KVM v2+), but keyboard/mouse does not</b></summary>
+  <summary>Click to view</summary>
 
 * In very rare cases, some motherboards contain a buggy BIOS that does not understand the composite USB device because BIOS doesn't implement the USB stack correctly. In this case, we can suggest the [Arduino HID emulator](arduino_hid.md) from v0 platform with v2+. Thus the Pi-KVM will be connected by two USB cables to the motherboard: one of them will be responsible for the keyboard and mouse, the other for everything else.
 </details>
 
+### I can't get into UEFI/FileVault when booting my Mac using Pi-KVM v2+
 <details>
-  <summary><b>I can't get into UEFI/FileVault when booting my Mac using Pi-KVM v2+</b></summary>
+  <summary>Click to view</summary>
   
 * The problem is specific to early-model Macs and does not occur on ARM-based Macs (Apple M1 or so). UEFI does not initialize the keyboard of the composite device during boot, however, if you use the standard keyboard to get to the UEFI/FileVault menu, you will see that the keyboard, mouse, and mass storage will work fine. In this case, we can suggest the [Arduino HID emulator](arduino_hid.md) from v0 platform with v2+. Thus the Pi-KVM will be connected by two USB cables to the Mac: one of them will be responsible for the keyboard and mouse, the other for everything else.
 </details>
 
+### Big mouse latency on another Raspberry as managed server
 <details>
-  <summary><b>Big mouse latency on another Raspberry as managed server</b></summary>
+  <summary>Click to view</summary>
 
 * Unusual case: RPi4 is used as a Pi-KVM to control RPi3. In this case, the mouse delay may be several seconds. To fix it, just add line `usbhid.mousepoll=0` to `/boot/config.txt` to the server (i.e. RPI3 in our case) and reboot it.
 </details>
@@ -180,8 +192,9 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 -----
 # Web UI problems
 
+### Chrome Certificate Issue
 <details>
-  <summary><b>Chrome Certificate Issue</b></summary>
+  <summary>Click to view</summary>
 
 * The latest versions of Chrome do not allow access to the page with a self signed certificate, so if you see the following screen when loading the pi-kvm website:
 
@@ -190,14 +203,16 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 * You can proceed by typing ```thisisunsafe``` and Chrome will then load the page.
 </details>
 
+### Pressing ESC in full screen mode causes this to close
 <details>
-  <summary><b>Pressing ESC in full screen mode causes this to close</b></summary>
+  <summary>Click to view</summary>
 
 * Your browser does not support [keyboard lock](https://caniuse.com/mdn-api_keyboard_lock). Right now, only Chrome implements this.
 </details>
 
+### I can't use this on iOS: the Web UI network indicator flashes yellow
 <details>
-  <summary><b>I can't use this on iOS: the Web UI network indicator flashes yellow</b></summary>
+  <summary>Click to view</summary>
 
 * Safari on iOS contains an old bug that prevents a web application from connecting over a web socket if you use a self-signed certificate on the server (the default for Pi-KVM). There are two solutions:
   - Install a valid SSL certificate for Pi-KVM host to `/etc/kvmd/nginx/ssl`.
@@ -206,20 +221,23 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
     :exclamation: Don't do this for insecure networks or the Internet. Your passwords and what you type on the keyboard will be transmitted in unencrypted form.
 </details>
 
+### The Web UI doesn't work properly in Firefox while it works fine in Chrome
 <details>
-  <summary><b>The Web UI doesn't work properly in Firefox while it works fine in Chrome</b></summary>
+  <summary>Click to view</summary>
 
 * This might be related to your specific hardware combination or browser hardware acceleration. Try [disabling hardware acceleration in Firefox](https://support.mozilla.org/en-US/kb/hardware-acceleration-and-windowblinds-crash) or updating your GPU and chipset drivers.
 </details>
 
+### Unexpected interruption while loading the image for Mass storage drive
 <details>
-  <summary><b>Unexpected interruption while loading the image for Mass storage drive</b></summary>
+  <summary>Click to view</summary>
 
 * If problems occur when uploading even a small disk image it may be due to unstable network operation or antivirus software. It is well known that Kaspersky antivirus cuts off Pi-KVM connections during uploading, so you should add the Pi-KVM website to Kaspersky's list of exceptions or not filter web requests with the antivirus. Antivirus programs can also affect the performance of certain interface elements, for example the quality slider. For Kaspersky, the steps to add the network address of Pi-KVM's website to the exclusion list is: **Protection -> Private browsing -> Categories and exclusions -> Exclusions**.
 </details>
 
+### I can't copy clipboard contents from the server (the machine controlled via Pi-KVM) to the client
 <details>
-  <summary><b>I can't copy clipboard contents from the server (the machine controlled via Pi-KVM) to the client</b></summary>
+  <summary>Click to view</summary>
 
 * The clipboard only works from the client to the server not vice versa. There is currently no way to do it.
 </details>
@@ -227,14 +245,16 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 -----
 # Hardware problems
 
+### No Wi-Fi on Raspberry Pi Zero W
 <details>
-  <summary><b>No Wi-Fi on Raspberry Pi Zero W</b></summary>
+  <summary>Click to view</summary>
 
 * Some Zeros contain a defective Wi-Fi chip. You can either return the device to the store, or try the [software workaround](https://github.com/pikvm/pikvm/issues/137).
 </details>
 
+### LEDs/Switches does not work in ATX control
 <details>
-  <summary><b>LEDs/Switches does not work in ATX control</b></summary>
+  <summary>Click to view</summary>
 
 * Double check your wiring as per [the documentation](/README.md#setting-up-the-v2). Make sure you placed the relays (G3VM-61A1) in the correct orientation. The relays for switches (Power, Reset) have a different orientation than the ones for LEDs.
 </details>
