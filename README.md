@@ -546,6 +546,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Joris van Embden
 * Jozef Riha
 * Julian Forero
+* Julian Schneider
 * Justin Waters
 * Karl Dunne
 * Keith Muggleton
@@ -579,6 +580,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Marten Hermans
 * Martin Gasser
 * Martin Suelmann
+* Marvin Honderboom
 * Mateusz Grabowski
 * Matthew Cameron
 * Mauricio Allende
