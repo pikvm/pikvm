@@ -48,7 +48,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
   su -  # If you're in the webterm
   rw  # Switch filesystem to read-write mode
   passwd root  # Change OS root password
-  kvmd-passwd set admin  # Change web ui admin password
+  kvmd-htpasswd set admin  # Change web ui admin password
   ro  # Back to read-only
   ```
 </details>
