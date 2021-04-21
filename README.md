@@ -571,6 +571,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Marcio Zimbres
 * Marcos Wolf
 * Marius
+* Mar. Balske
 * Mark Gilbert
 * Mark Robinson
 * Markrosoft
@@ -645,6 +646,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Samuel Vetsch
 * Satish Alwani
 * Scott
+* Scott Gagon
 * Scott Spicola
 * Scott Tusing
 * Sean
