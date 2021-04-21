@@ -1,5 +1,5 @@
 # FAQ & Troubleshooting
-As a first step we recommend carefully reading our documentation on [GitHub](https://github.com/pikvm/pikvm). Most steps to successfully set up your Pi-KVM are already described there. If you run into any issues you can check this page which will list common errors. If that still doesn't help you you're welcome to raise an [issue ticket](https://github.com/pikvm/pikvm/issues) or [join our Discord](https://discord.gg/bpmXfz5) for further help.
+As a first step, we recommend carefully reading our documentation on [GitHub](https://github.com/pikvm/pikvm). Most steps to successfully set up your Pi-KVM are already described there. If you run into any issues you can check this page which will list common errors. If that still doesn't help you you're welcome to raise an [issue ticket](https://github.com/pikvm/pikvm/issues) or [join our Discord](https://discord.gg/bpmXfz5) for further help.
 
 -----
 # Navigation
@@ -102,7 +102,7 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 * Your computer may have turned on sleep mode for the monitor. Move the mouse and turn it off.
 </details>
 
-### The video works in the booted OS, but not in the BIOSUEFI
+### The video works in the booted OS, but not in the BIOS/UEFI
 <details>
   <summary>Click to view</summary>
 
@@ -149,7 +149,7 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 <details>
   <summary>Click to view</summary>
 
-* Sometimes Awesome WM on Linux can't recognize a video output change on a cable. That is, if the cable was first inserted into the monitor, and then you reconnected it to Pi-KVM - it may happen that you will not see the image. It seems that the problem is Awesome WM, since for example with KDE it does not reproducing. If you turn on your workstation with Pi-KVM already connected, everything will work fine.
+* Sometimes Awesome WM on Linux can't recognize a video output change on a cable. That is, if the cable was first inserted into the monitor, and then you reconnected it to Pi-KVM - it may happen that you will not see the image. It seems that the problem is Awesome WM, since for example with KDE, it is not reproducable. If you turn on your workstation with Pi-KVM already connected, everything will work fine.
 </details>
 
 -----
@@ -159,7 +159,7 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 <details>
   <summary>Click to view</summary>
 
-* Make sure that you have used the correct USB cable with DATA lines to connect the OTG port for the Raspberry to the computer. You may have decided to use a USB hub instead of a Y-cable, and **it won't work**. Use good cables and follow the instructions :)
+* Make sure that you have used the correct USB cable with DATA lines to connect the OTG port for the Raspberry to the computer. You may have decided to use a USB hub instead of a Y-cable and **it won't work**. Use good cables and follow the instructions :)
 * In very rare cases, some motherboards contain a buggy BIOS that does not understand the composite USB device because BIOS doesn't implement the USB stack correctly. In this case, we can suggest the [Arduino HID emulator](arduino_hid.md) from v0 platform with v2.
 </details>
 
@@ -188,7 +188,7 @@ As a first step we recommend carefully reading our documentation on [GitHub](htt
 <details>
   <summary>Click to view</summary>
   
-* The problem is specific to early-model Macs and does not occur on ARM-based Macs (Apple M1 or so). UEFI does not initialize the keyboard of the composite device during boot, however, if you use the standard keyboard to get to the UEFI/FileVault menu, you will see that the keyboard, mouse, and mass storage will work fine. In this case, we can suggest the [Arduino HID emulator](arduino_hid.md) from v0 platform with v2+. Thus the Pi-KVM will be connected by two USB cables to the Mac: one of them will be responsible for the keyboard and mouse, the other for everything else.
+* The problem is specific to early-model Macs and does not occur on ARM-based Macs (Apple M1 or so). UEFI does not initialize the keyboard of the composite device during boot, however, if you use the standard keyboard to get to the UEFI/FileVault menu, you will see that the keyboard, mouse, and mass storage will work fine. In this case, we can suggest the [Arduino HID emulator](arduino_hid.md) from v0 platform with v2+. Thus, the Pi-KVM will be connected by two USB cables to the Mac: one of them will be responsible for the keyboard and mouse, the other for everything else.
 </details>
 
 ### Big mouse latency on another Raspberry as managed server
