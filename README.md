@@ -446,6 +446,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Christoph Dette
 * Christof Maluck
 * Christoffer Lund
+* Christopher Hearn
 * Christopher Mandlbaur
 * Chucktastic
 * Clifford Coleman
@@ -485,6 +486,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Far Pin Solutions, LLC
 * Felyx Gabryel
 * Fergus McKay
+* Finn Ebenritter
 * fo0bar
 * Foamy
 * Francisco Pavon
@@ -533,6 +535,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jeff Urlwin
 * Jennifer Rowlett
 * Jerremy Holland
+* Jimmy Stanley
 * Joachim Bruening
 * Joe Ventura
 * Joel Jacobs
@@ -589,6 +592,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Mateusz Grabowski
 * Matthew Cameron
 * Mauricio Allende
+* Mecky
 * Mehmet Aydoğdu
 * Michael Bombe
 * Michael Collins
@@ -633,6 +637,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Quentin Peten
 * Ralph Borchers
 * Ranc1d
+* Raphael Schitz
 * Richard Bernarts
 * Richard Fancher
 * Richard Freemantle
@@ -668,6 +673,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Stephan Schmidt
 * Steve Kerr
 * Steve Ovens
+* Steve Stringham
 * Steven Richter
 * sudo34
 * Tarlak Desaydrone
