@@ -617,6 +617,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Nick Leffler
 * Nick Roethemeier
 * Nils Orbat
+* Nis Wechselberg
 * Nithin Philips
 * Nod Swal
 * nubbn
@@ -632,6 +633,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Peter Drayton
 * Peter Farrelly
 * Petri Heiskanen
+* Philip Edwards
 * Philip Merricks
 * posicat
 * pozitron03
