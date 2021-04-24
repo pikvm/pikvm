@@ -43,5 +43,5 @@ For iOS and Android the recommended application is bVNC:
 * [App Store](https://apps.apple.com/us/app/bvnc-pro/id1506461202)
 
 # Unsupported clients
-* Guacamole
-* Vinagre
+* Guacamole - Incorrectly implements vencrypt, no JPEG compression.
+* Vinagre - Incorrectly implements vencrypt.
