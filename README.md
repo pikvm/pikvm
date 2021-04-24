@@ -392,6 +392,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Aleksei Brusianskii
 * Alessio Curri
 * Alex T
+* Alexander Pankov
 * Alexandre Jablonski
 * Alucard
 * Andreas Marufke
@@ -472,6 +473,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Denis Andreev
 * Denis Yatsenko
 * Dennis Becker
+* Dennis Lomet
 * Derek Yap
 * Didrik
 * dixon wong
