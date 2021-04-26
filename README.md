@@ -502,6 +502,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Gernot Neuschröer
 * GK
 * Glen Dragon
+* Greg Winterstein
 * Gregory Smith
 * Gregory Treantos
 * Grey Cynic
