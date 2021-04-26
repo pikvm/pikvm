@@ -386,6 +386,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * A. Isenring
 * Aaron Heise
 * Accalia
+* Adam Goodbar
 * adipisicing
 * Adrian Basham
 * Alberto Bassi
