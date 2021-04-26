@@ -180,7 +180,7 @@ We are also currently developing our own HAT for the Raspberry Pi 4. It will hav
 * Optional OLED screen to display network status or other desired information.
 * No need for soldering or other assembly. It's a ready-made, reliable board which you can use yourself or provide to your clients.
 * Continued use of Pi-KVM OS - all the software will be fully open.
-* It will cost about $100 - or less, we are working to make it as cheap as possible.
+* It will cost about $135 - or less, we are working to make it as cheap as possible.
 
 **YouTube Review of the v3 board**: https://youtu.be/dTchVKxx7Fo
 
