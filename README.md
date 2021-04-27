@@ -454,6 +454,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Clifford Coleman
 * Clinton Lee Taylor
 * Cole Imhoff
+* Colin Goodman
 * Corey Layton
 * Corey Lista
 * Crossfactor
@@ -615,9 +616,10 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Nicholas Jeppson
 * Nicholas Kopas
 * Nicholas Walczak
-* Nicolai Kragh-Hansen
 * Nick Leffler
 * Nick Roethemeier
+* Nicolai Kragh-Hansen
+* Nihal Fernando
 * Nils Orbat
 * Nis Wechselberg
 * Nithin Philips
@@ -627,6 +629,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Oh Be
 * Oliver Schwarz
 * Oliver Zimmer
+* Omar El-Domeiri
 * Patrick McDowell
 * Patrick Wagstrom
 * Paul Bishop
