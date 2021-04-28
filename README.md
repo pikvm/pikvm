@@ -540,6 +540,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jeff Urlwin
 * Jennifer Rowlett
 * Jerremy Holland
+* Jim Harbin
 * Jimmy Stanley
 * Joachim Bruening
 * Joe Ventura
