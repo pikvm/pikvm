@@ -192,7 +192,7 @@ nano /etc/fstab
 192.168.1.XXX:/volume1/Data /mnt/Data nfs      auto,rw,soft    0 0
 ```
 ### Can I have a RW FS all of the time?
-- YES! BUT its not recommended, however this is what you can do:```nano /boot/cmdline.txt``` Change ro to rw, then ```reboot```
+- YES! BUT its not recommended, however this is what you can do:```nano /boot/cmdline.txt``` & ```nano /etc/fstab``` Change ro to rw and change the /boot line from ro to rw
 
 ### Troubleshooting
 - :exclamation:**It is expected that you are aware of basic networking while working on this project and that you have read up on the project prior to going to Discord**:exclamation:
