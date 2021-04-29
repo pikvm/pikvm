@@ -1,6 +1,8 @@
 # FAQ & Troubleshooting
 As a first step, we recommend carefully reading our documentation on [GitHub](https://github.com/pikvm/pikvm). Most steps to successfully set up your Pi-KVM are already described there. If you run into any issues you can check this page which will list common errors. If that still doesn't help you you're welcome to raise an [issue ticket](https://github.com/pikvm/pikvm/issues) or [join our Discord](https://discord.gg/bpmXfz5) for further help.
 
+Note: if you can't find an answer to your question here, try the [Community FAQ](Community_FAQ.md). It will be merged with this page in the future
+
 -----
 # Navigation
 * [Common questions](#common-questions)
