@@ -687,6 +687,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Steven Richter
 * sudo34
 * Tarlak Desaydrone
+* TechBear
 * Ted
 * Tejun Heo
 * TheTechGiant
