@@ -63,6 +63,23 @@ After connecting the client receives a bundle of states of all KVMD subsystems. 
 
 Another type of event is `ping`, which can be sent by the client: `{"event_type": "ping", "event": {}}`. If the server is running, it will respond with pong: `{"event_type": "pong", "event": {}}`.
 
+### Sending keypress events
+
+For keypresses, set `event_type` to `"key"` and fill in the `"event"` structure with `key` and `state`, where `key` is the key from mapping and `state` is boolean that determines if the key is pressed or released: 
+
+```python
+# python, install websocket-client
+import websocket
+uri = "wss://10.0.0.7/api/ws?stream=0"
+header = {"X-KVMD-User": "admin", "X-KVMD-Passwd": "admin"}
+ws = websocket.WebSocket(sslopt={"cert_reqs": ssl.CERT_NONE})
+ws.connect(uri, header=header)
+ws.send(r'{"event_type": "key", "event": {"key": "Enter", "state": true}}')
+time.sleep(0.05)
+ws.send(r'{"event_type": "key", "event": {"key": "Enter", "state": false}}')
+ws.close()
+```
+
 ## System info: `/api/info`
 On `GET` this handle will return general information about the Pi-KVM device. If you specify the `fields` query parameter, only the requested category will be selected, like `fields=system,hw`. By default all categories will be displayed:
 ```
