@@ -435,6 +435,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Brian White
 * Bruno Gomes
 * Bryan Adams
+* Bryan Montgomery
 * C P ELSE
 * Cameron Tacklind
 * Carl Mercier
@@ -538,6 +539,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jean-Philippe Guilbault
 * Jeff Bowman
 * Jeff Urlwin
+* Jennifer Herting
 * Jennifer Rowlett
 * Jerremy Holland
 * Jim Harbin
@@ -557,6 +559,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jordi Pakey-Rodriguez
 * Joris van Embden
 * Jozef Riha
+* Jörgen Fredriksson
 * Julian Forero
 * Julian Schneider
 * Justin Waters
@@ -566,6 +569,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Kenny Hui
 * Kevin Bajohr
 * Kevin Schwartz
+* Kevin Sherwood
 * Kiran Schuler
 * Koloman
 * Krzysztof Żelaśkiewicz
@@ -591,6 +595,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Markus Halm
 * Markus Schicker
 * Markus Sobczack
+* Marshall Bjerke
 * Marten Hermans
 * Martin Gasser
 * Martin Suelmann
@@ -613,6 +618,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Miles Davis
 * Moez Tharani
 * Morgan Helton
+* Nathaniel Griswold
 * Nelson Lee
 * Nicholas Jeppson
 * Nicholas Kopas
@@ -631,6 +637,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Oliver Schwarz
 * Oliver Zimmer
 * Omar El-Domeiri
+* Oscar
 * Patrick McDowell
 * Patrick Wagstrom
 * Paul Bishop
@@ -701,6 +708,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Tom York
 * Tomas Kuchta
 * Tomáš hrubý
+* Torsten Droste
 * Tobias Schafferhans
 * Tristan Schoening
 * Truman Kilen
