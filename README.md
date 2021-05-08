@@ -502,6 +502,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Genkinger Andreas
 * Georgy Brodsky
 * Gernot Neuschröer
+* Giovanni Fulco
 * GK
 * Glen Dragon
 * Greg Winterstein
@@ -536,6 +537,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jason Toland
 * Jay Davis
 * Jay Isaacs
+* Jazereel Goh
 * Jean-Philippe Guilbault
 * Jeff Bowman
 * Jeff Urlwin
@@ -545,6 +547,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jim Harbin
 * Jimmy Stanley
 * Joachim Bruening
+* Joe Hinteregger
 * Joe Ventura
 * Joel Jacobs
 * John Andersen
