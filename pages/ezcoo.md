@@ -1,6 +1,6 @@
 # ezCoo managed multiport KVM switch
 
-The ezCoo managed switch can be controlled by Pi-KVM to allow it to connect to multiple hosts. A typical scenario is a single Pi-KVM device which can control and switch between multiple hosts or servers using the ezCoo switch. UI elements can be added to the [GPIO dropdown](gpio.md) to allow switching between hosts from the Pi-KVM webpage. The instructions here were tested with the [ezCoo SW41HA HDMI 4x1 switch](https://www.easycoolav.com/products/hdmi20-switch-4x1-with-usb20-kvm-4-port-usbsupport-4k60hz-444-and-hdr-audio-breakout). The following was testing on a Raspberry Pi 4 but should also work on the Pi 2 and 3. This document was informed by multiple users on the [Pi-KVM Discord](https://discord.gg/bpmXfz5) and the author appreciates their efforts.
+The ezCoo managed switch can be controlled by Pi-KVM to allow it to connect to multiple hosts. A typical scenario is a single Pi-KVM device which can control and switch between multiple hosts or servers using the ezCoo switch. UI elements can be added to the [GPIO dropdown](gpio.md) to allow switching between hosts from the Pi-KVM webpage. The instructions here were tested with the [ezCoo SW41HA HDMI 4x1 switch](https://www.easycoolav.com/products/hdmi20-switch-4x1-with-usb20-kvm-4-port-usbsupport-4k60hz-444-and-hdr-audio-breakout). Both older USB2.0 and newer USB3.0 variants are supported. The following was testing on a Raspberry Pi 4 but should also work on the Pi 2 and 3. This document was createdy using the contributions from multiple users on the [Pi-KVM Discord](https://discord.gg/bpmXfz5) and the author appreciates their efforts.
 
 :exclamation: While most images of the switch do not show the sides, there is a Micro USB port on the side of the ezCoo switch. This is the management port, which is controlled via COM port on the ezCoo KVM.  When plugged into the Raspberry Pi, it appears as `/dev/ttyUSB0`.
 
@@ -81,3 +81,17 @@ kvmd:
 ## Switching between hosts in the UI
 
 To switch between hosts, enter the KVM UI and click the "GPIO" menu.  You should see 4 inputs, one of which will have a green circle indicating it is currently selected.  Click the other inputs to change the selected host.
+
+## Additional step for the USB3.0 version
+
+Please add ```protocol: 2``` to the override.yaml under the ```type: ezcoo``` at the same level:
+
+```yaml
+kvmd:
+    gpio:
+        drivers:
+            ez:
+                type: ezcoo
+                protocol: 2
+                device: /dev/ttyUSB0
+ ```
