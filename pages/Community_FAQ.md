@@ -163,6 +163,35 @@ ssl_certificate_key /etc/kvmd/nginx/ssl/server.key;
 add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
 ```
 
+### How do I emulate various USB devices on the target machine?
+
+By default this is what is set:
+```
+otg:
+    manufacturer: Pi-KVM
+    max_power: 250
+    product: Composite KVM Device
+    product_id: 260
+    serial: CAFEBABE
+    udc: ''
+    user: kvmd
+    vendor_id: 7531
+```
+
+You can change how this is displayed with the following example:
+```nano /etc/kvmd/override.yaml```
+
+```
+otg:
+    manufacturer: Corsair
+    product: Corsair Gaming RGB
+    serial:
+    vendor_id: 6940
+    product_id: 6973
+```
+USB Data Base: ```https://the-sz.com/products/usbid/```
+
+
 ### Things to do after initial install:
 - Fix date: 'timedatectl list-timezones' then 'timedatectl set-timezone America/Los_Angeles' (Change to your location)
 - Update Pi-KVM, follow #news on Discord for instructions
@@ -258,7 +287,7 @@ lrwxrwxrwx 1 root root 6 Mar 15 09:07 /dev/kvmd-video -> video0
 - remove - `pacman -Rscnd 'the thing'`
 
 ### Common wifi commands
--  `iwconfig` manipulate the basic wireless parameters
+- `iwconfig` manipulate the basic wireless parameters
 - `iwlist`   allow's you to initiate scanning and list frequencies, bit-rates, encryption keys…
 - `iwspy`    displays per node link quality
 - `iwpriv`   allow's you to manipulate the Wireless Extensions specific to a driver (private)
