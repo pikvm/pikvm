@@ -649,6 +649,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Peter Drayton
 * Peter Farrelly
 * Petri Heiskanen
+* Phil Wu
 * Philip Edwards
 * Philip Merricks
 * posicat
@@ -686,6 +687,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Simon Evans
 * Simon Sundgaard
 * Simplistic Realities
+* Solve Technology
 * srepac
 * Stefan Bautz
 * Stefan Müller
