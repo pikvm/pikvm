@@ -443,6 +443,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Carl-Fredrik Johansson
 * cbad536
 * Chris Burton
+* Chris Jackson
 * Chris Lewis
 * Chris Rizio
 * Christian Schlögl
@@ -470,6 +471,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * David
 * David Godibadze
 * David Howell
+* David Klinkman
 * David Niemann
 * David Ye
 * David York
@@ -698,6 +700,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Steve Ovens
 * Steve Stringham
 * Steven Richter
+* Stratagem Solutions Ltd
 * sudo34
 * Tarlak Desaydrone
 * TechBear
