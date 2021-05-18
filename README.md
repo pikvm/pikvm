@@ -589,6 +589,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Louis Müller
 * Luca Di Diomede
 * Lucio De Carli
+* Lukas Bischof
 * Lukas Söder
 * Malcolm Cameron
 * Marcio Zimbres
@@ -697,6 +698,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Stefan Stemmer
 * Stefan Vaillant
 * Stephan Schmidt
+* Stephen Hocking
 * Steve Kerr
 * Steve Ovens
 * Steve Stringham
