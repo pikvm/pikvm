@@ -626,6 +626,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Miles Davis
 * Moez Tharani
 * Morgan Helton
+* Myron Weber
 * Nathaniel Griswold
 * Nelson Lee
 * Nicholas Jeppson
