@@ -33,17 +33,25 @@ The UI can be updated to add buttons to switch between KVM inputs and indicators
 
 1. SSH into Pi-KVM
 2. Enable read-write mode on the sd card via `rw`
-3. Edit the `/etc/kvmd/override.yaml` file and include the following. Note the assumption that the KVM switch is present on `/dev/ttyUSB0`:
+3. Edit the `/etc/kvmd/override.yaml` file and include the following:
 ```yaml
 kvmd:
     gpio:
         drivers:
             tes:
                 type: tesmart
-                tesmart_host: 10.10.1.10
-                tesmart_port: 5000
-                max_ports: 8
+                host: 10.10.1.10
+                port: 5000
         scheme:
+            server0_led:
+                driver: tes
+                pin: 0
+                mode: input
+            server0_switch:
+                driver: tes
+                pin: 0
+                mode: output
+                switch: false    
             server1_led:
                 driver: tes
                 pin: 1
@@ -71,27 +79,18 @@ kvmd:
                 pin: 3
                 mode: output
                 switch: false    
-            server4_led:
-                driver: tes
-                pin: 4
-                mode: input
-            server4_switch:
-                driver: tes
-                pin: 4
-                mode: output
-                switch: false    
         view:
             table:
                 - ["TESMART Switch"]
                 - []
-                - ["#Server 1", server1_led, server1_switch|Switch]
-                - ["#Server 2", server2_led, server2_switch|Switch]
-                - ["#Server 3", server3_led, server3_switch|Switch]
-                - ["#Server 4", server4_led, server4_switch|Switch]
+                - ["#Server 1", server0_led, server0_switch|Switch]
+                - ["#Server 2", server1_led, server1_switch|Switch]
+                - ["#Server 3", server2_led, server2_switch|Switch]
+                - ["#Server 4", server3_led, server3_switch|Switch]
   ```
 4. Return to read-only mode for the sd card via `ro`
 5. Restart the kvmd service: `systemctl restart kvmd`
 
 ## Switching between hosts in the UI
 
-To switch between hosts, enter the KVM UI and click the "Switches" menu.  You should see your inputs, one of which will have a green circle indicating it is currently selected.  Click the other inputs to change the selected host.
+To switch between hosts, enter the KVM UI and click the "Switches" menu. You should see your inputs, one of which will have a green circle indicating it is currently selected.  Click the other inputs to change the selected host.
