@@ -486,6 +486,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * dixon wong
 * dizztrukshin
 * Dmitry Shilov
+* Dominik Klonowski
 * Egan Ford
 * Elliot Woo
 * Eric Phenix
@@ -560,6 +561,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * John Kelley
 * John McGovern
 * Johnny Henson
+* Jonathan Slenders
 * Jonathan Vaughn
 * Josh Ricker
 * Joshua Futterer
@@ -652,6 +654,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Paul Bishop
 * Pawel Trofimiuk
 * Peder Madsen
+* Peter
 * Peter Drayton
 * Peter Farrelly
 * Petri Heiskanen
