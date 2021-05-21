@@ -544,6 +544,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jay Isaacs
 * Jazereel Goh
 * Jean-Philippe Guilbault
+* Jeff
 * Jeff Bowman
 * Jeff Urlwin
 * Jennifer Herting
@@ -684,6 +685,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Samed Ozoglu
 * Sameul Davies
 * Samuel Vetsch
+* Sarah Foster
 * Satish Alwani
 * Scott
 * Scott Gagon
@@ -709,6 +711,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Steve Stringham
 * Steven Richter
 * Stratagem Solutions Ltd
+* Sven Breckler
 * sudo34
 * Tarlak Desaydrone
 * TechBear
