@@ -588,6 +588,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Lee Wilkinson
 * LeeNX
 * Leonard Feineis
+* Lizardo Hernandez
 * Lordbob75
 * Lothar Schweikle-Droll
 * Louis Müller
@@ -596,6 +597,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Lukas Bischof
 * Lukas Söder
 * Malcolm Cameron
+* Marcin Wilk
 * Marcio Zimbres
 * Marcos Wolf
 * Marius
