@@ -189,7 +189,7 @@ otg:
     vendor_id: 6940
     product_id: 6973
 ```
-USB Data Base: ```https://the-sz.com/products/usbid/```
+Use the following USB Data Base to get the desired devices: ```https://the-sz.com/products/usbid/```
 
 
 ### Things to do after initial install:
@@ -360,7 +360,11 @@ iw wlan0 info
 - Pi-KVM Power/Data OTG splitter boards
   - https://www.pishop.us/product/usb-pwr-splitter/ (Look on Tindi for the same thing in the UK)
   - https://www.pishop.us/product/usb-c-pwr-splitter/ (Look on Tindi for the same thing in the UK)
-- Current 3D cases that support the various Pi-KVM hardware configurations https://www.thingiverse.com/search?q=pi-kvm&type=things&sort=relevant, https://www.thingiverse.com/thing:4799094
+- Current 3D cases that support the various Pi-KVM hardware configurations:
+```
+https://www.thingiverse.com/search?q=pi-kvm&type=things&sort=relevant
+https://www.thingiverse.com/thing:4799094
+```
 
 As of March 2021, Out of Stock or hard to get, all have exceptionally LONG shipping dates - Could try AliExpress or get a usb2hdmi dongle from Amazon, please ask or search in Discord for the best known working one
 
