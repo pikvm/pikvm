@@ -503,6 +503,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Frank
 * Frederick Czajka
 * Fredrik Idréus
+* Garrett Dangerfield
 * Ge Men
 * Genkinger Andreas
 * Georgy Brodsky
@@ -602,6 +603,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Lukas Bischof
 * Lukas Söder
 * Malcolm Cameron
+* Marc Khouri
 * Marcin Wilk
 * Marcio Zimbres
 * Marcos Wolf
