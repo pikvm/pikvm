@@ -6,6 +6,7 @@ This operation can be done using your RPi (except Pi Zero W). Here the common st
  1. Disconnect the RESET wire from the Arduino board.
  1. Connect the Arduino and RPi with a suitable USB cable.
  1. Log in to the Raspberry Pi using SSH (`ssh root@<addr>` with password `root` by default) or using keyboard and monitor. The Raspberry Pi obtains the network address over DHCP.
+ 1. Execute `rw`, add line `dtoverlay=spi0-1cs` to `/boot/config.txt` and perform `reboot`.
  1. Upload the firmware (USB keyboard & mouse is used by default, on this step [you can choose PS/2 keyboard](arduino_hid.md#ps2-keyboard)):
     ```shell
     [root@pikvm ~]# rw
