@@ -464,6 +464,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Corey Lista
 * Crossfactor
 * ctag
+* Curt Sammer
 * CyB0rgg
 * DeMentor
 * Desmond Whitt
