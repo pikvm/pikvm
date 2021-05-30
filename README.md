@@ -328,7 +328,8 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
             ip: 192.168.0.100
             # port: 9  # By default
     ```
-
+    then restart `kvmd`:
+    
 * [Video modes of HDMI CSI brodge (if no video in UEFI)](pages/edid.md).
 
 * [Mouse modes (if the mouse doesn't work in UEFI)](pages/mouse.md).
