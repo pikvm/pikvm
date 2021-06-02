@@ -7,8 +7,8 @@ You can use [Tailscale](https://tailscale.com/) to access Pi-KVM on the internal
   ```
   # rw
   # pacman -Syy
-  # pacman -S tailscale-pikvm
-  # systemctl enable --now tailscaled
+  # pacman -S tailscale
+  # systemctl enable --now tailscaled.service
   # tailscale up
   ```
 2. Follow the link to authorize this installation.
