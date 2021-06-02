@@ -16,6 +16,6 @@ Here the status is:
 | Model | Status | Notes |
 |:------|:-------|:------|
 | [ezCoo EZ-SW41HA-KVMU3L 4x1 switch](https://www.easycoolav.com/products/hdmi20-switch-4x1-with-usb30-kvm-3-port-usbsupport-4k60hz-444-and-hdr-audio-breakout-36) ~~[ezCoo SW41HA HDMI 4x1 switch](https://www.easycoolav.com/products/hdmi20-switch-4x1-with-usb20-kvm-4-port-usbsupport-4k60hz-444-and-hdr-audio-breakout)~~ (legacy) | ✔ | [Using with Pi-KVM](ezcoo.md) |
-| [Ali's noname](https://a.aliexpress.com/_BSpS8t) | ✔ | [Here are the details](https://github.com/pikvm/pikvm/issues/128) |
+| [Ali's noname](https://a.aliexpress.com/_BSpS8t) | ✔ | Limitations are as follows: RPi4 OTG connected to KB port, for MSD support you need a zerow connected to the HUB port [Here are the details](https://github.com/pikvm/pikvm/issues/128) |
 | [Aimos 8-port HDMI USB-C KVM Switch](https://www.amazon.de/AIMOS-Umschalter-Tastatur-unterst%C3%BCtzen-verbunden/dp/B08FR5K111/) | ✔ | Similar to Ali's noname model, available in 4/8port editions, has same HDMI bridge boot problem/solution using a Marmitek 312 UHD HDMI splitter [See here for details](https://github.com/pikvm/pikvm/issues/128) |
 | [TESmart 8 PORT - HDMI KVM SWITCH](https://buytesmart.com/collections/8-ports) |  ✔ | Use OTG with USB 2.0 Hub only, no hotkey support. Switching available with serial or IP-to-serial interface using fixed IP (/31 peer-to-peer addressing supported). Can be managed [via WebUI](tesmart.md) or [CLI tool](https://github.com/bbeaudoin/bash/tree/master/tesmart) |
