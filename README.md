@@ -183,7 +183,7 @@ We are also currently developing our own HAT for the Raspberry Pi 4. It will hav
 
 **YouTube Review of the v3 board**: https://youtu.be/dTchVKxx7Fo
 
-**Status as of Jun 2021: Due to the complexity of the organization in Russia, we needed to use resellers. They are not available at the moment, but if you leave your address, you will receive an email very soon - right now we are packing parcels. The devices will be available for purchase at the specified links. The second batch will also have a reseller in Europe.**
+**Status as of Jun 2021**: Due to the complexity of the organization in Russia, we needed to use resellers. The devices will be available for purchase at the specified links. The second batch will also have a reseller in Europe.
 * US: https://www.pishop.us/product/pi-kvm-v3-hat-for-raspberry-pi-4
 * Canada: https://www.buyapi.ca/product/pi-kvm-v3-hat-for-raspberry-pi-4
 * US + Worldwide: https://cloudfree.shop/product/pi-kvm-v3-hat-for-raspberry-pi-4
