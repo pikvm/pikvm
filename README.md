@@ -24,7 +24,7 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 * Access via **Web UI** or **VNC**;
 * Ability to use **IPMI BMC**, **IPMI SoL**, **Redfish** and **Wake-on-LAN** to control the server;
 * **The ready-made OS** with read-only filesystem;
-* **Extensible authorization** and SSL encryption;
+* **Extensible authorization** and HTTPS out of the box;
 * **Health monitoring** of the Pi;
 * Control **GPIO** ports and **USB relays**;
 * It only costs between $30 and $100 for parts!
@@ -51,7 +51,7 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 * **ATX power management**  
   With a very simple circuit that can be assembled on a breadboard, the power button of the attached server can be controlled using the ATX button headers on the motherboard.
 * **Security**  
-  Pi-KVM can be opened to the Internet and no one will get access without the password. SSL encryption is used to protect traffic from being intercepted by third parties.
+  Pi-KVM can be opened to the Internet and no one will get access without the password. SSL is used to protect traffic from being intercepted by third parties.
 * **Local monitoring**  
   Pi-KVM monitors the health of the Raspberry Pi board and will warn you if it's too hot or is not receiving enough power.
 * **GPIO management**
