@@ -473,6 +473,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Damon Meledones
 * Dan Berkowitz
 * Dan Brakeley
+* Daniel Davila
 * David
 * David Godibadze
 * David Howell
@@ -574,6 +575,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jon Ferguy
 * Jonathan Slenders
 * Jonathan Vaughn
+* Joost Backer
 * Josh Ricker
 * Joshua Futterer
 * Jordi Pakey-Rodriguez
