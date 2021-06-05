@@ -21,7 +21,7 @@ Here the status is:
 | [TESmart 8 PORT - HDMI KVM SWITCH](https://buytesmart.com/collections/8-ports) |  ✔ | Use OTG with USB 2.0 Hub only, no hotkey support. Switching available with serial or IP-to-serial interface using fixed IP (/31 peer-to-peer addressing supported). Can be managed [via WebUI](tesmart.md) or [CLI tool](https://github.com/bbeaudoin/bash/tree/master/tesmart) |
 
 Limitations:
-- HDMI backpower needs to be mitigated - Cheap 13$ HDMI splitter will work
+- HDMI backpower needs to be mitigated - [Cheap 13$ HDMI splitter will work](https://www.amazon.com/dp/B07DQBY5TX)
 - MSD work around is needed as it will not work OOB
     - **Solutions**
         - Solution 1: RPi4 OTG needs to be in the KB port for mouse and KB funtionality, ZeroW is required and needs to be connected to the HUB port for HK switching and MSD functionality - ✔**KNOWN WORKING**✔
