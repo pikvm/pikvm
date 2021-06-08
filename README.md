@@ -550,6 +550,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jason Crossley
 * Jason Downey
 * Jason Toland
+* Jasper Backer
 * Jay Davis
 * Jay Isaacs
 * Jazereel Goh
