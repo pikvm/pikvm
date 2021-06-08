@@ -131,6 +131,7 @@ rm -rf /var/cache/pacman/pkg/*
 
 ### Can you connect a camera to this and still make pikvm functional?
 - Yes, any cheapo webcam can be used in place of the usb dongle, please use the usb image
+- A PiCam will NOT work
 
 ### I have a question that is not answered here!! Now what?
 - Please look at all pins on Discord
