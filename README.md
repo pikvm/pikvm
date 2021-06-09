@@ -505,6 +505,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Finn Ebenritter
 * fo0bar
 * Foamy
+* Folkert Weistra
 * Francisco Pavon
 * Frank
 * Frederick Czajka
@@ -564,6 +565,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jim Harbin
 * Jimmy Stanley
 * Joachim Bruening
+* Joe Hanson
 * Joe Hinteregger
 * Joe Ventura
 * Joel Jacobs
@@ -645,6 +647,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Mike Mason
 * Milan Múčka
 * Miles Davis
+* Minh Tang
 * Moez Tharani
 * Morgan Helton
 * Myron Weber
