@@ -525,6 +525,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Grey Cynic
 * Guido Bernacchi
 * Gustin Johnson
+* Heibunny
 * Heikki Tiittanen
 * Helio Leonardo Pinheiro e Mota
 * Henrik Ählström
