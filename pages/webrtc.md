@@ -8,7 +8,7 @@ If you are upgrading to an older version of the OS, you will need to manually en
 ```
 # systemctl enable --now kvmd-janus
 ```
-Then restart the Web UI and then in the System menu you will see the video mode switch.
+Then restart the Web UI and then in the **System** menu you will see the video mode switch.
 
 # Subtleties
 The MJPEG video stream uses the same HTTP connection that you use to download the web interface.
