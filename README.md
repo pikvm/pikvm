@@ -17,7 +17,7 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 ### Features
 * Supported **Raspberry Pi 2**, **3**, **4** and **ZeroW**;
 * **FullHD video** using advanced **HDMI-to-CSI bridge** or **USB dongle**;
-* Extra low **100ms video latency** (for CSI bridge);
+* Extra low **video latency** with **MJPEG** or **H.264 / WebRTC** (for CSI bridge);
 * Bootable **Virtual CD-ROM** and **Flash Drive**;
 * USB **Keyboard** and **mouse** (with leds and the wheel), PS/2 keyboard, Bluetooth HID;
 * **Control the server power** using ATX functions;
@@ -94,7 +94,7 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 # DIY Getting Started
 ## Required hardware
 Pi-KVM supports several different hardware configurations, referred to as **platforms**. Now available: **v2** and **v0**.
-* **Recommended**: **v2** is the most modern implementation for **Raspberry Pi 4** and **ZeroW** supporting all of the features of Pi-KVM including the **Mass Storage Drive**. **It's also the easiest to make**
+* **Recommended**: **v2** is the most modern implementation for **Raspberry Pi 4** and **ZeroW** supporting all of the features of Pi-KVM including the **Mass Storage Drive**. **For Raspberry Pi 4 (not for Zero), there is support for H.264 video.**. **It's also the easiest to make**.
 * v0 was designed to work with Raspberry Pi 2 and 3 that do not have OTG and requires a few more components for a basic implementation. It also does not support the Mass Storage Drive feature.
 
 ## Hardware for v2
@@ -104,8 +104,8 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
 * MicroSD card (min 16 GB recommended).
 * USB-A 3A charger (female socket) or power supply.
 * Video capture device:
-  - **Recommended**: [HDMI to CSI-2 bridge based on TC358743](https://aliexpress.com/item/4000102166176.html) - low latency ~100ms, more reliable, upcoming H.264 support for lower traffic consumption.
-  - ... or [HDMI to USB dongle](https://aliexpress.com/item/4001043540669.html) (not available for ZeroW) - high latency ~200ms, [not very reliable](#a-few-words-about-hdmi-usb-dongle)), no H.264 a very long time yet.
+  - **Recommended**: [HDMI to CSI-2 bridge based on TC358743](https://aliexpress.com/item/4000102166176.html) - low latency, more reliable, **H.264 video**.
+  - ... or [HDMI to USB dongle](https://aliexpress.com/item/4001043540669.html) (not available for ZeroW) - high latency >200ms, [not very reliable](#a-few-words-about-hdmi-usb-dongle)), no H.264 a very long time yet.
 * Only for Raspberry Pi 4: parts for Y-splitter cable (**one variant at your choice**):
   * <details><summary>Variant #1: DIY for soldering or twist.</summary>
     <ul>
@@ -140,7 +140,7 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
   - A breadboard and wires.
   
 #### A few words about HDMI-USB dongle
-It's completely supported and Pi-KVM works great with it. But it has some disadvantages compared with recommended [HDMI-CSI bridge](https://aliexpress.com/item/4000102166176.html): USB gives a lot of latency (200ms vs 100ms) and it doesn't support stream compression control (you won't be able to use Pi-KVM in a place with a poor internet connection). It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself. In addition, some users report hardware problems: the dongle may not work in the BIOS or simply stop working after a while. It's a black box, and no one knows what's inside it. If you have problems with it, it will not be possible to fix them.
+It's completely supported and Pi-KVM works great with it. But it has some disadvantages compared with recommended [HDMI-CSI bridge](https://aliexpress.com/item/4000102166176.html): USB gives a lot of latency (200ms vs 100ms for MJPEG) and it doesn't support stream compression control (you won't be able to use Pi-KVM in a place with a poor internet connection). There is no H.264 support at the moment. It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself. In addition, some users report hardware problems: the dongle may not work in the BIOS or simply stop working after a while. It's a black box, and no one knows what's inside it. If you have problems with it, it will not be possible to fix them.
   
 ## Hardware for v0
 * Raspberry Pi 2 or 3.
@@ -330,8 +330,10 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
             ip: 192.168.0.100
             # port: 9  # By default
     ```
-    then restart `kvmd`:
+    then restart `kvmd`.
     
+* [Using H.264 / WebRTC](pages/webrtc.md).
+
 * [Video modes of HDMI CSI brodge (if no video in UEFI)](pages/edid.md).
 
 * [Mouse modes (if the mouse doesn't work in UEFI)](pages/mouse.md).
