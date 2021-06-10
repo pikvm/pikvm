@@ -94,7 +94,7 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 # DIY Getting Started
 ## Required hardware
 Pi-KVM supports several different hardware configurations, referred to as **platforms**. Now available: **v2** and **v0**.
-* **Recommended**: **v2** is the most modern implementation for **Raspberry Pi 4** and **ZeroW** supporting all of the features of Pi-KVM including the **Mass Storage Drive**. **It's also the easiest to make**
+* **Recommended**: **v2** is the most modern implementation for **Raspberry Pi 4** and **ZeroW** supporting all of the features of Pi-KVM including the **Mass Storage Drive**. **For Raspberry Pi 4 (not for Zero), there is support for H.264 video.**. **It's also the easiest to make**.
 * v0 was designed to work with Raspberry Pi 2 and 3 that do not have OTG and requires a few more components for a basic implementation. It also does not support the Mass Storage Drive feature.
 
 ## Hardware for v2
@@ -332,6 +332,8 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
     ```
     then restart `kvmd`:
     
+* [Using H.264 / WebRTC](pages/webrtc.md).
+
 * [Video modes of HDMI CSI brodge (if no video in UEFI)](pages/edid.md).
 
 * [Mouse modes (if the mouse doesn't work in UEFI)](pages/mouse.md).
