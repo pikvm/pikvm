@@ -330,7 +330,7 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
             ip: 192.168.0.100
             # port: 9  # By default
     ```
-    then restart `kvmd`:
+    then restart `kvmd`.
     
 * [Using H.264 / WebRTC](pages/webrtc.md).
 
