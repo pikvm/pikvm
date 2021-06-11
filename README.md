@@ -488,6 +488,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Denis Andreev
 * Denis Yatsenko
 * Dennis Becker
+* Dennis Joslin
 * Dennis Lomet
 * Derek Yap
 * Didrik
@@ -617,9 +618,11 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Lukas Kammerer
 * Lukas Söder
 * Malcolm Cameron
+* Manfred Radeschnig
 * Marc Khouri
 * Marcin Wilk
 * Marcio Zimbres
+* Marco Rossi
 * Marcos Wolf
 * Marius
 * Mar. Balske
@@ -705,6 +708,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Rohit Priyadarshi
 * Rolfs 3D UG
 * Ronald LeBaron
+* Ronny Haldorsen
 * rotx
 * Russell Scott
 * Samed Ozoglu
