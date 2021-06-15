@@ -406,6 +406,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Andrew Reusch
 * Andrew Ruan
 * Andrzej V
+* Andy Keys
 * Anish Patel
 * Anix
 * anonymous
@@ -475,6 +476,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Damon Meledones
 * Dan Berkowitz
 * Dan Brakeley
+* Daniel Cabrera
 * Daniel Davila
 * David
 * David Godibadze
@@ -602,6 +604,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Kevin Sherwood
 * Kiran Schuler
 * Koloman
+* Konrad Neitzel
 * Krzysztof Żelaśkiewicz
 * Larry Meaney
 * Lars
@@ -714,6 +717,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Samed Ozoglu
 * Sameul Davies
 * Samuel Vetsch
+* Samuel Walker
 * Sarah Foster
 * Satish Alwani
 * Scott
