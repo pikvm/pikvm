@@ -10,6 +10,8 @@ If you are upgrading to an older version of the OS, you will need to manually en
 ```
 Then restart the Web UI and then in the **System** menu you will see the video mode switch.
 
+:exclamation: If you do not see the switch, it means that either your browser does not support WebRTC, or the `kvmd-janus` service was not started.
+
 # Subtleties
 The MJPEG video stream uses the same HTTP connection that you use to download the web interface.
 This means that for remote access, you just need to forward ports 80 and 443 on your router.
