@@ -44,8 +44,9 @@ KVMD-Janus is a wrapper around it, configuring and monitoring changes in the net
 However, if your Pi-KVM is not connected to the Internet and/or you want to use a custom Janus configuration,
 then you should use the `kvmd-janus-static` service instead. You should first change the Janus configuration yourself.
 You can find it in `/etc/kvmd/janus/janus.jcfg`.~~
-~~```
+
+```
 # systemctl disable --now kvmd-janus
 ...
 # systemctl enable --now kvmd-janus-static
-```~~
+```
