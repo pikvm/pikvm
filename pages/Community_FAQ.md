@@ -8,6 +8,12 @@
 - For the CSI Bridge, ❗No:exclamation:. there is not enough bandwidth in the CSI bus for that much data. 1080p50 will max out the bandwidth
 - For the USB capture devices: Technically yes, but they will downsample to something smaller to meet the usb2.0 bandwidth limitations, so the source may be 4k, but the stream will not.
 
+### Why so much latency between the screen and target?
+- capture device
+- compression
+- network
+- decompression
+
 ### Is Pi-KVM an OS or its own Distro?
 - Yes and No, Other than the some repacking and patches, its heavly based off an existing [Arch Linux ARM](https://archlinuxarm.org/).
 
@@ -190,7 +196,11 @@ otg:
     vendor_id: 6940
     product_id: 6973
 ```
-Use the following USB Data Base to get the desired devices: ```https://the-sz.com/products/usbid/```
+Use the following USB Data Base to get the desired devices: ```https://the-sz.com/products/usbid/``` for simple searches, please use ```https://devicehunt.com``` for a more detailed output of usb devices.
+	
+❗NOTE❗ You may need to include ```0x0``` in the id string's for it to work properly.
+- Example:
+	- ```vendor_id: 0x06940```
 
 
 ### Things to do after initial install:
