@@ -11,7 +11,7 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 * **[Pro Series v3 Preorder Today!](#the-future-v3-platform-work-in-progress) / Video review**: https://youtu.be/dTchVKxx7Fo
 * [Limitations](#limitations)
 * [Tips](#tips)
-* [FAQ](#faq)
+* [FAQ](#faq-and-troubleshooting)
 * [Donate](#donate)
 
 ### Features
@@ -85,8 +85,8 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
   We created [our very own MJPG video server](https://github.com/pikvm/ustreamer) written in C with multi-threading support and GPU video encoding - the fastest streaming solution available to provide the best video quality for Pi-KVM. We also tested a lot of hardware configurations so that you can be sure devices you assemble will work reliably.
 </details>
 
-| DIY Device | Web UI |
-|------------|--------|
+| DIY Device                                    | Web UI                                     |
+| --------------------------------------------- | ------------------------------------------ |
 | <img src="img/v2_example.jpg" alt="drawing"/> | <img src="img/screen1.png" alt="drawing"/> |
 
 -----
@@ -199,15 +199,15 @@ You can also leave your email to us personally, so that we can send you a messag
   <summary>:exclamation:Click to show the instructions:exclamation:</summary>
 Insert the flexible flat cable of the HDMI bridge into the narrow white connector on the Raspberry Pi (the closest one to big USB sockets). It is labeled CAMERA. To insert you need to open the connector first. On the Raspberry Pi side you can gently lift the black part up and a little bit sideways:
 
-| Opening the MIPI CSI-2 slot on the Raspberry Pi |
-|------------------------------------------------------|
+| Opening the MIPI CSI-2 slot on the Raspberry Pi                                                  |
+| ------------------------------------------------------------------------------------------------ |
 | <img src="img/open-MIPI-CSI2-Slot.png" alt="detailed picture of the MIPI-CSI2 slot" width="350"> |
 
 For the HDMI-CSI bridge it depends on the version you bought. Either pull it gently up as on the Raspberry or push it sideways. Make sure that the cable is inserted on the correct side and until it stops, and then push the black latch back. Never connect or disconnect the flat cable from a powered device. This is not Plug-and-Play, and you can damage it. Also use only the cable that was included with the device package, or make sure that the third-party cable has the correct pinout.
 
-| HDMI-CSI-2 bridge connected to Raspberry Pi 4 |
-|------------------------------------------------------|
-| <img src="img/rpi4-hdmi-csi-connection.png" alt="HDMI-CSI-2 bridge connected to Raspberry Pi 4" width="350">|
+| HDMI-CSI-2 bridge connected to Raspberry Pi 4                                                                |
+| ------------------------------------------------------------------------------------------------------------ |
+| <img src="img/rpi4-hdmi-csi-connection.png" alt="HDMI-CSI-2 bridge connected to Raspberry Pi 4" width="350"> |
 
 </details>
 
@@ -216,8 +216,8 @@ For the HDMI-CSI bridge it depends on the version you bought. Either pull it gen
   <summary>:exclamation:Click to show the instructions:exclamation:</summary>
 Connect USB dongle to exactly this port. It is bound in the software so the OS does not confuse the video device with something else.
 
-| Raspberry Pi 2 and 3 | Raspberry Pi 4 |
-|----------------------|----------------|
+| Raspberry Pi 2 and 3                                          | Raspberry Pi 4                                                |
+| ------------------------------------------------------------- | ------------------------------------------------------------- |
 | <img src="img/v2_usbcap_rpi2.png" alt="drawing" width="200"/> | <img src="img/v2_usbcap_rpi4.png" alt="drawing" width="200"/> |
 
 There are many revisions of the Raspberry Pi boards and you may come across one that we haven't tested. If the binding fails, the device will be available for all ports. Everything will work, but if you use a webcam and Linux mistakes it for a dongle, [write to us](https://discord.gg/bpmXfz5) and we will fix it.
@@ -228,8 +228,8 @@ There are many revisions of the Raspberry Pi boards and you may come across one 
   <summary>:exclamation:Click to show the instructions:exclamation:</summary>
 Here is a diagram shows that how to connect all of the pieces (click to full size).
 
-| ATX control board | USB splitter cable (only for Raspberry Pi 4) |
-|-------------------|--------------------------|
+| ATX control board                                 | USB splitter cable (only for Raspberry Pi 4)               |
+| ------------------------------------------------- | ---------------------------------------------------------- |
 | <img src="img/v2.png" alt="drawing" width="400"/> | <img src="img/v2_splitter.png" alt="drawing" width="400"/> |
 
 **Raspberry Pi 4**: since one USB-C female connector is used to receive power and perform keyboard/mouse/drive emulation a special Y-cable must be made that splits the DATA and POWER lines of USB-C (see [reasons](https://github.com/pikvm/docs/issues/11)). It can be made from two suitable connecting cables, or soldered together from scratch. Be sure to check the circuit diagram below, otherwise you may damage your devices. The appropriate USB pinout(s) can easily be found on Google. Please note that if you make a Y-cable from two no-name cables, the colors of the wires may not match those shown. Use a multimeter to make sure the connections are correct.
@@ -248,8 +248,8 @@ See video how-tos:
   <summary>:exclamation:Click to show the instructions:exclamation:</summary>
 
 | ATX control board and Arduino HID (keyboard & mouse) |
-|------------------------------------------------------|
-| <img src="img/v0.png" alt="drawing" width="400"/> |
+| ---------------------------------------------------- |
+| <img src="img/v0.png" alt="drawing" width="400"/>    |
 
 </details>
 
@@ -368,7 +368,7 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
 
 -----
 
-# FAQ & Troubleshooting
+# FAQ and Troubleshooting
 If you have any questions or run into problems, take a look at [this page](pages/faq.md). We've probably already found a solution for it :)
 
 For any help, you can contact our discord chat: https://discord.gg/bpmXfz5
