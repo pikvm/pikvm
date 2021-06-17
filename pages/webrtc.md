@@ -36,14 +36,14 @@ janus:
 ```
 And restart `systemctl restart kvmd-janus`.
 
-# ~~Custom Janus config~~
+# Custom Janus config
 ❗**Custom config is not working right now**
 
-~~[Janus](https://janus.conf.meetecho.com) is a WebRTC gateway that is used to transmit the [uStreamer](https://github.com/pikvm/ustreamer) video.
+[Janus](https://janus.conf.meetecho.com) is a WebRTC gateway that is used to transmit the [uStreamer](https://github.com/pikvm/ustreamer) video.
 KVMD-Janus is a wrapper around it, configuring and monitoring changes in the network configuration. This is suitable for most users.
 However, if your Pi-KVM is not connected to the Internet and/or you want to use a custom Janus configuration,
 then you should use the `kvmd-janus-static` service instead. You should first change the Janus configuration yourself.
-You can find it in `/etc/kvmd/janus/janus.jcfg`.~~
+You can find it in `/etc/kvmd/janus/janus.jcfg`.
 
 ```
 # systemctl disable --now kvmd-janus
