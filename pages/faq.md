@@ -95,6 +95,13 @@ Note: if you can't find an answer to your question here, try the [Community FAQ]
 -----
 # Video problems
 
+### I can see the video but I can't see the WebRTC switch
+<details>
+  <summary>Click to view</summary>
+
+WebRTC is an alternative mode for the default MJPEG and it's only supported on v2+ platforms with the CSI video capture device. See [this](webrtc.md) page to solve any problems with WebRTC.
+</details>
+
 ### Pi-KVM does not show the video from the computer at all
 <details>
   <summary>Click to view</summary>
