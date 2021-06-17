@@ -75,7 +75,7 @@ Note: if you can't find an answer to your question here, try the [Community FAQ]
 <details>
   <summary>Click to view</summary>
 
-* The Pi-KVM file system is always mounted in read-only mode. This measure prevents it from being damaged by a sudden power outage. To change the configuration you must first switch the filesystem to write mode using the command `rw` from root. After the changes, be sure to run the command `ro` to switch it back to read-only.
+* The Pi-KVM file system is always mounted in read-only mode. This measure prevents it from being damaged by a sudden power outage. To change the configuration you must first switch the filesystem to write mode using the command `rw` from root. After the changes, be sure to run the command `ro` to switch it back to read-only. If you get a message that the file system is busy, then the easiest way is to perform a `reboot`.
 </details>
 
 ### How do I update Pi-KVM with the latest software?
@@ -94,6 +94,13 @@ Note: if you can't find an answer to your question here, try the [Community FAQ]
 
 -----
 # Video problems
+
+### I can see the video but I can't see the WebRTC switch
+<details>
+  <summary>Click to view</summary>
+
+* WebRTC is an alternative mode for the default MJPEG and it's only supported on v2+ platforms with the CSI video capture device. See [this](webrtc.md) page to solve any problems with WebRTC.
+</details>
 
 ### Pi-KVM does not show the video from the computer at all
 <details>

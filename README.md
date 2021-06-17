@@ -392,6 +392,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Aaron Heise
 * Accalia
 * Adam Goodbar
+* Adam S
 * adipisicing
 * Adrian Basham
 * Alberto Bassi
@@ -727,6 +728,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Sean
 * Seonwoo Lee
 * Sergey Lukjanov
+* Seth Jennings
 * Shichun Chen
 * Simon Evans
 * Simon Sundgaard
@@ -755,6 +757,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Thomas Hagenmaier
 * Thomas Price
 * Thomas Søfteland
+* Tim Lenz
 * Tim Wilkinson
 * Timo Brinkmann
 * Timothee Besset
