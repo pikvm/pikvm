@@ -9,10 +9,7 @@
 - For the USB capture devices: Technically yes, but they will downsample to something smaller to meet the usb2.0 bandwidth limitations, so the source may be 4k, but the stream will not.
 
 ### Why so much latency between the screen and target?
-- capture device
-- compression
-- network
-- decompression
+- capture device+compression+network+decompression+external network(if applicable)
 
 ### Is Pi-KVM an OS or its own Distro?
 - Yes and No, Other than the some repacking and patches, its heavly based off an existing [Arch Linux ARM](https://archlinuxarm.org/).
@@ -28,8 +25,8 @@ As an appliance, users are not expected to interact with the host operating syst
 ### Do I need a power splitter? Why do I need one?
 - Yes for RPi4, No for ZeroW
 - Yes, otherwise you could back power the pi and or the target
-- You can get a Y cable from amazon and mod one of the leads - Please see getting started guide
-- You can get a power splitter board from Tindi or PiShop (Links provided below)
+- You can get a Y cable from amazon and mod one of the leads - Please see getting started guide - or see below for [non modding of Y cable](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#useful-links)
+- You can get a power splitter board from Tindi or PiShop [(Links provided below)](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#useful-links)
 - If you have the v3 HAT - This is built in
 
 ### I can't get the KVM KB to work on my ZeroW!
@@ -48,6 +45,7 @@ Ensure that you have the cable(Needs to support both power/data) plugged into th
 
 ### Can I use a KB on my ZeroW?
 - Yes but kb/mouse passthrough will not work. Its one or the other
+- edit ```/boot/config.txt```
   - Host mode - Comment out dtoverlay=dwc2
   - Passthrough mode - Uncomment out dtoverlay=dwc2
 
@@ -71,10 +69,7 @@ Yes! And it's easy to do! Using a SSH session or the web terminal:
 - Optional: Edit `/etc/kvmd/meta.yaml` to alter the displayed hostname in the web UI
 - Reboot the pikvm
 
-### I can't make edits?!?!?
-- Did you issue a `rw` before updating/editing?
-
-### In the Web Terminal, how do I get root?
+### In the Web Terminal, how do I get root? Also found [here.](https://github.com/pikvm/pikvm/blob/master/README.md#youre-amazing)
 - Type `su -`
 - Put `root` for the password
 
@@ -113,9 +108,6 @@ ClientIdentifier=mac
 - Use the FING mobile app to scan your network, its free
 - Install Angry IP scanner, tools/preferences/Display results in the results list/Select Alive hosts, modify IP range, hit start
 - Using FF, navigate to https://pikvm (Depends on your network if this actually works, in most case's will work))
-  - Open web terminal and go to root, rw then nano /etc/issue
-  - add ‘IP: \4’
-  - Once you reboot, you will now see the IP in the upper left
   - The below commands will verify that your Pi on on your network
 ```
 arp -a | grep below is a list of MAC's for Raspberry Pi
@@ -124,7 +116,11 @@ arp -a | grep below is a list of MAC's for Raspberry Pi
 	E4:5F:01:xx:xx:xx	E4-5F-01-xx-xx-xx	E45F.01xx.xxxx
 Power shell: arp -a | findstr 'b8-27-eb' (Replace with the above, all lower case)
 ```
-
+- For older flashed images you can do the following
+  - Open web terminal and go to root, ```rw``` then ```nano /etc/issue```
+  - add ```IP: \4```
+  - Once you reboot, you will now see the IP in the upper left
+	
 ### Help! I ran out of room! What now?
 - You’ve cached package updates you no longer need.
 - Enter read/write mode by executing rw as root
@@ -143,18 +139,18 @@ rm -rf /var/cache/pacman/pkg/*
 - Please look at all pins on Discord
 - Please look in #news on Discord
 
-### I want the v3 hat!! Where do I get it??
-- At this time it is not available, due to the current pandemic the factories are running at a much slower rate
-
 ### HELP!! Something isn't working!!
 - What was the last thing or most recent thing you did? Did you undo it?
 - Did you hook this to anything else? If not why not?
 - Did you try different cables?
+
 ### Can you use an iPad on PiKVM?
 - Yes, with the correct hardware you can control an iPad
 - Yes, activate VNC and use JUMP app(Full featured but more expensive), or bVNC(Not recommended, lack luster features but cheap). RealVNC does NOT work
-### Can I use RealVNC to connect to PiKVM?
+
+### Can I use RealVNC/Guacamole to connect to PiKVM?
 - No, RealVNC is not a real vnc so will not work
+- No, Guacamole supports a minimum of VNC capabilities and is fundamentally incompatible with Pi-KVM (for example, it does not support JPEG for video compression).
 
 ### How do I add my own SSL cert?
 - If you have a certificate(:exclamation:**Making a cert falls outside the scope of PIKVM - Please reference Linux documentation**:exclamation:), replace the public key in /etc/kvmd/nginx/ssl/server.crt and private key in /etc/kvmd/nginx/ssl/server.key and restart the kvmd-nginx service.
@@ -368,9 +364,10 @@ iw wlan0 info
 	
 ### Useful links
 - https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi - Very good article on PI-KVM setup
-- Pi-KVM Power/Data OTG splitter boards
+- Pi-KVM Power/Data OTG splitter boards - also noted [here](https://github.com/pikvm/pikvm#hardware-for-v2)
   - https://www.pishop.us/product/usb-pwr-splitter/ (Look on Tindi for the same thing in the UK)
   - https://www.pishop.us/product/usb-c-pwr-splitter/ (Look on Tindi for the same thing in the UK)
+- An alternitive to a NON solder or modding a Y cable is using [power blocker boards](https://www.amazon.com/gp/product/B092MLT2J3)
 - Current 3D cases that support the various Pi-KVM hardware configurations:
 ```
 https://www.thingiverse.com/search?q=pi-kvm&type=things&sort=relevant
