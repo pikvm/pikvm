@@ -364,10 +364,6 @@ iw wlan0 info
 	
 ### Useful links
 - https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi - Very good article on PI-KVM setup
-- Pi-KVM Power/Data OTG splitter boards - also noted [here](https://github.com/pikvm/pikvm#hardware-for-v2)
-  - https://www.pishop.us/product/usb-pwr-splitter/ (Look on Tindi for the same thing in the UK)
-  - https://www.pishop.us/product/usb-c-pwr-splitter/ (Look on Tindi for the same thing in the UK)
-- An alternitive to a NON solder or modding a Y cable is using [power blocker boards](https://www.amazon.com/gp/product/B092MLT2J3)
 - Current 3D cases that support the various Pi-KVM hardware configurations:
 ```
 https://www.thingiverse.com/search?q=pi-kvm&type=things&sort=relevant
