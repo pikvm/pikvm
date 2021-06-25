@@ -17,12 +17,12 @@ The case consists of several parts.
 Choose **one** of them.
 | Variant | Description |
 |---------|-------------|
-| <img src="../stl/v3.2/case_a_no_oled.png" width=200 /> | [The front part](../stl/v3.2/case_a_no_oled.stl) of the case **WITHOUT a hole** for the OLED |
-| <img src="../stl/v3.2/case_a.png" width=200 /> | [The front part](../stl/v3.2/case_a.stl) of the case with a hole **for installing the OLED** |
+| <img src="./stl/v3.2/case_a_no_oled.png" width=200 /> | [The front part](../stl/v3.2/case_a_no_oled.stl) of the case **WITHOUT a hole** for the OLED |
+| <img src="./stl/v3.2/case_a.png" width=200 /> | [The front part](../stl/v3.2/case_a.stl) of the case with a hole **for installing the OLED** |
 
 # The back part
 Choose **one** of them.
 | Variant | Description |
 |---------|-------------|
-| <img src="../stl/v3.2/case_b_no_aum.png" width=200 /> | [The back part](../stl/v3.2/case_b_no_aum.stl) of the case **WITHOUT AUM holes** |
-| <img src="../stl/v3.2/case_b.png" width=200 /> | [The back part](../stl/v3.2/case_b.stl) of the case **for installing the AUM** |
+| <img src="./stl/v3.2/case_b_no_aum.png" width=200 /> | [The back part](../stl/v3.2/case_b_no_aum.stl) of the case **WITHOUT AUM holes** |
+| <img src="./stl/v3.2/case_b.png" width=200 /> | [The back part](../stl/v3.2/case_b.stl) of the case **for installing the AUM** |
