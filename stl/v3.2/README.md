@@ -3,19 +3,12 @@ When printing the case, you can choose the following options:
 - The presence or absence of an OLED screen (used to display the IP address and other information).
 - The presence or absence of holes for the AUM v3.3 (Advanced USB Module, most likely you don't have it).
 
-The case consists of several parts.
-**TODO**
-```
-добавить ссылки на запчасти https://www.pishop.us/product/5v-cooling-fan/
-для всех случаев 6.2 2штуки
-для аума по штуке 1мм и 2мм
-без аума 2мм 2шт
-остальное по 1 шт
-```
-
-# Buy options
+## Buy options
 * [Small 5v fan](https://www.pishop.us/product/5v-cooling-fan) **strongly recommended** to avoid overheating in the case.
 * [I2C OLED screen](https://www.amazon.com/Pieces-Display-Module-SSD1306-Screen/dp/B08TLXYKS6).
+
+## Building
+See [this](https://www.youtube.com/watch?v=-SRL92VJ870) video.
 
 # The front part
 **Choose ONE of them.**
