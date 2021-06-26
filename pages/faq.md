@@ -267,6 +267,9 @@ Note: if you can't find an answer to your question here, try the [Community FAQ]
 <details>
   <summary>Click to view</summary>
 
+* If your device is unable to connect to the WiFi network that you have setup check the 2.4 GHz WiFi channel used by your WiFi access point. 
+  If channels 12 to 14 are used (some countries have banned these channels) try to use a channel between 1 and 11.
+  
 * Some Zeros contain a defective Wi-Fi chip. You can either return the device to the store, or try the [software workaround](https://github.com/pikvm/pikvm/issues/137).
 </details>
 
