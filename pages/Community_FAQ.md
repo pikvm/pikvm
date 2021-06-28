@@ -8,6 +8,9 @@
 - For the CSI Bridge, ❗No:exclamation:. there is not enough bandwidth in the CSI bus for that much data. 1080p50 will max out the bandwidth
 - For the USB capture devices: Technically yes, but they will downsample to something smaller to meet the usb2.0 bandwidth limitations, so the source may be 4k, but the stream will not.
 
+### Does PIKVM support sound?
+- At this time sound is not supported on any platform however, once sound is implimented, it will only be available for v3. Due to a hardware bug in v0/v2 capture devices, sound may or may not work.
+
 ### Why so much latency between the screen and target?
 - capture device+compression+network+decompression+external network(if applicable)
 
