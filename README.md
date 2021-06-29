@@ -107,7 +107,7 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
   - **Recommended**: [HDMI to CSI-2 bridge based on TC358743](https://aliexpress.com/item/4000102166176.html) - low latency, more reliable, **H.264 video**.
   - ... or [HDMI to USB dongle](https://aliexpress.com/item/4001043540669.html) (not available for ZeroW) - high latency >200ms, [not very reliable](#a-few-words-about-hdmi-usb-dongle)), no H.264 a very long time yet.
 * Only for Raspberry Pi 4: parts for Y-splitter cable (**one variant at your choice**):
-  * <details><summary>Variant #1: (No mod solution) Y cable with power blocker ends.</summary>
+  * <details><summary>:exclamation:Variant #1:exclamation:: (No mod solution) Y cable with power blocker ends.</summary>
     <ul>
       <li>1x USB-A to USB-C cable (male-male).</li>
       <li>1x another cable USB-A to any (male-any).</li>
@@ -115,14 +115,14 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
       <li><a href="https://www.amazon.com/gp/product/B092MLT2J3">USB Power Blocker</a> - Will go into the USB-A end towards the target</li>
     </ul>
     </details>
-  * <details><summary>Variant #2: DIY for soldering or twist.</summary>
+  * <details><summary>:exclamation:Variant #2:exclamation:: DIY for soldering or twist.</summary>
     <ul>
       <li>1x USB-A to USB-C cable (male-male).</li>
       <li>1x another cable USB-A to any (male-any).</li>
       <li>1x Official Power Supply (USB-A or USB-C) depending on what cable you choose above.</li>
     </ul>
     </details>
-  * <details><summary>Variant #3: Ready-made using USB-micro splitter.</summary>
+  * <details><summary>:exclamation:Variant #3:exclamation:: Ready-made using USB-micro splitter.</summary>
     <ul>
       <li>1x USB/Power Splitter Module (<a href="https://www.tindie.com/products/8086net/usbpwr-splitter">UK</a>/<a href="https://www.pishop.us/product/usb-pwr-splitter/">US</a>/<a href="https://www.buyapi.ca/product/usb-pwr-splitter/">CA</a>).</li>
       <li>1x USB-A to USB-C cable (male-male) for connecting the Raspberry Pi to the splitter.</li>
@@ -130,7 +130,7 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
       <li>1x USB-A to micro USB-B cable (male-male) to connect into a USB-A wall charger. Or you also can buy the official Raspberry Pi Power Supply with micro USB-B instead.</li>
     </ul>
     </details>
-  * <details><summary>Variant #4: Ready-made using USB-C splitter.</summary>
+  * <details><summary>:exclamation:Variant #4:exclamation:: Ready-made using USB-C splitter.</summary>
     <ul>
       <li>1x USB-C/Power Splitter Module (<a href="https://www.tindie.com/products/8086net/usb-cpwr-splitter">UK</a>/<a href="https://www.pishop.us/product/usb-c-pwr-splitter/">US</a>/<a href="https://www.buyapi.ca/product/usb-c-pwr-splitter/">CA</a>).</li>
       <li>1x USB-C to USB-C cable (male-male) for connecting the Raspberry Pi to the splitter.</li>
