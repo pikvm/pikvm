@@ -742,6 +742,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Seonwoo Lee
 * Sergey Lukjanov
 * Seth Jennings
+* Sheran Gunasekera
 * Shichun Chen
 * Simon Evans
 * Simon Sundgaard
