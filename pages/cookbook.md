@@ -58,7 +58,7 @@ Specifically to v2. This can be used for terminal access from the managed server
 See [here](usb_ethernet.md).
 
 ## Mass Storage Drives
-Specifically to v2. Unless explicitly [disabled](#disable-mass-storage-emulation) by default, Pi-KVM creates only one drive for Mass Storage emulation. However, you can create additional drives and manage them manually via the terminal. This is useful if you want to boot the server from a ISO CD (specified in the web interface), then connect a virtual flash drive to the server and download some files from to Pi-KVM from it.
+Specifically to v2/v3. Unless explicitly [disabled](#disable-mass-storage-emulation) by default, Pi-KVM creates only one drive for Mass Storage emulation. However, you can create additional drives and manage them manually via the terminal. This is useful if you want to boot the server from a ISO CD (specified in the web interface), then connect a virtual flash drive to the server and download some files from to Pi-KVM from it.
 
 :exclamation: The presence of an additional Mass Storage device should not interfere with the boot, but for reasons of compatibility paranoia, this is disabled by default. We recommend setting up the drives in advance, making sure that booting from the ISO CD is still working, and then using the drives as needed.
 
