@@ -172,11 +172,11 @@ It's completely supported and Pi-KVM works great with it. But it has some disadv
 
 -----
 
-# The future v3 platform (work in progress)
+# v3 HAT Features
 
 <img src="img/v3_board.png" alt="drawing" width=250/></td>
 
-We are also currently developing our own HAT for the Raspberry Pi 4. It will have all the features of the v2 platform, including:
+We have developed our own HAT for the Raspberry Pi 4. It will have all the features of the v2 platform, including:
 * HDMI capture based on the TC358743 (extra low latency and many features like compression control).
 * OTG Keyboard & mouse; Mass Storage Drive emulation.
 * Ability to simulate "removal and insertion" for USB.
@@ -191,7 +191,7 @@ We are also currently developing our own HAT for the Raspberry Pi 4. It will hav
 
 **YouTube Review of the v3 board**: https://youtu.be/dTchVKxx7Fo
 
-**Status as of Jun 2021**: Due to the complexity of the organization in Russia, we needed to use resellers. The devices will be available for purchase at the specified links. The second batch will also have a reseller in Europe.
+**Status as of Jun 2021**: Due to the complexity of the organization in Russia, we needed to use resellers. The devices will be available for purchase at the specified links. The second batch will also have a reseller in Europe. Will show up as OUT OF STOCK, just means stock has not arrived yet.
 * US: https://www.pishop.us/product/pi-kvm-v3-hat-for-raspberry-pi-4
 * Canada: https://www.buyapi.ca/product/pi-kvm-v3-hat-for-raspberry-pi-4
 * US + Worldwide: https://cloudfree.shop/product/pi-kvm-v3-hat-for-raspberry-pi-4
