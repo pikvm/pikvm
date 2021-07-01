@@ -435,9 +435,11 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Ben Scott
 * Benedikt Heine
 * Benedikt Meier
+* Benjamin Frewert
 * Benjamin Melancon
 * Benni Stauder
 * Bernhard Fitzke
+* bikmaek
 * bitjoe
 * Bits and Bytes Computers LLC
 * Blue Frog LLC
@@ -458,6 +460,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Carl Mercier
 * Carl-Fredrik Johansson
 * cbad536
+* CHINATERA LIMITED
 * Chris Burton
 * Chris Jackson
 * Chris Lewis
