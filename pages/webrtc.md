@@ -17,8 +17,8 @@ The MJPEG video stream uses the same HTTP connection that you use to get the web
 This means that for remote access, you just need to forward ports 80 and 443 on your router.
 
 In contrast, WebRTC is a completely different way of transmitting video.
-It uses a P2P connection and UDP. This reduces network load, but makes it difficult to configure
-- the server needs to know your network configuration in order to use it correctly.
+It uses a P2P connection and UDP. This reduces network load, but makes it difficult to configure -
+the server needs to know your network configuration in order to use it correctly.
 
 To implement this, the Pi-KVM checks which of the network interfaces is used for the default gateway,
 and also tries to find out your external address using the Google [STUN](https://en.wikipedia.org/wiki/STUN) server.
