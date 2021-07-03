@@ -698,6 +698,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Oliver Zimmer
 * Omar El-Domeiri
 * Oscar
+* Patrick
 * Patrick McDowell
 * Patrick Wagstrom
 * Paul Bishop
