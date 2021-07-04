@@ -41,3 +41,7 @@ Here are our recommended settings for TigerVNC:
 For iOS and Android the recommended application is bVNC:
 * [Google Play](https://play.google.com/store/apps/details?id=com.iiordanov.bVNC)
 * [App Store](https://apps.apple.com/us/app/bvnc-pro/id1506461202)
+
+# Unsupported clients
+* Guacamole - Incorrectly implements vencrypt, no JPEG compression.
+* Vinagre - Incorrectly implements vencrypt.

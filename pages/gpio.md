@@ -148,7 +148,7 @@ Some rules and customization options:
 - To change title of the button, write some its name like `"relay1|My cool relay"`.
 - Buttons and switches can request confirmation on acting. To do this write its name like `"relay1|confirm|My cool relay"`. The third argument with a title is required in this case.
 
-# Hardware modules
+# Hardware modules and pseudo-drivers
 
 ### Raspberry's GPIO
 The driver `gpio` provides access to regular GPIO pins with input and output modes. It uses `/dev/gpiochip0` and the libgpiod library to communicate with the hardware. Does not support saving state between KVMD restarts (meaning `initial=null`).
@@ -169,3 +169,46 @@ Channels should not use duplicate physical numbers. The driver supports saving s
 
 ### ezCoo KVM switch
 You can use GPIO to control KVM port switching. This usually requires the use of relays and buttons, but for the [ezCoo switch](https://github.com/pikvm/pikvm/blob/master/pages/ezcoo.md) there is a special `ezcoo` driver that simulates GPIO by sending commands to the switch via serial port. So you can make a menu in Pi-KVM to control the multiport switch.
+
+### IPMI
+The driver `ipmi` provides the ability to send IPMI commands (on, off, reset) and show the power status of the remote host. In fact, this is not a hardware driver, but something like a pseudo-GPIO. Each "pin" is actually responsible for a specific IPMI operation of `ipmitool`:
+
+| Pin | Type     | Command |
+|-----|----------|---------|
+| `0` | `input`  | `ipmitool ... power status`, can be used to draw the LED in the menu |
+| `1` | `output` | `ipmitool ... power on`, sends the `on` command (and only this), so like all other outputs it should be a button |
+| `2` | `output` | `ipmitool ... power off` |
+| `3` | `output` | `ipmitool ... power cycle` |
+| `4` | `output` | `ipmitool ... power reset` |
+| `5` | `output` | `ipmitool ... power diag` |
+| `6` | `output` | `ipmitool ... power soft` |
+
+You are supposed to define one driver per host:
+```yaml
+kvmd:
+    gpio:
+        drivers:
+            my_server:
+                type: ipmi
+                host: myserver.local
+                user: admin
+                passwd: admin
+        scheme:
+            my_server_status:
+                driver: my_server
+                pin: 0
+                mode: input
+            my_server_on:
+                driver: my_server
+                pin: 1
+                mode: output
+                switch: off
+            my_server_off:
+                driver: my_server
+                pin: 2
+                mode: output
+                switch: off
+        view:
+            table:
+                - [my_server_status, "my_server_on|On", "my_server_off|Off"]
+```
