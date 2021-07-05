@@ -19,11 +19,12 @@
 - [My Pi keeps disconnecting from my wireless! What do I do?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#my-pi-keeps-disconnecting-from-my-wireless-what-do-i-do)
 - [I want a static IP!!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#i-want-a-static-ip)
 - [Why do I keep getting a different IP?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#why-do-i-keep-getting-a-different-ip)
-- [HELP!! I can't find the IP on the ZeroW/RPi4](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-i-cant-find-the-ip-on-the-zerowrpi4)
+- [HELP! I can't find the IP on the ZeroW/RPi4](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-i-cant-find-the-ip-on-the-zerowrpi4)
 - [Help! I ran out of room!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-i-ran-out-of-room-what-now)
 - [Can you connect a camera to this and still make pikvm functional?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-you-connect-a-camera-to-this-and-still-make-pikvm-functional)
 - [I have a question that is not answered here!! Now what?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#i-have-a-question-that-is-not-answered-here-now-what)
 - [HELP!! Something isn't working!!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-something-isnt-working)
+- [HELP! I am getting a 503 error when I try and access the main KVM page!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-i-am-getting-a-503-error-when-I-try-and-access-the-main-kvm-page)
 - [Can you use an iPad on PiKVM?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-you-use-an-ipad-on-pikvm)
 - [Can I use RealVNC/Guacamole to connect to PiKVM?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-i-use-realvncguacamole-to-connect-to-pikvm)
 - [How do I add my own SSL cert?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#how-do-i-add-my-own-ssl-cert)
@@ -211,7 +212,20 @@ rm -rf /var/cache/pacman/pkg/*
 - Did you hook this to anything else? If not why not?
 - Did you try different cables?
 <br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
-
+	
+### HELP! I am getting a 503 error when I try and access the main KVM page!
+- This is due to a bad line in your yaml file, here are some steps you can make to help. Remember you need 4 space per child and sub-child
+- Run ```kvmd -m```, this will display ALL kvmd settings, you can compare to your own. Make sure you are not doubling up on child/sub-child entries.
+- Make a .nanorc file and populate it with the following:
+*set linenumbers* is optional
+```
+set linenumbers
+set tabsize 4
+set tabstospaces
+```
+- Now re-edit your override.yaml file and just use tab to get the right spacing, you might need to delete the current leading "spaces" to ensure proper formatting
+<br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+	
 ### Can you use an iPad on PiKVM?
 - Yes, with the correct hardware you can control an iPad
 - Yes, activate VNC and use JUMP app(Full featured but more expensive), or bVNC(Not recommended, lack luster features but cheap). RealVNC does NOT work
