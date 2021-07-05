@@ -138,6 +138,9 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
       <li>1x USB-A to USB-C cable (male-male) to connect into a USB-A wall charger. Or 1x USB-C to USB-C cable to connect into a USB-C wall charger. Or you also can buy the official Raspberry Pi Power Supply with USB-C instead.</li>
     </ul>
     </details>
+    
+* Example on how this should look when connected no matter the variant [here](https://github.com/pikvm/pikvm/blob/master/img/Example_PiKVM_Wiring2Target.jpg)
+
 * Only for Raspberry Pi ZeroW:
   * 2x USB A-to-micro cables (male-male, for power and keyboard & mouse emulator).
   * 1x [Raspberry Pi Zero Camera Cable](https://aliexpress.com/item/32953696917.html) (if using HDMI to CSI-2 Bridge, but not compatible with Auvidea B101, check pinout).
