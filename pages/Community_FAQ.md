@@ -23,7 +23,7 @@
 - [Help! I ran out of room!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-i-ran-out-of-room-what-now)
 - [Can you connect a camera to this and still make pikvm functional?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-you-connect-a-camera-to-this-and-still-make-pikvm-functional)
 - [I have a question that is not answered here!! Now what?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#i-have-a-question-that-is-not-answered-here-now-what)
-- [HELP!! Something isn't working!!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-something-isnt-working)
+- [HELP! Something isn't working!!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-something-isnt-working)
 - [HELP! I am getting a 503 error when I try and access the main KVM page!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-i-am-getting-a-503-error-when-I-try-and-access-the-main-kvm-page)
 - [Can you use an iPad on PiKVM?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-you-use-an-ipad-on-pikvm)
 - [Can I use RealVNC/Guacamole to connect to PiKVM?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-i-use-realvncguacamole-to-connect-to-pikvm)
