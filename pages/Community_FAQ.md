@@ -72,14 +72,14 @@ As an appliance, users are not expected to interact with the host operating syst
 <br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
 ### Can I power the Pi via POE?
-- Yes! But you will still need to ensure you isolate the 5v connection between the Raspberry Pi and host PC to prevent backpower issues that can cause instability or damage to either the host PC or the Pi.
+- Yes! But you will still need to ensure you isolate the 5v connection between the Raspberry Pi and host PC to prevent backpower issues that can cause instability or damage to either the host PC or the Pi. Power/Data cable + usb power blocker would work. Please see Variant #1 in the main getting started page.
 <br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
 ### Do I need a power splitter? Why do I need one?
-- Yes for RPi4, No for ZeroW
+- Yes for RPi4, Yes and No for ZeroW - Yes if you want dedicated power, otherwise No
 - Yes, otherwise you could back power the pi and or the target
-- You can get a Y cable from amazon and mod one of the leads - Please see getting started guide - or see below for [non modding of Y cable](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#useful-links)
-- You can get a power splitter board from Tindi or PiShop [(Links provided below)](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#useful-links)
+- You can get a Y cable from amazon and mod one of the leads - Please see getting started guide - or see [non modding of Y cable](https://github.com/pikvm/pikvm#hardware-for-v2)
+- You can also get a power splitter board from Tindi or PiShop [(Links provided below)](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#useful-links)
 - If you have the v3 HAT - This is built in
 <br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
@@ -99,7 +99,7 @@ Ensure that you have the cable(Needs to support both power/data) plugged into th
 <br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
 ### Can I use a KB on my ZeroW?
-- Yes but kb/mouse passthrough will not work. Its one or the other
+- Yes but kb/mouse passthrough will not work. Its one or the other - This is especially true if you use an addon that requires the below to change.
 - edit ```/boot/config.txt```
   - Host mode - Comment out dtoverlay=dwc2
   - Passthrough mode - Uncomment out dtoverlay=dwc2
@@ -126,11 +126,6 @@ Yes! And it's easy to do! Using a SSH session or the web terminal:
 - Execute: `hostnamectl set-hostname yournewhostname.domain`
 - Optional: Edit `/etc/kvmd/meta.yaml` to alter the displayed hostname in the web UI
 - Reboot the pikvm
-<br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
-
-### In the Web Terminal, how do I get root? Also found [here.](https://github.com/pikvm/pikvm/blob/master/README.md#youre-amazing)
-- Type `su -`
-- Put `root` for the password
 <br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
 ### I want to do something not related to Pi-KVM
@@ -164,7 +159,7 @@ DNS=("192.168.X.X 1.0.0.1 1.1.1.1")
 ClientIdentifier=mac
 ```
 - Reserve the DHCP ip in your server/router
-- You can replace systemd-networkd with NetworkManager, this has proven to fix the IP issue with DHCP for some routers
+
 <br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
 ### HELP!! I can't find the IP on the ZeroW/RPi4
@@ -174,13 +169,13 @@ ClientIdentifier=mac
 - Using FF, navigate to https://pikvm (Depends on your network if this actually works, in most case's will work))
   - The below commands will verify that your Pi on on your network
 ```
-arp -a | grep below is a list of MAC's for Raspberry Pi
+Linux: arp -a | grep below is a list of MAC's for Raspberry Pi
 	B8:27:EB:xx:xx:xx	B8-27-EB-xx-xx-xx	B827.EBxx.xxxx
 	DC:A6:32:xx:xx:xx	DC-A6-32-xx-xx-xx	DCA6.32xx.xxxx
 	E4:5F:01:xx:xx:xx	E4-5F-01-xx-xx-xx	E45F.01xx.xxxx
-Power shell: arp -a | findstr 'b8-27-eb' (Replace with the above, all lower case)
+Windows Power shell: arp -a | findstr 'b8-27-eb' (Replace with the above, all lower case)
 ```
-- For older flashed images you can do the following
+- For older flashed images you can do the following on the RPI4, ZeroW edit it when you edit WiFi info
   - Open web terminal and go to root, ```rw``` then ```nano /etc/issue```
   - add ```IP: \4```
   - Once you reboot, you will now see the IP in the upper left
@@ -194,7 +189,7 @@ Power shell: arp -a | findstr 'b8-27-eb' (Replace with the above, all lower case
 rm -rf /var/cache/pacman/pkg/*
 ```
 - Exit read/write mode by executing ro as root
-- You can also use gparted to resize partitions without losing data, although this may delete all of your data
+- You can also use gparted to resize partitions without "losing data", although there is a chance this may delete all of your data
 <br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
 ### Can you connect a camera to this and still make pikvm functional?
@@ -203,19 +198,21 @@ rm -rf /var/cache/pacman/pkg/*
 <br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
 ### I have a question that is not answered here!! Now what?
-- Please look at all pins on Discord
+- Please look at all pins on Discord and/or ask in #chat
 - Please look in #news on Discord
 <br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
 ### HELP!! Something isn't working!!
 - What was the last thing or most recent thing you did? Did you undo it?
+- Did you change a file? Did you back it up before changing it?
 - Did you hook this to anything else? If not why not?
 - Did you try different cables?
 <br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 	
 ### HELP! I am getting a 503 error when I try and access the main KVM page!
-- This is due to a bad line in your yaml file, here are some steps you can make to help. Remember you need 4 space per child and sub-child
+- This is due to a bad line in your yaml file, here are some steps you can make to help in the future. 
 - Run ```kvmd -m```, this will display ALL kvmd settings, you can compare to your own. Make sure you are not doubling up on child/sub-child entries.
+- Remember you need 4 space per child and 4 additional for each sub-child
 - Make a .nanorc file and populate it with the following:
 *set linenumbers* is optional
 ```
@@ -276,7 +273,7 @@ otg:
     vendor_id: 6940
     product_id: 6973
 ```
-Use the following USB Data Base to get the desired devices: ```https://the-sz.com/products/usbid/``` for simple searches, please use ```https://devicehunt.com``` for a more detailed output of usb devices.
+Use the following USB Data Base to get the desired devices: ```https://the-sz.com/products/usbid/``` or ```https://devicehunt.com```
 	
 ❗NOTE❗ You may need to include ```0x0``` in the id string's for it to work properly.
 - Example:
@@ -286,18 +283,6 @@ Use the following USB Data Base to get the desired devices: ```https://the-sz.co
 ### Things to do after initial install:
 - Fix date: 'timedatectl list-timezones' then 'timedatectl set-timezone America/Los_Angeles' (Change to your location)
 - Update Pi-KVM, follow #news on Discord for instructions
-- Enable Avahi-Daemon (A Zeroconf daemon) to allow finding the pikvm via mDNS queries as `pikvm.local`
-  - `pacman -S avahi nss-mdns` 
-  - `gtk3 python-dbus python-gobject` (You may or may not need this to make it work)
-  - Enable the Avahi daemon in order to make it persistent after reboot:
-```
-systemctl enable avahi-daemon.service
-```
-  - Start the DBus (if not already running) & Avahi daemons:
-```
-systemctl start dbus.service
-systemctl start avahi-daemon.service
-```
 - Setup a NFS share to give read/write storage on the read only pikvm
   - Note: this does assume you already have an NFS server on your network and accessible to pikvm
   - Source https://linuxhint.com/install_configure_nfs/
@@ -409,12 +394,12 @@ iw wlan0 info
 
 ### Bootup/power issues
 - PiKVM won’t boot past “rainbow” screen
-  - Are you plugged into the right HDMI port? Needs to be the one next to the power
+  - Are you plugged into the right HDMI port? Needs to be the one next to the power for RPI4
   - Have you reflashed your SD card?
 <br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
 ### PiKVM Complains about low power warnings
-- Are you using a `proper` power supply? Not one you hacked together
+- Are you using a `proper` power supply? Not one you hacked together?
 - Some USB power bricks advertise 5V @ 2.1A or higher, but can’t deliver consistent 5V.  Best to use rpi foundation recommended power supplies
 <br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
