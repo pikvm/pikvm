@@ -351,7 +351,8 @@ done
 - Keyboard/Mouse icons orange? Try a different cable (ALLOT are power only), try a different usb port
 
 - Should see the following if everything is in place
-```ls -l /dev/kvmd*
+`ls -l /dev/kvmd`
+```
 lrwxrwxrwx 1 root root 5 Apr  5 21:33 /dev/kvmd-hid-keyboard -> hidg0
 lrwxrwxrwx 1 root root 5 Apr  5 21:33 /dev/kvmd-hid-mouse -> hidg1
 lrwxrwxrwx 1 root root 6 Mar 15 09:07 /dev/kvmd-video -> video0
