@@ -25,4 +25,4 @@ Limitations:
 - MSD work around is needed as it will not work OOB
     - **Solutions**
         - Solution 1: RPi4 OTG needs to be in the KB port for mouse and KB funtionality, ZeroW is required and needs to be connected to the HUB port for HK switching and MSD functionality - ✔**KNOWN WORKING**✔
-        - Solution 2: Aurduino is needed (WIP) - Please report in the channel that this solution works for you
+        - Solution 2: HDMI backpower solution [here](https://github.com/pikvm/pikvm/issues/382)
