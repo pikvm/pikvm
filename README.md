@@ -461,6 +461,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Cameron Tacklind
 * Carl Mercier
 * Carl-Fredrik Johansson
+* Carlos Manuel Torres
 * cbad536
 * CHINATERA LIMITED
 * Chris Burton
