@@ -8,7 +8,7 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 * **[>>> DIY Getting Started <<<](#diy-getting-started)**
 * **Great project review by Novaspirit Tech**: https://youtu.be/plP9Y1likRg
 * Boring technical details from the developer: https://youtu.be/9YhPWjWv5gw
-* **[Pro Series v3 Preorder Today!](#the-future-v3-platform-work-in-progress) / Video review**: https://youtu.be/dTchVKxx7Fo
+* **[Pro Series v3 Preorder Today!](#v3-hat-features) / Video review**: https://youtu.be/dTchVKxx7Fo
 * [Limitations](#limitations)
 * [Tips](#tips)
 * [FAQ](#faq-and-troubleshooting)
