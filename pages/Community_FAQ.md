@@ -72,7 +72,7 @@ As an appliance, users are not expected to interact with the host operating syst
 <br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
 ### Can I power the Pi via POE?
-- Yes! But you will still need to ensure you isolate the 5v connection between the Raspberry Pi and host PC to prevent backpower issues that can cause instability or damage to either the host PC or the Pi. Power/Data cable + usb power blocker would work. Please see Variant #1 in the main getting started page.
+- Yes! But you will still need to ensure you isolate the 5v connection between the Raspberry Pi and host PC to prevent backpower issues that can cause instability or damage to either the host PC or the Pi. Power/Data cable + usb power blocker would work. Please see Variant #1 in the main getting started page for details.
 <br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
 ### Do I need a power splitter? Why do I need one?
