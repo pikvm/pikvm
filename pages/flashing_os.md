@@ -37,6 +37,7 @@ Decompress and flash image and follow to the [final steps](#the-final-steps). Be
 
     <img src="../img/balena-5.png" alt="drawing" height="300"/>
 
+    **NOTE** - If Etcher does not work for you and you continue to get failed bootup's, download RaspberryPi imager and use that instead
 
 ## The final steps
 1. **Important for ZeroW**. In order for your device to connect to Wi-Fi, you will have to tell it which network to use with which password. To do this, mount the first partition of the memory card (FAT32) and edit the `pikvm.txt` file there. Do not remove line `FIRSTBOOT=1`, just add your wifi settings like this:
@@ -48,6 +49,8 @@ Decompress and flash image and follow to the [final steps](#the-final-steps). Be
     There is a possibility that, in countries that support CH13, the ZeroW will not connect. You will need to configure your router to disable channels 12-14 or disable Auto scan mode so it will connect.
     
     Save, unmount and follow the next step.
+    
+    **NOTE** - This can also be applied to the latest Rpi4 images, it is however easier to set this up using `wifi-menu -o`
 
 2. When the process is complete, pull out the memory card and insert it into the Raspberry Pi. Connect the Raspberry Pi to the power supply. Your device will obtain the IP address via DHCP automatically. <br>:exclamation:Windows users: balenaEtcher will automatically safely remove the memory card. If you are using a Windows version prior to Windows 10 1809 and a different flashing software, you should do the safe remove manually.
 
