@@ -4,7 +4,7 @@ This includes additional software, additional software, unofficial ports to othe
 and even PCB and case designs for Pi-KVM.
 
 # Software
-* [Pi-KVM port to x86 using docker](https://github.com/purplepalmdash/pikvmx86)
+* [Pi-KVM port to x86 using docker](https://github.com/purplepalmdash/pikvmx86) - BEWARE: This project has been abandoned - Left here for historical value
 * [Serial HID using STM32 (work in progress)](https://github.com/jannic/pikvm-hid-stm32)
 
 # Hardware 
