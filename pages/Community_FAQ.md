@@ -144,6 +144,17 @@ Yes! And it's easy to do! Using a SSH session or the web terminal:
 - For wireless adapter, config file is /etc/netctl/wlan0-<wifiname>
 - See pikvm/wifi_config.md at master · pikvm/pikvm · GitHub for details on how to get basic wireless config with DHCP going.  Afterwards, you’ll need to edit the /etc/netctl/wlan0-<wifiname> file changing the IP=dhcp line with the following lines updated to reflect your network:
 ```
+For /etc/systemd/network/eth0.network
+[Match]
+Name=eth0
+
+[Network]
+Address=192.168.X.XXX/24
+Gateway=192.168.X.X
+DNS=192.168.X.X
+DNS=192.168.X.X
+
+For /etc/netctl/wlan0-<wifiname>
 IP=static
 Address=('192.168.X.XXX/24')
 Gateway=('192.168.X.X')
