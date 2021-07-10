@@ -411,6 +411,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Alex T
 * Alexander Pankov
 * Alexandre Jablonski
+* Alexey Kamenskiy
 * Alucard
 * Andreas Marufke
 * Andreas Schmid
