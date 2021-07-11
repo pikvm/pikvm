@@ -13,9 +13,9 @@
 - [Can I use a KB on my ZeroW?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-i-use-a-kb-on-my-zerow)
 - [Can you have the pi-kvm(RPi4) connected along with a monitor?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-you-have-the-pi-kvmrpi4-connected-along-with-a-monitor)
 - [Wouldn't it be good to have different hostnames for your multitude of pi-kvms?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#wouldnt-it-be-good-to-have-different-hostnames-for-your-multitude-of-pi-kvms)
-- [In the Web Terminal, how do I get root?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#in-the-web-terminal-how-do-i-get-root-also-found-here)
 - [I want to do something not related to Pi-KVM](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#i-want-to-do-something-not-related-to-pi-kvm)
 - [Can this be used in any other distro’s like Rasbian? Run this in a Docker?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-this-be-used-in-any-other-distros-like-rasbian-run-this-in-a-docker)
+- [Can you switch from USB to CSI or from CSI to USB?](#can-you-switch-from-usb-to-csi-or-from-csi-to-usb)
 - [My Pi keeps disconnecting from my wireless! What do I do?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#my-pi-keeps-disconnecting-from-my-wireless-what-do-i-do)
 - [I want a static IP!!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#i-want-a-static-ip)
 - [Why do I keep getting a different IP?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#why-do-i-keep-getting-a-different-ip)
@@ -135,6 +135,83 @@ Yes! And it's easy to do! Using a SSH session or the web terminal:
 ### Can this be used in any other distro’s like Rasbian? Run this in a Docker?
 - Not at this time, maybe in the future
 
+### Can you switch from USB to CSI or from CSI to USB?
+- Officially, no. Unofficially yes. Please visit this [site](https://pastebin.com/u/srepac) and grab the platform-switcher.sh script
+
+Directions:
+1) Place script in the root dir
+2) Make a `custom-override.yaml` file - NEEDS to adhere to proper spacing, please see kvmd -m for proper formatting
+```
+kvmd:
+    streamer:
+        forever: true
+        cmd_append: [--slowdown]                    # for usb-hdmi only so that target PC display works w/o rebooting
+        ### this section is for use with webrtc/h.264 -- up to resolution: line
+        h264_bitrate:
+            default: 5000
+        cmd_append:
+            - "--h264-sink=kvmd::ustreamer::h264"   # requires gpu_mem=256 in /boot/config.txt for usb dongle
+            - "--h264-sink-mode=0660"
+            - "--h264-bitrate={h264_bitrate}"
+            - "--h264-gop={h264_gop}"
+        ### Optional
+        #resolution:
+        #    default: 1280x720                       # default resolution I use in webui - usb-hdmi only
+```
+
+3) Make a `config.txt.usb` file
+```# See /boot/overlays/README for all available options
+initramfs initramfs-linux.img followkernel
+
+hdmi_force_hotplug=1
+gpu_mem=256
+enable_uart=1
+dtoverlay=disable-bt
+dtoverlay=dwc2,dr_mode=peripheral
+#dtparam=act_led_gpio=13
+
+# SPI (AUM)
+#dtoverlay=spi0-1cs
+
+# I2C (display)
+dtparam=i2c_arm=on
+
+# Clock
+#dtoverlay=i2c-rtc,pcf8563
+```
+
+4) Make a `config.txt.csi` file
+```# See /boot/overlays/README for all available options
+initramfs initramfs-linux.img followkernel
+
+hdmi_force_hotplug=1
+gpu_mem=128
+enable_uart=1
+dtoverlay=tc358743
+dtoverlay=disable-bt
+dtoverlay=dwc2,dr_mode=peripheral
+dtparam=act_led_gpio=13
+
+# HDMI audio capture
+dtoverlay=tc358743-audio
+
+# SPI (AUM)
+dtoverlay=spi0-1cs
+
+# I2C (display)
+dtparam=i2c_arm=on
+
+# Clock
+dtoverlay=i2c-rtc,pcf8563 
+```
+
+5) Place all files in the same dir as the platform-switcher script
+6) Run `chmod +x platform-switcher.sh`
+7) Run `./platform-switcher.sh`
+8) Follow the directions that are printed out, Eg: ./platform-switcher.sh -f
+9) Now you can switch back and forth between usb and csi, please note there is an almost 2 min delay before the portal becomes active.
+<br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+
 ### My Pi keeps disconnecting from my wireless! What do I do?
 - You can try the following: Edit "/etc/conf.d/wireless-regdom" and look for your region and uncomment it. Example: WIRELESS_REGDOM="US"
 <br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
@@ -164,12 +241,13 @@ DNS=("192.168.X.X 1.0.0.1 1.1.1.1")
 <br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
 ### Why do I keep getting a different IP?
+- You can do 2 of the following actions:
 - Add to, /etc/systemd/network/eth0.network
 ```
 [DHCP]
 ClientIdentifier=mac
 ```
-- Reserve the DHCP ip in your server/router
+- OR reserve the DHCP ip in your server/router
 
 <br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
@@ -177,7 +255,7 @@ ClientIdentifier=mac
 - Open a browser and type: pikvm, still doesnt work?
 - Use the FING mobile app to scan your network, its free
 - Install Angry IP scanner, tools/preferences/Display results in the results list/Select Alive hosts, modify IP range, hit start
-- Using FF, navigate to https://pikvm (Depends on your network if this actually works, in most case's will work))
+- Using FF, navigate to https://pikvm (Depends on your network if this actually works, in most case's it "should" work))
   - The below commands will verify that your Pi on on your network
 ```
 Linux: arp -a | grep below is a list of MAC's for Raspberry Pi
