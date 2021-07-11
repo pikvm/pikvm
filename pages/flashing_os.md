@@ -51,6 +51,7 @@ Decompress and flash image and follow to the [final steps](#the-final-steps). Be
     Save, unmount and follow the next step.
     
     **NOTE** - This can also be applied to the latest Rpi4 images, it is however easier to set this up using `wifi-menu -o`
+    <br></br>**NOTE** - For ZeroW w/o header, if you add this [device](https://www.pishop.us/product/solderless-serial-to-usb-adapter-for-raspberry-pi-zero/), this will add a local console without breaking the current overlay. For example: Look for `ZeroW console serial` in windows and update the driver from the [VCP driver section](https://ftdichip.com/drivers/vcp-drivers/)
 
 2. When the process is complete, pull out the memory card and insert it into the Raspberry Pi. Connect the Raspberry Pi to the power supply. Your device will obtain the IP address via DHCP automatically. <br>:exclamation:Windows users: balenaEtcher will automatically safely remove the memory card. If you are using a Windows version prior to Windows 10 1809 and a different flashing software, you should do the safe remove manually.
 
