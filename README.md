@@ -415,6 +415,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Alucard
 * Andreas Marufke
 * Andreas Schmid
+* Andrew Melton
 * Andrew Reusch
 * Andrew Ruan
 * Andrzej V
@@ -516,6 +517,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Dmitry Shilov
 * Dominik Klonowski
 * Egan Ford
+* Elani Ferri
 * Elliot Woo
 * Eric Phenix
 * ewook
@@ -527,6 +529,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Finn Ebenritter
 * fo0bar
 * Foamy
+* Foli Ayivoh
 * Folkert Weistra
 * Francisco Pavon
 * Frank
