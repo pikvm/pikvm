@@ -142,7 +142,7 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
 * Example on how this should look when connected no matter the variant [here](https://github.com/pikvm/pikvm/blob/master/img/Example_PiKVM_Wiring2Target.jpg)
 
 * Only for Raspberry Pi ZeroW:
-  * 2x USB A-to-micro cables (male-male, for power and keyboard & mouse emulator).
+  * 2x USB A-to-micro cables (male-male, for power and keyboard & mouse emulator). A power splitter OR a modded cable is required for this 2x usb configuration. 1x USB A-to-Micro is ONLY needed for direct connection to the target.
   * 1x [Raspberry Pi Zero Camera Cable](https://aliexpress.com/item/32953696917.html) (if using HDMI to CSI-2 Bridge, but not compatible with Auvidea B101, check pinout).
 * For ATX control (optional):
   - [4x MOSFET relays OMRON G3VM-61A1](https://www.digikey.com/products/en?keywords=G3VM-61A1).
