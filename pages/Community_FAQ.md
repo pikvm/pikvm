@@ -140,7 +140,7 @@ Yes! And it's easy to do! Using a SSH session or the web terminal:
 
 Directions:
 1) Place script in the root dir
-2) Make a `custom-override.yaml` file - NEEDS to adhere to proper spacing, please see kvmd -m for proper formatting
+2) Copy the following settings into `/etc/kvmd/override.yaml` - NEEDS to adhere to proper spacing, please see kvmd -m for proper formatting
 ```
 kvmd:
     streamer:
@@ -210,6 +210,8 @@ dtoverlay=i2c-rtc,pcf8563
 7) Run `./platform-switcher.sh`
 8) Follow the directions that are printed out, Eg: ./platform-switcher.sh -f
 9) Now you can switch back and forth between usb and csi, please note there is an almost 2 min delay before the portal becomes active.
+
+**NOTE**: WEBRTC/H.264 with USB is not as realiable as MJPEG mode.
 <br/><br/>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
 ### My Pi keeps disconnecting from my wireless! What do I do?
