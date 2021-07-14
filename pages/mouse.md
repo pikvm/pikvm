@@ -39,5 +39,5 @@ We expect to implement this in [TigerVNC](https://github.com/TigerVNC/tigervnc/i
   ```
 * Don't forget to perform `reboot`.
 
-# Enabling the relative mouse on the v0 platform (serial HID)
+# Enabling the relative mouse on the v0 platform (Arduino HID)
 Mode switching for [Arduino HID](https://github.com/pikvm/pikvm/blob/master/pages/arduino_hid.md) can be performed on-the-fly starting with KVMD 2.6 and the corresponding firmware. No additional actions are required.

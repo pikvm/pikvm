@@ -8,7 +8,7 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 * **[>>> DIY Getting Started <<<](#diy-getting-started)**
 * **Great project review by Novaspirit Tech**: https://youtu.be/plP9Y1likRg
 * Boring technical details from the developer: https://youtu.be/9YhPWjWv5gw
-* **[Pro Series v3 Preorder Today!](#the-future-v3-platform-work-in-progress) / Video review**: https://youtu.be/dTchVKxx7Fo
+* **[Pro Series v3 Preorder Today!](#v3-hat-features) / Video review**: https://youtu.be/dTchVKxx7Fo
 * [Limitations](#limitations)
 * [Tips](#tips)
 * [FAQ](#faq-and-troubleshooting)
@@ -138,8 +138,11 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
       <li>1x USB-A to USB-C cable (male-male) to connect into a USB-A wall charger. Or 1x USB-C to USB-C cable to connect into a USB-C wall charger. Or you also can buy the official Raspberry Pi Power Supply with USB-C instead.</li>
     </ul>
     </details>
+    
+* Example on how this should look when connected no matter the variant [here](https://github.com/pikvm/pikvm/blob/master/img/Example_PiKVM_Wiring2Target.jpg)
+
 * Only for Raspberry Pi ZeroW:
-  * 2x USB A-to-micro cables (male-male, for power and keyboard & mouse emulator).
+  * 2x USB A-to-micro cables (male-male, for power and keyboard & mouse emulator). A power splitter OR a modded cable is required for this 2x usb configuration. 1x USB A-to-Micro is ONLY needed for direct connection to the target.
   * 1x [Raspberry Pi Zero Camera Cable](https://aliexpress.com/item/32953696917.html) (if using HDMI to CSI-2 Bridge, but not compatible with Auvidea B101, check pinout).
 * For ATX control (optional):
   - [4x MOSFET relays OMRON G3VM-61A1](https://www.digikey.com/products/en?keywords=G3VM-61A1).
@@ -147,8 +150,8 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
   - 2x 4.7k Ohm resistors.
   - A breadboard and wires.
   
-#### A few words about HDMI-USB dongle
-It's completely supported and Pi-KVM works great with it. But it has some disadvantages compared with recommended [HDMI-CSI bridge](https://aliexpress.com/item/4000102166176.html): USB gives a lot of latency (200ms vs 100ms for MJPEG) and it doesn't support stream compression control (you won't be able to use Pi-KVM in a place with a poor internet connection). There is no H.264 support at the moment. It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself. In addition, some users report hardware problems: the dongle may not work in the BIOS or simply stop working after a while. It's a black box, and no one knows what's inside it. If you have problems with it, it will not be possible to fix them.
+#### A few words about HDMI-USB dongle (H.264 is NOT officially supported at this time)
+The dongle is completely supported and Pi-KVM works great with it. But it has some disadvantages compared with recommended [HDMI-CSI bridge](https://aliexpress.com/item/4000102166176.html): USB gives a lot of latency (200ms vs 100ms for MJPEG) and it doesn't support stream compression control (you won't be able to use Pi-KVM in a place with a poor internet connection). There is no H.264 support at the moment. It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself. In addition, some users report hardware problems: the dongle may not work in the BIOS or simply stop working after a while. It's a black box, and no one knows what's inside it. If you have problems with it, it will not be possible to fix them.
   
 ## Hardware for v0
 * Raspberry Pi 2 or 3.
@@ -194,7 +197,6 @@ We have developed our own HAT for the Raspberry Pi 4. It will have all the featu
 **Status as of Jun 2021**: Due to the complexity of the organization in Russia, we needed to use resellers. The devices will be available for purchase at the specified links. The second batch will also have a reseller in Europe. Will show up as OUT OF STOCK, just means stock has not arrived yet.
 * US: https://www.pishop.us/product/pi-kvm-v3-hat-for-raspberry-pi-4
 * Canada: https://www.buyapi.ca/product/pi-kvm-v3-hat-for-raspberry-pi-4
-* US + Worldwide: https://cloudfree.shop/product/pi-kvm-v3-hat-for-raspberry-pi-4
 
 You can also leave your email to us personally, so that we can send you a message about the start of sales or the appearance of new resellers. [Subscribe in this form](https://docs.google.com/forms/d/1LA6iEYVtbJULvMDNktyNQMI4N9SYdNG03Wh9WK-80cM)** or join to [Discord](https://discord.gg/bpmXfz5).
 
@@ -265,7 +267,7 @@ See video how-tos:
 
 # Installing the OS
 Here the final steps. There are two ways to get the Pi-KVM OS:
-  * We provide the ready-made images for **Raspberry Pi 4** for platforms **v2-hdmi** (the CSI-2 bridge) and **v2-hdmiusb** (the USB dongle); and for **ZeroW** for **v2-hdmi** [Follow these instructions](pages/flashing_os.md) to install the OS quickly.
+  * We provide the ready-made images for **Raspberry Pi 4** for platforms v3, **v2-hdmi** (the CSI-2 bridge) and **v2-hdmiusb** (the USB dongle); for **ZeroW** **v2-hdmi** [Follow these instructions](pages/flashing_os.md) to install the OS quickly.
   * For the other boards and platforms, you need to build the operating system manually. Don't worry, it's very simple! [Just follow these instructions](pages/building_os.md). You can also build the OS for RPi4 manually if you really want to :)
 
 # You're amazing!
@@ -409,9 +411,11 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Alex T
 * Alexander Pankov
 * Alexandre Jablonski
+* Alexey Kamenskiy
 * Alucard
 * Andreas Marufke
 * Andreas Schmid
+* Andrew Melton
 * Andrew Reusch
 * Andrew Ruan
 * Andrzej V
@@ -459,6 +463,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Cameron Tacklind
 * Carl Mercier
 * Carl-Fredrik Johansson
+* Carlos Manuel Torres
 * cbad536
 * CHINATERA LIMITED
 * Chris Burton
@@ -512,6 +517,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Dmitry Shilov
 * Dominik Klonowski
 * Egan Ford
+* Elani Ferri
 * Elliot Woo
 * Eric Phenix
 * ewook
@@ -523,6 +529,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Finn Ebenritter
 * fo0bar
 * Foamy
+* Foli Ayivoh
 * Folkert Weistra
 * Francisco Pavon
 * Frank
