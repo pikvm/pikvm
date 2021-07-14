@@ -653,6 +653,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Marius
 * Mar. Balske
 * Mark Gilbert
+* Mark Knam
 * Mark Robinson
 * Markrosoft
 * Markus Halm
