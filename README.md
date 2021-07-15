@@ -572,6 +572,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * James Edwards
 * James Kocher
 * James Mayhugh
+* James Ye
 * Jamie Murphy
 * Jan Niehusmann
 * Jari Hiltunen
@@ -638,6 +639,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Lordbob75
 * Lothar Schweikle-Droll
 * Louis Müller
+* LSDTripp
 * Luca Di Diomede
 * Lucio De Carli
 * Lukas Bischof
@@ -708,6 +710,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Omar El-Domeiri
 * Oscar
 * Patrick
+* Patrick Fortin-Ducharme
 * Patrick McDowell
 * Patrick Wagstrom
 * Paul Bishop
@@ -726,6 +729,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Quentin Peten
 * Ralph Borchers
 * Ranc1d
+* Randall D Bilbrey
 * Raphael Schitz
 * Richard Bernarts
 * Richard Fancher
