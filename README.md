@@ -719,6 +719,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Peter
 * Peter Drayton
 * Peter Farrelly
+* Peter Okelmann
 * Petri Heiskanen
 * Phil Wu
 * Philip Edwards
