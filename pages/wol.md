@@ -18,4 +18,4 @@ kvmd:
 then restart `kvmd`.
 
 ### GPIO method (multiple hosts)
-Follow the [manual for building the GPIO menu](gpio.md) and use the `wol ' driver to build a menu with many buttons tied to different hosts.
+Follow the [manual for building the GPIO menu](gpio.md) and use the `wol` driver to build a menu with many buttons tied to different hosts.
