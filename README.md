@@ -326,22 +326,6 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
     ```
     then restart kvmd.
     
-* To use Wake-on-LAN with your server you must define some options such as the server's MAC address and (optionally) IP address. Use `/etc/kvmd/override.yaml`. The format is:
-    ```yaml
-    kvmd:
-        wol:
-            mac: ff:ff:ff:ff:ff:ff
-    ```
-    Replace `ff:ff:ff:ff:ff:ff` with the MAC of your server. By default, a packet is sent via a broadcast request to the entire IPv4 network (`255.255.255.255`, port `9`), but you can address it to a specific static address:
-    ```yaml
-    kvmd:
-        wol:
-            mac: ff:ff:ff:ff:ff:ff
-            ip: 192.168.0.100
-            # port: 9  # By default
-    ```
-    then restart `kvmd`.
-    
 * [Using H.264 / WebRTC](pages/webrtc.md).
 
 * [Video modes of HDMI CSI brodge (if no video in UEFI)](pages/edid.md).
@@ -364,7 +348,7 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
 
 * [Export monitoring metrics to Prometheus](pages/prometheus.md).
 
-* [Control GPIO ports, USB relays, IPMI hosts](pages/gpio.md).
+* [Control GPIO ports, USB relays, IPMI hosts, send Wake-on-LAN messages](pages/gpio.md).
 
 * [Centralized authorization for multiple Pi-KVMs](https://github.com/pikvm/kvmd-auth-server).
 
