@@ -337,6 +337,8 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
 * [Multiport KVM over IP](pages/multiport.md).
 
 * [Using IPMI and Redfish](pages/ipmi.md).
+
+* [Using Wake-on-LAN](pages/wol.md).
   
 * [Using VNC](pages/vnc.md).
   
