@@ -588,7 +588,8 @@ iw wlan0 info
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
 ### Misc stuff
-- Fully working example of a Pi4 USB-HDMI KVM attached to AIMOS 4-port HDMI KVM switch (8 port is on AliExpress), with keyboard hotkey switching between inputs, and mass storage media emulation on a Pi Zero W https://docs.google.com/document/d/1wgBZHxwpbJWkJBD3I8ZkZxSDxt0DdNDDYRNtVoL_vK4
+- Fully working [example](https://docs.google.com/document/d/1wgBZHxwpbJWkJBD3I8ZkZxSDxt0DdNDDYRNtVoL_vK4) of a Pi4 USB-HDMI KVM attached to AIMOS 4-port HDMI KVM switch (8 port is on AliExpress), with keyboard hotkey switching between inputs, and mass storage media emulation on a Pi Zero W
+- Pi-KVM that mitigates HDMI backpower and requires no splitter board [here](https://docs.google.com/document/d/1M9xUgNE_-P8GydKr_3qIgXUR9YzqApHNPhetRv3pcsE/edit)
 - Useful scripts that enhance the Pi-KVM's functionality ```https://pastebin.com/u/srepac```
 
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
