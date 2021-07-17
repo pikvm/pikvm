@@ -162,7 +162,7 @@ The driver `hidrelay` provides access to cheap managed [USB HID relays](http://v
 
 Additionally, we recommend to configure access rights and static device name using [UDEV rules](https://wiki.archlinux.org/index.php/udev). For example, create `/etc/udev/rules.d/99-kvmd-extra.rules`:
 ```
-SUBSYSTEM=="usb", ATTR{idVendor}=="16c0", ATTR{idProduct}=="05df", MODE="666"
+KERNEL=="hidraw[0-9]*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="05df", GROUP="kvmd"
 ```
 
 Channels should not use duplicate physical numbers. The driver supports saving state between KVMD restarts (meaning `initial=null`).
