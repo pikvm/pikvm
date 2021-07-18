@@ -41,19 +41,19 @@ Specifically to v2. This can be used for terminal access from the managed server
 See [here](usb_ethernet.md).
 
 ## Using Ethernet wiznet w5500 with ZeroW
-See [here](https://github.com/pikvm/pikvm/issues/158#issuecomment-768305834)
+See [here](https://github.com/pikvm/pikvm/issues/158#issuecomment-768305834).
 
 ## Disable mass storage emulation
-See [here](msd.md#disable-msd)
+See [here](msd.md#disable-msd).
 
 ## Upload .ISO images manually
-See [here](msd.md#upload-images-manually-without-web-ui)
+See [here](msd.md#upload-images-manually-without-web-ui).
 
 ## Mass Storage Drives
-See [here](msd.md#multiple-and-writable-drives)
+See [here](msd.md#multiple-and-writable-drives).
 
 ## Create a Microsoft Windows based Flash disk image
-See [here](msd.md#create-a-microsoft-windows-based-flash-disk-image)
+See [here](msd.md#create-a-microsoft-windows-based-flash-disk-image).
 
 ## Create a drive image on macOS
-See [here](msd.md#create-a-drive-image-on-macos)
+See [here](msd.md#create-a-drive-image-on-macos).
