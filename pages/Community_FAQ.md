@@ -24,7 +24,7 @@
 - [Can you connect a camera to this and still make pikvm functional?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-you-connect-a-camera-to-this-and-still-make-pikvm-functional)
 - [I have a question that is not answered here!! Now what?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#i-have-a-question-that-is-not-answered-here-now-what)
 - [HELP! Something isn't working!!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-something-isnt-working)
-- [HELP! I am getting a 500/503 error when I try and access the main KVM page!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-i-am-getting-a-500-503-error-when-I-try-and-access-the-main-kvm-page)
+- [HELP! I am getting a 500/503 error when I try and access the main KVM page!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-i-am-getting-a-500503-error-when-I-try-and-access-the-main-kvm-page)
 - [Can you use an iPad on PiKVM?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-you-use-an-ipad-on-pikvm)
 - [Can I use RealVNC/Guacamole to connect to PiKVM?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-i-use-realvncguacamole-to-connect-to-pikvm)
 - [How do I add my own SSL cert?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#how-do-i-add-my-own-ssl-cert)
