@@ -336,6 +336,13 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
 
 * [Multiport KVM over IP](pages/multiport.md).
 
+* [Using Mass-Storage Drive](pages/msd.md).
+    - [Disable MSD](pages/msd.md#disable-msd).
+    - [Upload images manually (without Web UI)](pages/msd.md#upload-images-manually-without-web-ui).
+    - [Multiple and writable drives](pages/msd.md#multiple-and-writable-drives).
+    - [Create a Microsoft Windows based Flash disk image](pages/msd.md#create-a-microsoft-windows-based-flash-disk-image).
+    - [Create a drive image on macOS](pages/msd.md#create-a-drive-image-on-macos).
+
 * [Using IPMI and Redfish](pages/ipmi.md).
 
 * [Using Wake-on-LAN](pages/wol.md).
@@ -357,10 +364,7 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
 * [Cookbook](pages/cookbook.md).
     - [Take a HDMI screenshot via console on Pi-KVM](pages/cookbook.md#take-a-hdmi-screenshot-via-console-on-pi-kvm).
     - [Get installed KVMD version via console](pages/cookbook.md#get-installed-kvmd-version-via-console).
-    - [Upload .ISO images manually](pages/cookbook.md#upload-iso-images-manually).
     - [Enable Serial-over-USB connection](pages/cookbook.md#enable-serial-over-usb-connection).
-    - [Enable Ethernet-over-USB network](pages/cookbook.md#enable-ethernet-over-usb-network).
-    - [Create a Microsoft Windows based flash disk image](pages/cookbook.md#create-a-microsoft-windows-based-flash-disk-image).
 
 -----
 
