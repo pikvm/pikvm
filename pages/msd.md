@@ -1,4 +1,4 @@
-# Mass-Storage Drive
+# Mass Storage Drive
 This is a feature available on Pi-KVM v2+ that allows you to emulate a CD-ROM or Flash Drive.
 There are some subtleties that you should know:
 
