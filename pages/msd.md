@@ -4,7 +4,10 @@ There are some subtleties that you should know:
 
 * **The size of the CD-ROM image is limited to 2.2 GB**. This is a limitation of the Linux kernel, which currently cannot emulate a DVD.
 To use a larger boot image, use Flash emulation. If this is not possible (the image does not support Flash, for example, for Windows),
-use the recipe described on this page below.
+use [this](#create-a-microsoft-windows-based-flash-disk-image) recipe.
+* **Changing the media type (CD-ROM or Flash) is possible only when the device is reconnected.** For V3, this can be done using
+the switch `System -> Connect main USB`. In this case, the **media type is determined at the time of connecting the image, and not by clicking on the switch**.
+The switch affects the settings of the future connection. For non-V3 devices, you need to either reboot your server or otherwise reinitialize the connection.
 
 # Disable MSD
 To disable mass storage emulation altogether, you can place the following piece of configuration into /etc/kvmd/override.yaml 
