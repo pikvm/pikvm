@@ -86,7 +86,7 @@ As an appliance, users are not expected to interact with the host operating syst
 - Yes for RPi4, Yes and No for ZeroW - Yes if you want dedicated power, otherwise No
 - Yes, otherwise you could back power the pi and or the target
 - You can get a Y cable from amazon and mod one of the leads - Please see getting started guide - or see [non modding of Y cable](https://github.com/pikvm/pikvm#hardware-for-v2)
-- You can also get a power splitter board from Tindi or PiShop [(Links provided below)](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#useful-links)
+- You can also get a power splitter board from Tindi or PiShop [(Links provided under variants #3 & #4)](https://github.com/pikvm/pikvm#hardware-for-v2)
 - If you have the v3 HAT - This is built in
 
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
