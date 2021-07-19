@@ -813,5 +813,6 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * YURI LEE
 * Yurii Ostapchuk
 * zgen
+* Zoltan Magyari
 * Zsombor Vari
 </details>
