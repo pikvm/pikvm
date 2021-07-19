@@ -30,5 +30,5 @@ Limitations:
 	- v3 HAT v3.2 also takes care of the back power issue
 - MSD work around (will not work OOB)
 	- RPi4 OTG needs to be in the KB port for mouse and KB funtionality, ZeroW is required and needs to be connected to the HUB port for HK switching and MSD functionality - ✔**KNOWN WORKING**✔
-	- See [here](https://github.com/pikvm/pikvm/issues/371) - Advanced soldering required
+	- See [here](https://github.com/pikvm/pikvm/issues/371) - Advanced soldering required - allows use of GPIO menu to change input
 	
