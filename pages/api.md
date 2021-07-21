@@ -9,12 +9,12 @@ or get a token and pass it as a cookie with each request.
 There are two options here:
 * Using X-headers. Just pass `X-KVMD-User` and `X-KVMD-Passwd` with the request:
     ```
-    $ curl -k -H X-KVMD-User:admin -H X-KVMD-Passwd:admin https://pikvm/api/auth/check
+    $ curl -k -H X-KVMD-User:admin -H X-KVMD-Passwd:admin https://<pikvm-ip>/api/auth/check
     ```
 * Using HTTP Basic Auth. Please note: contrary to the standard, this method DOES NOT use the `WWW-Authenticate` header.
   HTTP Basic Auth in this implementation is intended only for compatibility with other systems, such as [Prometheus](prometheus.md).
     ```
-    $ curl -k --user admin:admin https://pikvm/api/auth/check
+    $ curl -k -u admin:admin https://<pikvm-ip>/api/auth/check
     ```
 ### Session-based cookie auth
 1. Authorize and get token for the user using `POST /api/auth/login`:
@@ -38,7 +38,7 @@ In a normal situation, opening a socket session triggers the video streamer to s
 It is possible create a session that will not start the streamer and will not be counted when counting clients to stop the streamer. To do this, use the URL parameter `stream=0`:
 
 ```
-$ websocat -k wss://pikvm/api/ws?stream=0 -H X-KVMD-User:admin -H X-KVMD-Passwd:admin
+$ websocat -k wss://<pikvm-ip>/api/ws?stream=0 -H X-KVMD-User:admin -H X-KVMD-Passwd:admin
 ```
 <details>
     <summary>Output with initial events</summary>
@@ -82,8 +82,9 @@ ws.close()
 
 ## System info: `/api/info`
 On `GET` this handle will return general information about the Pi-KVM device. If you specify the `fields` query parameter, only the requested category will be selected, like `fields=system,hw`. By default all categories will be displayed:
+
 ```
-$ curl -k -H X-KVMD-User:admin -H X-KVMD-Passwd:admin http://localhost:8080/api/info
+$ curl -k -u admin:admin https://<pikvm-ip>/api/info
 ```
 
 <details>
@@ -184,8 +185,17 @@ Each category is represented by its own event in the websocket (`info_hw_state`,
 ## System log: `/api/log`
 On `GET` this handle will display messages from all KVMD services as plain text. The `follow=1` request parameter turns the request into an infinite one and you will receive new log messages in real time. The seek parameter runs the log for the specified time in seconds. For example, `seek=3600` will show the log for the last hour. Both the `seek` and `follow` parameters can be used together.
 
+```
+$ curl -k -u admin:admin https://<pikvm-ip>/api/log
+```
+
 ## Get ATX state: `/api/atx`
 On `GET` it will show current ATX state.
+
+```
+$ curl -k -u admin:admin https://<pikvm-ip>/api/atx
+```
+
 <details>
     <summary>Example</summary>
 
@@ -204,7 +214,7 @@ On `GET` it will show current ATX state.
 ```
 </details>
 
-## Set ATX PSU state: `/api/atx/power`
+### Set ATX PSU state: `/api/atx/power`
 On `POST` it will change ATX power supply state to desired.
 Parameters:
 - `action` describes desired state:
@@ -212,13 +222,107 @@ Parameters:
   * `off` - turned off (aka soft-off), emulates short-press on the power button;
   * `off_hard` - emulates long (5+ seconds) press on the power button;
   * `reset_hard`  emulates pressing reset button (hardware hot reset).
-- `wait` - boolean. Says if call should return immediately or just after finishing operation.
+- `wait` - Boolean. Says if call should return immediately or just after finishing operation.
 
-## Emulate pressing buttons on computer case: `/api/atx/click`
+```
+$ curl -X POST -k -u admin:admin https://<pikvm-ip>/api/atx/power?action=on
+```
+
+### Emulate pressing buttons on computer case: `/api/atx/click`
 On `POST` send button press events to {front-}panel header (like you pressing buttins on your computer's case).
 Parameters:
-- `button` specifies the desired computer case button you would like to press. Currently supported options are: `power` — for short press on power button, `power_long` — for pressing POWER button for 4+ seconds (force OFF), `reset` — to initiate cold-reset
+- `button` specifies the desired computer case button you would like to press. Currently supported options are: 
+  * `power` — for short press on power button;
+  * `power_long` — for pressing POWER button for 4+ seconds (force OFF);
+  * `reset` — to initiate cold-reset.
 - `wait` Boolean. Says if call should return immediately or just after finishing operation.
+
+```
+$ curl -X POST -k -u admin:admin https://<pikvm-ip>/api/atx/click?button=power
+```
+
+## Get Mass Storage Drive (*msd*) state: `/api/msd`
+On `GET` it will show current *msd* state.
+
+```
+$ curl -k -u admin:admin https://<pikvm-ip>/api/msd
+```
+
+### Upload image: `/api/msd/write`
+On `POST` upload an image to the drive. This API uses HTTP multipart POST data.
+- `image` specify the image name.
+- `data` multipart POST data to be uploaded.
+
+```
+$ # create test image
+$ dd if=/dev/zero of=test.iso bs=1M count=1
+
+$ # upload it to pikvm
+$ curl -X POST -F "image=test.iso" -F "data=@test.iso" -k -u admin:admin https://<pikvm-ip>/api/msd/write
+```
+
+### Set *msd* parameters: `/api/msd/set_params`
+On `POST` select the image and change media type. Parameters:
+- `image` specify the image name.
+- `cdrom` Boolean. Select media type:
+  * `true` - CD-ROM;
+  * `false` - Flash.
+
+```
+$ curl -X POST -k -u admin:admin "https://<pikvm-ip>/api/msd/set_params?image=test.iso&cdrom=true"
+```
+
+### Connect the device: `/api/msd/set_connected`
+On `POST` select if the drive should be connected. Parameters:
+- `connected` Boolean. Connect drive:
+  * `true` - connect drive;
+  * `false` - disconnect drive.
+
+```
+$ curl -X POST -k -u admin:admin https://<pikvm-ip>/api/msd/set_connected?connected=true
+```
+
+### Remove image: `/api/msd/remove`
+On `POST` select the image that should be removed. Parameters:
+- `image` specify the image name.
+
+```
+$ curl -X POST -k -u admin:admin https://<pikvm-ip>/api/msd/remove?image=test.iso
+```
+
+### Reset *msd*: `/api/msd/reset`
+On `POST` resets the mass storage drive.
+
+```
+$ curl -X POST -k -u admin:admin https://<pikvm-ip>/api/msd/reset
+```
+
+## Get GPIO state: `/api/gpio`
+On `GET` it will show current GPIO state.
+
+```
+$ curl -k -u admin:admin https://<pikvm-ip>/api/gpio
+```
+
+### Switch GPIO driver channel: `/api/gpio/switch`
+On `POST` it will interact with selected GPIO driver channel in `switch` mode. Parameters:
+- `channel` specify the GPIO driver channel.
+- `state` Boolean. Select the new switch state.
+- `wait` Boolean. Says if call should return immediately or just after finishing operation.
+
+### Pulse GPIO driver channel: `/api/gpio/pulse`
+On `POST` it will interact with selected GPIO driver channel in `pulse` mode. Parameters:
+- `channel` specify the GPIO driver channel.
+- `delay` Float. Defines the pulse time in seconds, `0` for disable pulsing.
+- `wait` Boolean. Says if call should return immediately or just after finishing operation.
+
+## Get Prometheus metrics: `/api/export/prometheus/metrics`
+On `GET` it will return the exported Prometheus metrics.
+
+```
+$ curl -k -u admin:admin https://<pikvm-ip>/api/export/prometheus/metrics
+```
+
 
 # To be continued ===>
 Unfortunately, the developer doesn't have enough time to fully describe the API. You can find all existing APIs in the [KVMD source tree](https://github.com/pikvm/kvmd/tree/master/kvmd/apps/kvmd/api). We would appreciate your help with documentation.
