@@ -28,6 +28,6 @@ See [this](https://www.youtube.com/watch?v=-SRL92VJ870) video.
 | Type | Description |
 |------|-------------|
 | <img src="spacer_6.2mm.png" width=200 /> | [6.2mm spacer](spacer_6.2mm.stl), required **TWO** pieces |
-| <img src="spacer_2mm.png" width=200 /> | [2mm spacer](spacer_2mm.stl) required **TWO for AUM** or **ONE without AUM** |
+| <img src="spacer_2mm.png" width=200 /> | [2mm spacer](spacer_2mm.stl) required **ONE without AUM** or **TWO for AUM** |
 | <img src="spacer_1mm.png" width=200 /> | [1mm spacer](spacer_1mm.stl) required **ONE for AUM only** |
 | <img src="low_spacer.png" width=200 /> | [Low spacer](low_spacer.stl) required **ONE** |
