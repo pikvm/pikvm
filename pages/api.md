@@ -317,7 +317,7 @@ On `POST` it will interact with selected GPIO driver channel in `pulse` mode. Pa
 - `wait` Boolean. Says if call should return immediately or just after finishing operation.
 
 ## Get Prometheus metrics: `/api/export/prometheus/metrics`
-On `GET` it will return the exported Prometheus metrics.
+On `GET` it will return the exported Prometheus metrics. Also see [here](prometheus.md) for details.
 
 ```
 $ curl -k -u admin:admin https://<pikvm-ip>/api/export/prometheus/metrics
