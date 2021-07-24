@@ -6,7 +6,7 @@ Also, Pi-KVM can be connected to a multi-port HDMI/USB switch and the switch's b
 
 If your KVM switches channels using keyboard shortcuts, there is a chance that it will not be able to work with OTG (v2 platform, see below), since it does not fully implement the USB stack. In this case, you will have to [use an Arduino board](arduino_hid.md) to emulate the keyboard & mouse (Pi-KVM supports this configuration).
 
-❗WARNING:exclamation: - If you choose AiMOS, be aware that it has a back powering issue that you need to use work arounds for. Limitations are are listed below
+❗WARNING:exclamation: - If you choose AiMOS, be aware that it has a back powering issue that you need to use work arounds for. Limitations are are listed below. Also please be aware that Arudino's will not work with the AIMOS KVM's.
 
 # List of tested KVMs
 Here the status is:
