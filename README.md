@@ -271,11 +271,15 @@ Here the final steps. There are two ways to get the Pi-KVM OS:
   * For the other boards and platforms, you need to build the operating system manually. Don't worry, it's very simple! [Just follow these instructions](pages/building_os.md). You can also build the OS for RPi4 manually if you really want to :)
 
 # You're amazing!
+- ❗NOTE❗ After performing any update of pikvm, clear web browser cache or use incognito/private browsing mode.
+
 Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with password `root` by default) and HTTPS (try to open in a browser the URL `https://<addr>`, the login `admin` and password `admin` by default). For HTTPS a self-signed certificate is used by default.
 
 To change the root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`. As indicated on the login screen use `rw` to make the root filesystem writable, before issuing these commands. After making changes, make sure to run the command `ro`.
 
 # Access to Pi-KVM from the Internet
+- ❗NOTE❗ Please take proper security precaustions when exposing this to the internet. The use of tailscale is HIGHLY suggested.
+
 You can use port forwarding for port 443 on your router if it has an external IP address. In all other cases, you can use the excellent free VPN service [Tailscale](pages/tailscale.md), which is configured on Pi-KVM with a [few simple commands](pages/tailscale.md).
 
 If you have any problems or questions, contact us using Discord: https://discord.gg/bpmXfz5
