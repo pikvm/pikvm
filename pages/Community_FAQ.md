@@ -544,6 +544,7 @@ iw wlan0 info
 - Did you reseat the ribbon cable?
 - Is the ribbon cable facing the right way? Needs to be towards the PCB (Green or Black)
 - If you are getting snow looking screen, you need to make sure you select 50hz OR select anything below 1080p, like 720p60
+- If you are getting an Indian looking screen, please clear the browser cache or use private/incog window
 
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
