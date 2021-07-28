@@ -408,6 +408,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Alexey Kamenskiy
 * alm0241
 * Alucard
+* Ananthaneshan Elampoornan
 * Andreas Marufke
 * Andreas Schmid
 * Andrew Melton
@@ -711,6 +712,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Patrick McDowell
 * Patrick Wagstrom
 * Paul Bishop
+* Paul De La Rosa
 * Pawel Trofimiuk
 * Peder Madsen
 * Peter
