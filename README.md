@@ -102,7 +102,7 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
   - **Recommended**: Raspberry Pi 4 (2 GB model is enough) for the best performance.
   - ... or Raspberry Pi ZeroW (slower alternative, no ethernet).
 * MicroSD card (min 16 GB recommended).
-* USB-A 3A charger (female socket) or power supply.
+* USB-A 3A charger (female socket) or official rpi recommended power supply.
 * Video capture device:
   - **Recommended**: [HDMI to CSI-2 bridge based on TC358743](https://aliexpress.com/item/4000102166176.html) - low latency, more reliable, **H.264 video**.
   - ... or [HDMI to USB dongle](https://aliexpress.com/item/4001043540669.html) (not available for ZeroW) - high latency >200ms, [not very reliable](#a-few-words-about-hdmi-usb-dongle)), no H.264 a very long time yet.
