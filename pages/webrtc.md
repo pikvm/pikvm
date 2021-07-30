@@ -1,6 +1,6 @@
 # WebRTC
 This is a new alternative video transfer mode available for Raspberry Pi 4 users with an HDMI-CSI bridge.
-It uses H.264 encoding instead of MJPEG and provides significantly less traffic consumption.
+It uses H.264 encoding instead of MJPEG and provides significantly less traffic consumption. ZeroW is NOT supported.
 
 # How to use
 If you use an OS image built after 2021.06.10, this mode will be available to you by default.
