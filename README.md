@@ -442,6 +442,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * bikmaek
 * bitjoe
 * Bits and Bytes Computers LLC
+* Bjoern Petsch
 * Blue Frog LLC
 * Bootstrapper - Programmierung erklärt
 * Bosco
