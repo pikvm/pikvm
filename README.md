@@ -400,6 +400,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * adipisicing
 * Adrian Basham
 * Alberto Bassi
+* alejandro
 * Aleksei Brusianskii
 * Alessio Curri
 * Alex T
@@ -407,6 +408,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Alexandre Jablonski
 * Alexey Kamenskiy
 * alm0241
+* Alok Anand
 * Alucard
 * Ananthaneshan Elampoornan
 * Andreas Marufke
@@ -620,6 +622,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Karl Dunne
 * Keith Muggleton
 * Ken Lee
+* Kenneth Younger III
 * Kenny Hui
 * Kevin Bajohr
 * Kevin Schwartz
