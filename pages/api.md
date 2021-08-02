@@ -249,7 +249,8 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/msd
 ```
 
 ### Upload image: `/api/msd/write`
-On `POST` upload an image to the drive. This API uses HTTP multipart POST data.
+On `POST` upload an image to the drive. This API uses HTTP POST data.
+Parameters:
 - `image` specify the image name.
 - `data` multipart POST data to be uploaded.
 
@@ -258,7 +259,21 @@ $ # create test image
 $ dd if=/dev/zero of=test.iso bs=1M count=1
 
 $ # upload it to pikvm
-$ curl -X POST -F "image=test.iso" -F "data=@test.iso" -k -u admin:admin https://<pikvm-ip>/api/msd/write
+$ curl -v -X POST --data-binary @test.iso -k -u admin:admin https://<pikvm-ip>/api/msd/write?image=test.iso
+```
+
+### Upload image by URL: `/api/msd/write_remote`
+On `POST` download an image to the drive from HTTP(S) URL.
+Parameters:
+- `image` specify the image name.
+- `timeout` remote request timeout, 10 seconds by default.
+
+```
+$ # create test image
+$ dd if=/dev/zero of=test.iso bs=1M count=1
+
+$ # upload it to pikvm
+$ curl -v -X POST -k -u admin:admin https://<pikvm-ip>/api/msd/write_remote?url=http://example.com/test.iso
 ```
 
 ### Set *msd* parameters: `/api/msd/set_params`
