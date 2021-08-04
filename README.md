@@ -632,6 +632,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Koloman
 * Konrad Neitzel
 * Krzysztof Żelaśkiewicz
+* Lance Ward
 * Larry Meaney
 * Lars
 * Lee Wilkinson
