@@ -290,7 +290,7 @@ Windows Power shell: arp -a | findstr 'b8-27-eb' (Replace with the above, all lo
 
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 	
-### Help! I ran out of room! What now?
+### Help! I ran out of space aka room! What now?
 - You’ve cached package updates you no longer need.
 - Enter read/write mode by executing rw as root
 - Execute the following as root to clear the package cache
