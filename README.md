@@ -8,7 +8,7 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 * **[>>> DIY Getting Started <<<](#diy-getting-started)**
 * **Great project review by Novaspirit Tech**: https://youtu.be/plP9Y1likRg
 * Boring technical details from the developer: https://youtu.be/9YhPWjWv5gw
-* **[Pro Series v3 Preorder Today!](#v3-hat-features) / Video review**: https://youtu.be/dTchVKxx7Fo
+* **[Pro Series v3 on Kickstarter!](#v3-hat-features) / Video review**: https://youtu.be/dTchVKxx7Fo
 * [Limitations](#limitations)
 * [Tips](#tips)
 * [FAQ](#faq-and-troubleshooting)
@@ -179,6 +179,8 @@ The dongle is completely supported and Pi-KVM works great with it. But it has so
 
 <img src="img/v3_board.png" alt="drawing" width=250/></td>
 
+[**>>>>> Pi-KVM v3 HAT on Kickstarter! <<<<<**](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)
+
 We have developed our own HAT for the Raspberry Pi 4. It will have all the features of the v2 platform, including:
 * HDMI capture based on the TC358743 (extra low latency and many features like compression control).
 * OTG Keyboard & mouse; Mass Storage Drive emulation.
@@ -194,7 +196,7 @@ We have developed our own HAT for the Raspberry Pi 4. It will have all the featu
 
 **YouTube Review of the v3 board**: https://youtu.be/dTchVKxx7Fo
 
-[**Pi-KVM v3 HAT on Kickstarter!**](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)
+[**>>>>> Pi-KVM v3 HAT on Kickstarter! <<<<<**](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)
 
 -----
 
