@@ -20,6 +20,20 @@ Also currently the relative mouse mode is not supported by [Pi-KVM VNC server](v
 We expect to implement this in [TigerVNC](https://github.com/TigerVNC/tigervnc/issues/619). The relative mode is also not supported by mobile browsers.
 
 # Enabling the relative mouse on the v2 platform (OTG HID)
+### Dual mode
+Using dual mouse mode you can switch between the absolute and relative mouse in the `System` menu without reloading.
+This is more convenient, but for compatibility reasons it is disabled by default. To enable it, do the following:
+* Switch filesystem to RW-mode using command `rw.
+* Edit `/etc/kvmd/override.yaml` and add these lines:
+  ```yaml
+  kvmd:
+      hid:
+          mouse_alt:
+              device: /boot/kvmd-hid-mouse-alt
+  ```
+* Perform `reboot`. After that reboot your PC.
+
+### Single relative mouse
 * Switch filesystem to RW-mode using command `rw`.
 * Edit `/etc/kvmd/override.yaml` and add these lines:
   ```yaml

@@ -8,7 +8,7 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 * **[>>> DIY Getting Started <<<](#diy-getting-started)**
 * **Great project review by Novaspirit Tech**: https://youtu.be/plP9Y1likRg
 * Boring technical details from the developer: https://youtu.be/9YhPWjWv5gw
-* **[Pro Series v3 Preorder Today!](#v3-hat-features) / Video review**: https://youtu.be/dTchVKxx7Fo
+* **[Pro Series v3 on Kickstarter!](#v3-hat-features) / Video review**: https://youtu.be/dTchVKxx7Fo
 * [Limitations](#limitations)
 * [Tips](#tips)
 * [FAQ](#faq-and-troubleshooting)
@@ -102,7 +102,7 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
   - **Recommended**: Raspberry Pi 4 (2 GB model is enough) for the best performance.
   - ... or Raspberry Pi ZeroW (slower alternative, no ethernet).
 * MicroSD card (min 16 GB recommended).
-* USB-A 3A charger (female socket) or power supply.
+* USB-A 3A charger (female socket) or official rpi recommended power supply.
 * Video capture device:
   - **Recommended**: [HDMI to CSI-2 bridge based on TC358743](https://aliexpress.com/item/4000102166176.html) - low latency, more reliable, **H.264 video**.
   - ... or [HDMI to USB dongle](https://aliexpress.com/item/4001043540669.html) (not available for ZeroW) - high latency >200ms, [not very reliable](#a-few-words-about-hdmi-usb-dongle)), no H.264 a very long time yet.
@@ -179,6 +179,8 @@ The dongle is completely supported and Pi-KVM works great with it. But it has so
 
 <img src="img/v3_board.png" alt="drawing" width=250/></td>
 
+[**>>>>> Pi-KVM v3 HAT on Kickstarter! <<<<<**](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)
+
 We have developed our own HAT for the Raspberry Pi 4. It will have all the features of the v2 platform, including:
 * HDMI capture based on the TC358743 (extra low latency and many features like compression control).
 * OTG Keyboard & mouse; Mass Storage Drive emulation.
@@ -194,11 +196,7 @@ We have developed our own HAT for the Raspberry Pi 4. It will have all the featu
 
 **YouTube Review of the v3 board**: https://youtu.be/dTchVKxx7Fo
 
-**Status as of Jun 2021**: Due to the complexity of the organization in Russia, we needed to use resellers. The devices will be available for purchase at the specified links. The second batch will also have a reseller in Europe. Will show up as OUT OF STOCK, just means stock has not arrived yet.
-* US: https://www.pishop.us/product/pi-kvm-v3-hat-for-raspberry-pi-4
-* Canada: https://www.buyapi.ca/product/pi-kvm-v3-hat-for-raspberry-pi-4
-
-You can also leave your email to us personally, so that we can send you a message about the start of sales or the appearance of new resellers. [Subscribe in this form](https://docs.google.com/forms/d/1LA6iEYVtbJULvMDNktyNQMI4N9SYdNG03Wh9WK-80cM)** or join to [Discord](https://discord.gg/bpmXfz5).
+[**>>>>> Pi-KVM v3 HAT on Kickstarter! <<<<<**](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)
 
 -----
 
@@ -271,11 +269,15 @@ Here the final steps. There are two ways to get the Pi-KVM OS:
   * For the other boards and platforms, you need to build the operating system manually. Don't worry, it's very simple! [Just follow these instructions](pages/building_os.md). You can also build the OS for RPi4 manually if you really want to :)
 
 # You're amazing!
+- ❗NOTE❗ After performing any update of pikvm, clear web browser cache or use incognito/private browsing mode.
+
 Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with password `root` by default) and HTTPS (try to open in a browser the URL `https://<addr>`, the login `admin` and password `admin` by default). For HTTPS a self-signed certificate is used by default.
 
 To change the root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`. As indicated on the login screen use `rw` to make the root filesystem writable, before issuing these commands. After making changes, make sure to run the command `ro`.
 
 # Access to Pi-KVM from the Internet
+- ❗NOTE❗ Please take proper security precaustions when exposing this to the internet. The use of tailscale is HIGHLY suggested.
+
 You can use port forwarding for port 443 on your router if it has an external IP address. In all other cases, you can use the excellent free VPN service [Tailscale](pages/tailscale.md), which is configured on Pi-KVM with a [few simple commands](pages/tailscale.md).
 
 If you have any problems or questions, contact us using Discord: https://discord.gg/bpmXfz5
@@ -326,22 +328,6 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
     ```
     then restart kvmd.
     
-* To use Wake-on-LAN with your server you must define some options such as the server's MAC address and (optionally) IP address. Use `/etc/kvmd/override.yaml`. The format is:
-    ```yaml
-    kvmd:
-        wol:
-            mac: ff:ff:ff:ff:ff:ff
-    ```
-    Replace `ff:ff:ff:ff:ff:ff` with the MAC of your server. By default, a packet is sent via a broadcast request to the entire IPv4 network (`255.255.255.255`, port `9`), but you can address it to a specific static address:
-    ```yaml
-    kvmd:
-        wol:
-            mac: ff:ff:ff:ff:ff:ff
-            ip: 192.168.0.100
-            # port: 9  # By default
-    ```
-    then restart `kvmd`.
-    
 * [Using H.264 / WebRTC](pages/webrtc.md).
 
 * [Video modes of HDMI CSI brodge (if no video in UEFI)](pages/edid.md).
@@ -352,7 +338,16 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
 
 * [Multiport KVM over IP](pages/multiport.md).
 
+* [Using Mass-Storage Drive](pages/msd.md).
+    - [Disable MSD](pages/msd.md#disable-msd).
+    - [Upload images manually (without Web UI)](pages/msd.md#upload-images-manually-without-web-ui).
+    - [Multiple and writable drives](pages/msd.md#multiple-and-writable-drives).
+    - [Create a Microsoft Windows based Flash disk image](pages/msd.md#create-a-microsoft-windows-based-flash-disk-image).
+    - [Create a drive image on macOS](pages/msd.md#create-a-drive-image-on-macos).
+
 * [Using IPMI and Redfish](pages/ipmi.md).
+
+* [Using Wake-on-LAN](pages/wol.md).
   
 * [Using VNC](pages/vnc.md).
   
@@ -364,17 +359,14 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
 
 * [Export monitoring metrics to Prometheus](pages/prometheus.md).
 
-* [Control GPIO ports, USB relays, IPMI hosts](pages/gpio.md).
+* [Control GPIO ports, USB relays, IPMI hosts, send Wake-on-LAN messages](pages/gpio.md).
 
 * [Centralized authorization for multiple Pi-KVMs](https://github.com/pikvm/kvmd-auth-server).
 
 * [Cookbook](pages/cookbook.md).
     - [Take a HDMI screenshot via console on Pi-KVM](pages/cookbook.md#take-a-hdmi-screenshot-via-console-on-pi-kvm).
     - [Get installed KVMD version via console](pages/cookbook.md#get-installed-kvmd-version-via-console).
-    - [Upload .ISO images manually](pages/cookbook.md#upload-iso-images-manually).
     - [Enable Serial-over-USB connection](pages/cookbook.md#enable-serial-over-usb-connection).
-    - [Enable Ethernet-over-USB network](pages/cookbook.md#enable-ethernet-over-usb-network).
-    - [Create a Microsoft Windows based flash disk image](pages/cookbook.md#create-a-microsoft-windows-based-flash-disk-image).
 
 -----
 
@@ -406,13 +398,17 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * adipisicing
 * Adrian Basham
 * Alberto Bassi
+* alejandro
 * Aleksei Brusianskii
 * Alessio Curri
 * Alex T
 * Alexander Pankov
 * Alexandre Jablonski
 * Alexey Kamenskiy
+* alm0241
+* Alok Anand
 * Alucard
+* Ananthaneshan Elampoornan
 * Andreas Marufke
 * Andreas Schmid
 * Andrew Melton
@@ -446,6 +442,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * bikmaek
 * bitjoe
 * Bits and Bytes Computers LLC
+* Bjoern Petsch
 * Blue Frog LLC
 * Bootstrapper - Programmierung erklärt
 * Bosco
@@ -477,6 +474,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Christoffer Lund
 * Christopher Hearn
 * Christopher Mandlbaur
+* Christopher Simms
 * Chucktastic
 * Clifford Coleman
 * Clinton Lee Taylor
@@ -498,6 +496,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * David
 * David Godibadze
 * David Howell
+* David Irvine
 * David Klinkman
 * David Niemann
 * David Shay
@@ -571,7 +570,9 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * James Edwards
 * James Kocher
 * James Mayhugh
+* James Ye
 * Jamie Murphy
+* Jamie Scott
 * Jan Niehusmann
 * Jari Hiltunen
 * Jason Crossley
@@ -620,6 +621,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Karl Dunne
 * Keith Muggleton
 * Ken Lee
+* Kenneth Younger III
 * Kenny Hui
 * Kevin Bajohr
 * Kevin Schwartz
@@ -628,15 +630,18 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Koloman
 * Konrad Neitzel
 * Krzysztof Żelaśkiewicz
+* Lance Ward
 * Larry Meaney
 * Lars
 * Lee Wilkinson
 * LeeNX
 * Leonard Feineis
 * Lizardo Hernandez
+* LoCascio
 * Lordbob75
 * Lothar Schweikle-Droll
 * Louis Müller
+* LSDTripp
 * Luca Di Diomede
 * Lucio De Carli
 * Lukas Bischof
@@ -652,6 +657,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Marius
 * Mar. Balske
 * Mark Gilbert
+* Mark Knam
 * Mark Robinson
 * Markrosoft
 * Markus Halm
@@ -706,14 +712,17 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Omar El-Domeiri
 * Oscar
 * Patrick
+* Patrick Fortin-Ducharme
 * Patrick McDowell
 * Patrick Wagstrom
 * Paul Bishop
+* Paul De La Rosa
 * Pawel Trofimiuk
 * Peder Madsen
 * Peter
 * Peter Drayton
 * Peter Farrelly
+* Peter Okelmann
 * Petri Heiskanen
 * Phil Wu
 * Philip Edwards
@@ -724,6 +733,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Quentin Peten
 * Ralph Borchers
 * Ranc1d
+* Randall D Bilbrey
 * Raphael Schitz
 * Richard Bernarts
 * Richard Fancher
@@ -755,6 +765,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Seth Jennings
 * Sheran Gunasekera
 * Shichun Chen
+* Shin Guey Wong
 * Simon Evans
 * Simon Sundgaard
 * Simplistic Realities
@@ -796,6 +807,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Tristan Schoening
 * Truman Kilen
 * turbochris
+* tutanak
 * Tyler
 * Udo Schroeter
 * Uli Fahrer
@@ -815,5 +827,6 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * YURI LEE
 * Yurii Ostapchuk
 * zgen
+* Zoltan Magyari
 * Zsombor Vari
 </details>

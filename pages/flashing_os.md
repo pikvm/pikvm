@@ -51,11 +51,14 @@ Decompress and flash image and follow to the [final steps](#the-final-steps). Be
     Save, unmount and follow the next step.
     
     **NOTE** - This can also be applied to the latest Rpi4 images, it is however easier to set this up using `wifi-menu -o`
-    <br></br>**NOTE** - For ZeroW w/o header, if you add this [device](https://www.pishop.us/product/solderless-serial-to-usb-adapter-for-raspberry-pi-zero/), this will add a local console without breaking the current overlay. For example: Look for `ZeroW console serial` in windows and update the driver from the [VCP driver section](https://ftdichip.com/drivers/vcp-drivers/)
+    <br></br>**NOTE** - For ZeroW w/o header, if you add this [device](https://www.pishop.us/product/solderless-serial-to-usb-adapter-for-raspberry-pi-zero/), this will add a local console without breaking the current overlay. To Access for example: Look for `ZeroW console serial` in windows and update the driver from the [VCP driver section](https://ftdichip.com/drivers/vcp-drivers/)
+    <br></br>**NOTE** - If you do not see this on your wifi, you will need to redo this step. Due to a first time run, you will need to recreate this file with the above information.
 
 2. When the process is complete, pull out the memory card and insert it into the Raspberry Pi. Connect the Raspberry Pi to the power supply. Your device will obtain the IP address via DHCP automatically. <br>:exclamation:Windows users: balenaEtcher will automatically safely remove the memory card. If you are using a Windows version prior to Windows 10 1809 and a different flashing software, you should do the safe remove manually.
 
 3. After power-up, Pi-KVM OS generates unique SSH keys and certificates. Do not turn off the Raspberry Pi until it's fully booted. If you set up Wi-Fi in step 1, it won't be able to connect to the network on the first boot. You need to wait 10 minutes for all the OS preparations to complete, then just restart the device. On the second boot, the Raspberry will connect to the network without any problems.
+
+3a. Please scan for your pikvm either using Angry IP scanner for PC or Fing for mobile before proceeding to the next step, if not found please restart step 1.
 
 4. Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<ip-address>` with the password `root` by default) and HTTPS. In most networks you should be able to reach Pi-KVM via any browser with the URL `https://pikvm/`. If that doesn't work you'll need to find the IP address manually in your router and try it via `https://<ip-address>`. The default login username is `admin` with `admin` as the password). For HTTPS a self-signed certificate is used by default. Your browser will give you a warning about an invalid SSL certificate which you can safely ignore.
 
@@ -66,10 +69,11 @@ Decompress and flash image and follow to the [final steps](#the-final-steps). Be
 6. After installation, we recommend you to update your operating system:
     ```
     rw
-    pacman -Syy
-    pacman -Su
+    pacman -Syu
     reboot
     ```
+    **NOTE** - PROXY servers make networks behave not in a normal manor, therefor, may or may not update properly. The end user is ultimately responsible for coming up with solutions to combat this.
+    
 7. Pacman saves all installed packages in a compressed format so that you can roll back to the old version if something goes wrong. After you've updated and made sure everything works, it makes sense to clear the package cache so that it doesn't take up space on the SD card:
     ```
     # rw

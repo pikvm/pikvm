@@ -162,7 +162,7 @@ The driver `hidrelay` provides access to cheap managed [USB HID relays](http://v
 
 Additionally, we recommend to configure access rights and static device name using [UDEV rules](https://wiki.archlinux.org/index.php/udev). For example, create `/etc/udev/rules.d/99-kvmd-extra.rules`:
 ```
-SUBSYSTEM=="usb", ATTR{idVendor}=="16c0", ATTR{idProduct}=="05df", MODE="666"
+KERNEL=="hidraw[0-9]*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="05df", GROUP="kvmd"
 ```
 
 Channels should not use duplicate physical numbers. The driver supports saving state between KVMD restarts (meaning `initial=null`).
@@ -202,13 +202,44 @@ kvmd:
                 driver: my_server
                 pin: 1
                 mode: output
-                switch: off
+                switch: false
             my_server_off:
                 driver: my_server
                 pin: 2
                 mode: output
-                switch: off
+                switch: false
         view:
             table:
                 - [my_server_status, "my_server_on|On", "my_server_off|Off"]
+```
+
+### Wake-on-LAN
+The driver `wol` provides a simple generator of Wake-on-LAN packages. One driver and one output are generated for one host if a [simplified configuration method](wol.md) is used. However, you can define multiple drivers if you want to manage different hosts. One driver controls one host, and can only be used as an output. Pin numbers are ignored.
+```yaml
+kvmd:
+    gpio:
+        drivers:
+            wol_server1:
+                type: wol
+                mac: ff:ff:ff:ff:ff:f1
+            wol_server2:
+                type: wol
+                mac: ff:ff:ff:ff:ff:f2
+                ip: 192.168.0.100
+                port: 9
+        scheme:
+            wol_server1:
+                driver: wol_server1
+                pin: 0
+                mode: output
+                switch: false
+            wol_server2:
+                driver: wol_server2
+                pin: 0
+                mode: output
+                switch: false
+        view:
+            table:
+                - ["#Server 1", "wol_server1|Send Wake-on-LAN"]
+                - ["#Server 2", "wol_server2|Send Wake-on-LAN"]
 ```
