@@ -173,7 +173,7 @@ The dongle is completely supported and Pi-KVM works great with it. But it has so
 
 # Pi-KVM v3 HAT Features
 
-<img src="img/v3_kit.jpg" alt="drawing" height=300>
+<img src="img/v3_kit.jpg" alt="drawing" height=200>
 
 [**>>>>> Pi-KVM v3 HAT on Kickstarter! <<<<<**](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)
 
