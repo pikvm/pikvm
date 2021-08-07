@@ -5,16 +5,17 @@ A very simple and fully functional Raspberry Pi-based KVM over IP that you can m
 
 The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community Chat](https://discord.gg/bpmXfz5) for news, questions and support!
 
-* **[>>> DIY Getting Started <<<](#diy-getting-started)**
-* **Great project review by Novaspirit Tech**: https://youtu.be/plP9Y1likRg
-* Boring technical details from the developer: https://youtu.be/9YhPWjWv5gw
-* **[Pro Series v3 on Kickstarter!](#v3-hat-features) / Video review**: https://youtu.be/dTchVKxx7Fo
-* [Limitations](#limitations)
-* [Tips](#tips)
-* [FAQ](#faq-and-troubleshooting)
-* [Donate](#donate)
+| **[>>> DIY Device Getting Started <<<](#diy-getting-started)** | **[>>> Pi-KVM v3 HAT Pro Series on Kickstarter! <<<](#v3-hat-features)** |
+| --------------------------------------------- | ------------------------------------------ |
+| [Our boring presentation for the DIY :)](https://youtu.be/9YhPWjWv5gw) | [Pi-KVM v3 Review by **Novaspirit Tech**](https://youtu.be/plP9Y1likRg)<br>[Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)<br>[Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c) |
+| <img src="img/v2_example.jpg" alt="drawing"/> | <img src="img/v3_board.jpg" alt="drawing"/> |
 
-### Features
+| Web UI                                     |
+| ------------------------------------------ |
+| <img src="img/screen1.png" alt="drawing" height=200/> |
+
+
+# Features
 * Supported **Raspberry Pi 2**, **3**, **4** and **ZeroW**;
 * **FullHD video** using advanced **HDMI-to-CSI bridge** or **USB dongle**;
 * Extra low **video latency** with **MJPEG** or **H.264 / WebRTC** (for CSI bridge);
@@ -84,10 +85,6 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 * **Know-how**  
   We created [our very own MJPG video server](https://github.com/pikvm/ustreamer) written in C with multi-threading support and GPU video encoding - the fastest streaming solution available to provide the best video quality for Pi-KVM. We also tested a lot of hardware configurations so that you can be sure devices you assemble will work reliably.
 </details>
-
-| DIY Device                                    | Web UI                                     |
-| --------------------------------------------- | ------------------------------------------ |
-| <img src="img/v2_example.jpg" alt="drawing"/> | <img src="img/screen1.png" alt="drawing"/> |
 
 -----
 
@@ -171,11 +168,10 @@ The dongle is completely supported and Pi-KVM works great with it. But it has so
 * If you want to capture VGA from your server instead of HDMI, buy the [VGA-to-HDMI converter](https://aliexpress.com/item/4000553298530.html).
 * Pi-KVM can be powered using PoE, but it is not recommend to use the official PoE HAT: it is unreliable and [not compatible with the HDMI bridge](https://github.com/pikvm/pikvm/issues/6). Use any other PoE hat without an I2C fan controller.
 * **Don't use random relay modules or random optocouplers!** Some relays or optocouplers may not be sensitive enough for the Raspberry Pi, some others may be low-level controlled. Either use relays that are activated by a high logic level, or follow the design provided and buy an OMRON. See details [here](https://github.com/pikvm/pikvm/issues/13).  
-  <img src="img/no_relays.png" alt="drawing" width="100"/>
 
 -----
 
-# v3 HAT Features
+# Pi-KVM v3 HAT Features
 
 <img src="img/v3_board.png" alt="drawing" width=250/></td>
 
@@ -194,7 +190,9 @@ We have developed our own HAT for the Raspberry Pi 4. It will have all the featu
 * No need for soldering or other assembly. It's a ready-made, reliable board which you can use yourself or provide to your clients.
 * Continued use of Pi-KVM OS - all the software will be fully open.
 
-**YouTube Review of the v3 board**: https://youtu.be/dTchVKxx7Fo
+* [Pi-KVM v3 Review by **Novaspirit Tech**](https://youtu.be/plP9Y1likRg)
+* [Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)
+* [Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c)
 
 [**>>>>> Pi-KVM v3 HAT on Kickstarter! <<<<<**](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)
 
@@ -293,7 +291,7 @@ Happy using of Pi-KVM :)
 * A similar problem can be observed on devices with UEFI: the keyboard works fine, but the mouse does not work. This situation occurs when UEFI does not support absolute mouse mode, which prefers to use Pi-KVM. To solve this problem, [you can enable relative mouse mode](pages/mouse.md).
 * To use Pi-KVM with Apple UEFI, use the [Arduino HID](pages/arduino_hid.md) even with **v2**. Apple UEFI wants the most blunt keyboard possible.
 
-Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain an optional HID module for such cases, so you won't have to build anything yourself.
+**Most of these problems are already in the process of being solved. By the time of the release of Pi-KVM v3 HAT, the Apple keyboard will already work without Arduino!**
 
 -----
 
@@ -371,7 +369,8 @@ Our future [v3 platform](#the-future-v3-platform-work-in-progress) will contain 
 -----
 
 # FAQ and Troubleshooting
-If you have any questions or run into problems, take a look at [this page](pages/faq.md). We've probably already found a solution for it :)
+If you have any questions or run into problems, take a look at [this page](pages/faq.md).  
+We've probably already found a solution for it :)
 
 For any help, you can contact our discord chat: https://discord.gg/bpmXfz5
 
