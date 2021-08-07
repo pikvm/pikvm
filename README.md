@@ -199,7 +199,7 @@ We have developed our own HAT for the Raspberry Pi 4. It will have all the featu
 * **No need for soldering or breadboarding**. It's a ready-made, reliable board which you can use yourself or provide to your clients.
 
 Watch the video:
-* [Pi-KVM v3 Review by **Novaspirit Tech**](https://youtu.be/plP9Y1likRg)
+* [Pi-KVM v3 Review by **Novaspirit Tech**](https://youtu.be/dTchVKxx7Fo)
 * [Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)
 * [Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c)
 
