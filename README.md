@@ -173,7 +173,7 @@ The dongle is completely supported and Pi-KVM works great with it. But it has so
 
 # Pi-KVM v3 HAT Features
 
-<img src="img/v3_board.png" alt="drawing" width=250/></td>
+<img src="img/v3_kit.jpg" alt="drawing" height=300>
 
 [**>>>>> Pi-KVM v3 HAT on Kickstarter! <<<<<**](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)
 
@@ -187,7 +187,7 @@ We have developed our own HAT for the Raspberry Pi 4. It will have all the featu
 * CISCO-style and USB serial console port (to manage Pi-KVM OS or to connect with the server).
 * Optional AVR-based HID (for some rare and strange motherboards whose BIOS doesn't understand the OTG emulated keyboard).
 * Optional OLED screen to display network status or other desired information.
-* No need for soldering or other assembly. It's a ready-made, reliable board which you can use yourself or provide to your clients.
+* No need for soldering or breadboarding. It's a ready-made, reliable board which you can use yourself or provide to your clients.
 * Continued use of Pi-KVM OS - all the software will be fully open.
 
 * [Pi-KVM v3 Review by **Novaspirit Tech**](https://youtu.be/plP9Y1likRg)
