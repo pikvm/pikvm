@@ -173,28 +173,37 @@ The dongle is completely supported and Pi-KVM works great with it. But it has so
 
 # Pi-KVM v3 HAT Features
 
+
 <img src="img/v3_kit.jpg" alt="drawing" height=200>
 
-[**>>>>> Pi-KVM v3 HAT on Kickstarter! <<<<<**](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)
+**[>>> Pi-KVM v3 HAT on Kickstarter! <<<](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)**
 
 We have developed our own HAT for the Raspberry Pi 4. It will have all the features of the v2 platform, including:
-* HDMI capture based on the TC358743 (extra low latency and many features like compression control).
-* OTG Keyboard & mouse; Mass Storage Drive emulation.
-* Ability to simulate "removal and insertion" for USB.
-* Onboard ATX power control.
-* Onboard fan controller.
-* A real-time clock.
-* CISCO-style and USB serial console port (to manage Pi-KVM OS or to connect with the server).
-* Optional AVR-based HID (for some rare and strange motherboards whose BIOS doesn't understand the OTG emulated keyboard).
-* Optional OLED screen to display network status or other desired information.
-* No need for soldering or breadboarding. It's a ready-made, reliable board which you can use yourself or provide to your clients.
-* Continued use of Pi-KVM OS - all the software will be fully open.
 
+* Fully **Open Source** software and ready-made maintainable Linux based OS.
+* Access to the server via **Web UI** or **VNC**.
+* **HDMI video capture** for extra low latency with **MJPEG** or **H.264/WebRTC** (1080p 50Hz max).
+* **HDMI audio capture** (supported by hardware, software work in progress).
+* **USB keyboard** & **mouse**, bootable **Virtual CD-ROM** & **Flash Drive**;
+* Ability to simulate "**removal and insertion**" for **USB**.
+* **Onboard ATX controller** to manage the server's power.
+* **PWM fan controller**.
+* **A real-time clock** for accurate logging.
+* CISCO-style and USB **serial console port** (to manage Pi-KVM OS or to connect the server).
+* Ability to use **IPMI BMC**, **IPMI SoL**, **Redfish** and **Wake-on-LAN** to control the server.
+* **Extensible authorization** and **SSL encryption** out of the box.
+* **Health monitoring** of the Raspberry Pi.
+* Control **GPIO** ports and **USB relays** from the Web UI.
+* **Bonus: It's compatible with Apple computers!**
+* **Optional OLED screen** to display network status or other desired information.
+* **No need for soldering or breadboarding**. It's a ready-made, reliable board which you can use yourself or provide to your clients.
+
+Watch the video:
 * [Pi-KVM v3 Review by **Novaspirit Tech**](https://youtu.be/plP9Y1likRg)
 * [Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)
 * [Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c)
 
-[**>>>>> Pi-KVM v3 HAT on Kickstarter! <<<<<**](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)
+**[>>> Pi-KVM v3 HAT on Kickstarter! <<<](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)**
 
 -----
 
