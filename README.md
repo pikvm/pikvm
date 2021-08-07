@@ -5,9 +5,9 @@ A very simple and fully functional Raspberry Pi-based KVM over IP that you can m
 
 The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community Chat](https://discord.gg/bpmXfz5) for news, questions and support!
 
-| **[>>> DIY Device Getting Started <<<](#diy-getting-started)** | **[>>> Pi-KVM v3 HAT Pro Series on Kickstarter! <<<](#v3-hat-features)** |
+| **[>>> DIY Device Getting Started <<<](#diy-getting-started)** | **[>>> Pi-KVM v3 HAT Getting Started <<<](#pi-kvm-v3-hat-features)** |
 | --------------------------------------------- | ------------------------------------------ |
-| [Our boring presentation for the DIY :)](https://youtu.be/9YhPWjWv5gw) | [Pi-KVM v3 Review by **Novaspirit Tech**](https://youtu.be/plP9Y1likRg)<br>[Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)<br>[Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c) |
+| [DIY Review by **Novaspirit Tech**](https://youtu.be/plP9Y1likRg)<br>[**Hackaday**](https://hackaday.com/2020/11/24/true-networked-kvm-without-breaking-the-bank/) & [**Tom's HARDWARE**](https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi)<br>[Our boring presentation for the DIY :)](https://youtu.be/9YhPWjWv5gw) | [Pi-KVM v3 Review by **Novaspirit Tech**](https://youtu.be/dTchVKxx7Fo)<br>[Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)<br>[Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c) |
 | <img src="img/v2_example.jpg" alt="drawing"/> | <img src="img/v3_board.jpg" alt="drawing"/> |
 
 | Web UI                                     |
