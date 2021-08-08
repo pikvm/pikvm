@@ -432,6 +432,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Armen
 * Aron Green
 * Aron Perelman
+* Artem Simonov
 * Arthur Woimbée
 * Ashlesh Chaudhari
 * Augusto Becciu
