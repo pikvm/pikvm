@@ -176,7 +176,7 @@ The dongle is completely supported and Pi-KVM works great with it. But it has so
 
 <img src="img/v3_kit.jpg" alt="drawing" height=200>
 
-**[>>> Pi-KVM v3 HAT on Kickstarter! <<<](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)**
+**[>>> Pi-KVM v3 HAT is coming to Kickstarter soon! <<<](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)**
 
 We have developed our own HAT for the Raspberry Pi 4. It will have all the features of the v2 platform, including:
 
@@ -203,7 +203,7 @@ Watch the video:
 * [Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)
 * [Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c)
 
-**[>>> Pi-KVM v3 HAT on Kickstarter! <<<](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)**
+**[>>> Pi-KVM v3 HAT is coming to Kickstarter soon! <<<](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)**
 
 -----
 
