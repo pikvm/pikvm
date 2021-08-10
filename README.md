@@ -748,6 +748,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Richard Fancher
 * Richard Freemantle
 * Richard Michael
+* Rico Cantrell
 * Rob Tongue
 * Robert Klauco
 * Robin Gfatter
