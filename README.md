@@ -759,6 +759,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Ronny Haldorsen
 * rotx
 * Russell Scott
+* Ryan Peacock
 * Samed Ozoglu
 * Sameul Davies
 * Samuel Vetsch
