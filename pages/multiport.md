@@ -27,7 +27,7 @@ Limitations:
 	- See [here](https://github.com/pikvm/pikvm/issues/128)
 	- See [here](https://github.com/pikvm/pikvm/issues/382) - Advanced soldering required
 	- [Cheap 13$ HDMI splitter will work](https://www.amazon.com/dp/B07DQBY5TX) OR [this](https://www.amazon.com/gp/product/B08B346353)
-	- v3 HAT v3.2 also takes care of the back power issue
+	- v3 HAT v3.3 (Kickstarter model and later) also takes care of the back power issue
 - MSD work around (will not work OOB)
 	- RPi4 OTG needs to be in the KB port for mouse and KB funtionality, ZeroW is required and needs to be connected to the HUB port for HK switching and MSD functionality - ✔**KNOWN WORKING**✔
 	- See [here](https://github.com/pikvm/pikvm/issues/371) - Advanced soldering required - allows use of GPIO menu to change input
