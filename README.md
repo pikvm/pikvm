@@ -756,6 +756,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Rohit Priyadarshi
 * Rolfs 3D UG
 * Ronald LeBaron
+* Ronald Wells
 * Ronny Haldorsen
 * rotx
 * Russell Scott
