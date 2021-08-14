@@ -55,3 +55,13 @@ This is more convenient, but for compatibility reasons it is disabled by default
 
 # Enabling the relative mouse on the v0 platform (Arduino HID)
 Mode switching for [Arduino HID](https://github.com/pikvm/pikvm/blob/master/pages/arduino_hid.md) can be performed on-the-fly starting with KVMD 2.6 and the corresponding firmware. No additional actions are required.
+
+# Fixing absolute mouse on Windows 98
+Due to an ancient buggy driver, the absolute mouse on Windows 98 moves only within the upper-left quarter of the screen. To fix this, you need to activate some magic workaround in `/etc/kvmd/override.yaml`:
+```yaml
+kvmd:
+    hid:
+        mouse:
+            absolute_win98_fix: true
+```
+And run `systemctl restart kvmd`.
