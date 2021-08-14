@@ -200,6 +200,15 @@ Note: if you can't find an answer to your question here, try the [Community FAQ]
 * In rare cases, some very buggy BIOSes does not like HID and Mass Storage in one USB device. You can either [disable Mass Storage](https://github.com/pikvm/pikvm/blob/master/pages/msd.md#disable-msd), or use [Arduino HID](https://github.com/pikvm/pikvm/blob/master/pages/arduino_hid.md) to physically separate them.
 </details>
 
+### Buggy absolute mouse on Windows 98 as managed server
+<details>
+  <summary>Click to view</summary>
+
+* How to fix:
+  - [v2+/OTG](https://github.com/pikvm/pikvm/blob/master/pages/mouse.md#fixing-absolute-mouse-on-windows-98).
+  - [Arduino HID](https://github.com/pikvm/pikvm/blob/master/pages/arduino_hid.md#fixing-absolute-mouse-on-windows-98).
+</details>
+
 ### Big mouse latency on another Raspberry as managed server
 <details>
   <summary>Click to view</summary>
