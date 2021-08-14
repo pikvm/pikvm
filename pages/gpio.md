@@ -286,7 +286,7 @@ Here the small example with servo control:
 3. Connect Servo motor like SG90 PWM connection to RPi GPIO18, +5V and GND to a 5V and GND pin on header:
 
 4. Add to /etc/kvmd/override.yaml
-    ```
+    ```yaml
     kvmd:
         gpio:
             drivers:
