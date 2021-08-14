@@ -298,40 +298,21 @@ Happy using of Pi-KVM :)
 # Limitations
 * On **v2**, the HID (keyboard) can't wake up the host from suspend (yet). If it is important for you, you can use [Arduino HID](https://github.com/pikvm/pikvm/blob/master/pages/arduino_hid.md) with **v2**.
 * In rare cases, some very buggy BIOSes doesn't like HID and Mass Storage in a single USB device. You can either [disable Mass Storage](https://github.com/pikvm/pikvm/blob/master/pages/msd.md#disable-msd), or use [Arduino HID](https://github.com/pikvm/pikvm/blob/master/pages/arduino_hid.md) to physically separate them.
-* Some BIOSes and UEFIs do not support an absolute mouse. This problem is easily solved if you enable [relative or dual mouse mode](https://github.com/pikvm/pikvm/blob/master/pages/mouse.md).
 
 -----
 
-# Tips
+# What's next?
 * The Pi-KVM file system is always mounted in read-only mode. This prevents it from being damaged by a sudden power outage. To change the configuration you must first switch the filesystem to write mode using the command `rw` from root. After the changes, be sure to run the command `ro` to switch it back to read-only.
 
 * **NEVER** edit `/etc/kvmd/main.yaml`. Use `/etc/kvmd/override.yaml` to redefine the system parameters. All other files that are also not recommended for editing have read-only permissions. If you edit any of these files, you will need to manually make changes to them when you upgrade your system. You can view the current configuration and all available KVMD parameters using the command `kvmd -m`.
 
 * Almost all KVMD (the main daemon controlling Pi-KVM) configuration files use [YAML](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) syntax. Information on the format's syntax can be found at the link provided.
 
-* If you want to disable the web terminal use this command:
-    ```yaml
-    [root@pikvm ~]# systemctl disable --now kvmd-webterm
-    ```
-    
-* To disable authorization completely edit the file `/etc/kvmd/override.yaml`:
-    ```yaml
-    kvmd:
-        auth:
-            enabled: false
-    ```
-    then restart `kvmd`:
-    ```
-    [root@pikvm ~]# systemctl restart kvmd
-    ```
+* [Disabling authorization](pages/cookbook.md#disabling-authorization).
 
-* If you don't need ATX power control you can disable the relevant Web-UI menu in `/etc/kvmd/override.yaml`:
-    ```yaml
-    kvmd:
-        atx:
-            type: disabled
-    ```
-    then restart kvmd.
+* [Disabling ATX and hiding the menu](pages/cookbook.md#disabling-atx-and-hiding-the-menu).
+
+* [Disabling webterm](pages/cookbook.md#disabling-webterm).
     
 * [Using H.264 / WebRTC](pages/webrtc.md).
 
