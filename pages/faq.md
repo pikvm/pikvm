@@ -205,8 +205,8 @@ Note: if you can't find an answer to your question here, try the [Community FAQ]
   <summary>Click to view</summary>
 
 * How to fix:
-  - [v2+/OTG](https://github.com/pikvm/pikvm/blob/master/pages/mouse.md#fixing-absolute-mouse-on-windows-98).
-  - [Arduino HID](https://github.com/pikvm/pikvm/blob/master/pages/arduino_hid.md#fixing-absolute-mouse-on-windows-98).
+  - [v2+/OTG](https://github.com/pikvm/pikvm/blob/master/pages/mouse.md#fixing-the-absolute-mouse-on-windows-98).
+  - [Arduino HID](https://github.com/pikvm/pikvm/blob/master/pages/arduino_hid.md#fixing-the-usb-absolute-mouse-on-windows-98).
 </details>
 
 ### Big mouse latency on another Raspberry as managed server
