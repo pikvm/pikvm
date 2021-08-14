@@ -263,3 +263,70 @@ kvmd:
                 - ["#Server 2", "wol_server2|Send Wake-on-LAN"]
 ```
 </details>
+
+### PWM
+<details>
+    <summary>:exclamation:Click to view:exclamation:</summary>
+
+The `pwm` driver allows you to use [some GPIO pins](https://pinout.xyz/pinout/pwm) on the Raspberry Pi for PWM.
+    
+Here the small example with servo control:
+
+1. Add to `/boot/config.txt`:
+    ```
+    dtoverlay=pwm
+    ```
+
+2. Create `/etc/udev/rules.d/99-kvmd-pwm.rules`:
+    ```
+    SUBSYSTEM=="pwm*", ACTION=="add", RUN+="/bin/chgrp -R kvmd /sys%p", RUN+="/bin/chmod -R g=u /sys%p"
+    SUBSYSTEM=="pwm*", ACTION=="change", ENV{TRIGGER}!="none", RUN+="/bin/chgrp -R kvmd /sys%p", RUN+="/bin/chmod -R g=u /sys%p"
+    ```
+
+3. Connect Servo motor like SG90 PWM connection to RPi GPIO18, +5V and GND to a 5V and GND pin on header:
+
+4. Add to /etc/kvmd/override.yaml
+    ```
+    kvmd:
+        gpio:
+            drivers:
+                servo1:
+                    type: pwm
+                    pwm_chip: 0                  # PWM Chip Number
+                    pwm_period: 20000000         # Servo Motor SG90 Period in nano-seconds
+                    duty_cycle_push: 1500000     # Servo Motor SG90 duty_cycle for pushing button
+                    duty_cycle_release: 1000000  # Servo Motor SG90 duty_cycle for releasing button
+            scheme:
+                short_press:
+                    driver: servo1
+                    pin: 0                       # Pin number is the PWM channel number on the PWM Chip
+                    mode: output
+                    switch: false
+                    pulse:
+                        delay: 0.5
+                        max_delay: 2
+                long_press:
+                    driver: servo1
+                    pin: 0                       # Pin number is the PWM channel number on the PWM Chip
+                    mode: output
+                    switch: false
+                    pulse:
+                        delay: 2
+                        max_delay: 2
+                extra_long_press:
+                    driver: servo1
+                    pin: 0                       # Pin number is the PWM channel number on the PWM Chip
+                    mode: output
+                    switch: false
+                    pulse:
+                        delay: 10
+                        max_delay: 20
+            view:
+                header:
+                    title: Controls
+                table:
+                    - ["#Servo - Short Press", "short_press|Press"]
+                    - ["#Servo - Long Press", "long_press|Press"]
+                    - ["#Servo - Extra Long Press", "extra_long_press|Press"]
+    ```
+</details>
