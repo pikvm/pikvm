@@ -692,6 +692,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Nis Wechselberg
 * Nithin Philips
 * Nod Swal
+* Nolan Haynes
 * nubbn
 * nybble
 * Oh Be
