@@ -169,7 +169,7 @@ Note: if you can't find an answer to your question here, try the [Community FAQ]
   <summary>Click to view</summary>
 
 * Make sure that you have used the correct USB cable with DATA lines to connect the OTG port for the Raspberry to the computer. You may have decided to use a USB hub instead of a Y-cable and **it won't work**. Use good cables and follow the instructions :)
-* In very rare cases, some motherboards contain a buggy BIOS that does not understand the composite USB device because BIOS doesn't implement the USB stack correctly. In this case, we can suggest the [Arduino HID emulator](arduino_hid.md) from v0 platform with v2.
+* In rare cases, some very buggy BIOSes does not like HID and Mass Storage in one USB device. You can either [disable Mass Storage](https://github.com/pikvm/pikvm/blob/master/pages/msd.md#disable-msd), or use [Arduino HID](https://github.com/pikvm/pikvm/blob/master/pages/arduino_hid.md) to physically separate them.
 </details>
 
 ### BIOS/UEFI does not recognize USB of v2+, but computer does
@@ -183,21 +183,21 @@ Note: if you can't find an answer to your question here, try the [Community FAQ]
 <details>
   <summary>Click to view</summary>
 
-* The BIOS does not support absolute mouse mode, which is preferred by Pi-KVM. In this case, [you can enable relative positioning mode](mouse.md).
+* The BIOS does not support absolute mouse mode, which is preferred by Pi-KVM. In this case, [you can enable relative or dual positioning mode](mouse.md).
+</details>
+
+### I can't wake up suspended computer on v2+
+<details>
+  <summary>Click to view</summary>
+
+* It's not implemented yet. If it is important for you, you can use [Arduino HID](https://github.com/pikvm/pikvm/blob/master/pages/arduino_hid.md) with **v2+**.
 </details>
 
 ### Mass storage drive working (I can boot an image from Pi-KVM v2+), but keyboard/mouse does not
 <details>
   <summary>Click to view</summary>
 
-* In very rare cases, some motherboards contain a buggy BIOS that does not understand the composite USB device because BIOS doesn't implement the USB stack correctly. In this case, we can suggest the [Arduino HID emulator](arduino_hid.md) from v0 platform with v2+. Thus the Pi-KVM will be connected by two USB cables to the motherboard: one of them will be responsible for the keyboard and mouse, the other for everything else.
-</details>
-
-### I can't get into UEFI/FileVault when booting my Mac using Pi-KVM v2+
-<details>
-  <summary>Click to view</summary>
-  
-* The problem is specific to early-model Macs and does not occur on ARM-based Macs (Apple M1 or so). UEFI does not initialize the keyboard of the composite device during boot, however, if you use the standard keyboard to get to the UEFI/FileVault menu, you will see that the keyboard, mouse, and mass storage will work fine. In this case, we can suggest the [Arduino HID emulator](arduino_hid.md) from v0 platform with v2+. Thus, the Pi-KVM will be connected by two USB cables to the Mac: one of them will be responsible for the keyboard and mouse, the other for everything else.
+* In rare cases, some very buggy BIOSes does not like HID and Mass Storage in one USB device. You can either [disable Mass Storage](https://github.com/pikvm/pikvm/blob/master/pages/msd.md#disable-msd), or use [Arduino HID](https://github.com/pikvm/pikvm/blob/master/pages/arduino_hid.md) to physically separate them.
 </details>
 
 ### Big mouse latency on another Raspberry as managed server
