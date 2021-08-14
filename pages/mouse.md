@@ -33,7 +33,7 @@ This is more convenient, but for compatibility reasons it is disabled by default
   ```
 * Perform `reboot`. After that reboot your PC.
 
-### Single relative mouse
+### Single relative mode
 * Switch filesystem to RW-mode using command `rw`.
 * Edit `/etc/kvmd/override.yaml` and add these lines:
   ```yaml
