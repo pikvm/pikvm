@@ -85,8 +85,8 @@ Follow this diagram:
 
 **Connect VIN pin of Arduino to [any Raspberry's 5v pin](https://pinout.xyz/pinout/5v_power) for PS/2 only device. But you don't need to connect the Arduino VIN pin if you connected USB (Arduino will get power through it).**
 
-## Fixing absolute mouse on Windows 98
-Due to an ancient buggy driver, the absolute mouse on Windows 98 moves only within the upper-left quarter of the screen. To fix this, you need to recompile the firmware with uncommented flag `-DHID_USB_ABS_WIN98_FIX` in `platformio.ini`.
+## Fixing USB absolute mouse on Windows 98
+Due to an ancient buggy driver, the USB absolute mouse on Windows 98 moves only within the upper-left quarter of the screen. To fix this, you need to recompile the firmware with uncommented flag `-DHID_USB_ABS_WIN98_FIX` in `platformio.ini`.
 
 ## SPI connection to Arduino Micro
 Using an SPI connection, an Arduino Micro or compatible can be flashed from the Pi and used as an HID keyboard and mouse. Unlike UART, SPI does not share pins with Bluetooth on the Raspberry Pi so the Bluetooth radio does not need to be disabled.
