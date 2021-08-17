@@ -292,8 +292,8 @@ Here the small example with servo control:
             drivers:
                 servo1:
                     type: pwm
-                    pwm_chip: 0                  # PWM Chip Number
-                    pwm_period: 20000000         # Servo Motor SG90 Period in nano-seconds
+                    chip: 0                      # PWM Chip Number
+                    period: 20000000             # Servo Motor SG90 Period in nano-seconds
                     duty_cycle_push: 1500000     # Servo Motor SG90 duty_cycle for pushing button
                     duty_cycle_release: 1000000  # Servo Motor SG90 duty_cycle for releasing button
             scheme:
@@ -329,4 +329,63 @@ Here the small example with servo control:
                     - ["#Servo - Long Press", "long_press|Press"]
                     - ["#Servo - Extra Long Press", "extra_long_press|Press"]
     ```
+</details>
+
+### Servo
+<details>
+    <summary>:exclamation:Click to view:exclamation:</summary>
+
+Servo module is built on top of PWM module and allows user to define angles instead of duty_cyles to control a PWM enabled servo motor like SG90. When the button is pressed the servo motor moves to an angle defined by `angle_push` and when button is released it moves back to `angle_release`. In the example configuration for a [cheap 5V SG90 Servo](https://www.ebay.co.uk/itm/184555802744), the motor moves to an angle of 45 degrees when button is pressed and moves back to 20 degress when released.
+
+To use Servo motors in PiKVM you need to follow steps 1-3 for [PWM Module](#pwm) and then use the following configuration.
+
+Add to /etc/kvmd/override.yaml
+```yaml
+    kvmd:
+        gpio:
+            drivers:
+                servo1:
+                    type: servo
+                    chip: 0                  # PWM Chip Number
+                    period: 20000000         # Servo Motor SG90 Period in nano-seconds
+                    duty_cycle_min: 350000   # Servo Motor SG90 duty_cycle for -90 degrees
+                    duty_cycle_max: 2350000  # Servo Motor SG90 duty_cycle for +90 degrees
+                    angle_max: 90            # Servo Motor SG90 angle at duty_cycle_max
+                    angle_min: -90           # Servo Motor SG90 angle at duty_cycle_min
+                    angle_push: 45           # Servo Motor SG90 angle to push button
+                    angle_release: 20        # Servo Motor SG90 angle to release button
+            scheme:
+                short_press:
+                    driver: servo1
+                    pin: 0                   # Pin number is the PWM channel number on the PWM Chip
+                    mode: output
+                    switch: false
+                    pulse:
+                        delay: 0.5
+                        max_delay: 2
+                long_press:
+                    driver: servo1
+                    pin: 0                   # Pin number is the PWM channel number on the PWM Chip
+                    mode: output
+                    switch: false
+                    pulse:
+                        delay: 2
+                        max_delay: 2
+                extra_long_press:
+                    driver: servo1
+                    pin: 0                   # Pin number is the PWM channel number on the PWM Chip
+                    mode: output
+                    switch: false
+                    pulse:
+                        delay: 10
+                        max_delay: 20
+            view:
+                header:
+                    title: Controls
+                table:
+                    - ["#Servo - Short Press", "short_press|Press"]
+                    - ["#Servo - Long Press", "long_press|Press"]
+                    - ["#Servo - Extra Long Press", "extra_long_press|Press"]
+```
+
 </details>
