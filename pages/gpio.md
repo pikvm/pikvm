@@ -337,7 +337,7 @@ Here the small example with servo control:
 
 The `servo` module is built on top of the `pwm` module and allows user to define angles instead of `duty_cyles` to control a PWM enabled servo motor like SG90. When the button is pressed the servo motor moves to an angle defined by `angle_push` and when button is released it moves back to `angle_release`. In the example configuration for a [cheap 5V SG90 Servo](https://www.ebay.co.uk/itm/184555802744), the motor moves to an angle of 45 degrees when button is pressed and moves back to 20 degress when released.
 
-To use Servo motors in PiKVM you need to follow steps 1-3 for [PWM Module](#pwm) and then use the following configuration.
+❗ To use Servo motors in PiKVM you need to follow steps 1-3 for [PWM Module](#pwm) and then use the following configuration.
 
 Add to /etc/kvmd/override.yaml
 ```yaml
