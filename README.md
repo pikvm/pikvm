@@ -548,6 +548,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * iks
 * Invader Monks
 * IT Lifesaver
+* Ivan Ganev
 * Ivan Shapovalov
 * J L
 * Jaanus
