@@ -470,6 +470,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Colin Goodman
 * Corey Layton
 * Corey Lista
+* Craig Keenan
 * Crossfactor
 * ctag
 * Curt Sammer
