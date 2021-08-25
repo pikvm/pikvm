@@ -1,7 +1,6 @@
-# Pi-KVM v3.2 Plastic Case for 3D printing
+# Pi-KVM v3.3 Plastic Case for 3D printing
 When printing the case, you can choose the following options:
 - The presence or absence of an OLED screen (used to display the IP address and other information).
-- The presence or absence of holes for the AUM v3.3 (Advanced USB Module, most likely you don't have it).
 
 ## Buy options
 * [Small 5v fan](https://www.amazon.com/GeeekPi-Raspberry-30x30x7mm-Brushless-Retroflag/dp/B07C9C99RM) **strongly recommended** to avoid overheating in the case.
@@ -18,16 +17,13 @@ See [this](https://www.youtube.com/watch?v=-SRL92VJ870) video.
 | <img src="case_a.png" width=200 /> | [The front part](case_a.stl) of the case with a hole **for installing the OLED** |
 
 # The back part
-**Choose ONE of them.**
 | Variant | Description |
 |---------|-------------|
-| <img src="case_b_no_aum.png" width=200 /> | [The back part](case_b_no_aum.stl) of the case **WITHOUT AUM holes** |
 | <img src="case_b.png" width=200 /> | [The back part](case_b.stl) of the case **for installing the AUM** |
 
 # Spacers
 | Type | Description |
 |------|-------------|
 | <img src="spacer_6.2mm.png" width=200 /> | [6.2mm spacer](spacer_6.2mm.stl), required **TWO** pieces |
-| <img src="spacer_2mm.png" width=200 /> | [2mm spacer](spacer_2mm.stl) required **ONE without AUM** or **TWO for AUM** |
-| <img src="spacer_1mm.png" width=200 /> | [1mm spacer](spacer_1mm.stl) required **ONE for AUM only** |
-| <img src="low_spacer.png" width=200 /> | [Low spacer](low_spacer.stl) required **ONE** |
+| <img src="spacer_1mm.png" width=200 /> | [1mm spacer](spacer_1mm.stl) required **TWO** pieces |
+| <img src="low_spacer.png" width=200 /> | [Low spacer](low_spacer.stl) required **ONE** piece |

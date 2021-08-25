@@ -12,4 +12,5 @@
 | https://www.thingiverse.com/thing:4915627 | ZeroW + CSI case |
 
 # V3 cases
+* [v3.3 (Kickstarter) model](../stl/v3.3/README.md)
 * [v3.2 model](../stl/v3.2/README.md)
