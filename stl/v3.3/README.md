@@ -19,7 +19,7 @@ See [this](https://www.youtube.com/watch?v=-SRL92VJ870) video.
 # The back part
 | Variant | Description |
 |---------|-------------|
-| <img src="case_b.png" width=200 /> | [The back part](case_b.stl) of the case **for installing the AUM** |
+| <img src="case_b.png" width=200 /> | [The back part](case_b.stl) of the case |
 
 # Spacers
 | Type | Description |
