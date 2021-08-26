@@ -710,6 +710,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Patrick Wagstrom
 * Paul Bishop
 * Paul De La Rosa
+* Paul Pietkiewicz
 * Pawel Trofimiuk
 * Peder Madsen
 * Peter
