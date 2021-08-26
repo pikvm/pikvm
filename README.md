@@ -554,6 +554,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * J L
 * Jaanus
 * Jackson Wyatt
+* Jacob Karaffa
 * Jacob Morgan
 * James Cadd
 * James Cobb
