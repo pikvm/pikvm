@@ -1,4 +1,34 @@
 # Some random and useful recipes
+
+## Disabling authorization
+Edit the file `/etc/kvmd/override.yaml`:
+```yaml
+kvmd:
+    auth:
+        enabled: false
+```
+then restart `kvmd`:
+```
+[root@pikvm ~]# systemctl restart kvmd
+```
+
+## Disabling ATX and hiding the menu
+If you don't need ATX power control you can disable the relevant Web-UI menu in `/etc/kvmd/override.yaml`:
+```yaml
+kvmd:
+    atx:
+        type: disabled
+```
+then restart `kvmd`:
+```
+[root@pikvm ~]# systemctl restart kvmd
+```
+
+## Disabling webterm
+```
+[root@pikvm ~]# systemctl disable --now kvmd-webterm
+```
+
 ## Take a HDMI screenshot via console on Pi-KVM
 ```
 # curl --unix-socket /run/kvmd/ustreamer.sock http://localhost/snapshot -o screen.jpg

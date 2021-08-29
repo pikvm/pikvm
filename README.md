@@ -296,44 +296,23 @@ Happy using of Pi-KVM :)
 -----
 
 # Limitations
-* In very rare cases, some motherboards contain a buggy BIOS that does not understand the keyboard of the **v2** platform (below). The reason for this is that the BIOS doesn't fully implement the USB HID stack for composite devices correctly. Meanwhile, Mass Storage Drive can be detected. For this case, we suggest using the Arduino HID from the **v0** platform with **v2**. Thus the Pi-KVM will be connected by two USB cables to the motherboard: one of them will be responsible for the keyboard and mouse, the other for everything else. See [here](pages/arduino_hid.md).
-* A similar problem can be observed on devices with UEFI: the keyboard works fine, but the mouse does not work. This situation occurs when UEFI does not support absolute mouse mode, which prefers to use Pi-KVM. To solve this problem, [you can enable relative mouse mode](pages/mouse.md).
-* To use Pi-KVM with Apple UEFI, use the [Arduino HID](pages/arduino_hid.md) even with **v2**. Apple UEFI wants the most blunt keyboard possible.
-
-**Most of these problems are already in the process of being solved. By the time of the release of Pi-KVM v3 HAT, the Apple keyboard will already work without Arduino!**
+* On **v2**, the HID (keyboard) can't wake up the host from suspend (yet). If it is important for you, you can use [Arduino HID](https://github.com/pikvm/pikvm/blob/master/pages/arduino_hid.md) with **v2**.
+* In rare cases, some very buggy BIOSes doesn't like HID and Mass Storage in a single USB device. You can either [disable Mass Storage](https://github.com/pikvm/pikvm/blob/master/pages/msd.md#disable-msd), or use [Arduino HID](https://github.com/pikvm/pikvm/blob/master/pages/arduino_hid.md) to physically separate them.
 
 -----
 
-# Tips
+# What's next?
 * The Pi-KVM file system is always mounted in read-only mode. This prevents it from being damaged by a sudden power outage. To change the configuration you must first switch the filesystem to write mode using the command `rw` from root. After the changes, be sure to run the command `ro` to switch it back to read-only.
 
 * **NEVER** edit `/etc/kvmd/main.yaml`. Use `/etc/kvmd/override.yaml` to redefine the system parameters. All other files that are also not recommended for editing have read-only permissions. If you edit any of these files, you will need to manually make changes to them when you upgrade your system. You can view the current configuration and all available KVMD parameters using the command `kvmd -m`.
 
 * Almost all KVMD (the main daemon controlling Pi-KVM) configuration files use [YAML](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) syntax. Information on the format's syntax can be found at the link provided.
 
-* If you want to disable the web terminal use this command:
-    ```yaml
-    [root@pikvm ~]# systemctl disable --now kvmd-webterm
-    ```
-    
-* To disable authorization completely edit the file `/etc/kvmd/override.yaml`:
-    ```yaml
-    kvmd:
-        auth:
-            enabled: false
-    ```
-    then restart `kvmd`:
-    ```
-    [root@pikvm ~]# systemctl restart kvmd
-    ```
+* [Disabling authorization](pages/cookbook.md#disabling-authorization).
 
-* If you don't need ATX power control you can disable the relevant Web-UI menu in `/etc/kvmd/override.yaml`:
-    ```yaml
-    kvmd:
-        atx:
-            type: disabled
-    ```
-    then restart kvmd.
+* [Disabling ATX and hiding the menu](pages/cookbook.md#disabling-atx-and-hiding-the-menu).
+
+* [Disabling webterm](pages/cookbook.md#disabling-webterm).
     
 * [Using H.264 / WebRTC](pages/webrtc.md).
 
@@ -432,6 +411,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Armen
 * Aron Green
 * Aron Perelman
+* Artem Simonov
 * Arthur Woimbée
 * Ashlesh Chaudhari
 * Augusto Becciu
@@ -490,6 +470,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Colin Goodman
 * Corey Layton
 * Corey Lista
+* Craig Keenan
 * Crossfactor
 * ctag
 * Curt Sammer
@@ -568,10 +549,12 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * iks
 * Invader Monks
 * IT Lifesaver
+* Ivan Ganev
 * Ivan Shapovalov
 * J L
 * Jaanus
 * Jackson Wyatt
+* Jacob Karaffa
 * Jacob Morgan
 * James Cadd
 * James Cobb
@@ -662,6 +645,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Marcio Zimbres
 * Marco Rossi
 * Marcos Wolf
+* Marek Marczykowski-Górecki
 * Marius
 * Mar. Balske
 * Mark Gilbert
@@ -712,6 +696,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Nis Wechselberg
 * Nithin Philips
 * Nod Swal
+* Nolan Haynes
 * nubbn
 * nybble
 * Oh Be
@@ -725,6 +710,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Patrick Wagstrom
 * Paul Bishop
 * Paul De La Rosa
+* Paul Pietkiewicz
 * Pawel Trofimiuk
 * Peder Madsen
 * Peter
@@ -747,6 +733,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Richard Fancher
 * Richard Freemantle
 * Richard Michael
+* Rico Cantrell
 * Rob Tongue
 * Robert Klauco
 * Robin Gfatter
@@ -754,9 +741,11 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Rohit Priyadarshi
 * Rolfs 3D UG
 * Ronald LeBaron
+* Ronald Wells
 * Ronny Haldorsen
 * rotx
 * Russell Scott
+* Ryan Peacock
 * Samed Ozoglu
 * Sameul Davies
 * Samuel Vetsch

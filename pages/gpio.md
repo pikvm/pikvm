@@ -151,13 +151,20 @@ Some rules and customization options:
 # Hardware modules and pseudo-drivers
 
 ### Raspberry's GPIO
+<details>
+    <summary>:exclamation:Click to view:exclamation:</summary>
+
 The driver `gpio` provides access to regular GPIO pins with input and output modes. It uses `/dev/gpiochip0` and the libgpiod library to communicate with the hardware. Does not support saving state between KVMD restarts (meaning `initial=null`).
 
 You can use the [interactive scheme](https://pinout.xyz/) when selecting the pins to use. Please note that when selecting a pin for a channel, you need to use a logical number instead of a physical number. That is, if you want to use a physical pin with the number 40, the channel must have the number 21 corresponding to the logical GPIO21.
 
 Channels should not use duplicate pins. You can also not use already used pins. To see which pins are currently used, run the command `gpioinfo`.
-
+</details>
+    
 ### USB HID Relay
+<details>
+    <summary>:exclamation:Click to view:exclamation:</summary>
+
 The driver `hidrelay` provides access to cheap managed [USB HID relays](http://vusb.wikidot.com/project:driver-less-usb-relays-hid-interface) that can be found on AliExpress. This driver does not support input mode, only output. To use it, you need to specify the path to the device file (like `/dev/hidraw0`) using the `device` parameter.
 
 Additionally, we recommend to configure access rights and static device name using [UDEV rules](https://wiki.archlinux.org/index.php/udev). For example, create `/etc/udev/rules.d/99-kvmd-extra.rules`:
@@ -166,11 +173,19 @@ KERNEL=="hidraw[0-9]*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProd
 ```
 
 Channels should not use duplicate physical numbers. The driver supports saving state between KVMD restarts (meaning `initial=null`).
-
+</details>
+    
 ### ezCoo KVM switch
+<details>
+    <summary>:exclamation:Click to view:exclamation:</summary>
+
 You can use GPIO to control KVM port switching. This usually requires the use of relays and buttons, but for the [ezCoo switch](https://github.com/pikvm/pikvm/blob/master/pages/ezcoo.md) there is a special `ezcoo` driver that simulates GPIO by sending commands to the switch via serial port. So you can make a menu in Pi-KVM to control the multiport switch.
+</details>
 
 ### IPMI
+<details>
+    <summary>:exclamation:Click to view:exclamation:</summary>
+
 The driver `ipmi` provides the ability to send IPMI commands (on, off, reset) and show the power status of the remote host. In fact, this is not a hardware driver, but something like a pseudo-GPIO. Each "pin" is actually responsible for a specific IPMI operation of `ipmitool`:
 
 | Pin | Type     | Command |
@@ -212,8 +227,12 @@ kvmd:
             table:
                 - [my_server_status, "my_server_on|On", "my_server_off|Off"]
 ```
+</details>
 
 ### Wake-on-LAN
+<details>
+    <summary>:exclamation:Click to view:exclamation:</summary>
+
 The driver `wol` provides a simple generator of Wake-on-LAN packages. One driver and one output are generated for one host if a [simplified configuration method](wol.md) is used. However, you can define multiple drivers if you want to manage different hosts. One driver controls one host, and can only be used as an output. Pin numbers are ignored.
 ```yaml
 kvmd:
@@ -243,3 +262,130 @@ kvmd:
                 - ["#Server 1", "wol_server1|Send Wake-on-LAN"]
                 - ["#Server 2", "wol_server2|Send Wake-on-LAN"]
 ```
+</details>
+
+### PWM
+<details>
+    <summary>:exclamation:Click to view:exclamation:</summary>
+
+The `pwm` driver allows you to use [some GPIO pins](https://pinout.xyz/pinout/pwm) on the Raspberry Pi for PWM.
+    
+Here the small example with servo control:
+
+1. Add to `/boot/config.txt`:
+    ```
+    dtoverlay=pwm
+    ```
+
+2. Create `/etc/udev/rules.d/99-kvmd-pwm.rules`:
+    ```
+    SUBSYSTEM=="pwm*", ACTION=="add", RUN+="/bin/chgrp -R kvmd /sys%p", RUN+="/bin/chmod -R g=u /sys%p"
+    SUBSYSTEM=="pwm*", ACTION=="change", ENV{TRIGGER}!="none", RUN+="/bin/chgrp -R kvmd /sys%p", RUN+="/bin/chmod -R g=u /sys%p"
+    ```
+
+3. Connect Servo motor like SG90 PWM connection to RPi GPIO18, +5V and GND to a 5V and GND pin on header:
+
+4. Add to /etc/kvmd/override.yaml
+    ```yaml
+    kvmd:
+        gpio:
+            drivers:
+                servo1:
+                    type: pwm
+                    chip: 0                      # PWM Chip Number
+                    period: 20000000             # Servo Motor SG90 Period in nano-seconds
+                    duty_cycle_push: 1500000     # Servo Motor SG90 duty_cycle for pushing button
+                    duty_cycle_release: 1000000  # Servo Motor SG90 duty_cycle for releasing button
+            scheme:
+                short_press:
+                    driver: servo1
+                    pin: 0                       # Pin number is the PWM channel number on the PWM Chip
+                    mode: output
+                    switch: false
+                    pulse:
+                        delay: 0.5
+                        max_delay: 2
+                long_press:
+                    driver: servo1
+                    pin: 0                       # Pin number is the PWM channel number on the PWM Chip
+                    mode: output
+                    switch: false
+                    pulse:
+                        delay: 2
+                        max_delay: 2
+                extra_long_press:
+                    driver: servo1
+                    pin: 0                       # Pin number is the PWM channel number on the PWM Chip
+                    mode: output
+                    switch: false
+                    pulse:
+                        delay: 10
+                        max_delay: 20
+            view:
+                header:
+                    title: Controls
+                table:
+                    - ["#Servo - Short Press", "short_press|Press"]
+                    - ["#Servo - Long Press", "long_press|Press"]
+                    - ["#Servo - Extra Long Press", "extra_long_press|Press"]
+    ```
+</details>
+
+### Servo
+<details>
+    <summary>:exclamation:Click to view:exclamation:</summary>
+
+The `servo` module is built on top of the `pwm` module and allows user to define angles instead of `duty_cyles` to control a PWM enabled servo motor like SG90. When the button is pressed the servo motor moves to an angle defined by `angle_push` and when button is released it moves back to `angle_release`. In the example configuration for a [cheap 5V SG90 Servo](https://www.ebay.co.uk/itm/184555802744), the motor moves to an angle of 45 degrees when button is pressed and moves back to 20 degress when released.
+
+❗ To use Servo motors in PiKVM you need to follow steps 1-3 for [PWM Module](#pwm) and then use the following configuration.
+
+Add to /etc/kvmd/override.yaml
+```yaml
+kvmd:
+    gpio:
+        drivers:
+            servo1:
+                type: servo
+                chip: 0                  # PWM Chip Number
+                period: 20000000         # Servo Motor SG90 Period in nano-seconds
+                duty_cycle_min: 350000   # Servo Motor SG90 duty_cycle for -90 degrees
+                duty_cycle_max: 2350000  # Servo Motor SG90 duty_cycle for +90 degrees
+                angle_max: 90            # Servo Motor SG90 angle at duty_cycle_max
+                angle_min: -90           # Servo Motor SG90 angle at duty_cycle_min
+                angle_push: 45           # Servo Motor SG90 angle to push button
+                angle_release: 20        # Servo Motor SG90 angle to release button
+        scheme:
+            short_press:
+                driver: servo1
+                pin: 0                   # Pin number is the PWM channel number on the PWM Chip
+                mode: output
+                switch: false
+                pulse:
+                    delay: 0.5
+                    max_delay: 2
+            long_press:
+                driver: servo1
+                pin: 0                   # Pin number is the PWM channel number on the PWM Chip
+                mode: output
+                switch: false
+                pulse:
+                    delay: 2
+                    max_delay: 2
+            extra_long_press:
+                driver: servo1
+                pin: 0                   # Pin number is the PWM channel number on the PWM Chip
+                mode: output
+                switch: false
+                pulse:
+                    delay: 10
+                    max_delay: 20
+        view:
+            header:
+                title: Controls
+            table:
+                - ["#Servo - Short Press", "short_press|Press"]
+                - ["#Servo - Long Press", "long_press|Press"]
+                - ["#Servo - Extra Long Press", "extra_long_press|Press"]
+```
+
+</details>

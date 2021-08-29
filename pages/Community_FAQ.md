@@ -31,7 +31,7 @@
 - [How do I emulate various USB devices on the target machine?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#how-do-i-emulate-various-usb-devices-on-the-target-machine)
 - [Things to do after initial install](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#things-to-do-after-initial-install)
 - [Can I have a RW FS all of the time?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-i-have-a-rw-fs-all-of-the-time)
-- [Can you run a desktop on pi-kvm?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-you-run-a-desktop-on-pikvm)
+- [Can you run a desktop on pi-kvm?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-you-run-a-desktop-on-pi-kvm)
 - [Troubleshooting](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#troubleshooting)
 - [Common Commands for troubleshooting Pi-KVM](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#common-commands-for-troubleshooting-pi-kvm)
 - [Common ARCH commands](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#common-arch-commands)
