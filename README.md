@@ -296,7 +296,6 @@ Happy using of Pi-KVM :)
 -----
 
 # Limitations
-* On **v2**, the HID (keyboard) can't wake up the host from suspend (yet). If it is important for you, you can use [Arduino HID](https://github.com/pikvm/pikvm/blob/master/pages/arduino_hid.md) with **v2**.
 * In rare cases, some very buggy BIOSes doesn't like HID and Mass Storage in a single USB device. You can either [disable Mass Storage](https://github.com/pikvm/pikvm/blob/master/pages/msd.md#disable-msd), or use [Arduino HID](https://github.com/pikvm/pikvm/blob/master/pages/arduino_hid.md) to physically separate them.
 
 -----
