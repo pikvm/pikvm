@@ -751,6 +751,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Samuel Vetsch
 * Samuel Walker
 * Sarah Foster
+* Sarten X
 * Satish Alwani
 * Scott
 * Scott Gagon
