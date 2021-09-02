@@ -29,7 +29,7 @@ This is more convenient, but for compatibility reasons it is disabled by default
   kvmd:
       hid:
           mouse_alt:
-              device: /boot/kvmd-hid-mouse-alt
+              device: /dev/kvmd-hid-mouse-alt
   ```
 * Perform `reboot`. After that reboot your PC.
 
