@@ -92,7 +92,7 @@ How to create RW flash drive:
 
 # Create a Microsoft Windows based Flash disk image
 
-An alternative version of this can be found [here](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#an-alternative-to-making-a-windows-boot-img-that-does-not-require-a-physical-usb-flash-drive)
+An alternative version of this can be found below that does not require a physical usb flash
 
 This procedure will create a disk image of a USB stick. This is mostly required for Microsoft Windows (TM) based images since they are larger than the CDROM based limit of 2.2GB.
 You can create a bootable USB stick with the normal Microsoft tools, e.g. Media Creation Tool.
@@ -163,3 +163,61 @@ Once you have the desired USB stick perform the following on the RPi to create t
 9. Select Drive Mode: `Flash` and then `Connect drive to Server`.
 
 You should be able to then mount it locally on the server, or reboot the device to do things like BIOS updates.
+
+# An alternative to making a windows boot img that does not require a physical usb flash drive
+- Physical USB is not needed but external system is mandatory
+- Create Ventoy image (on Ubuntu x86 machine) (Unaware of a windows version)
+
+```
+dd if=/dev/zero of=ventoy.img bs=1M count=4700 status=progress
+```
+
+- This makes a ventoy.img file, I would name this what it is EG: ventoy_win10.img
+- At the same time, download Media Creation Tool and select iso
+
+- On the Ubuntu machine
+- At the time of this, it was 1.0.51, change to latest version
+
+```
+wget https://github.com/ventoy/Ventoy/releases/download/v1.0.51/ventoy-1.0.51-linux.tar.gz
+tar zxvf ventoy-1.0.51-linux.tar.gz
+sudo losetup -f ventoy.img
+sudo losetup -l | grep ventoy (To locate which loop device was used)
+sudo losetup /dev/loopXX ventoy.img
+sudo sh ~/ventoy-1.0.51/Ventoy2Disk.sh -i /dev/loopXX (This will make a loopXXp1 and a loopXXp2 and will format both partitions
+cd /media/XXX (Usually your login)
+mkdir ventoy
+sudo mount /dev/loopXXp1 /media/XXX/ventoy
+```
+
+- Either cp/scp over the .iso you downloaded from the Media tool or use a NFS mount
+
+```
+sudo cp windows.iso /media/XXX/ventoy
+sudo umount /dev/loopXX
+sudo losetup -d /dev/loopXX
+```
+
+ssh into the Ubuntu system (Or whatever OS you are using)
+
+- On Pi-KVM
+
+```
+cd /var/lib/kvmd/msd
+mount -o remount,rw .
+```
+
+- On Ubuntu
+
+```
+scp ventoy.img root@pikvm:/var/lib/kvmd/msd/images
+```
+
+- On Pi-KVM
+
+```
+touch /var/lib/kvmd/msd/meta/ventoy.img.complete
+```
+
+- Mount ventoy.img as normal flash and select the PIKVM boot device, it should popup with the VenToy logo with the window.iso as a selection 
+
