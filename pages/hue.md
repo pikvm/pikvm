@@ -1,6 +1,10 @@
 # Control Smartplugs over Philips Hue Bridge API in the Webinterface
-You can add a Button to switch the Power State of the SmartPlug (in generel of all connected Hue Devices).
-And a Indicator LED to show the current State.
+* You can add a Button to switch the Power State of the SmartPlug
+* And a Indicator LED to show the current State
+
+# Tested Smart Plugs
+* https://shop.ledvance.com/en/products/smart-plug-eu
+* In general the plugin can switch any device on/off which is connected to the bridge
 
 # Get Api Key (Username) for the Bridge
 * Open http://[BridgeIP]/debug/clip.html
