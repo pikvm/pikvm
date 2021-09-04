@@ -18,7 +18,7 @@
 * Save the Device ID's for the Devices you will control
 
 # override.yaml
-* In the drivers section set username and device
+* In the drivers section set bridgeip, username and device
 ```
 gpio:
         drivers:
