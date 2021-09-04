@@ -91,6 +91,9 @@ How to create RW flash drive:
 7. You can download the resulting image via SCP or mount it as a loop device on the Pi-KVM.
 
 # Create a Microsoft Windows based Flash disk image
+
+An alternative version of this can be found [here](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#an-alternative-to-making-a-windows-boot-img-that-does-not-require-a-physical-usb-flash-drive)
+
 This procedure will create a disk image of a USB stick. This is mostly required for Microsoft Windows (TM) based images since they are larger than the CDROM based limit of 2.2GB.
 You can create a bootable USB stick with the normal Microsoft tools, e.g. Media Creation Tool.
 Creating a bootable USB stick can also be made from an ISO file with other tools like Rufus.
