@@ -1,7 +1,7 @@
 ### Some example wireing setups
 
 # CSI (Geekworm)
-<img src="img/CSI Wiring.jpg" alt="drawing">
+<img src="/img/CSI Wiring.jpg" alt="drawing">
 
 List of items: (WARNING! Links may dissapear or no longer work, this just gives you an idea)
 
@@ -13,13 +13,13 @@ List of items: (WARNING! Links may dissapear or no longer work, this just gives 
 - TARGET (Anything you want to control)
 
 # Another CSI example using the PCB splitter
-<img src="img/CSI Wiring w pcb spliter.jpg" alt="drawing">
+<img src="/img/CSI Wiring w pcb spliter.jpg" alt="drawing">
 
 # USB
-<img src="img/USB Capture Wiring.jpg" alt="drawing">
+<img src="/img/USB Capture Wiring.jpg" alt="drawing">
 
 # Direct connect to target
-<img src="img/Direct Connect to Target.jpg" alt="drawing">
+<img src="/img/Direct Connect to Target.jpg" alt="drawing">
 
 Explanation of pic
 - USB-C from PI to USB-A onto target which also powers the PI
