@@ -190,7 +190,11 @@ Note: if you can't find an answer to your question here, try the [Community FAQ]
 <details>
   <summary>Click to view</summary>
 
-* It's not implemented yet. If it is important for you, you can use [Arduino HID](https://github.com/pikvm/pikvm/blob/master/pages/arduino_hid.md) with **v2+**.
+* This feature is experimental and requires manual activation. Perform a full system update, edit `/etc/kvmd/override.yaml`, and reboot. After that, you can use remote wakeup by pressing any keyboard key or mouse button.
+  ```yaml
+  otg:
+      remote_wakeup: true
+  ```
 </details>
 
 ### Mass storage drive working (I can boot an image from Pi-KVM v2+), but keyboard/mouse does not
