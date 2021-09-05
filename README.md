@@ -389,6 +389,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Aleksei Brusianskii
 * Alessio Curri
 * Alex T
+* Alexander Martin
 * Alexander Pankov
 * Alexandre Jablonski
 * Alexey Kamenskiy
@@ -464,6 +465,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Christopher Mandlbaur
 * Christopher Simms
 * Chucktastic
+* clauskj3r
 * Clifford Coleman
 * Clinton Lee Taylor
 * Cole Imhoff
@@ -703,6 +705,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Oliver Schwarz
 * Oliver Zimmer
 * Omar El-Domeiri
+* Omar Siam
 * Oscar
 * Patrick
 * Patrick Fortin-Ducharme
