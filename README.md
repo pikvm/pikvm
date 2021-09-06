@@ -169,7 +169,8 @@ The dongle is completely supported and Pi-KVM works great with it. But it has so
 * Pi-KVM can be powered using PoE, but it is not recommend to use the official PoE HAT: it is unreliable and [not compatible with the HDMI bridge](https://github.com/pikvm/pikvm/issues/6). Use any other PoE hat without an I2C fan controller.
 * **Don't use random relay modules or random optocouplers!** Some relays or optocouplers may not be sensitive enough for the Raspberry Pi, some others may be low-level controlled. Either use relays that are activated by a high logic level, or follow the design provided and buy an OMRON. See details [here](https://github.com/pikvm/pikvm/issues/13).  
 
------
+
+# How to set up the device can be seen from [here](https://github.com/pikvm/pikvm/blob/master/pages/Wiring%20Examples.md)
 
 # Pi-KVM v3 HAT Features
 
