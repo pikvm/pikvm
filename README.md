@@ -136,7 +136,6 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
     </ul>
     </details>
     
-* Example on how this should look when connected no matter the variant [here](https://github.com/pikvm/pikvm/blob/master/img/Example_PiKVM_Wiring2Target.jpg)
 
 * Only for Raspberry Pi ZeroW:
   * 2x USB A-to-micro cables (male-male, for power and keyboard & mouse emulator). A power splitter OR a modded cable is required for this 2x usb configuration. 1x USB A-to-Micro is ONLY needed for direct connection to the target.
