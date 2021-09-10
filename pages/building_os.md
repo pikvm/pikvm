@@ -69,6 +69,7 @@ Latest Arch Linux is working.
     ```Makefile
     WIFI_ESSID = "my-network"
     WIFI_PASSWD = "P@$$word"
+    #Hidden=yes
     ```
 
 4. Build the OS. It may take about one hour depending on your Internet connection:
