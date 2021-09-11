@@ -292,7 +292,7 @@ Windows Power shell: arp -a | findstr 'b8-27-eb' (Replace with the above, all lo
 	
 ### Help! I ran out of space aka room! What now?
 
-(This is no longer nessessary on the newer images as the main partition was increased)
+(This ONLY applies to the older flashed images and is no longer nessessary as the newer images had the main partition increased, as a result, the MSD partition was shrunk)
 - You’ve cached package updates you no longer need.
 - Enter read/write mode by executing rw as root
 - Execute the following as root to clear the package cache
