@@ -39,7 +39,7 @@ Afterwards `wifi-menu` will try to connect to the WiFi. If you're connected via 
 
 If everything worked out you should be connected to your WiFi now. `wifi-menu` created a new profile file for you in */etc/netctl*. 
 
-### manually
+### Manually
 If you want to store the WiFi passphrase encrypted you have to generate it via `wpa_passphrase`:
 ```
 wpa_passphrase wifiname this_is_my_great_and_secure_key_1234567890
@@ -71,6 +71,20 @@ Save the file and you're good to go. You can manually connect to the profile you
 ```
 netctl-auto switch-to wlan0-wifiname
 ```
+
+Adding a Hidden SSID:
+You need to edit /etc/netctl/wlan0-<SSID> file and add the hidden option
+```
+Description='Hidden SSID template'
+Interface=wlan0
+Connection=wireless
+Security=wpa
+ESSID=WIFI-Name
+IP=dhcp
+Key=supersecretpassword
+Hidden=yes
+```
+  
 ### 5GHz WiFi in the US
 If you want to connect to a 5GHz WiFi in the US and it's not listed, create `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf` with a single line `country=US`, and enable it with:
 ```
