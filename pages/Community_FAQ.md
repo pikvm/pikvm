@@ -20,7 +20,7 @@
 - [I want a static IP!!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#i-want-a-static-ip)
 - [Why do I keep getting a different IP?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#why-do-i-keep-getting-a-different-ip)
 - [HELP! I can't find the IP on the ZeroW/RPi4](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-i-cant-find-the-ip-on-the-zerowrpi4)
-- [Help! I ran out of room!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-i-ran-out-of-room-what-now)
+- [Help! I ran out of space AKA room!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-i-ran-out-of-space-aka-room-what-now)
 - [Can you connect a camera to this and still make pikvm functional?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-you-connect-a-camera-to-this-and-still-make-pikvm-functional)
 - [I have a question that is not answered here!! Now what?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#i-have-a-question-that-is-not-answered-here-now-what)
 - [HELP! Something isn't working!!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-something-isnt-working)
@@ -291,6 +291,8 @@ Windows Power shell: arp -a | findstr 'b8-27-eb' (Replace with the above, all lo
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 	
 ### Help! I ran out of space aka room! What now?
+
+(This is no longer nessessary on the newer images as the main partition was increased)
 - You’ve cached package updates you no longer need.
 - Enter read/write mode by executing rw as root
 - Execute the following as root to clear the package cache
