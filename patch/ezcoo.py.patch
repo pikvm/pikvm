@@ -1,0 +1,20 @@
+@@ -186,6 +186,19 @@
+         cmd = (b"SET" if self.__protocol == 1 else b"EZS")
+         tty.write((b"%s OUT1 VS IN%d\n" % (cmd, channel + 1)) * 2)
+         tty.flush()
++        # Patch for 2 or 3 Daisychained ezcoo Switches
++        # Switch to Passthrough Port on ezcoo1/2 when a Port on ezcoo2/3 is selected in Webif
++        device_udev = []
++        if self.__device_path == "/dev/ezcoo2":
++           device_udev = ["/dev/ezcoo1"]
++        if self.__device_path == "/dev/ezcoo3":
++           device_udev = ["/dev/ezcoo1", "/dev/ezcoo2"]
++        if device_udev:
++           for device in device_udev:
++              tty = serial.Serial(device, self.__speed, timeout=self.__read_timeout)
++              channel= int(3) # Passthrough Port on ezcoo1
++              tty.write((b"%s OUT1 VS IN%d\n" % (cmd, channel + 1)) * 2)
++              tty.flush()
+ 
+     def __str__(self) -> str:
+         return f"Ezcoo({self._instance_name})"

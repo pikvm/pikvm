@@ -1,0 +1,79 @@
+@@ -44,6 +44,37 @@
+ 					__setLedState(el, state.inputs[channel].state);
+ 				}
+ 			}
++			/* Patch for 2 or 3 Daisychained ezcoo Switches */
++			/* Disable Status LED in Webif for all ezcoo2/3 Ports when a Port on ezcoo1 is selected */
++			for (let channel of ["ch1_led", "ch2_led", "ch3_led"]) {
++				if (state.inputs[channel].state) {
++					/*alert("Active Channel: " + channel);*/
++					for (let channel of ["ch5_led", "ch6_led", "ch7_led", "ch8_led", "ch9_led", "ch10_led", "ch11_led", "ch12_led"]) {
++						if (state.inputs[channel].state) {
++							let el = $(`gpio-led-${channel}`);
++							if (el) {
++								/*alert("Disabled Channel: " + channel);*/
++								__setLedState(el, false);
++							}
++						}
++					}
++				}
++			}
++			/* Disable Status LED in Webif for all ezcoo3 Ports when a Port on ezcoo2 is selected */
++			for (let channel of ["ch5_led", "ch6_led", "ch7_led"]) {
++				if (state.inputs[channel].state) {
++					/*alert("Active Channel: " + channel);*/
++					for (let channel of ["ch9_led", "ch10_led", "ch11_led", "ch12_led"]) {
++						if (state.inputs[channel].state) {
++							let el = $(`gpio-led-${channel}`);
++							if (el) {
++								/*alert("Disabled Channel: " + channel);*/
++								__setLedState(el, false);
++							}
++						}
++					}
++				}
++			}
+ 			for (let channel in state.outputs) {
+ 				for (let type of ["switch", "button"]) {
+ 					let el = $(`gpio-${type}-${channel}`);
+@@ -72,7 +103,7 @@
+ 	self.setModel = function(model) {
+ 		tools.feature.setEnabled($("gpio-dropdown"), model.view.table.length);
+ 		if (model.view.table.length) {
+-			$("gpio-menu-button").innerHTML = `${model.view.header.title}`;
++			$("gpio-menu-button").innerHTML = `<img class="led-gray" src="/share/svg/kvm.svg">${model.view.header.title}`;
+ 		}
+ 
+ 		let content = "<table class=\"kv\">";
+@@ -85,7 +116,7 @@
+ 					if (item.type === "output") {
+ 						item.scheme = model.scheme.outputs[item.channel];
+ 					}
+-					content += `<td align="center">${__createItem(item)}</td>`;
++					content += `<td align="left"><b>${__createItem(item)}</b></td>`;
+ 				}
+ 				content += "</tr>";
+ 			}
+@@ -118,6 +149,22 @@
+ 		if (item.type === "label") {
+ 			return item.text;
+ 		} else if (item.type === "input") {
++			for (let channel of ["ch1_plug_led", "ch2_plug_led", "ch3_plug_led", "ch5_plug_led", "ch6_plug_led", "ch7_plug_led", "ch9_plug_led", "ch10_plug_led", "ch11_plug_led", "ch12_plug_led"]) {
++				if (item.channel === channel) {
++					return `
++						<img id="gpio-led-${item.channel}" class="gpio-led inline-lamp-big led-gray"
++						src="/share/svg/led-atx-power.svg" data-color="${item.color}" />
++					`;
++				}
++			}
++			for (let channel of ["ch1_led", "ch2_led", "ch3_led", "ch4_led", "ch5_led", "ch6_led", "ch7_led", "ch8_led", "ch9_led", "ch10_led", "ch11_led", "ch12_led"]) {
++				if (item.channel === channel) {
++					return `
++						<img id="gpio-led-${item.channel}" class="gpio-led inline-lamp-big led-gray"
++						src="/share/svg/hdmi.svg" data-color="${item.color}" />
++					`;
++				}
++			}
+ 			return `
+ 				<img id="gpio-led-${item.channel}" class="gpio-led inline-lamp-big led-gray"
+ 				src="/share/svg/led-circle.svg" data-color="${item.color}" />
