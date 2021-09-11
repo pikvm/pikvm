@@ -15,7 +15,7 @@ kvmd:
         ip: 192.168.0.100
         # port: 9  # By default
 ```
-then restart `kvmd`.
+then restart `kvmd`. HINT: `systemctl restart kvmd` It will now show up in the system button in the upper right corner.
 
 ### GPIO method (multiple hosts)
 Follow the [manual for building the GPIO menu](gpio.md) and use the `wol` driver to build a menu with many buttons tied to different hosts.
