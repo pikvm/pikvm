@@ -145,7 +145,8 @@ Yes! And it's easy to do! Using a SSH session or the web terminal:
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
 ### Can this be used in any other distro’s like Rasbian? Run this in a Docker?
-- Not at this time, maybe in the future
+- Officially, no. Unofficially yes and totally #unsupported. Please DM @srepac on discord for the directions.
+- Docker image is available, search the docker hub but this is #unsupported and #unofficial and not updated.
 
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
