@@ -540,6 +540,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Grey Cynic
 * Guido Bernacchi
 * Gustin Johnson
+* György Tamás Vizi
 * Heibunny
 * Heikki Tiittanen
 * Helio Leonardo Pinheiro e Mota
@@ -583,6 +584,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jennifer Herting
 * Jennifer Rowlett
 * Jerremy Holland
+* Jerry Nall
 * Jim Harbin
 * Jimmy Stanley
 * Joachim Bruening
@@ -786,6 +788,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Stratagem Solutions Ltd
 * Sven Breckler
 * sudo34
+* Tango_Echo_Alpha
 * Tarlak Desaydrone
 * TechBear
 * Ted
