@@ -389,3 +389,44 @@ kvmd:
 ```
 
 </details>
+
+### Philips Hue
+<details>
+    <summary>:exclamation:Click to view:exclamation:</summary>
+
+The `hue` module can control [smartplugs](https://shop.ledvance.com/en/products/smart-plug-eu) and lamps over Philips Hue Bridge API. In general the plugin can switch any device on/off which is connected to the bridge. To use it you will need API token aka username:
+1. Open `http://bridge/debug/clip.html`.
+2. In the URL: Field type `/api/`.
+3. In the Message Body: Field type: `{"devicetype": "pikvm"}`.
+4. Hit the Get Button.
+5. As the Response you become the Username: `{"success": {"username": "apiusername"}`.
+
+Example:
+```yaml
+kvmd:
+    gpio:
+        drivers:
+            hue:
+               type: hue
+               url: http://bridge
+               token: YG-xxxxxxxxxxxx
+        scheme:
+            plug_button:
+                driver: hue
+                pin: 32
+                mode: output
+                initial: null
+                switch: true
+                pulse:
+                    delay: 0
+            plug_led:
+                driver: hue
+                pin: 32
+                mode: input
+        view:
+            table:
+                - ["plug_led", "plug_button"]
+
+```
+
+</details>
