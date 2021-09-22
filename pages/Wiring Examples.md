@@ -1,9 +1,9 @@
-### Some example wireing setups
+### Some example wiring setups
 
-# CSI (Geekworm)
+# CSI (Geekworm) (Any brand will be the same)
 <img src="/img/CSI Wiring.jpg" alt="drawing">
 
-List of items: (WARNING! Links may dissapear or no longer work, this just gives you an idea)
+List of items: (WARNING! Links may dissappear or no longer work, this just gives you an idea)
 
 - USB-A male to USB-A male (For data)
 - [PortaPow USB Power Blocker](https://www.amazon.com/gp/product/B092MLT2J3)
@@ -26,5 +26,6 @@ Explanation of pic
 
 Use case: 
 - Trying to determine if the data cable is truly a data cable and not just a power cable
-- Or testing to see if the splitter or cable is defective
+- Testing to see if the splitter or cable is defective
+- Basic troubleshooting
 
