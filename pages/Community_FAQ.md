@@ -20,7 +20,7 @@
 - [I want a static IP!!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#i-want-a-static-ip)
 - [Why do I keep getting a different IP?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#why-do-i-keep-getting-a-different-ip)
 - [HELP! I can't find the IP on the ZeroW/RPi4](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-i-cant-find-the-ip-on-the-zerowrpi4)
-- [Help! I ran out of room!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-i-ran-out-of-room-what-now)
+- [Help! I ran out of space AKA room!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-i-ran-out-of-space-aka-room-what-now)
 - [Can you connect a camera to this and still make pikvm functional?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-you-connect-a-camera-to-this-and-still-make-pikvm-functional)
 - [I have a question that is not answered here!! Now what?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#i-have-a-question-that-is-not-answered-here-now-what)
 - [HELP! Something isn't working!!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-something-isnt-working)
@@ -145,87 +145,13 @@ Yes! And it's easy to do! Using a SSH session or the web terminal:
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
 ### Can this be used in any other distro’s like Rasbian? Run this in a Docker?
-- Not at this time, maybe in the future
+- Officially, no. Unofficially yes and totally #unsupported. Please DM @srepac on discord for the directions.
+- Docker image is available, search the docker hub but this is #unsupported and #unofficial and not updated.
 
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
 ### Can you switch from USB to CSI or from CSI to USB?
-- Officially, no. Unofficially yes. Please visit this [site](https://pastebin.com/u/srepac) and grab the platform-switcher.sh script
-
-Directions:
-1) Place script in the root dir
-2) Copy the following settings into `/etc/kvmd/override.yaml` - NEEDS to adhere to proper spacing, please see kvmd -m for proper formatting
-```
-kvmd:
-    streamer:
-        forever: true
-        cmd_append: [--slowdown]                    # for usb-hdmi only so that target PC display works w/o rebooting
-        ### this section is for use with webrtc/h.264 -- up to resolution: line
-        h264_bitrate:
-            default: 5000
-        cmd_append:
-            - "--h264-sink=kvmd::ustreamer::h264"   # requires gpu_mem=256 in /boot/config.txt for usb dongle
-            - "--h264-sink-mode=0660"
-            - "--h264-bitrate={h264_bitrate}"
-            - "--h264-gop={h264_gop}"
-        ### Optional
-        #resolution:
-        #    default: 1280x720                       # default resolution I use in webui - usb-hdmi only
-```
-
-3) Make a `config.txt.usb` file
-```# See /boot/overlays/README for all available options
-initramfs initramfs-linux.img followkernel
-
-hdmi_force_hotplug=1
-gpu_mem=256
-enable_uart=1
-dtoverlay=disable-bt
-dtoverlay=dwc2,dr_mode=peripheral
-#dtparam=act_led_gpio=13
-
-# SPI (AUM)
-#dtoverlay=spi0-1cs
-
-# I2C (display)
-dtparam=i2c_arm=on
-
-# Clock
-#dtoverlay=i2c-rtc,pcf8563
-```
-
-4) Make a `config.txt.csi` file
-```# See /boot/overlays/README for all available options
-initramfs initramfs-linux.img followkernel
-
-hdmi_force_hotplug=1
-gpu_mem=128
-enable_uart=1
-dtoverlay=tc358743
-dtoverlay=disable-bt
-dtoverlay=dwc2,dr_mode=peripheral
-dtparam=act_led_gpio=13
-
-# HDMI audio capture
-dtoverlay=tc358743-audio
-
-# SPI (AUM)
-dtoverlay=spi0-1cs
-
-# I2C (display)
-dtparam=i2c_arm=on
-
-# Clock
-dtoverlay=i2c-rtc,pcf8563 
-```
-
-5) Place all files in the same dir as the platform-switcher script
-6) Run `chmod +x platform-switcher.sh`
-7) Run `./platform-switcher.sh`
-8) Follow the directions that are printed out, Eg: ./platform-switcher.sh -f
-9) Now you can switch back and forth between usb and csi, please note there is an almost 2 min delay before the portal becomes active.
-
-**NOTE**: WEBRTC/H.264 with USB is not as realiable as MJPEG mode.
+- Officially, no. You would be advised to make 2 seperate SD cards and swap them when needed. Unofficially yes and totally NOT supported. Please DM @srepac on discord for the script and directions.
 
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
@@ -291,6 +217,8 @@ Windows Power shell: arp -a | findstr 'b8-27-eb' (Replace with the above, all lo
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 	
 ### Help! I ran out of space aka room! What now?
+
+(This ONLY applies to the older flashed images and is no longer nessessary as the newer images had the main partition increased, as a result, the MSD partition was shrunk)
 - You’ve cached package updates you no longer need.
 - Enter read/write mode by executing rw as root
 - Execute the following as root to clear the package cache

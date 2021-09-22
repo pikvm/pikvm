@@ -10,6 +10,8 @@
 | https://www.thingiverse.com/thing:4832248 | Case for the [USB-C/PWR Splitter without Barrel jack](https://www.tindie.com/products/8086net/usb-cpwr-splitter/) and HDMI-CSI bridge |
 | https://www.thingiverse.com/thing:4916230 | A very compact case without internal power splitter |
 | https://www.thingiverse.com/thing:4915627 | ZeroW + CSI case |
+| https://www.thingiverse.com/thing:4950281 | Pi-KVM RETRO Case for CSI-2 C779 Bridge w/ OLED Display Screen |
+| https://www.thingiverse.com/thing:4950280 | USB Power Blocker Case |
 
 # V3 cases
 * [v3.3 (Kickstarter) model](../stl/v3.3/README.md)

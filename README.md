@@ -136,7 +136,6 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
     </ul>
     </details>
     
-* Example on how this should look when connected no matter the variant [here](https://github.com/pikvm/pikvm/blob/master/img/Example_PiKVM_Wiring2Target.jpg)
 
 * Only for Raspberry Pi ZeroW:
   * 2x USB A-to-micro cables (male-male, for power and keyboard & mouse emulator). A power splitter OR a modded cable is required for this 2x usb configuration. 1x USB A-to-Micro is ONLY needed for direct connection to the target.
@@ -169,7 +168,8 @@ The dongle is completely supported and Pi-KVM works great with it. But it has so
 * Pi-KVM can be powered using PoE, but it is not recommend to use the official PoE HAT: it is unreliable and [not compatible with the HDMI bridge](https://github.com/pikvm/pikvm/issues/6). Use any other PoE hat without an I2C fan controller.
 * **Don't use random relay modules or random optocouplers!** Some relays or optocouplers may not be sensitive enough for the Raspberry Pi, some others may be low-level controlled. Either use relays that are activated by a high logic level, or follow the design provided and buy an OMRON. See details [here](https://github.com/pikvm/pikvm/issues/13).  
 
------
+
+# How to set up the device can be seen from [here](https://github.com/pikvm/pikvm/blob/master/pages/Wiring%20Examples.md)
 
 # Pi-KVM v3 HAT Features
 
@@ -389,6 +389,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Aleksei Brusianskii
 * Alessio Curri
 * Alex T
+* Alexander Martin
 * Alexander Pankov
 * Alexandre Jablonski
 * Alexey Kamenskiy
@@ -464,6 +465,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Christopher Mandlbaur
 * Christopher Simms
 * Chucktastic
+* clauskj3r
 * Clifford Coleman
 * Clinton Lee Taylor
 * Cole Imhoff
@@ -538,6 +540,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Grey Cynic
 * Guido Bernacchi
 * Gustin Johnson
+* György Tamás Vizi
 * Heibunny
 * Heikki Tiittanen
 * Helio Leonardo Pinheiro e Mota
@@ -581,6 +584,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Jennifer Herting
 * Jennifer Rowlett
 * Jerremy Holland
+* Jerry Nall
 * Jim Harbin
 * Jimmy Stanley
 * Joachim Bruening
@@ -703,6 +707,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Oliver Schwarz
 * Oliver Zimmer
 * Omar El-Domeiri
+* Omar Siam
 * Oscar
 * Patrick
 * Patrick Fortin-Ducharme
@@ -783,6 +788,7 @@ These kind people donated money to the Pi-KVM project and supported work on it. 
 * Stratagem Solutions Ltd
 * Sven Breckler
 * sudo34
+* Tango_Echo_Alpha
 * Tarlak Desaydrone
 * TechBear
 * Ted
