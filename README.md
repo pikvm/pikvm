@@ -32,12 +32,12 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 * 100% Open Source!
 
 <details>
-  <summary><b>Detailed about the Pi-KVM features</b></summary>
+  <summary><b>More indepth details about the Pi-KVM features</b></summary>
 
 ## Fully-featured and modern IP-KVM
 * **Cheaper, but better than commercial solutions**  
   Costs between $30 and $100 depending on the features desired. Even the most expensive configuration will be cheaper than a $500 commercial IP-KVM.
-* **Easy to build**  
+* **Easy to build - For the v0 variant**  
   A ready-to-use OS that can be created just by running `make build` and installed to an SD-card using `make install`. The hardware can be made in half an hour and without soldering.
 * **The widest hardware support**  
   There are many ways to build a Pi-KVM. Video capture devices can be attached using the CSI-2 or USB interfaces. Raspberry Pi models 2, 3, 4, or ZeroW may be used. Any combination of hardware is supported, and Pi-KVM implements the maximum possible set of features.
