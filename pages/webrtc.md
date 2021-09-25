@@ -55,5 +55,5 @@ In rare cases, WebRTC may not work. The most common reasons are:
 * A paranoid firewall when you try to connect to the Pi-KVM by forwarding port 443 to the Internet from the internal network. WebRTC is not enough of this, it uses UDP on ports 10000-20000 for a P2P connection. Make sure that the Firewall does not block them.
 * If nothing helps, open the browser's JS console and look at the log, and contact our community via [Discord](https://discord.gg/bpmXfz5). Developers and/or experienced users will definitely help you.
 * Another option to try is if you have both wifi and eth connected, disable wifi `rfkill list wifi` then `rfkill block X` X=the number that shows in the output. Reason: Arch linux will choose to route all outgoing packets out wifi by default.
-* Your browser might not support the h264 codec. This is probably the case if you're on a distro like Fedora (maybe others). There are ways to install h264 support, just google "<your distro> <your browser> h264".
-    * On Fedora you can: install the rpmfusion repos, then use the `chromium-freeworld` package instead of `chromium`
+* There are some linux distro's that require more work to be able to use H.264 (WEBRTC MODE), this may include any RedHat variant.
+    * For instance: On Fedora you can install the rpmfusion repos, then use the `chromium-freeworld` package instead of `chromium`
