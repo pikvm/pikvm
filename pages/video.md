@@ -1,5 +1,5 @@
 # Video
-Currently, Pi-KVM uses MJPEG for video transmission. This is a simple and widely supported, but not very effective video format.
+Currently, PiKVM uses MJPEG for video transmission. This is a simple and widely supported, but not very effective video format.
 In the near future, it is planned to support H264, and then switch to it as the main one.
 
 The H264 implementation is still under development, but right now you can use it to record video from your server.

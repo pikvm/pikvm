@@ -1,4 +1,4 @@
-# Pi-KVM v3.3 Plastic Case for 3D printing
+# PiKVM v3.3 Plastic Case for 3D printing
 When printing the case, you can choose the following options:
 - The presence or absence of an OLED screen (used to display the IP address and other information).
 

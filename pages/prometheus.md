@@ -1,7 +1,7 @@
 # Prometheus metrics
 [Prometheus](https://prometheus.io) is one of the popular monitoring systems.
 It pulls service's endpoint to get metrics in a [simple text format](https://prometheus.io/docs/instrumenting/exposition_formats).
-Pi-KVM has the ability to export some information to this system such as the server's ATX state, Pi's temperature, [GPIO](gpio.md) state and some other things.
+PiKVM has the ability to export some information to this system such as the server's ATX state, Pi's temperature, [GPIO](gpio.md) state and some other things.
 
 # Configure Prometheus
 To enable Prometheus getting metrics from pikvm following [config](https://prometheus.io/docs/prometheus/latest/configuration/configuration) could be used:
@@ -19,7 +19,7 @@ scrape_configs:
 ```
 
 # Output example
-This example includes the [GPIO](gpio.md) from the PI-KVM's [test config](https://github.com/pikvm/kvmd/blob/905bcf555f00d191654982cca80e294363efecc1/testenv/v2-hdmi-rpi4.override.yaml#L40).
+This example includes the [GPIO](gpio.md) from the PiKVM's [test config](https://github.com/pikvm/kvmd/blob/905bcf555f00d191654982cca80e294363efecc1/testenv/v2-hdmi-rpi4.override.yaml#L40).
 ```bash
 $ curl -k -HX-KVMD-User:admin -HX-KVMD-Passwd:admin https://pikvm/api/export/prometheus/metrics
 

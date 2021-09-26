@@ -1,6 +1,6 @@
 # Bluetooth HID
-Pi-KVM is able to emulate a Bluetooth keyboard & mouse.
-This is not the main case of using Pi-KVM since you still need it to pair with a remote host, but can be used for something like mobile KVM.
+PiKVM is able to emulate a Bluetooth keyboard & mouse.
+This is not the main case of using PiKVM since you still need it to pair with a remote host, but can be used for something like mobile KVM.
 
 :exclamation: Using Bluetooth HID requires additional configuration of the operating system. For v2, this means losing the UART port,
 since it will be used by Bluetooth. Also, Bluetooth operation was tested only on RPi4 and v2 platform. Other boards may require different system service settings.
@@ -54,6 +54,6 @@ since it will be used by Bluetooth. Also, Bluetooth operation was tested only on
 8. To reverse, uncomment lines from Step 2 and remove lines in Step 6, ```reboot```
 
 # Using Bluetooth HID
-* After a reboot, the Pi-KVM will be ready for detection and pairing with no auth. You will see the `Pi-KVM HID` device.
-* Once the server is connected, Pi-KVM will no longer be discoverable and pairable to other clients until you unpair the server.
-* If something went wrong, use the web menu `System -> Reset keyboard & mouse`. This will cause unpair the device and switch the Pi-KVM to public mode before the first client is connected.
+* After a reboot, the PiKVM will be ready for detection and pairing with no auth. You will see the `PiKVM HID` device.
+* Once the server is connected, PiKVM will no longer be discoverable and pairable to other clients until you unpair the server.
+* If something went wrong, use the web menu `System -> Reset keyboard & mouse`. This will cause unpair the device and switch the PiKVM to public mode before the first client is connected.

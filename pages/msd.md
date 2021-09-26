@@ -1,5 +1,5 @@
 # Mass Storage Drive
-This is a feature available on Pi-KVM v2+ that allows you to emulate a CD-ROM or Flash Drive.
+This is a feature available on PiKVM v2+ that allows you to emulate a CD-ROM or Flash Drive.
 There are some subtleties that you should know:
 
 * **The size of the CD-ROM image is limited to 2.2 GB**. This is a limitation of the Linux kernel, which currently cannot emulate a DVD.
@@ -23,7 +23,7 @@ To disable mass storage emulation altogether, you can place the following piece 
     # kvmd-helper-otgmsd-remount rw
     ```
 2. Upload the .ISO image(s) to `/var/lib/kvmd/msd/images` via scp or similar.
-3. Create an empty file in `/var/lib/kvmd/msd/meta/` with the exact name (case sensitive!) of the uploaded image. This will indicate Pi-KVM that the uploaded image is okay and can be used. For example:
+3. Create an empty file in `/var/lib/kvmd/msd/meta/` with the exact name (case sensitive!) of the uploaded image. This will indicate PiKVM that the uploaded image is okay and can be used. For example:
     ```
     /var/lib/kvmd/msd/meta/ubuntu-18.04.4-desktop-amd64.iso.complete
     ```
@@ -33,10 +33,10 @@ To disable mass storage emulation altogether, you can place the following piece 
     ```
 
 # Multiple and writable drives
-Unless explicitly [disabled](#disable-msd) by default, Pi-KVM creates only one drive for Mass Storage emulation.
+Unless explicitly [disabled](#disable-msd) by default, PiKVM creates only one drive for Mass Storage emulation.
 However, you can create additional drives and manage them manually via the terminal.
 This is useful if you want to boot the server from a ISO CD (specified in the web interface), then connect a virtual flash drive
-to the server and download some files from to Pi-KVM from it.
+to the server and download some files from to PiKVM from it.
 
 :exclamation: The presence of an additional Mass Storage device should not interfere with the boot, but for reasons of compatibility paranoia,
 this is disabled by default. We recommend setting up the drives in advance, making sure that booting from the ISO CD is still working,
@@ -88,7 +88,7 @@ How to create RW flash drive:
     ```
     # ro
     ```
-7. You can download the resulting image via SCP or mount it as a loop device on the Pi-KVM.
+7. You can download the resulting image via SCP or mount it as a loop device on the PiKVM.
 
 # Create a Microsoft Windows based Flash disk image
 
@@ -159,7 +159,7 @@ Once you have the desired USB stick perform the following on the RPi to create t
 5. The drive will automatically be mounted.
 6. Copy files (such as BIOS updates) onto the new image (via terminal or drag and drop in Finder).
 7. Eject image.
-8. Upload image to Pi-KVM interface under "Drive".
+8. Upload image to PiKVM interface under "Drive".
 9. Select Drive Mode: `Flash` and then `Connect drive to Server`.
 
 You should be able to then mount it locally on the server, or reboot the device to do things like BIOS updates.
@@ -200,7 +200,7 @@ sudo losetup -d /dev/loopXX
 
 ssh into the Ubuntu system (Or whatever OS you are using)
 
-- On Pi-KVM
+- On PiKVM
 
 ```
 cd /var/lib/kvmd/msd
@@ -213,7 +213,7 @@ mount -o remount,rw .
 scp ventoy.img root@pikvm:/var/lib/kvmd/msd/images
 ```
 
-- On Pi-KVM
+- On PiKVM
 
 ```
 touch /var/lib/kvmd/msd/meta/ventoy.img.complete

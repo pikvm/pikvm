@@ -1,9 +1,9 @@
 # GPIO
 [GPIO (general-purpose input/output)](https://en.wikipedia.org/wiki/General-purpose_input/output) is a series of digital interfaces that can be used to connect relays, LEDs, sensors, and other components.
 
-:exclamation: Note: Using GPIO on a Pi-KVM was designed as a feature for advanced users, so please familiarize yourself with the topic to make sure you understand how to use use it before setting it up. Otherwise you might damage your Raspberry Pi or components.
+:exclamation: Note: Using GPIO on a PiKVM was designed as a feature for advanced users, so please familiarize yourself with the topic to make sure you understand how to use use it before setting it up. Otherwise you might damage your Raspberry Pi or components.
 
-When talking about Pi-KVM and GPIO it refers not solely to the [physical interface of the Raspberry Pi](https://www.raspberrypi.org/documentation/usage/gpio), but also to various plugins (for example, for [USB relays](http://vusb.wikidot.com/project:driver-less-usb-relays-hid-interface)) that can also be used transparently by emulating an abstract GPIO API.
+When talking about PiKVM and GPIO it refers not solely to the [physical interface of the Raspberry Pi](https://www.raspberrypi.org/documentation/usage/gpio), but also to various plugins (for example, for [USB relays](http://vusb.wikidot.com/project:driver-less-usb-relays-hid-interface)) that can also be used transparently by emulating an abstract GPIO API.
 
 # Configuration
 Setting up GPIO is considerably complex. The interface is divided into several layers for flexibility. Any configuration is performed using a file `/etc/kvmd/override.yaml` which uses the [YAML syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html). We will look at each part of the configuration individually with an example for each. Sections should be combined under shared keys.
@@ -28,7 +28,7 @@ kvmd:
 ### Drivers
 The first part of the configuration refers to the hardware layer, which defines which IO channels are used (standard GPIO pins of the Raspberry Pi, an USB relay, and so on). If you just want to use GPIO with the default settings you can skip to the next section [Scheme](#Scheme).
 
-Each hardware input/output requires a individual driver configuration entry. Each driver has a type (which refers to the plugin that handles the communication between Pi-KVM and the hardware) and a unique name. This allows you to either can add multiple drivers of the same type with different settings or connect multiple USB HID relays.
+Each hardware input/output requires a individual driver configuration entry. Each driver has a type (which refers to the plugin that handles the communication between PiKVM and the hardware) and a unique name. This allows you to either can add multiple drivers of the same type with different settings or connect multiple USB HID relays.
 
 :exclamation: Each driver requires a unique name. Names surrounded by double underscore are system reserved and should not be used.
 
@@ -46,7 +46,7 @@ kvmd:
             my_gpio: 
                 type: gpio  # Refers to the plugin name handling the communication
                     
-            # Example for a USB HID relay connected to Pi-KVM
+            # Example for a USB HID relay connected to PiKVM
             relay:
                 type: hidrelay  # Eefers to the plugin name handling the communication
                 device: /dev/hidraw0  # The path to the linux device
@@ -57,7 +57,7 @@ The second part defines how the various driver channels are configured. Each cha
 
 :exclamation: Names that starts and ends with two underscores (like `__magic__`) are reserved.
 
-Two interaction modes are available for outputs: `pulse` and `switch`. In pulse mode, the output quickly switches its state to logical 1 and back (just like pressing a button). In switch mode, it saves (toggles) the state that the user set. When Pi-KVM is started/rebooted (any time the KVMD daemon is started or stopped) all output channels are reset to 0. This can be changed using the `initial` parameter. For example, `initial=true` for logic 1 on startup.
+Two interaction modes are available for outputs: `pulse` and `switch`. In pulse mode, the output quickly switches its state to logical 1 and back (just like pressing a button). In switch mode, it saves (toggles) the state that the user set. When PiKVM is started/rebooted (any time the KVMD daemon is started or stopped) all output channels are reset to 0. This can be changed using the `initial` parameter. For example, `initial=true` for logic 1 on startup.
 
 If you don't specify a driver for the channel in the scheme the default driver, `__gpio__` will be used.
 
@@ -82,7 +82,7 @@ __Example configuration__
 kvmd:
     gpio:
         scheme:
-            # A certain device sends signals to the RPi and we want the Pi-KVM to display this as an led
+            # A certain device sends signals to the RPi and we want the PiKVM to display this as an led
             led1:
                 pin: 19 # GPIO pin number on the RPi
                 mode: input 
@@ -179,7 +179,7 @@ Channels should not use duplicate physical numbers. The driver supports saving s
 <details>
     <summary>:exclamation:Click to view:exclamation:</summary>
 
-You can use GPIO to control KVM port switching. This usually requires the use of relays and buttons, but for the [ezCoo switch](https://github.com/pikvm/pikvm/blob/master/pages/ezcoo.md) there is a special `ezcoo` driver that simulates GPIO by sending commands to the switch via serial port. So you can make a menu in Pi-KVM to control the multiport switch.
+You can use GPIO to control KVM port switching. This usually requires the use of relays and buttons, but for the [ezCoo switch](https://github.com/pikvm/pikvm/blob/master/pages/ezcoo.md) there is a special `ezcoo` driver that simulates GPIO by sending commands to the switch via serial port. So you can make a menu in PiKVM to control the multiport switch.
 </details>
 
 ### IPMI

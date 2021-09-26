@@ -1,5 +1,5 @@
 # API
-This document describes the Pi-KVM API. Since the system consists of microservices, here is a common API with a common entry point provided by Nginx. The examples above use `curl` and [`websocat`](https://github.com/vi/websocat) with the `-k` parameter to disable SSL certificate verification, since the self-signed certificateis used in the default installation.
+This document describes the PiKVM API. Since the system consists of microservices, here is a common API with a common entry point provided by Nginx. The examples above use `curl` and [`websocat`](https://github.com/vi/websocat) with the `-k` parameter to disable SSL certificate verification, since the self-signed certificateis used in the default installation.
 
 ## Authorization: `/api/auth`
 All APIs are restricted to authorization. To make requests, you either need to authorize each request individually,
@@ -81,7 +81,7 @@ ws.close()
 ```
 
 ## System info: `/api/info`
-On `GET` this handle will return general information about the Pi-KVM device. If you specify the `fields` query parameter, only the requested category will be selected, like `fields=system,hw`. By default all categories will be displayed:
+On `GET` this handle will return general information about the PiKVM device. If you specify the `fields` query parameter, only the requested category will be selected, like `fields=system,hw`. By default all categories will be displayed:
 
 ```
 $ curl -k -u admin:admin https://<pikvm-ip>/api/info

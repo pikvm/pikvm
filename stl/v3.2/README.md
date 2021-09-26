@@ -1,4 +1,4 @@
-# Pi-KVM v3.2 Plastic Case for 3D printing
+# PiKVM v3.2 Plastic Case for 3D printing
 When printing the case, you can choose the following options:
 - The presence or absence of an OLED screen (used to display the IP address and other information).
 - The presence or absence of holes for the AUM v3.3 (Advanced USB Module, most likely you don't have it).

@@ -5,9 +5,9 @@ A very simple and fully functional Raspberry Pi-based KVM over IP that you can m
 
 The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community Chat](https://discord.gg/bpmXfz5) for news, questions and support!
 
-| **[>>> DIY Device Getting Started <<<](#diy-getting-started)** | **[>>> Pi-KVM v3 HAT Getting Started <<<](#pi-kvm-v3-hat-features)** |
+| **[>>> DIY Device Getting Started <<<](#diy-getting-started)** | **[>>> PiKVM v3 HAT Getting Started <<<](#pikvm-v3-hat-features)** |
 | --------------------------------------------- | ------------------------------------------ |
-| [DIY Review by **Novaspirit Tech**](https://youtu.be/plP9Y1likRg)<br>[**Hackaday**](https://hackaday.com/2020/11/24/true-networked-kvm-without-breaking-the-bank/) & [**Tom's HARDWARE**](https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi)<br>[Our boring presentation for the DIY :)](https://youtu.be/9YhPWjWv5gw) | [Pi-KVM v3 Review by **Novaspirit Tech**](https://youtu.be/dTchVKxx7Fo)<br>[Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)<br>[Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c) |
+| [DIY Review by **Novaspirit Tech**](https://youtu.be/plP9Y1likRg)<br>[**Hackaday**](https://hackaday.com/2020/11/24/true-networked-kvm-without-breaking-the-bank/) & [**Tom's HARDWARE**](https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi)<br>[Our boring presentation for the DIY :)](https://youtu.be/9YhPWjWv5gw) | [PiKVM v3 Review by **Novaspirit Tech**](https://youtu.be/dTchVKxx7Fo)<br>[Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)<br>[Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c) |
 | <img src="img/v2_example.jpg" alt="drawing"/> | <img src="img/v3_board.jpg" alt="drawing"/> |
 
 | Web UI                                     |
@@ -32,7 +32,7 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 * 100% Open Source!
 
 <details>
-  <summary><b>More indepth details about the Pi-KVM features</b></summary>
+  <summary><b>More indepth details about the PiKVM features</b></summary>
 
 ## Fully-featured and modern IP-KVM
 * **Cheaper, but better than commercial solutions**  
@@ -40,27 +40,27 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 * **Easy to build - For the v0 variant**  
   A ready-to-use OS that can be created just by running `make build` and installed to an SD-card using `make install`. The hardware can be made in half an hour and without soldering.
 * **The widest hardware support**  
-  There are many ways to build a Pi-KVM. Video capture devices can be attached using the CSI-2 or USB interfaces. Raspberry Pi models 2, 3, 4, or ZeroW may be used. Any combination of hardware is supported, and Pi-KVM implements the maximum possible set of features.
+  There are many ways to build a PiKVM. Video capture devices can be attached using the CSI-2 or USB interfaces. Raspberry Pi models 2, 3, 4, or ZeroW may be used. Any combination of hardware is supported, and PiKVM implements the maximum possible set of features.
 * **Very low latency**  
   ~100 milliseconds of video latency. This is the smallest delay of all existing solutions.
 * **Extra lightweight and fancy Web UI**  
-  No weird proprietary clients. No ugly Java applets. Just use your favorite browser to connect to the Pi-KVM. No flash plugins either!
+  No weird proprietary clients. No ugly Java applets. Just use your favorite browser to connect to the PiKVM. No flash plugins either!
 * **Keyboard and mouse**  
   Mouse usage works directly in the browser. The keyboard emulator supports displaying the state of the keyboard LEDs.
 * **Mass Storage Drive**  
-  On the Raspberry Pi 4 and ZeroW, Pi-KVM can emulate a virtual CD-ROM or Flash Drive. A live image can be uploaded to boot the attached server.
+  On the Raspberry Pi 4 and ZeroW, PiKVM can emulate a virtual CD-ROM or Flash Drive. A live image can be uploaded to boot the attached server.
 * **ATX power management**  
   With a very simple circuit that can be assembled on a breadboard, the power button of the attached server can be controlled using the ATX button headers on the motherboard.
 * **Security**  
-  Pi-KVM can be opened to the Internet and no one will get access without the password. SSL is used to protect traffic from being intercepted by third parties.
+  PiKVM can be opened to the Internet and no one will get access without the password. SSL is used to protect traffic from being intercepted by third parties.
 * **Local monitoring**  
-  Pi-KVM monitors the health of the Raspberry Pi board and will warn you if it's too hot or is not receiving enough power.
+  PiKVM monitors the health of the Raspberry Pi board and will warn you if it's too hot or is not receiving enough power.
 * **GPIO management**
   You can control GPIO and USB relays via the web interface. The extensible interface allows you to make anything out of it.
 
 ## Production-ready  
 * **Linux-based embedded OS**  
-  The Pi-KVM OS is based on [Arch Linux ARM](https://archlinuxarm.org) and can be customized for any needs. Thousands of pre-built binary packages are at your service and can be updated with a single command!
+  The PiKVM OS is based on [Arch Linux ARM](https://archlinuxarm.org) and can be customized for any needs. Thousands of pre-built binary packages are at your service and can be updated with a single command!
 * **Read-only filesystem**  
   By default the OS runs in read-only mode, as an embedded system should. This prevents damage to the memory card due to a sudden power outage.
 * **VNC server**  
@@ -68,30 +68,30 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 * **IPMI BMC and Redfish**  
   Use `ipmitool`, `ipmiutil` or any existing network infrastructure that supports IPMI to monitor and manage the server's power. Redfish and `redfishtool` supported too.
 * **Wake-on-LAN**  
-  Pi-KVM can be configured to power up a managed server using WoL. This will be available in the Web menu.
+  PiKVM can be configured to power up a managed server using WoL. This will be available in the Web menu.
 * **Extensible authorization methods**  
-  Multiple Pi-KVMs can be configured to use a [common authorization service](https://github.com/pikvm/kvmd-auth-server). PAM and its rich authorization mechanisms can also be used to integrate Pi-KVM into your existing authentication infrastructure.
+  Multiple PiKVMs can be configured to use a [common authorization service](https://github.com/pikvm/kvmd-auth-server). PAM and its rich authorization mechanisms can also be used to integrate PiKVM into your existing authentication infrastructure.
 * **Macro scripts**  
   If repetitive actions must be performed on the attached server (or on several different servers), a macro can be recorded with keyboard & mouse actions and can be played back multiple times.
 
 
 ## Open Source
 * **Community & support**  
-  Pi-KVM has a large community. Join the [discord chat](https://discord.gg/bpmXfz5) if you have any questions.
+  PiKVM has a large community. Join the [discord chat](https://discord.gg/bpmXfz5) if you have any questions.
 * **Extensible**  
-  Pi-KVM was designed as a set of microservices with a plug-in architecture. It's very easy to modify and maintain.
+  PiKVM was designed as a set of microservices with a plug-in architecture. It's very easy to modify and maintain.
 * **Comprehensive API**  
   Everything that can be done via the user interface can also be done via a powerful HTTP API.
 * **Know-how**  
-  We created [our very own MJPG video server](https://github.com/pikvm/ustreamer) written in C with multi-threading support and GPU video encoding - the fastest streaming solution available to provide the best video quality for Pi-KVM. We also tested a lot of hardware configurations so that you can be sure devices you assemble will work reliably.
+  We created [our very own MJPG video server](https://github.com/pikvm/ustreamer) written in C with multi-threading support and GPU video encoding - the fastest streaming solution available to provide the best video quality for PiKVM. We also tested a lot of hardware configurations so that you can be sure devices you assemble will work reliably.
 </details>
 
 -----
 
 # DIY Getting Started
 ## Required hardware
-Pi-KVM supports several different hardware configurations, referred to as **platforms**. Now available: **v2** and **v0**.
-* **Recommended**: **v2** is the most modern implementation for **Raspberry Pi 4** and **ZeroW** supporting all of the features of Pi-KVM including the **Mass Storage Drive**. **For Raspberry Pi 4 (not for Zero), there is support for H.264 video.**. **It's also the easiest to make**.
+PiKVM supports several different hardware configurations, referred to as **platforms**. Now available: **v2** and **v0**.
+* **Recommended**: **v2** is the most modern implementation for **Raspberry Pi 4** and **ZeroW** supporting all of the features of PiKVM including the **Mass Storage Drive**. **For Raspberry Pi 4 (not for Zero), there is support for H.264 video.**. **It's also the easiest to make**.
 * v0 was designed to work with Raspberry Pi 2 and 3 that do not have OTG and requires a few more components for a basic implementation. It also does not support the Mass Storage Drive feature.
 
 ## Hardware for v2
@@ -148,7 +148,7 @@ Pi-KVM supports several different hardware configurations, referred to as **plat
   - A breadboard and wires.
   
 #### A few words about HDMI-USB dongle (H.264 is NOT officially supported at this time)
-The dongle is completely supported and Pi-KVM works great with it. But it has some disadvantages compared with recommended [HDMI-CSI bridge](https://aliexpress.com/item/4000102166176.html): USB gives a lot of latency (200ms vs 100ms for MJPEG) and it doesn't support stream compression control (you won't be able to use Pi-KVM in a place with a poor internet connection). There is no H.264 support at the moment. It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself. In addition, some users report hardware problems: the dongle may not work in the BIOS or simply stop working after a while. It's a black box, and no one knows what's inside it. If you have problems with it, it will not be possible to fix them.
+The dongle is completely supported and PiKVM works great with it. But it has some disadvantages compared with recommended [HDMI-CSI bridge](https://aliexpress.com/item/4000102166176.html): USB gives a lot of latency (200ms vs 100ms for MJPEG) and it doesn't support stream compression control (you won't be able to use PiKVM in a place with a poor internet connection). There is no H.264 support at the moment. It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself. In addition, some users report hardware problems: the dongle may not work in the BIOS or simply stop working after a while. It's a black box, and no one knows what's inside it. If you have problems with it, it will not be possible to fix them.
   
 ## Hardware for v0
 * Raspberry Pi 2 or 3.
@@ -166,18 +166,18 @@ The dongle is completely supported and Pi-KVM works great with it. But it has so
 
 #### Addition
 * If you want to capture VGA from your server instead of HDMI, buy the [VGA-to-HDMI converter](https://aliexpress.com/item/4000553298530.html).
-* Pi-KVM can be powered using PoE, but it is not recommend to use the official PoE HAT: it is unreliable and [not compatible with the HDMI bridge](https://github.com/pikvm/pikvm/issues/6). Use any other PoE hat without an I2C fan controller.
+* PiKVM can be powered using PoE, but it is not recommend to use the official PoE HAT: it is unreliable and [not compatible with the HDMI bridge](https://github.com/pikvm/pikvm/issues/6). Use any other PoE hat without an I2C fan controller.
 * **Don't use random relay modules or random optocouplers!** Some relays or optocouplers may not be sensitive enough for the Raspberry Pi, some others may be low-level controlled. Either use relays that are activated by a high logic level, or follow the design provided and buy an OMRON. See details [here](https://github.com/pikvm/pikvm/issues/13).  
 
 
 # How to set up the device can be seen from [here](https://github.com/pikvm/pikvm/blob/master/pages/Wiring%20Examples.md)
 
-# Pi-KVM v3 HAT Features
+# PiKVM v3 HAT Features
 
 
 <img src="img/v3_kit.jpg" alt="drawing" height=200>
 
-**[>>> Pi-KVM v3 HAT on Kickstarter! <<<](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)**
+**[>>> PiKVM v3 HAT on Kickstarter! <<<](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)**
 
 We have developed our own HAT for the Raspberry Pi 4. It will have all the features of the v2 platform, including:
 
@@ -190,7 +190,7 @@ We have developed our own HAT for the Raspberry Pi 4. It will have all the featu
 * **Onboard ATX controller** to manage the server's power.
 * **PWM fan controller**.
 * **A real-time clock** for accurate logging.
-* CISCO-style and USB **serial console port** (to manage Pi-KVM OS or to connect the server).
+* CISCO-style and USB **serial console port** (to manage PiKVM OS or to connect the server).
 * Ability to use **IPMI BMC**, **IPMI SoL**, **Redfish** and **Wake-on-LAN** to control the server.
 * **Extensible authorization** and **SSL encryption** out of the box.
 * **Health monitoring** of the Raspberry Pi.
@@ -200,11 +200,11 @@ We have developed our own HAT for the Raspberry Pi 4. It will have all the featu
 * **No need for soldering or breadboarding**. It's a ready-made, reliable board which you can use yourself or provide to your clients.
 
 Watch the video:
-* [Pi-KVM v3 Review by **Novaspirit Tech**](https://youtu.be/dTchVKxx7Fo)
+* [PiKVM v3 Review by **Novaspirit Tech**](https://youtu.be/dTchVKxx7Fo)
 * [Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)
 * [Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c)
 
-**[>>> Pi-KVM v3 HAT on Kickstarter! <<<](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)**
+**[>>> PiKVM v3 HAT on Kickstarter! <<<](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)**
 
 -----
 
@@ -272,27 +272,27 @@ See video how-tos:
 -----
 
 # Installing the OS
-Here the final steps. There are two ways to get the Pi-KVM OS:
+Here the final steps. There are two ways to get the PiKVM OS:
   * We provide the ready-made images for **Raspberry Pi 4** for platforms v3, **v2-hdmi** (the CSI-2 bridge) and **v2-hdmiusb** (the USB dongle); for **ZeroW** **v2-hdmi** [Follow these instructions](pages/flashing_os.md) to install the OS quickly.
   * For the other boards and platforms, you need to build the operating system manually. Don't worry, it's very simple! [Just follow these instructions](pages/building_os.md). You can also build the OS for RPi4 manually if you really want to :)
 
 # You're amazing!
 - ❗NOTE❗ After performing any update of pikvm, clear web browser cache or use incognito/private browsing mode.
 
-Congratulations! Your Pi-KVM will be available via SSH (`ssh root@<addr>` with password `root` by default) and HTTPS (try to open in a browser the URL `https://<addr>`, the login `admin` and password `admin` by default). For HTTPS a self-signed certificate is used by default.
+Congratulations! Your PiKVM will be available via SSH (`ssh root@<addr>` with password `root` by default) and HTTPS (try to open in a browser the URL `https://<addr>`, the login `admin` and password `admin` by default). For HTTPS a self-signed certificate is used by default.
 
-To change the root password use command `passwd` via SSH or webterm. To change Pi-KVM web password use `kvmd-htpasswd set admin`. As indicated on the login screen use `rw` to make the root filesystem writable, before issuing these commands. After making changes, make sure to run the command `ro`.
+To change the root password use command `passwd` via SSH or webterm. To change PiKVM web password use `kvmd-htpasswd set admin`. As indicated on the login screen use `rw` to make the root filesystem writable, before issuing these commands. After making changes, make sure to run the command `ro`.
 
-# Access to Pi-KVM from the Internet
+# Access to PiKVM from the Internet
 - ❗NOTE❗ Please take proper security precaustions when exposing this to the internet. The use of tailscale is HIGHLY suggested.
 
-You can use port forwarding for port 443 on your router if it has an external IP address. In all other cases, you can use the excellent free VPN service [Tailscale](pages/tailscale.md), which is configured on Pi-KVM with a [few simple commands](pages/tailscale.md).
+You can use port forwarding for port 443 on your router if it has an external IP address. In all other cases, you can use the excellent free VPN service [Tailscale](pages/tailscale.md), which is configured on PiKVM with a [few simple commands](pages/tailscale.md).
 
 If you have any problems or questions, contact us using Discord: https://discord.gg/bpmXfz5
 
 Subscribe to our Subreddit to follow news and releases: https://www.reddit.com/r/pikvm
 
-Happy using of Pi-KVM :)
+Happy using of PiKVM :)
 
 -----
 
@@ -302,11 +302,11 @@ Happy using of Pi-KVM :)
 -----
 
 # What's next?
-* The Pi-KVM file system is always mounted in read-only mode. This prevents it from being damaged by a sudden power outage. To change the configuration you must first switch the filesystem to write mode using the command `rw` from root. After the changes, be sure to run the command `ro` to switch it back to read-only.
+* The PiKVM file system is always mounted in read-only mode. This prevents it from being damaged by a sudden power outage. To change the configuration you must first switch the filesystem to write mode using the command `rw` from root. After the changes, be sure to run the command `ro` to switch it back to read-only.
 
 * **NEVER** edit `/etc/kvmd/main.yaml`. Use `/etc/kvmd/override.yaml` to redefine the system parameters. All other files that are also not recommended for editing have read-only permissions. If you edit any of these files, you will need to manually make changes to them when you upgrade your system. You can view the current configuration and all available KVMD parameters using the command `kvmd -m`.
 
-* Almost all KVMD (the main daemon controlling Pi-KVM) configuration files use [YAML](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) syntax. Information on the format's syntax can be found at the link provided.
+* Almost all KVMD (the main daemon controlling PiKVM) configuration files use [YAML](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) syntax. Information on the format's syntax can be found at the link provided.
 
 * [Disabling authorization](pages/cookbook.md#disabling-authorization).
 
@@ -347,10 +347,10 @@ Happy using of Pi-KVM :)
 
 * [Control GPIO ports, USB relays, IPMI hosts, send Wake-on-LAN messages](pages/gpio.md).
 
-* [Centralized authorization for multiple Pi-KVMs](https://github.com/pikvm/kvmd-auth-server).
+* [Centralized authorization for multiple PiKVMs](https://github.com/pikvm/kvmd-auth-server).
 
 * [Cookbook](pages/cookbook.md).
-    - [Take a HDMI screenshot via console on Pi-KVM](pages/cookbook.md#take-a-hdmi-screenshot-via-console-on-pi-kvm).
+    - [Take a HDMI screenshot via console on PiKVM](pages/cookbook.md#take-a-hdmi-screenshot-via-console-on-pikvm).
     - [Get installed KVMD version via console](pages/cookbook.md#get-installed-kvmd-version-via-console).
     - [Enable Serial-over-USB connection](pages/cookbook.md#enable-serial-over-usb-connection).
 
@@ -365,14 +365,14 @@ For any help, you can contact our discord chat: https://discord.gg/bpmXfz5
 -----
 
 # Donate
-This project is developed on a non-commercial basis by Open Source enthusiasts. If you find Pi-KVM useful or it has saved you a long trip to check on an unresponsive server, you can support the lead developer by donating a few dollars via [Patreon](https://www.patreon.com/pikvm) or [PayPal](https://www.paypal.me/mdevaev). With this money, he will be able to buy new hardware (Raspberry Pi boards and other components) to test and maintain various configurations of Pi-KVM, and generally devote significantly more time to the project. At the bottom of this page are the names of all the people who have helped this project develop with their donations. Our gratitude knows no bounds!
+This project is developed on a non-commercial basis by Open Source enthusiasts. If you find PiKVM useful or it has saved you a long trip to check on an unresponsive server, you can support the lead developer by donating a few dollars via [Patreon](https://www.patreon.com/pikvm) or [PayPal](https://www.paypal.me/mdevaev). With this money, he will be able to buy new hardware (Raspberry Pi boards and other components) to test and maintain various configurations of PiKVM, and generally devote significantly more time to the project. At the bottom of this page are the names of all the people who have helped this project develop with their donations. Our gratitude knows no bounds!
 
-If you wish to use Pi-KVM in production, we accept orders to modify it for your needs or implement custom features you require. Contact us via [live chat](https://discord.gg/bpmXfz5) or email the lead developer at: mdevaev@gmail.com
+If you wish to use PiKVM in production, we accept orders to modify it for your needs or implement custom features you require. Contact us via [live chat](https://discord.gg/bpmXfz5) or email the lead developer at: mdevaev@gmail.com
 
 -----
 
 # Special thanks
-These kind people donated money to the Pi-KVM project and supported work on it. We are very grateful for their help, and commemorating their names is the least we can do in return.
+These kind people donated money to the PiKVM project and supported work on it. We are very grateful for their help, and commemorating their names is the least we can do in return.
 
 <details>
   <summary>View all people!</summary>

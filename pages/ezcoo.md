@@ -1,6 +1,6 @@
 # ezCoo managed multiport KVM switch
 
-The ezCoo managed switch can be controlled by Pi-KVM to allow it to connect to multiple hosts. A typical scenario is a single Pi-KVM device which can control and switch between multiple hosts or servers using the ezCoo switch. UI elements can be added to the [GPIO dropdown](gpio.md) to allow switching between hosts from the Pi-KVM webpage. The instructions here were tested with the ~~[ezCoo SW41HA HDMI 4x1 switch](https://www.easycoolav.com/products/hdmi20-switch-4x1-with-usb20-kvm-4-port-usbsupport-4k60hz-444-and-hdr-audio-breakout)~~ [ezCoo EZ-SW41HA-KVMU3L 4x1 switch](https://www.easycoolav.com/products/hdmi20-switch-4x1-with-usb30-kvm-3-port-usbsupport-4k60hz-444-and-hdr-audio-breakout-36). Both older USB2.0 and newer USB3.0 variants are supported. The following was testing on a Raspberry Pi 4 but should also work on the Pi 2 and 3. This document was createdy using the contributions from multiple users on the [Pi-KVM Discord](https://discord.gg/bpmXfz5) and the author appreciates their efforts.
+The ezCoo managed switch can be controlled by PiKVM to allow it to connect to multiple hosts. A typical scenario is a single PiKVM device which can control and switch between multiple hosts or servers using the ezCoo switch. UI elements can be added to the [GPIO dropdown](gpio.md) to allow switching between hosts from the PiKVM webpage. The instructions here were tested with the ~~[ezCoo SW41HA HDMI 4x1 switch](https://www.easycoolav.com/products/hdmi20-switch-4x1-with-usb20-kvm-4-port-usbsupport-4k60hz-444-and-hdr-audio-breakout)~~ [ezCoo EZ-SW41HA-KVMU3L 4x1 switch](https://www.easycoolav.com/products/hdmi20-switch-4x1-with-usb30-kvm-3-port-usbsupport-4k60hz-444-and-hdr-audio-breakout-36). Both older USB2.0 and newer USB3.0 variants are supported. The following was testing on a Raspberry Pi 4 but should also work on the Pi 2 and 3. This document was createdy using the contributions from multiple users on the [PiKVM Discord](https://discord.gg/bpmXfz5) and the author appreciates their efforts.
 
 :exclamation: While most images of the switch do not show the sides, there is a Micro USB port on the side of the ezCoo switch. This is the management port, which is controlled via COM port on the ezCoo KVM.  When plugged into the Raspberry Pi, it appears as `/dev/ttyUSB0`.
 
@@ -13,14 +13,14 @@ From a high level, the ezCoo switch uses standard connections to the host machin
 2. Connect the HDMI out from the ezCoo switch to the Raspberry Pi CSI-2 to HMDI input. Other users have reported HMDI encoder USB dongles as working.
 3. Connect a USB-A to Micro USB cable from the Raspberry Pi to the management port on the side of the ezCoo switch.
 4. Connect host USB and HDMI cables from the ezCoo switch to the machines to be managed per the switch instructions.
-5. At this point the KVM switch should be present as a device on the Pi-KVM. SSH into Pi-KVM and ensure a device like `/dev/ttyUSB0` is present. The following instructions assume this is the KVM switch.
+5. At this point the KVM switch should be present as a device on the PiKVM. SSH into PiKVM and ensure a device like `/dev/ttyUSB0` is present. The following instructions assume this is the KVM switch.
 
-:exclamation: There is a limitation in the underlying Pi-KVM software related to plugging video cables from a host which is already powered and connected to a monitor to a Raspberry Pi CSI2-HDMI encoder. These limitations apply equally when using the ezCoo KVM switch. If video is not present in Pi-KVM, try keeping all host machines off and connecting them directly to the ezCoo switch before powering the hosts on.
+:exclamation: There is a limitation in the underlying PiKVM software related to plugging video cables from a host which is already powered and connected to a monitor to a Raspberry Pi CSI2-HDMI encoder. These limitations apply equally when using the ezCoo KVM switch. If video is not present in PiKVM, try keeping all host machines off and connecting them directly to the ezCoo switch before powering the hosts on.
 
 ## Adding UI elements to control the KVM switch
-The UI can be updated to add buttons to switch between KVM inputs and indicators for which input is currently selected.  The instructions below will make these available in the Pi-KVM UI after clicking the "GPIO" menu button in the KVM view.
+The UI can be updated to add buttons to switch between KVM inputs and indicators for which input is currently selected.  The instructions below will make these available in the PiKVM UI after clicking the "GPIO" menu button in the KVM view.
 
-1. SSH into Pi-KVM
+1. SSH into PiKVM
 2. Enable read-write mode on the sd card via `rw`
 3. Edit the `/etc/kvmd/override.yaml` file and include the following. Note the assumption that the KVM switch is present on `/dev/ttyUSB0`:
 ```yaml

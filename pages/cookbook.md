@@ -29,7 +29,7 @@ then restart `kvmd`:
 [root@pikvm ~]# systemctl disable --now kvmd-webterm
 ```
 
-## Take a HDMI screenshot via console on Pi-KVM
+## Take a HDMI screenshot via console on PiKVM
 ```
 # curl --unix-socket /run/kvmd/ustreamer.sock http://localhost/snapshot -o screen.jpg
 ```
@@ -40,7 +40,7 @@ then restart `kvmd`:
 ```
 
 ## Enable Serial-over-USB connection
-Specifically to v2. This can be used for terminal access from the managed server to the Pi-KVM, or for any other purpose that requires a serial connection. In the last case, you only need to perform step 1 and reboot.
+Specifically to v2. This can be used for terminal access from the managed server to the PiKVM, or for any other purpose that requires a serial connection. In the last case, you only need to perform step 1 and reboot.
 
 1. Edit `/etc/kvmd/override.yaml` (remove `{}` if this your first configuration entry) and add these lines:
     ``` yaml
@@ -65,7 +65,7 @@ Specifically to v2. This can be used for terminal access from the managed server
     # systemctl enable getty@ttyGS0.service
     # reboot
     ```
-5. Once Pi-KVM is rebooted you will have access to a virtual serial port on the server that the USB is connected to. Use mingetty, screen, putty, or something like this to access the kvm from the server. The port is called `/dev/ttyAMA0`.
+5. Once PiKVM is rebooted you will have access to a virtual serial port on the server that the USB is connected to. Use mingetty, screen, putty, or something like this to access the kvm from the server. The port is called `/dev/ttyAMA0`.
 
 ## Enable Ethernet-over-USB network
 See [here](usb_ethernet.md).

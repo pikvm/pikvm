@@ -5,15 +5,15 @@
 - [Can this do 4K?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-this-do-4k)
 - [Does PIKVM support sound](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#does-pikvm-support-sound)
 - [Why so much latency between the screen and target?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#why-so-much-latency-between-the-screen-and-target)
-- [Is Pi-KVM an OS or its own Distro?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#is-pi-kvm-an-os-or-its-own-distro)
+- [Is PiKVM an OS or its own Distro?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#is-pikvm-an-os-or-its-own-distro)
 - [Why are you using Arch Linux?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#why-are-you-using-arch-linux)
 - [Can I power the Pi via POE?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-i-power-the-pi-via-poe)
 - [Do I need a power splitter? Why do I need one?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#do-i-need-a-power-splitter-why-do-i-need-one)
 - [I can't get the KVM KB to work on my ZeroW!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#i-cant-get-the-kvm-kb-to-work-on-my-zerow)
 - [Can I use a KB on my ZeroW?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-i-use-a-kb-on-my-zerow)
-- [Can you have the pi-kvm(RPi4) connected along with a monitor?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-you-have-the-pi-kvmrpi4-connected-along-with-a-monitor)
-- [Wouldn't it be good to have different hostnames for your multitude of pi-kvms?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#wouldnt-it-be-good-to-have-different-hostnames-for-your-multitude-of-pi-kvms)
-- [I want to do something not related to Pi-KVM](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#i-want-to-do-something-not-related-to-pi-kvm)
+- [Can you have the pikvm(RPi4) connected along with a monitor?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-you-have-the-pikvmrpi4-connected-along-with-a-monitor)
+- [Wouldn't it be good to have different hostnames for your multitude of pikvms?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#wouldnt-it-be-good-to-have-different-hostnames-for-your-multitude-of-pikvms)
+- [I want to do something not related to PiKVM](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#i-want-to-do-something-not-related-to-pikvm)
 - [Can this be used in any other distro’s like Rasbian? Run this in a Docker?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-this-be-used-in-any-other-distros-like-rasbian-run-this-in-a-docker)
 - [Can you switch from USB to CSI or from CSI to USB?](#can-you-switch-from-usb-to-csi-or-from-csi-to-usb)
 - [My Pi keeps disconnecting from my wireless! What do I do?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#my-pi-keeps-disconnecting-from-my-wireless-what-do-i-do)
@@ -31,9 +31,9 @@
 - [How do I emulate various USB devices on the target machine?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#how-do-i-emulate-various-usb-devices-on-the-target-machine)
 - [Things to do after initial install](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#things-to-do-after-initial-install)
 - [Can I have a RW FS all of the time?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-i-have-a-rw-fs-all-of-the-time)
-- [Can you run a desktop on pi-kvm?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-you-run-a-desktop-on-pi-kvm)
+- [Can you run a desktop on pikvm?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-you-run-a-desktop-on-pikvm)
 - [Troubleshooting](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#troubleshooting)
-- [Common Commands for troubleshooting Pi-KVM](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#common-commands-for-troubleshooting-pi-kvm)
+- [Common Commands for troubleshooting PiKVM](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#common-commands-for-troubleshooting-pikvm)
 - [Common ARCH commands](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#common-arch-commands)
 - [Common wifi commands](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#common-wifi-commands)
 - [Bootup/power issues](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#bootuppower-issues)
@@ -65,7 +65,7 @@
 
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
-### Is Pi-KVM an OS or its own Distro?
+### Is PiKVM an OS or its own Distro?
 - Yes and No, Other than the some repacking and patches, its heavly based off an existing [Arch Linux ARM](https://archlinuxarm.org/).
 
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
@@ -116,11 +116,11 @@ Ensure that you have the cable(Needs to support both power/data) plugged into th
 
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
-### Can you have the pi-kvm(RPi4) connected along with a monitor?
+### Can you have the pikvm(RPi4) connected along with a monitor?
 - **A community member has had success with the following: https://www.amazon.com/gp/product/B08DQWLXF1**
 - Some Alternitives
   - If you have two outputs, you may be able to use screen mirroring from the OS but not BIOS
-  - If you have one output or need access from both a local monitor or Pi-KVM at boot time, one of the following options may work:
+  - If you have one output or need access from both a local monitor or PiKVM at boot time, one of the following options may work:
   - Passthrough HDMI capture devices (sometimes referred to as a loop capture device). The Elgato devices DO NOT WORK! Look for Linux OS support when choosing a device, the expected price range is about $35-$70 US.
   - Depending on your capture device, an HDMI splitter may work but will need what is called an EDID (Extended Device ID) generator, the monitor and capture device both generate EDID so the splitter must produce its own separate EDID for the host.
   - Look for HDMI splitters - although there have been reports that these are not stable
@@ -129,7 +129,7 @@ Ensure that you have the cable(Needs to support both power/data) plugged into th
 
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index) 
 
-### Wouldn't it be good to have different hostnames for your multitude of pi-kvms?
+### Wouldn't it be good to have different hostnames for your multitude of pikvms?
 Yes! And it's easy to do! Using a SSH session or the web terminal:
 - Make sure you're `root`, if you're not root use the `su` command to become root
 - Enter read write mode of the PiKVM by executing the `rw` command
@@ -139,7 +139,7 @@ Yes! And it's easy to do! Using a SSH session or the web terminal:
 
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
-### I want to do something not related to Pi-KVM
+### I want to do something not related to PiKVM
 - It's recommended that you review Arch documents related to what you want to do, while there are several folks in discord who can help, there is no obligation...they do it for the feels. So if you don't get an answer within the time frame you are looking for, it's advised you start google searching for what you want.
 
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
@@ -273,7 +273,7 @@ set tabstospaces
 
 ### Can I use RealVNC/Guacamole to connect to PiKVM?
 - No, RealVNC is not a real vnc so will not work
-- No, Guacamole supports a minimum of VNC capabilities and is fundamentally incompatible with Pi-KVM (for example, it does not support JPEG for video compression).
+- No, Guacamole supports a minimum of VNC capabilities and is fundamentally incompatible with PiKVM (for example, it does not support JPEG for video compression).
 
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
@@ -297,7 +297,7 @@ add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" alway
 By default this is what is set:
 ```
 otg:
-    manufacturer: Pi-KVM
+    manufacturer: PiKVM
     max_power: 250
     product: Composite KVM Device
     product_id: 260
@@ -328,7 +328,7 @@ Use the following USB Data Base to get the desired devices: ```https://the-sz.co
 
 ### Things to do after initial install:
 - Fix date: 'timedatectl list-timezones' then 'timedatectl set-timezone America/Los_Angeles' (Change to your location)
-- Update Pi-KVM, follow #news on Discord for instructions
+- Update PiKVM, follow #news on Discord for instructions
 - Setup a NFS share to give read/write storage on the read only pikvm
   - Note: this does assume you already have an NFS server on your network and accessible to pikvm
   - Source https://linuxhint.com/install_configure_nfs/
@@ -345,7 +345,7 @@ nano /etc/fstab
 
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
-### Can you run a desktop on pi-kvm?
+### Can you run a desktop on pikvm?
 - Yes BUT, its not recommended OR supported as this OS should be used in RO and it will need RW enabled all of the time. Instructions [here](https://www.linuxfordevices.com/tutorials/linux/how-to-install-gui-on-arch-linux)
 
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
@@ -409,7 +409,7 @@ lrwxrwxrwx 1 root root 6 Mar 15 09:07 /dev/kvmd-video -> video0
 
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 
-### Common Commands for troubleshooting Pi-KVM
+### Common Commands for troubleshooting PiKVM
 
 - `journalctl -u kvmd`
 - `journalctl -u kvmd-vnc`
@@ -518,14 +518,14 @@ iw wlan0 info
 
 ### Misc stuff
 - Fully working [example](https://docs.google.com/document/d/1wgBZHxwpbJWkJBD3I8ZkZxSDxt0DdNDDYRNtVoL_vK4) of a Pi4 USB-HDMI KVM attached to AIMOS 4-port HDMI KVM switch (8 port is on AliExpress), with keyboard hotkey switching between inputs, and mass storage media emulation on a Pi Zero W
-- Pi-KVM that mitigates HDMI backpower and requires no splitter board [here](https://docs.google.com/document/d/1M9xUgNE_-P8GydKr_3qIgXUR9YzqApHNPhetRv3pcsE/edit)
-- Useful scripts that enhance the Pi-KVM's functionality ```https://pastebin.com/u/srepac```
+- PiKVM that mitigates HDMI backpower and requires no splitter board [here](https://docs.google.com/document/d/1M9xUgNE_-P8GydKr_3qIgXUR9YzqApHNPhetRv3pcsE/edit)
+- Useful scripts that enhance the PiKVM's functionality ```https://pastebin.com/u/srepac```
 
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 	
 ### Useful links
-- https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi - Very good article on PI-KVM setup
-- Current 3D cases that support the various Pi-KVM hardware configurations:
+- https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi - Very good article on PIKVM setup
+- Current 3D cases that support the various PiKVM hardware configurations:
 ```
 https://www.thingiverse.com/search?q=pi-kvm&type=things&sort=relevant
 https://www.thingiverse.com/thing:4799094

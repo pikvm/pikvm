@@ -1,6 +1,6 @@
 # TESMART managed multiport KVM switch
 
-The TESMART managed switch can be controlled by Pi-KVM to allow it to connect to multiple hosts. A typical scenario is a single Pi-KVM device which can control and switch between multiple hosts or servers using the TESMART switch. UI elements can be added to the [GPIO dropdown](gpio.md) to allow switching between hosts from the Pi-KVM webpage. The instructions here were tested with the [TESMART HKS1601A10 HDMI 16x1 switch](https://www.amazon.com/TESmart-Enterprise-Control-Rackmount-Keyboard/dp/B07258PWTW/). This should work with any of the other TESMART variants which have a LAN port - there is both a 8x1 and 4x1 variant.  This was tested with an RPI4, but as this is executed over a network protocol, this should with almost anything.
+The TESMART managed switch can be controlled by PiKVM to allow it to connect to multiple hosts. A typical scenario is a single PiKVM device which can control and switch between multiple hosts or servers using the TESMART switch. UI elements can be added to the [GPIO dropdown](gpio.md) to allow switching between hosts from the PiKVM webpage. The instructions here were tested with the [TESMART HKS1601A10 HDMI 16x1 switch](https://www.amazon.com/TESmart-Enterprise-Control-Rackmount-Keyboard/dp/B07258PWTW/). This should work with any of the other TESMART variants which have a LAN port - there is both a 8x1 and 4x1 variant.  This was tested with an RPI4, but as this is executed over a network protocol, this should with almost anything.
 
 ## Connections
 From a high level, the TESMART switch uses standard connections to the host machines (USB-A to USB-B and HDMI). The Raspberry Pi OTG connector (the one coming from the USB-C port on a Pi 4 via the custom splitter cable or device) should be connected to one of the USB 2 output ports on the TESMART switch (not the keyboard/mouse port). Based on your specific devices, and to get boot images to mount, you may need to connect this through a USB 2 hub.
@@ -10,7 +10,7 @@ From a high level, the TESMART switch uses standard connections to the host mach
 3. Connect the LAN port on the front of the switch using standard ethernet cable into one of your network switches.
 4. Connect host USB and HDMI cables from the TESMART switch to the machines to be managed per the switch instructions.
 
-:exclamation: There is a limitation in the underlying Pi-KVM software related to plugging video cables from a host which is already powered and connected to a monitor to a Raspberry Pi CSI2-HDMI encoder. These limitations apply equally when using the TESMART KVM switch. If video is not present in Pi-KVM, try keeping all host machines off and connecting them directly to the TESMART switch before powering the hosts on.
+:exclamation: There is a limitation in the underlying PiKVM software related to plugging video cables from a host which is already powered and connected to a monitor to a Raspberry Pi CSI2-HDMI encoder. These limitations apply equally when using the TESMART KVM switch. If video is not present in PiKVM, try keeping all host machines off and connecting them directly to the TESMART switch before powering the hosts on.
 
 ## Setting the IP Address of the TESMART switch
 
@@ -29,9 +29,9 @@ On this screen, change to your desired IP address, gateway, mask, and port. Then
 There may be alternatives other than changing the IP address in this manner if you don't have access to a Windows machine or if this address doesn't work for you. See this [README](https://github.com/bbeaudoin/bash/blob/master/tesmart/README.md) for other options (Images and concepts from the bash file were borrowed for creation of this plugin).  This also contains a summary of the protocol, which is also available on the TESMART downloads page.
 
 ## Adding UI elements to control the KVM switch
-The UI can be updated to add buttons to switch between KVM inputs and indicators for which input is currently selected.  The instructions below will make these available in the Pi-KVM UI after clicking the "Switches" menu button in the KVM view.
+The UI can be updated to add buttons to switch between KVM inputs and indicators for which input is currently selected. The instructions below will make these available in the PiKVM UI after clicking the "Switches" menu button in the KVM view.
 
-1. SSH into Pi-KVM
+1. SSH into PiKVM
 2. Enable read-write mode on the sd card via `rw`
 3. Edit the `/etc/kvmd/override.yaml` file and include the following:
 ```yaml
