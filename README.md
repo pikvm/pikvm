@@ -179,6 +179,10 @@ The dongle is completely supported and PiKVM works great with it. But it has som
 
 **[>>> PiKVM v3 HAT on Kickstarter! <<<](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)**
 
+** The Kickstarer was a HUGE success but has ended.**
+
+** If you are still looking to get one after the KS has ended they will be available on pishop.us in Novemeber **
+
 We have developed our own HAT for the Raspberry Pi 4. It will have all the features of the v2 platform, including:
 
 * Fully **Open Source** software and ready-made maintainable Linux based OS.
@@ -203,8 +207,6 @@ Watch the video:
 * [PiKVM v3 Review by **Novaspirit Tech**](https://youtu.be/dTchVKxx7Fo)
 * [Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)
 * [Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c)
-
-**[>>> PiKVM v3 HAT on Kickstarter! <<<](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)**
 
 -----
 
