@@ -519,19 +519,14 @@ iw wlan0 info
 ### Misc stuff
 - Fully working [example](https://docs.google.com/document/d/1wgBZHxwpbJWkJBD3I8ZkZxSDxt0DdNDDYRNtVoL_vK4) of a Pi4 USB-HDMI KVM attached to AIMOS 4-port HDMI KVM switch (8 port is on AliExpress), with keyboard hotkey switching between inputs, and mass storage media emulation on a Pi Zero W
 - PiKVM that mitigates HDMI backpower and requires no splitter board [here](https://docs.google.com/document/d/1M9xUgNE_-P8GydKr_3qIgXUR9YzqApHNPhetRv3pcsE/edit)
-- Useful scripts that enhance the PiKVM's functionality ```https://pastebin.com/u/srepac```
+- VERY useful scripts that enhance the PiKVM's functionality - Please DM @srepac on discord to gain access
 
 [Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
 	
 ### Useful links
 - https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi - Very good article on PIKVM setup
-- Current 3D cases that support the various PiKVM hardware configurations:
-```
-https://www.thingiverse.com/search?q=pi-kvm&type=things&sort=relevant
-https://www.thingiverse.com/thing:4799094
-```
 
-As of March 2021, Out of Stock or hard to get, all have exceptionally LONG shipping dates - Could try AliExpress or get a usb2hdmi dongle from Amazon, please ask or search in Discord for the best known working one
+As of March 2021, Below are frequently out of Stock or hard to get items, all have exceptionally LONG shipping dates 
 
 ```
 Ezcoo KVM - Goes out of stock frequently
