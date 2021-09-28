@@ -1,5 +1,5 @@
 # Tailscale VPN
-You can use [Tailscale](https://tailscale.com/) to access PiKVM on the internal network. This is a convenient and free (for private use) tool for organizing a small VPN network.
+As an example, You can use [Tailscale](https://tailscale.com/) to access PiKVM on the internal network. This is a convenient and free (for private use) tool for organizing a small VPN network. This document is provided as an example for accessing your pikvm over the inet but you can also use zerotier or remote.it. Basic support like whats shown below is provided as an example, any other setting or functionality needs to be redirected to the appropriate community.
 
 # Installation
 ## On the PiKVM side
