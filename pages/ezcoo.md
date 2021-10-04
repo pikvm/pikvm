@@ -22,7 +22,7 @@ The UI can be updated to add buttons to switch between KVM inputs and indicators
 
 1. SSH into PiKVM
 2. Enable read-write mode on the sd card via `rw`
-3. Edit the `/etc/kvmd/override.yaml` file and include the following. Note the assumption that the KVM switch is present on `/dev/ttyUSB0`:
+3. Edit the file: `nano /etc/kvmd/override.yaml` and include the following. Note the assumption that the KVM switch is present on `/dev/ttyUSB0`:
 ```yaml
 kvmd:
     gpio:
