@@ -1,5 +1,5 @@
 # Building the OS
-The PiKVM OS is based on Arch Linux ARM and contains all the required packages and configs for it to work. 
+The PiKVM OS is based on Arch Linux ARM and contains all the required packages and configs for it to work./ 
 
 To build the OS you will need x86_64 Linux machine with:
 * kernel >= 5.8
@@ -36,7 +36,8 @@ Latest Arch Linux is working.
 
 3. Create the config file `config.mk` for the target system. You must specify the path to the SD card on your local computer (this will be used to format and install the system) and the version of your Raspberry Pi and platform. You can change other parameters as you wish. Please note: if your password contains the # character, you must escape it using a backslash like `ROOT_PASSWD = pass\#word`.
     ```Makefile
-    [user@localhost os]$ cat config.mk
+    [user@localhost os]$ touch config.mk
+    [user@localhost os]$ vim config.mk
     # rpi3 for Raspberry Pi 3; rpi2 for the version 2, zerow for ZeroW
     BOARD = rpi4
     
