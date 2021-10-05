@@ -74,6 +74,15 @@ kvmd:
                 - ["#Input 3", ch2_led, ch2_button]
                 - ["#Input 4", ch3_led, ch3_button]
   ```
+3a. Make sure to notate the spacing for each line, needs to be a total of 4 spaces:</br>
+
+    For example:
+        parent: 0 spaces (kvmd:)
+        child: 4 spaces (gpio:)
+        sub-child: 8 spaces (drivers:)
+        sub-sub-child: 16 spaces (ez:)
+  
+    
 4. Return to read-only mode for the sd card via `ro`
 5. Restart the kvmd service: `systemctl restart kvmd`
 6. If you are still not getting KB output, issue a ```ls -la /dev/tty* | grep USB``` , if no output change cables (Alot of cables are power only)
