@@ -136,7 +136,7 @@ kvmd:
 
 This will be rendered as:
 
-<img src="../img/gpio_menu.png" alt="drawing" />
+<img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/gpio_menu.png" alt="drawing" />
 
 Some rules and customization options:
 - Text starting with the `#` symbol will be a label.

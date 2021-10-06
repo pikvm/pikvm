@@ -18,11 +18,11 @@ In some ways, this is the most complex part of this. The default IP address of t
 
 If you need to change it, you will first need to connect to the switch with a Windows machine, most easily directly through an ethernet cord, with your Windows laptop (or VM) up and assigned to a fixed IP address, such as 192.168.1.5. Once you've launched the utility you will see this screen:
 
-<img src="/img/tesmart_controller_1.png" alt="Configuration screen for TESMART Windows controller utility"/>
+<img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/tesmart_controller_1.png" alt="Configuration screen for TESMART Windows controller utility"/>
 
 On this screen, ensure you are on the "General" tab. Click the radio button for "Network control". Change the IP address to the default for the switch (may already be this -- 192.168.1.10). Press the "Connect" button. Should make the status light go green, as well as the selected port.  If you do not get a connection here, you cannot proceed to change the IP address.  To change the IP address, change to the "Settings" tab at the top. You will then see this screen:
 
-<img src="/img/tesmart_controller_2.png" alt="Configuration screen for TESMART Windows controller utility"/>
+<img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/tesmart_controller_2.png" alt="Configuration screen for TESMART Windows controller utility"/>
 
 On this screen, change to your desired IP address, gateway, mask, and port. Then press apply. Watch the box on the right to see if it applied OK. Press Query again to double-check. The actual IP address will not be changed until you power off/power on the switch. Make sure you have these settings correct, because if you get them wrong you would have to connect over RS232/serial and not the network.
 

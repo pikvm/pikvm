@@ -25,15 +25,15 @@ wifi-menu -o
 ```
 The `-o` makes sure that the WiFi passphrase is stored encrypted. Otherwise it will be stored in cleartext in the profile file. `wifi-menu` will scan for all available WiFi networks and provide you a list:
 
-![Wifi Menu 1](/img/wifi-1.png)
+![Wifi Menu 1](https://raw.githubusercontent.com/pikvm/pikvm/master/img/wifi-1.png)
 
 Select the WiFi you want to connect to and give the profile file a name. The default name is wlan0-wifiname:
 
-![Wifi Menu 2](/img/wifi-2.png)
+![Wifi Menu 2](https://raw.githubusercontent.com/pikvm/pikvm/master/img/wifi-2.png)
 
 Enter the WPA-Passphrase:
 
-![Wifi Menu 3](/img/wifi-3.png)
+![Wifi Menu 3](https://raw.githubusercontent.com/pikvm/pikvm/master/img/wifi-3.png)
 
 Afterwards `wifi-menu` will try to connect to the WiFi. If you're connected via ssh or the Web Terminal you'll loose connection to the Raspberry Pi. Most DHCP servers will give the Raspberry Pi a new (and usually different) IP address for each interface (LAN / WLAN).
 
@@ -45,7 +45,7 @@ If you want to store the WiFi passphrase encrypted you have to generate it via `
 wpa_passphrase wifiname this_is_my_great_and_secure_key_1234567890
 ```
 
-![WPA passphrase generation](/img/wifi-4.png)
+![WPA passphrase generation](https://raw.githubusercontent.com/pikvm/pikvm/master/img/wifi-4.png)
 
 Copy the second hexadecimal string without *psk=*. In this example _814c45d0f88f60636532b034c463639a506670f8ba3c7965e62cdbc1989f6d66_.
 Create a new file with the editor of your choice:

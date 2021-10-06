@@ -124,7 +124,7 @@ Note: if you can't find an answer to your question here, try the [Community FAQ]
 
 * On some motherboards, the BIOS may be displayed at a lower resolution, or with some rendering issues/glitches, specially on newer ASUS ones. Like this:
 
-  <img src="../img/bios_glitch.png" alt="ASUS BIOS glitch" width="400"/>
+  <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/bios_glitch.png" alt="ASUS BIOS glitch" width="400"/>
 
   This can be solved by enabling the **Compatibility Support Module (CSM)** in your BIOS, usually under the **Boot** options.
 
@@ -229,7 +229,7 @@ Note: if you can't find an answer to your question here, try the [Community FAQ]
 
 * The latest versions of Chrome do not allow access to the page with a self signed certificate, so if you see the following screen when loading the PiKVM website:
 
-  <img src="../img/chrome.png" alt="Chrome Blocking" width="400"/>
+  <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/chrome.png" alt="Chrome Blocking" width="400"/>
 
 * You can proceed by typing ```thisisunsafe``` and Chrome will then load the page.
 </details>

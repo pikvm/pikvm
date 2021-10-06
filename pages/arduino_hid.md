@@ -81,7 +81,7 @@ Next, you need to connect Arduino pins to the female PS/2 port of your motherboa
 Follow this diagram:
 | Female PS/2 port (front view) | Pinout |
 |-------------------------------|--------|
-| <img src="/img/ps2_kbd.png" alt="drawing" width="200"/> | Arduino pin 7 <-> PS/2 CLOCK<br>Arduino pin 5 <-> PS/2 DATA<br>Arduino GND pin <-> PS/2 GND |
+| <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/ps2_kbd.png" alt="drawing" width="200"/> | Arduino pin 7 <-> PS/2 CLOCK<br>Arduino pin 5 <-> PS/2 DATA<br>Arduino GND pin <-> PS/2 GND |
 
 **Connect VIN pin of Arduino to [any Raspberry's 5v pin](https://pinout.xyz/pinout/5v_power) for PS/2 only device. But you don't need to connect the Arduino VIN pin if you connected USB (Arduino will get power through it).**
 
@@ -91,7 +91,7 @@ Due to an ancient buggy driver, the USB absolute mouse on Windows 98 moves only 
 ## SPI connection to Arduino Micro
 Using an SPI connection, an Arduino Micro or compatible can be flashed from the Pi and used as an HID keyboard and mouse. Unlike UART, SPI does not share pins with Bluetooth on the Raspberry Pi so the Bluetooth radio does not need to be disabled.
 
-<img src="/img/arduino_spi_hid.png" alt="Diagram of the Arduino SPI wiring for HID keyboard and mouse." width="654"/>
+<img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/arduino_spi_hid.png" alt="Diagram of the Arduino SPI wiring for HID keyboard and mouse." width="654"/>
 
 Before powering either device, double-check the connections. The following should be wired from the Pi to either the level shifter or the Arduino. While the Arduino tolerates 3.3V logic input, 5V outputs from the Arduino can damage or destroy the Raspberry Pi and must not be connected directly to 3.3V GPIO pins directly.
 
@@ -129,7 +129,7 @@ Pictures of this setup are also available in full resolution for download to ass
 
 | Raspberry Pi Closeup | Breadboard with Arduino |
 |------------|--------|
-| <img src="/img/arduino_spi_hid_rpi.jpg" alt="A closeup of the Raspberry Pi wired to the breadboard." width=300/> | <img src="/img/arduino_spi_hid_bb.jpg" alt="Arduino on a breadboard fully wired to the Pi." width=300/> |
+| <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/arduino_spi_hid_rpi.jpg" alt="A closeup of the Raspberry Pi wired to the breadboard." width=300/> | <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/arduino_spi_hid_bb.jpg" alt="Arduino on a breadboard fully wired to the Pi." width=300/> |
 
 Programming assumes the Arduino is powered via USB, either from the connected host or the Pi itself. If the USB is not connected, 5 V may be provided by the Raspberry Pi GPIO but should be disconnected prior to connecting USB to the microcontroller's USB port. The Raspberry Pi does not have backcurrent protection, a circuit using one or more Schottky diodes can be built to OR power from multiple sources but it's easier and more cost effective to avoid conflict and voltage differences between power supplies by leaving the 5 V wire disconnected.
 

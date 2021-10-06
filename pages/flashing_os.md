@@ -19,23 +19,23 @@ Decompress and flash image and follow to the [final steps](#the-final-steps). Be
 
 3. Run Balena Etcher:
 
-    <img src="../img/balena-1.png" alt="drawing" height="300"/>
+    <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/balena-1.png" alt="drawing" height="300"/>
 
 4. Press **Flash from file** and select the image:
 
-    <img src="../img/balena-2.png" alt="drawing" height="300"/>
+    <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/balena-2.png" alt="drawing" height="300"/>
 
 5. Insert the memory card into the card reader. Press **Select target** and choose your memory card:
 
-    <img src="../img/balena-3.png" alt="drawing" height="300"/>
+    <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/balena-3.png" alt="drawing" height="300"/>
 
 6. Press **Flash!** button.
 
-    <img src="../img/balena-4.png" alt="drawing" height="300"/>
+    <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/balena-4.png" alt="drawing" height="300"/>
 
 7. Wait for the process to finish. Get yourself a coffee or do some stretching. :wink: If an error occurs during flashing, repeat the process:
 
-    <img src="../img/balena-5.png" alt="drawing" height="300"/>
+    <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/balena-5.png" alt="drawing" height="300"/>
 
     **NOTE** - If Etcher does not work for you and you continue to get failed bootup's, download RaspberryPi imager and use that instead
 

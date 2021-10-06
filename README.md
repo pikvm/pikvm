@@ -8,11 +8,11 @@ The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community
 | **[>>> DIY Device Getting Started <<<](#diy-getting-started)** | **[>>> PiKVM v3 HAT Getting Started <<<](#pikvm-v3-hat-features)** |
 | --------------------------------------------- | ------------------------------------------ |
 | [DIY Review by **Novaspirit Tech**](https://youtu.be/plP9Y1likRg)<br>[**Hackaday**](https://hackaday.com/2020/11/24/true-networked-kvm-without-breaking-the-bank/) & [**Tom's HARDWARE**](https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi)<br>[Our boring presentation for the DIY :)](https://youtu.be/9YhPWjWv5gw) | [PiKVM v3 Review by **Novaspirit Tech**](https://youtu.be/dTchVKxx7Fo)<br>[Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)<br>[Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c) |
-| <img src="img/v2_example.jpg" alt="drawing"/> | <img src="img/v3_board.jpg" alt="drawing"/> |
+| <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v2_example.jpg" alt="drawing"/> | <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v3_board.jpg" alt="drawing"/> |
 
 | Web UI                                     |
 | ------------------------------------------ |
-| <img src="img/screen1.png" alt="drawing" height=200/> |
+| <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/screen1.png" alt="drawing" height=200/> |
 
 
 # Features
@@ -174,7 +174,7 @@ The dongle is completely supported and PiKVM works great with it. But it has som
 # PiKVM v3 HAT Features
 
 
-<img src="img/v3_kit.jpg" alt="drawing" height=200>
+<img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v3_kit.jpg" alt="drawing" height=200>
 
 **[>>> PiKVM v3 HAT on Kickstarter! <<<](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)**
 
@@ -218,13 +218,13 @@ Insert the flexible flat cable of the HDMI bridge into the narrow white connecto
 
 | Opening the MIPI CSI-2 slot on the Raspberry Pi                                                  |
 | ------------------------------------------------------------------------------------------------ |
-| <img src="img/open-MIPI-CSI2-Slot.png" alt="detailed picture of the MIPI-CSI2 slot" width="350"> |
+| <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/open-MIPI-CSI2-Slot.png" alt="detailed picture of the MIPI-CSI2 slot" width="350"> |
 
 For the HDMI-CSI bridge it depends on the version you bought. Either pull it gently up as on the Raspberry or push it sideways. Make sure that the cable is inserted on the correct side and until it stops, and then push the black latch back. Never connect or disconnect the flat cable from a powered device. This is not Plug-and-Play, and you can damage it. Also use only the cable that was included with the device package, or make sure that the third-party cable has the correct pinout.
 
 | HDMI-CSI-2 bridge connected to Raspberry Pi 4                                                                |
 | ------------------------------------------------------------------------------------------------------------ |
-| <img src="img/rpi4-hdmi-csi-connection.png" alt="HDMI-CSI-2 bridge connected to Raspberry Pi 4" width="350"> |
+| <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/rpi4-hdmi-csi-connection.png" alt="HDMI-CSI-2 bridge connected to Raspberry Pi 4" width="350"> |
 
 </details>
 
@@ -235,7 +235,7 @@ Connect USB dongle to exactly this port. It is bound in the software so the OS d
 
 | Raspberry Pi 2 and 3                                          | Raspberry Pi 4                                                |
 | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| <img src="img/v2_usbcap_rpi2.png" alt="drawing" width="200"/> | <img src="img/v2_usbcap_rpi4.png" alt="drawing" width="200"/> |
+| <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v2_usbcap_rpi2.png" alt="drawing" width="200"/> | <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v2_usbcap_rpi4.png" alt="drawing" width="200"/> |
 
 There are many revisions of the Raspberry Pi boards and you may come across one that we haven't tested. If the binding fails, the device will be available for all ports. Everything will work, but if you use a webcam and Linux mistakes it for a dongle, [write to us](https://discord.gg/bpmXfz5) and we will fix it.
 </details>
@@ -247,12 +247,12 @@ Here is a diagram shows that how to connect all of the pieces (click to full siz
 
 | ATX control board                                 | USB splitter cable (only for Raspberry Pi 4)               |
 | ------------------------------------------------- | ---------------------------------------------------------- |
-| <img src="img/v2.png" alt="drawing" width="400"/> | <img src="img/v2_splitter.png" alt="drawing" width="400"/> |
+| <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v2.png" alt="drawing" width="400"/> | <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v2_splitter.png" alt="drawing" width="400"/> |
 
 **Raspberry Pi 4**: since one USB-C female connector is used to receive power and perform keyboard/mouse/drive emulation a special Y-cable must be made that splits the DATA and POWER lines of USB-C (see [reasons](https://github.com/pikvm/docs/issues/11)). It can be made from two suitable connecting cables, or soldered together from scratch. Be sure to check the circuit diagram below, otherwise you may damage your devices. The appropriate USB pinout(s) can easily be found on Google. Please note that if you make a Y-cable from two no-name cables, the colors of the wires may not match those shown. Use a multimeter to make sure the connections are correct.
 
 **Raspberry Pi Zero W**: This board has two USB micro connectors: one for power supply, the second for emulating a USB OTG device. You need to prevent backpowering as in the RPi4 case. To do this, you need to cut off the red power wire in the OTG wire, or seal the +5v pin in the USB-A connector with electrical tape like this:
-<img src="img/v2_tape_off.png" alt="drawing" width="300"/>
+<img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v2_tape_off.png" alt="drawing" width="300"/>
 
 See video how-tos:
 * [Making USB Y-splitter cable](https://www.youtube.com/watch?v=uLuBuQUF61o).
@@ -266,7 +266,7 @@ See video how-tos:
 
 | ATX control board and Arduino HID (keyboard & mouse) |
 | ---------------------------------------------------- |
-| <img src="img/v0.png" alt="drawing" width="400"/>    |
+| <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v0.png" alt="drawing" width="400"/>    |
 
 </details>
 
