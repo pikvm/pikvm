@@ -169,7 +169,7 @@ The dongle is completely supported and PiKVM works great with it. But it has som
 * **Don't use random relay modules or random optocouplers!** Some relays or optocouplers may not be sensitive enough for the Raspberry Pi, some others may be low-level controlled. Either use relays that are activated by a high logic level, or follow the design provided and buy an OMRON. See details [here](https://github.com/pikvm/pikvm/issues/13).  
 
 
-# How to set up the device can be seen from [here](https://github.com/pikvm/pikvm/blob/master/pages/Wiring%20Examples.md)
+# How to set up the device can be seen from [here](https://github.com/pikvm/pikvm/blob/master/pages/wiring_examples.md)
 
 # PiKVM v3 HAT Features
 

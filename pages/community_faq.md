@@ -1,86 +1,86 @@
 # Community FAQ
 
 ### Index
-- [Can this be used for gaming? Why not?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-this-be-used-for-gaming-why-not)
-- [Can this do 4K?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-this-do-4k)
-- [Does PIKVM support sound](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#does-pikvm-support-sound)
-- [Why so much latency between the screen and target?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#why-so-much-latency-between-the-screen-and-target)
-- [Is PiKVM an OS or its own Distro?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#is-pikvm-an-os-or-its-own-distro)
-- [Why are you using Arch Linux?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#why-are-you-using-arch-linux)
-- [Can I power the Pi via POE?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-i-power-the-pi-via-poe)
-- [Do I need a power splitter? Why do I need one?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#do-i-need-a-power-splitter-why-do-i-need-one)
-- [I can't get the KVM KB to work on my ZeroW!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#i-cant-get-the-kvm-kb-to-work-on-my-zerow)
-- [Can I use a KB on my ZeroW?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-i-use-a-kb-on-my-zerow)
-- [Can you have the pikvm(RPi4) connected along with a monitor?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-you-have-the-pikvmrpi4-connected-along-with-a-monitor)
-- [Wouldn't it be good to have different hostnames for your multitude of pikvms?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#wouldnt-it-be-good-to-have-different-hostnames-for-your-multitude-of-pikvms)
-- [I want to do something not related to PiKVM](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#i-want-to-do-something-not-related-to-pikvm)
-- [Can this be used in any other distro’s like Rasbian? Run this in a Docker?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-this-be-used-in-any-other-distros-like-rasbian-run-this-in-a-docker)
+- [Can this be used for gaming? Why not?](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#can-this-be-used-for-gaming-why-not)
+- [Can this do 4K?](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#can-this-do-4k)
+- [Does PIKVM support sound](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#does-pikvm-support-sound)
+- [Why so much latency between the screen and target?](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#why-so-much-latency-between-the-screen-and-target)
+- [Is PiKVM an OS or its own Distro?](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#is-pikvm-an-os-or-its-own-distro)
+- [Why are you using Arch Linux?](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#why-are-you-using-arch-linux)
+- [Can I power the Pi via POE?](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#can-i-power-the-pi-via-poe)
+- [Do I need a power splitter? Why do I need one?](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#do-i-need-a-power-splitter-why-do-i-need-one)
+- [I can't get the KVM KB to work on my ZeroW!](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#i-cant-get-the-kvm-kb-to-work-on-my-zerow)
+- [Can I use a KB on my ZeroW?](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#can-i-use-a-kb-on-my-zerow)
+- [Can you have the pikvm(RPi4) connected along with a monitor?](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#can-you-have-the-pikvmrpi4-connected-along-with-a-monitor)
+- [Wouldn't it be good to have different hostnames for your multitude of pikvms?](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#wouldnt-it-be-good-to-have-different-hostnames-for-your-multitude-of-pikvms)
+- [I want to do something not related to PiKVM](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#i-want-to-do-something-not-related-to-pikvm)
+- [Can this be used in any other distro’s like Rasbian? Run this in a Docker?](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#can-this-be-used-in-any-other-distros-like-rasbian-run-this-in-a-docker)
 - [Can you switch from USB to CSI or from CSI to USB?](#can-you-switch-from-usb-to-csi-or-from-csi-to-usb)
-- [My Pi keeps disconnecting from my wireless! What do I do?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#my-pi-keeps-disconnecting-from-my-wireless-what-do-i-do)
-- [I want a static IP!!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#i-want-a-static-ip)
-- [Why do I keep getting a different IP?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#why-do-i-keep-getting-a-different-ip)
-- [HELP! I can't find the IP on the ZeroW/RPi4](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-i-cant-find-the-ip-on-the-zerowrpi4)
-- [Help! I ran out of space AKA room!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-i-ran-out-of-space-aka-room-what-now)
-- [Can you connect a camera to this and still make pikvm functional?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-you-connect-a-camera-to-this-and-still-make-pikvm-functional)
-- [I have a question that is not answered here!! Now what?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#i-have-a-question-that-is-not-answered-here-now-what)
-- [HELP! Something isn't working!!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-something-isnt-working)
-- [HELP! I am getting a 500/503 error when I try and access the main KVM page!](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#help-i-am-getting-a-500503-error-when-I-try-and-access-the-main-kvm-page)
-- [Can you use an iPad on PiKVM?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-you-use-an-ipad-on-pikvm)
-- [Can I use RealVNC/Guacamole to connect to PiKVM?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-i-use-realvncguacamole-to-connect-to-pikvm)
-- [How do I add my own SSL cert?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#how-do-i-add-my-own-ssl-cert)
-- [How do I emulate various USB devices on the target machine?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#how-do-i-emulate-various-usb-devices-on-the-target-machine)
-- [Things to do after initial install](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#things-to-do-after-initial-install)
-- [Can I have a RW FS all of the time?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-i-have-a-rw-fs-all-of-the-time)
-- [Can you run a desktop on pikvm?](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#can-you-run-a-desktop-on-pikvm)
-- [Troubleshooting](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#troubleshooting)
-- [Common Commands for troubleshooting PiKVM](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#common-commands-for-troubleshooting-pikvm)
-- [Common ARCH commands](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#common-arch-commands)
-- [Common wifi commands](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#common-wifi-commands)
-- [Bootup/power issues](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#bootuppower-issues)
-- [PiKVM Complains about low power warnings](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#pikvm-complains-about-low-power-warnings)
-- [USB Video Capture Issues](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#usb-video-capture-issues)
-- [HDMI-CSI Capture issues](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#hdmi-csi-capture-issues)
-- [Misc stuff](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#misc-stuff)
-- [Useful links](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#useful-links)
+- [My Pi keeps disconnecting from my wireless! What do I do?](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#my-pi-keeps-disconnecting-from-my-wireless-what-do-i-do)
+- [I want a static IP!!](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#i-want-a-static-ip)
+- [Why do I keep getting a different IP?](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#why-do-i-keep-getting-a-different-ip)
+- [HELP! I can't find the IP on the ZeroW/RPi4](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#help-i-cant-find-the-ip-on-the-zerowrpi4)
+- [Help! I ran out of space AKA room!](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#help-i-ran-out-of-space-aka-room-what-now)
+- [Can you connect a camera to this and still make pikvm functional?](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#can-you-connect-a-camera-to-this-and-still-make-pikvm-functional)
+- [I have a question that is not answered here!! Now what?](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#i-have-a-question-that-is-not-answered-here-now-what)
+- [HELP! Something isn't working!!](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#help-something-isnt-working)
+- [HELP! I am getting a 500/503 error when I try and access the main KVM page!](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#help-i-am-getting-a-500503-error-when-I-try-and-access-the-main-kvm-page)
+- [Can you use an iPad on PiKVM?](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#can-you-use-an-ipad-on-pikvm)
+- [Can I use RealVNC/Guacamole to connect to PiKVM?](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#can-i-use-realvncguacamole-to-connect-to-pikvm)
+- [How do I add my own SSL cert?](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#how-do-i-add-my-own-ssl-cert)
+- [How do I emulate various USB devices on the target machine?](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#how-do-i-emulate-various-usb-devices-on-the-target-machine)
+- [Things to do after initial install](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#things-to-do-after-initial-install)
+- [Can I have a RW FS all of the time?](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#can-i-have-a-rw-fs-all-of-the-time)
+- [Can you run a desktop on pikvm?](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#can-you-run-a-desktop-on-pikvm)
+- [Troubleshooting](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#troubleshooting)
+- [Common Commands for troubleshooting PiKVM](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#common-commands-for-troubleshooting-pikvm)
+- [Common ARCH commands](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#common-arch-commands)
+- [Common wifi commands](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#common-wifi-commands)
+- [Bootup/power issues](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#bootuppower-issues)
+- [PiKVM Complains about low power warnings](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#pikvm-complains-about-low-power-warnings)
+- [USB Video Capture Issues](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#usb-video-capture-issues)
+- [HDMI-CSI Capture issues](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#hdmi-csi-capture-issues)
+- [Misc stuff](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#misc-stuff)
+- [Useful links](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#useful-links)
 
 ### Can this be used for gaming? Why not?
 - ❗No:exclamation:, the max bus lanes the Pi provides, is not enough to support anything faster than 30 FPS. Your better off looking at other solutions for this.
 - ❗No:exclamation:, PiKVM does not capture and transmit audio at this time. The developers have indicated that this may be available for the v3 hat at some point in the future, but it is not a priority for development at this time.
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Can this do 4K?
 - For the CSI Bridge, ❗No:exclamation:. there is not enough bandwidth in the CSI bus for that much data. 1080p50 will max out the bandwidth
 - For the USB capture devices: Technically yes, but they will downsample to something smaller to meet the usb2.0 bandwidth limitations, so the source may be 4k, but the stream will not.
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Does PIKVM support sound?
 - At this time sound is not supported on any platform however, once sound is implimented, it will only be available for v3. Due to a hardware bug in v0/v2 capture devices, sound may or may not work.
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Why so much latency between the screen and target?
 - capture device+compression+network+decompression+external network(if applicable)
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Is PiKVM an OS or its own Distro?
 - Yes and No, Other than the some repacking and patches, its heavly based off an existing [Arch Linux ARM](https://archlinuxarm.org/).
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Why are you using Arch Linux?
 - The developer was more familiar with Arch Linux so this was chosen as the base operating system. As a Linux distribution, it has more in common than not with other distributions.
 <br/><br/>
 As an appliance, users are not expected to interact with the host operating system often, if at all. There are some distribution-specific differences, by default networking is done using either systemd-networkd or netctl but NetworkManager can be used as a replacement if one prefers.
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Can I power the Pi via POE?
 - Yes! But you will still need to ensure you isolate the 5v connection between the Raspberry Pi and host PC to prevent backpower issues that can cause instability or damage to either the host PC or the Pi. Power/Data cable + usb power blocker would work. Please see Variant #1 in the main getting started page for details.
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Do I need a power splitter? Why do I need one?
 - Yes for RPi4, Yes and No for ZeroW - Yes if you want dedicated power, otherwise No
@@ -89,7 +89,7 @@ As an appliance, users are not expected to interact with the host operating syst
 - You can also get a power splitter board from Tindi or PiShop [(Links provided under variants #3 & #4)](https://github.com/pikvm/pikvm#hardware-for-v2)
 - If you have the v3 HAT - This is built in
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### I can't get the KVM KB to work on my ZeroW!
 Make sure that you did NOT modify your config.txt file, this is the default: 
@@ -105,7 +105,7 @@ dtoverlay=dwc2,dr_mode=peripheral
 ```
 Ensure that you have the cable(Needs to support both power/data) plugged into the right port, the one closest to the mini HDMI is the correct port
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Can I use a KB on my ZeroW?
 - Yes but kb/mouse passthrough will not work. Its one or the other - This is especially true if you use an addon that requires the below to change.
@@ -114,7 +114,7 @@ Ensure that you have the cable(Needs to support both power/data) plugged into th
   - Passthrough mode - Uncomment out dtoverlay=dwc2
 
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Can you have the pikvm(RPi4) connected along with a monitor?
 - **A community member has had success with the following: https://www.amazon.com/gp/product/B08DQWLXF1**
@@ -127,7 +127,7 @@ Ensure that you have the cable(Needs to support both power/data) plugged into th
     - Please use the search function in Discord, some users have had sucess in getting this to work but your mileage may vary
   - The better solution is to capture the stream in a dir and then use VLC to stream to that capture on another computer. This will result in fps loss.
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index) 
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index) 
 
 ### Wouldn't it be good to have different hostnames for your multitude of pikvms?
 Yes! And it's easy to do! Using a SSH session or the web terminal:
@@ -137,28 +137,28 @@ Yes! And it's easy to do! Using a SSH session or the web terminal:
 - Optional: Edit `/etc/kvmd/meta.yaml` to alter the displayed hostname in the web UI
 - Reboot the pikvm
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### I want to do something not related to PiKVM
 - It's recommended that you review Arch documents related to what you want to do, while there are several folks in discord who can help, there is no obligation...they do it for the feels. So if you don't get an answer within the time frame you are looking for, it's advised you start google searching for what you want.
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Can this be used in any other distro’s like Rasbian? Run this in a Docker?
 - Officially, no. Unofficially yes and totally #unsupported. Please DM @srepac on discord for the directions.
 - Docker image is available, search the docker hub but this is #unsupported and #unofficial and not updated.
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Can you switch from USB to CSI or from CSI to USB?
 - Officially, no. You would be advised to make 2 seperate SD cards and swap them when needed. Unofficially yes and totally NOT supported. Please DM @srepac on discord for the script and directions.
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### My Pi keeps disconnecting from my wireless! What do I do?
 - You can try the following: Edit "/etc/conf.d/wireless-regdom" and look for your region and uncomment it. Example: WIRELESS_REGDOM="US"
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### I want a static IP!!
 - You can configure systemd-networkd for a static address for ethernet NIC. Config file is /etc/systemd/network/eth0.network
@@ -183,7 +183,7 @@ DNS=("192.168.X.X 1.0.0.1 1.1.1.1")
 ```
 - You can also reserve the IP in your dhcp server (Quicker)
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Why do I keep getting a different IP?
 - You can do 2 of the following actions:
@@ -194,7 +194,7 @@ ClientIdentifier=mac
 ```
 - OR reserve the DHCP ip in your server/router
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### HELP!! I can't find the IP on the ZeroW/RPi4
 - Open a browser and type: pikvm, still doesnt work?
@@ -214,7 +214,7 @@ Windows Power shell: arp -a | findstr 'b8-27-eb' (Replace with the above, all lo
   - add ```IP: \4```
   - Once you reboot, you will now see the IP in the upper left
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 	
 ### Help! I ran out of space aka room! What now?
 
@@ -228,19 +228,19 @@ rm -rf /var/cache/pacman/pkg/*
 - Exit read/write mode by executing ro as root
 - You can also use gparted to resize partitions without "losing data", although there is a chance this may delete all of your data
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Can you connect a camera to this and still make pikvm functional?
 - Yes, any cheapo webcam can be used in place of the usb dongle, please use the usb image
 - A PiCam will NOT work
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### I have a question that is not answered here!! Now what?
 - Please look at all pins on Discord and/or ask in #chat
 - Please look in #news on Discord
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### HELP!! Something isn't working!!
 - What was the last thing or most recent thing you did? Did you undo it?
@@ -248,7 +248,7 @@ rm -rf /var/cache/pacman/pkg/*
 - Did you hook this to anything else? If not why not?
 - Did you try different cables?
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 	
 ### HELP! I am getting a 500/503 error when I try and access the main KVM page!
 - This is due to a bad line in your yaml file, here are some steps you can make to help in the future. 
@@ -263,19 +263,19 @@ set tabstospaces
 ```
 - Now re-edit your override.yaml file and just use tab to get the right spacing, you might need to delete the current leading "spaces" to ensure proper formatting
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 	
 ### Can you use an iPad on PiKVM?
 - Yes, with the correct hardware you can control an iPad
 - Yes, activate VNC and use JUMP app(Full featured but more expensive), or bVNC(Not recommended, lack luster features but cheap). RealVNC does NOT work
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Can I use RealVNC/Guacamole to connect to PiKVM?
 - No, RealVNC is not a real vnc so will not work
 - No, Guacamole supports a minimum of VNC capabilities and is fundamentally incompatible with PiKVM (for example, it does not support JPEG for video compression).
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### How do I add my own SSL cert?
 - If you have a certificate(:exclamation:**Making a cert falls outside the scope of PIKVM - Please reference Linux documentation**:exclamation:), replace the public key in /etc/kvmd/nginx/ssl/server.crt and private key in /etc/kvmd/nginx/ssl/server.key and restart the kvmd-nginx service.
@@ -291,7 +291,7 @@ ssl_certificate_key /etc/kvmd/nginx/ssl/server.key;
 add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
 ```
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### How do I emulate various USB devices on the target machine?
 By default this is what is set:
@@ -324,7 +324,7 @@ Use the following USB Data Base to get the desired devices: ```https://the-sz.co
 - Example:
 	- ```vendor_id: 0x06940```
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Things to do after initial install:
 - Fix date: 'timedatectl list-timezones' then 'timedatectl set-timezone America/Los_Angeles' (Change to your location)
@@ -343,17 +343,17 @@ nano /etc/fstab
 192.168.1.XXX:/volume1/Data /mnt/Data nfs      auto,rw,soft    0 0
 ```
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Can you run a desktop on pikvm?
 - Yes BUT, its not recommended OR supported as this OS should be used in RO and it will need RW enabled all of the time. Instructions [here](https://www.linuxfordevices.com/tutorials/linux/how-to-install-gui-on-arch-linux)
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Can I have a RW FS all of the time?
 - YES! BUT its not recommended, however this is what you can do:```nano /boot/cmdline.txt``` & ```nano /etc/fstab``` Change ro to rw and change the /boot line from ro to rw
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Troubleshooting
 - :exclamation:**It is expected that you are aware of basic networking while working on this project and that you have read up on the project prior to going to Discord**:exclamation:
@@ -407,7 +407,7 @@ lrwxrwxrwx 1 root root 5 Apr  5 21:33 /dev/kvmd-hid-mouse -> hidg1
 lrwxrwxrwx 1 root root 6 Mar 15 09:07 /dev/kvmd-video -> video0
 ```
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Common Commands for troubleshooting PiKVM
 
@@ -415,14 +415,14 @@ lrwxrwxrwx 1 root root 6 Mar 15 09:07 /dev/kvmd-video -> video0
 - `journalctl -u kvmd-vnc`
 - `journalctl -u kvmd-ipmi`
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Common ARCH commands
 - search - `pacman -Ss 'the thing'`
 - install - `pacman -S 'the thing'`
 - remove - `pacman -Rscnd 'the thing'`
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Common wifi commands
 - `iwconfig` manipulate the basic wireless parameters
@@ -444,25 +444,25 @@ iwlist wlan0 scan
 iw wlan0 info
 ```
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Bootup/power issues
 - PiKVM won’t boot past “rainbow” screen
   - Are you plugged into the right HDMI port? Needs to be the one next to the power for RPI4
   - Have you reflashed your SD card?
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### PiKVM Complains about low power warnings
 - Are you using a `proper` power supply? Not one you hacked together?
 - Some USB power bricks advertise 5V @ 2.1A or higher, but can’t deliver consistent 5V.  Best to use rpi foundation recommended power supplies
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### USB Video Capture Issues
 - Make sure this is a capture card and not an adapter (HDMI->USB)
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### HDMI-CSI Capture issues
 - Have you reset the Target PC?
@@ -474,54 +474,54 @@ iw wlan0 info
 - If you are getting snow looking screen, you need to make sure you select 50hz OR select anything below 1080p, like 720p60
 - If you are getting an Indian looking screen, please clear the browser cache or use private/incog window
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Capturing video from non HDMI sources
 - TBD
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Keyboard/Mouse Issues
 - TBD
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### OTG Keyboard/Mouse Connection
 - TBD
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Arduino Keyboard Mouse Connection (UART wiring)
 - TBD
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Arduino Keyboard/Mouse Connection (SPI Wiring)
 - TBD
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### ATX Control Issues
 - TBD
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### HDMI KVM Interface Issues
 - TBD
 
->[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+>[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Connection issues
 - TBD
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 
 ### Misc stuff
 - Fully working [example](https://docs.google.com/document/d/1wgBZHxwpbJWkJBD3I8ZkZxSDxt0DdNDDYRNtVoL_vK4) of a Pi4 USB-HDMI KVM attached to AIMOS 4-port HDMI KVM switch (8 port is on AliExpress), with keyboard hotkey switching between inputs, and mass storage media emulation on a Pi Zero W
 - PiKVM that mitigates HDMI backpower and requires no splitter board [here](https://docs.google.com/document/d/1M9xUgNE_-P8GydKr_3qIgXUR9YzqApHNPhetRv3pcsE/edit)
 - VERY useful scripts that enhance the PiKVM's functionality - Please DM @srepac on discord to gain access
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
 	
 ### Useful links
 - https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi - Very good article on PIKVM setup
@@ -541,4 +541,4 @@ Facibom		Binchil	  	Cobeky	  	Ctzrzyt	    	Davitu
 - Community recommended USB capture [card](https://www.amazon.com/gp/product/B08FG54QPH)
 - Community recommended Loop device that allows [Monitor+PiKVM](https://www.amazon.com/gp/product/B08DQWLXF1)
 
-[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/Community_FAQ.md#Index)
+[Back to the Top](https://github.com/pikvm/pikvm/blob/master/pages/community_faq.md#Index)
