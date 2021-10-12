@@ -3,7 +3,7 @@
 
 A very simple and fully functional Raspberry Pi-based KVM (KVM = Keyboard, Video, Mouse) over IP that you can make with your own hands. This device helps to manage servers or workstations remotely, regardless of the health of the operating system or whether one is installed. You can fix any problem, configure the BIOS, and even reinstall the OS using the virtual CD-ROM or Flash Drive.
 
-The website: [pikvm.org](https://pikvm.org). Also join to the [Discord Community Chat](https://discord.gg/bpmXfz5) for news, questions and support!
+The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](https://docs.pikvm.org) and join to the [Discord Community Chat](https://discord.gg/bpmXfz5) for news, questions and support!
 
 | **[>>> DIY Device Getting Started <<<](#diy-getting-started)** | **[>>> PiKVM v3 HAT Getting Started <<<](#pikvm-v3-hat-features)** |
 | --------------------------------------------- | ------------------------------------------ |
@@ -459,6 +459,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * dixon wong
 * dizztrukshin
 * Dmitry Shilov
+* Dominic Phoon
 * Dominik Klonowski
 * Egan Ford
 * Elani Ferri
@@ -585,6 +586,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Lee Wilkinson
 * LeeNX
 * Leonard Feineis
+* Liviu Dimitriu
 * Lizardo Hernandez
 * LoCascio
 * Lordbob75
@@ -695,6 +697,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Rico Cantrell
 * Rob Tongue
 * Robert Klauco
+* Robert Weemhoff 
 * Robin Gfatter
 * Rodion DENISYUK
 * Rohit Priyadarshi
