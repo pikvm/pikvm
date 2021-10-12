@@ -274,7 +274,7 @@ See video how-tos:
 
 # The final steps
 1. [Flash the operating system](https://docs.pikvm.org/flashing_os).
-2. **Carefully read [the "First steps" guide](https://docs.pikvm.orgfirst_steps)** - how to find a device on the network, how to log in there, change passwords, and so on. **Follow the steps described there and come back here**.
+2. **Carefully read [the "First steps" guide](https://docs.pikvm.org/first_steps)** - how to find a device on the network, how to log in there, change passwords, and so on. **Follow the steps described there and come back here**.
 3. V0 only: [flash the Arduino HID](https://docs.pikvm.org/flashing_hid).
 4. Note for HDMI-USB dongle:
     <details>
