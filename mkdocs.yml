@@ -1,0 +1,90 @@
+# https://squidfunk.github.io/mkdocs-material/getting-started
+# https://squidfunk.github.io/mkdocs-material/reference/admonitions
+# https://github.com/squidfunk/mkdocs-material/blob/master/mkdocs.yml
+
+
+site_name: PiKVM Handbook
+site_description: Open and cheap DIY IP-KVM on Raspberry Pi
+site_author: Maxim Devaev
+site_url: https://pikvm.github.io/pikvm
+
+repo_name: pikvm/pikvm
+repo_url: https://github.com/pikvm/pikvm
+edit_uri: ""
+
+copyright: "Copyright &copy; 2018-2021 Maxim Devaev"
+
+docs_dir: docs
+
+theme:
+    logo: _assets/logo.png
+    favicon: _assets/favicon.ico
+    name: material
+    palette:
+        accent: pink
+    features:
+        - navigation.indexes
+        - navigation.sections
+        - navigation.top
+        - navigation.tracking
+        - navigation.expand
+        - search.highlight
+        - search.share
+        - search.suggest
+
+extra_css:
+    - _assets/user.css
+
+markdown_extensions:
+    - admonition
+    - def_list
+    - attr_list
+    - pymdownx.tilde
+    - pymdownx.details
+    - pymdownx.superfences
+    - pymdownx.magiclink
+    - toc:
+        permalink: true
+    - codehilite:
+        guess_lang: false
+    - markdown_include.include:
+        base_path: docs
+
+plugins:
+    - search:
+        lang: en
+    - mkdocs-video
+
+nav:
+    - "Getting started":
+        - "PiKVM v3 HAT guide": v3.md
+        - "First steps": first_steps.md
+        - "FAQ": faq.md
+    - "Networking":
+        - "Internet access":
+            - "Port forwarding": port_forwarding.md
+            - "Tailscale VPN": tailscale.md
+        - "Setting up Wi-Fi": wifi.md
+    - "Video":
+        - "H.264 / WebRTC": webrtc.md
+        - "Working with video": video.md
+        - "Tuning HDMI EDID": edid.md
+    - "Peripheral devices":
+        - "Keyboard & mouse":
+            - "Mouse modes": mouse.md
+            - "Bluetooth HID": bluetooth_hid.md
+            - "Arduino HID (USB, PS/2)": arduino_hid.md
+        - "Mass Storage Drive": msd.md
+        - "Ethernet-over-USB": usb_ethernet.md
+        - "Serial-over-USB": usb_serial.md
+        - "GPIO (pins, relays, lamps, etc)": gpio.md
+    - "Advanced usage":
+        - "Using VNC": vnc.md
+        - "Multiport KVM-over-IP": multiport.md
+        - "Wake-on-LAN the server": wol.md
+        - "IPMI & Redfish integration": ipmi.md
+        - "Prometheus monitoring": prometheus.md
+    - "Development":
+        - "Cases for 3D printing": 3d_printing.md
+        - "Building PiKVM OS": building_os.md
+        - "HTTP API reference": api.md
