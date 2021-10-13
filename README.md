@@ -276,7 +276,8 @@ See video how-tos:
 1. [Flash the operating system](https://docs.pikvm.org/flashing_os).
 2. **Carefully read [the "First steps" guide](https://docs.pikvm.org/first_steps)** - how to find a device on the network, how to log in there, change passwords, and so on. **Follow the steps described there and come back here**.
 3. V0 only: [flash the Arduino HID](https://docs.pikvm.org/flashing_hid).
-4. Note for HDMI-USB dongle:
+4. **Learn about the [basics of working with PiKVM](https://docs.pikvm.org/first_steps) and CHANGE THE PASSWORDS**
+5. Note for the HDMI-USB dongle:
     <details>
       <summary>:exclamation:Click to show:exclamation:</summary>
 
@@ -299,21 +300,12 @@ See video how-tos:
          ```
 
     </details>
-
-# Access to PiKVM from the Internet
-- ❗NOTE❗ Please take proper security precaustions when exposing this to the internet. The use of tailscale is HIGHLY suggested.
-
-You can use port forwarding for port 443 on your router if it has an external IP address. In all other cases, you can use the excellent free VPN service [Tailscale VPN](https://docs.pikvm.org/tailscale), which is configured on PiKVM with a few simple commands.
+6. If you are a happy **PiKVM v3 HAT** user then we have a [special guide for you](https://docs.pikvm.org/v3).
+7. [**Explore the features of PiKVM**](https://docs.pikvm.org) using the documentation's table of contents.
+8. Configure access to PiKVM from the Internet using [port forwarding](https://docs.pikvm.org/port_forwarding) or [Tailscale VPN](https://docs.pikvm.org/tailscale).
+9. **If you encounter a problem**, take a look at the **[FAQ](https://docs.pikvm.org/faq)**, but if nothing helped, contact our **[Discord chat](https://discord.gg/bpmXfz5)** - experienced users and the PiKVM team will definitely help you.
 
 Happy using of PiKVM :)
-
------
-
-# What's next?
-* **Learn about the [basics of working with PiKVM](https://docs.pikvm.org/first_steps).**
-* If you are a happy **PiKVM v3 HAT** user then we have a [special guide for you](https://docs.pikvm.org/v3).
-* [**Explore the features of PiKVM**](https://docs.pikvm.org) using the documentation's table of contents.
-* **If you encounter a problem**, take a look at the **[FAQ](https://docs.pikvm.org/faq)**, but if nothing helped, contact our **[Discord chat](https://discord.gg/bpmXfz5)** - experienced users and the PiKVM team will definitely help you.
 
 -----
 
