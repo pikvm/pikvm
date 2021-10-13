@@ -281,23 +281,23 @@ See video how-tos:
     <details>
       <summary>:exclamation:Click to show:exclamation:</summary>
 
-        Many USB video capture devices tell the server's video card that the HDMI cable is supposedly disconnected. This may lead to the fact that if you boot the server without an active stream, the server will not detect your capture card. This is easy to fix:
-       * Switch filesystem to RW-mode:
-         ```
-         # rw
-         ```
-       * Edit file `/etc/kvmd/override.yaml` and add these lines:
-         ```yaml
-         kvmd:
-             streamer:
-                 forever: true
-                 cmd_append: [--slowdown]
-         ```
-       * Finish:
-         ```
-         # ro
-         # systemctl restart kvmd
-         ```
+      Many USB video capture devices tell the server's video card that the HDMI cable is supposedly disconnected. This may lead to the fact that if you boot the server without an active stream, the server will not detect your capture card. This is easy to fix:
+      * Switch filesystem to RW-mode:
+        ```
+        # rw
+        ```
+      * Edit file `/etc/kvmd/override.yaml` and add these lines:
+        ```yaml
+        kvmd:
+            streamer:
+                forever: true
+                cmd_append: [--slowdown]
+        ```
+      * Finish:
+        ```
+        # ro
+        # systemctl restart kvmd
+        ```
 
     </details>
 6. If you are a happy **PiKVM v3 HAT** user then we have a [special guide for you](https://docs.pikvm.org/v3).
