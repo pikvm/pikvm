@@ -5,6 +5,9 @@ When printing the case, you can choose the following options:
 * The presence or absence of an OLED screen (used to display the IP address and other information).
 * The presence or absence of holes for the AUM v3.3 (Advanced USB Module, most likely you don't have it).
 
+Also take a look at the [PCI bracket for ATX adapter board](../atx).
+
+
 ## Buy options
 
 * [Small 5v fan](https://www.amazon.com/GeeekPi-Raspberry-30x30x7mm-Brushless-Retroflag/dp/B07C9C99RM) **strongly recommended** to avoid overheating in the case.

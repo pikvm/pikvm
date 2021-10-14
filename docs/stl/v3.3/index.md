@@ -1,16 +1,22 @@
 # PiKVM v3.3 Plastic Case for 3D printing
+
 When printing the case, you can choose the following options:
 
 * The presence or absence of an OLED screen (used to display the IP address and other information).
+
+Also take a look at the [PCI bracket for ATX adapter board](../atx).
+
 
 ## Buy options
 
 * [Small 5v fan](https://www.amazon.com/GeeekPi-Raspberry-30x30x7mm-Brushless-Retroflag/dp/B07C9C99RM) **strongly recommended** to avoid overheating in the case.
 * [I2C OLED screen](https://www.amazon.com/Pieces-Display-Module-SSD1306-Screen/dp/B08TLXYKS6).
 
+
 ## Building
 
 ![type:video](https://www.youtube.com/embed/-SRL92VJ870)
+
 
 ## Parts
 
@@ -23,11 +29,13 @@ When printing the case, you can choose the following options:
 | <img src="case_a_no_oled.png" width=200 /> | [The front part](case_a_no_oled.stl) of the case **WITHOUT a hole** for the OLED |
 | <img src="case_a.png" width=200 /> | [The front part](case_a.stl) of the case with a hole **for installing the OLED** |
 
+
 ### The back part
 
 | Variant | Description |
 |---------|-------------|
 | <img src="case_b.png" width=200 /> | [The back part](case_b.stl) of the case |
+
 
 ### Spacers
 
