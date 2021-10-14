@@ -1,4 +1,4 @@
-# PiKVM v3 ATX mounting brackets 3D printing
+# PiKVM v3 ATX mounting brackets for 3D printing
 
 A good way to mount an ATX adapter in a computer case is to place it in a PCI slot.
 Here you can get drawings of PCI brackets for 3D printing.
