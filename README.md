@@ -617,6 +617,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Mauricio Allende
 * Mecky
 * Mehmet Aydoğdu
+* Michael Bartholomew
 * Michael Bombe
 * Michael Collins
 * Michael Copeland
