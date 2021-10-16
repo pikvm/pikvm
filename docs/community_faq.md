@@ -95,35 +95,6 @@ DNS=("192.168.X.X 1.0.0.1 1.1.1.1")
 - You can also reserve the IP in your dhcp server (Quicker)
 
 
-### Why do I keep getting a different IP?
-- You can do 2 of the following actions:
-- Add to, /etc/systemd/network/eth0.network
-```
-[DHCP]
-ClientIdentifier=mac
-```
-- OR reserve the DHCP ip in your server/router
-
-
-### HELP!! I can't find the IP on the ZeroW/RPi4
-- Open a browser and type: pikvm, still doesnt work?
-- Use the FING mobile app to scan your network, its free
-- Install Angry IP scanner, tools/preferences/Display results in the results list/Select Alive hosts, modify IP range, hit start
-- Using FF, navigate to https://pikvm (Depends on your network if this actually works, in most case's it "should" work))
-  - The below commands will verify that your Pi on on your network
-```
-Linux: arp -a | grep below is a list of MAC's for Raspberry Pi
-	B8:27:EB:xx:xx:xx	B8-27-EB-xx-xx-xx	B827.EBxx.xxxx
-	DC:A6:32:xx:xx:xx	DC-A6-32-xx-xx-xx	DCA6.32xx.xxxx
-	E4:5F:01:xx:xx:xx	E4-5F-01-xx-xx-xx	E45F.01xx.xxxx
-Windows Power shell: arp -a | findstr 'b8-27-eb' (Replace with the above, all lower case)
-```
-- For older flashed images you can do the following on the RPI4, ZeroW edit it when you edit WiFi info
-  - Open web terminal and go to root, ```rw``` then ```nano /etc/issue```
-  - add ```IP: \4```
-  - Once you reboot, you will now see the IP in the upper left
-
-	
 ### Help! I ran out of space aka room! What now?
 
 (This ONLY applies to the older flashed images and is no longer nessessary as the newer images had the main partition increased, as a result, the MSD partition was shrunk)

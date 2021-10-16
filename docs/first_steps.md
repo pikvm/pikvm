@@ -34,8 +34,9 @@ By default, PiKVM receives a dynamic IP address via DHCP.
     To determine the IP address of your PiKVM, use one of the following methods:
 
     * **Common way:** Open the web interface of your router and find the list of issued IP addresses there. It depends on the router model.
-    * **Linux-only:** Use the command `arp-scan --localnet`.
+    * **Linux-only:** Use command `arp-scan --localnet`.
     * **Linux, MacOS, Windows:** Download and run [Angry IP Scanner](https://angryip.org).
+    * **Windows PowerShell:** Use command `arp -a`.
 
 For future examples, let's assume that your PiKVM has received the address **192.168.0.100**, which you have successfully detected using the instructions above. Then your device was assigned a hostname: **pikvm**.
 
