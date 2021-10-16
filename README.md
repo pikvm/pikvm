@@ -621,6 +621,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Michael Bombe
 * Michael Collins
 * Michael Copeland
+* Michael Ho
 * Michael Kovacs
 * Michael Lynch
 * Michael Pennington
