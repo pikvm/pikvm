@@ -23,7 +23,7 @@
 
 **Power up the device.**
 
-!!! warning Do not turn off the device until it's fully booted for the first time
+!!! warning "Do not turn off the device until it's fully booted for the first time"
     After turning on the power, PiKVM OS will generate unique SSH keys and certificates and will perform the necessary operations on the memory card.
 
 ## Getting access to PiKVM
