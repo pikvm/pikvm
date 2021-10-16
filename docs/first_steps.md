@@ -16,15 +16,15 @@
     WIFI_PASSWD="p@s$$w0rd"
     ```
 
-    There is a possibility that, in countries that support CH13, the Raspberry will not connect.
+    There is a possibility that, in countries that support CH13, the device will not connect.
     You will need to configure your router to disable channels 12-14 or disable Auto scan mode so it will connect.
         
     Save, unmount and follow the next step.
 
 **Power up the device.**
 
-After turning on the power, PiKVM OS generates unique SSH keys and certificates. **Do not turn off the Raspberry Pi until it's fully booted for the first time.** If you set up Wi-Fi, it won't be able to connect to the network on the first boot. You need to wait 10 minutes for all the OS preparations to complete, then just restart the device. On the second boot, the Raspberry will connect to the network without any problems.
-
+!!! warning Do not turn off the device until it's fully booted for the first time
+    After turning on the power, PiKVM OS will generate unique SSH keys and certificates and will perform the necessary operations on the memory card.
 
 ## Getting access to PiKVM
 
