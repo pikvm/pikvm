@@ -19,3 +19,4 @@
 | https://www.thingiverse.com/thing:4915627 | ZeroW + CSI case |
 | https://www.thingiverse.com/thing:4950281 | PiKVM RETRO Case for CSI-2 C779 Bridge w/ OLED Display Screen |
 | https://www.thingiverse.com/thing:4950280 | USB Power Blocker Case |
+| https://www.thingiverse.com/thing:4642116 | Conix's PI-KVM case for v2 |
