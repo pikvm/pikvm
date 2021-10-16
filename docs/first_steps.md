@@ -23,7 +23,7 @@
 
 **Power up the device.**
 
-After turning on the power, PiKVM OS generates unique SSH keys and certificates. Do not turn off the Raspberry Pi until it's fully booted. If you set up Wi-Fi in step 1, it won't be able to connect to the network on the first boot. You need to wait 10 minutes for all the OS preparations to complete, then just restart the device. On the second boot, the Raspberry will connect to the network without any problems.
+After turning on the power, PiKVM OS generates unique SSH keys and certificates. **Do not turn off the Raspberry Pi until it's fully booted for the first time.** If you set up Wi-Fi, it won't be able to connect to the network on the first boot. You need to wait 10 minutes for all the OS preparations to complete, then just restart the device. On the second boot, the Raspberry will connect to the network without any problems.
 
 
 ## Getting access to PiKVM
