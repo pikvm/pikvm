@@ -1,5 +1,31 @@
 # First steps
 
+## First power on
+
+??? example "Optional setting up Wi-Fi"
+    !!! warning
+        There is nothing more reliable than wired Ethernet, so it's better to use the cable. But who are we to stop you... :)
+
+    If you want to connect PiKVM to Wi-Fi network, you need to tell the device ESSID and password before first boot.
+    To do this, mount the first partition of the memory card (FAT32) and edit the `pikvm.txt` file there.
+    Do not remove line `FIRSTBOOT=1`, just add your wifi settings like this:
+
+    ```
+    FIRSTBOOT=1
+    WIFI_ESSID="mynet"
+    WIFI_PASSWD="p@s$$w0rd"
+    ```
+
+    There is a possibility that, in countries that support CH13, the Raspberry will not connect.
+    You will need to configure your router to disable channels 12-14 or disable Auto scan mode so it will connect.
+        
+    Save, unmount and follow the next step.
+
+**Power up the device.**
+
+After turning on the power, PiKVM OS generates unique SSH keys and certificates. Do not turn off the Raspberry Pi until it's fully booted. If you set up Wi-Fi in step 1, it won't be able to connect to the network on the first boot. You need to wait 10 minutes for all the OS preparations to complete, then just restart the device. On the second boot, the Raspberry will connect to the network without any problems.
+
+
 ## Getting access to PiKVM
 
 By default, PiKVM receives a dynamic IP address via DHCP.
