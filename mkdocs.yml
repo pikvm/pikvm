@@ -22,6 +22,9 @@ theme:
     name: material
     palette:
         accent: pink
+    font:
+        text: "arial, sans-serif"
+        code: monospace
     features:
         - navigation.indexes
         - navigation.sections
