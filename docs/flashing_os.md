@@ -8,12 +8,12 @@
 
 Download the appropriate SD card image. Select it based on the board, platform, and the video capture device you are using:
 
-* [**PiKVM v3 HAT (Raspberry Pi 4)**](https://files.pikvm.org/images/v3-hdmi-rpi4.img.bz2) <sub>- [*sha1*](https://files.pikvm.org/images/v3-hdmi-rpi4.img.bz2.sha1)</sub>
+* [**PiKVM v3 HAT (Raspberry Pi 4)**](https://files.pikvm.org/images/v3-hdmi-rpi4-latest.img.bz2) <sub>- [*sha1*](https://files.pikvm.org/images/v3-hdmi-rpi4-latest.img.bz2.sha1)</sub>
 * **DIY - Raspberry Pi 4, v2 platform:**
-    * [For HDMI-CSI bridge](https://files.pikvm.org/images/v2-hdmi-rpi4.img.bz2) <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmi-rpi4.img.bz2.sha1)</sub>
-    * [For HDMI-USB dongle](https://files.pikvm.org/images/v2-hdmiusb-rpi4.img.bz2) <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmiusb-rpi4.img.bz2.sha1)</sub>
+    * [For HDMI-CSI bridge](https://files.pikvm.org/images/v2-hdmi-rpi4-latest.img.bz2) <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmi-rpi4-latest.img.bz2.sha1)</sub>
+    * [For HDMI-USB dongle](https://files.pikvm.org/images/v2-hdmiusb-rpi4-latest.img.bz2) <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmiusb-rpi4-latest.img.bz2.sha1)</sub>
 * **DIY - Raspberry Pi ZeroW, v2 platform:**
-    * [For HDMI-CSI bridge](https://files.pikvm.org/images/v2-hdmi-zerow.img.bz2) <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmi-zerow.img.bz2.sha1)</sub>
+    * [For HDMI-CSI bridge](https://files.pikvm.org/images/v2-hdmi-zerow-latest.img.bz2) <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmi-zerow-latest.img.bz2.sha1)</sub>
 
 Pre-compiled images are only available for the Raspberry Pi 4 and ZeroW. For all other cases, you will need to build the operating system yourself. But don't worry, it's [very simple](building_os.md).
 
@@ -28,8 +28,8 @@ Pre-compiled images are only available for the Raspberry Pi 4 and ZeroW. For all
 
 Decompress and flash the image. Be careful when choosing your device path:
 ```
-# bzip2 -d v2-hdmi-rpi4.img.bz2
-# dd if=v2-hdmi-rpi4.img of=/dev/mmcblkX
+# bzip2 -d v2-hdmi-rpi4-latest.img.bz2
+# dd if=v2-hdmi-rpi4-latest.img of=/dev/mmcblkX
 ```
 
 
