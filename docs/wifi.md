@@ -8,7 +8,7 @@ Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (a
 !!! warning
     There is nothing more reliable than wired Ethernet, so it's better to use it. But who are we to stop you... :)
 
-!!! note "Moving netctl to systemd-networkd"
+!!! note "Moving Wi-Fi settings for OS older than 2021.10.19"
     Starting from 2021.10.19, the old way to configure Wi-Fi using `netctl` is deprecated.
     Instead, it is proposed to use a more native path with `systemd-networkd`, which is already used to configure Ethernet.
     Follow the guide and then delete the old netctl profile:
