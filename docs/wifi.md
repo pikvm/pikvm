@@ -1,9 +1,24 @@
 # Setting up Wi-Fi
 
-The following describes how to setup a Wi-Fi connection on the default pikvm builds based on Arch Linux. The process might vary for other Linux distros. We recommend to do this while having a display and keyboard connected directly to the Raspberry Pi as you will loose network connectivity once you connect to a Wi-Fi. Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (available through the browser) should also work.
+The following describes how to setup a Wi-Fi connection on the default pikvm builds based on Arch Linux.
+The process might vary for other Linux distros. We recommend to do this while having a display and keyboard
+connected directly to the Raspberry Pi as you will loose network connectivity once you connect to a Wi-Fi.
+Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (available through the browser) should also work.
 
 !!! warning
     There is nothing more reliable than wired Ethernet, so it's better to use it. But who are we to stop you... :)
+
+!!! note "Moving netctl to systemd-networkd"
+    Starting from 2021.10.19, the old way to configure Wi-Fi using `netctl` is deprecated.
+    Instead, it is proposed to use a more native path with `systemd-networkd`, which is already used to configure Ethernet.
+    Follow the guide and then delete the old netctl profile:
+
+    ```
+    # rw
+    # systemctl disable netctl-auto@wlan0.service
+    # rm /etc/netctl/wlan0-*
+    # ro
+    ```
 
 
 ## Step by step
