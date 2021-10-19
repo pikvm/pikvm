@@ -68,13 +68,6 @@ Docker must be enabled in privileged mode.
     # SD card device
     CARD = /dev/mmcblk0
     ```
-    
-    If you want to configure wifi (for ZeroW board for example) you must add these lines to `config.mk`:
-
-    ```Makefile
-    WIFI_ESSID = "my-network"
-    WIFI_PASSWD = "P@$$word"
-    ```
 
 4. Build the OS. It may take about one hour depending on your Internet connection:
 
@@ -96,11 +89,3 @@ Docker must be enabled in privileged mode.
         ```
 
         Image is then available as a bziped file in `images/`.
-
-6. After installation remove the SD card and insert it into your RPi. Turn on the power. The RPi will try to get an IP address using DHCP on your LAN. It will then be available via SSH.
-
-7. If you can't find the device's address, try using the following command:
-
-    ```shell
-    [user@localhost os]$ make scan
-    ```
