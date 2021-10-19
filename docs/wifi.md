@@ -14,7 +14,7 @@ The following describes how to setup a Wi-Fi connection on the default pikvm bui
 
     ```ini
     [Match]
-    Name=$WIFI_IFACE
+    Name=wlan0
 
     [Network]
     DHCP=yes
@@ -39,7 +39,7 @@ The following describes how to setup a Wi-Fi connection on the default pikvm bui
 
 4. Enable WPA-supplicant service:
    ```
-   systemctl enable "wpa_supplicant@wlan0.service"
+   systemctl enable wpa_supplicant@wlan0.service
    ```
 
 5. Make filesystem read-only again using `ro` command
