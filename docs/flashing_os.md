@@ -8,12 +8,12 @@
 
 Download the appropriate SD card image. Select it based on the board, platform, and the video capture device you are using:
 
-* [**PiKVM v3 HAT (Raspberry Pi 4)**](https://files.pikvm.org/images/v3-hdmi-rpi4-latest.img.bz2) <sub>- [*sha1*](https://files.pikvm.org/images/v3-hdmi-rpi4-latest.img.bz2.sha1)</sub>
+* [**PiKVM v3 HAT (Raspberry Pi 4)**](https://files.pikvm.org/images/v3-hdmi-rpi4-latest.img.xz) <sub>- [*sha1*](https://files.pikvm.org/images/v3-hdmi-rpi4-latest.img.xz.sha1)</sub>
 * **DIY - Raspberry Pi 4, v2 platform:**
-    * [For HDMI-CSI bridge](https://files.pikvm.org/images/v2-hdmi-rpi4-latest.img.bz2) <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmi-rpi4-latest.img.bz2.sha1)</sub>
-    * [For HDMI-USB dongle](https://files.pikvm.org/images/v2-hdmiusb-rpi4-latest.img.bz2) <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmiusb-rpi4-latest.img.bz2.sha1)</sub>
+    * [For HDMI-CSI bridge](https://files.pikvm.org/images/v2-hdmi-rpi4-latest.img.xz) <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmi-rpi4-latest.img.xz.sha1)</sub>
+    * [For HDMI-USB dongle](https://files.pikvm.org/images/v2-hdmiusb-rpi4-latest.img.xz) <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmiusb-rpi4-latest.img.xz.sha1)</sub>
 * **DIY - Raspberry Pi ZeroW, v2 platform:**
-    * [For HDMI-CSI bridge](https://files.pikvm.org/images/v2-hdmi-zerow-latest.img.bz2) <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmi-zerow-latest.img.bz2.sha1)</sub>
+    * [For HDMI-CSI bridge](https://files.pikvm.org/images/v2-hdmi-zerow-latest.img.xz) <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmi-zerow-latest.img.xz.sha1)</sub>
 
 Pre-compiled images are only available for the Raspberry Pi 4 and ZeroW. For all other cases, you will need to build the operating system yourself. But don't worry, it's [very simple](building_os.md).
 
@@ -28,7 +28,7 @@ Pre-compiled images are only available for the Raspberry Pi 4 and ZeroW. For all
 
 Decompress and flash the image. Be careful when choosing your device path:
 ```
-# bzip2 -d v2-hdmi-rpi4-latest.img.bz2
+# xz --decompress v2-hdmi-rpi4-latest.img.xz
 # dd if=v2-hdmi-rpi4-latest.img of=/dev/mmcblkX
 ```
 
@@ -37,7 +37,7 @@ Decompress and flash the image. Be careful when choosing your device path:
 
 1. Download and install [balenaEtcher](https://www.balena.io/etcher).
 
-2. Decompress the image file using your favorite archive software. If you don't have one that supports `.bz2` files (on Windows for example) - [7-Zip](https://www.7-zip.org) is a great and free tool. *Do not try to flash a compressed image: either it will not work, or it will take a very long time.*
+2. Decompress the image file using your favorite archive software. If you don't have one that supports `.xz` files (on Windows for example) - [7-Zip](https://www.7-zip.org) is a great and free tool. **Do not try to flash a compressed image: it will not work.**
 
 3. Run balenaEtcher:
 
