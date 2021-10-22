@@ -64,7 +64,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 ## First steps
 
 ??? question "I can't find PiKVM IP address in my network"
-    Follow [this guide](faq.md#getting-access-to-pikvm).
+    Follow [this guide](first_steps.md#getting-access-to-pikvm).
 
 ??? question "What is the default password? How do I change it?"
     There are two types of accounts: OS and PiKVM (web interface) accounts. The system account `root` can be used for SSH/UART access and has the password `root`. The web interface account is called `admin` and has the password `admin`. The PiKVM account cannot be used for SSH access and vice versa.
