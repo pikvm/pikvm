@@ -45,7 +45,7 @@ For future examples, let's assume that your PiKVM has received the address **192
 
     **The default user is `admin` and the password is also `admin`.** After logging in, you will get access to the menu with the main functions. Using the Web terminal, you can change system settings and passwords.
 
-    The latest versions of Chrome do not allow access to the page with a self signed certificate, which is used in PiKVM by default. You can proceed by typing `thisisunsafe` and Chrome will then load the page.
+    *The latest versions of Chrome on Mac OS do not allow access to the page with a self signed certificate, which is used in PiKVM by default. You can proceed by typing `thisisunsafe` and Chrome will then load the page.*
 
 ??? example "Access to PiKVM via SSH"
     SSH is the most common remote access method in the Linux world. PiKVM is accessible via SSH. This method is used to manage the device:
