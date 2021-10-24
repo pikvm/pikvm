@@ -280,6 +280,42 @@ Some rules and customization options:
     ```
 
 
+### CMD
+??? note "Click to view"
+    The `cmd` driver allows you to run custom command on PiKVM OS.
+
+    !!! note
+        This driver does not support bash operators, that is, it is a direct call to commands with arguments. For more complex cases, write your own shell scripts.
+
+
+
+    Commands are executed from the user `kvmd`. If you want to run the command as root, then you need to configure `sudo`. Example of the `/etc/sudoers.d/custom_commands`:
+
+    ```sudoers
+    kvmd ALL=(ALL) NOPASSWD: /usr/bin/reboot
+    ```
+
+    Example of the `/etc/kvmd/override.yaml`:
+
+    ```yaml
+    kvmd:
+        gpio:
+            drivers:
+				reboot:
+                    type: cmd
+                    cmd: [/usr/bin/sudo, reboot]
+            scheme:
+                reboot_button:
+                    driver: reboot
+                    pin: 0
+                    mode: output
+                    switch: false
+            view:
+                table:
+                    - ["reboot|confirm|Reboot PiKVM"]
+    ```
+
+
 ### PWM
 ??? note "Click to view"
     The `pwm` driver allows you to use [some GPIO pins](https://pinout.xyz/pinout/pwm) on the Raspberry Pi for PWM.
