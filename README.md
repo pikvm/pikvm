@@ -534,6 +534,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Jerremy Holland
 * Jerry Nall
 * Jim Harbin
+* Jimmy Burgett
 * Jimmy Stanley
 * Joachim Bruening
 * Joe Hanson
