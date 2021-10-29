@@ -17,7 +17,7 @@ Specifically to v2+. This can be used for terminal access from the managed serve
     # echo ttyGS0 >> /etc/securetty
     ```
 
-3. Create the directory `/etc/systemd/system/getty@ttyGS0.service.d` and add a file file named `ttyGS0.override` into it. Afterwards edit the file and copy this into it:
+3. Create the directory `/etc/systemd/system/getty@ttyGS0.service.d` and add a file file named `override.conf` into it. Afterwards edit the file and copy this into it:
 
     ```ini
     [Service]
