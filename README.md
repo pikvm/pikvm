@@ -778,6 +778,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Will Froning
 * William Hooper
 * William Stearns
+* Yaroslav Kulikovskikh
 * Yethal
 * Yevgeniy Kuksenko
 * Yogi
