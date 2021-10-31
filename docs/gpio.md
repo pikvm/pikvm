@@ -312,7 +312,7 @@ Some rules and customization options:
                     switch: false
             view:
                 table:
-                    - ["reboot|confirm|Reboot PiKVM"]
+                    - ["reboot_button|confirm|Reboot PiKVM"]
     ```
 
 
