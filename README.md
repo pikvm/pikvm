@@ -431,6 +431,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Daniel Cabrera
 * Daniel Davila
 * Danilo Saft
+* Danne
 * David
 * David Godibadze
 * David Howell
