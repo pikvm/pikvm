@@ -164,3 +164,8 @@ kvmd:
     =*****************************************************************************************************************************=
     ===============================================================================================================================
     ```
+
+## Simple troubleshooting steps to perform
+??? example Steps
+SSH or open a web terminal to your PiKVM
+`ls -la /dev/ttyUSB*` - This should give you an output. If not, try a different cable till an output is displayed.
