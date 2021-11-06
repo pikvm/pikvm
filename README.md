@@ -428,6 +428,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Damon Meledones
 * Dan Berkowitz
 * Dan Brakeley
+* Daniel Bowder
 * Daniel Cabrera
 * Daniel Davila
 * Danilo Saft
@@ -477,6 +478,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Garrett Dangerfield
 * Ge Men
 * Genkinger Andreas
+* George Becker
 * Georgy Brodsky
 * Gerald
 * Gernot Neuschröer
