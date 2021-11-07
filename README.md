@@ -492,6 +492,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Guido Bernacchi
 * Gustin Johnson
 * György Tamás Vizi
+* Haiberg GmbH
 * Heibunny
 * Heikki Tiittanen
 * Helio Leonardo Pinheiro e Mota
