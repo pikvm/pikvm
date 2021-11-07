@@ -14,7 +14,31 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "How can I get the access to PiKVM in my local network over Internet?"
     You can use port forwarding for port 443 on your router if it has an external IP address. In all other cases, you can use the excellent free VPN service [Tailscale](tailscale.md), which is configured on PiKVM with a [few simple commands](tailscale.md).
+    
+??? question "I want a static IP!!"
+    Please follow these instructions:
+    This is easier if you reserve the IP from your DHCP server
+    `nano /etc/systemd/network/eth0.network` or `nano /etc/netctl/wlan0-<wifiname>`
+    For /etc/systemd/network/eth0.network
+    ```
+    [Match]
+    Name=eth0
 
+    [Network]
+    Address=192.168.X.XXX/24
+    Gateway=192.168.X.X
+    DNS=192.168.X.X
+    DNS=192.168.X.X
+    ```
+
+    For /etc/netctl/wlan0-<wifiname>
+    ```
+    IP=static
+    Address=('192.168.X.XXX/24')
+    Gateway=('192.168.X.X')
+    DNS=("192.168.X.X 1.0.0.1 1.1.1.1")
+    ```
+    
 
 ??? question "Can I use PiKVM for gaming?"
     No, because:
@@ -23,7 +47,6 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     * For HDMI-USB dongle, high latency and low video quality.
     * General hardware video capture differs from software streaming and introduces additional latency.
     * PiKVM can't transmit audio at this time. It will be available on PiKVM v3 HAT at some point in the future (implemented in the hardware, but doesn't have software support).
-
 
 ??? question "Can PiKVM do 4K video?"
     * For HDMI-CSI bridge, no. There is not enough bandwidth in the CSI bus for that much data. 1080p50 will max out the bandwidth.
@@ -38,14 +61,19 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
     100-200ms is very, very fast for this. But we are working to speed things up even more.
 
-
 ??? question "Does PiKVM support sound?"
     At this time sound is not supported on any platform however, once sound is implimented, it will only be available for PiKVM v3 HAT. Due to a hardware bug in HDMI-CSI bridges, sound may or may not work.
-
+    
+??? question "Can I power the Pi via POE?"
+    Yes! But you will still need to ensure you isolate the 5v connection between the Raspberry Pi and host PC to prevent backpower issues that can cause instability or damage to either the host PC or the Pi. Power/Data cable + usb power blocker would work. Please see Variant #1 in the main getting started page for details.
+    
+??? question "Do I need a power splitter? Why do I need one?"
+    Yes for RPi4 - Please see the main readme for splitter types listed under V2 Hardware 
+    Yes for 0w/02w, if using dedicated power you still need to split the power from the data towards the target. If using the target for power, this is not needed.
+    This is not needed if you have a v3 hat.
 
 ??? question "Can I use PiKVM with non-Raspberry boards (Orange, Nano, etc)?"
     Yes, but you will have to prepare the operating system yourself. As for the PiKVM software, you will need to replace some config files (such as UDEV rules). If you are a developer or an experienced system administrator, you will not have any problems with this. In addition, we are open to patches. If you need help with this, please contact us via [Discord](https://discord.gg/bpmXfz5).
-
 
 ??? question "Is PiKVM OS its own custom distro?"
     No. PiKVM OS is an [Arch Linux ARM](https://archlinuxarm.org) with our own repository for KVM-related packages. We distribute OS images (that is, our Arch Linux ARM build) to simplify installation, since PiKVM requires some tuning of the OS and special partitioning of the memory card.
@@ -60,6 +88,55 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
     However, we plan to provide an alternative OS image based on Raspbian in the future - now it is quite stable.
 
+??? question "Can you use an iPad on PiKVM?"
+    Yes, with the correct hardware you can control an iPad
+    Yes, activate VNC and use JUMP app(Full featured but more expensive), or bVNC(Not recommended, lack luster features but cheap). RealVNC does NOT work
+    
+??? question "How do I add my own SSL cert?"
+    If you have a certificate(:exclamation:**Making a cert falls outside the scope of PIKVM - Please reference Linux documentation**:exclamation:), replace the public key in /etc/kvmd/nginx/ssl/server.crt and private key in /etc/kvmd/nginx/ssl/server.key and restart the kvmd-nginx service.
+    It should look like the following:
+    ```
+cd /etc/kvmd/nginx
+cat ssl.conf (Expection of what's inside the file)
+ssl_protocols TLSv1.3 TLSv1.2 TLSv1.1 TLSv1;
+ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
+ssl_certificate /etc/kvmd/nginx/ssl/server.crt;
+ssl_certificate_key /etc/kvmd/nginx/ssl/server.key;
+add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+```
+??? question "How do I emulate various USB devices on the target machine?"
+By default this is what is set:
+```
+otg:
+    manufacturer: PiKVM
+    max_power: 250
+    product: Composite KVM Device
+    product_id: 260
+    serial: CAFEBABE
+    udc: ''
+    user: kvmd
+    vendor_id: 7531
+```
+
+You can change how this is displayed with the following example:
+`nano /etc/kvmd/override.yaml`
+
+```
+otg:
+    manufacturer: Corsair
+    product: Corsair Gaming RGB
+    serial:
+    vendor_id: 6940
+    product_id: 6973
+```
+Use the following USB Data Base to get the desired devices: ```https://the-sz.com/products/usbid/``` or ```https://devicehunt.com```
+	
+❗NOTE❗ You may need to include ```0x0``` in the id string's for it to work properly.
+- Example:
+	- ```vendor_id: 0x06940```
+
+??? question "Can you run a desktop on pikvm?"
+    Yes BUT, its not recommended OR supported as this OS should be used in RO and it will need RW enabled all of the time. Instructions [here](https://www.linuxfordevices.com/tutorials/linux/how-to-install-gui-on-arch-linux)
 
 ## First steps
 
@@ -171,7 +248,11 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     ```
     [root@pikvm ~]# systemctl restart kvmd
     ```
-
+??? question "Can I have different hostnames for your each of your pikvms?"
+    Yes! And it's easy to do! Using a SSH session or the web terminal:
+    Make sure you are root, `rw` then run `hostnamectl set-hostname yournewhostname.domain`
+    Optional: Edit `/etc/kvmd/meta.yaml` to alter the displayed hostname in the web UI
+    Reboot the pikvm
 
 ## Video problems
 
@@ -294,7 +375,18 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "I can't copy clipboard contents from the server (the machine controlled via PiKVM) to the client"
     The clipboard only works from the client to the server not vice versa. There is currently no way to do it.
-
+    
+??? question "HELP! I am getting a 500/503 error when I try and access the main KVM page!"
+    This is due to a bad line in your yaml file, if you undo what you did then it will work
+    For all future edits there are some steps you can do to revent this from happening again
+    Make a .nanorc file and populate it with the following:
+    *set linenumbers* is optional
+    ```
+set linenumbers
+set tabsize 4
+set tabstospaces
+```
+    Now re-edit your override.yaml file and just use tab to get the right spacing, you might need to delete the current leading "spaces" to ensure proper formatting
 
 ## Hardware problems (Wi-Fi, ATX, etc)
 
@@ -306,3 +398,10 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "LEDs/Switches does not work in ATX control"
     Double check your wiring as per [the documentation](/README.md#setting-up-the-v2). Make sure you placed the relays (G3VM-61A1) in the correct orientation. The relays for switches (Power, Reset) have a different orientation than the ones for LEDs.
+    
+??? question "My Pi keeps disconnecting from my wireless!"
+    You can try the following: Edit "/etc/conf.d/wireless-regdom" and look for your region and uncomment it. Example: WIRELESS_REGDOM="US"
+    
+??? question "PiKVM Complains about low power warnings"
+    Are you using a `proper` power supply? Not one you hacked together?
+    Some USB power bricks advertise 5V @ 2.1A or higher, but can’t deliver consistent 5V.  Best to use rpi foundation recommended power supplies
