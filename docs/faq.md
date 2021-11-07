@@ -17,7 +17,8 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "I want a static IP"
-    * Edit file `/etc/systemd/network/eth0.network` for Ethernet or `wlan0.network` for Wi-Fi and edit the `[Network]` section:
+    Edit file `/etc/systemd/network/eth0.network` for Ethernet or `wlan0.network` for Wi-Fi and edit the `[Network]` section:
+
     ```ini
     [Network]
     Address=192.168.x.x/24
@@ -106,7 +107,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
     You can change how this is displayed with the following example for `/etc/kvmd/override.yaml` file:
 
-    ```
+    ```yaml
     otg:
         manufacturer: Corsair
         product: Corsair Gaming RGB
