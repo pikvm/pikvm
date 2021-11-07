@@ -1,15 +1,3 @@
-### Can I power the Pi via POE?
-- Yes! But you will still need to ensure you isolate the 5v connection between the Raspberry Pi and host PC to prevent backpower issues that can cause instability or damage to either the host PC or the Pi. Power/Data cable + usb power blocker would work. Please see Variant #1 in the main getting started page for details.
-
-
-### Do I need a power splitter? Why do I need one?
-- Yes for RPi4, Yes and No for ZeroW - Yes if you want dedicated power, otherwise No
-- Yes, otherwise you could back power the pi and or the target
-- You can get a Y cable from amazon and mod one of the leads - Please see getting started guide - or see [non modding of Y cable](https://github.com/pikvm/pikvm#hardware-for-v2)
-- You can also get a power splitter board from Tindi or PiShop [(Links provided under variants #3 & #4)](https://github.com/pikvm/pikvm#hardware-for-v2)
-- If you have the v3 HAT - This is built in
-
-
 ### I can't get the KVM KB to work on my ZeroW!
 Make sure that you did NOT modify your config.txt file, this is the default: 
 ```
@@ -67,34 +55,6 @@ Yes! And it's easy to do! Using a SSH session or the web terminal:
 - Officially, no. You would be advised to make 2 seperate SD cards and swap them when needed. Unofficially yes and totally NOT supported. Please DM @srepac on discord for the script and directions.
 
 
-### My Pi keeps disconnecting from my wireless! What do I do?
-- You can try the following: Edit "/etc/conf.d/wireless-regdom" and look for your region and uncomment it. Example: WIRELESS_REGDOM="US"
-
-
-### I want a static IP!!
-- You can configure systemd-networkd for a static address for ethernet NIC. Config file is /etc/systemd/network/eth0.network
-- For wireless adapter, config file is /etc/netctl/wlan0-<wifiname>
-- See [this page](wifi.md) for details on how to get basic wireless config with DHCP going.  Afterwards, you’ll need to edit the /etc/netctl/wlan0-<wifiname> file changing the IP=dhcp line with the following lines updated to reflect your network:
-```
-For /etc/systemd/network/eth0.network
-[Match]
-Name=eth0
-
-[Network]
-Address=192.168.X.XXX/24
-Gateway=192.168.X.X
-DNS=192.168.X.X
-DNS=192.168.X.X
-
-For /etc/netctl/wlan0-<wifiname>
-IP=static
-Address=('192.168.X.XXX/24')
-Gateway=('192.168.X.X')
-DNS=("192.168.X.X 1.0.0.1 1.1.1.1")
-```
-- You can also reserve the IP in your dhcp server (Quicker)
-
-
 ### Help! I ran out of space aka room! What now?
 
 (This ONLY applies to the older flashed images and is no longer nessessary as the newer images had the main partition increased, as a result, the MSD partition was shrunk)
@@ -120,72 +80,6 @@ rm -rf /var/cache/pacman/pkg/*
 - Did you try different cables?
 
 	
-### HELP! I am getting a 500/503 error when I try and access the main KVM page!
-- This is due to a bad line in your yaml file, here are some steps you can make to help in the future. 
-- Run ```kvmd -m```, this will display ALL kvmd settings, you can compare to your own. Make sure you are not doubling up on child/sub-child entries.
-- Remember you need 4 space per child and 4 additional for each sub-child
-- Make a .nanorc file and populate it with the following:
-*set linenumbers* is optional
-```
-set linenumbers
-set tabsize 4
-set tabstospaces
-```
-- Now re-edit your override.yaml file and just use tab to get the right spacing, you might need to delete the current leading "spaces" to ensure proper formatting
-
-	
-### Can you use an iPad on PiKVM?
-- Yes, with the correct hardware you can control an iPad
-- Yes, activate VNC and use JUMP app(Full featured but more expensive), or bVNC(Not recommended, lack luster features but cheap). RealVNC does NOT work
-
-
-### How do I add my own SSL cert?
-- If you have a certificate(:exclamation:**Making a cert falls outside the scope of PIKVM - Please reference Linux documentation**:exclamation:), replace the public key in /etc/kvmd/nginx/ssl/server.crt and private key in /etc/kvmd/nginx/ssl/server.key and restart the kvmd-nginx service.
-- It should look like the following:
-
-```
-cd /etc/kvmd/nginx
-cat ssl.conf (Expection of what's inside the file)
-ssl_protocols TLSv1.3 TLSv1.2 TLSv1.1 TLSv1;
-ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
-ssl_certificate /etc/kvmd/nginx/ssl/server.crt;
-ssl_certificate_key /etc/kvmd/nginx/ssl/server.key;
-add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
-```
-
-
-### How do I emulate various USB devices on the target machine?
-By default this is what is set:
-```
-otg:
-    manufacturer: PiKVM
-    max_power: 250
-    product: Composite KVM Device
-    product_id: 260
-    serial: CAFEBABE
-    udc: ''
-    user: kvmd
-    vendor_id: 7531
-```
-
-You can change how this is displayed with the following example:
-```nano /etc/kvmd/override.yaml```
-
-```
-otg:
-    manufacturer: Corsair
-    product: Corsair Gaming RGB
-    serial:
-    vendor_id: 6940
-    product_id: 6973
-```
-Use the following USB Data Base to get the desired devices: ```https://the-sz.com/products/usbid/``` or ```https://devicehunt.com```
-	
-❗NOTE❗ You may need to include ```0x0``` in the id string's for it to work properly.
-- Example:
-	- ```vendor_id: 0x06940```
-
-
 ### Things to do after initial install:
 - Fix date: 'timedatectl list-timezones' then 'timedatectl set-timezone America/Los_Angeles' (Change to your location)
 - Update PiKVM, follow #news on Discord for instructions
@@ -202,10 +96,6 @@ nano /etc/fstab
 ```
 192.168.1.XXX:/volume1/Data /mnt/Data nfs      auto,rw,soft    0 0
 ```
-
-
-### Can you run a desktop on pikvm?
-- Yes BUT, its not recommended OR supported as this OS should be used in RO and it will need RW enabled all of the time. Instructions [here](https://www.linuxfordevices.com/tutorials/linux/how-to-install-gui-on-arch-linux)
 
 
 ### Troubleshooting
@@ -272,11 +162,6 @@ lrwxrwxrwx 1 root root 6 Mar 15 09:07 /dev/kvmd-video -> video0
 - PiKVM won’t boot past “rainbow” screen
   - Are you plugged into the right HDMI port? Needs to be the one next to the power for RPI4
   - Have you reflashed your SD card?
-
-
-### PiKVM Complains about low power warnings
-- Are you using a `proper` power supply? Not one you hacked together?
-- Some USB power bricks advertise 5V @ 2.1A or higher, but can’t deliver consistent 5V.  Best to use rpi foundation recommended power supplies
 
 
 ### USB Video Capture Issues
