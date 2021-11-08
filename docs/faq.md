@@ -27,7 +27,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     DNS=192.168.x.x
     ```
 
-    If you're using Wi-Fi but you don't have `/etc/systemd/network/wlan0.network` file, then first you will need to `migrate the Wi-Fi settings from `netctl` to `systemd-networkd`](wifi.md).
+    If you're using Wi-Fi but you don't have `/etc/systemd/network/wlan0.network` file, then first you will need to [`migrate the Wi-Fi settings from `netctl` to `systemd-networkd`](wifi.md).
 
 
 ??? question "Can I use PiKVM for gaming?"
@@ -333,7 +333,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 ## Web UI problems
 
 ??? question "Chrome Certificate Issue"
-    The latest versions of Chrome do not allow access to the page with a self signed certificate, so if you see the following screen when loading the PiKVM website:
+    The latest versions of Chrome does not allow access to the page with a self signed certificate, so if you see the following screen when loading the PiKVM website:
 
     <img src="chrome.png" alt="Chrome Blocking" width="400"/>
 
@@ -369,7 +369,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 ??? question "HELP! I am getting a 500/503 error when I try and access the main KVM page!"
     This is due to a bad line in your YAML config, if you undo what you did then it will work.
 
-    For all future edits there are some steps you can do to revent this from happening again.
+    For all future edits there are some steps you can do to prevent this from happening again.
 
     Make a .nanorc file and populate it with the following:
 
@@ -393,7 +393,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     Double check your wiring as per [the documentation](/README.md#setting-up-the-v2). Make sure you placed the relays (G3VM-61A1) in the correct orientation. The relays for switches (Power, Reset) have a different orientation than the ones for LEDs.
 
 
-??? question "My PiKVM keeps disconnecting from the Wi-Fi netowrk"
+??? question "My PiKVM keeps disconnecting from the Wi-Fi network"
     Try to edit "/etc/conf.d/wireless-regdom" and look for your region and uncomment it. For example: `WIRELESS_REGDOM="US"`.
 
 
