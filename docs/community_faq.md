@@ -26,7 +26,7 @@ Ensure that you have the cable(Needs to support both power/data) plugged into th
 - Some Alternitives
   - If you have two outputs, you may be able to use screen mirroring from the OS but not BIOS
   - If you have one output or need access from both a local monitor or PiKVM at boot time, one of the following options may work:
-  - Passthrough HDMI capture devices (sometimes referred to as a loop capture device). The Elgato devices DO NOT WORK! Look for Linux OS support when choosing a device, the expected price range is about $35-$70 US.
+  - Passthrough HDMI capture devices (sometimes referred to as a loop capture device). The Elgato and Avermedia devices DO NOT WORK! Look for Linux OS support when choosing a device, the expected price range is about $35-$70 US.
   - Depending on your capture device, an HDMI splitter may work but will need what is called an EDID (Extended Device ID) generator, the monitor and capture device both generate EDID so the splitter must produce its own separate EDID for the host.
   - Look for HDMI splitters - although there have been reports that these are not stable
     - Please use the search function in Discord, some users have had sucess in getting this to work but your mileage may vary
