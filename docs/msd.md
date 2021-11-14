@@ -245,7 +245,6 @@ wget https://github.com/ventoy/Ventoy/releases/download/v1.0.51/ventoy-1.0.51-li
 tar zxvf ventoy-1.0.51-linux.tar.gz
 sudo losetup -f ventoy.img
 sudo losetup -l | grep ventoy (To locate which loop device was used)
-sudo losetup /dev/loopXX ventoy.img
 sudo sh ~/ventoy-1.0.51/Ventoy2Disk.sh -i /dev/loopXX (This will make a loopXXp1 and a loopXXp2 and will format both partitions
 cd /media/XXX (Usually your login)
 mkdir ventoy
