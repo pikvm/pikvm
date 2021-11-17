@@ -365,6 +365,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * AVS Computer
 * baddog
 * Bao Tin Hoang
+* Bean Co.
 * Belf Igor
 * Ben Gordon
 * Ben Scott
@@ -425,6 +426,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * CyB0rgg
 * DeMentor
 * Desmond Whitt
+* DailyAneurism
 * Damon Meledones
 * Dan Berkowitz
 * Dan Brakeley
@@ -621,6 +623,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Mateusz Grabowski
 * Matthew Cameron
 * Mauricio Allende
+* Max Lanies
 * Mecky
 * Mehmet Aydoğdu
 * Michael Bartholomew
