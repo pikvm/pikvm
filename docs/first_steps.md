@@ -20,6 +20,9 @@
     You will need to configure your router to disable channels 12-14 or disable Auto scan mode so it will connect.
         
     Save, unmount and follow the next step.
+    
+    !!! warning
+        `pikvm.txt` will be removed once its been used. You will need to recreate it again if you did not provide the correct info
 
 **Power up the device.**
 
