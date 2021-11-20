@@ -16,7 +16,7 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 
 
 # Features
-* Supported **Raspberry Pi 2**, **3**, **4** and **ZeroW**;
+* Supported **Raspberry Pi 2**, **3**, **4**, **ZeroW** and **Zero2W**;
 * **FullHD video** using advanced **HDMI-to-CSI bridge** or **USB dongle**;
 * Extra low **video latency** with **MJPEG** or **H.264 / WebRTC** (for CSI bridge);
 * Bootable **Virtual CD-ROM** and **Flash Drive**;
@@ -40,7 +40,7 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 * **Easy to build - For the v0 variant**  
   A ready-to-use OS that can be created just by running `make build` and installed to an SD-card using `make install`. The hardware can be made in half an hour and without soldering.
 * **The widest hardware support**  
-  There are many ways to build a PiKVM. Video capture devices can be attached using the CSI-2 or USB interfaces. Raspberry Pi models 2, 3, 4, or ZeroW may be used. Any combination of hardware is supported, and PiKVM implements the maximum possible set of features.
+  There are many ways to build a PiKVM. Video capture devices can be attached using the CSI-2 or USB interfaces. Raspberry Pi models 2, 3, 4, ZeroW or Zero2W may be used. Any combination of hardware is supported, and PiKVM implements the maximum possible set of features.
 * **Very low latency**  
   ~100 milliseconds of video latency. This is the smallest delay of all existing solutions.
 * **Extra lightweight and fancy Web UI**  
@@ -48,7 +48,7 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 * **Keyboard and mouse**  
   Mouse usage works directly in the browser. The keyboard emulator supports displaying the state of the keyboard LEDs.
 * **Mass Storage Drive**  
-  On the Raspberry Pi 4 and ZeroW, PiKVM can emulate a virtual CD-ROM or Flash Drive. A live image can be uploaded to boot the attached server.
+  On the Raspberry Pi 4, ZeroW and Zero2W, PiKVM can emulate a virtual CD-ROM or Flash Drive. A live image can be uploaded to boot the attached server.
 * **ATX power management**  
   With a very simple circuit that can be assembled on a breadboard, the power button of the attached server can be controlled using the ATX button headers on the motherboard.
 * **Security**  
@@ -91,18 +91,19 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 # DIY Getting Started
 ## Required hardware
 PiKVM supports several different hardware configurations, referred to as **platforms**. Now available: **v2** and **v0**.
-* **Recommended**: **v2** is the most modern implementation for **Raspberry Pi 4** and **ZeroW** supporting all of the features of PiKVM including the **Mass Storage Drive**. **For Raspberry Pi 4 (not for Zero), there is support for H.264 video.**. **It's also the easiest to make**.
+* **Recommended**: **v2** is the most modern implementation for **Raspberry Pi 4**, **ZeroW** and **Zero2W** supporting all of the features of PiKVM including the **Mass Storage Drive**. **For Raspberry Pi 4 and Zero2W (not for ZeroW), there is support for H.264 video.**. **It's also the easiest to make**.
 * v0 was designed to work with Raspberry Pi 2 and 3 that do not have OTG and requires a few more components for a basic implementation. It also does not support the Mass Storage Drive feature.
 
 ## Hardware for v2
 * Raspberry Pi board:
-  - **Recommended**: Raspberry Pi 4 (2 GB model is enough) for the best performance. However, the 1Gb models will also work (No longer sold).
+  - **Recommended**: Raspberry Pi 4 (2 GB model is enough) for the best performance. However, the 1Gb models will also work.
+  - ... or Raspberry Pi Zero2W (no ethernet).
   - ... or Raspberry Pi ZeroW (slower alternative, no ethernet).
 * MicroSD card (min 16 GB recommended).
 * USB-A 3A charger (female socket) or official rpi recommended power supply.
 * Video capture device:
   - **Recommended**: [HDMI to CSI-2 bridge based on TC358743](https://aliexpress.com/item/4000102166176.html) - low latency, more reliable, **H.264 video**.
-  - ... or [HDMI to USB dongle](https://aliexpress.com/item/4001043540669.html) (not available for ZeroW) - high latency >200ms, [not very reliable](#a-few-words-about-hdmi-usb-dongle)), H.264 is not supported.
+  - ... or [HDMI to USB dongle](https://aliexpress.com/item/4001043540669.html) (not available for ZeroW and Zero2W) - high latency >200ms, [not very reliable](#a-few-words-about-hdmi-usb-dongle)), H.264 is not supported.
 * Only for Raspberry Pi 4: parts for Y-splitter cable (**one variant at your choice**):
   * <details><summary>:exclamation:Variant #1:exclamation:: (No mod solution - Amazon) Y cable with power blocker ends.</summary>
     <ul>
@@ -137,7 +138,7 @@ PiKVM supports several different hardware configurations, referred to as **platf
     </details>
     
 
-* Only for Raspberry Pi ZeroW:
+* Only for Raspberry Pi ZeroW and Zero2W:
   * 2x USB A-to-micro cables (male-male, for power and keyboard & mouse emulator). A power splitter OR a modded cable is required for this 2x usb configuration. 1x USB A-to-Micro is ONLY needed for direct connection to the target.
   * 1x [Raspberry Pi Zero Camera Cable](https://aliexpress.com/item/32953696917.html) (if using HDMI to CSI-2 Bridge, but not compatible with Auvidea B101, check pinout).
 * For ATX control (optional):
@@ -251,7 +252,7 @@ Here is a diagram shows that how to connect all of the pieces (click to full siz
 
 **Raspberry Pi 4**: since one USB-C female connector is used to receive power and perform keyboard/mouse/drive emulation a special Y-cable must be made that splits the DATA and POWER lines of USB-C (see [reasons](https://github.com/pikvm/docs/issues/11)). It can be made from two suitable connecting cables, or soldered together from scratch. Be sure to check the circuit diagram below, otherwise you may damage your devices. The appropriate USB pinout(s) can easily be found on Google. Please note that if you make a Y-cable from two no-name cables, the colors of the wires may not match those shown. Use a multimeter to make sure the connections are correct.
 
-**Raspberry Pi Zero W**: This board has two USB micro connectors: one for power supply, the second for emulating a USB OTG device. You need to prevent backpowering as in the RPi4 case. To do this, you need to cut off the red power wire in the OTG wire, or seal the +5v pin in the USB-A connector with electrical tape like this:
+**Raspberry Pi Zero (2) W**: This board has two USB micro connectors: one for power supply, the second for emulating a USB OTG device. You need to prevent backpowering as in the RPi4 case. To do this, you need to cut off the red power wire in the OTG wire, or seal the +5v pin in the USB-A connector with electrical tape like this:
 <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v2_tape_off.png" alt="drawing" width="300"/>
 
 See video how-tos:
