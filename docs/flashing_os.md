@@ -23,7 +23,7 @@ Pre-compiled images are only available for the Raspberry Pi 4 and Zero (2) W. Fo
 ## Flash the image
 
 !!! tip
-    Choose the most suitable method for you
+    Ignore request to format your sd card, this step is not nessessary. Choose the most suitable method for you
 
 
 ### Using Linux CLI
