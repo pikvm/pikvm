@@ -622,6 +622,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Martin Suelmann
 * Marvin Honderboom
 * Mateusz Grabowski
+* Matt Kane
 * Matthew Cameron
 * Mauricio Allende
 * Max Lanies
