@@ -503,6 +503,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Henry Hood
 * HimKo
 * HouseFPV
+* HyunohRyu
 * Icculus
 * iks
 * Invader Monks
@@ -559,6 +560,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Jonathan Slenders
 * Jonathan Vaughn
 * Joost Backer
+* Josh Nethery
 * Josh Ricker
 * Joshua Futterer
 * Jordi Pakey-Rodriguez
