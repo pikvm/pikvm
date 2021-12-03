@@ -569,6 +569,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Jörgen Fredriksson
 * Julian Forero
 * Julian Schneider
+* Julien Angelier
 * Justin Waters
 * Kai Hadler
 * Karl Dunne
@@ -788,6 +789,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Walter_Ego
 * Will Froning
 * William Hooper
+* William Perrin
 * William Stearns
 * Yaroslav Kulikovskikh
 * Yethal
