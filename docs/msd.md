@@ -218,8 +218,9 @@ E.g. in a AMI BIOS the boot device is called "Linux File-CD Gadget 0504".
 5. The drive will automatically be mounted.
 6. Copy files (such as BIOS updates) onto the new image (via terminal or drag and drop in Finder).
 7. Eject image.
-8. Upload image to PiKVM interface under "Drive".
-9. Select Drive Mode: `Flash` and then `Connect drive to Server`.
+8. Rename file to .img
+9. Upload image to PiKVM interface under "Drive".
+10. Select Drive Mode: `Flash` and then `Connect drive to Server`.
 
 You should be able to then mount it locally on the server, or reboot the device to do things like BIOS updates.
 
