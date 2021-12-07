@@ -52,6 +52,7 @@ Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (a
     !!! note "Using 5GHz Wi-Fi in the USA"
         Add option `country=US` to `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf`
 
+
 4. Enable WPA-supplicant service:
    ```
    systemctl enable wpa_supplicant@wlan0.service
