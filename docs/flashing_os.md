@@ -37,6 +37,7 @@ Decompress and flash the image. Be careful when choosing your device path:
 
 You can also use `dd_rescue` or `ddrescue`.
 
+!!! warning "Check the advanced settings (CTRL+SHIFT+X), make sure they are blank or the flash will fail"
 
 ### Using RPi Imager (Linux, MacOS and Windows)
 
