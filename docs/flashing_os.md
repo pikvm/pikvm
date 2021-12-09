@@ -76,3 +76,5 @@ You can also use `dd_rescue` or `ddrescue`.
 
     !!! tip
         If an error occurs during flashing or booting PiKVM, repeat the process.
+        
+When you have completed these steps, please move to the [First Steps doc.](https://docs.pikvm.org/first_steps/)
