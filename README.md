@@ -497,6 +497,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Gustin Johnson
 * György Tamás Vizi
 * Haiberg GmbH
+* Haven Zheng
 * Heibunny
 * Heikki Tiittanen
 * Helio Leonardo Pinheiro e Mota
@@ -571,6 +572,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Julian Forero
 * Julian Schneider
 * Julien Angelier
+* Justin
 * Justin Waters
 * Kai Hadler
 * Karl Dunne
@@ -762,6 +764,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * TheSnowedOne
 * TheTechGiant
 * Thomas Hagenmaier
+* Thomas Hedberg Jensen
 * Thomas Price
 * Thomas Søfteland
 * Tim Lenz
@@ -774,6 +777,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Tomáš hrubý
 * Torsten Droste
 * Tobias Schafferhans
+* Tracy Fitch
 * Tristan Schoening
 * Truman Kilen
 * turbochris
@@ -799,6 +803,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Yigal Dar
 * YURI LEE
 * Yurii Ostapchuk
+* Zeljko
 * zgen
 * Zoltan Magyari
 * Zsombor Vari
