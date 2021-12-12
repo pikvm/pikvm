@@ -32,8 +32,8 @@ Docker must be enabled in privileged mode.
     * Choose the platform:
         * `PLATFORM=v3-hdmi` for RPi4 and PiKVM v3 HAT.
         * `PLATFORM=v2-hdmi` for RPi4 or ZeroW with HDMI-CSI bridge.
-        * `PLATFORM=v0-hdmi` for RPi 2 or 3 with HDMI-CSI bridge and Arduino HID.
         * `PLATFORM=v2-hdmiusb` for RPi4 with HDMI-USB dongle.
+        * `PLATFORM=v0-hdmi` for RPi 2 or 3 with HDMI-CSI bridge and Arduino HID.
         * `PLATFORM=v0-hdmiusb` for RPi 2 or 3 with HDMI-USB dongle and Arduino HID.
         * Other options are for legacy or specialized PiKVM boards (WIP).
 
@@ -68,12 +68,14 @@ Docker must be enabled in privileged mode.
     # SD card device
     CARD = /dev/mmcblk0
     ```
+!!! warning "BOARD=rpi3 and PLATFORM=V2* are NOT compatable and will produce an error"
 
 4. Build the OS. It may take about one hour depending on your Internet connection:
 
     ```shell
     [user@localhost os]$ make os
     ```
+!!! warning "If you get an error about failing to retriving a file, please edit the Makefile and remove "de3." from the repo path"
     
 5. One of two actions:
     * Put SD card into card reader and install OS (**you should disable automounting beforehand**: `systemctl stop udisk2` or something like that):
