@@ -10,9 +10,7 @@ This operation can be done using your RPi (except Pi Zero W). Here the common st
 
 3. Log in to the Raspberry Pi using SSH (`ssh root@<addr>` with password `root` by default) or using keyboard and monitor. The Raspberry Pi obtains the network address over DHCP.
 
-4. Execute `rw`, add line `dtoverlay=spi0-1cs` to `/boot/config.txt` and perform `reboot`.
-
-5. Upload the firmware (USB keyboard & mouse is used by default, on this step [you can choose PS/2 keyboard](arduino_hid.md#ps2-keyboard)):
+4. Upload the firmware (USB keyboard & mouse is used by default, on this step [you can choose PS/2 keyboard](arduino_hid.md#ps2-keyboard)):
 
     ```shell
     [root@pikvm ~]# rw
@@ -24,7 +22,7 @@ This operation can be done using your RPi (except Pi Zero W). Here the common st
     [root@pikvm hid]# reboot
     ```
 
-6. Connect the RESET wire, disconnect the USB cable, and reboot the RPi.
+5. Connect the RESET wire, disconnect the USB cable, and reboot the RPi.
 
 With a Pi Zero W, you may consider building the firmware on a faster system and programming using USB or booting from another SD card and following the build steps using a clone of the [KVMD repo](https://github.com/pikvm/kvmd).
 
@@ -37,7 +35,9 @@ This operation can be done using your Raspberry Pi without disconnecting any wir
 
 2. Log in to the Raspberry Pi using SSH (`ssh root@<addr>` with password `root` by default) or using keyboard and monitor. The Raspberry Pi obtains the network address over DHCP.
 
-3. Build and upload the firmware (USB keyboard & mouse is used by default)
+3. Execute `rw`, add line `dtoverlay=spi0-1cs` to `/boot/config.txt` and perform `reboot`.
+
+4. Build and upload the firmware (USB keyboard & mouse is used by default)
 
     ```shell
     [root@pikvm ~]# rw
