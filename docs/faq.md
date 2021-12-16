@@ -330,6 +330,10 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     Unusual case: RPi4 is used as a PiKVM to control RPi3. In this case, the mouse delay may be several seconds. To fix it, just add line `usbhid.mousepoll=0` to `/boot/config.txt` to the server (i.e. RPI3 in our case) and reboot it.
 
 
+??? question "What speed is the USB OTG port?"
+    Per the official RPI documentation, this is a limitation of the SoC therefor will only be USB2.0 (455 Mbs)
+
+
 ## Web UI problems
 
 ??? question "Chrome Certificate Issue"
