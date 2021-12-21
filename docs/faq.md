@@ -123,6 +123,14 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     Yes, but it's strongly not recommended OR supported as this OS should be used in read-only mode and it will need read-write enabled all of the time. Instructions [here](https://www.linuxfordevices.com/tutorials/linux/how-to-install-gui-on-arch-linux).
 
 
+??? question "How do I blank the oled screen?"
+    Please run the following:
+    
+    ```
+    /usr/bin/kvmd-oled --height=32 --interval=5 --clear-on-exit --text="turn off in 5s"
+    systemctl disable --now kvmd-oled kvmd-oled-reboot kvmd-oled-shutdown
+    ```
+
 ## First steps
 
 ??? question "I can't find PiKVM IP address in my network"
@@ -242,7 +250,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     2. Optional: edit `/etc/kvmd/meta.yaml` to alter the displayed hostname in the web UI.
     3. Run `ro` and `reboot`.
 
-
+   
 ## Video problems
 
 ??? question "I can see the video but I can't see the WebRTC switch"
@@ -290,6 +298,10 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 ??? question "No image from computer with Linux + Awesome WM"
     Sometimes Awesome WM on Linux can't recognize a video output change on a cable. That is, if the cable was first inserted into the monitor, and then you reconnected it to PiKVM - it may happen that you will not see the image. It seems that the problem is Awesome WM, since for example with KDE, it is not reproducable. If you turn on your workstation with PiKVM already connected, everything will work fine.
 
+
+??? question "Windows Limited Available Resolutions"
+    This is due to a driver issue, possible resolution can be found [here](https://github.com/pikvm/pikvm/issues/577#issuecomment-998713201)
+    
 
 ## USB problems (keyboard, mouse, mass storage, etc)
 
