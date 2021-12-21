@@ -123,6 +123,14 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     Yes, but it's strongly not recommended OR supported as this OS should be used in read-only mode and it will need read-write enabled all of the time. Instructions [here](https://www.linuxfordevices.com/tutorials/linux/how-to-install-gui-on-arch-linux).
 
 
+??? question "How do I blank the oled screen?"
+    Please run the following:
+    
+    ```
+    /usr/bin/kvmd-oled --height=32 --interval=5 --clear-on-exit --text="turn off in 5s"
+    systemctl disable --now kvmd-oled kvmd-oled-reboot kvmd-oled-shutdown
+    ```
+
 ## First steps
 
 ??? question "I can't find PiKVM IP address in my network"
@@ -242,16 +250,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     2. Optional: edit `/etc/kvmd/meta.yaml` to alter the displayed hostname in the web UI.
     3. Run `ro` and `reboot`.
 
-
-??? question "How do I blank the oled screen?"
-    Please run the following:
-    
-    ```
-    /usr/bin/kvmd-oled --height=32 --interval=5 --clear-on-exit --text=“turn off in 5s”
-    systemctl disable --now kvmd-oled kvmd-oled-reboot kvmd-oled-shutdown
-    ```
-    
-
+   
 ## Video problems
 
 ??? question "I can see the video but I can't see the WebRTC switch"
