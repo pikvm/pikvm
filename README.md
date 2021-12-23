@@ -177,6 +177,8 @@ The dongle is completely supported and PiKVM works great with it. But it has som
 
 <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v3_kit.jpg" alt="drawing" height=200>
 
+**[>>> PiKVM v3 HAT User Guide <<<](https://docs.pikvm.org/v3)**
+
 **[>>> PiKVM v3 HAT on Kickstarter! <<<](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)**
 
 **The Kickstarer was a HUGE success but has ended.**
