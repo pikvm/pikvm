@@ -425,6 +425,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Corey Lista
 * Craig Keenan
 * Crossfactor
+* Cruzzer
 * ctag
 * Curt Sammer
 * CyB0rgg
@@ -774,7 +775,6 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Thomas Hedberg Jensen
 * Thomas Price
 * Thomas Søfteland
-* Thomas Zeender
 * Tim Lenz
 * Tim Wilkinson
 * Timo Brinkmann
