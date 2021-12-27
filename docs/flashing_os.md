@@ -29,7 +29,7 @@ Pre-compiled images are only available for the Raspberry Pi 4 and Zero (2) W. Fo
 
 ### Using Linux CLI
 
-Decompress and flash the image. Be careful when choosing your device path:
+Decompress and flash the image. **Be careful when choosing the device path, it may be different on your OS**:
 
 ```
 # xz --decompress v2-hdmi-rpi4-latest.img.xz
