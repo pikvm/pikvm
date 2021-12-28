@@ -1,1 +1,0 @@
-See [here](faq.md).

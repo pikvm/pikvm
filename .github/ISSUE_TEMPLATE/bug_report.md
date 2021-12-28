@@ -29,9 +29,9 @@ If applicable, add screenshots to help explain your problem.
  - Version [e.g. 22]
  - VNC client (if used)
 
-**Pi-KVM info:**
+**PiKVM info:**
   - Raspberry Pi board version [e.g. RPi 4]
-  - Pi-KVM platform [e.g. v2-hdmi]
+  - PiKVM platform [e.g. v2-hdmi]
   - Video capture type [e.g. CSI bridge]
   - KVMD version: `pacman -Q | grep kvmd`
   - uStreamer version: `pacman -Q | grep ustreamer`
