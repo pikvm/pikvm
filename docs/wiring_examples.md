@@ -29,3 +29,5 @@ Use case:
 - Testing to see if the splitter or cable is defective
 - Basic troubleshooting
 
+# EZCOO wiring example
+<img src="ezcoo_wiring.jpg" alt="drawing">
