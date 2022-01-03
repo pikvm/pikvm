@@ -1,5 +1,9 @@
 # EDID
 
+!!! warning
+    This will only apply to the CSI/v3 models, USB is not compatable.
+
+
 EDID is information about the video modes supported by the video capture device.
 In the case of PiKVM, this is an HDMI CSI bridge. Usually, you don't need to change this, since the default configuration is quite flexible,
 but sometimes, for example for strange UEFIs/BIOSes, this may be necessary (the [story](https://github.com/pikvm/pikvm/issues/78)).
