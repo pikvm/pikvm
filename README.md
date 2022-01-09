@@ -103,7 +103,7 @@ PiKVM supports several different hardware configurations, referred to as **platf
 * USB-A 3A charger (female socket) or official rpi recommended power supply.
 * Video capture device:
   - **Recommended**: [HDMI to CSI-2 bridge based on TC358743](https://aliexpress.com/item/4000102166176.html) - low latency, more reliable, **H.264 video**.
-  - ... or [HDMI to USB dongle](https://aliexpress.com/item/4001043540669.html) (not available for ZeroW and Zero2W) - high latency >200ms, [not very reliable](#a-few-words-about-hdmi-usb-dongle)), H.264 is not supported.
+  - ... or [HDMI to USB dongle](https://aliexpress.com/item/4001043540669.html) (not available for ZeroW and Zero2W) - high latency >200ms, [not very reliable](#a-few-words-about-hdmi-usb-dongle-h264-is-not-officially-supported-at-this-time)), H.264 is not supported.
 * Only for Raspberry Pi 4: parts for Y-splitter cable (**one variant at your choice**):
   * <details><summary>:exclamation:Variant #1:exclamation:: (No mod solution - Amazon) Y cable with power blocker ends.</summary>
     <ul>
