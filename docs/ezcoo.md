@@ -87,7 +87,8 @@ The UI can be updated to add buttons to switch between KVM inputs and indicators
                     - ["#Input 4", ch3_led, ch3_button]
     ```
 
-    Make sure to notate the spacing for each line, needs to be a total of 4 spaces:
+    !!! warning "Make sure to notate the spaces for each line, needs to be a total of 4 spaces added per line (NOT tabs):"
+    
 
     ```
     For example:
