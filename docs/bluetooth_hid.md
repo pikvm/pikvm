@@ -4,7 +4,7 @@ PiKVM is able to emulate a Bluetooth keyboard & mouse.
 This is not the main case of using PiKVM since you still need it to pair with a remote host, but can be used for something like mobile KVM.
 
 !!! warning
-    Using Bluetooth HID requires additional configuration of the operating system. For v2+, this means losing the UART port, since it will be used by Bluetooth. Also, Bluetooth operation was tested only on RPi4 and v2+ platform. Other boards may require different system service settings.
+    Using Bluetooth HID requires additional configuration of the operating system. For v2+, this means losing the UART port, since it will be used by Bluetooth. Also, Bluetooth operation was tested only on RPi4 and v2+ platform. Other boards may require different system service settings. Making the required changes for BT to work will also disable normal KB/MOUSE functionality therefor this will need to be disabled before normal operation can occur.
 
 !!! note
     Bluetooth mouse can work only in [relative mode](mouse.md). The reason is that many Bluetooth host drivers do not correctly implement HID descriptors. Horizontal scrolling is not supported for the same reason.
