@@ -31,10 +31,10 @@ Docker must be enabled in privileged mode.
     * Choose the board: `BOARD=rpi4` for Raspberry Pi 4 or `BOARD=zerow`, `BOARD=rpi2`, `BOARD=rpi3` for other options.
     * Choose the platform:
         * `PLATFORM=v3-hdmi` for RPi4 and PiKVM v3 HAT.
-        * `PLATFORM=v2-hdmi` for RPi4 or ZeroW with HDMI-CSI bridge.
+        * `PLATFORM=v2-hdmi` for RPi3a+/RPi4 or ZeroW with HDMI-CSI bridge.
         * `PLATFORM=v2-hdmiusb` for RPi4 with HDMI-USB dongle.
-        * `PLATFORM=v0-hdmi` for RPi 2 or 3 with HDMI-CSI bridge and Arduino HID.
-        * `PLATFORM=v0-hdmiusb` for RPi 2 or 3 with HDMI-USB dongle and Arduino HID.
+        * `PLATFORM=v0-hdmi` for RPi2 or 3b+ with HDMI-CSI bridge and Arduino HID.
+        * `PLATFORM=v0-hdmiusb` for RPi2 or 3b+ with HDMI-USB dongle and Arduino HID.
         * Other options are for legacy or specialized PiKVM boards (WIP).
 
 4. Create the config file `config.mk` for the target system. You must specify the path to the SD card on your local computer (this will be used to format and install the system) and the version of your Raspberry Pi and platform. You can change other parameters as you wish. Please note: if your password contains the # character, you must escape it using a backslash like `ROOT_PASSWD = pass\#word`.
