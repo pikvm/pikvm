@@ -2,6 +2,8 @@
 
 ## First power on
 
+!!! warning "For v2 DIY owners, please follow this [first](https://github.com/pikvm/pikvm)!"
+
 ??? example "Optional setting up Wi-Fi"
     !!! warning
         There is nothing more reliable than wired Ethernet, so it's better to use the cable. But who are we to stop you... :)
