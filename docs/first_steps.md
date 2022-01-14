@@ -48,7 +48,7 @@ By default, PiKVM receives a dynamic IP address via DHCP.
 For future examples, let's assume that your PiKVM has received the address **192.168.0.100**, which you have successfully detected using the instructions above. Then your device was assigned a hostname: **pikvm**.
 
 ??? example "Access to PiKVM Web Interface"
-    In most networks you should be able to reach PiKVM via any browser with the URL `https://192.168.0.100/` or `https://pikvm/`. Google Chrome (Chromium), Firefox and Safari work best. Microsoft Edge and Internet Explorer are not supported.
+    In MOST networks you should be able to reach PiKVM via any browser with the URL `https://192.168.0.100/` OR `https://pikvm/`. Google Chrome (Chromium), Firefox and Safari work best with 0 extensions enabled, if one works but the others do not, this is a browser/extension issue. Its advised you use Private window or Incog mode. Microsoft Edge and Internet Explorer are not supported.
 
     **The default user is `admin` and the password is also `admin`.** After logging in, you will get access to the menu with the main functions. Using the Web terminal, you can change system settings and passwords.
 
