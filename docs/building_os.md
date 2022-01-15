@@ -68,7 +68,7 @@ Docker must be enabled in privileged mode.
     # SD card device
     CARD = /dev/mmcblk0
     ```
-!!! warning "BOARD=rpi3 and PLATFORM=V2* are NOT compatable and will produce an error"
+!!! warning "BOARD=rpi3 and PLATFORM=v2-hdmiusb are NOT compatable and will produce an error"
 
 4. Build the OS. It may take about one hour depending on your Internet connection:
 
