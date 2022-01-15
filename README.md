@@ -442,6 +442,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Danilo Saft
 * Danne
 * David
+* David Brausewetter
 * David Godibadze
 * David Howell
 * David Irvine
