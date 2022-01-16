@@ -17,6 +17,10 @@
     WIFI_ESSID="mynet"
     WIFI_PASSWD="p@s$$w0rd"
     ```
+    
+    !!! warning
+         FIRSTBOOT will erase the msd partition, if used afterwords as a means of switching wifi networks, do not include this option. Instead, use different supplicant files for each wifi SSID, mv files to the supplicant dir as needed and reboot.
+
 
     There is a possibility that, in countries that support CH13, the device will not connect.
     You will need to configure your router to disable channels 12-14 or disable Auto scan mode so it will connect.
