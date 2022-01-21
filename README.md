@@ -352,6 +352,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Andrew Reusch
 * Andrew Ruan
 * Andrzej V
+* Andy
 * Andy Keys
 * Anish Patel
 * Anix
@@ -744,6 +745,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Scott Spicola
 * Scott Tusing
 * Sean
+* SEAT
 * Seonwoo Lee
 * Sergey Lukjanov
 * Seth Jennings
