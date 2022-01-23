@@ -131,6 +131,12 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     systemctl disable --now kvmd-oled kvmd-oled-reboot kvmd-oled-shutdown
     ```
 
+??? question "I am getting a 500/503 error when I try and access the main KVM page!"
+    This is due to what was recently edited in your yaml file, you have to use spaces and NOT tabs
+    Undo what you just did, then, `systemctl restart kvmd`, does it work again?
+    Review what was added and take care of yaml syntax
+    
+    
 ## First steps
 
 ??? question "I can't find PiKVM IP address in my network"
