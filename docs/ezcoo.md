@@ -167,9 +167,18 @@ kvmd:
     ```
 
 ## Simple troubleshooting steps to perform
-??? example Steps
-    1. SSH or open a web terminal to your PiKVM
-    2. `ls -la /dev/ttyUSB*` - This should give you an output. If not, try a different cable till an output is displayed.
+
+```
+    Video Issues:
+        Hook a monitor to the output and test
+        Reseat the cables
+        Change out the cables
+
+    Switching issues:
+        SSH or open a web terminal to your PiKVM
+        `ls -la /dev/ttyUSB*` - This should give you an output. If not, try a different cable till an output is displayed.
+```
+
 
 !!! tip "EZCOO Wiring example can be found [here](https://docs.pikvm.org/wiring_examples/)"
     
