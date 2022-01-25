@@ -24,7 +24,7 @@
 4. Perform command `ip addr show tailscale0` to view the Tailscale IP address.
 
 
-### On the workstation side
+### For each device you wish to access pikvm
 
 * [Download](https://tailscale.com/download) and install tailscale for your OS.
 * Check the [admin page](https://login.tailscale.com/admin/machines) to view your VPN network.
