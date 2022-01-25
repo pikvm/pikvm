@@ -1,11 +1,11 @@
 # Open and cheap DIY IP-KVM based on Raspberry Pi
 [![Discord](https://img.shields.io/discord/580094191938437144?logo=discord)](https://discord.gg/bpmXfz5) [![Reddit](https://img.shields.io/badge/reddit-join-orange?logo=reddit)](https://www.reddit.com/r/pikvm)
 
-A very simple and fully functional Raspberry Pi-based KVM (KVM = Keyboard, Video, Mouse) over IP that you can make with your own hands. This device helps to manage servers or workstations remotely, regardless of the health of the operating system or whether one is installed. You can fix any problem, configure the BIOS, and even reinstall the OS using the virtual CD-ROM or Flash Drive.
+A very simple and fully functional Raspberry Pi-based KVM (Keyboard-Video-Mouse) over IP that you can make with your own hands. This device helps to manage servers or workstations remotely, regardless of the health of the operating system or whether one is installed. You can fix any problem, configure the BIOS, and even reinstall the OS using the virtual CD-ROM or Flash Drive.
 
 The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](https://docs.pikvm.org) and join to the [Discord Community Chat](https://discord.gg/bpmXfz5) for news, questions and support!
 
-| **[>>> DIY Device Getting Started <<<](#diy-getting-started)** | **[>>> PiKVM v3 HAT Getting Started <<<](#pikvm-v3-hat-features)** |
+| **[>>> DIY Device Getting Started <<<](#diy-getting-started)** | **[>>> PiKVM v3 HAT Getting Started <<<](#pikvm-v3-hat)** |
 | --------------------------------------------- | ------------------------------------------ |
 | [DIY Review by **Novaspirit Tech**](https://youtu.be/plP9Y1likRg)<br>[**Hackaday**](https://hackaday.com/2020/11/24/true-networked-kvm-without-breaking-the-bank/) & [**Tom's HARDWARE**](https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi) & [**Elector MAG**](https://www.elektormagazine.com/news/pikvm-raspberry-pi-as-a-kvm-remote-control)<br>[Our boring presentation for the DIY :)](https://youtu.be/9YhPWjWv5gw) | [PiKVM v3 Review by **Novaspirit Tech**](https://youtu.be/dTchVKxx7Fo)<br>[Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)<br>[Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c) |
 | <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v2_example.jpg" alt="drawing"/> | <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v3_board.jpg" alt="drawing"/> |
@@ -172,23 +172,22 @@ The dongle is completely supported and PiKVM works great with it. But it has som
 
 # How to set up the device can be seen from [here](https://docs.pikvm.org/wiring_examples)
 
-# PiKVM v3 HAT Features
-
+# PiKVM v3 HAT
 
 <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v3_kit.jpg" alt="drawing" height=200>
 
+We have developed our own HAT for the Raspberry Pi 4.
+
+**>>> BUY IT NOW from our official resellers! <<<**
+* United States: [PiShop.us](https://www.pishop.us/search.php?search_query=pikvm&section=product)
+* Canada: [PiShop.ca](https://www.pishop.ca/search.php?search_query=pikvm&section=product)
+* United Kingdom: [Pimoroni](https://shop.pimoroni.com/?q=pikvm), [The Pi Hut](https://thepihut.com/pages/search-results?q=pikvm)
+* Netherlands: [Elektor](https://www.elektor.com/catalogsearch/result/?q=pikvm)
+* Switzerland: [Pi-Shop.ch](https://www.pi-shop.ch/catalogsearch/result/?q=pikvm)
+* Australia: [Core Electronics](https://core-electronics.com.au/search/?q=pikvm)
+
 **[>>> PiKVM v3 HAT User Guide <<<](https://docs.pikvm.org/v3)**
 
-**[>>> PiKVM v3 HAT on Kickstarter! <<<](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)**
-
-**The Kickstarer was a HUGE success but has ended.**
-
-**If you are still looking to get one after the KS has ended they will be available on [pishop.us](https://www.pishop.us/product/pi-kvm-v3-hat-for-raspberry-pi-4/) around Novemeber**
-
-We have developed our own HAT for the Raspberry Pi 4. It will have all the features of the v2 platform, including:
-
-* Fully **Open Source** software and ready-made maintainable Linux based OS.
-* Access to the server via **Web UI** or **VNC**.
 * **HDMI video capture** for extra low latency with **MJPEG** or **H.264/WebRTC** (1080p 50Hz max).
 * **HDMI audio capture** (supported by hardware, software work in progress).
 * **USB keyboard** & **mouse**, bootable **Virtual CD-ROM** & **Flash Drive**;
@@ -197,11 +196,6 @@ We have developed our own HAT for the Raspberry Pi 4. It will have all the featu
 * **PWM fan controller**.
 * **A real-time clock** for accurate logging.
 * CISCO-style and USB **serial console port** (to manage PiKVM OS or to connect the server).
-* Ability to use **IPMI BMC**, **IPMI SoL**, **Redfish** and **Wake-on-LAN** to control the server.
-* **Extensible authorization** and **SSL encryption** out of the box.
-* **Health monitoring** of the Raspberry Pi.
-* Control **GPIO** ports and **USB relays** from the Web UI.
-* **Bonus: It's compatible with Apple computers!**
 * **Optional OLED screen** to display network status or other desired information.
 * **No need for soldering or breadboarding**. It's a ready-made, reliable board which you can use yourself or provide to your clients.
 
@@ -209,6 +203,9 @@ Watch the video:
 * [PiKVM v3 Review by **Novaspirit Tech**](https://youtu.be/dTchVKxx7Fo)
 * [Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)
 * [Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c)
+
+History:
+* [PiKVM v3 HAT on Kickstarter (huge success](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)
 
 -----
 
