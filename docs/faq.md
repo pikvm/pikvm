@@ -344,8 +344,8 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     * [Arduino HID](arduino_hid.md#fixing-the-usb-absolute-mouse-on-windows-98).
 
 
-??? question "Big mouse latency on another Raspberry as managed server"
-    Unusual case: RPi4 is used as a PiKVM to control RPi3. In this case, the mouse delay may be several seconds. To fix it, just add line `usbhid.mousepoll=0` to `/boot/cmdline.txt` to the server (i.e. RPI3 in our case) and reboot it. [Source.](https://www.reddit.com/r/pikvm/comments/m4xs79/slow_mouse_response/)
+??? question "There's big mouse latency on another Raspberry Pi as managed server"
+    Unusual case: RPi4 is used as a PiKVM to control RPi3. In this case, the mouse delay may be several seconds. To fix it, append `usbhid.mousepoll=0` to the boot line in `/boot/cmdline.txt` on the managed server (i.e. RPI3 in our case) and reboot it. [Source.](https://www.reddit.com/r/pikvm/comments/m4xs79/slow_mouse_response/)
 
 
 ??? question "What speed is the USB OTG port?"
