@@ -178,13 +178,7 @@ The dongle is completely supported and PiKVM works great with it. But it has som
 
 We have developed our own HAT for the Raspberry Pi 4.
 
-**>>> BUY IT NOW from our official resellers! <<<**
-* United States: [PiShop.us](https://www.pishop.us/search.php?search_query=pikvm&section=product)
-* Canada: [PiShop.ca](https://www.pishop.ca/search.php?search_query=pikvm&section=product)
-* United Kingdom: [Pimoroni](https://shop.pimoroni.com/?q=pikvm), [The Pi Hut](https://thepihut.com/pages/search-results?q=pikvm)
-* Netherlands: [Elektor](https://www.elektor.com/catalogsearch/result/?q=pikvm)
-* Switzerland: [Pi-Shop.ch](https://www.pi-shop.ch/catalogsearch/result/?q=pikvm)
-* Australia: [Core Electronics](https://core-electronics.com.au/search/?q=pikvm)
+**[>>> Buy PiKVM v3 HAT right now! <<<](https://pikvm.org/buy)**
 
 **[>>> PiKVM v3 HAT User Guide <<<](https://docs.pikvm.org/v3)**
 
