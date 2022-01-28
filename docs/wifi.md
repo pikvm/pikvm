@@ -6,6 +6,9 @@ connected directly to the Raspberry Pi as you will loose network connectivity on
 Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (available through the browser) should also work.
 
 !!! warning
+    Please review [First Steps](first_steps.md) if you are setting up wifi for zerow/z2w.
+
+!!! warning
     There is nothing more reliable than wired Ethernet, so it's better to use it. But who are we to stop you... :)
 
 !!! note "Moving Wi-Fi settings for OS older than 2021.10.19"

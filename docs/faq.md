@@ -9,14 +9,14 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 ## Common questions
 
 ??? question "Can I connect multiple servers to a single PiKVM?"
-    Yes, but it will require additional work to set up. See [this page](multiport.md).
+    Yes, but it requires additional work to set up. See [this page](multiport.md).
 
 
 ??? question "How can I get the access to PiKVM in my local network over Internet?"
-    You can use port forwarding for port 443 on your router if it has an external IP address. In all other cases, you can use the excellent free VPN service [Tailscale](tailscale.md), which is configured on PiKVM with a [few simple commands](tailscale.md).
+    You can use port forwarding for port 443 on your router if it has an external IP address. In all other cases, you can use the excellent free VPN service [Tailscale](tailscale.md), which can be configured on PiKVM with a [few simple commands](tailscale.md).
 
 
-??? question "I want a static IP"
+??? question "Can I assign a static IP to a PiKVM"
     Edit file `/etc/systemd/network/eth0.network` for Ethernet or `wlan0.network` for Wi-Fi and edit the `[Network]` section:
 
     ```ini
@@ -54,21 +54,21 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "Does PiKVM support sound?"
-    At this time sound is not supported on any platform however, once sound is implimented, it will only be available for PiKVM v3 HAT. Due to a hardware bug in HDMI-CSI bridges, sound may or may not work.
+    At this time sound is not supported on any platform. Once sound is implemented, it will only be available for PiKVM v3 HAT. Due to a hardware bug in HDMI-CSI bridges, sound may or may not work.
 
 
 ??? question "Can I power the Pi via PoE?"
-    Yes! But you will still need to ensure you isolate the 5v connection between the Raspberry Pi and host PC to prevent backpower issues that can cause instability or damage to either the host PC or the Pi. Power/Data cable + USB power blocker would work.
+    Yes! But you still need to ensure you isolate the 5v connection between the Raspberry Pi and host PC to prevent backpower issues that can cause instability or damage to either the host PC or the Pi. Power/Data cable + USB power blocker would work.
 
 
 ??? question "Do I need a power splitter? Why do I need one?"
     * Yes for RPi4 - Please see the main readme for splitter types listed under V2 Hardware
     * Yes for Zero W and Zero W 2, if using dedicated power you still need to split the power from the data towards the target. If using the target for power, this is not needed.
-    * This is not needed if you have a v3 hat.
+    * This is not needed if you have a v3 HAT, as the HAT splits power and signal on the board.
 
 
-??? question "Can I use PiKVM with non-Raspberry boards (Orange, Nano, etc)?"
-    Yes, but you will have to prepare the operating system yourself. As for the PiKVM software, you will need to replace some config files (such as UDEV rules). If you are a developer or an experienced system administrator, you will not have any problems with this. In addition, we are open to patches. If you need help with this, please contact us via [Discord](https://discord.gg/bpmXfz5).
+??? question "Can I use PiKVM with non-Raspberry Pi boards (Orange, Nano, etc)?"
+    Yes, but you will have to prepare the operating system yourself. For the PiKVM software, you will need to replace some config files (such as UDEV rules). If you are a developer or an experienced system administrator, you will not have any problems with this. In addition, we are open to patches. If you need help with this, please contact us via [Discord](https://discord.gg/bpmXfz5).
 
 
 ??? question "Is PiKVM OS its own custom distro?"
@@ -116,10 +116,10 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 		serial:
     ```
 
-    Use the following USB Data Base to get the desired devices: https://the-sz.com/products/usbid or https://devicehunt.com.
+    Use the following USB database to get the desired devices: https://the-sz.com/products/usbid or https://devicehunt.com.
 
 
-??? question "Can you run a desktop on PiKVM?"
+??? question "Can I run a desktop on PiKVM?"
     Yes, but it's strongly not recommended OR supported as this OS should be used in read-only mode and it will need read-write enabled all of the time. Instructions [here](https://www.linuxfordevices.com/tutorials/linux/how-to-install-gui-on-arch-linux).
 
 
@@ -131,9 +131,26 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     systemctl disable --now kvmd-oled kvmd-oled-reboot kvmd-oled-shutdown
     ```
 
+??? question "I am getting a 500/503 error when I try and access the main KVM page!"
+    This is due to your recent changes in your yaml file; you have to use spaces and NOT tabs.
+    Undo what you just did, then, `systemctl restart kvmd`, does it work again?
+    Review what you added and take care of [YAML syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html).
+    
+    For future edits there are some steps you can do to prevent this from happening again.
+
+    Make a .nanorc file and populate it with the following:
+
+    ```
+    set tabsize 4
+    set tabstospaces
+    ```
+
+    Now re-edit your `/etc/kvmd/override.yaml` file and just use tab to get the right spacing, you might need to delete the current leading "spaces" to ensure proper formatting.
+
+
 ## First steps
 
-??? question "I can't find PiKVM IP address in my network"
+??? question "I can't find the PiKVM IP address in my network"
     Follow [this guide](first_steps.md#getting-access-to-pikvm).
 
 
@@ -152,13 +169,13 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "How do I get root access in the web terminal?"
-    The web terminal works with the account `kvmd-webterm`. This is a regular user with no administrator privileges and. In addition, `sudo` and login are disabled for this user for security reasons. To get `root` access, you need to use the `su -` command (minus is important) and **enter the root password**.
+    The web terminal works with the account `kvmd-webterm`. This is a regular user with no administrator privileges. In addition, `sudo` and login are disabled for this user for security reasons. To get `root` access, you need to use the `su -` command (minus is important) and **enter the root password**.
 
 
 ??? question "Where is the PiKVM configuration located?"
-    Almost all KVMD (the main daemon controlling PiKVM) configuration files located in `/etc/kvmd`. You can also find nginx configs and SSL certificates there. KVMD configs use [YAML](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) syntax. The specific platform parameters can be found in the file `/etc/kvmd/main.yaml` and **you should never edit it**. Use `/etc/kvmd/override.yaml` to redefine the system parameters.
+    Almost all KVMD (the main daemon controlling PiKVM) configuration files are located in `/etc/kvmd`. You can also find nginx configs and SSL certificates there. KVMD configs use [YAML](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) syntax. The specific platform parameters can be found in the file `/etc/kvmd/main.yaml` and **you should never edit it**. Use `/etc/kvmd/override.yaml` to redefine the system parameters.
 
-    Another files that are also not recommended for editing have read-only permissions. If you edit any of these files, you will need to manually make changes to them when you upgrade your system. You can view the current configuration and all available KVMD parameters using the command `kvmd -m`.
+    Files that are not recommended for editing have read-only permissions. If you edit any of these files, you will need to manually make changes to them when you upgrade your system. You can view the current configuration and all available KVMD parameters using the command `kvmd -m`.
 
 
 ??? question "I can't edit any file on PiKVM. Why is the system in read-only mode?"
@@ -183,7 +200,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
         !!! danger "But again: DON'T DO THIS"
 
 
-??? question "How to install or remove any packages in PiKVM OS?"
+??? question "How do I install or remove packages in PiKVM OS?"
     PiKVM OS is based on Arch Linux ARM and uses the [pacman](https://wiki.archlinux.org/title/Pacman) package manager.
 
     * Switch filesystem to RW-mode: `rw`.
@@ -222,13 +239,13 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     ```
 
 
-??? question "How to disable the web terminal?"
+??? question "How do I disable the web terminal?"
     ```
     # systemctl disable --now kvmd-webterm
     ```
 
 
-??? question "How to completely disable authorization in PiKVM?"
+??? question "How do I completely disable authorization in PiKVM?"
     Edit the file `/etc/kvmd/override.yaml`:
 
     ```yaml
@@ -244,7 +261,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     ```
 
 
-??? question "Can I have different hostnames for your each of your pikvms?"
+??? question "Can I have different hostnames for each of my PiKVMs?"
     Yes! And it's easy to do! Using a SSH session or the web terminal:
     1. Make sure you are root, run `rw` then run `hostnamectl set-hostname yournewhostname.domain`.
     2. Optional: edit `/etc/kvmd/meta.yaml` to alter the displayed hostname in the web UI.
@@ -258,13 +275,13 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "PiKVM does not show the video from the computer at all"
-    * Double-check that the video capture device is connected correctly. For the [CSI bridge](/README.md#for-the-hdmi-csi-bridge), this should be exactly the camera port, for the [USB dongle](/README.md#for-the-hdmi-usb-dongle), strictly the port indicated in the picture.
-    * Some laptops do not output any signal until you switched the output (usually via the FN + and an F5 key on the keyboard).
-    * Your computer may have turned on sleep mode for the monitor. Move the mouse and turn it off.
+    * Double-check that the video capture device is connected correctly. For the [CSI bridge](/README.md#for-the-hdmi-csi-bridge), this should be exactly the camera port; for the [USB dongle](/README.md#for-the-hdmi-usb-dongle), strictly the port indicated in the picture.
+    * Some laptops do not output any signal until you switch the output (usually via the FN + and an F5 key on the keyboard).
+    * Your computer may have turned on sleep mode for the monitor. Move the mouse to turn it off.
 
 
 ??? question "The video works in the booted OS, but not in the BIOS/UEFI"
-    The problem appears on Intel NUC, GA-H77-DS3H, and some other devices with using CSI bridge. All you need to do is [change the EDID data](edid.md). This is the information about supported resolutions that the CSI bridge reports to your computer.
+    This problem appears on Intel NUC, GA-H77-DS3H, and some other devices when using a CSI bridge. All you need to do is [change the EDID data](edid.md). This is the information about supported resolutions that the CSI bridge reports to your computer.
 
 
 ??? question "Glitchy or wrong BIOS/UEFI resolution"
@@ -274,17 +291,17 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
     This can be solved by enabling the **Compatibility Support Module (CSM)** in your BIOS, usually under the **Boot** options.
 
-    If you can't or don't want to enable the CSM, you can try connecting a DisplayPort monitor, or a [dummy plug](http://amazon.com/s?k=displayport+dummy+plug). If you remove the DP cable/adapter the bug will reappear.
+    If you can't or don't want to enable the CSM, you can try connecting a DisplayPort (DP) monitor, or a [dummy plug](http://amazon.com/s?k=displayport+dummy+plug). If you remove the DP cable/adapter the bug will reappear.
 
     If none of this works, try connecting the DP cable first, boot into the BIOS, disable the CSM and shutdown (do not restart) your PC. Then, boot into the BIOS and enable the CSM before shutting down your PC. Then connect the HDMI and turn your PC on again.
 
 
-??? question "CSI bridge does not work with official Raspberry Pi PoE HAT"
-    Details [here](https://github.com/pikvm/pikvm/issues/6). The reason is that the [official HAT](https://www.raspberrypi.org/products/poe-hat) has a built-in fan controller that conflicts with the TC358743 chip of the bridge. The solution is to disable the fan control and connect it to the power line so that it works continuously. To turn off the controller you need to add the line `disable_poe_fan=1` to `/boot/config.txt`.
+??? question "Why does the CSI bridge does not work with official Raspberry Pi PoE HAT?"
+    Details [here](https://github.com/pikvm/pikvm/issues/6). The reason is that the [official HAT](https://www.raspberrypi.org/products/poe-hat) has a built-in fan controller that conflicts with the TC358743 chip of the bridge. The solution is to disable the fan control and connect the fan to the power line so that it works continuously. To turn off the controller you need to add the line `disable_poe_fan=1` to `/boot/config.txt`.
 
 
 ??? question "The video freezes a few seconds after the start, restarting the Web UI or VNC does not help"
-    The story is [here](https://github.com/raspberrypi/firmware/issues/1562). Very-very rarely, Raspberry boards can have a hardware defect that causes some of the chip blocks to be unstable under normal power. The solution is to slightly increase the power supply, as in overclocking. Add `over_voltage=1` (or `over_voltage=2` if previous doesn't help) to `/boot/config.txt` and perform `reboot`.
+    The story is [here](https://github.com/raspberrypi/firmware/issues/1562). Very very rarely, Raspberry Pi boards can have a hardware defect that causes some of the chip blocks to be unstable under normal power. The solution is to slightly increase the power supply, as you would when overclocking. Add `over_voltage=1` (or `over_voltage=2` if previous doesn't help) to `/boot/config.txt` and perform `reboot`.
 
     To make sure that you are facing this particular problem, first perform a diagnostic:
 
@@ -299,22 +316,22 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     Sometimes Awesome WM on Linux can't recognize a video output change on a cable. That is, if the cable was first inserted into the monitor, and then you reconnected it to PiKVM - it may happen that you will not see the image. It seems that the problem is Awesome WM, since for example with KDE, it is not reproducable. If you turn on your workstation with PiKVM already connected, everything will work fine.
 
 
-??? question "Windows Limited Available Resolutions"
-    This is due to a driver issue, possible resolution can be found [here](https://github.com/pikvm/pikvm/issues/577#issuecomment-998713201)
+??? question "Windows shows limited Available Resolutions"
+    This is due to a driver issue. A possible resolution can be found [here](https://github.com/pikvm/pikvm/issues/577#issuecomment-998713201).
     
 
 ## USB problems (keyboard, mouse, mass storage, etc)
 
 ??? question "My computer does not recognize USB of PiKVM v2+ at all"
     * Make sure that you have used the correct USB cable with DATA lines to connect the OTG port for the Raspberry to the computer. You may have decided to use a USB hub instead of a Y-cable and **it won't work**. Use good cables and follow the instructions :)
-    * In rare cases, some very buggy BIOSes does not like HID and Mass Storage in one USB device. You can either [disable Mass Storage](msd.md#disable-msd), or use [Arduino HID](arduino_hid.md) to physically separate them.
+    * In rare cases, some very buggy BIOSes do not like HID and Mass Storage in one USB device. You can either [disable Mass Storage](msd.md#disable-msd), or use an [Arduino HID](arduino_hid.md) to physically separate them.
 
 
 ??? question "BIOS/UEFI does not recognize USB of v2+, but computer does"
     If you are using a USB hub or USB PCI controller, this may not be handled by your BIOS. Try to use another USB port. Some ports may have a built-in hub on the motherboard and a buggy BIOS that can't handle it.
 
 
-??? question "The keyboard works in BIOS/UEFI, but the mouse does not"
+??? question "My keyboard works in BIOS/UEFI, but my mouse does not"
     The BIOS does not support absolute mouse mode, which is preferred by PiKVM. In this case, [you can enable relative or dual positioning mode](mouse.md).
 
 
@@ -327,8 +344,8 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     ```
 
 
-??? question "Mass storage drive working (I can boot an image from PiKVM v2+), but keyboard/mouse does not"
-    In rare cases, some very buggy BIOSes does not like HID and Mass Storage in one USB device. You can either [disable Mass Storage](msd.md#disable-msd), or use [Arduino HID](arduino_hid.md) to physically separate them.
+??? question "My mass storage drive works (I can boot an image from PiKVM v2+), but my keyboard/mouse does not"
+    In rare cases, some very buggy BIOSes does not like HID and Mass Storage in one USB device. You can either [disable Mass Storage](msd.md#disable-msd), or use an [Arduino HID](arduino_hid.md) to physically separate them.
 
 
 ??? question "Buggy absolute mouse on Windows 98 as managed server"
@@ -338,29 +355,29 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     * [Arduino HID](arduino_hid.md#fixing-the-usb-absolute-mouse-on-windows-98).
 
 
-??? question "Big mouse latency on another Raspberry as managed server"
-    Unusual case: RPi4 is used as a PiKVM to control RPi3. In this case, the mouse delay may be several seconds. To fix it, just add line `usbhid.mousepoll=0` to `/boot/config.txt` to the server (i.e. RPI3 in our case) and reboot it.
+??? question "There's big mouse latency on another Raspberry Pi as managed server"
+    Unusual case: RPi4 is used as a PiKVM to control RPi3. In this case, the mouse delay may be several seconds. To fix it, append `usbhid.mousepoll=0` to the boot line in `/boot/cmdline.txt` on the managed server (i.e. RPI3 in our case) and reboot it. [Source.](https://www.reddit.com/r/pikvm/comments/m4xs79/slow_mouse_response/)
 
 
 ??? question "What speed is the USB OTG port?"
-    Per the official RPI documentation, this is a limitation of the SoC therefor will only be USB2.0 (455 Mbs)
+    Per the official RPI documentation, this is a limitation of the SoC.  The OTG port is only USB2.0, so is limited to 455 Mbit/s.
 
 
 ## Web UI problems
 
-??? question "Chrome Certificate Issue"
-    The latest versions of Chrome does not allow access to the page with a self signed certificate, so if you see the following screen when loading the PiKVM website:
+??? question "Chrome reports a Certificate Issue when I try to access the PiKVM web interface"
+    The latest versions of Chrome do not allow access to the page with a self signed certificate, so if you see the following screen when loading the PiKVM website:
 
     <img src="chrome.png" alt="Chrome Blocking" width="400"/>
 
     You can proceed by typing `thisisunsafe` and Chrome will then load the page.
 
 
-??? question "Pressing ESC in full screen mode causes this to close"
-    Your browser does not support [keyboard lock](https://caniuse.com/mdn-api_keyboard_lock). Right now, only Chrome implements this.
+??? question "Pressing ESC in full screen mode causes the PiKVM page to close"
+    Your browser does not support [keyboard lock](https://caniuse.com/mdn-api_keyboard_lock). Right now (January 2022), only Chromium implements this, so it works on Chrome, Edge, and Opera.
 
 
-??? question "I can't use this on iOS: the Web UI network indicator flashes yellow"
+??? question "I can't use the PiKVM web interface on iOS: the Web UI network indicator flashes yellow"
     Safari on iOS contains an old bug that prevents a web application from connecting over a web socket if you use a self-signed certificate on the server (the default for PiKVM). There are two solutions:
 
     * Install a valid SSL certificate for PiKVM host to `/etc/kvmd/nginx/ssl`.
@@ -379,40 +396,28 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "I can't copy clipboard contents from the server (the machine controlled via PiKVM) to the client"
-    The clipboard only works from the client to the server not vice versa. There is currently no way to do it.
-
-
-??? question "HELP! I am getting a 500/503 error when I try and access the main KVM page!"
-    This is due to a bad line in your YAML config, if you undo what you did then it will work.
-
-    For all future edits there are some steps you can do to prevent this from happening again.
-
-    Make a .nanorc file and populate it with the following:
-
-    ```
-    set tabsize 4
-    set tabstospaces
-    ```
-
-    Now re-edit your `/etc/kvmd/override.yaml` file and just use tab to get the right spacing, you might need to delete the current leading "spaces" to ensure proper formatting.
+    The clipboard only works from the client to the server not vice versa. There is currently no way to do this, as PiKVM has no access to the managed server's state other than via USB and video.
 
 
 ## Hardware problems (Wi-Fi, ATX, etc)
 
-??? question "No Wi-Fi on Raspberry Pi Zero W"
-    * If your device is unable to connect to the Wi-Fi network that you have setup check the 2.4 GHz Wi-Fi channel used by your Wi-Fi access point. 
-      If channels 12 to 14 are used (some countries have banned these channels) try to use a channel between 1 and 11.
+??? question "I can't connect to Wi-Fi on a Raspberry Pi Zero W"
     * Some Zeros contain a defective Wi-Fi chip. You can either return the device to the store, or try the [software workaround](https://github.com/pikvm/pikvm/issues/137).
 
 
-??? question "LEDs/Switches does not work in ATX control"
+??? question "I can't connect to Wi-Fi at all!"
+    * If your device is unable to connect to the Wi-Fi network that you have set up, check the 2.4 GHz Wi-Fi channel used by your Wi-Fi access point. 
+      If channels 12 to 14 are used (some countries have banned these channels) try to use a channel between 1 and 11.
+
+
+??? question "LEDs/Switches do not work in ATX control"
     Double check your wiring as per [the documentation](/README.md#setting-up-the-v2). Make sure you placed the relays (G3VM-61A1) in the correct orientation. The relays for switches (Power, Reset) have a different orientation than the ones for LEDs.
 
 
 ??? question "My PiKVM keeps disconnecting from the Wi-Fi network"
-    Try to edit "/etc/conf.d/wireless-regdom" and look for your region and uncomment it. For example: `WIRELESS_REGDOM="US"`.
+    Try to edit `/etc/conf.d/wireless-regdom` and look for your region and uncomment it. For example: `WIRELESS_REGDOM="US"`.
 
 
 ??? question "PiKVM complains about low power warnings"
-    * Are you using a `proper` power supply? Not one you hacked together?
+    * Are you using a "proper" power supply? Not one you hacked together?
     * Some USB power bricks advertise 5V 2.1A or higher, but can't deliver consistent 5V.  Best to use Raspberry Pi Foundation recommended power supplies.

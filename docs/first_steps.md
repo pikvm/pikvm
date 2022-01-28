@@ -2,6 +2,8 @@
 
 ## First power on
 
+!!! warning "For v2 DIY owners, please follow this [first](https://github.com/pikvm/pikvm)!"
+
 ??? example "Optional setting up Wi-Fi"
     !!! warning
         There is nothing more reliable than wired Ethernet, so it's better to use the cable. But who are we to stop you... :)
@@ -15,6 +17,10 @@
     WIFI_ESSID="mynet"
     WIFI_PASSWD="p@s$$w0rd"
     ```
+    
+    !!! warning
+         FIRSTBOOT will erase the msd partition, if used afterwords as a means of switching wifi networks, do not include this option. Instead, use different supplicant files for each wifi SSID, mv files to the supplicant dir as needed and reboot.
+
 
     There is a possibility that, in countries that support CH13, the device will not connect.
     You will need to configure your router to disable channels 12-14 or disable Auto scan mode so it will connect.
@@ -46,7 +52,7 @@ By default, PiKVM receives a dynamic IP address via DHCP.
 For future examples, let's assume that your PiKVM has received the address **192.168.0.100**, which you have successfully detected using the instructions above. Then your device was assigned a hostname: **pikvm**.
 
 ??? example "Access to PiKVM Web Interface"
-    In most networks you should be able to reach PiKVM via any browser with the URL `https://192.168.0.100/` or `https://pikvm/`. Google Chrome (Chromium), Firefox and Safari work best. Microsoft Edge and Internet Explorer are not supported.
+    In MOST networks you should be able to reach PiKVM via any browser with the URL `https://192.168.0.100/` OR `https://pikvm/`. Google Chrome (Chromium), Firefox and Safari work best with 0 extensions enabled, if one works but the others do not, this is a browser/extension issue. Its advised you use Private window or Incog mode. Microsoft Edge and Internet Explorer are not supported.
 
     **The default user is `admin` and the password is also `admin`.** After logging in, you will get access to the menu with the main functions. Using the Web terminal, you can change system settings and passwords.
 

@@ -13,7 +13,7 @@ The ezCoo managed switch can be controlled by PiKVM to allow it to connect to mu
 
 From a high level, the ezCoo switch uses standard connections to the host machines (USB-A to USB-B and HDMI). The Raspberry Pi OTG connector (the one coming from the USB-C port on a Pi 4 via the custom splitter cable or device) should be connected to the USB 3 port on the ezCoo switch. There is an additional USB cable connected to the managed port on the switch.
 
-1. Connect the USB-A cable from the Raspberry Pi OTG port to ezCoo switch USB 3 port on the front of the switch. **Note**: If this cable is connected to the keyboard port of the ezCoo switch the mouse will not be present.
+1. Connect the USB-A cable from the Raspberry Pi OTG port to ezCoo switch USB 3 port on the front or USB 1 port on the back of the switch. **Note**: If this cable is connected to the keyboard port of the ezCoo switch the mouse will not be present.
 
 2. Connect the HDMI out from the ezCoo switch to the Raspberry Pi CSI-2 to HMDI input. Other users have reported HMDI encoder USB dongles as working.
 
@@ -87,7 +87,8 @@ The UI can be updated to add buttons to switch between KVM inputs and indicators
                     - ["#Input 4", ch3_led, ch3_button]
     ```
 
-    Make sure to notate the spacing for each line, needs to be a total of 4 spaces:
+    !!! warning "Make sure to notate the spaces for each line, needs to be a total of 4 spaces added per line (NOT tabs):"
+    
 
     ```
     For example:
@@ -166,6 +167,19 @@ kvmd:
     ```
 
 ## Simple troubleshooting steps to perform
-??? example Steps
-    1. SSH or open a web terminal to your PiKVM
-    2. `ls -la /dev/ttyUSB*` - This should give you an output. If not, try a different cable till an output is displayed.
+
+```
+    Video Issues:
+        Hook a monitor to the output and test
+        Reseat the cables
+        Change out the cables
+
+    Switching issues:
+        SSH or open a web terminal to your PiKVM
+        `ls -la /dev/ttyUSB*` - This should give you an output. If not, try a different cable till an output is displayed.
+```
+
+
+!!! tip "EZCOO Wiring example can be found [here](https://docs.pikvm.org/wiring_examples/)"
+    
+
