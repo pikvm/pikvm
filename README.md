@@ -368,6 +368,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Benedikt Meier
 * Benjamin Frewert
 * Benjamin Melancon
+* Benjamin Schwartz
 * Benjamin Stegmann
 * Benni Stauder
 * Bernhard Fitzke
