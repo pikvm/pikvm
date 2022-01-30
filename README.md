@@ -737,6 +737,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Scott Gagon
 * Scott Spicola
 * Scott Tusing
+* Scott Worthington
 * Sean
 * SEAT
 * Seonwoo Lee
