@@ -34,7 +34,7 @@ Insert HAT at the same angle, take care to line up the pins on the Rpi with the 
 
 <img src="HAT2_insert_into_case.jpg" width="400" />
 
-??? note "ALTERNATIVE: As an alternative to the above, you can pre assemble the hat+fcc cable onto the RPI4, then insert them into the bottom portion of the case however you will need to flex the sides more whereby creaying a bigger gap when fully assembled."
+??? note "ALTERNATIVE: As an alternative to the above, you can pre assemble the hat+fcc cable onto the RPI4, then insert them into the bottom portion of the case however you will need to flex the sides more whereby creating a bigger gap when fully assembled."
 
 # Step 4
 
