@@ -16,15 +16,15 @@ Remove contents from box
 * 2x Small FCC ribbon cables
 * 1x Small rubber square that break out to 4x small rubber feet
 
-!!! warning "OLED is sensitive to pressure, do NOT push down on the very thin glass as it will crack thereby making the OLED non-funtional"
+!!! warning "OLED is sensitive to pressure, do NOT push down on the very thin glass as it will crack thereby making the OLED non-functional"
 
 # Step 2
 
-Take bottom part of the case, insert the RPI44 into the bottom case at an angle, you will need to flex the other side ever so slightly to get it to slot in
+Take bottom part of the case, insert the RPI4 into the bottom case at an angle, you will need to flex the other side ever so slightly to get it to slot in
 
 <img src="RPI4_insert_into_case.jpg" width="400" />
 
-??? note "Its advised to install heatsyncs before installing the HAT"
+??? note "It's advised to install heatsyncs before installing the HAT"
 
 # Step 3
 
@@ -34,7 +34,7 @@ Insert HAT at the same angle, take care to line up the pins on the Rpi with the 
 
 <img src="HAT2_insert_into_case.jpg" width="400" />
 
-??? note "ALTERNITIVE: As an alternitive to the above, you can pre assemble the hat+fcc cable onto the RPI4, then insert them into the bottom portion of the case however you will need to flex the sides more whereby creaying a bigger gap when fully assembled."
+??? note "ALTERNATIVE: As an alternative to the above, you can pre assemble the hat+fcc cable onto the RPI4, then insert them into the bottom portion of the case however you will need to flex the sides more whereby creaying a bigger gap when fully assembled."
 
 # Step 4
 
@@ -42,7 +42,7 @@ There are 2 ways to insert the FCC cable, you can add it when you insert the Rpi
 
 <img src="FCC_HAT_Ribbon_Cable_install.jpg" width="400" />
 
-??? note "The blue stripes on the ends of the cable will ALWAYS face the side that will be used to tightent the FCC to the camera port or positioned towards the power"
+??? note "The blue stripes on the ends of the cable will ALWAYS face the side that will be used to tighten the FCC to the camera port or positioned towards the power"
 
 # Step 5
 
@@ -55,15 +55,15 @@ Install USB-C bridge
 
 # Step 6
 
-Turn bottom of the case upside down, install the 2 bottom plastic risors, its best to install in a wing formation. Top first by inserting the bottom top screws then slide the bottom part aligning the plastic to the holes then inserting the screwes. At this point its OK to tighten the bottom screws. There is no need to use force, just tighten enough to prohibit movement.
+Turn the bottom of the case upside down, install the 2 bottom plastic risers, it's best to install in a wing formation. Top first by inserting the bottom top screws then slide the bottom part aligning the plastic to the holes then inserting the screws. At this point its OK to tighten the bottom screws. There is no need to use force, just tighten enough to prohibit movement.
 
 <img src="HAT_install_plastic_risers_bottom.jpg" width="400" />
 
 # Step 7
 
-Take the plastic OLED holder, turn the OLED over where the back side is facing you and insert at an angle so as to create a space between the OLED and holder arm, take a flat head screw driver (medium normal) and twist it enough so you can clear the electonics on the bottom of the OLED and continue to gently slide in the remaining OLED till its fully inserted.
+Take the plastic OLED holder, turn the OLED over where the back side is facing you and insert at an angle so as to create a space between the OLED and holder arm, take a flat head screwdriver (medium normal) and twist it enough so you can clear the electronics on the bottom of the OLED and continue to gently slide in the remaining OLED till its fully inserted.
 
-!!! warning "Becareful on handling this display, slight pressure will damage the OLED, however in the event that this does happen replacements are cheap and can be found in most electronic stores or Amazon, look for any IIC (I2C) .91 inch display for Arduino" 
+!!! warning "Be careful on handling this display, slight pressure will damage the OLED, however in the event that this does happen replacements are cheap and can be found in most electronic stores or Amazon, look for any IIC (I2C) .91 inch display for Arduino" 
 
 # Step 8
 
@@ -79,7 +79,7 @@ Install screw and bolts to secure the fan, it does not matter the orientation of
 
 # Step 10
 
-Insert the fan leads and align Red with positive and Black with negitive
+Insert the fan leads and align Red with positive and Black with negative
 
 <img src="HAT_install_fan_to_top.jpg" width="400" />
 
