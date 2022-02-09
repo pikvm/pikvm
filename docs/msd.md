@@ -230,6 +230,7 @@ You should be able to then mount it locally on the server, or reboot the device 
 
 * Physical USB is not needed but external system is mandatory.
 * Create Ventoy image (on Ubuntu x86 machine) (Unaware of a windows version).
+* There is an assumption that you know basic linux to understand that not all dev devices are named exactly like the below
 
 ```
 dd if=/dev/zero of=ventoy.img bs=1M count=4700 status=progress
@@ -256,8 +257,10 @@ sudo mount /dev/loopXXp1 /media/XXX/ventoy
 
 ```
 sudo cp windows.iso /media/XXX/ventoy
-sudo umount /dev/loopXX
-sudo losetup -d /dev/loopXX
+sudo umount /dev/loopXX 
+# This is going to be different for everyone, please choose the same one you mounted earlier
+sudo losetup -d /dev/loopXX 
+# This may or may not work for everyone, if it doesnt work, skip and move forward#
 ```
 
 ssh into the Ubuntu system (Or whatever OS you are using)
