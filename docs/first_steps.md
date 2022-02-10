@@ -66,6 +66,15 @@ For future examples, let's assume that your PiKVM has received the address **192
 
     **The default `root` password is `root`.**
 
+??? example "Update PiKVM software"
+    The images used to flash the SD card are almost always some amount of versions behind. Do yourself a favor and update to the latest version after installation that will most likely have fixes to common issues. From an SSH connection, or right in the web terminal, run:
+    
+    ```
+    # rw
+    # pacman -Syu
+    # reboot
+    ```
+
 ??? danger "✮ ✮ ✮ CHANGE THE PASSWORDS! ✮ ✮ ✮"
     PiKVM comes with the following default passwords:
 
