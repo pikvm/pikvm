@@ -63,6 +63,8 @@ Turn the bottom of the case upside down, install the 2 bottom plastic risers, it
 
 Take the plastic OLED holder, turn the OLED over where the back side is facing you and insert at an angle so as to create a space between the OLED and holder arm, take a flat head screwdriver (medium normal) and twist it enough so you can clear the electronics on the bottom of the OLED and continue to gently slide in the remaining OLED till its fully inserted.
 
+<img src="HAT_install_OLED_into_holder.jpg" width="400" />
+
 !!! warning "Be careful on handling this display, slight pressure will damage the OLED, however in the event that this does happen, replacements are cheap and can be found in most electronic stores or Amazon, look for any IIC (I2C) .91 inch display for Arduino" 
 
 # Step 8
@@ -81,7 +83,7 @@ Install the screws and bolts to secure the fan, it does not matter the orientati
 
 Insert the fan leads and align Red with positive and Black with negative
 
-<img src="HAT_install_fan_to_top.jpg" width="400" />
+<img src="HAT_install_fan_to_HAT_board.jpg" width="400" />
 
 !!! warning "You can damage the fan if installed incorrectly"
 
