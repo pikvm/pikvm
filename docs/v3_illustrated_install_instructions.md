@@ -83,7 +83,7 @@ Install the screws and bolts to secure the fan, it does not matter the orientati
 
 Insert the fan leads and align Red with positive and Black with negative
 
-<img src="HAT_install_fan_to_top.jpg" width="400" />
+<img src="HAT_install_fan_to_HAT_board.jpg" width="400" />
 
 !!! warning "You can damage the fan if installed incorrectly"
 
