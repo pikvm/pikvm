@@ -24,7 +24,7 @@ Take bottom part of the case, insert the RPI4 into the bottom case at an angle, 
 
 <img src="RPI4_insert_into_case.jpg" width="400" />
 
-??? note "It's advised to install heatsyncs before installing the HAT"
+??? note "IF you bought heatsync's(sold seperatly), It's advised to install them now before installing the HAT"
 
 # Step 3
 
