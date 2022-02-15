@@ -73,6 +73,12 @@ Insert the OLED holder with the OLED display into the plug by gently rocking it 
 
 <img src="HAT_install_OLED_holder.jpg" width="400" />
 
+# Step 8a
+
+Install plastic spacer
+
+<img src="HAT_install_plastic spacer.jpg" width="400" />
+
 # Step 9
 
 Install the screws and bolts to secure the fan, it does not matter the orientation of the fan, push or pulling air will result in the same behavior, its personal preference
