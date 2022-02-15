@@ -247,6 +247,8 @@ Here is a diagram shows that how to connect all of the pieces (click to full siz
 
 **Raspberry Pi Zero (2) W**: This board has two USB micro connectors: one for power supply, the second for emulating a USB OTG device. You need to prevent backpowering as in the RPi4 case. To do this, you need to cut off the red power wire in the OTG wire, or seal the +5v pin in the USB-A connector with electrical tape like this:
 <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v2_tape_off.png" alt="drawing" width="300"/>
+  
+** REQUIRED ** A full 8 pair CAT5 or a flat Cisco like serial cable is nessessary for the ATX to function properly.
 
 See video how-tos:
 * [Making USB Y-splitter cable](https://www.youtube.com/watch?v=uLuBuQUF61o).
