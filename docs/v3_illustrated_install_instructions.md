@@ -77,7 +77,7 @@ Insert the OLED holder with the OLED display into the plug by gently rocking it 
 
 Install plastic spacer
 
-<img src="HAT_install_plastic_spacer.jpg" width="400" />
+<img src="HAT_install_plastic spacer.jpg" width="400" />
 
 # Step 9
 
