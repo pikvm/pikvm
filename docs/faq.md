@@ -421,3 +421,11 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 ??? question "PiKVM complains about low power warnings"
     * Are you using a "proper" power supply? Not one you hacked together?
     * Some USB power bricks advertise 5V 2.1A or higher, but can't deliver consistent 5V.  Best to use Raspberry Pi Foundation recommended power supplies.
+    
+
+??? question "PiKVM complains about a RTC low voltage detected, date/time is not reliable"
+    * This is mearly a warning that can be ignored however, the following resolves the issue: 
+    * Leave plugged in for 24+ hours and or
+    * Connect to the internet using the eth cable, the internal NTP service will set the time accordlingly
+    * Force a time sync: `rw && hwclock --systohc"` or `"rw && hwclock -w"`
+    * Set date and time manually can be found [here.](https://www.cyberciti.biz/faq/howto-set-date-time-from-linux-command-prompt/)
