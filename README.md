@@ -544,6 +544,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Jeff Urlwin
 * Jennifer Herting
 * Jennifer Rowlett
+* Jeremy Abel
 * Jerremy Holland
 * Jerry Nall
 * Jim Bailey
@@ -596,6 +597,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Lars
 * Lee Wilkinson
 * LeeNX
+* Leon Siegl
 * Leonard Feineis
 * Liviu Dimitriu
 * Lizardo Hernandez
