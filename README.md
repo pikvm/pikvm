@@ -16,7 +16,7 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 
 
 # Features
-* Supported **Raspberry Pi 2**, **3**, **4**, **Zero2W**, **ZeroW has reached EOL and will no longer recieve updates**;
+* Supported **Raspberry Pi 2**, **3**, **4**, **Zero2W**, **ZeroW**, **RPi1**, **NOTE: RPi1 and ZeroW will still work but has reached EOL and will no longer recieve updates**;
 * **FullHD video** using advanced **HDMI-to-CSI bridge** or **USB dongle**;
 * Extra low **video latency** with **MJPEG** or **H.264 / WebRTC** (for CSI bridge);
 * Bootable **Virtual CD-ROM** and **Flash Drive**;
