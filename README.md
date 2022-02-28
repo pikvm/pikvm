@@ -392,6 +392,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Bryan Adams
 * Bryan Montgomery
 * C P ELSE
+* Calanish
 * Cameron Tacklind
 * Carl Mercier
 * Carl-Fredrik Johansson
