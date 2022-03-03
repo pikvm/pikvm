@@ -9,7 +9,7 @@ Tesseract does not see your image until you explicitly give the recognition comm
 For any language, you will have to install its support. It is very easy to do this (Russian language for example):
 ```
 # rw
-# pacman -S tesseract-data-rus
+# pacman --assume-installed tessdata -S tesseract-data-rus
 # ro
 ```
 
