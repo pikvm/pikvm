@@ -71,7 +71,7 @@ Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (a
 * `iwspy` - Displays per node link quality.
 * `iwpriv` - Allow's you to manipulate the Wireless Extensions specific to a driver (private).
 
-!!! example "Some examples"
+??? example "Some examples"
     ```
     # iw dev wlan0 scan | egrep "signal:|SSID:" | sed -e "s/\tsignal: //" -e "s/\tSSID: //" | awk '{ORS = (NR % 2 == 0)? "\n" : " "; print}' | sort
     ```
