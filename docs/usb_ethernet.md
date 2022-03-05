@@ -81,3 +81,18 @@ By default, `kvmd-otgnet` will configure network connection between PiKVM and th
     ```
 
 5. Don't forget to `reboot`.
+    
+??? example "An example of what what the config would look like if you wanted the target to have inet access (Please edit to suit your needs):"
+    ```
+    otgnet:
+    firewall:
+        allow_tcp: [80, 443]
+        forward_iface: wlan0
+    commands:
+        post_start_cmd_append:
+        - "--dhcp-option=6,1.1.1.1,1.0.0.1"
+    iface:
+        ip_cmd:
+            - /usr/bin/ip
+        net: 10.65.0.0/28
+    ```
