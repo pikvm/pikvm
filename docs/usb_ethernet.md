@@ -82,7 +82,7 @@ By default, `kvmd-otgnet` will configure network connection between PiKVM and th
 
 5. Don't forget to `reboot`.
     
-??? example "An example of what what the config would look like if you wanted the target to have inet access (Please edit to suit your needs):"
+??? example "An example of what the config would look like if you wanted the target to have inet access (Please edit to suit your needs):"
     ```
     otgnet:
         firewall:
