@@ -147,6 +147,25 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
     Now re-edit your `/etc/kvmd/override.yaml` file and just use tab to get the right spacing, you might need to delete the current leading "spaces" to ensure proper formatting.
 
+??? question "How can I use the serial console to access to access other devices"
+    you need to stop the service which listens on the ttyAMA0:
+    
+    ```
+    rw
+    systemctl stop serial-getty@ttyAMA0.service
+    ```
+    
+    If you want this change permanent (not starting again after reboot), you can disable this service, ('enable' to reverse this decision):
+    
+    ```
+    systemctl disable serial-getty@ttyAMA0.service
+    ```
+    
+   Important:
+   * Only USB OR the RJ-45 serial connector will work, you can't use them together! 
+   * If you disable the service permanently, you can't recover your device via serial console if you need this.
+   * There are some reports, that you need to remove "ttyAMA0" from /boot/cmdline.txt, but this is not needed on new installations.
+
 
 ## First steps
 
