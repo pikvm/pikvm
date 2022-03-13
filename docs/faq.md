@@ -162,11 +162,10 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     systemctl disable serial-getty@ttyAMA0.service
     ```
     
-   !!! note
-
-       * Only USB OR the RJ-45 serial connector will work, you can't use them together! 
-       * If you disable the service permanently, you can't recover your device via serial console if you need this.
-       * There are some reports, that you need to remove "ttyAMA0" from /boot/cmdline.txt, but this is not needed on new installations.
+    !!! note
+        * Only USB OR the RJ-45 serial connector will work, you can't use them together! 
+        * If you disable the service permanently, you can't recover your device via serial console if you need this.
+        * There are some reports, that you need to remove "ttyAMA0" from /boot/cmdline.txt, but this is not needed on new installations.
 
 
 ## First steps
