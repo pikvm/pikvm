@@ -713,6 +713,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Ranc1d
 * Randall D Bilbrey
 * Raphael Schitz
+* René Rathenau
 * Richard Bernarts
 * Richard Fancher
 * Richard Freemantle
