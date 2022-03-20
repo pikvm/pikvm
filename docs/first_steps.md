@@ -2,7 +2,10 @@
 
 ## First power on
 
-!!! warning "For v2 DIY owners, please follow this [first](https://github.com/pikvm/pikvm)!"
+!!! warning
+    For v2 DIY owners, please follow this [first](https://github.com/pikvm/pikvm)<br />
+    For v3 HAT Users, please follow this [first](v3)
+
 
 ??? example "Optional setting up Wi-Fi"
     !!! warning
