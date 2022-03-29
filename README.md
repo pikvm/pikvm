@@ -581,6 +581,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Justin
 * Justin Waters
 * Kai Hadler
+* Kamil Chyba
 * Karl Dunne
 * Keith Muggleton
 * Ken Lee
