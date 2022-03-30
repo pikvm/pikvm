@@ -8,12 +8,14 @@
 
 
 ??? example "Optional setting up Wi-Fi"
-    !!! warning
-        There is nothing more reliable than wired Ethernet, so it's better to use the cable. But who are we to stop you... :)
+    !!! warning "Please read the following caveats" 
+        1. There is nothing more reliable than wired Ethernet, so it's better to use the **cable**. But who are we to stop you... :)
+        2. Adding FIRSTBOOT=1 or FIRSTBOOT-1 will erase the msd partition, if used afterwords as a means of switching wifi networks, do not include this option. Instead, use different supplicant files for each wifi SSID, mv files to the supplicant dir as needed and reboot.
+        3. `pikvm.txt` will be removed once its been used. You will need to recreate it again if you did not provide the correct info
 
-    If you want to connect PiKVM to Wi-Fi network, you need to tell the device ESSID and password before first boot.
-    To do this, mount the first partition of the memory card (FAT32) and edit the `pikvm.txt` file there.
-    Do not remove line `FIRSTBOOT=1` or `FIRST_BOOT-1`, just add your wifi settings like this:
+    If you want to connect PiKVM to a Wi-Fi network, you need to tell the device ESSID and password before first boot.
+    To do this, mount the first partition of the memory card (FAT32) and edit or make the `pikvm.txt` file there.
+    Do not remove line `FIRSTBOOT=1` or `FIRST_BOOT-1` for first time booting, just add your wifi settings like this:
 
     ```
     FIRSTBOOT=1
@@ -21,18 +23,11 @@
     WIFI_PASSWD="p@s$$w0rd"
     ```
     
-    !!! warning
-         FIRSTBOOT will erase the msd partition, if used afterwords as a means of switching wifi networks, do not include this option. Instead, use different supplicant files for each wifi SSID, mv files to the supplicant dir as needed and reboot.
-
-
     There is a possibility that, in countries that support CH13, the device will not connect.
     You will need to configure your router to disable channels 12-14 or disable Auto scan mode so it will connect.
         
     Save, unmount and follow the next step.
     
-    !!! warning
-        `pikvm.txt` will be removed once its been used. You will need to recreate it again if you did not provide the correct info
-
 **Power up the device.**
 
 !!! warning "Do not turn off the device until it's fully booted for the first time"
