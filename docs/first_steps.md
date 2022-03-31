@@ -64,6 +64,14 @@ For future examples, let's assume that your PiKVM has received the address **192
 
     **The default `root` password is `root`.**
 
+??? example "OPTIONAL: Update PiKVM software"
+    This part is not nessessary for a working OOB experience and should only be performed if you are physically at the PiKVM to recover it, you however, may benifit from performing the below actions. These are the instructions:
+
+    ```
+    # rw
+    # pacman -Syu
+    # reboot
+    ```
 
 ??? danger "✮ ✮ ✮ CHANGE THE PASSWORDS! ✮ ✮ ✮"
     PiKVM comes with the following default passwords:
