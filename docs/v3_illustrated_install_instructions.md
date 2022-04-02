@@ -1,9 +1,9 @@
 # Step 1
 
-Remove contents from box
+Remove contents from box.
 
 # Contents:
-* 8x 2.M screws for the case
+* 8x M.2 screws for the case
 * 4x screws for the fan
 * 4x bolts for the fan
 * 1x fan
@@ -13,18 +13,18 @@ Remove contents from box
 * 2x bottom plastic risers
 * 1x plastic top riser
 * 1x plastic OLED holder that is also a front riser
-* 2x Small FCC ribbon cables
-* 1x Small rubber square that break out to 4x small rubber feet
+* 2x small FCC ribbon cables
+* 1x small rubber square that break out to 4x small rubber feet
 
 !!! warning "OLED is sensitive to pressure, do NOT push down on the very thin glass as it will crack thereby making the OLED non-functional"
 
 # Step 2
 
-Take bottom part of the case, insert the RPI4 into the bottom case at an angle, you will need to flex the other side ever so slightly to get it to slot in
+Take bottom part of the case, insert the RPI4 into the bottom case at an angle, you will need to flex the other side ever so slightly to get it to slot in.
 
 <img src="RPI4_insert_into_case.jpg" width="400" />
 
-??? note "IF you bought heatsync's(sold seperatly), It's advised to install them now before installing the HAT"
+??? note "IF you bought heatsink's (sold seperatly), it's advised to install them now before installing the HAT"
 
 # Step 3
 
@@ -38,7 +38,7 @@ Insert HAT at the same angle, take care to line up the pins on the Rpi with the 
 
 # Step 4
 
-There are 2 ways to insert the FCC cable, you can add it when you insert the RPI in Step 2 OR wait till you also have the HAT installed and slide it into the slot
+There are 2 ways to insert the FCC cable, you can add it when you insert the RPI in Step 2 OR wait till you also have the HAT installed and slide it into the slot.
 
 <img src="FCC_HAT_Ribbon_Cable_install.jpg" width="400" />
 
@@ -46,7 +46,7 @@ There are 2 ways to insert the FCC cable, you can add it when you insert the RPI
 
 # Step 5
 
-Install USB-C bridge
+Install USB-C bridge.
 
 <img src="HAT_install_usbc_bridge.jpg" width="400" />
 
@@ -69,25 +69,25 @@ Take the plastic OLED holder, turn the OLED over where the back side is facing y
 
 # Step 8
 
-Insert the OLED holder with the OLED display into the plug by gently rocking it back and forth till its fully inserted
+Insert the OLED holder with the OLED display into the plug by gently rocking it back and forth till it's fully inserted.
 
 <img src="HAT_install_OLED_holder.jpg" width="400" />
 
 # Step 8a
 
-Install plastic spacer
+Install plastic spacer.
 
 <img src="HAT_install_plastic spacer.jpg" width="400" />
 
 # Step 9
 
-Install the screws and bolts to secure the fan, it does not matter the orientation of the fan, push or pulling air will result in the same behavior, its personal preference
+Install the screws and bolts to secure the fan, it does not matter the orientation of the fan, push or pulling air will result in the same behavior, its personal preference.
 
 <img src="HAT_install_fan_to_top.jpg" width="400" />
 
 # Step 10
 
-Insert the fan leads and align Red with positive and Black with negative
+Insert the fan leads and align Red with positive and Black with negative.
 
 <img src="HAT_install_fan_to_HAT_board.jpg" width="400" />
 
@@ -95,10 +95,10 @@ Insert the fan leads and align Red with positive and Black with negative
 
 # Step 11
 
-Install the top of the case to the bottom, use the 4 remaining screws to secure the top
+Install the top of the case to the bottom, use the 4 remaining screws to secure the top.
 
 <img src="HAT2_insert_top_part_of_case.jpg" width="400" />
 
 # Step 12
 
-Please follow the V3 guide and First Steps guide to activate your PiKVM
+Please follow the V3 guide and First Steps guide to activate your PiKVM.
