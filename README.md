@@ -349,7 +349,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Andy Keys
 * Anish Patel
 * Anix
-* anonymous
+* Anonymous
 * Anthony Junk
 * Anton Kovalenko
 * Armen
@@ -515,6 +515,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Invader Monks
 * IT Lifesaver
 * Ivan Ganev
+* Ivan Josiah Lapis
 * Ivan Shapovalov
 * J L
 * Jaanus
