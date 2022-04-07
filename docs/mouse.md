@@ -16,7 +16,7 @@ When you press `Esc`, the browser releases the mouse.
 
 ## Important notes
 
-The relative mouse generates a huge number of events that can be poorly transmitted over the network or very slowly perceived by the BIOS/UEFI driver. To solve this problem, mouse events are optimized using a vector sum. This mode is enabled by default and is available in the web menu `System -> Squash mouse moves`. You can try disabling this if you have problems with mouse acceleration. This is the best and most reasonable compromise right now.
+The relative mouse generates a huge number of events that can be poorly transmitted over the network or very slowly perceived by the BIOS/UEFI driver. To solve this problem, mouse events are optimized using a vector sum. This mode is enabled by activating the below first and is available in the web menu `System -> Squash mouse moves`. You can try disabling this if you have problems with mouse acceleration. This is the best and most reasonable compromise right now.
 
 Also currently the relative mouse mode is not supported by [PiKVM VNC server](vnc.md) yet. The reason is that none of the recommended clients support the [QEMU Pointer Motion Change](https://github.com/rfbproto/rfbproto/blob/master/rfbproto.rst#qemu-pointer-motion-change-pseudo-encoding) extension. 
 We expect to implement this in [TigerVNC](https://github.com/TigerVNC/tigervnc/issues/619). The relative mode is also not supported by mobile browsers.

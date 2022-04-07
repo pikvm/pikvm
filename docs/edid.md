@@ -2,6 +2,7 @@
 
 !!! warning
     This will only apply to the CSI/v3 models, USB is not compatable.
+    Modifing the EDID may or may not work in some instances where a "no signal" might be a result of outside factors.
 
 
 EDID is information about the video modes supported by the video capture device.

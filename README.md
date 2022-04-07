@@ -1,11 +1,11 @@
 # Open and cheap DIY IP-KVM based on Raspberry Pi
 [![Discord](https://img.shields.io/discord/580094191938437144?logo=discord)](https://discord.gg/bpmXfz5) [![Reddit](https://img.shields.io/badge/reddit-join-orange?logo=reddit)](https://www.reddit.com/r/pikvm)
 
-A very simple and fully functional Raspberry Pi-based KVM (KVM = Keyboard, Video, Mouse) over IP that you can make with your own hands. This device helps to manage servers or workstations remotely, regardless of the health of the operating system or whether one is installed. You can fix any problem, configure the BIOS, and even reinstall the OS using the virtual CD-ROM or Flash Drive.
+A very simple and fully functional Raspberry Pi-based KVM (Keyboard-Video-Mouse) over IP that you can make with your own hands. This device helps to manage servers or workstations remotely, regardless of the health of the operating system or whether one is installed. You can fix any problem, configure the BIOS, and even reinstall the OS using the virtual CD-ROM or Flash Drive.
 
 The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](https://docs.pikvm.org) and join to the [Discord Community Chat](https://discord.gg/bpmXfz5) for news, questions and support!
 
-| **[>>> DIY Device Getting Started <<<](#diy-getting-started)** | **[>>> PiKVM v3 HAT Getting Started <<<](#pikvm-v3-hat-features)** |
+| **[>>> DIY Device Getting Started <<<](#diy-getting-started)** | **[>>> PiKVM v3 HAT Getting Started <<<](#pikvm-v3-hat)** |
 | --------------------------------------------- | ------------------------------------------ |
 | [DIY Review by **Novaspirit Tech**](https://youtu.be/plP9Y1likRg)<br>[**Hackaday**](https://hackaday.com/2020/11/24/true-networked-kvm-without-breaking-the-bank/) & [**Tom's HARDWARE**](https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi) & [**Elector MAG**](https://www.elektormagazine.com/news/pikvm-raspberry-pi-as-a-kvm-remote-control)<br>[Our boring presentation for the DIY :)](https://youtu.be/9YhPWjWv5gw) | [PiKVM v3 Review by **Novaspirit Tech**](https://youtu.be/dTchVKxx7Fo)<br>[Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)<br>[Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c) |
 | <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v2_example.jpg" alt="drawing"/> | <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v3_board.jpg" alt="drawing"/> |
@@ -16,7 +16,7 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 
 
 # Features
-* Supported **Raspberry Pi 2**, **3**, **4**, **ZeroW** and **Zero2W**;
+* Supported **Raspberry Pi 2**, **3**, **4**, **Zero2W**, **ZeroW**, **RPi1**, **NOTE: RPi1 and ZeroW will still work but has reached EOL and will no longer recieve updates**;
 * **FullHD video** using advanced **HDMI-to-CSI bridge** or **USB dongle**;
 * Extra low **video latency** with **MJPEG** or **H.264 / WebRTC** (for CSI bridge);
 * Bootable **Virtual CD-ROM** and **Flash Drive**;
@@ -105,6 +105,10 @@ PiKVM supports several different hardware configurations, referred to as **platf
   - **Recommended**: [HDMI to CSI-2 bridge based on TC358743](https://aliexpress.com/item/4000102166176.html) - low latency, more reliable, **H.264 video**.
   - ... or [HDMI to USB dongle](https://aliexpress.com/item/4001043540669.html) (not available for ZeroW and Zero2W) - high latency >200ms, [not very reliable](#a-few-words-about-hdmi-usb-dongle-h264-is-not-officially-supported-at-this-time)), H.264 is not supported.
 * Only for Raspberry Pi 4: parts for Y-splitter cable (**one variant at your choice**):
+  *  <details><summary>❓ Why is this cable necessary?</summary>
+     On a Raspberry Pi only the USB port that receives power is capable of acting as a USB Device. The other USB ports are capable only of acting as USB Hosts. Therefore a special cable must be used on the USB power port that it can simultanously act as USB Device for the PC/server and receive external DC power.
+      </details>
+
   * <details><summary>:exclamation:Variant #1:exclamation:: (No mod solution - Amazon) Y cable with power blocker ends.</summary>
     <ul>
       <li>1x USB-A to USB-A cable (male-male).</li>
@@ -172,23 +176,16 @@ The dongle is completely supported and PiKVM works great with it. But it has som
 
 # How to set up the device can be seen from [here](https://docs.pikvm.org/wiring_examples)
 
-# PiKVM v3 HAT Features
-
+# PiKVM v3 HAT
 
 <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v3_kit.jpg" alt="drawing" height=200>
 
+We have developed our own HAT for the Raspberry Pi 4.
+
+**[>>> Buy PiKVM v3 HAT right now! <<<](https://pikvm.org/buy)**
+
 **[>>> PiKVM v3 HAT User Guide <<<](https://docs.pikvm.org/v3)**
 
-**[>>> PiKVM v3 HAT on Kickstarter! <<<](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)**
-
-**The Kickstarer was a HUGE success but has ended.**
-
-**If you are still looking to get one after the KS has ended they will be available on [pishop.us](https://www.pishop.us/product/pi-kvm-v3-hat-for-raspberry-pi-4/) around Novemeber**
-
-We have developed our own HAT for the Raspberry Pi 4. It will have all the features of the v2 platform, including:
-
-* Fully **Open Source** software and ready-made maintainable Linux based OS.
-* Access to the server via **Web UI** or **VNC**.
 * **HDMI video capture** for extra low latency with **MJPEG** or **H.264/WebRTC** (1080p 50Hz max).
 * **HDMI audio capture** (supported by hardware, software work in progress).
 * **USB keyboard** & **mouse**, bootable **Virtual CD-ROM** & **Flash Drive**;
@@ -197,11 +194,6 @@ We have developed our own HAT for the Raspberry Pi 4. It will have all the featu
 * **PWM fan controller**.
 * **A real-time clock** for accurate logging.
 * CISCO-style and USB **serial console port** (to manage PiKVM OS or to connect the server).
-* Ability to use **IPMI BMC**, **IPMI SoL**, **Redfish** and **Wake-on-LAN** to control the server.
-* **Extensible authorization** and **SSL encryption** out of the box.
-* **Health monitoring** of the Raspberry Pi.
-* Control **GPIO** ports and **USB relays** from the Web UI.
-* **Bonus: It's compatible with Apple computers!**
 * **Optional OLED screen** to display network status or other desired information.
 * **No need for soldering or breadboarding**. It's a ready-made, reliable board which you can use yourself or provide to your clients.
 
@@ -209,6 +201,9 @@ Watch the video:
 * [PiKVM v3 Review by **Novaspirit Tech**](https://youtu.be/dTchVKxx7Fo)
 * [Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)
 * [Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c)
+
+History:
+* [PiKVM v3 HAT on Kickstarter (huge success](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)
 
 -----
 
@@ -256,6 +251,8 @@ Here is a diagram shows that how to connect all of the pieces (click to full siz
 
 **Raspberry Pi Zero (2) W**: This board has two USB micro connectors: one for power supply, the second for emulating a USB OTG device. You need to prevent backpowering as in the RPi4 case. To do this, you need to cut off the red power wire in the OTG wire, or seal the +5v pin in the USB-A connector with electrical tape like this:
 <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v2_tape_off.png" alt="drawing" width="300"/>
+  
+** REQUIRED ** A full 8 pair CAT5 or a flat Cisco like serial cable is nessessary for the ATX to function properly.
 
 See video how-tos:
 * [Making USB Y-splitter cable](https://www.youtube.com/watch?v=uLuBuQUF61o).
@@ -313,7 +310,7 @@ Happy using of PiKVM :)
 -----
 
 # Donate
-This project is developed by Open Source enthusiasts. If you find PiKVM useful or it has saved you a long trip to check on an unresponsive server, you can support the lead developer by donating a few dollars via [Patreon](https://www.patreon.com/pikvm) or [PayPal](https://www.paypal.me/mdevaev). With this money, he will be able to buy new hardware (Raspberry Pi boards and other components) to test and maintain various configurations of PiKVM, and generally devote significantly more time to the project. At the bottom of this page are the names of all the people who have helped this project develop with their donations. Our gratitude knows no bounds!
+This project is developed by Open Source enthusiasts. If you find PiKVM useful or it has saved you a long trip to check on an unresponsive server, you can support the lead developer by donating a few dollars on [Patreon](https://www.patreon.com/pikvm). With this money, he will be able to buy new hardware (Raspberry Pi boards and other components) to test and maintain various configurations of PiKVM, and generally devote significantly more time to the project. At the bottom of this page are the names of all the people who have helped this project develop with their donations. Our gratitude knows no bounds!
 
 If you wish to use PiKVM in production, we accept orders to modify it for your needs or implement custom features you require. Contact us via [live chat](https://discord.gg/bpmXfz5) or email the lead developer at: mdevaev@gmail.com
 
@@ -352,10 +349,11 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Andrew Reusch
 * Andrew Ruan
 * Andrzej V
+* Andy
 * Andy Keys
 * Anish Patel
 * Anix
-* anonymous
+* Anonymous
 * Anthony Junk
 * Anton Kovalenko
 * Armen
@@ -376,6 +374,8 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Benedikt Meier
 * Benjamin Frewert
 * Benjamin Melancon
+* Benjamin Schwartz
+* Benjamin Stegmann
 * Benni Stauder
 * Bernhard Fitzke
 * bikmaek
@@ -396,6 +396,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Bryan Adams
 * Bryan Montgomery
 * C P ELSE
+* Calanish
 * Cameron Tacklind
 * Carl Mercier
 * Carl-Fredrik Johansson
@@ -518,6 +519,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Invader Monks
 * IT Lifesaver
 * Ivan Ganev
+* Ivan Josiah Lapis
 * Ivan Shapovalov
 * J L
 * Jaanus
@@ -548,6 +550,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Jeff Urlwin
 * Jennifer Herting
 * Jennifer Rowlett
+* Jeremy Abel
 * Jerremy Holland
 * Jerry Nall
 * Jim Bailey
@@ -583,6 +586,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Justin
 * Justin Waters
 * Kai Hadler
+* Kamil Chyba
 * Karl Dunne
 * Keith Muggleton
 * Ken Lee
@@ -600,6 +604,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Lars
 * Lee Wilkinson
 * LeeNX
+* Leon Siegl
 * Leonard Feineis
 * Liviu Dimitriu
 * Lizardo Hernandez
@@ -714,6 +719,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Ranc1d
 * Randall D Bilbrey
 * Raphael Schitz
+* René Rathenau
 * Richard Bernarts
 * Richard Fancher
 * Richard Freemantle
@@ -743,7 +749,9 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Scott Gagon
 * Scott Spicola
 * Scott Tusing
+* Scott Worthington
 * Sean
+* SEAT
 * Seonwoo Lee
 * Sergey Lukjanov
 * Seth Jennings

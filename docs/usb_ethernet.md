@@ -16,7 +16,20 @@ Specifically to v2+. When combined with configuring a DNS server, FTP, or SMB (f
                 kvm_mac: 42:61:64:55:53:42
     ```
 
-    The `host_mac` address will be used on the server's network interface. The `kvm_mac` means the address that will be assigned to the local interface on the PiKVM. The KVM interface will be called `usb0`network interface. If the `host_mac` or `kvm_mac` is not specified, a random value will be used. The `driver` parameter means the protocol that will be used for the USB network. The default value is `ecm` so it can be passed it this example. Other possible values are `eem`, `ncm` and `rndis`.
+    The `host_mac` address will be used on the server's network interface. The `kvm_mac` means the address that will be assigned to the local interface on the PiKVM. The KVM interface will be called `usb0`network interface. If the `host_mac` or `kvm_mac` is not specified, a random value will be used. The `driver` parameter means the protocol that will be used for the USB network. The default value is `ecm` so it can be passed it this example. Other possible values are `eem`, `ncm`, `rndis` and `rndis5`.
+
+    **Driver compatibility:**
+
+    | Driver | Operating System|
+    |--------|-------|
+    | ecm    | Linux |
+    | eem    | Linux |
+    | rndis5 | Windows XP to Windows 7<sup>[1](#rndis5)</sup><br>Linux > 2.6.13 |
+    | rndis  | Windows 7 and later<sup>[2](#rndis)<br>Linux > 2.6.13 |
+    | ncm    | Windows 10 and later<br>Linux > 2.6.37 |
+
+    <a name="rndis5">1</a>: Manual driver installation is required. [Download RNDIS 5 Windows](driver/win/pikvm-rndis5.inf)<br>
+    <a name="rndis">2</a>: Automatic driver installation since kvmd-3.53
 
 2. To automatically configure the USB network on the server recommended using the service `kvmd-otgnet`. It configures the firewall, assigns an address to the local PiKVM interface `usb0` and starts DHCP so the managed server can get the IPv4 address. By default, the address `169.254.0.1/28` to interface `usb0` will be assigned. One of the other addresses from the network `169.254.0.0./28` will be assigned to the server when it requests it via DHCP. For security reasons, all incoming connections from the server to the PiKVM side are blocked (except for ICMP and UDP port 67 which is used for DHCP). If you want to allow access from the server to the PiKVM interface, then you need to add ports 80 and 443 to the whitelist using `/etc/kvmd/override.yaml` file like this:
 
@@ -69,6 +82,26 @@ By default, `kvmd-otgnet` will configure network connection between PiKVM and th
 
 5. Don't forget to `reboot`.
 
+
+=======
+    
+??? example "An example of what the config would look like if you wanted the target to have inet access (Please edit to suit your needs):"
+    ```
+    otgnet:
+        firewall:
+            allow_tcp: [80, 443]
+            forward_iface: wlan0
+        commands:
+            post_start_cmd_append:
+                - "--dhcp-option=6,1.1.1.1,1.0.0.1"
+        iface:
+            ip_cmd:
+                - /usr/bin/ip
+            net: 10.65.0.0/28
+    ```
+
+  
+=======
 ## Working with Windows Computers
 This has been proven to work with Windows:
 1. Set the driver type to `rndis` (see above)
@@ -98,5 +131,3 @@ This has been proven to work with Windows:
     ![grafik](https://user-images.githubusercontent.com/100349/149661295-97d8d8f9-5c40-4d80-b3a2-c544ca8c7224.png)
 15. Verify the card is working by pinging your piKVM in a console: `ping 169.254.0.1` \
     ![grafik](https://user-images.githubusercontent.com/100349/149662794-51d34926-a6d4-425a-8cdd-b16d69e458ee.png)
-
-
