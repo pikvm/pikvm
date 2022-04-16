@@ -415,10 +415,6 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     If problems occur when uploading even a small disk image it may be due to unstable network operation or antivirus software. It is well known that Kaspersky antivirus cuts off PiKVM connections during uploading, so you should add the PiKVM website to Kaspersky's list of exceptions or not filter web requests with the antivirus. Antivirus programs can also affect the performance of certain interface elements, for example the quality slider. For Kaspersky, the steps to add the network address of PiKVM's website to the exclusion list is: `Protection -> Private browsing -> Categories and exclusions -> Exclusions`.
 
 
-??? question "I can't copy clipboard contents from the server (the machine controlled via PiKVM) to the client"
-    The clipboard only works from the client to the server not vice versa. There is currently no way to do this, as PiKVM has no access to the managed server's state other than via USB and video.
-
-
 ## Hardware problems (Wi-Fi, ATX, etc)
 
 ??? question "I can't connect to Wi-Fi on a Raspberry Pi Zero W"
