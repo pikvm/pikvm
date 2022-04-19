@@ -11,7 +11,9 @@ The ezCoo managed switch can be controlled by PiKVM to allow it to connect to mu
 
 ## Connections
 
-From a high level, the ezCoo switch uses standard connections to the host machines (USB-A to USB-B and HDMI). The Raspberry Pi OTG connector (the one coming from the USB-C port on a Pi 4 via the custom splitter cable or device) should be connected to the USB 3 port on the ezCoo switch. There is an additional USB cable connected to the managed port on the switch.
+Please review the item description and manual before deploying.
+
+From a high level, the ezCoo switch uses standard connections to the host machines (USB-A to USB-B and HDMI for USB2 version, USB-A to USB-A for the USB3 version). The Raspberry Pi OTG connector (the one coming from the USB-C port on a Pi 4 via the custom splitter cable or device) should be connected to the USB 3 port on the ezCoo switch. There is an additional USB cable connected to the managed port on the switch.
 
 1. Connect the USB-C cable from the Raspberry Pi OTG port to ezCoo switch USB 3 port on the front or USB 1 port on the back of the switch. **Note**: If this cable is connected to the keyboard port of the ezCoo switch the mouse will not be present.
 
