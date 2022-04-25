@@ -477,6 +477,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Felyx Gabryel
 * Fergus McKay
 * Finn Ebenritter
+* floppy
 * fo0bar
 * Foamy
 * Foli Ayivoh
@@ -551,6 +552,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Jennifer Herting
 * Jennifer Rowlett
 * Jeremy Abel
+* Jeremy Hines
 * Jerremy Holland
 * Jerry Nall
 * Jim Bailey
