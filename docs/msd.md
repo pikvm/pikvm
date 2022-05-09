@@ -108,7 +108,7 @@ to the server and download some files from to PiKVM from it.
     # kvmd-otgmsd -i 1 --set-rw=1 --set-cdrom=0 --set-image=/root/flash.img
     ```
 
-    After that you will have access to the flash drive from the server. **Drive 0 represents a drive that is controlled via a web interface and API. Don't use it with kvmd-otgmsd if you don't know exactly what you're doing.**
+    After that you will have access to the flash drive from the target server. **Drive 0 represents a drive that is controlled via a web interface and API. Don't use it with kvmd-otgmsd if you don't know exactly what you're doing.**
 
 4. View the driver state:
 
