@@ -97,7 +97,7 @@ The UI can be updated to add buttons to switch between KVM inputs and indicators
         parent: 0 spaces (kvmd:)
         child: 4 spaces (gpio:)
         sub-child: 8 spaces (drivers:)
-        sub-sub-child: 16 spaces (ez:)
+        sub-sub-child: 12 spaces (ez:)
     ```
 
 3. Return to read-only mode for the sd card via `ro`.
