@@ -364,6 +364,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Ashlesh Chaudhari
 * Augusto Becciu
 * AVS Computer
+* awkspace
 * baddog
 * Bao Tin Hoang
 * Bean Co.
@@ -484,6 +485,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Folkert Weistra
 * Francisco Pavon
 * Frank
+* Frank Sander
 * Frederick Czajka
 * Fredrik Idréus
 * Garrett Dangerfield
@@ -631,6 +633,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Marek Marczykowski-Górecki
 * Marius
 * Mar. Balske
+* Mark Farrell
 * Mark Gilbert
 * Mark Knam
 * Mark Robinson
@@ -716,12 +719,15 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * pozitron03
 * Przemysław Szypowicz
 * Qteal
+* Quattro Uno
 * Quentin Peten
 * Ralph Borchers
 * Ranc1d
 * Randall D Bilbrey
+* Ref Chowdhury
 * Raphael Schitz
 * René Rathenau
+* Ricardo Marques
 * Richard Bernarts
 * Richard Fancher
 * Richard Freemantle
@@ -820,6 +826,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * William Hooper
 * William Perrin
 * William Stearns
+* xMdb
 * Yanko Kaneti
 * Yaroslav Kulikovskikh
 * Yethal
