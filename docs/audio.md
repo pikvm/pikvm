@@ -4,7 +4,7 @@ This feature allows you to receive audio over an HDMI cable and transmit it to t
 
 !!! warning
     * This is only supported by PiKVM V3 devices right now.
-    * Please not the feature is experimental. Nothing will explode for you, but something may not work. Please report about problems [here](https://discord.gg/bpmXfz5) (preferred) or [here](https://github.com/pikvm/pikvm/issues/97).
+    * Please note the feature is experimental. Nothing will explode for you, but something may not work. Please report about problems [here](https://discord.gg/bpmXfz5) (preferred) or [here](https://github.com/pikvm/pikvm/issues/97).
 
 ## Preparing
 1. Make sure that you have not removed the [jumpers related to audio (4)](v3.md#atx-connection) on the V3 board and have not deleted or commented out the `dtoverlay=tc358743-audio` line in `/boot/config.txt`. Return everything as it was, if you changed it.
