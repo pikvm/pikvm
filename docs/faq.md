@@ -36,7 +36,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     * For HDMI-CSI bridge, bus bandwidth is not enough to transmit more than 1080p50.
     * For HDMI-USB dongle, high latency and low video quality.
     * General hardware video capture differs from software streaming and introduces additional latency.
-    * PiKVM can't transmit audio at this time. It will be available on PiKVM v3 HAT at some point in the future (implemented in the hardware, but doesn't have software support).
+    
 
 
 ??? question "Can PiKVM do 4K video?"
@@ -54,7 +54,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "Does PiKVM support sound?"
-    At this time sound is not supported on any platform. Once sound is implemented, it will only be available for PiKVM v3 HAT. Due to a hardware bug in HDMI-CSI bridges, sound may or may not work.
+    Yes but the only officially supported version is the v3 Pre-Assembled or HAT's, v2 we will attempt best effort but ultimatly we do not support CSI modules or USB.
 
 
 ??? question "Can I power the Pi via PoE?"
@@ -132,6 +132,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     ```
 
 ??? question "I am getting a 500/503 error when I try and access the main KVM page!"
+    The latest images take care of these issues, please reflash and edit, otherwise follow the below.
     This is due to your recent changes in your yaml file; you have to use spaces and NOT tabs.
     Undo what you just did, then, `systemctl restart kvmd`, does it work again?
     Review what you added and take care of [YAML syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html).
@@ -232,7 +233,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "How do I update PiKVM with the latest software?"
-    PiKVM OS is based on Arch Linux ARM and is fully updated from the repository by a regular package manager. Connect to your PiKVM via ssh and run:
+    This is ONLY recommended if you need a feature, otherwise this should ONLY be done if you are physically at the device and can reflash the sd card as a means of recovery. PiKVM OS is based on Arch Linux ARM and is fully updated from the repository by a regular package manager. Connect to your PiKVM via ssh and run:
 
     ```
     # rw
@@ -283,9 +284,9 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "Can I have different hostnames for each of my PiKVMs?"
     Yes! And it's easy to do! Using a SSH session or the web terminal:
-    1. Make sure you are root, run `rw` then run `hostnamectl set-hostname yournewhostname.domain`.
-    2. Optional: edit `/etc/kvmd/meta.yaml` to alter the displayed hostname in the web UI.
-    3. Run `ro` and `reboot`.
+    * Make sure you are root, run `rw` then run `hostnamectl set-hostname yournewhostname.domain`.
+    * Optional: edit `/etc/kvmd/meta.yaml` to alter the displayed hostname in the web UI.
+    * Run `ro` and `reboot`.
 
    
 ## Video problems
