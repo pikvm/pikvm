@@ -557,6 +557,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Jeremy Hines
 * Jerremy Holland
 * Jerry Nall
+* Jerry Y. Chen
 * Jim Bailey
 * Jim Harbin
 * Jimmy Burgett
