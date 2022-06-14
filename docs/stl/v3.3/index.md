@@ -73,7 +73,7 @@ To assemble:
 
 
 6. Attach the fan to the two headers labeled "fan" located next to the CSI ribbon cable and large capacitor.
-7. Slide the fan into the slot on the front part of the case. The fans label should be facing towards the exterior of the case and the leads should be pointing up out of the case so they don't bind as you slide the fan in. See Figure 3.
+7. Slide the fan into the slot on the front part of the case. The fan should move fan from outside to inside the case. For the fan in Figure 3, this means mounting with the label facing the inside of the case and the black lead connected to the negative (-) terminal on the PCB. Ensure the fan leads don't bind as you slide the fan in. See Figure 3.
 
 | Figure 3: Fan placement                                          |
 |------------------------------------------------------------------|
