@@ -3,6 +3,7 @@
 ## PiKVM V3 HAT cases
 
 * [**v3.3 model (Kickstarter, Store)**](stl/v3.3/index.md)
+* [Unofficial but great v3.3 case mod for Noctua fan](https://www.printables.com/model/218724-pikvm-case-mod-for-silent-noctua-40mm-fan)
 * [v3.2 model (Pre-release)](stl/v3.2/index.md)
 
 ## DIY cases
