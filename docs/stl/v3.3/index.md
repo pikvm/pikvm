@@ -4,7 +4,7 @@ When printing the case, you can choose the following options:
 
 * The presence or absence of an OLED screen (used to display the IP address and other information).
 
-Also take a look at the [PCI bracket for ATX adapter board](../atx).
+Also take a look at the [PCI bracket for ATX adapter board](../atx) and [great unofficial case mod for Noctua fans](https://www.printables.com/model/218724-pikvm-case-mod-for-silent-noctua-40mm-fan)
 
 
 ## Buy options
