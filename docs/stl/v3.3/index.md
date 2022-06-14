@@ -55,7 +55,7 @@ Note: the spacers slide over the (short) hexagonal standoffs included in the off
 
 To assemble:
 
-1. Ensure the hexagonal standoffs are all attached to the top side of the v3.3 hat.
+1. Ensure the hexagonal standoffs are all attached to the top side of the v3.3 hat. Tip: if you need to remove the case in the future, you don't want these hexagonal standoffs spinning while you loosen the screws - be sure to tighten the standoffs _more_ than you tighten the screws in step 17. You could even use some thread-locking fluid on the standoffs now.
 2. Ensure the bottom side of the Pi has no screws present
 3. Ensure you have eight M2.5 x 12mm screws free for later use.
 4. Slide the two short spacers over the two standoffs on the side of the hat which contains the ATX, keyboard/mouse emulation, and HDMI connector. See Figure 1.
