@@ -1,9 +1,9 @@
 # H.264 / WebRTC
 
-!!! warning "Only main browsers are supported. Chrome/Firefox"
+!!! warning "Only main browsers are supported: Chrome, Firefox and Safari"
 
 This is a new alternative video transfer mode available for Raspberry Pi 4 users with an HDMI-CSI bridge (including PiKVM v3 HAT).
-It uses H.264 encoding instead of MJPEG and provides significantly less traffic consumption. ZeroW is NOT supported.
+It uses H.264 encoding instead of MJPEG and provides significantly less traffic consumption.
 
 If you use an OS image built after 2021.06.10, this mode will be available by default.
 If you are upgrading to an older version of the OS, you will need to manually enable the WebRTC gateway:
@@ -15,7 +15,7 @@ If you are upgrading to an older version of the OS, you will need to manually en
 Then reload the Web UI and then in the **System** menu you will see the video mode switch.
 
 !!! note
-    If you do not see the switch, it means that either your browser does not support WebRTC, or the `kvmd-janus` service was not started.
+    If you don't see the switch, it means that either your browser does not support WebRTC, or the `kvmd-janus` service was not started.
 
 
 ## Basics
