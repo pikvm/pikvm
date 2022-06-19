@@ -72,6 +72,7 @@ nav:
         - "H.264 / WebRTC": webrtc.md
         - "Working with video": video.md
         - "Tuning HDMI EDID": edid.md
+        - "HDMI audio": audio.md
     - "Peripheral devices":
         - "Keyboard & mouse":
             - "Mouse modes": mouse.md
