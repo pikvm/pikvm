@@ -11,7 +11,6 @@ Also take a look at the [PCI bracket for ATX adapter board](../atx) and [great u
 
 * [Small 5v fan](https://www.amazon.com/GeeekPi-Raspberry-30x30x7mm-Brushless-Retroflag/dp/B07C9C99RM) **strongly recommended** to avoid overheating in the case.
 * [I2C OLED screen](https://www.amazon.com/Pieces-Display-Module-SSD1306-Screen/dp/B08TLXYKS6).
-s
 
 
 ## Parts
