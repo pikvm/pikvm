@@ -1,6 +1,6 @@
 # Persistent storage
 
-??? note
+!!! note
     This feature is available on images older than 2022.06.20
 
 Sometimes advanced use of PiKVM requires storing some data on disk like API keys, config files, or something like that.
@@ -34,8 +34,15 @@ Mon Jun 20 04:23:14 MSK 2022 + --some --script --args
 ```
 
 So, what's going on here:
+
 1. `kvmd-pstrun` connects to the `kvmd-pst` daemon, which manages the mounting of the storage.
+
 2. If everything is fine, the daemon will remount the storage to RW mode and report the data root to `kvmd-pstrun`.
+
 3. `kvmd-pstrun` runs the script and pass the data root path using the environment variable `KVMD_PST_DATA` (`/var/lib/kvmd/pst/data`).
+
 4. If the `kvmd-pst` daemon stops or any other daemon error occurs, the script will be killed.
+
 5. After the script is finished, the daemon will remount the storage to RO mode.
+
+The return code will be equal to the script code if it was run, or 1 if a remount error occurred.
