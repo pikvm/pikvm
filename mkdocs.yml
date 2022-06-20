@@ -87,6 +87,7 @@ nav:
         - "Multiport KVM-over-IP": multiport.md
         - "Wake-on-LAN the server": wol.md
         - "IPMI & Redfish integration": ipmi.md
+        - "Persistent storage": pst.md
         - "Prometheus monitoring": prometheus.md
     - "Development":
         - "Cases for 3D printing": 3d_printing.md
