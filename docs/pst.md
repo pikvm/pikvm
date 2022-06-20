@@ -1,7 +1,7 @@
 # Persistent storage
 
 !!! note
-    This feature is available on images older than 2022.06.20
+    This feature is available on images newer than 2022.06.20
 
 Sometimes advanced use of PiKVM requires storing some data on disk like API keys, config files, or something like that.
 For example, you want to have a script that will update SSL certificates once a week.
