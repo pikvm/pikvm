@@ -45,4 +45,6 @@ So, what's going on here:
 
 5. After the script is finished, the daemon will remount the storage to RO mode.
 
+To be able to write to the storage, the user must be a member of `kvmd-pst` group, or have to be `root`.
+
 The return code will be equal to the script code if it was run, or 1 if a remount error occurred.
