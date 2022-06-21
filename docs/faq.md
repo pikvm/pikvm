@@ -45,7 +45,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     * The 4K real-time video will not fit through the network anyway.
 
 
-??? question "Where does the video latency come from?"
+??? question "Where does the cursor/video latency come from?"
     Here is the chain of transferring an image to your browser or VNC client.
 
     `Capture device -> Compression -> Network -> Decompression -> Rendering`
