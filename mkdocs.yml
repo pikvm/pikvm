@@ -68,6 +68,7 @@ nav:
             - "Port forwarding": port_forwarding.md
             - "Tailscale VPN": tailscale.md
         - "Setting up Wi-Fi": wifi.md
+        - "Let's Encrypt certificates": letsencrypt.md
     - "Video":
         - "H.264 / WebRTC": webrtc.md
         - "Working with video": video.md

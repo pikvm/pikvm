@@ -90,7 +90,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "How do I add my own SSL cert?"
-    If you have a certificate (making a cert falls outside the scope of PiKVM - please reference OpenSSL documentation), replace keys in `/etc/kvmd/nginx/ssl`, edit `/etc/kvmd/nginx/ssl.conf` if necessary and restart `kvmd-nginx` service.
+    If you have a certificate (making a cert falls outside the scope of PiKVM - please reference OpenSSL documentation or use [Let's Encrypt](letsencrypt.md)), replace keys in `/etc/kvmd/nginx/ssl`, edit `/etc/kvmd/nginx/ssl.conf` if necessary and restart `kvmd-nginx` service.
 
 
 ??? question "How do I emulate various USB devices on the target machine?"
@@ -391,7 +391,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
     <img src="chrome.png" alt="Chrome Blocking" width="400"/>
 
-    You can proceed by typing `thisisunsafe` and Chrome will then load the page.
+    You can proceed by typing `thisisunsafe` and Chrome will then load the page. Also see [Let's Encrypt](letsencrypt.md) page.
 
 
 ??? question "Pressing ESC in full screen mode causes the PiKVM page to close"
