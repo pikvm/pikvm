@@ -187,7 +187,7 @@ We have developed our own HAT for the Raspberry Pi 4.
 **[>>> PiKVM v3 HAT User Guide <<<](https://docs.pikvm.org/v3)**
 
 * **HDMI video capture** for extra low latency with **MJPEG** or **H.264/WebRTC** (1080p 50Hz max).
-* **HDMI audio capture** (supported by hardware, software work in progress).
+* **HDMI audio capture**.
 * **USB keyboard** & **mouse**, bootable **Virtual CD-ROM** & **Flash Drive**;
 * Ability to simulate "**removal and insertion**" for **USB**.
 * **Onboard ATX controller** to manage the server's power.
