@@ -6,7 +6,7 @@ Usually Let's Encrypt certificates are issued and updated automatically using Ce
 file system, special tools around Certbot are required to work with certificates. KVMD 3.117 provides them.
 
 !!! note
-    This feature is available on images as old as than 2022.06.19 since it requires [PST storage partition on SD card](pst.md).
+    This feature is available on images as old as 2022.06.19 since it requires [PST storage partition on SD card](pst.md).
     Ports 80+443 need to be opened if you are port forwarding for this to work properly.
 
 
