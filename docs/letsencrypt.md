@@ -75,3 +75,80 @@ This example shows that PiKVM may not be accessible from the internet, but you c
    ```
 
 4. Next follow the basic guide.
+
+
+## Route53 DNS
+
+This example shows that PiKVM may not be accessible from the internet, but you can still get a certificate if you use AWS Route53 DNS.
+
+1. Switch filesystem to RW and install the Route53 DNS plugin:
+   ```
+   # rw
+   # pacman -S certbot-dns-Route53
+   ```
+
+2. Configure Your AWS User
+    For the certbot_dns_route53 plugin to work it needs to be able to connect to AWS using an access key with the correct permissions.
+
+    To do this securely you’ll want to create a new AWS user that only has the necessary permissions it needs to work.
+
+    You can find instructions for creating a user [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console). The basics of it is you’ll want a user with Programmatic access (not console), add it to a group (I created a new one just for this user and any future certbot users I might need).
+
+    The user will need specific permissions that are required to allow the certbot plugin to create the necessary CNAME records. These can be added by manually selecting them from a very long list or you can use the json view to give it the following permissions.
+
+    ```
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "route53:ListHostedZones",
+                    "route53:GetChange"
+                ],
+                "Resource": [
+                    "*"
+                ]
+            },
+            {
+                "Effect" : "Allow",
+                "Action" : [
+                    "route53:ChangeResourceRecordSets"
+                ],
+                "Resource" : [
+                    "arn:aws:route53:::hostedzone/YOURHOSTEDZONEID"
+                ]
+            }
+        ]
+    }
+    ```
+    Make sure you replace YOURHOSTEDZONEID with the instance ID of your hosted zone.
+
+    Once the user is created don’t forget to download and save your access key and secret access key (somewhere secure, these are as sensitive as your passwords).
+
+3. Setup credentials:
+
+    We now need to put the AWS credentials on the PiKVM so the certbot can use them. The kvmd processes run as a user whose home directory is the root of the file system. certbot uses the Boto python library. If you want to know more how AWS credentials and boto work, take a look [here](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html)
+
+    In the root directory create an .aws folder and inside that create a text file with the name credentials with the following contents.
+    The file path is /.aws/credentials
+
+    ```
+    [default]
+    aws_access_key_id=XXXXXX
+    aws_secret_access_key=XXXX/XXXXX
+    ```
+    
+    Replace the placeholders with the access key and secret access key that you just saved from AWS and fill them in.
+
+4. Obtain the certificate:
+   ```
+   # kvmd-certbot certonly \
+       --dns-route53 \
+       --agree-tos \
+       -n \
+       --email user@example.com \
+       -d pikvm.example.com
+   ```
+
+4. Next follow the basic guide.
