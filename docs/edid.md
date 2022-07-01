@@ -61,7 +61,7 @@ So, to tune EDID on PiKVM, use the following steps:
 The `kvmd-edidconfig` utility has the ability to change some simple parameters without using an external editor. For example you can change the vendor, model name and enable [HDMI audio](audio.md) on the PiKVM virtual display:
 
 ```
-# kvmd-edidconf --set-mfc-id=LNX --set-monitor-name=PiKVM --set=audio=1
+# kvmd-edidconf --set-mfc-id=LNX --set-monitor-name=PiKVM --set-audio=1
 # reboot
 ```
 
