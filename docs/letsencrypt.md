@@ -57,7 +57,7 @@ This example shows that PiKVM may not be accessible from the internet, but you c
 
 2. Prepare the environment for the DNS plugin (place the auth data):
    ```
-   # kvmd-pstrun -- mkdir /var/lib/kvmd/pst/data/certbot/runroot
+   # kvmd-pstrun -- mkdir -p /var/lib/kvmd/pst/data/certbot/runroot
    # kvmd-pstrun -- nano /var/lib/kvmd/pst/data/certbot/runroot/.cloudflare.auth
    # kvmd-pstrun -- chmod 600 /var/lib/kvmd/pst/data/certbot/runroot/.cloudflare.auth
    ```
