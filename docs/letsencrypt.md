@@ -96,7 +96,7 @@ This example shows that PiKVM may not be accessible from the internet, but you c
 
     The user will need specific permissions that are required to allow the certbot plugin to create the necessary CNAME records. These can be added by manually selecting them from a very long list or you can use the json view to give it the following permissions.
 
-    ```
+    ```json
     {
         "Version": "2012-10-17",
         "Statement": [
@@ -130,17 +130,16 @@ This example shows that PiKVM may not be accessible from the internet, but you c
 
     We now need to put the AWS credentials on the PiKVM so the certbot can use them. 
     ```
-    kvmd-pstrun -- mkdir /var/lib/kvmd/pst/data/certbot/
-    kvmd-pstrun -- mkdir /var/lib/kvmd/pst/data/certbot/runroot
+    kvmd-pstrun -- mkdir -p /var/lib/kvmd/pst/data/certbot/runroot
     ```
 
     Copy and paste your AWS credentials into the nano editor and save the file. 
     ```
-    kvmd-pstrun -- nano /var/lib/kvmd/pst/data/certbot/runroot/.route53.auth
+    # kvmd-pstrun -- nano /var/lib/kvmd/pst/data/certbot/runroot/.route53.auth
     ```
     Here is an example .route53.auth file. Replace the placeholders with the access key and secret access key that you just saved from AWS and fill them in.
     
-    ```
+    ```ini
     [default]
     aws_access_key_id=XXXXXX
     aws_secret_access_key=XXXX/XXXXX
@@ -153,8 +152,8 @@ This example shows that PiKVM may not be accessible from the internet, but you c
     
 4. Obtain the certificate:
    ```
-   export AWS_SHARED_CREDENTIALS_FILE="/var/lib/kvmd/pst/data/certbot/runroot/.route53.auth"
-   kvmd-certbot certonly \
+   # export AWS_SHARED_CREDENTIALS_FILE="/var/lib/kvmd/pst/data/certbot/runroot/.route53.auth"
+   # kvmd-certbot certonly \
        --dns-route53 \
        --agree-tos \
        -n \
