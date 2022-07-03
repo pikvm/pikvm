@@ -79,12 +79,12 @@ This example shows that PiKVM may not be accessible from the internet, but you c
 
 ## Route53 DNS
 
-This example shows that PiKVM may not be accessible from the internet, but you can still get a certificate if you use AWS Route53 DNS.
+This example shows that PiKVM may not be accessible from the internet, but you can still get a certificate if you use AWS Route53 DNS. Make sure you are running an image newer than 2022.06.20 and kvmd version 3.119-1 or greater. 
 
 1. Switch filesystem to RW and install the Route53 DNS plugin:
    ```
    # rw
-   # pacman -S certbot-dns-Route53
+   # pacman -S certbot-dns-route53
    ```
 
 2. Configure Your AWS User
@@ -128,22 +128,33 @@ This example shows that PiKVM may not be accessible from the internet, but you c
 
 3. Setup credentials:
 
-    We now need to put the AWS credentials on the PiKVM so the certbot can use them. The kvmd processes run as a user whose home directory is the root of the file system. certbot uses the Boto python library. If you want to know more how AWS credentials and boto work, take a look [here](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html)
+    We now need to put the AWS credentials on the PiKVM so the certbot can use them. 
+    ```
+    kvmd-pstrun -- mkdir /var/lib/kvmd/pst/data/certbot/
+    kvmd-pstrun -- mkdir /var/lib/kvmd/pst/data/certbot/runroot
+    ```
 
-    In the root directory create an .aws folder and inside that create a text file with the name credentials with the following contents.
-    The file path is /.aws/credentials
-
+    Copy and paste your AWS credentials into the nano editor and save the file. 
+    ```
+    kvmd-pstrun -- nano /var/lib/kvmd/pst/data/certbot/runroot/.route53.auth
+    ```
+    Here is an example .route53.auth file. Replace the placeholders with the access key and secret access key that you just saved from AWS and fill them in.
+    
     ```
     [default]
     aws_access_key_id=XXXXXX
     aws_secret_access_key=XXXX/XXXXX
     ```
     
-    Replace the placeholders with the access key and secret access key that you just saved from AWS and fill them in.
-
+    Update permissions:
+    ```
+    kvmd-pstrun -- chmod 600 /var/lib/kvmd/pst/data/certbot/runroot/.route53.auth
+    ```
+    
 4. Obtain the certificate:
    ```
-   # kvmd-certbot certonly \
+   export AWS_SHARED_CREDENTIALS_FILE="/var/lib/kvmd/pst/data/certbot/runroot/.route53.auth"
+   kvmd-certbot certonly \
        --dns-route53 \
        --agree-tos \
        -n \
