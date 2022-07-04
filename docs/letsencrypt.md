@@ -147,13 +147,13 @@ This example shows that PiKVM may not be accessible from the internet, but you c
     
     Update permissions:
     ```
-    kvmd-pstrun -- chmod 600 /var/lib/kvmd/pst/data/certbot/runroot/.route53.auth
+    # kvmd-pstrun -- chmod 600 /var/lib/kvmd/pst/data/certbot/runroot/.route53.auth
     ```
     
 4. Obtain the certificate:
    ```
-   export AWS_SHARED_CREDENTIALS_FILE="/var/lib/kvmd/pst/data/certbot/runroot/.route53.auth"
-   kvmd-certbot certonly \
+   # export AWS_SHARED_CREDENTIALS_FILE="/var/lib/kvmd/pst/data/certbot/runroot/.route53.auth"
+   # kvmd-certbot certonly \
        --dns-route53 \
        --agree-tos \
        -n \
@@ -163,12 +163,12 @@ This example shows that PiKVM may not be accessible from the internet, but you c
 
 4. Enable automatic certificate renewal:
 
-   Create the file: */etc/conf.d/kvmd-certbot* with the following contents so the renewall service can find the authentication file containing the AWS credentials:
+   Create the file: `/etc/conf.d/kvmd-certbot` with the following contents so the renewall service can find the authentication file containing the AWS credentials:
    ```
    AWS_SHARED_CREDENTIALS_FILE="/var/lib/kvmd/pst/data/certbot/runroot/.route53.auth"
    ```
    
    Now enable the renewal service:
    ```
-   systemctl enable --now kvmd-certbot.timer
+   # systemctl enable --now kvmd-certbot.timer
    ```
