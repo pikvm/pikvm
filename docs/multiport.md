@@ -24,6 +24,7 @@ Here the status is:
 | [XH-HK4401 4-port HDMI USB KVM Switch](https://www.aliexpress.com/item/4000849336545.html) | ✔ | [Using with PiKVM](xh_hk4401.md) - USB MSD works, requires the HDMI backpower solutions found below |
 | [Ali's noname](https://a.aliexpress.com/_BSpS8t) | ✔ | Limitations are are listed below  |
 | [AIMOS 8-port HDMI USB-C KVM Switch](https://www.amazon.de/AIMOS-Umschalter-Tastatur-unterst%C3%BCtzen-verbunden/dp/B08FR5K111/) | ☹ | Similar to Ali's noname model, available in 4/8port editions, has same HDMI bridge boot problem/solution using a Marmitek 312 UHD HDMI splitter. Limitations are are listed below |
+| [Aten CS1758 8-port PS/2 / USB VGA KVM switch](https://www.aten.com/global/en/products/kvm/rack-kvm-switches/cs1758/) | ☹ | Older Aten switches can be had for cheap and can be a viable alternative. Devices are connected via PS/2 so USB media support does not work. The setup relies on a VGA-> HDMI adapter to make the video signal work and there can be issues with unsupported VGA resolutions with some adapters. KVM hotkeys and switching all work and so does mouse and keyboard. |
 
 Limitations:
 
