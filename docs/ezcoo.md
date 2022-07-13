@@ -17,7 +17,7 @@ From a high level, the ezCoo switch uses standard connections to the host machin
 
 1. Connect the USB-C cable from the Raspberry Pi OTG port to ezCoo switch USB 3 port on the front or USB 1 port on the back of the switch. **Note**: If this cable is connected to the keyboard port (USB 2) of the ezCoo switch, the mouse will not be present.
 
-2. Connect the HDMI out from the ezCoo switch to the Raspberry Pi CSI-2 to HMDI input. Other users have reported HMDI encoder USB dongles as working.
+2. Connect the HDMI out from the ezCoo switch to the Raspberry Pi CSI-2 to HDMI input. Other users have reported HDMI encoder USB dongles as working.
 
 3. Connect a USB-A to Micro USB cable from the Raspberry Pi to the management port on the side of the ezCoo switch.
 
