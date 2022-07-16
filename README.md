@@ -324,6 +324,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 
 * A. Isenring
 * Aaron Heise
+* Aaron Stein
 * Accalia
 * Adam Goodbar
 * Adam S
@@ -416,6 +417,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Christopher Bulla
 * Christopher Hearn
 * Christopher Mandlbaur
+* Christopher Mendoza
 * Christopher Simms
 * Chucktastic
 * Cihan VURAL
@@ -611,6 +613,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * LeeNX
 * Leon Siegl
 * Leonard Feineis
+* Liran
 * Liviu Dimitriu
 * Lizardo Hernandez
 * LoCascio
@@ -716,6 +719,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Phil Wu
 * Philip Edwards
 * Philip Merricks
+* Pierre Brassart
 * posicat
 * pozitron03
 * Przemysław Szypowicz
