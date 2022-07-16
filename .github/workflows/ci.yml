@@ -12,5 +12,5 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: 3.x
-      - run: pip install mkdocs-material mkdocs-video markdown-include
+      - run: pip install mkdocs-material mkdocs-video markdown==3.3.7 markdown-include
       - run: mkdocs gh-deploy --force
