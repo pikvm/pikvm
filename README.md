@@ -723,6 +723,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * posicat
 * pozitron03
 * Przemysław Szypowicz
+* P_Dmitrij
 * Qteal
 * Quattro Uno
 * Quentin Peten
