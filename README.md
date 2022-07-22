@@ -361,6 +361,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Aron Green
 * Aron Perelman
 * Artem Simonov
+* Arthur Mayer
 * Arthur Woimbée
 * Ashlesh Chaudhari
 * Augusto Becciu
