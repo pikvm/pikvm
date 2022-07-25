@@ -381,6 +381,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Benjamin Stegmann
 * Benni Stauder
 * Bernhard Fitzke
+* Beu
 * bikmaek
 * bitjoe
 * Bits and Bytes Computers LLC
@@ -437,6 +438,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * CyB0rgg
 * DeMentor
 * Desmond Whitt
+* Daegara
 * DailyAneurism
 * Damon Meledones
 * Dan Berkowitz
@@ -527,6 +529,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Ivan Ganev
 * Ivan Josiah Lapis
 * Ivan Shapovalov
+* J
 * J L
 * Jaanus
 * Jackson Wyatt
@@ -622,6 +625,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Lothar Schweikle-Droll
 * Louis Müller
 * LSDTripp
+* Ľubor Slušný
 * Luca Di Diomede
 * Lucio De Carli
 * Lukas Bischof
