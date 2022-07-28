@@ -739,6 +739,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Raphael Schitz
 * René Rathenau
 * Ricardo Marques
+* Richard
 * Richard Bernarts
 * Richard Fancher
 * Richard Freemantle
