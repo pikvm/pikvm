@@ -9,7 +9,8 @@
 Download the appropriate SD card image. Select it based on the board, platform, and the video capture device you are using:
 
 * **V3 HAT (Patron, Kickstarter, and future editions)**
-    * [PiKVM v3 HAT (Raspberry Pi 4)](https://files.pikvm.org/images/v3-hdmi-rpi4-latest.img.xz) <sub>- [*sha1*](https://files.pikvm.org/images/v3-hdmi-rpi4-latest.img.xz.sha1)</sub>
+    * [PiKVM v3 HAT BOX Image (Raspberry Pi 4) OLED/FAN preactivated](https://files.pikvm.org/images/v3-hdmi-rpi4-box-latest.img.xz) <sub>- [*sha1*](https://files.pikvm.org/images/v3-hdmi-rpi4-box-latest.img.xz.sha1)
+    * [PiKVM v3 HAT DIY Assembly (Raspberry Pi 4)](https://files.pikvm.org/images/v3-hdmi-rpi4-latest.img.xz) <sub>- [*sha1*](https://files.pikvm.org/images/v3-hdmi-rpi4-latest.img.xz.sha1)</sub>
 * **DIY - Raspberry Pi 4, v2 platform:**
     * [For HDMI-CSI bridge](https://files.pikvm.org/images/v2-hdmi-rpi4-latest.img.xz) <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmi-rpi4-latest.img.xz.sha1)</sub>
     * [For HDMI-USB dongle](https://files.pikvm.org/images/v2-hdmiusb-rpi4-latest.img.xz) <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmiusb-rpi4-latest.img.xz.sha1)</sub>
