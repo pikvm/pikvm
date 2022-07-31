@@ -756,6 +756,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Ronald Wells
 * Ronny Haldorsen
 * rotx
+* Rufo Sanchez
 * Russell Scott
 * Ryan Peacock
 * Samed Ozoglu
