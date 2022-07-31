@@ -5,7 +5,10 @@ As an alternative to the web interface, you can use VNC with various desktop cli
 !!! warning
     Don't use VNC without X.509 or TLS encryption on untrusted networks! Otherwise your password will be transmitted over the network in plain text. Unfortunately, this is the reality of the VNC protocol.
     
-??? note "VNC and its varients/TeamViewer/RDP to a system uses the target systems framebuffer IE local display, VNC usage for PiKVM accesses the stream, there will still be a 100-200MS latency and cannot be compared with the other software solutions.
+??? note 
+    VNC and its varients/TeamViewer/RDP to a system uses the target systems framebuffer IE local display, VNC usage for PiKVM accesses the stream, there will still be a 100-200MS latency and cannot be compared with the other software solutions. 
+    NORMAL USAGE: VNC/TM/RDP -> Target system 
+    PiKVM USAGE: VNC -> PiKVM -> Target system
 
 
 ## Enabling VNC on the PiKVM side
