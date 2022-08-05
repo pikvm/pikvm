@@ -529,6 +529,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Ivan Ganev
 * Ivan Josiah Lapis
 * Ivan Shapovalov
+* iwbjhbweriuhf
 * J
 * J L
 * Jaanus
@@ -805,6 +806,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Tejun Heo
 * TheSnowedOne
 * TheTechGiant
+* Thomas Charisoulis
 * Thomas Hagenmaier
 * Thomas Hedberg Jensen
 * Thomas Price
