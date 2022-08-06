@@ -305,6 +305,8 @@ See video how-tos:
 8. Configure access to PiKVM from the Internet using [port forwarding](https://docs.pikvm.org/port_forwarding) or [Tailscale VPN](https://docs.pikvm.org/tailscale).
 9. **If you encounter a problem**, take a look at the **[FAQ](https://docs.pikvm.org/faq)**, but if nothing helped, contact our **[Discord chat](https://discord.gg/bpmXfz5)** - experienced users and the PiKVM team will definitely help you.
 
+OPTIONAL Addon: If adding an OLED to your V2, please see [this.](https://github.com/pikvm/pikvm/issues/797)
+
 Happy using of PiKVM :)
 
 -----
