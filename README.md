@@ -5,10 +5,10 @@ A very simple and fully functional Raspberry Pi-based KVM (Keyboard-Video-Mouse)
 
 The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](https://docs.pikvm.org) and join to the [Discord Community Chat](https://discord.gg/bpmXfz5) for news, questions and support!
 
-| **[>>> DIY Device Getting Started <<<](#diy-getting-started)** | **[>>> PiKVM v3 HAT Getting Started <<<](#pikvm-v3-hat)** |
+| **[>>> DIY Device Getting Started <<<](#diy-getting-started)** | **[>>> PiKVM V3 Getting Started <<<](#pikvm-v3)** |
 | --------------------------------------------- | ------------------------------------------ |
-| [DIY Review by **Novaspirit Tech**](https://youtu.be/plP9Y1likRg)<br>[**Hackaday**](https://hackaday.com/2020/11/24/true-networked-kvm-without-breaking-the-bank/) & [**Tom's HARDWARE**](https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi) & [**Elector MAG**](https://www.elektormagazine.com/news/pikvm-raspberry-pi-as-a-kvm-remote-control)<br>[Our boring presentation for the DIY :)](https://youtu.be/9YhPWjWv5gw) | [PiKVM v3 Review by **Novaspirit Tech**](https://youtu.be/dTchVKxx7Fo)<br>[Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)<br>[Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c) |
-| <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v2_example.jpg" alt="drawing"/> | <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v3_board.jpg" alt="drawing"/> |
+| [DIY Review by **Novaspirit Tech**](https://youtu.be/plP9Y1likRg)<br>[**Hackaday**](https://hackaday.com/2020/11/24/true-networked-kvm-without-breaking-the-bank/) & [**Tom's HARDWARE**](https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi) & [**Elector MAG**](https://www.elektormagazine.com/news/pikvm-raspberry-pi-as-a-kvm-remote-control)<br>[Our boring presentation for the DIY :)](https://youtu.be/9YhPWjWv5gw) | [PiKVM V3 Review by **Novaspirit Tech**](https://youtu.be/dTchVKxx7Fo)<br>[Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)<br>[Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c) |
+| <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v2_example.jpg" alt="drawing"/> | <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v3_preasm.jpg" alt="drawing"/> |
 
 | Web UI                                     |
 | ------------------------------------------ |
@@ -37,7 +37,7 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 ## Fully-featured and modern IP-KVM
 * **Cheaper, but better than commercial solutions**  
   Costs between $30 and $100 depending on the features desired. Even the most expensive configuration will be cheaper than a $500 commercial IP-KVM.
-* **Easy to build - For the v0 variant**  
+* **Easy to build - For the V0 variant**  
   A ready-to-use OS that can be created just by running `make build` and installed to an SD-card using `make install`. The hardware can be made in half an hour and without soldering.
 * **The widest hardware support**  
   There are many ways to build a PiKVM. Video capture devices can be attached using the CSI-2 or USB interfaces. Raspberry Pi models 2, 3, 4 or Zero2W may be used. Any combination of hardware is supported, and PiKVM implements the maximum possible set of features.
@@ -90,11 +90,11 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 
 # DIY Getting Started
 ## Required hardware
-PiKVM supports several different hardware configurations, referred to as **platforms**. Now available: **v2** and **v0**.
-* **Recommended**: **v2** is the most modern implementation for **Raspberry Pi 4** and **Zero2W** supporting all of the features of PiKVM including the **Mass Storage Drive**. For Raspberry Pi 4 and Zero2W there is support for H.264 video. **It's also the easiest to make**.
-* v0 was designed to work with Raspberry Pi 2 and 3 that do not have OTG and requires a few more components for a basic implementation. It also does not support the Mass Storage Drive feature.
+PiKVM supports several different hardware configurations, referred to as **platforms**. Now available: **V2** and **V0**.
+* **Recommended**: **V2** is the most modern implementation for **Raspberry Pi 4** and **Zero2W** supporting all of the features of PiKVM including the **Mass Storage Drive**. For Raspberry Pi 4 and Zero2W there is support for H.264 video. **It's also the easiest to make**.
+* V0 was designed to work with Raspberry Pi 2 and 3 that do not have OTG and requires a few more components for a basic implementation. It also does not support the Mass Storage Drive feature.
 
-## Hardware for v2
+## Hardware for V2
 * Raspberry Pi board:
   - **Recommended**: Raspberry Pi 4 (2 GB model is enough) for the best performance. However, the 1Gb models will also work.
   - ... or Raspberry Pi Zero2W (no ethernet).
@@ -151,7 +151,7 @@ PiKVM supports several different hardware configurations, referred to as **platf
   - 2x 4.7k Ohm resistors.
   - A breadboard and wires.
  
-## Hardware for v0
+## Hardware for V0
 * Raspberry Pi 2 or 3.
 * MicroSD card (8 GB is enough).
 * USB-A 3A charger (female socket) or power supply.
@@ -162,8 +162,8 @@ PiKVM supports several different hardware configurations, referred to as **platf
   - 1x 390 Ohm resistor.
   - A breadboard and wires.
 * 2x USB A-to-micro cables (male-male, for power and HID).
-* HDMI capture device: [see v2 description](#hardware-for-v2).
-* ATX control (optional): [see v2 description](#hardware-for-v2).
+* HDMI capture device: [see V2 description](#hardware-for-v2).
+* ATX control (optional): [see V2 description](#hardware-for-v2).
 
 #### Addition
 * If you want to capture VGA from your server instead of HDMI, buy the [VGA-to-HDMI converter](https://aliexpress.com/item/4000553298530.html). Some VGA HDMI adapters have issues with not supporting all resolutions and refresh rates.
@@ -173,15 +173,18 @@ PiKVM supports several different hardware configurations, referred to as **platf
 
 # How to set up the device can be seen from [here](https://docs.pikvm.org/wiring_examples)
 
-# PiKVM v3 HAT
+# PiKVM V3
 
-<img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v3_kit.jpg" alt="drawing" height=200>
+We have developed our own HAT and pre-assembled device based on the Raspberry Pi 4.
 
-We have developed our own HAT for the Raspberry Pi 4.
+| **The Pre-Assembled device** | **The DIY kit** |
+| ---------------------------- | --------------- |
+| <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v3_preasm.jpg" alt="drawing" height=200 /> | <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v3_kit.jpg" alt="drawing" height=200 /> |
 
-**[>>> Buy PiKVM v3 HAT right now! <<<](https://pikvm.org/buy)**
 
-**[>>> PiKVM v3 HAT User Guide <<<](https://docs.pikvm.org/v3)**
+**[>>> Buy PiKVM V3 right now! <<<](https://pikvm.org/buy)**
+
+**[>>> PiKVM V3 User Guide <<<](https://docs.pikvm.org/v3)**
 
 * **HDMI video capture** for extra low latency with **MJPEG** or **H.264/WebRTC** (1080p 50Hz max).
 * **HDMI audio capture**.
@@ -191,16 +194,15 @@ We have developed our own HAT for the Raspberry Pi 4.
 * **PWM fan controller**.
 * **A real-time clock** for accurate logging.
 * CISCO-style and USB **serial console port** (to manage PiKVM OS or to connect the server).
-* **Optional OLED screen** to display network status or other desired information.
-* **No need for soldering or breadboarding**. It's a ready-made, reliable board which you can use yourself or provide to your clients.
+* **No need for soldering or breadboarding**. It's a ready-made, reliable thing which you can use yourself or provide to your clients.
 
 Watch the video:
-* [PiKVM v3 Review by **Novaspirit Tech**](https://youtu.be/dTchVKxx7Fo)
+* [PiKVM V3 Review by **Novaspirit Tech**](https://youtu.be/dTchVKxx7Fo)
 * [Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)
 * [Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c)
 
 History:
-* [PiKVM v3 HAT on Kickstarter (huge success](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)
+* [PiKVM V3 HAT on Kickstarter (huge success](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)
 
 -----
 
@@ -235,7 +237,7 @@ Connect USB dongle to exactly this port. It is bound in the software so the OS d
 There are many revisions of the Raspberry Pi boards and you may come across one that we haven't tested. If the binding fails, the device will be available for all ports. Everything will work, but if you use a webcam and Linux mistakes it for a dongle, [write to us](https://discord.gg/bpmXfz5) and we will fix it.
 </details>
 
-## Setting up the v2
+## Setting up the V2
 <details>
   <summary>:exclamation:Click to show the instructions:exclamation:</summary>
 Here is a diagram shows that how to connect all of the pieces (click to full size).
@@ -257,7 +259,7 @@ See video how-tos:
 
 </details>
 
-## Setting up the v0
+## Setting up the V0
 <details>
   <summary>:exclamation:Click to show the instructions:exclamation:</summary>
 
@@ -297,7 +299,7 @@ See video how-tos:
         ```
 
     </details>
-6. If you are a happy **PiKVM v3 HAT** user then we have a [special guide for you](https://docs.pikvm.org/v3).
+6. If you are a happy **PiKVM V3** user then we have a [special guide for you](https://docs.pikvm.org/v3).
 7. [**Explore the features of PiKVM**](https://docs.pikvm.org) using the documentation's table of contents.
 8. Configure access to PiKVM from the Internet using [port forwarding](https://docs.pikvm.org/port_forwarding) or [Tailscale VPN](https://docs.pikvm.org/tailscale).
 9. **If you encounter a problem**, take a look at the **[FAQ](https://docs.pikvm.org/faq)**, but if nothing helped, contact our **[Discord chat](https://discord.gg/bpmXfz5)** - experienced users and the PiKVM team will definitely help you.
