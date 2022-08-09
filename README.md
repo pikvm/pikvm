@@ -202,7 +202,7 @@ Watch the video:
 * [Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c)
 
 History:
-* [PiKVM V3 HAT on Kickstarter (huge success](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)
+* [PiKVM V3 HAT on Kickstarter (huge success!)](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)
 
 -----
 
