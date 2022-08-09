@@ -16,7 +16,7 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 
 
 # Features
-* Supported **Raspberry Pi 2**, **3**, **4**, **Zero2W**, **ZeroW**, **RPi1**, **NOTE: RPi1 and ZeroW will still work but has reached EOL and will no longer recieve updates**;
+* Supported **Raspberry Pi 2**, **3**, **4** and **Zero2W**;
 * **FullHD video** using advanced **HDMI-to-CSI bridge** or **USB dongle**;
 * Extra low **video latency** with **MJPEG** or **H.264 / WebRTC** (for CSI bridge);
 * Bootable **Virtual CD-ROM** and **Flash Drive**;
@@ -40,7 +40,7 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 * **Easy to build - For the v0 variant**  
   A ready-to-use OS that can be created just by running `make build` and installed to an SD-card using `make install`. The hardware can be made in half an hour and without soldering.
 * **The widest hardware support**  
-  There are many ways to build a PiKVM. Video capture devices can be attached using the CSI-2 or USB interfaces. Raspberry Pi models 2, 3, 4, ZeroW or Zero2W may be used. Any combination of hardware is supported, and PiKVM implements the maximum possible set of features.
+  There are many ways to build a PiKVM. Video capture devices can be attached using the CSI-2 or USB interfaces. Raspberry Pi models 2, 3, 4 or Zero2W may be used. Any combination of hardware is supported, and PiKVM implements the maximum possible set of features.
 * **Very low latency**  
   ~100 milliseconds of video latency. This is the smallest delay of all existing solutions.
 * **Extra lightweight and fancy Web UI**  
@@ -48,7 +48,7 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 * **Keyboard and mouse**  
   Mouse usage works directly in the browser. The keyboard emulator supports displaying the state of the keyboard LEDs.
 * **Mass Storage Drive**  
-  On the Raspberry Pi 4, ZeroW and Zero2W, PiKVM can emulate a virtual CD-ROM or Flash Drive. A live image can be uploaded to boot the attached server.
+  On the Raspberry Pi 4 and Zero2W, PiKVM can emulate a virtual CD-ROM or Flash Drive. A live image can be uploaded to boot the attached server.
 * **ATX power management**  
   With a very simple circuit that can be assembled on a breadboard, the power button of the attached server can be controlled using the ATX button headers on the motherboard.
 * **Security**  
@@ -91,19 +91,19 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 # DIY Getting Started
 ## Required hardware
 PiKVM supports several different hardware configurations, referred to as **platforms**. Now available: **v2** and **v0**.
-* **Recommended**: **v2** is the most modern implementation for **Raspberry Pi 4**, **ZeroW** and **Zero2W** supporting all of the features of PiKVM including the **Mass Storage Drive**. **For Raspberry Pi 4 and Zero2W (not for ZeroW), there is support for H.264 video.**. **It's also the easiest to make**.
+* **Recommended**: **v2** is the most modern implementation for **Raspberry Pi 4** and **Zero2W** supporting all of the features of PiKVM including the **Mass Storage Drive**. For Raspberry Pi 4 and Zero2W there is support for H.264 video. **It's also the easiest to make**.
 * v0 was designed to work with Raspberry Pi 2 and 3 that do not have OTG and requires a few more components for a basic implementation. It also does not support the Mass Storage Drive feature.
 
 ## Hardware for v2
 * Raspberry Pi board:
   - **Recommended**: Raspberry Pi 4 (2 GB model is enough) for the best performance. However, the 1Gb models will also work.
   - ... or Raspberry Pi Zero2W (no ethernet).
-  - ... or Raspberry Pi ZeroW (slower alternative, no ethernet).
 * MicroSD card (min 16 GB recommended).
 * USB-A 3A charger (female socket) or official rpi recommended power supply.
 * Video capture device:
   - **Recommended**: [HDMI to CSI-2 bridge based on TC358743](https://aliexpress.com/item/4000102166176.html) - low latency, more reliable, **H.264 video**.
-  - ... or [HDMI to USB dongle](https://aliexpress.com/item/4001043540669.html) (not available for ZeroW and Zero2W) - high latency >200ms, [not very reliable](#a-few-words-about-hdmi-usb-dongle-h264-is-not-officially-supported-at-this-time)), H.264 is not supported.
+  - ... or [HDMI to USB dongle](https://aliexpress.com/item/4001043540669.html) (not available for Zero2W) - high latency >200ms, [not very reliable](#a-few-words-about-hdmi-usb-dongle-h264-is-not-officially-supported-at-this-time)), H.264 is not supported, <details><summary>Read more info about the limitations</summary>The dongle is completely supported and PiKVM works great with it. But it has some disadvantages compared with recommended [HDMI-CSI bridge](https://aliexpress.com/item/4000102166176.html): USB gives a lot of latency (200ms vs 100ms for MJPEG) and it doesn't support stream compression control (you won't be able to use PiKVM in a place with a poor internet connection). There is no H.264 support at the moment. It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself. In addition, some users report hardware problems: the dongle may not work in the BIOS or simply stop working after a while. It's a black box, and no one knows what's inside it. If you have problems with it, it will not be possible to fix them.</details>
+ 
 * Only for Raspberry Pi 4: parts for Y-splitter cable (**one variant at your choice**):
   *  <details><summary>❓ Why is this cable necessary?</summary>
      On a Raspberry Pi only the USB port that receives power is capable of acting as a USB Device. The other USB ports are capable only of acting as USB Hosts. Therefore a special cable must be used on the USB power port that it can simultanously act as USB Device for the PC/server and receive external DC power.
@@ -142,7 +142,7 @@ PiKVM supports several different hardware configurations, referred to as **platf
     </details>
     
 
-* Only for Raspberry Pi ZeroW and Zero2W:
+* Only for Raspberry Pi Zero2W:
   * 2x USB A-to-micro cables (male-male, for power and keyboard & mouse emulator). A power splitter OR a modded cable is required for this 2x usb configuration. 1x USB A-to-Micro is ONLY needed for direct connection to the target.
   * 1x [Raspberry Pi Zero Camera Cable](https://aliexpress.com/item/32953696917.html) (if using HDMI to CSI-2 Bridge, but not compatible with Auvidea B101, check pinout).
 * For ATX control (optional):
@@ -150,10 +150,7 @@ PiKVM supports several different hardware configurations, referred to as **platf
   - 4x 390 Ohm resistors.
   - 2x 4.7k Ohm resistors.
   - A breadboard and wires.
-  
-#### A few words about HDMI-USB dongle (H.264 is NOT officially supported at this time)
-The dongle is completely supported and PiKVM works great with it. But it has some disadvantages compared with recommended [HDMI-CSI bridge](https://aliexpress.com/item/4000102166176.html): USB gives a lot of latency (200ms vs 100ms for MJPEG) and it doesn't support stream compression control (you won't be able to use PiKVM in a place with a poor internet connection). There is no H.264 support at the moment. It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself. In addition, some users report hardware problems: the dongle may not work in the BIOS or simply stop working after a while. It's a black box, and no one knows what's inside it. If you have problems with it, it will not be possible to fix them.
-  
+ 
 ## Hardware for v0
 * Raspberry Pi 2 or 3.
 * MicroSD card (8 GB is enough).
