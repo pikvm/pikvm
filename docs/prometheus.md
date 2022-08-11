@@ -16,8 +16,9 @@ scrape_configs:
     basic_auth:
       username: admin
       password: admin
+    scheme: https
     static_configs:
-    - targets: ["https://pikvm"]
+    - targets: ["pikvm"]
     tls_config:
       insecure_skip_verify: true # For self-signed certificate
 ```
