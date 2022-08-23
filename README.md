@@ -106,7 +106,7 @@ PiKVM supports several different hardware configurations, referred to as **platf
  
 * Only for Raspberry Pi 4: parts for Y-splitter cable (**one variant at your choice**):
   *  <details><summary>❓ Why is this cable necessary?</summary>
-     On a Raspberry Pi only the USB port that receives power is capable of acting as a USB Device. The other USB ports are capable only of acting as USB Hosts. Therefore a special cable must be used on the USB power port that it can simultanously act as USB Device for the PC/server and receive external DC power.
+     On a Raspberry Pi only the USB port that receives power is capable of acting as a USB Device. The other USB ports are capable only of acting as USB Hosts. Therefore a special cable must be used on the USB power port that it can simultanously act as USB Device for the PC/server and receive external power from an official RPi adapter.
       </details>
 
   * <details><summary>:exclamation:Variant #1:exclamation:: (No mod solution - Amazon) Y cable with power blocker ends.</summary>
