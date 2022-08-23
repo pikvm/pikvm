@@ -299,6 +299,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     * Double-check that the video capture device is connected correctly. For the [CSI bridge](/README.md#for-the-hdmi-csi-bridge), this should be exactly the camera port; for the [USB dongle](/README.md#for-the-hdmi-usb-dongle), strictly the port indicated in the picture.
     * Some laptops do not output any signal until you switch the output (usually via the FN + and an F5 key on the keyboard).
     * Your computer may have turned on sleep mode for the monitor. Move the mouse to turn it off.
+    * For windows you might need to check for the active signal resolution. To change the active signal resolution you have to go to Settings>System>Display>Advanced display settings>Display adapter properties then, click "List All Models" and choose the one you want. Keep trying different Hz settings.
 
 
 ??? question "The video works in the booted OS, but not in the BIOS/UEFI"
