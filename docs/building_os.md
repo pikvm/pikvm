@@ -1,6 +1,8 @@
 # Building the OS
 
-The PiKVM OS is based on Arch Linux ARM and contains all the required packages and configs for it to work.  To build the OS you will need x86_64 Linux machine with:
+!!! warning "ZeroW reached EOL and is no longer supported, the last image it can be found [here](https://files.pikvm.org/images/v2-hdmi-zerow-latest.img.xz)”
+
+The PiKVM OS is based on Arch Linux ARM and contains all the required packages and configs for it to work. To build the OS you will need x86_64 Linux machine with:
 
 * kernel >= 5.8
 * glibc >= 2.33
@@ -31,7 +33,7 @@ Docker must be enabled in privileged mode.
     * Choose the board: `BOARD=rpi4` for Raspberry Pi 4 or `BOARD=zerow`, `BOARD=rpi2`, `BOARD=rpi3` for other options.
     * Choose the platform:
         * `PLATFORM=v3-hdmi` for RPi4 and PiKVM v3 HAT.
-        * `PLATFORM=v2-hdmi` for RPi3a+/RPi4 or ZeroW with HDMI-CSI bridge.
+        * `PLATFORM=v2-hdmi` for RPi3a+/RPi4 or Zero2W with HDMI-CSI bridge.
         * `PLATFORM=v2-hdmiusb` for RPi4 with HDMI-USB dongle.
         * `PLATFORM=v0-hdmi` for RPi2 or 3b+ with HDMI-CSI bridge and Arduino HID.
         * `PLATFORM=v0-hdmiusb` for RPi2 or 3b+ with HDMI-USB dongle and Arduino HID.
@@ -41,7 +43,7 @@ Docker must be enabled in privileged mode.
 
     ```Makefile
     [user@localhost os]$ cat config.mk
-    # rpi3 for Raspberry Pi 3; rpi2 for the version 2, zerow for ZeroW
+    # rpi3 for Raspberry Pi 3; rpi2 for the version 2, zero2w for Zero2W
     BOARD = rpi4
     
     # Hardware configuration
@@ -68,7 +70,6 @@ Docker must be enabled in privileged mode.
     # SD card device
     CARD = /dev/mmcblk0
     ```
-!!! warning "BOARD=rpi3 and PLATFORM=v2-hdmiusb are NOT compatable and will produce an error"
 
 4. Build the OS. It may take about one hour depending on your Internet connection:
 
