@@ -130,9 +130,11 @@ The `kvmd-edidconfig` utility has the ability to change some simple parameters w
 
 ## Changing EDID parameters for audio
 
-NOTE: Windows cache's drivers and registry settings so changing the monitor name is not enough, you will also need to change the PID/SN along with the monitor name
+```
+Windows cache's drivers and registry settings so changing the monitor name is not enough, you will also need to change the PID/SN along with the monitor name
 
-EG: # kvmd-edidconf --set-monitor-name=TOSHIBA --set-mfc-id=TTP --set-product-id=34953 --set-serial=2290649089 --apply
+# kvmd-edidconf --set-monitor-name=TOSHIBA --set-mfc-id=TTP --set-product-id=34953 --set-serial=2290649089 --apply
+```
 
 Reboot target
 
