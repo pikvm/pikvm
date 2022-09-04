@@ -415,6 +415,10 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "Unexpected interruption while loading the image for Mass storage drive"
     If problems occur when uploading even a small disk image it may be due to unstable network operation or antivirus software. It is well known that Kaspersky antivirus cuts off PiKVM connections during uploading, so you should add the PiKVM website to Kaspersky's list of exceptions or not filter web requests with the antivirus. Antivirus programs can also affect the performance of certain interface elements, for example the quality slider. For Kaspersky, the steps to add the network address of PiKVM's website to the exclusion list is: `Protection -> Private browsing -> Categories and exclusions -> Exclusions`.
+    
+??? question "I cannot click on anything when using the WebGUI on my phone"
+    At this time, iOS has the buttons on the bottom if you have the correct resolution, sometimes you cannot see them due to the resolution.
+    At this time, android is not supported, our suggestion is to use a VNC client.
 
 
 ## Hardware problems (Wi-Fi, ATX, etc)
