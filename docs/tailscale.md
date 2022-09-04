@@ -31,5 +31,13 @@
 * Follow the URL in the web browser: `https://<tailscale_kvm_ip>` and you will see PiKVM web interface.
 
 ??? note
-    * BASIC troubleshooting in case this fails in some way: Uninstall tailscale, rm -rf /var/lib/tailscale /var/cache/tailscale and reinstall
+    * BASIC troubleshooting in case this fails in some way: Uninstall tailscale, remove these dirs /var/lib/tailscale /var/cache/tailscale and reinstall
+    
+    ```
+    # pacman -Rscnd tailscale
+    # rm -rf /var/lib/tailscale /var/cache/tailscale
+    # reboot
+    ```
+    
+    * Follow the above instructions to reinstall
     
