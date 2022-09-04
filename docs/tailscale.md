@@ -29,3 +29,7 @@
 * [Download](https://tailscale.com/download) and install tailscale for your OS to the system you are using, not to the system you want to control.
 * Check the [admin page](https://login.tailscale.com/admin/machines) to view your VPN network.
 * Follow the URL in the web browser: `https://<tailscale_kvm_ip>` and you will see PiKVM web interface.
+
+??? note
+    * BASIC troubleshooting in case this fails in some way: Uninstall tailscale, rm -rf /var/lib/tailscale /var/cache/tailscale and reinstall
+    
