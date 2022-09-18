@@ -608,6 +608,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Kevin Bajohr
 * Kevin Schwartz
 * Kevin Sherwood
+* Kiera Kujisawa
 * Kiran Schuler
 * Koloman
 * Konrad Neitzel
@@ -775,6 +776,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Scott Worthington
 * Sean
 * SEAT
+* Sebastian
 * Seonwoo Lee
 * Sergey Lukjanov
 * Seth Jennings
