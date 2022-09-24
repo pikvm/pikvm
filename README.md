@@ -486,6 +486,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Finn Ebenritter
 * floppy
 * fo0bar
+* Foad Yousef
 * Foamy
 * Foli Ayivoh
 * Folkert Weistra
@@ -497,6 +498,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Garrett Dangerfield
 * Ge Men
 * Genkinger Andreas
+* Geijer
 * George Becker
 * Georgy Brodsky
 * Gerald
@@ -780,6 +782,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Seonwoo Lee
 * Sergey Lukjanov
 * Seth Jennings
+* Shawn Butts
 * Sheran Gunasekera
 * Shichun Chen
 * Shin Guey Wong
