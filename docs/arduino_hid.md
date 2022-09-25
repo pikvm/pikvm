@@ -191,7 +191,7 @@ Instructions on flashing the Arduino can be found on the page [Flash the Arduino
 
 If programming fails, ensure the Arduino is powered and check the wiring again. If there is a misconfiguration, power off the Pi and the Arduino, correct the wiring, and try again. Note it is not recommended or required to supply 5V power from the Raspberry Pi if the Arduino is USB powered, if the issue appears to be power related it may be removed from the solution and replaced with a powered USB connection if it will aid in troubleshooting but check all other wires first to ensure there are no shorts.
 
-After you have double and triple-checked your wiring (in particular make sure the pins you are using on the Pi are correct, the documentation uses the GPIO pin labels, NOT the sequential pin numbers from 1-40. A good pinout reference is [@Gadgetoid's version](https://pinout.xyz/#) at  Search the web for Pi pinout diagrams)
+After you have double and triple-checked your wiring (in particular make sure the pins you are using on the Pi are correct, the documentation uses the GPIO pin labels, NOT the sequential pin numbers from 1-40. A good pinout reference is [@Gadgetoid's version](https://pinout.xyz/#), you might try flashing the Arduino by holding down the RESET button on the chip while running `make install`.  If this works, then at least you know your SPI wiring is correct.
 
 Wiring problems are a common issue but there could be other reasons for programming not to complete. While it is not possible to list every possible problem and solution here, there is an active user community in our [Discord](https://discord.gg/bpmXfz5) with others familiar with the solution and willing to help.
 
