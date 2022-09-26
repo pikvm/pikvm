@@ -136,9 +136,11 @@ There are very few parts needed besides the Raspberry Pi to build the solution. 
 * Raspberry Pi Zero W or Pi 4 are the most popular boards for this solution, pre-soldered headers recommended
 * Arduino Micro (or compatible) microcontroller board with pre-soldered headers recommended
 * Logic Level Converter. This may be RX/TX, Bidirectional, or Single Supply
+* 1x PNP transistor (2n2907 or equivalent).  Note this is different from the one suggested in the Serial HID docs above, that is an NPN while this is a PNP.
+* 1x 390 ohm resistor
 * Dupont wires (female to male pin) recommended for breadboard or other suitable means of making the connections
 * *Optional:* Breakaway headers for the logic level converter
-* *Optional:* Breadboard large enough to accomodate the parts
+* *Optional:* Breadboard large enough to accommodate the parts
 * *Optional:* Header pins for connection to a breadboard
 
 !!! note
@@ -189,8 +191,9 @@ Instructions on flashing the Arduino can be found on the page [Flash the Arduino
 
 If programming fails, ensure the Arduino is powered and check the wiring again. If there is a misconfiguration, power off the Pi and the Arduino, correct the wiring, and try again. Note it is not recommended or required to supply 5V power from the Raspberry Pi if the Arduino is USB powered, if the issue appears to be power related it may be removed from the solution and replaced with a powered USB connection if it will aid in troubleshooting but check all other wires first to ensure there are no shorts.
 
-Wiring problems are a common issue but there could be other reasons for programming not to complete. While it is not possible to list every possible problem and solution here, there is an active user community in our [Discord](https://discord.gg/bpmXfz5) with others familiar with the solution and willing to help.
+After you have double and triple-checked your wiring (in particular make sure the pins you are using on the Pi are correct, the documentation uses the GPIO pin labels, NOT the sequential pin numbers from 1-40. A good pinout reference is [@Gadgetoid's version](https://pinout.xyz/#), you might try flashing the Arduino by holding down the RESET button on the chip while running `make install`.  If this works, then at least you know your SPI wiring is correct.
 
+Wiring problems are a common issue but there could be other reasons for programming not to complete. While it is not possible to list every possible problem and solution here, there is an active user community in our [Discord](https://discord.gg/bpmXfz5) with others familiar with the solution and willing to help.
 
 ### Enable the SPI configuration and restart kvmd
 
