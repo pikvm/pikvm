@@ -324,6 +324,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
   <summary>View all people!</summary>
 
 * A. Isenring
+* Aaron Graubert
 * Aaron Heise
 * Aaron Stein
 * Accalia
@@ -400,6 +401,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Bruno Gomes
 * Bryan Adams
 * Bryan Montgomery
+* Buzzer
 * C P ELSE
 * Calanish
 * Cameron Tacklind
@@ -408,6 +410,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Carlos Manuel Torres
 * cbad536
 * CHINATERA LIMITED
+* Chris Blackmon
 * Chris Burton
 * Chris Jackson
 * Chris Lewis
