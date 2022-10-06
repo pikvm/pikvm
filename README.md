@@ -700,6 +700,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Nick Roethemeier
 * Nico Baumgartner
 * Nicolai Kragh-Hansen
+* Nigel Smith
 * Nihal Fernando
 * Nils Orbat
 * Nis Wechselberg
