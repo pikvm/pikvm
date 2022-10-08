@@ -168,6 +168,16 @@ Some rules and customization options:
 * To change title of the button, write some its name like `"relay1|My cool relay"`.
 * Buttons and switches can request confirmation on acting. To do this write its name like `"relay1|confirm|My cool relay"`. The third argument with a title is required in this case.
 
+Also you can place some leds in the menu title using the similar syntax:
+
+```yaml
+kvmd
+    gpio:
+        view:
+            header:
+                title: ["#Test1:", led1, "Test2:", led2]
+```
+
 
 -----
 ## Hardware modules and pseudo-drivers
