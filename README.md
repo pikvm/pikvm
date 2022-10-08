@@ -846,6 +846,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Viktor Ekmark
 * Vlad Sterescu
 * Volker Gropp
+* Walli
 * Walter_Ego
 * Will Froning
 * William Hooper
