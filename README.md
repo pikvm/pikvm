@@ -113,7 +113,7 @@ PiKVM supports several different hardware configurations, referred to as **platf
     <ul>
       <li>1x USB-A to USB-A cable (male-male).</li>
       <li>1x Official Power Supply (USB-A or USB-C).</li>
-      <li>1x <a href="https://www.amazon.com/dp/B08C5FWQND">splitter</a> - This may need to be searched in your respecitve country.
+      <li>1x <a href="https://www.amazon.com/dp/B08C5FWQND">splitter</a> - This may need to be searched in your respective country.
       <li><a href="https://www.amazon.com/gp/product/B092MLT2J3">USB Power Blocker</a> - Will go into the USB-A end towards the target</li>
     </ul>
     </details>
