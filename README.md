@@ -348,6 +348,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Ananthaneshan Elampoornan
 * Andreas Marufke
 * Andreas Schmid
+* Andrew Brant
 * Andrew Melton
 * Andrew Reusch
 * Andrew Ruan
@@ -404,6 +405,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Buzzer
 * C P ELSE
 * Calanish
+* Cameron Hatcher
 * Cameron Tacklind
 * Carl Mercier
 * Carl-Fredrik Johansson
@@ -415,6 +417,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Chris Jackson
 * Chris Lewis
 * Chris Rizio
+* Christi King
 * Christian Schlögl
 * Christian Svensson
 * Christoph Dette
@@ -527,6 +530,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Henry Hood
 * HimKo
 * HouseFPV
+* Howard Simons
 * HyunohRyu
 * Icculus
 * iks
@@ -754,6 +758,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Richard Freemantle
 * Richard Michael
 * Rico Cantrell
+* Rob Holden
 * Rob Tongue
 * Robert Klauco
 * Robert Weemhoff 
@@ -848,6 +853,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Volker Gropp
 * Walli
 * Walter_Ego
+* William Wenzel
 * Will Froning
 * William Hooper
 * William Perrin
