@@ -172,3 +172,47 @@ This example shows that PiKVM may not be accessible from the internet, but you c
    ```
    # systemctl enable --now kvmd-certbot.timer
    ```
+
+## Wireguard proxy
+
+If you don't have public IP, and you don't want to put your API keys in PiKVM,
+you can forward HTTP traffic over wireguard. To Let's Encrypt you'll appear to
+serve ACME challenges from a host they can reach from the Internet (e.g. VPS),
+to which you'll connect over wireguard.
+
+The example assumes:
+- FQDN of your pikvm is `pikvm1.int.example`;
+- FQDN of the proxy VPS is `acme-proxy.example`;
+- public IP addresses of VPS are `198.51.100.1` and `2001:db8::1`;
+- internal (wireguard) IPv4 address of the PiKVM is `10.11.12.13`.
+
+1. Setup wireguard and ensure it's working.
+
+2. Setup public DNS zone to point the domain address at the public VPS:
+   ```zone
+   acme-proxy.example. IN A      198.51.100.1
+   acme-proxy.example. IN AAAA   2001:db8::1
+   pikvm1.int.example. IN CNAME  acme-proxy.example.
+   ```
+
+3. On the public VPS, configure HTTP proxy to forward
+   `/.well-known/acme-challenge` to PiKVM. For example in nginx:
+   ```nginx
+   server {
+       listen 80;
+       listen [::]:80;
+
+       server_name pikvm1.int.example;
+
+       location ^~ /.well-known/acme-challenge {
+           proxy_pass http://10.11.12.13:80;
+           proxy_set_header Host $host;
+       }
+
+       location / {
+           return 404;
+       }
+   }
+   ```
+
+4. Now you can use `kvmd-certbot certonly_webroot` as in basic scenario above.
