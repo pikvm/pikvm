@@ -325,6 +325,16 @@ kvmd
                     - ["reboot_button|confirm|Reboot PiKVM"]
     ```
 
+An example to help you get started:
+
+* `cmd: [/usr/bin/sudo, kvmd-otgconf, --disable-function, mass_storage.usb0]`
+* `cmd: [(absolute path to sudo, command, flag, flag, absolute path to file]`
+
+Then run the following:
+
+```
+systemctl restart kvmd
+```
 
 ### PWM
 ??? note "Click to view"
