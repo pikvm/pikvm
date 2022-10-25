@@ -325,10 +325,10 @@ kvmd
                     - ["reboot_button|confirm|Reboot PiKVM"]
     ```
 
-A few examples to help you get started:
-cmd: [/usr/bin/sudo, rm, -rf]
-cmd: [/usr/bin/sudo, kvmd-otgconf, --disable-function, mass_storage.usb0]
-cmd: [(absolute path to sudo, command, flag, flag]
+An example to help you get started:
+
+`cmd: [/usr/bin/sudo, kvmd-otgconf, --disable-function, mass_storage.usb0]`
+`cmd: [(absolute path to sudo, command, flag, flag, absolute path to file]`
 
 Then run the following:
 
