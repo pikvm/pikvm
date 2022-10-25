@@ -300,9 +300,17 @@ kvmd
 
 
     Commands are executed from the user `kvmd`. If you want to run the command as root, then you need to configure `sudo`. Example of the `/etc/sudoers.d/custom_commands`:
+    
+    Granular example
 
     ```sudoers
     kvmd ALL=(ALL) NOPASSWD: /usr/bin/reboot
+    ```
+    
+    NON Granular example (Captures ALL commands)
+    
+    ```sudoers
+    kvmd ALL=(ALL) NOPASSWD: ALL
     ```
 
     Example of the `/etc/kvmd/override.yaml`:
