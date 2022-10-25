@@ -330,6 +330,12 @@ cmd: [/usr/bin/sudo, rm, -rf]
 cmd: [/usr/bin/sudo, kvmd-otgconf, --disable-function, mass_storage.usb0]
 cmd: [(absolute path to sudo, command, flag, flag]
 
+Then run the following:
+
+```
+systemctl restart kvmd
+```
+
 ### PWM
 ??? note "Click to view"
     The `pwm` driver allows you to use [some GPIO pins](https://pinout.xyz/pinout/pwm) on the Raspberry Pi for PWM.
