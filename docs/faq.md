@@ -318,6 +318,12 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     If none of this works, try connecting the DP cable first, boot into the BIOS, disable the CSM and shutdown (do not restart) your PC. Then, boot into the BIOS and enable the CSM before shutting down your PC. Then connect the HDMI and turn your PC on again.
 
 
+??? question "There is no video in GRUB2, but there is before and after"
+	Sometimes this can be caused by the specifics of the BIOS/UEFI and how GRUB2 works with video.
+
+	This can be solved by enabling the **Compatibility Support Module (CSM)** in your BIOS, usually under the **Boot** options. The video mode will be located in the same section. Switch the **Video** mode from **UEFI** to **Legacy**.
+
+
 ??? question "Why does the CSI bridge does not work with official Raspberry Pi PoE HAT?"
     Details [here](https://github.com/pikvm/pikvm/issues/6). The reason is that the [official HAT](https://www.raspberrypi.org/products/poe-hat) has a built-in fan controller that conflicts with the TC358743 chip of the bridge. The solution is to disable the fan control and connect the fan to the power line so that it works continuously. To turn off the controller you need to add the line `disable_poe_fan=1` to `/boot/config.txt`.
 
