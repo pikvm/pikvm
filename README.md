@@ -338,6 +338,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Aleksei Brusianskii
 * Alessio Curri
 * Alex T
+* Alex Z
 * Alexander Martin
 * Alexander Pankov
 * Alexandre Jablonski
@@ -598,6 +599,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Josh Nethery
 * Josh Ricker
 * Joshua Futterer
+* Jordan Blake
 * Jordi Pakey-Rodriguez
 * Joris van Embden
 * Jozef Riha
