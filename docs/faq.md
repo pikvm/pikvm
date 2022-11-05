@@ -188,6 +188,24 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     ro  # Back to read-only
     ```
 
+??? question "How do I add another user?"
+    As stated above you need to make 2 accounts, 1 for the shell, the other for the PiKVM Web UI.
+    
+    ```
+    If you require additional users, you can use the following:
+    # rw
+    # su -
+    # kvmd-htpasswd set <user> # Sets a new user
+    # kvmd-htpasswd set <user> # Sets the password as long as the user exists
+    # kvmd-htpasswd del <user> # Removes/deletes a user
+    
+    To add a shell/terminal account:
+    # rw
+    # su -
+    # adduser <user>
+    # passwd <user>
+    ```
+    Keep in mind that the more users that are added, the stream if accessed, fps will drop.
 
 ??? question "How do I get root access in the web terminal?"
     The web terminal works with the account `kvmd-webterm`. This is a regular user with no administrator privileges. In addition, `sudo` and login are disabled for this user for security reasons. To get `root` access, you need to use the `su -` command (minus is important) and **enter the root password**.
