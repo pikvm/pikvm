@@ -192,7 +192,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     As stated above you need to make 2 accounts, 1 for the shell, the other for the PiKVM Web UI.
     
     ```
-    If you require additional users, you can use the following:
+    If you require additional users for PiKVM UI, you can use the following:
     # rw
     # su -
     # kvmd-htpasswd set <user> # Adds a new user
