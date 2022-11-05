@@ -195,7 +195,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     If you require additional users, you can use the following:
     # rw
     # su -
-    # kvmd-htpasswd set <user> # Sets a new user
+    # kvmd-htpasswd set <user> # Adds a new user
     # kvmd-htpasswd set <user> # Sets the password as long as the user exists
     # kvmd-htpasswd del <user> # Removes/deletes a user
     
