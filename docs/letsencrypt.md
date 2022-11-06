@@ -220,7 +220,6 @@ Not in Scope:
    tar -zxvf acme-dns-client_0.3_linux_armv6.tar.gz
    mv acme-dns-client /etc/acmedns/acme-dns-client
    ln -sf /etc/acmedns/acme-dns-client /usr/local/bin/acme-dns-client
-   ls
    rm LICENSE
    rm README.md
    rm acme-dns-client_0.3_linux_armv6.tar.gz
