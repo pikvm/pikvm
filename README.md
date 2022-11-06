@@ -740,6 +740,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Philip Edwards
 * Philip Merricks
 * Pierre Brassart
+* Pierre Peine
 * posicat
 * pozitron03
 * Przemysław Szypowicz
