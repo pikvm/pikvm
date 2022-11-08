@@ -68,7 +68,7 @@ In rare cases, WebRTC may not work. The most common reasons are:
 
 * Clearing the Cache
 
-* Try other browsers - Try incog or private window (this disableds all extensions)
+* Try other browsers - Try incognito or private window (this disableds all extensions)
 
 * Tricky IPv6 configuration on the network. IPv6 support for WebRTC in PiKVM is still in its infancy, so if your network has IPv4, it will be easiest to disable IPv6 on PiKVM. To do this, switch the file system to write mode using `rw` command, add option `ipv6.disable_ipv6=1` to `/boot/cmdline.txt` and perform `reboot`. Also see [here](https://wiki.archlinux.org/title/IPv6#Disable_IPv6).
 
