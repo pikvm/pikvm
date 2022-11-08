@@ -4,7 +4,12 @@
 
 !!! warning
     For v2 DIY owners, please follow this [first](https://github.com/pikvm/pikvm)<br />
-    For v3 HAT Users, please follow this [first](https://docs.pikvm.org/v3/)
+    For v3 HAT OR Pre-Assembled Users, please follow this [first](https://docs.pikvm.org/v3/)
+    For both to work and display a video, your target system needs to be configured for the following:
+        1920x1080p50Hz (In some rare instances, try 30hz)
+        1600x1200p60Hz
+        1280x720p60Hz
+        
 
 
 ??? example "Optional setting up Wi-Fi"
