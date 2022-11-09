@@ -9,8 +9,7 @@
 
     ```
     # rw
-    # pacman -Syu
-    # pacman -S ffmpeg
+    # pacman -Syu ffmpeg
     ```
 
 2. For USB dongle only: Add line `gpu_mem=256` to `/boot/config.txt`.
