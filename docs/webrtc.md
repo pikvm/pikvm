@@ -1,6 +1,6 @@
 # H.264 / WebRTC
 
-!!! warning "Only main browsers are supported: Chrome, Firefox and Safari - For v3+ hardware versions ONLY"
+!!! warning "Only main browsers are supported: Chrome, Firefox and Safari - For v2 with CSI Modules or v3+ hardware versions ONLY"
 
 This is a new alternative video transfer mode available for Raspberry Pi 4 users with an HDMI-CSI bridge (including PiKVM v3 HAT).
 It uses H.264 encoding instead of MJPEG and provides significantly less traffic consumption.
