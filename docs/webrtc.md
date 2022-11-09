@@ -2,6 +2,8 @@
 
 !!! warning "Only main browsers are supported: Chrome, Firefox and Safari"
 
+!!! warning "Only for V3 and other devices based on CSI bridge"
+
 This is a new alternative video transfer mode available for Raspberry Pi 4 users with an HDMI-CSI bridge (including PiKVM v3 HAT).
 It uses H.264 encoding instead of MJPEG and provides significantly less traffic consumption.
 
