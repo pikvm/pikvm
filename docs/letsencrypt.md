@@ -52,7 +52,7 @@ This example shows that PiKVM may not be accessible from the internet, but you c
 1. Switch filesystem to RW and install the Cloudflare DNS plugin:
    ```
    # rw
-   # pacman -S certbot-dns-cloudflare
+   # pacman -Syu certbot-dns-cloudflare
    ```
 
 2. Prepare the environment for the DNS plugin (place the auth data):
@@ -84,7 +84,7 @@ This example shows that PiKVM may not be accessible from the internet, but you c
 1. Switch filesystem to RW and install the Route53 DNS plugin:
    ```
    # rw
-   # pacman -S certbot-dns-route53
+   # pacman -Syu certbot-dns-route53
    ```
 
 2. Configure Your AWS User
