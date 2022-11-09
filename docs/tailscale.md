@@ -11,8 +11,7 @@
 
     ```
     # rw
-    # pacman -Syy
-    # pacman -S tailscale-pikvm
+    # pacman -Syu tailscale-pikvm
     # systemctl enable --now tailscaled
     # tailscale up
     ```
