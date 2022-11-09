@@ -16,8 +16,7 @@ This is not the main case of using PiKVM since you still need it to pair with a 
 
     ```
     # rw
-    # pacman -Syu
-    # pacman -S bluez bluez-utils raspberrypi-bluetooth
+    # pacman -Syu bluez bluez-utils raspberrypi-bluetooth
     ```
 
 2. Edit `/boot/config.txt` and comment these lines:
