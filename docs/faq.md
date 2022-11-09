@@ -243,9 +243,9 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     PiKVM OS is based on Arch Linux ARM and uses the [pacman](https://wiki.archlinux.org/title/Pacman) package manager.
 
     * Switch filesystem to RW-mode: `rw`.
-    * Update the package cache: `pacman -Syy`.
     * Find some packages (`emacs` for example): `pacman -Ss emacs`.
-    * Install it: `pacman -S emacs`.
+    * Install it, while keeping the system updated: `pacman -Syu emacs`.
+    * To only update packages without installing new ones, use `pacman -Syu`
     * Remove it: `pacman -R emacs`.
     * Switch filesystem to RO-mode: `ro`.
 
