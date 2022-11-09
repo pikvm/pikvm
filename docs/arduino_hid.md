@@ -179,8 +179,7 @@ Programming assumes the Arduino is powered via USB, either from the connected ho
 As of the latest package release, the kdmd service supports SPI. It should be sufficient to ensure the packages are up-to-date with the latest release, the programmer is installed, and the SPI device overlay is loaded at boot.
 
 * Switch the filesystem to read-write mode with `rw`
-* Update the system with `pacman -Syu` for the latest packages
-* Install the avrdude programmer with `pacman -S avrdude-svn`
+* Update the system and nstall the avrdude programmer `pacman -Syu avrdude-svn`
 * Add `dtoverlay=spi0-1cs` to `/boot/config.txt`
 * Reboot with `reboot` or `systemctl reboot`
 
