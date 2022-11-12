@@ -166,7 +166,7 @@ PiKVM supports several different hardware configurations, referred to as **platf
 * ATX control (optional): [see V2 description](#hardware-for-v2).
 
 #### Addition
-* If you want to capture VGA from your server instead of HDMI, buy the [VGA-to-HDMI converter](https://aliexpress.com/item/4000553298530.html). Some VGA HDMI adapters have issues with not supporting all resolutions and refresh rates.
+* If you want to capture VGA from your server instead of HDMI, buy the [VGA-to-HDMI converter](https://aliexpress.com/item/3256801728005613.html). Some VGA HDMI adapters have issues with not supporting all resolutions and refresh rates.
 * PiKVM can be powered using PoE, but it is not recommend to use the official PoE HAT: it is unreliable and [not compatible with the HDMI bridge](https://github.com/pikvm/pikvm/issues/6). Use any other PoE hat without an I2C fan controller.
 * **Don't use random relay modules or random optocouplers!** Some relays or optocouplers may not be sensitive enough for the Raspberry Pi, some others may be low-level controlled. Either use relays that are activated by a high logic level, or follow the design provided and buy an OMRON. See details [here](https://github.com/pikvm/pikvm/issues/13).  
 
