@@ -173,7 +173,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     - Make sure you're `root`, if you're not root use the `su` command to become root
     - Enter read write mode of the PiKVM by executing the `rw` command
     - Execute: `hostnamectl set-hostname yournewhostname.domain`
-    - Optional: Edit `/etc/kvmd/meta.yaml` to alter the displayed hostname in the web UI
+    - Optional: Edit `/etc/kvmd/meta.yaml` to alter the displayed server name in the web UI
     - Reboot the pikvm
 
 
