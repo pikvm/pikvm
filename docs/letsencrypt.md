@@ -6,8 +6,8 @@ Usually Let's Encrypt certificates are issued and updated automatically using Ce
 file system, special tools around Certbot are required to work with certificates. KVMD 3.117 provides them.
 
 !!! note
-This feature is available on images as old as 2022.06.19 since it requires [PST storage partition on SD card](pst.md).
-Ports 80+443 need to be opened if you are port forwarding for this to work properly.
+    This feature is available on images as old as 2022.06.19 since it requires [PST storage partition on SD card](pst.md).
+    Ports 80+443 need to be opened if you are port forwarding for this to work properly.
 
 ## Basic setup
 
@@ -199,7 +199,8 @@ Not in Scope:
 
 1. Ensure that Step 1 from [Basic Setup](https://docs.pikvm.org/letsencrypt/#basic-setup) has been completed
 2. Visit the [Releases](https://github.com/acme-dns/acme-dns-client/releases) page to get the URL for the latest `acme-dns-client` release.  
-   **NOTE**: PiKVM OS is 32-bit, which is **`linux_armv6`**.
+   !!! note
+   PiKVM OS is 32-bit, which is **`linux_armv6`**.
 
 3. Install **`acme-dns-client`**
 
@@ -212,7 +213,8 @@ Not in Scope:
    - Creating the necessary persistent symbolic link to allow **`acme-dns-client`** to be ran
    - Initialize **`acme-dns-client`**
 
-     **NOTE**: Make sure to replace the URL below with the one gathered from Step 1. As of the writing of this documentation, the latest (and demonstrated) version is **v0.3**.
+     !!! note
+     Make sure to replace the URL below with the one gathered from Step 1. As of the writing of this documentation, the latest (and demonstrated) version is **v0.3**.
 
    ```sh
    mkdir /etc/acmedns
@@ -227,7 +229,8 @@ Not in Scope:
    ```
 
 4. Register **`acme-dns-client`** with ACME DNS  
-   **NOTE**: This is interactive, follow instructions for creating and verifying the appropriate `CNAME` record.  
+   !!! note
+   This is interactive, follow instructions for creating and verifying the appropriate `CNAME` record.  
    One registration ownership of `clientstorage.json` must be changed to `kvmd-certbot`.
 
    ```sh
@@ -235,7 +238,8 @@ Not in Scope:
    chown kvmd-certbot:kvmd-certbot /etc/acmedns/clientstorage.json
    ```
 
-   **NOTE**: If using `acme-dns-client` on an internal/private domain with an ACME compatible Certificate Authority do not forget to add `-ns <dns-server-ip>:<dns-server-port>` to `acme-dns-client register`
+   !!! note
+   If using `acme-dns-client` on an internal/private domain with an ACME compatible Certificate Authority do not forget to add `-ns <dns-server-ip>:<dns-server-port>` to `acme-dns-client register`
 
 5. Register Certbot
 
@@ -249,7 +253,8 @@ Not in Scope:
    kvmd-certbot certonly --manual --preferred-challenges dns --manual-auth-hook 'acme-dns-client' -d pikvm.example.org
    ```
 
-   **NOTE**: If using an ACME compatible Certificate Authority do not forget to add `--server https://ca.example.org/acme/acme/directory` to `kvmd-certbot`
+   !!! note
+   If using an ACME compatible Certificate Authority (other than Let's Encrypt) do not forget to add `--server https://ca.example.org/acme/acme/directory` to `kvmd-certbot`
 
 7. Follow steps 3 through 5 under [Basic Setup](https://docs.pikvm.org/letsencrypt/#basic-setup) to complete setup and renewal of certificates
 
