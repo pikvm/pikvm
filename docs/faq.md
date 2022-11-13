@@ -130,7 +130,17 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     /usr/bin/kvmd-oled --height=32 --interval=5 --clear-on-exit --text="turn off in 5s"
     systemctl disable --now kvmd-oled kvmd-oled-reboot kvmd-oled-shutdown
     ```
-
+    
+??? question "How do I rotate the OLED display?"
+    Please run the following:
+    ```
+    1. mkdir -p /etc/systemd/system/kvmd-oled.service.d
+    2. Create file /etc/systemd/system/kvmd-oled.service.d/override.conf:
+    [Service]
+    ExecStart=
+    ExecStart=/usr/bin/kvmd-oled --height=32 --clear-on-exit --rotate=2
+    ```
+    
 ??? question "I am getting a 500/503 error when I try and access the main KVM page!"
     The latest images take care of these issues, please reflash and edit, otherwise follow the below.
     This is due to your recent changes in your yaml file; you have to use spaces and NOT tabs.
@@ -167,7 +177,6 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
         * Only USB OR the RJ-45 serial connector will work, you can't use them together! 
         * If you disable the service permanently, you can't recover your device via serial console if you need this.
         * There are some reports, that you need to remove "ttyAMA0" from /boot/cmdline.txt, but this is not needed on new installations.
-
 
 ## First steps
 
