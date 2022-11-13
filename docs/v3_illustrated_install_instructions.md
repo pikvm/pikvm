@@ -3,13 +3,13 @@
 Remove contents from box.
 
 # Contents:
-* 8x M.2 screws for the case
-* 4x screws for the fan
+* 8x M.2 5x12mm screws for the case
+* 4x M.2 5x12mm screws for the fan
 * 4x bolts for the fan
 * 1x fan
 * 1x case top
 * 1x case bottom
-* 1x OLED display
+* 1x OLED display (0.91 IIC 128x32 LCD)
 * 2x bottom plastic risers
 * 1x plastic top riser
 * 1x plastic OLED holder that is also a front riser
@@ -47,6 +47,9 @@ There are 2 ways to insert the FCC cable, you can add it when you insert the RPI
 # Step 5
 
 Install USB-C bridge.
+
+??? note "This is packaged with the ATX board"
+<img src="PiKVM_ATX_Packaging.png" width="400" />
 
 <img src="HAT_install_usbc_bridge.jpg" width="400" />
 
