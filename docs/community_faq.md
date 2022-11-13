@@ -1,24 +1,4 @@
-### I can't get the KVM KB to work on my ZeroW!
-Make sure that you did NOT modify your config.txt file, this is the default: 
-```
-# See /boot/overlays/README for all available options
-initramfs initramfs-linux.img followkernel
-hdmi_force_hotplug=1
-gpu_mem=64
-enable_uart=1
-dtoverlay=tc358743,i2c_pins_28_29=1
-dtoverlay=disable-bt
-dtoverlay=dwc2,dr_mode=peripheral
-```
-Ensure that you have the cable(Needs to support both power/data) plugged into the right port, the one closest to the mini HDMI is the correct port
-
-
-### Can I use a KB on my ZeroW?
-- Yes but kb/mouse passthrough will not work. Its one or the other - This is especially true if you use an addon that requires the below to change.
-- edit ```/boot/config.txt```
-  - Host mode - Comment out dtoverlay=dwc2
-  - Passthrough mode - Uncomment out dtoverlay=dwc2
-
+### Most of the official instuctions or tips and tricks have been migrated to the official FAQ, the less official items will remain in this FAQ till otherwise removed.
 
 
 ### Can you have the pikvm(RPi4) connected along with a monitor?
@@ -33,18 +13,8 @@ Ensure that you have the cable(Needs to support both power/data) plugged into th
   - The better solution is to capture the stream in a dir and then use VLC to stream to that capture on another computer. This will result in fps loss.
 
 
-### Wouldn't it be good to have different hostnames for your multitude of pikvms?
-Yes! And it's easy to do! Using a SSH session or the web terminal:
-- Make sure you're `root`, if you're not root use the `su` command to become root
-- Enter read write mode of the PiKVM by executing the `rw` command
-- Execute: `hostnamectl set-hostname yournewhostname.domain`
-- Optional: Edit `/etc/kvmd/meta.yaml` to alter the displayed hostname in the web UI
-- Reboot the pikvm
-
-
 ### I want to do something not related to PiKVM
 - It's recommended that you review Arch documents related to what you want to do, while there are several folks in discord who can help, there is no obligation...they do it for the feels. So if you don't get an answer within the time frame you are looking for, it's advised you start google searching for what you want.
-
 
 ### Can this be used in any other distro’s like Rasbian? Run this in a Docker?
 - Officially, no. Unofficially yes and totally #unsupported. Please DM @srepac on discord for the directions.
@@ -69,7 +39,7 @@ rm -rf /var/cache/pacman/pkg/*
 
 
 ### Can you connect a camera to this and still make pikvm functional?
-- Yes, any cheapo webcam can be used in place of the usb dongle, please use the usb image
+- Yes, any low cost no name webcam can be used in place of the usb dongle, please use the usb image
 - A PiCam will NOT work
 
 
