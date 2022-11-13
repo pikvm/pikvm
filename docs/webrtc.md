@@ -23,7 +23,8 @@ Then reload the Web UI and then in the **System** menu you will see the video mo
 ## Basics
 
 The MJPEG video stream uses the same HTTP connection that you use to get the web interface.
-This means that for remote access, you just need to forward ports 80 and 443 on your router.
+This means that for remote access, you just need to forward ports 80 and 443 on your router. 
+Please review the [Port Foward doc](port_forwarding.md) for proper usage.
 
 In contrast, WebRTC is a completely different way of transmitting video.
 It uses a P2P connection and UDP. This reduces network load, but makes it difficult to configure -
@@ -31,8 +32,7 @@ the server needs to know your network configuration in order to use it correctly
 
 To implement this, the PiKVM checks which of the network interfaces is used for the default gateway,
 and also tries to find out your external address using the Google [STUN](https://en.wikipedia.org/wiki/STUN) server.
-This is necessary when using [Tailscale](tailscale.md) or so that you can connect to your PiKVM from the external Internet,
-since simply forwarding ports 80 and 443 for WebRTC is not enough - it requires a direct connection.
+This is necessary when using [Tailscale](tailscale.md) or so that you can connect to your PiKVM from the external Internet.
 
 If you don't like using Google (it was chosen as the default for reliability reasons) for this purpose,
 you can choose [any other STUN server](https://www.voip-info.org/stun/) at your discretion, or set up your own.
