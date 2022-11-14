@@ -16,7 +16,7 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 
 
 # Features
-* Supported **Raspberry Pi 2**, **3**, **4** and **Zero2W**;
+* Supported **Raspberry Pi 2**, **3**, **4** and **Zero2W**
 * **FullHD video** using advanced **HDMI-to-CSI bridge** or **USB dongle**;
 * Extra low **video latency** with **MJPEG** or **H.264 / WebRTC** (for CSI bridge);
 * Bootable **Virtual CD-ROM** and **Flash Drive**;
