@@ -165,6 +165,7 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/info
                 },
                 "platform": {
                     "base": "Raspberry Pi 4 Model B Rev 1.1", // /proc/device-tree/model; null on error
+                    "serial": "0000000000000000", // /proc/device-tree/serial-number; null on error
                     "type": "rpi"
                 }
             },
