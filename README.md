@@ -596,6 +596,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Jonathan Slenders
 * Jonathan Vaughn
 * Joost Backer
+* Joseph Swift
 * Josh Nethery
 * Josh Ricker
 * Joshua Futterer
