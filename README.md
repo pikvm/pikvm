@@ -617,6 +617,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Ken Lee
 * Kenneth Younger III
 * Kenny Hui
+* KeonWoo PARK
 * Kevin Bajohr
 * Kevin Schwartz
 * Kevin Sherwood
