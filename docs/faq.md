@@ -94,6 +94,8 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "How do I emulate various USB devices on the target machine?"
+    It is advised that you get familiar with the [First Steps](first_steps.md) doc before making any changes here.
+    
     By default this is what is set:
 
     ```yaml
@@ -105,7 +107,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
         serial: CAFEBABE
     ```
 
-    You can change how this is displayed with the following example for `/etc/kvmd/override.yaml` file:
+    You can change how this is displayed with the following example for `# nano /etc/kvmd/override.yaml` file:
 
     ```yaml
     otg:
