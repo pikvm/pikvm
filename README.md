@@ -478,6 +478,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * dixon wong
 * dizztrukshin
 * Dmitry Shilov
+* DogeLabs
 * Dominic Phoon
 * Dominik Klonowski
 * Egan Ford
