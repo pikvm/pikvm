@@ -6,7 +6,7 @@ connected directly to the Raspberry Pi as you will loose network connectivity on
 Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (available through the browser) should also work.
 
 !!! warning
-    Please review [First Steps](first_steps.md) if you are setting up wifi for zerow/z2w. Please follow this step if you are wanting to activate wifi for the first time on your PiKVM using other boards than the Zero series.
+    Please review [First Steps](first_steps.md) if you are setting up wifi for zero2w. First Steps guide also applies to wifi setup for v2/v3 HAT and v3 Pre-assembled.
 
 !!! warning
     There is nothing more reliable than wired Ethernet, so it's better to use it. But who are we to stop you... :)
