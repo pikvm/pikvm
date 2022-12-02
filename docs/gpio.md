@@ -319,7 +319,7 @@ kvmd
     kvmd:
         gpio:
             drivers:
-				reboot:
+                reboot:
                     type: cmd
                     cmd: [/usr/bin/sudo, reboot]
             scheme:
@@ -347,7 +347,16 @@ kvmd
 ### PWM
 ??? note "Click to view"
     The `pwm` driver allows you to use [some GPIO pins](https://pinout.xyz/pinout/pwm) on the Raspberry Pi for PWM.
-        
+
+    !!! note
+        Due to hardware limitations, this module conflicts with the **kvmd-fan** (PiKVM fan controller).
+        To use it, you have to use hardware PWM for kvmfan. To do this, add the following lines to `/etc/kvmd/fan.ini`:
+
+        ```ini
+        [main]
+        pwm_soft = 80
+        ```
+
     Here the small example with servo control:
 
     1. Add to `/boot/config.txt`:
@@ -415,6 +424,15 @@ kvmd
 ### Servo
 ??? note "Click to view"
     The `servo` module is built on top of the `pwm` module and allows user to define angles instead of `duty_cyles` to control a PWM enabled servo motor like SG90. When the button is pressed the servo motor moves to an angle defined by `angle_push` and when button is released it moves back to `angle_release`. In the example configuration for a [cheap 5V SG90 Servo](https://www.ebay.co.uk/itm/184555802744), the motor moves to an angle of 45 degrees when button is pressed and moves back to 20 degress when released.
+
+    !!! note
+        Due to hardware limitations, this module conflicts with the **kvmd-fan** (PiKVM fan controller).
+        To use it, you have to use hardware PWM for kvmfan. To do this, add the following lines to `/etc/kvmd/fan.ini`:
+
+        ```ini
+        [main]
+        pwm_soft = 80
+        ```
 
     To use Servo motors in PiKVM you need to follow steps 1-3 for [PWM Module](#pwm) and then use the following configuration.
 
