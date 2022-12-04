@@ -415,6 +415,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * CHINATERA LIMITED
 * Chris Blackmon
 * Chris Burton
+* Chris Campbell
 * Chris Jackson
 * Chris Lewis
 * Chris Rizio
