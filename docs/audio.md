@@ -45,4 +45,5 @@ This feature allows you to receive audio over an HDMI cable and transmit it to t
     * After the page is reloaded, the audio slider will be reset. This is a technical limitation in all browsers to avoid annoying audio ads.
     * If something doesn't work, check the log: `journalctl -u kvmd-janus`.
     * Try a different browser, try and clear browser cache before reporting issues.
+    * Unplug the hdmi cable and plug back in, either from the PiKVM end and or the target end.
     * Please report about problems [here](https://discord.gg/bpmXfz5) (preferred) or [here](https://github.com/pikvm/pikvm/issues).
