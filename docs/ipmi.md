@@ -82,7 +82,8 @@ location /redfish {
 }
 ```
 
-!!! info Don't be confused by the parameter `auth_request off`. KVMD performs authorization on its own. The only open HTTP entrypoint is `/redfish/v1`, which returns a static document and does not change the state of the PiKVM. It's safe.
+!!! info 
+    Don't be confused by the parameter `auth_request off`. KVMD performs authorization on its own. The only open HTTP entrypoint is `/redfish/v1`, which returns a static document and does not change the state of the PiKVM. It's safe.
 
 If there is a file in your system after the update `/etc/kvmd/nginx/kvmd.ctx-server.conf.pacnew` you can just move it:
 
