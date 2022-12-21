@@ -43,7 +43,7 @@ The UI can be updated to add buttons to switch between KVM inputs and indicators
             drivers:
                 ez:
                     type: ezcoo
-                    protocal: 2
+                    protocol: 2
                     device: /dev/ttyUSB0
             scheme:
                 ch0_led:
