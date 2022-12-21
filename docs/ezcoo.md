@@ -43,6 +43,7 @@ The UI can be updated to add buttons to switch between KVM inputs and indicators
             drivers:
                 ez:
                     type: ezcoo
+                    protocal: 2
                     device: /dev/ttyUSB0
             scheme:
                 ch0_led:
@@ -113,10 +114,9 @@ The UI can be updated to add buttons to switch between KVM inputs and indicators
 
 To switch between hosts, enter the KVM UI and click the "GPIO" menu.  You should see 4 inputs, one of which will have a green circle indicating it is currently selected.  Click the other inputs to change the selected host.
 
+## Additional step for the USB 2.0 version (Old EOL version)
 
-## Additional step for the USB 3.0 version
-
-Please add `protocol: 2` to the override.yaml under the `type: ezcoo` at the same level:
+Please remove `protocol: 2` to the override.yaml under the `type: ezcoo` at the same level:
 
 ```yaml
 kvmd:
@@ -124,10 +124,8 @@ kvmd:
         drivers:
             ez:
                 type: ezcoo
-                protocol: 2
                 device: /dev/ttyUSB0
 ```
-
 
 ## Developer info
 * [The official protocol version 1 reference](ezcoo1.docx)
