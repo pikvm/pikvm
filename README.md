@@ -706,6 +706,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Moez Tharani
 * Morgan Helton
 * Myron Weber
+* N Patel
 * Nathaniel Griswold
 * Nelson Lee
 * Nicholas Jeppson
