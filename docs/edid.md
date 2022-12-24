@@ -71,6 +71,8 @@ The `kvmd-edidconfig` utility has the ability to change some simple parameters w
 
 ## Custom EDIDs
 
+Copy the contents into a file, ex: myedid.hex then follow the same steps as above starting at step 5.
+
 ??? example "1280x1024 as preferred. Useful for Gigabyte GA-H77-DS3H"
     ```
     00FFFFFFFFFFFF005262888800888888
