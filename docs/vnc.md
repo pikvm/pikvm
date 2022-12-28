@@ -54,7 +54,7 @@ Here are our recommended settings for TigerVNC:
 
 | Compression tab | Security tab |
 |-----------------|--------------|
-| <img src="tigervnc_compression.jpg" width="300" /> | <img src="tigervnc_security.jpg" width="300" /> |
+| <img src="tigervnc_compression.png" width="300" /> | <img src="tigervnc_security.png" width="300" /> |
 | If your client does not support H.264, choose **Tight** | |
 
 For iOS and Android the recommended application is bVNC:
