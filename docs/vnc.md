@@ -47,15 +47,15 @@ As an alternative to the web interface, you can use VNC with various desktop cli
 
 We recommend [TigerVNC](https://tigervnc.org) for a better experience on desktop.
 
+If you are using PiKVM V3+ or DIY based on CSI bridge, you can try the [beta version of TigerVNC with H.264 support](https://github.com/TigerVNC/tigervnc/releases/tag/v1.12.90).
+It will improve performance and save traffic. H.264 is available in binary builds for Windows, for other OS it needs to be compiled manually.
+
 Here are our recommended settings for TigerVNC:
 
-* **Compression** tab:
-    * Choose **Tight** encoding as preferred and color-level **Full**.
-    * Disable automatic quality adjust settings **Auto Select**.
-    * Enable **Allow JPEG compression**.
-* **Security** tab:
-    * Enable **None**, **X.509 TLS** and **Anonymous TLS** encryption (or choose one preferred mode).
-    * Enable **Username and password** authentication.
+| Compression tab | Security tab |
+|-----------------|--------------|
+| <img src="tigervnc_compression.jpg" width="300" /> | <img src="tigervnc_security.jpg" width="300" /> |
+| If your client does not support H.264, choose **Tight** | |
 
 For iOS and Android the recommended application is bVNC:
 
@@ -66,5 +66,6 @@ For iOS and Android the recommended application is bVNC:
 ## Unsupported clients
 
 * **RealVNC** - Does not support most widely used open VNC protocol extensions.
+* **Remmina** - Slightly imperfect algorithms for matching settings with the server, we are working on it.
 * **Guacamole** - Incorrectly implements vencrypt, no JPEG compression.
-* **Vinagre** - Incorrectly implements vencrypt.
+* **Vinagre** - Incorrectly implements vencrypt, dead.
