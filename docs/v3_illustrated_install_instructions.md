@@ -6,7 +6,7 @@ Remove contents from box.
 * 8x M.2 5x12mm screws for the case
 * 4x M.2 5x12mm screws for the fan
 * 4x bolts for the fan
-* 1x fan
+* 1x fan (30x30x7mm 5v)
 * 1x case top
 * 1x case bottom
 * 1x OLED display (0.91 IIC 128x32 LCD)
