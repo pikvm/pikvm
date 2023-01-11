@@ -620,6 +620,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Kai Hadler
 * Kamil Chyba
 * Karl Dunne
+* Karl Moos
 * Keith Muggleton
 * Ken Lee
 * Kenneth Younger III
@@ -687,6 +688,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Mecky
 * Mehmet Aydoğdu
 * Michael Bartholomew
+* Michael Bell
 * Michael Bombe
 * Michael Collins
 * Michael Copeland
@@ -696,6 +698,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Michael Pennington
 * Michael Sage
 * Michael Thalmann
+* Michael Wu
 * MichaelZ
 * Michel Bissonnette
 * Mikael Wikström
