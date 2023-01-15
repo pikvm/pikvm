@@ -185,8 +185,11 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     - Execute: `hostnamectl set-hostname yournewhostname.domain`
     - Optional: Edit `/etc/kvmd/meta.yaml` to alter the displayed server name in the web UI
     - Reboot the pikvm
+    
+??? question "Can I run PiKVM in a docker?"
+    Technically it might be possible but the OS requires many specific settings that cannot be performed inside the container.
 
-## First steps
+## First steps (supplemental)
 
 ??? question "I can't find the PiKVM IP address in my network"
     Follow [this guide](first_steps.md#getting-access-to-pikvm).
@@ -276,7 +279,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     # reboot
     ```
 
-    Pacman saves all installed packages in a compressed format so that you can roll back to the old version if something goes wrong. After you've updated and made sure everything works, it makes sense to clear the package cache so that it doesn't take up space on the SD card: `rw; rm -rf /var/cache/pacman/pkg; ro`.
+    Pacman saves all installed packages in a compressed format so that you can roll back to the old version if something goes wrong. After you've updated and made sure everything works, (ONLY for older images, newer images has this partition expended and no longer has this issue) it makes sense to clear the package cache so that it doesn't take up space on the SD card: `rw; rm -rf /var/cache/pacman/pkg; ro`.
 
 
 ??? question "I don't need ATX functions. How do I disable this in the Web UI?"
