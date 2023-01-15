@@ -94,6 +94,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "How do I emulate various USB devices on the target machine?"
+    Please review [First Steps](first_steps.md) before continuing
     By default this is what is set:
 
     ```yaml
