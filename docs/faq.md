@@ -190,7 +190,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 ??? question "Can I run PiKVM in a docker?"
     Technically it might be possible but the OS requires many specific settings that cannot be performed inside the container.
 
-## First steps (supplemental)
+## First steps
 
 ??? question "I can't find the PiKVM IP address in my network"
     Follow [this guide](first_steps.md#getting-access-to-pikvm).
