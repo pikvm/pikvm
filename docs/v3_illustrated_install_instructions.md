@@ -42,7 +42,7 @@ There are 2 ways to insert the FCC cable, you can add it when you insert the RPI
 
 <img src="FCC_HAT_Ribbon_Cable_install.jpg" width="400" />
 
-??? note "The blue stripes on the ends of the cable will ALWAYS face the side that will be used to tighten the FCC to the camera port or have it positioned towards the power"
+??? note "The blue stripes on the ends of the cable will ALWAYS face the side that will be used to tighten the FCC to the camera port or have it positioned towards the power - Ignore the smaller FCC cable that plugs into the USB, was phased out during the KS campaign. This image was used as a means of illustrating FCC placement and orientation"
 
 # Step 5
 
