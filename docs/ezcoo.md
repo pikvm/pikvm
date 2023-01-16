@@ -7,9 +7,14 @@ The ezCoo managed switch can be controlled by PiKVM to allow it to connect to mu
 
 !!! info
     Audio was not tested, it is assumed to be non-functional.
-
+    
+!!! tip 
+    ezCoo EZ-SW41HA-KVMU3L - includes 4x1m USB 3.0 A Male to A Male.
+    You will need 1 extra USB A Male to USB Micro B to connect from the PiKVM to the ezcoo "F/W CTL - Management" port
 
 ## Connections
+
+!!! tip "EZCOO Wiring example can be found [here](https://docs.pikvm.org/wiring_examples/) Scroll down to bottom of page for picture" 
 
 Please review the item description and manual before deploying.
 
@@ -182,6 +187,6 @@ kvmd:
 ```
 
 
-!!! tip "EZCOO Wiring example can be found [here](https://docs.pikvm.org/wiring_examples/)"
+
     
 
