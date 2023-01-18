@@ -24,8 +24,8 @@
 
     ```
     FIRSTBOOT=1
-    WIFI_ESSID="mynet"
-    WIFI_PASSWD="p@s$$w0rd"
+    WIFI_ESSID='mynet'
+    WIFI_PASSWD='p@s$$w0rd'
     ```
     
     There is a possibility that, in countries that support CH13, the device will not connect.
