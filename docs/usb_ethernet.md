@@ -84,8 +84,6 @@ By default, `kvmd-otgnet` will configure network connection between PiKVM and th
     ```yaml
      otgnet:
         iface:
-            ip_cmd:
-                - /usr/bin/ip
             net: 10.65.0.0/28
     ```
     The 'net' parameter defines the network address range of the usb0 network. The server host will automatically receive an IP address within this network including the DNS servers defined under 'post_start_cmd_append'. Note: This network should *not* be same as the network PiKVM is connected to.
