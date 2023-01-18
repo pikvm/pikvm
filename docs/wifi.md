@@ -6,10 +6,10 @@ connected directly to the Raspberry Pi as you will loose network connectivity on
 Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (available through the browser) should also work.
 
 !!! warning
-    Please review [First Steps](first_steps.md) if you are setting up wifi for the zero2w. First Steps guide also applies to wifi setup for v2/v3 HAT and v3 Pre-assembled if switching from ETH to WiFi..
+    Please review [First Steps](first_steps.md) if you are setting up wifi for the zero2w. This guide also applies to Wi-Fi setup for v2+ devices if switching from Ethernet to Wi-Fi..
 
 !!! warning
-    There is nothing more reliable than wired Ethernet, so it's better to use it. WiFi with the steel case results in poor performance. But who are we to stop you... :)
+    There is nothing more reliable than wired Ethernet, so it's better to use it. Wi-Fi with the steel case (on V3) results in poor performance. But who are we to stop you... :)
 
 !!! note "[ADVANCED USERS ONLY] Moving Wi-Fi settings for OS older than 2021.10.19"
     Starting from 2021.10.19, the old way to configure Wi-Fi using `netctl` is deprecated.
