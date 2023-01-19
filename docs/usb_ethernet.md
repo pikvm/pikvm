@@ -79,13 +79,21 @@ By default, `kvmd-otgnet` will configure network connection between PiKVM and th
             post_start_cmd_append:
             - "--dhcp-option=6,8.8.8.8"
     ```
-
-5. Don't forget to `reboot`.
+5. To enable internet access for the server host, add the following to the otgnet configuration::
+    
+    ```yaml
+     otgnet:
+        iface:
+            net: 10.65.0.0/28
+    ```
+    The 'net' parameter defines the network address range of the usb0 network. The server host will automatically receive an IP address within this network including the DNS servers defined under 'post_start_cmd_append'. Note: This network should *not* be same as the network PiKVM is connected to.
+    
+6. Don't forget to `reboot`.
 
 
 =======
     
-??? example "An example of what the config would look like if you wanted the target to have inet access (Please edit to suit your needs):"
+??? example "An example of what the config would look like for a server host that can access PiKVM and has internet access (Please edit to suit your needs):"
     ```
     otgnet:
         firewall:
