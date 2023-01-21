@@ -155,6 +155,9 @@ PiKVM supports several different hardware configurations, referred to as **platf
   - 4x 390 Ohm resistors.
   - 2x 4.7k Ohm resistors.
   - A breadboard and wires.
+
+Kit parts suitable for assembly are also on [sale in Poland](https://3mdeb.com/shop/open-source-hardware/pikvm/)
+
  
 ## Hardware for V0
 * Raspberry Pi 2 or 3.
