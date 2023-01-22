@@ -14,8 +14,7 @@ Docker must be enabled in privileged mode.
 
     ```shell
     [user@localhost ~]$ sudo apt-get install git make curl binutils -y
-    [user@localhost ~]$ curl -fsSL https://get.docker.com -o get-docker.sh
-    [user@localhost ~]$ sudo sh get-docker.sh
+    [user@localhost ~]$ sudo apt-get install docker.io
     [user@localhost ~]$ sudo usermod -aG docker $USER
     ```
 
