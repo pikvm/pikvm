@@ -1,6 +1,6 @@
 # Building the OS
 
-!!! warning "ZeroW reached EOL and is no longer supported, the last image it can be found [here](https://files.pikvm.org/images/v2-hdmi-zerow-latest.img.xz)”
+!!! warning "ZeroW reached EOL and is no longer supported, the last image it can be found [here](https://files.pikvm.org/images/v2-hdmi-zerow-latest.img.xz)"
 
 The PiKVM OS is based on Arch Linux ARM and contains all the required packages and configs for it to work. To build the OS you will need x86_64 Linux machine with:
 
@@ -14,8 +14,7 @@ Docker must be enabled in privileged mode.
 
     ```shell
     [user@localhost ~]$ sudo apt-get install git make curl binutils -y
-    [user@localhost ~]$ curl -fsSL https://get.docker.com -o get-docker.sh
-    [user@localhost ~]$ sudo sh get-docker.sh
+    [user@localhost ~]$ sudo apt-get install docker.io
     [user@localhost ~]$ sudo usermod -aG docker $USER
     ```
 
