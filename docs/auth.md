@@ -50,7 +50,7 @@ Steb-by step to enable 2FA:
 
 3. Install **Google Authenticator** app to your phone ([iOS](https://apps.apple.com/us/app/google-authenticator/id388497605), [Android](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2)). It will generate one-time access codes.
 
-4. Configure one-time codes on PiKVM:
+4. Create a secret for one-time codes on PiKVM:
    ```
    rw
    kvmd-totp init
@@ -63,3 +63,7 @@ Steb-by step to enable 2FA:
 
 !!! note
     With 2FA for API or VNC authentication, you will need to add the one-time code to the password without spaces. That is, if the password is `foobar` and the code is `123456`, then you need to use `foobar123456` as the password.
+
+To view the current QR code of the secret use `kvmd-totp show`.
+
+To disable 2FA, use `kvmd-totp del`.

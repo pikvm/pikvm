@@ -10,7 +10,7 @@ All APIs are restricted to authentication. To make requests, you either need to 
 or get a token and pass it as a cookie with each request.
 
 !!! note
-    With enabled [2FA](auth), you will need to add the one-time code to the password without spaces. That is, if the password is `foobar` and the code is `123456`, then you need to use `foobar123456` as the password.
+    With enabled [2FA](auth.md#two-factor-authentication), you will need to add the one-time code to the password without spaces. That is, if the password is `foobar` and the code is `123456`, then you need to use `foobar123456` as the password.
 
 
 ### Single request auth

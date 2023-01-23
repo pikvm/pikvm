@@ -98,7 +98,7 @@ For future examples, let's assume that your PiKVM has received the address **192
     # kvmd-htpasswd del <user> # Removes/deletes a user
     ```
 
-    Optionally you can enable the [two-factor athentication](auth).
+    Optionally you can enable the [two-factor authentication](auth.md#two-factor-authentication).
 
 ## Configuring PiKVM
 
