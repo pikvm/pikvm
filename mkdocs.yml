@@ -62,6 +62,7 @@ nav:
     - "Getting started":
         - "PiKVM v3 HAT guide": v3.md
         - "First steps": first_steps.md
+        - "Authentication": auth.md
         - "FAQ": faq.md
     - "Networking":
         - "Internet access":

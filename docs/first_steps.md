@@ -92,11 +92,13 @@ For future examples, let's assume that your PiKVM has received the address **192
     # kvmd-htpasswd set admin
     # ro
     ```
-    If you require additional user changes you can use the following:
+    If you require additional user for the Web UI access, use the following:
     ```
-    # kvmd-htpasswd set <user> # Sets a new user
+    # kvmd-htpasswd set <user> # Sets a new user with password
     # kvmd-htpasswd del <user> # Removes/deletes a user
     ```
+
+    Optionally you can enable the [two-factor athentication](auth).
 
 ## Configuring PiKVM
 

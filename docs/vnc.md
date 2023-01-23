@@ -42,6 +42,9 @@ As an alternative to the web interface, you can use VNC with various desktop cli
 
 5. Switch filesystem back to read-only: `ro`.
 
+!!! note
+    With enabled [2FA](auth), you will need to add the one-time code to the password without spaces. That is, if the password is `foobar` and the code is `123456`, then you need to use `foobar123456` as the password. Also note that `vncauth` (step 3) will not work with 2FA.
+
 
 ## Configuring the client
 

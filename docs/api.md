@@ -4,10 +4,13 @@ This document describes the PiKVM API. Since the system consists of microservice
 
 
 -----
-## Authorization
+## Authentication
 
-All APIs are restricted to authorization. To make requests, you either need to authorize each request individually,
+All APIs are restricted to authentication. To make requests, you either need to auth each request individually,
 or get a token and pass it as a cookie with each request.
+
+!!! note
+    With enabled [2FA](auth), you will need to add the one-time code to the password without spaces. That is, if the password is `foobar` and the code is `123456`, then you need to use `foobar123456` as the password.
 
 
 ### Single request auth
@@ -29,7 +32,7 @@ There are two options here:
 
 ### Session-based cookie auth
 
-1. Authorize and get token for the user using `POST /api/auth/login`:
+1. Get the access token for the user using `POST /api/auth/login`:
 
     ```
     $ curl -k -v -X POST --data user=admin --data passwd=admin https://pikvm/api/auth/login
