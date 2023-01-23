@@ -464,6 +464,9 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 ??? question "I cannot click on anything when using the WebGUI on my phone"
     At this time, iOS has the buttons on the bottom if you have the correct resolution, sometimes you cannot see them due to the resolution.
     At this time, android is not supported, our suggestion is to use a VNC client.
+    
+??? question "I changed the Display Resolution to 720p but my window still shows 1080p and the display looks blurry, how can I fix this?"
+    This is mostly seen on windows, open display settings -> Advanced display settings -> Display adapter setting for Display 1 -> List all modes -> (Toggle between 720p30hz back to 50hz), this may need to be done if you need to change it back for 1080p
 
 
 ## Hardware problems (Wi-Fi, ATX, etc)
