@@ -53,7 +53,7 @@ Steb-by step to enable 2FA:
 4. Create a secret for one-time codes on PiKVM:
    ```
    rw
-   kvmd-totp init
+   kvmd-totp init -n $(hostname) -f
    ro
    ```
 
