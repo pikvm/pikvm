@@ -46,7 +46,7 @@ Steb-by step to enable 2FA:
 
 1. Update OS: `rw && pacman -Syu && reboot`.
 
-2. **Make sure that NTP is running otherwise you will not be able to access** (`timedatectl` command).
+2. **Make sure that NTP is running otherwise you will not be able to access** (`timedatectl` command). The timezone doesn't matter.
 
 3. Install **Google Authenticator** app to your phone ([iOS](https://apps.apple.com/us/app/google-authenticator/id388497605), [Android](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2)). It will generate one-time access codes.
 
