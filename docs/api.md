@@ -32,6 +32,19 @@ print(requests.get(
 ).text)
 ```
 
+Since in the borderline case of the 2FA code lifetime, the code may be invalid,
+it makes sense to either handle error 403 by repeating the request in seconds.
+
+A more correct way is to combine this method and check the remaining lifetime
+and postpone the request if there is a second or so left. You can find out how much
+time is left in this way:
+
+```python
+totp = pyotp.TOTP(secret)
+now = int(time.time())
+remaining = now - (now % totp.interval)
+```
+
 
 ### Single request auth
 
