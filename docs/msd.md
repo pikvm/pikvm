@@ -9,7 +9,7 @@ There are some subtleties that you should know:
 !!! info "The size of the CD-ROM image is limited to 2.2 GB"
     This is a [limitation](https://github.com/pikvm/pikvm/issues/322) of the Linux kernel, which currently cannot emulate a DVD.
     To use a larger boot image, use Flash emulation. If this is not possible (the image does not support Flash, for example, for Windows),
-    use [this](#create-a-microsoft-windows-based-flash-disk-image) recipe.
+    use [this](#create-a-windows-based-flash-disk-image) recipe.
 
 !!! info "Changing the media type between CD-ROM and Flash is possible only when the device is reconnected"
     For PiKVM v3 HAT, this can be done using the switch `System -> Connect main USB`.
