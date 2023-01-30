@@ -27,7 +27,7 @@ As an alternative to the web interface, you can use VNC with various desktop cli
 
     <img src="keymaps.png" />
 
-3. *Optional:* This step is not nessessory if using TigerVNC. Some VNC clients (for example TightVNC) can't use user/password authentication. In this case you can enable passphrases mode in `/etc/kvmd/override.yaml`:
+3. *Optional:* This step is not nessessory if using TigerVNC as it uses the webgui user:pass. Some VNC clients (for example TightVNC) can't use user/password authentication. In this case you can enable passphrases mode in `/etc/kvmd/override.yaml`:
 
     ```yaml
     vnc:
