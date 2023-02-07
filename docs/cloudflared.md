@@ -26,19 +26,13 @@ Unfortunately Cloudflare does not provide binaries for armv7hf so we need to com
     ```
     # rw
     # pacman -Syu go
-    # git clone https://github.com/cloudflare/cloudflared
+    # curl -s https://api.github.com/repos/cloudflare/cloudflared/releases/latest | grep "tarball_url" | cut -d '"' -f 4 | xargs curl -LJo cloudflared-latest.tar.gz
+    # tar -xzvf cloudflared-latest.tar.gz --transform 's|[^/]*/|cloudflared/|'
     # cd cloudflared/cmd/cloudflared/
     # go build
     # mv cloudflared /usr/bin/cloudflared
     # cloudflared version
     ```
-    
-   * If the build produces errors you can look at the github repo and revert to the release branch with the following set of commands
-   
-    ```
-    # git reset --hard 4d993488df6f9d59f9cb0ad4fa7bd2683ab1fb3f
-    ```
-   * This is the 2023.1.0 release commit point. Replace it with the current commit id for the latest release to ensure you are up to date.
 
 2. Create the service configuration file
    
@@ -75,9 +69,10 @@ Unfortunately Cloudflare does not provide binaries for armv7hf so we need to com
   
     ```
     # rw
-    # cd ~/cloudflared/
-    # git pull
-    # cd ~/cloudflared/cmd/cloudflared/
+    # rm -rf cloudflared/
+    # curl -s https://api.github.com/repos/cloudflare/cloudflared/releases/latest | grep "tarball_url" | cut -d '"' -f 4 | xargs curl -LJo cloudflared-latest.tar.gz
+    # tar -xzvf cloudflared-latest.tar.gz --transform 's|[^/]*/|cloudflared/|'
+    # cd cloudflared/cmd/cloudflared/
     # go build && mv cloudflared /usr/bin/cloudflared
     # systemctl restart cloudflared
     ```
