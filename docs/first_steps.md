@@ -57,7 +57,7 @@ For future examples, let's assume that your PiKVM has received the address **192
 ??? example "Access to PiKVM Web Interface"
     In MOST networks you should be able to reach PiKVM via any browser with the URL `https://192.168.0.100/` OR `https://pikvm/`. Google Chrome (Chromium), Firefox and Safari work best with 0 extensions enabled, if one works but the others do not, this is a browser/extension issue. Its advised you use Private window or Incog mode. Microsoft Edge and Internet Explorer are not supported.
 
-    **The default user is `admin` and the password is also `admin`.** After logging in, you will get access to the menu with the main functions. Using the Web terminal, you can change system settings and passwords.
+    **The default user is `admin`, the password is also `admin`, and no 2FA code.** After logging in, you will get access to the menu with the main functions. Using the Web terminal, you can change system settings and passwords.
 
     *The latest versions of Chrome on Mac OS do not allow access to the page with a self signed certificate, which is used in PiKVM by default. You can proceed by typing `thisisunsafe` and Chrome will then load the page.*
 
@@ -82,7 +82,7 @@ For future examples, let's assume that your PiKVM has received the address **192
     PiKVM comes with the following default passwords:
 
     * **Linux admin** (SSH, etc.): user `root`, password `root`.
-    * **PiKVM Web Interface**: user `admin`, password `admin`.
+    * **PiKVM Web Interface**: user `admin`, password `admin`, no 2FA code.
 
     **These are two separate entities with independent accounts.** To change passwords, you will need to use the terminal (read below) access via SSH or Web Terminal. If you are using the Web Terminal, use the `su -` command to get root access (enter the root user password).
 

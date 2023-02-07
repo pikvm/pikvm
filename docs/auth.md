@@ -3,9 +3,11 @@
 PiKVM comes with the following default passwords:
 
 * **Linux admin** (SSH, console, etc.): user `root`, password `root`.
-* **PiKVM Web Interface, API, VNC...**: user `admin`, password `admin`.
+* **PiKVM Web Interface, API, VNC...**: user `admin`, password `admin`, no 2FA code.
 
-**These are two separate entities with independent accounts.** To change passwords, you will need to use the terminal access via SSH or Web Terminal. If you are using the Web Terminal, use the `su -` command to get root access (enter the root user password).
+**These are two separate entities with independent accounts.**
+To change passwords, you will need to use the terminal access via SSH or Web Terminal.
+If you are using the Web Terminal, use the `su -` command to get root access (enter the root user password).
 
 
 ## Linux authentication
@@ -61,8 +63,11 @@ Steb-by step to enable 2FA:
 
 6. Now, on the PiKVM login page, you will need to add 6 digits to the **2FA code** field.
 
+Now all Web UI users will be required to enter a one-time password. In other words, the secret is the same for all users.
+
 !!! note
-    With 2FA for API or VNC authentication, you will need to add the one-time code to the password without spaces. That is, if the password is `foobar` and the code is `123456`, then you need to use `foobar123456` as the password.
+    With 2FA for API or VNC authentication, you will need to add the one-time code to the password without spaces.
+    That is, if the password is `foobar` and the code is `123456`, then you need to use `foobar123456` as the password.
 
 To view the current QR code of the secret use `kvmd-totp show`.
 

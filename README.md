@@ -622,6 +622,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Justin Waters
 * Kai Hadler
 * Kamil Chyba
+* Kari Matti Korpi
 * Karl Dunne
 * Karl Moos
 * Keith Muggleton
@@ -791,6 +792,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * rotx
 * Rufo Sanchez
 * Russell Scott
+* Ryan
 * Ryan Peacock
 * Samed Ozoglu
 * Sameul Davies
@@ -810,6 +812,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Seonwoo Lee
 * Sergey Lukjanov
 * Seth Jennings
+* Shane Selling
 * Shawn Butts
 * Sheran Gunasekera
 * Shichun Chen
@@ -817,6 +820,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Simon Evans
 * Simon Sundgaard
 * Simplistic Realities
+* Snowy Maslov
 * Solve Technology
 * srepac
 * Stefan Bautz

@@ -197,7 +197,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "What is the default password? How do I change it?"
-    There are two types of accounts: OS and PiKVM (web interface) accounts. The system account `root` can be used for SSH/UART access and has the password `root`. The web interface account is called `admin` and has the password `admin`. The PiKVM account cannot be used for SSH access and vice versa.
+    There are two types of accounts: OS and PiKVM (web interface) accounts. The system account `root` can be used for SSH/UART access and has the password `root`. The web interface account is called `admin` and has the password `admin`, no 2FA code. The PiKVM account cannot be used for SSH access and vice versa.
 
     To change passwords, use the following commands (under root):
 
@@ -208,6 +208,8 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     kvmd-htpasswd set admin  # Change web ui admin password
     ro  # Back to read-only
     ```
+
+    Optionally you can enable the [two-factor authentication](auth.md#two-factor-authentication).
 
 ??? question "How do I add another user?"
     As stated above you need to make 2 accounts, 1 for the shell, the other for the PiKVM Web UI.

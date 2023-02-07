@@ -9,8 +9,41 @@ This document describes the PiKVM API. Since the system consists of microservice
 All APIs are restricted to authentication. To make requests, you either need to auth each request individually,
 or get a token and pass it as a cookie with each request.
 
-!!! note
-    With enabled [2FA](auth.md#two-factor-authentication), you will need to add the one-time code to the password without spaces. That is, if the password is `foobar` and the code is `123456`, then you need to use `foobar123456` as the password.
+With enabled [2FA](auth.md#two-factor-authentication), you will need to add the one-time code to the password without spaces.
+That is, if the password is `foobar` and the code is `123456`, then you need to use `foobar123456` as the password.
+
+The code can be generated using any TOTP library, for example in Python:
+
+```python
+import requests
+import pyotp
+
+user = "admin"
+passwd = "admin"
+secret = "3OBBOGSJRYRBZH35PGXURM4CMWTH3WSU"  # Can be found in /etc/kvmd/totp.secret
+
+print(requests.get(
+    url="https://pikvm/api/info",
+    verify=False,  # For self-signed SSL certificate
+    headers={
+        "X-KVMD-User": user,
+        "X-KVMD-Passwd": passwd + pyotp.TOTP(secret).now(),
+    },
+).text)
+```
+
+Since in the borderline case of the 2FA code lifetime, the code may be invalid,
+it makes sense to either handle error 403 by repeating the request in seconds.
+
+A more correct way is to combine this method and check the remaining lifetime
+and postpone the request if there is a second or so left. You can find out how much
+time is left in this way:
+
+```python
+totp = pyotp.TOTP(secret)
+now = int(time.time())
+remaining = now - (now % totp.interval)
+```
 
 
 ### Single request auth
