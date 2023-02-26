@@ -260,11 +260,20 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
         * Do the same in `/etc/fstab` for the `/boot` partition.
         * Comment `tmpfs` lines in `/etc/fstab` for `/var/lib` and `/var/log`.
         !!! danger "But again: DON'T DO THIS"
-
+        
+??? question "How to set the date, time and timezone from command line?"
+    * Become root with: `su -` or `sudo -s`
+    * Enable read/write with: `rw`
+    * Find your timezone with: `timedatectl list-timezones`
+    * Set the timezone with: `timedatectl set-timezone <YourTimeZoneHere>` e.g. `timedatectl set-timezone Australia/Victoria`
+    * Set the time and date with: `timedatectl set-time 'YYYY-MM-DD HH:MM:SS'` e.g. `timedatectl set-time '2023-02-26 14:50:10'`
+    * If you have hardware clock, update it with: `hwclock --systohc` , then check it with `hwclock --show`
+    
 
 ??? question "How do I install or remove packages in PiKVM OS?"
     PiKVM OS is based on Arch Linux ARM and uses the [pacman](https://wiki.archlinux.org/title/Pacman) package manager.
 
+    * Ensure the date is correct: `date`. Otherwise you may get the error `SSL certificate problem: certificate is not yet valid`
     * Switch filesystem to RW-mode: `rw`.
     * Find some packages (`emacs` for example): `pacman -Ss emacs`.
     * Install it, while keeping the system updated: `pacman -Syu emacs`.
@@ -276,9 +285,13 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 ??? question "How do I update PiKVM with the latest software?"
     This is ONLY recommended if you need a feature, otherwise this should ONLY be done if you are physically at the device and can reflash the sd card as a means of recovery. PiKVM OS is based on Arch Linux ARM and is fully updated from the repository by a regular package manager. Connect to your PiKVM via ssh and run:
 
-    ```
+   * Ensure the date is correct: `date`. Otherwise you may get the error `SSL certificate problem: certificate is not yet valid`
+   * Run the following
+   ```
+    # date
     # rw
     # pacman -Syu
+    # sync
     # reboot
     ```
 
