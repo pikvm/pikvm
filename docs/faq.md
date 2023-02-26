@@ -262,12 +262,15 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
         !!! danger "But again: DON'T DO THIS"
         
 ??? question "How to set the date, time and timezone from command line?"
-    * Become root with: `su -` or `sudo -s`
-    * Enable read/write with: `rw`
-    * Find your timezone with: `timedatectl list-timezones`
-    * Set the timezone with: `timedatectl set-timezone <YourTimeZoneHere>` e.g. `timedatectl set-timezone Australia/Victoria`
-    * Set the time and date with: `timedatectl set-time 'YYYY-MM-DD HH:MM:SS'` e.g. `timedatectl set-time '2023-02-26 14:50:10'`
-    * If you have hardware clock, update it with: `hwclock --systohc` , then check it with `hwclock --show`
+
+    * Become root with the command `su -` or `sudo -s`.
+    * Enable read/write with the command `rw`.
+    * Find your timezone string e.g. `timedatectl list-timezones` or `timedatectl list-timezones | grep -i australia`.
+    * Set the timezone with `timedatectl set-timezone <YourTimeZoneHere>` e.g. `timedatectl set-timezone Australia/Victoria`.
+    * Stop the time syncing service with `systemctl stop systemd-timesyncd` as this will prevent the next step if running.
+    * Set the time and date with `timedatectl set-time 'YYYY-MM-DD HH:MM:SS'` e.g. `timedatectl set-time '2023-02-26 14:50:10'`.
+    * If you have hardware clock e.g. V3 & V4 HAT, update it with `hwclock --systohc` , then check it with `hwclock --show`.
+    * Switch filesystem to RO-mode with the command `ro`.
     
 
 ??? question "How do I install or remove packages in PiKVM OS?"
@@ -292,7 +295,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     # rw
     # pacman -Syu
     # sync
-    # reboot
+    # reboot # Allow 10 to 15 minutes for a response.
     ```
 
     Pacman saves all installed packages in a compressed format so that you can roll back to the old version if something goes wrong. After you've updated and made sure everything works, (ONLY for older images, newer images has this partition expended and no longer has this issue) it makes sense to clear the package cache so that it doesn't take up space on the SD card: `rw; rm -rf /var/cache/pacman/pkg; ro`.
