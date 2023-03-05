@@ -33,18 +33,20 @@ kvmd:
 
 ## Upload images manually (without Web UI)
 
+!!! warning "This instruction is relevant for KVM >= 3.203. If you are using a previous version, then update OS."
+
 1. Remount internal storage to rw (read-write):
 
     ```
     # kvmd-helper-otgmsd-remount rw
     ```
 
-2. Upload the .ISO image(s) to `/var/lib/kvmd/msd/images` via scp or similar.
+2. Upload the .ISO image(s) to `/var/lib/kvmd/msd` via scp or similar.
 
-3. Create an empty file in `/var/lib/kvmd/msd/meta/` with the exact name (case sensitive!) of the uploaded image. This will indicate PiKVM that the uploaded image is okay and can be used. For example:
+3. Create an empty file in `/var/lib/kvmd/msd` with the exact name (case sensitive!) of the uploaded image + prefix `.__` and suffix `.complete`. This will indicate PiKVM that the uploaded image is okay and can be used. For example:
 
     ```
-    /var/lib/kvmd/msd/meta/ubuntu-18.04.4-desktop-amd64.iso.complete
+    /var/lib/kvmd/msd/.__ubuntu-18.04.4-desktop-amd64.iso.complete
 
     ```
 
@@ -183,7 +185,7 @@ Once you have the desired USB stick perform the following on the RPi to create t
 3. Create image of USB data PARTITION to an image file, this will take some time, in this case about 12 minutes (RPi4).
 
     ```
-    # dd if=/dev/sda1 of=/var/lib/kvmd/msd/images/windows10-2004.bin bs=8M status=progress
+    # dd if=/dev/sda1 of=/var/lib/kvmd/msd/windows10-2004.bin bs=8M status=progress
     4458545152 bytes (4.5 GB, 4.2 GiB) copied, 736 s, 6.1 MB/s
     531+1 records in
     531+1 records out
@@ -193,8 +195,8 @@ Once you have the desired USB stick perform the following on the RPi to create t
 4. Correct ownership of new image and make sure the website reports the file as complete (pay attention to the different folder).
 
     ```
-    # chown kvmd:kvmd /var/lib/kvmd/msd/images/windows10-2004.bin
-    # touch /var/lib/kvmd/msd/meta/windows10-2004.bin.complete
+    # chown kvmd:kvmd /var/lib/kvmd/msd/windows10-2004.bin
+    # touch /var/lib/kvmd/msd/windows10-2004.bin.complete
     ```
 
 5. Remount msd folder as read only
@@ -276,13 +278,13 @@ mount -o remount,rw .
 * On Ubuntu
 
 ```
-scp ventoy.img root@pikvm:/var/lib/kvmd/msd/images
+scp ventoy.img root@pikvm:/var/lib/kvmd/msd
 ```
 
 * On PiKVM
 
 ```
-touch /var/lib/kvmd/msd/meta/ventoy.img.complete
+touch /var/lib/kvmd/msd/.__ventoy.img.complete
 ```
 
 * Mount `ventoy.img` as normal flash and select the PiKVM boot device, it should popup with the VenToy logo with the window.iso as a selection 
