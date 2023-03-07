@@ -136,10 +136,4 @@ Copy the contents into a file, ex: myedid.hex then follow the same steps as abov
 
 ## Default EDID
 
-If for some reason you need to go back to the default EDID (changing attached device etc), you can find it locally on the Pi at `/usr/share/kvmd/configs.default/kvmd/tc358743-edid.hex`:
-
-```
-# cp /usr/share/kvmd/configs.default/kvmd/tc358743-edid.hex /etc/kvmd/tc358743-edid.hex
-```
-
-... or in the [kvmd repo](https://github.com/pikvm/kvmd/blob/master/configs/kvmd/tc358743-edid.hex).
+If for some reason you need to go back to the default EDID (changing attached device etc), you can find it locally on the Pi at `/usr/share/kvmd/configs.default/kvmd/edid` or in the [kvmd repo](https://github.com/pikvm/kvmd/blob/master/configs/kvmd/edid).
