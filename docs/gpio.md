@@ -535,10 +535,9 @@ kvmd
         drivers:
             anel_pdu_1:
 		        type: anelpwr
-		        host: IP
-                port: 80
+		        url: http://IP:Port/
 		        user: admin
-		        password: anel
+		        passwd: anel
 		        initial: null
 	    scheme:
             pdu1_1_pwr:
