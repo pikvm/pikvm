@@ -287,9 +287,10 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 ??? question "How do I update PiKVM with the latest software?"
     This is ONLY recommended if you need a feature, otherwise this should ONLY be done if you are physically at the device and can reflash the sd card as a means of recovery. PiKVM OS is based on Arch Linux ARM and is fully updated from the repository by a regular package manager. Connect to your PiKVM via ssh and run:
 
-   * Ensure the date is correct: `date`. Otherwise you may get the error `SSL certificate problem: certificate is not yet valid`
-   * Run the following
-   ```
+    * Ensure the date is correct: `date`. Otherwise you may get the error `SSL certificate problem: certificate is not yet valid`
+    * Run the following:
+
+    ```
     # date
     # rw
     # pacman -Syu
