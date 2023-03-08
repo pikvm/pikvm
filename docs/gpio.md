@@ -525,36 +525,37 @@ kvmd
                     - ["plug_led", "plug_button"]
 
     ```
+
+
 ### ANEL NET-PwrCtrl
 ??? note "Click to view"    
     The `anelpwr` plugin allows you to use ANEL NET-PwrCrtl IP-PDUs (switchabel sockets) as gpios. There are up to 8 Ports per PDU. Input pulls the the current state from the PDU, Output switches the Socket. 
 
     ```yaml
     kvmd:
-	gpio:
-        drivers:
-            anel_pdu_1:
-		        type: anelpwr
-		        url: http://IP:Port/
-		        user: admin
-		        passwd: anel
-		        initial: null
-	    scheme:
-            pdu1_1_pwr:
-			    pin: 1
-			    driver: anel_pdu_1
-			    mode: output
-			    pulse:
-			        delay: 0
-	        pdu1_1_led:
-			    pin: 1
-			    driver: anel_pdu_1
-			    mode: input
-	    view:
-            header:
-		       title: "PDUs"
-            table:
-		        - ["#PDU1"]
-                - []
-                - ["#PDU1_Port1:", pdu1_1_led, "pdu1_1_pwr|confirm|test"] 
+        gpio:
+            drivers:
+                anel_pdu_0:
+                    type: anelpwr
+                    url: http://IP:port
+                    user: admin
+                    passwd: anel
+            scheme:
+                pdu0_0_pwr:
+                    pin: 0
+                    driver: anel_pdu_0
+                    mode: output
+                    pulse:
+                        delay: 0
+                pdu0_0_led:
+                    pin: 0
+                    driver: anel_pdu_0
+                    mode: input
+            view:
+                header:
+                   title: "PDUs"
+                table:
+                    - ["#PDU0"]
+                    - []
+                    - ["#PDU0_Port0:", pdu0_0_led, "pdu0_0_pwr|confirm|test"] 
     ```
