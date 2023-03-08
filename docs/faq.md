@@ -262,7 +262,6 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
         !!! danger "But again: DON'T DO THIS"
         
 ??? question "How to set the date, time and timezone from command line?"
-
     * Become root with the command `su -` or `sudo -s`.
     * Enable read/write with the command `rw`.
     * Find your timezone string e.g. `timedatectl list-timezones` or `timedatectl list-timezones | grep -i australia`.
@@ -294,7 +293,6 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     # date
     # rw
     # pacman -Syu
-    # sync
     # reboot # Allow 10 to 15 minutes for a response.
     ```
 
