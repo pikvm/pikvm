@@ -641,6 +641,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Lance Ward
 * Larry Meaney
 * Lars
+* Lars Reinhardt
 * Lee Wilkinson
 * LeeNX
 * Leon Siegl
