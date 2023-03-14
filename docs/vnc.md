@@ -50,7 +50,7 @@ As an alternative to the web interface, you can use VNC with various desktop cli
 
 We recommend [TigerVNC](https://tigervnc.org) for a better experience on desktop.
 
-If you are using PiKVM V3+ or DIY based on CSI bridge, you can try the [beta version of TigerVNC with H.264 support](https://github.com/TigerVNC/tigervnc/releases/tag/v1.12.90). It will improve performance and save traffic.
+If you are using PiKVM V3+ or DIY based on CSI bridge, you can try the [latest version (>= 1.13.0) of TigerVNC with H.264 support](https://github.com/TigerVNC/tigervnc/releases). It will improve performance and save traffic.
 
 H.264 is available in binary builds for Windows, for other OS it needs to be compiled manually (before that, you need to install ffmpeg libraries).
 
