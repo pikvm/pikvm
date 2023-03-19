@@ -481,6 +481,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Dennis Becker
 * Dennis Joslin
 * Dennis Lomet
+* Derek Jarvis
 * Derek Yap
 * Didrik
 * Dimitrij Jedich
@@ -609,6 +610,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Joseph Swift
 * Josh Nethery
 * Josh Ricker
+* Josh VanDeraa
 * Joshua Futterer
 * Jordan Blake
 * Jordi Pakey-Rodriguez
