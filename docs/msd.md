@@ -68,6 +68,7 @@ server:/srv/nfs/NFS_Secondary  /var/lib/kvmd/msd/NFS_Secondary  nfs vers=3,timeo
 
 Make sure that the `kvmd` user has read access rights from these directories. You can also give write access if needed.
 For the best performance, it is required to ensure reliable connectivity with NFS server and use minimum `timeo` and `retrans` values.
+**Using the `soft` option is mandatory.**
 
 Configuring an NFS server is beyond the scope of this guide.
 
