@@ -24,7 +24,7 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 * Supported **Raspberry Pi 2**, **3**, **4** and **Zero2W**;
 * **FullHD video** using advanced **HDMI-to-CSI bridge** or **USB dongle**;
 * Extra low **video latency** with **MJPEG** or **H.264 / WebRTC** (for CSI bridge);
-* Bootable **Virtual CD-ROM** and **Flash Drive**;
+* Bootable **Virtual CD-ROM** and **Flash Drive**, ability to store images on **NFS**;
 * USB **Keyboard** and **mouse** (with leds and the wheel), PS/2 keyboard, Bluetooth HID;
 * **Control the server power** using ATX functions;
 * Access via **Web UI** or **VNC**;
