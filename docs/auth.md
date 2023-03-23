@@ -10,7 +10,7 @@ To change passwords, you will need to use the terminal access via SSH or Web Ter
 If you are using the Web Terminal, use the `su -` command to get root access (enter the root user password).
 
 
-## Linux authentication
+## Changing the Linux password
 
 ```
 # rw
@@ -18,7 +18,7 @@ If you are using the Web Terminal, use the `su -` command to get root access (en
 # ro
 ```
 
-## KVM authentication
+## Changing the KVM password
 
 ```
 # rw
