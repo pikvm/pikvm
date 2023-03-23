@@ -55,20 +55,30 @@ If you have some shares, you can easily connect them to PiKVM by creating mount 
 At the same time, you will be able to upload images via PiKVM Web UI to NFS, and still use local storage.
 
 ```
+# rw
+# pacman -Syu
+# pacman -S nfs-utils
 # kvmd-helper-otgmsd-remount rw
 # mkdir -p /var/lib/kvmd/msd/NFS_Primary
 # mkdir -p /var/lib/kvmd/msd/NFS_Secondary
 # kvmd-helper-otgmsd-remount ro
 ```
 
+Edit fstab:
+
 ```fstab
-server:/srv/nfs/NFS_Primary    /var/lib/kvmd/msd/NFS_Primary    nfs vers=3,timeo=1,retrans=1,soft  0 0
-server:/srv/nfs/NFS_Secondary  /var/lib/kvmd/msd/NFS_Secondary  nfs vers=3,timeo=1,retrans=1,soft  0 0
+server:/srv/nfs/NFS_Primary    /var/lib/kvmd/msd/NFS_Primary    nfs vers=3,timeo=1,retrans=1,soft,nolock  0 0
+server:/srv/nfs/NFS_Secondary  /var/lib/kvmd/msd/NFS_Secondary  nfs vers=3,timeo=1,retrans=1,soft,nolock  0 0
 ```
+
+And perform `reboot`.
 
 Make sure that the `kvmd` user has read access rights from these directories. You can also give write access if needed.
 For the best performance, it is required to ensure reliable connectivity with NFS server and use minimum `timeo` and `retrans` values.
-**Using the `soft` option is mandatory.**
+**Using the `soft` option is mandatory, `nolock` is recommended.**
+
+Note if an image is added to the NFS storage from the outside, PiKVM will not be able to track this event, so it is required to use
+`Drive -> Reset` in the Web UI to update the list of images.
 
 Configuring an NFS server is beyond the scope of this guide.
 
