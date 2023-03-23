@@ -123,7 +123,6 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "How do I blank the oled screen?"
     Please run the following:
-    
     ```
     /usr/bin/kvmd-oled --height=32 --interval=5 --clear-on-exit --text="turn off in 5s"
     systemctl disable --now kvmd-oled kvmd-oled-reboot kvmd-oled-shutdown
@@ -140,14 +139,14 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     ```
     
 ??? question "I am getting a 500/503 error when I try and access the main KVM page!"
-    Older images have this issue due to yaml syntax, it's advised to reflash with the newest image
     This maybe due to a few of the following:
-    Missing /etc/kvmd/override.yaml file, to resolve `cd /etc/kvmd ; touch override.yaml`
-    Bad yaml syntax, edit your override.yaml file and undo what you did and restart PiKVM
+
+    * Missing `/etc/kvmd/override.yaml` file, to resolve it run `rw; touch /etc/kvmd/override.yaml; ro`
+    * Bad YAML syntax, edit your `/etc/kvmd/override.yaml` file and undo what you did and restart PiKVM.
 
 
 ??? question "How can I use the serial console to access to access other devices"
-    you need to stop the service which listens on the ttyAMA0:
+    You need to stop the service which listens on the `/dev/ttyAMA0`:
     
     ```
     rw
@@ -163,7 +162,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     !!! note
         * Only USB OR the RJ-45 serial connector will work, you can't use them together! 
         * If you disable the service permanently, you can't recover your device via serial console if you need this.
-        * There are some reports, that you need to remove "ttyAMA0" from /boot/cmdline.txt, but this is not needed on new installations.
+        * There are some reports, that you need to remove `ttyAMA0` from /boot/cmdline.txt, but this is not needed on new installations.
         
 ??? question "How can I have different hostnames for multiple pikvms?"
     Using a SSH session or the web terminal:
@@ -197,6 +196,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
     Optionally you can enable the [two-factor authentication](auth.md#two-factor-authentication).
 
+
 ??? question "How do I add another user?"
     As stated above you need to make 2 accounts, 1 for the shell, the other for the PiKVM Web UI.
     
@@ -215,6 +215,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     # passwd <user>
     ```
     Keep in mind that the more users that are added, the stream if accessed, fps will drop.
+
 
 ??? question "How do I get root access in the web terminal?"
     The web terminal works with the account `kvmd-webterm`. This is a regular user with no administrator privileges. In addition, `sudo` and login are disabled for this user for security reasons. To get `root` access, you need to use the `su -` command (minus is important) and **enter the root password**.
@@ -246,7 +247,8 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
         * Do the same in `/etc/fstab` for the `/boot` partition.
         * Comment `tmpfs` lines in `/etc/fstab` for `/var/lib` and `/var/log`.
         !!! danger "But again: DON'T DO THIS"
-        
+ 
+
 ??? question "How to set the date, time and timezone from command line?"
     * Become root with the command `su -` or `sudo -s`.
     * Enable read/write with the command `rw`.
