@@ -1,9 +1,6 @@
 # FAQ & Troubleshooting
 
-As a first step, we recommend carefully reading our documentation on [GitHub](https://github.com/pikvm/pikvm). Most steps to successfully set up your PiKVM are already described there. If you run into any issues you can check this page which will list common errors. If that still doesn't help you you're welcome to raise an [issue ticket](https://github.com/pikvm/pikvm/issues) or [join our Discord](https://discord.gg/bpmXfz5) for further help.
-
-!!! tip
-    If you can't find an answer to your question here, try the [Community FAQ](community_faq.md). It will be merged with this page in the future.
+As a first step, we recommend carefully reading our documentation on [GitHub](https://github.com/pikvm/pikvm) or the updated [documentation](https://docs.pikvm.org). Most steps to successfully set up your PiKVM are already described there. If you run into any issues you can check this page which will list common errors. If that still doesn't help you you're welcome to raise an [issue ticket](https://github.com/pikvm/pikvm/issues) or [join our Discord](https://discord.gg/bpmXfz5) for further help.
 
 
 ## Common questions
@@ -143,21 +140,10 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     ```
     
 ??? question "I am getting a 500/503 error when I try and access the main KVM page!"
-    The latest images take care of these issues, please reflash and edit, otherwise follow the below.
-    This is due to your recent changes in your yaml file; you have to use spaces and NOT tabs.
-    Undo what you just did, then, `systemctl restart kvmd`, does it work again?
-    Review what you added and take care of [YAML syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html).
-    
-    For future edits there are some steps you can do to prevent this from happening again.
-
-    Make a .nanorc file and populate it with the following:
-
-    ```
-    set tabsize 4
-    set tabstospaces
-    ```
-
-    Now re-edit your `/etc/kvmd/override.yaml` file and just use tab to get the right spacing, you might need to delete the current leading "spaces" to ensure proper formatting.
+    Older images have this issue due to yaml syntax, it's advised to reflash with the newest image
+    This maybe due to a few of the following:
+    Missing /etc/kvmd/override.yaml file, to resolve `cd /etc/kvmd ; touch override.yaml`
+    Bad yaml syntax, edit your override.yaml file and undo what you did and restart PiKVM
 
 
 ??? question "How can I use the serial console to access to access other devices"
@@ -188,7 +174,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     - Reboot the pikvm
     
 ??? question "Can I run PiKVM in a docker?"
-    Technically it might be possible but the OS requires many specific settings that cannot be performed inside the container.
+    No, technically it might be possible but the OS requires many specific settings that cannot be performed inside the container.
 
 ## First steps
 
