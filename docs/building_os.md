@@ -40,6 +40,9 @@ Docker must be enabled in privileged mode.
 
 4. Create the config file `config.mk` for the target system. You must specify the path to the SD card on your local computer (this will be used to format and install the system) and the version of your Raspberry Pi and platform. You can change other parameters as you wish. Please note: if your password contains the # character, you must escape it using a backslash like `ROOT_PASSWD = pass\#word`.
 
+!!! warning "In any case, do **not** use the default passwords. In order to generate a random password just use following command:
+```printf '%s\n' $(head /dev/urandom | LC_ALL=C tr -dc A-Za-z0-9 | head -c16)```"
+
     ```Makefile
     [user@localhost os]$ cat config.mk
     # rpi4 for Raspberry Pi 4; rpi3 for Raspberry Pi 3; rpi2 for the version 2, zero2w for Zero2W
@@ -67,6 +70,7 @@ Docker must be enabled in privileged mode.
     IPMI_ADMIN_PASSWD = admin
     
     # SD card device
+    # (Used for burning the image with `make install`. Irrelevant if you only use `make image`.)
     CARD = /dev/mmcblk0
     ```
 
@@ -75,7 +79,7 @@ Docker must be enabled in privileged mode.
     ```shell
     [user@localhost os]$ make os
     ```
-!!! warning "If you get an error about failing to retriving a file, please edit the Makefile and remove "de3." from the repo path"
+!!! warning "If you get an error about failing to retrieving a file, please edit the Makefile and remove "de3." from the repo path"
     
 5. One of two actions:
     * Put SD card into card reader and install OS (**you should disable automounting beforehand**: `systemctl stop udisk2` or something like that):
@@ -90,6 +94,6 @@ Docker must be enabled in privileged mode.
         [user@localhost os]$ make image
         ```
 
-        Image is then available as a bziped file in `images/`.
+        Image is then available as [xz](https://linux.die.net/man/1/xz) compressed file in `images/`.
         
 !!! note "On a system where `sudo` is unavailable, you can use `make SUDO= image`."
