@@ -67,6 +67,7 @@ Docker must be enabled in privileged mode.
     IPMI_ADMIN_PASSWD = admin
     
     # SD card device
+    # (Used for burning the image with `make install`, irrelevant if you only use `make image`.)
     CARD = /dev/mmcblk0
     ```
 
