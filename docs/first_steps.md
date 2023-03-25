@@ -3,12 +3,12 @@
 ## First power on
 
 !!! warning
-    For v2 DIY owners, please follow this [first](https://github.com/pikvm/pikvm)<br />
-    For v3 HAT OR Pre-Assembled Users, please follow this [first](https://docs.pikvm.org/v3/)
-    For both to work and display a video, your target system needs to be configured for the following:
-        1920x1080p50Hz (In some rare instances, try 30hz)
-        1600x1200p60Hz
-        1280x720p60Hz
+    - v2 DIY owners: Please follow this [first](https://github.com/pikvm/pikvm)<br>
+    - v3 HAT *or* pre-assembled users: Please follow this [first](https://docs.pikvm.org/v3/)<br>
+    - For both to work and display a video, your target system needs to be configured for the following:<br>
+        1920x1080p50Hz (In some rare instances, try 30hz)<br>
+        1600x1200p60Hz<br>
+        1280x720p60Hz<br>
         
 
 
@@ -36,7 +36,7 @@
 **Power up the device.**
 
 !!! warning "Do not turn off the device until it's fully booted for the first time"
-    After turning on the power, PiKVM OS will generate unique SSH keys and certificates and will perform the necessary operations on the memory card.
+    After turning on the power, PiKVM OS will generate unique SSH keys and certificates and will perform all necessary operations on the memory card.
 
 ## Getting access to PiKVM
 
@@ -55,11 +55,11 @@ By default, PiKVM receives a dynamic IP address via DHCP.
 For future examples, let's assume that your PiKVM has received the address **192.168.0.100**, which you have successfully detected using the instructions above. Then your device was assigned a hostname: **pikvm**.
 
 ??? example "Access to PiKVM Web Interface"
-    In MOST networks you should be able to reach PiKVM via any browser with the URL `https://192.168.0.100/` OR `https://pikvm/`. Google Chrome (Chromium), Firefox and Safari work best with 0 extensions enabled, if one works but the others do not, this is a browser/extension issue. Its advised you use Private window or Incog mode. Microsoft Edge and Internet Explorer are not supported.
+    In *most* networks you should be able to reach PiKVM via any browser with the URL `https://192.168.0.100/` OR `https://pikvm/`. Google Chrome (Chromium), Firefox and Safari work best with 0 extensions enabled, if one works but the other does not, this might be a browser/extension issue. Its advised you use private window or incognito mode. Internet Explorer and the pre-Chromium version of Microsoft Edge are not supported.
 
-    **The default user is `admin`, the password is also `admin`, and no 2FA code.** After logging in, you will get access to the menu with the main functions. Using the Web terminal, you can change system settings and passwords.
+    **The default user is `admin`, the password is also `admin`, and no 2FA code.** After logging in, you will get access to the menu with the main functions. Using the Web Terminal, you can change system settings and passwords.
 
-    *The latest versions of Chrome on Mac OS do not allow access to the page with a self signed certificate, which is used in PiKVM by default. You can proceed by typing `thisisunsafe` and Chrome will then load the page.*
+    *The latest versions of Chrome on Mac OS do not allow access to the page with a self-signed certificate, which is used in PiKVM by default. You can proceed by typing `thisisunsafe` and Chrome will then load the page.*
 
 ??? example "Access to PiKVM via SSH"
     SSH is the most common remote access method in the Linux world. PiKVM is accessible via SSH. This method is used to manage the device:
@@ -102,7 +102,7 @@ For future examples, let's assume that your PiKVM has received the address **192
 
 ## Configuring PiKVM
 
-Most of the PiKVM settings are done through configuration files. All configuration changes must be made from under the `root` user (that is, the administrator).
+Most of the PiKVM settings are done through configuration files. All configuration changes must be made from under the `root` user (= the administrator).
 
 !!! tip "Obtaining root access"
     * If you have logged in via SSH, then most likely you are already `root`.
