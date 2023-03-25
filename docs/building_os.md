@@ -40,8 +40,7 @@ Docker must be enabled in privileged mode.
 
 4. Create the config file `config.mk` for the target system. You must specify the path to the SD card on your local computer (this will be used to format and install the system) and the version of your Raspberry Pi and platform. You can change other parameters as you wish. Please note: if your password contains the # character, you must escape it using a backslash like `ROOT_PASSWD = pass\#word`.
 
-!!! warning "In any case, do **not** use the default passwords. In order to generate a random password just use following command:
-```printf '%s\n' $(head /dev/urandom | LC_ALL=C tr -dc A-Za-z0-9 | head -c16)```"
+!!! warning "In any case, do **not** use the default passwords. In order to generate a random password just use following command:" ```printf '%s\n' $(head /dev/urandom | LC_ALL=C tr -dc A-Za-z0-9 | head -c16)```
 
     ```Makefile
     [user@localhost os]$ cat config.mk
