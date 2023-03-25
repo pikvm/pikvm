@@ -42,7 +42,7 @@ Docker must be enabled in privileged mode.
 
     ```Makefile
     [user@localhost os]$ cat config.mk
-    # rpi3 for Raspberry Pi 3; rpi2 for the version 2, zero2w for Zero2W
+    # rpi4 for Raspberry Pi 4; rpi3 for Raspberry Pi 3; rpi2 for the version 2, zero2w for Zero2W
     BOARD = rpi4
     
     # Hardware configuration
