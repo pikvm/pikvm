@@ -84,10 +84,12 @@ Docker must be enabled in privileged mode.
         [user@localhost os]$ make install
         ```
 
-    * Make the image to copy elsewhere and burn on to SD card:
+    * Or make the image only. You can then later burn it on an SD card (e.g. using the Raspberry Pi Imager, see article [Flashing the OS image](https://docs.pikvm.org/flashing_os/#flash-the-image)):
 
         ```shell
         [user@localhost os]$ make image
         ```
 
         Image is then available as a bziped file in `images/`.
+        
+!!! note "On a system where `sudo` is unavailable, you can use `make SUDO= image`."
