@@ -94,6 +94,8 @@ to the server and download some files from to PiKVM from it.
 !!! info
     The presence of an additional Mass Storage Drive should not interfere with the boot, but for reasons of compatibility paranoia, this is disabled by default. We recommend setting up the drives in advance, making sure that booting from the ISO CD is still working, and then using the drives as needed.
 
+{!_usb_limits.md!}
+
 
 ### How to enable extra drives
 

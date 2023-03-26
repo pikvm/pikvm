@@ -2,7 +2,9 @@
 
 ## Basic configuration
 
-Specifically to v2+. When combined with configuring a DNS server, FTP, or SMB (for example), this is a powerful way to extend the capabilities of PiKVM.
+Specifically to V2+. When combined with configuring a DNS server, FTP, or SMB (for example), this is a powerful way to extend the capabilities of PiKVM.
+
+{!_usb_limits.md!}
 
 1. Edit `/etc/kvmd/override.yaml` and add these lines:
 
