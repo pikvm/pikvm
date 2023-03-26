@@ -46,7 +46,7 @@ Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (a
 3. Set network ESSID and password:
 
     ```
-    # wpa_passphrase MyNetwork 'P@assw0rd' > /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
+    # wpa_passphrase 'MyNetwork' 'P@assw0rd' > /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
     ```
     
     !!! note "Using Wi-Fi with hidden ESSID"
