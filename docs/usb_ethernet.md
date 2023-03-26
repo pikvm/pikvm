@@ -92,10 +92,7 @@ By default, `kvmd-otgnet` will configure network connection between PiKVM and th
     
 6. Don't forget to `reboot`.
 
-
-=======
-    
-??? example "An example of what the config would look like for a server host that can access PiKVM and has internet access (Please edit to suit your needs):"
+??? example "An example of what the config would look like for a server host that can access PiKVM and has internet access:"
     ```
     otgnet:
         firewall:
@@ -110,34 +107,48 @@ By default, `kvmd-otgnet` will configure network connection between PiKVM and th
             net: 10.65.0.0/28
     ```
 
-  
-=======
+
 ## Working with Windows Computers
 This has been proven to work with Windows:
-1. Set the driver type to `rndis` (see above)
-2. Download this driver on the Windows machine and unzip it somewhere: [https://modclouddownloadprod.blob.core.windows.net/shared/mod-rndis-driver-windows.zip] 
-3. Open the devices manager \
-   ![grafik](https://user-images.githubusercontent.com/100349/149659926-34c6650e-fc9d-469b-838d-969b754d98fd.png)
-4. Select `Properties` of the `Composite KVM Device` \
-   ![grafik](https://user-images.githubusercontent.com/100349/149659971-67f68537-af83-41af-a777-99c022b78677.png)
-5. Select the `RNDIS Device` and click properties \
-   ![grafik](https://user-images.githubusercontent.com/100349/149659911-9f734343-50c2-4868-82e0-f47712670d98.png)
+
+1. Set the driver type to `rndis` (see above).
+
+2. Download [this driver](https://modclouddownloadprod.blob.core.windows.net/shared/mod-rndis-driver-windows.zip) on the Windows machine and unzip it somewhere.
+
+3. Open the devices manager:<br>
+    ![grafik](https://user-images.githubusercontent.com/100349/149659926-34c6650e-fc9d-469b-838d-969b754d98fd.png)
+
+4. Select **Properties** of the **Composite KVM Device**:<br>
+    ![grafik](https://user-images.githubusercontent.com/100349/149659971-67f68537-af83-41af-a777-99c022b78677.png)
+
+5. Select the `RNDIS Device` and click properties:<br>
+    ![grafik](https://user-images.githubusercontent.com/100349/149659911-9f734343-50c2-4868-82e0-f47712670d98.png)
+
 6. Switch to the "Driver" Tab and then click "Update driver"
+
 7. Click "Browse my computer for driver software" \
-  ![grafik](https://user-images.githubusercontent.com/100349/149660982-0f9ce11e-ab03-4bff-a0aa-1c2427664a19.png)
+    ![grafik](https://user-images.githubusercontent.com/100349/149660982-0f9ce11e-ab03-4bff-a0aa-1c2427664a19.png)
+
 8. Click "Let me pick from a list of available drivers on my Computer" \
-   ![grafik](https://user-images.githubusercontent.com/100349/149661039-ad6740d5-624b-4649-aef9-38cbaf5965b3.png)
+    ![grafik](https://user-images.githubusercontent.com/100349/149661039-ad6740d5-624b-4649-aef9-38cbaf5965b3.png)
+
 9. From the list of available hardware types, scroll down and select "Network adapters", then click next \
-   ![grafik](https://user-images.githubusercontent.com/100349/149661132-405fad53-a4a4-41c2-a60d-da3a93059ae2.png) 
+    ![grafik](https://user-images.githubusercontent.com/100349/149661132-405fad53-a4a4-41c2-a60d-da3a93059ae2.png) 
+
 10. Click "Have disk" \
-  ![grafik](https://user-images.githubusercontent.com/100349/149661092-7cd9f642-039a-4469-8439-44dca9f24129.png)
+    ![grafik](https://user-images.githubusercontent.com/100349/149661092-7cd9f642-039a-4469-8439-44dca9f24129.png)
+
 11. Click Browse, navigate to the folder where you've stored the driver and select the `RNDIS.inf`, press Open and then OK \
-  ![grafik](https://user-images.githubusercontent.com/100349/149661186-5039689e-53fe-49e6-8892-af0bd92daa54.png)
+    ![grafik](https://user-images.githubusercontent.com/100349/149661186-5039689e-53fe-49e6-8892-af0bd92daa54.png)
+
 12. Select "Acer Netchip RNDIS/Ethernet Gadget" and click Next  \
-  ![grafik](https://user-images.githubusercontent.com/100349/149661214-d0504972-a8f6-4496-a4d6-033c70f45f9f.png)
+    ![grafik](https://user-images.githubusercontent.com/100349/149661214-d0504972-a8f6-4496-a4d6-033c70f45f9f.png)
+
 13. Dismiss the warning about non-compatible drivers by clicking "Yes" \
-  ![grafik](https://user-images.githubusercontent.com/100349/149661228-e10039ae-ac32-4b98-83aa-893e4e07b639.png)
+    ![grafik](https://user-images.githubusercontent.com/100349/149661228-e10039ae-ac32-4b98-83aa-893e4e07b639.png)
+
 14. You're done - the device should now be recognized. \
     ![grafik](https://user-images.githubusercontent.com/100349/149661295-97d8d8f9-5c40-4d80-b3a2-c544ca8c7224.png)
+
 15. Verify the card is working by pinging your piKVM in a console: `ping 169.254.0.1` \
     ![grafik](https://user-images.githubusercontent.com/100349/149662794-51d34926-a6d4-425a-8cdd-b16d69e458ee.png)
