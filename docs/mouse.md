@@ -22,7 +22,17 @@ Also currently the relative mouse mode is not supported by [PiKVM VNC server](vn
 We expect to implement this in [TigerVNC](https://github.com/TigerVNC/tigervnc/issues/619). The relative mode is also not supported by mobile browsers.
 
 
-## Relative mouse on v2+ platform (OTG HID)
+## Relative mouse on V2+ platform (OTG HID)
+
+!!! info
+	On PiKVM V4 dual mode is enabled by default. To disable it and enable single mode, set `kvmd/hid/mouse_alt/device` (see below) to empty string:
+
+    ```yaml
+    kvmd:
+        hid:
+            mouse_alt:
+				device: ""
+    ```
 
 ### Dual mode
 
@@ -71,7 +81,7 @@ This is more convenient, but for compatibility reasons it is disabled by default
 5. Don't forget to perform `reboot`.
 
 
-## Relative mouse on v0 platform (Arduino HID)
+## Relative mouse on V0 platform (Arduino HID)
 
 Mode switching for [Arduino HID](arduino_hid.md) can be performed on-the-fly starting with KVMD 2.6 and the corresponding firmware. No additional actions are required.
 
