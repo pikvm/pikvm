@@ -3,8 +3,8 @@
 ## First power on
 
 !!! warning
-    - v2 DIY owners: Please follow this [first](https://github.com/pikvm/pikvm)<br>
-    - v3 HAT *or* pre-assembled users: Please follow this [first](https://docs.pikvm.org/v3/)<br>
+    - V2 DIY owners: Please follow this [first](https://github.com/pikvm/pikvm)<br>
+    - V3 HAT *or* pre-assembled users: Please follow this [first](https://docs.pikvm.org/v3/)<br>
     - For both to work and display a video, your target system needs to be configured for the following:<br>
         1920x1080p50Hz (In some rare instances, try 30hz)<br>
         1600x1200p60Hz<br>
@@ -38,9 +38,10 @@
 !!! warning "Do not turn off the device until it's fully booted for the first time"
     After turning on the power, PiKVM OS will generate unique SSH keys and certificates and will perform all necessary operations on the memory card.
 
+
 ## Getting access to PiKVM
 
-By default, PiKVM receives a dynamic IP address via DHCP.
+By default, PiKVM receives a dynamic IP address via DHCP. V3+ devices show IP on the built-in display. If you don't have a display, use the tips below:
 
 ??? example "Finding PiKVM in the network"
     To determine the IP address of your PiKVM, use one of the following methods:
@@ -99,6 +100,7 @@ For future examples, let's assume that your PiKVM has received the address **192
     ```
 
     Optionally you can enable the [two-factor authentication](auth.md#two-factor-authentication).
+
 
 ## Configuring PiKVM
 
