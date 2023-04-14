@@ -60,7 +60,8 @@ plugins:
 
 nav:
     - "Getting started":
-        - "PiKVM v3 HAT guide": v3.md
+#        - "PiKVM V4 guide": v4.md
+        - "PiKVM V3 HAT guide": v3.md
         - "First steps": first_steps.md
         - "Authentication": auth.md
         - "FAQ": faq.md

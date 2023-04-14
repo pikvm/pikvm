@@ -8,7 +8,10 @@
 
 Download the appropriate SD card image. Select it based on the board, platform, and the video capture device you are using:
 
-* **V3 HAT (Patron, Kickstarter, Pre-Assembled and future editions)**
+* **PiKVM V4**
+    * [PiKVM V4 Mini](https://files.pikvm.org/images/v4mini-hdmi-rpi4-latest.img.xz) <sub>- [*sha1*](https://files.pikvm.org/images/v4mini-hdmi-rpi4-latest.img.xz.sha1)
+    * [PiKVM V4 Plus](https://files.pikvm.org/images/v4plus-hdmi-rpi4-latest.img.xz) <sub>- [*sha1*](https://files.pikvm.org/images/v4plus-hdmi-rpi4-latest.img.xz.sha1)
+* **PiKVM V3**
     * [PiKVM V3 HAT BOX Image (Raspberry Pi 4) OLED/FAN preactivated](https://files.pikvm.org/images/v3-hdmi-rpi4-box-latest.img.xz) <sub>- [*sha1*](https://files.pikvm.org/images/v3-hdmi-rpi4-box-latest.img.xz.sha1)
     * [PiKVM V3 HAT DIY Assembly (Raspberry Pi 4)](https://files.pikvm.org/images/v3-hdmi-rpi4-latest.img.xz) <sub>- [*sha1*](https://files.pikvm.org/images/v3-hdmi-rpi4-latest.img.xz.sha1)</sub>
 * **DIY - Raspberry Pi 4, V2 platform:**

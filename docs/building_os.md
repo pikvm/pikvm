@@ -1,6 +1,6 @@
 # Building the OS
 
-!!! warning "ZeroW reached EOL and is no longer supported, the last image it can be found [here](https://files.pikvm.org/images/v2-hdmi-zerow-latest.img.xz)"
+!!! warning "ZeroW reached End-Of-Life and is no longer supported, the last image it can be found [here](https://files.pikvm.org/images/v2-hdmi-zerow-latest.img.xz)"
 
 The PiKVM OS is based on Arch Linux ARM and contains all the required packages and configs for it to work. To build the OS you will need x86_64 Linux machine with:
 
@@ -31,7 +31,9 @@ Docker must be enabled in privileged mode.
 
     * Choose the board: `BOARD=rpi4` for Raspberry Pi 4 or `BOARD=zerow`, `BOARD=rpi2`, `BOARD=rpi3` for other options.
     * Choose the platform:
-        * `PLATFORM=v3-hdmi` for RPi4 and PiKVM v3 HAT.
+        * `PLATFORM=v4mini-hdmi` for PiKVM V4 Mini.
+        * `PLATFORM=v4plus-hdmi` for PiKVM V4 Plus.
+        * `PLATFORM=v3-hdmi` for RPi4 and PiKVM V3 HAT.
         * `PLATFORM=v2-hdmi` for RPi3a+/RPi4 or Zero2W with HDMI-CSI bridge.
         * `PLATFORM=v2-hdmiusb` for RPi4 with HDMI-USB dongle.
         * `PLATFORM=v0-hdmi` for RPi2 or 3b+ with HDMI-CSI bridge and Arduino HID.
