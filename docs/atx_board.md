@@ -6,7 +6,7 @@ To manage the power of your computer, you will need to install an ATX adapter bo
 
 ## Detailed instructions
 
-1. Connect the rainbow wires to the board, one row to the front panel, one row to the motherboard. You can use either row for either cable. To secure the ATX board in the case you can optionally print [the mounting plate](stl/atx/index.md){target=_blank} for the PCI slot on a 3D-printer. Assemble everything like on pictures below. Secure wires in any convenient way (we used soft ties).
+1. Connect the rainbow wires to the board, one row to the front panel, one row to the motherboard. You can use either row for either cable. To secure the ATX board in the case you can optionally print [the mounting plate](stl/atx/index.md){target=_blank} for the PCI slot on a 3D-printer. Assemble everything like the pictures below. Secure wires in any convenient way (we used soft ties).
 
     ??? example
         <img src="atx_board_1.jpg" />
