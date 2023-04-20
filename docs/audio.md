@@ -1,17 +1,20 @@
-# PiKVM V3 Audio
+# PiKVM V3+ Audio
 
 This feature allows you to receive audio over an HDMI cable and transmit it to the browser in WebRTC mode.
 
 !!! warning
-    * This is only supported by PiKVM V3 devices right now. This may or may not work on other CSI devices as most have a hw defect.
+    * This is only supported by PiKVM V3+ devices right now. This may or may not work on other CSI devices as most have a hw defect.
     * Please note the feature is experimental. Nothing will explode for you, but something may not work. Please report about problems [here](https://discord.gg/bpmXfz5) (preferred) or [here](https://github.com/pikvm/pikvm/issues/97).
     * KVM switches may or may not work, we currently do not have a list of what works due to the feature being new/experimental.
     * MIC support is not supported at this time, it may be supported in the future.
 
+!!! info
+    PiKVM V4 has enabled this feature by default.
+
 
 ## Preparing
 
-1. Make sure that you have not removed the [jumpers related to audio (4)](v3.md#atx-connection) on the V3 board and have not deleted or commented out the `dtoverlay=tc358743-audio` line in `/boot/config.txt`. Return everything as it was, if you changed it.
+1. Make sure that you have not removed the [jumpers related to audio (4)](v3.md#atx-connection) on the V3 board and have not deleted or commented out the `dtoverlay=tc358743-audio` line in `/boot/config.txt`. Return everything as it was, if you changed it. For V4 you can skip this step.
 
 2. Update the OS:
    ```
