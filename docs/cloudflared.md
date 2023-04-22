@@ -43,45 +43,45 @@ Unfortunately Cloudflare does not provide binaries for ARM so we need to compile
 
 2. Create the service configuration file
    
-   ```
-   # systemctl edit --full cloudflared.service
-   ```
+    ```
+    # systemctl edit --full cloudflared.service
+    ```
 
 3. Insert the following configuration replacing TOKEN VALUE with your token from the Cloudflare tunnel step.
 
-   ```ini
-   [Unit]
-   Description=Cloudflare Tunnel
-   After=network.target
-   
-   [Service]
-   TimeoutStartSec=0
-   Type=notify
-   ExecStart=/usr/bin/cloudflared --protocol quic tunnel run --token <TOKEN VALUE>
-   Restart=on-failure
-   RestartSec=5s
-   ```
+    ```ini
+    [Unit]
+    Description=Cloudflare Tunnel
+    After=network.target
+
+    [Service]
+    TimeoutStartSec=0
+    Type=notify
+    ExecStart=/usr/bin/cloudflared --protocol quic tunnel run --token <TOKEN VALUE>
+    Restart=on-failure
+    RestartSec=5s
+    ```
 
 4. Afterwards verify service is started and stays running
 
-   ```
-   # systemctl enable --now cloudflared
-   # systemctl status cloudflared
-   ```
+    ```
+    # systemctl enable --now cloudflared
+    # systemctl status cloudflared
+    ```
 
 5. Open a web browser and attempt
 
 
 ## Updating cloudflared
 
-1. Use these commands to update the ```cloudflared``` daemon:
+Use these commands to update the ```cloudflared``` daemon:
   
-    ```
-    # rw
-    # rm -rf cloudflared/
-    # curl -s https://api.github.com/repos/cloudflare/cloudflared/releases/latest | grep "tarball_url" | cut -d '"' -f 4 | xargs curl -LJo cloudflared-latest.tar.gz
-    # tar -xzvf cloudflared-latest.tar.gz --transform 's|[^/]*/|cloudflared/|'
-    # cd cloudflared/cmd/cloudflared/
-    # go build && mv cloudflared /usr/bin/cloudflared
-    # systemctl restart cloudflared
-    ```
+```
+# rw
+# rm -rf cloudflared/
+# curl -s https://api.github.com/repos/cloudflare/cloudflared/releases/latest | grep "tarball_url" | cut -d '"' -f 4 | xargs curl -LJo cloudflared-latest.tar.gz
+# tar -xzvf cloudflared-latest.tar.gz --transform 's|[^/]*/|cloudflared/|'
+# cd cloudflared/cmd/cloudflared/
+# go build && mv cloudflared /usr/bin/cloudflared
+# systemctl restart cloudflared
+```
