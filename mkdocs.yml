@@ -69,6 +69,7 @@ nav:
         - "Internet access":
             - "Port forwarding": port_forwarding.md
             - "Tailscale VPN": tailscale.md
+            - "Cloudflare Tunnel": cloudflare.md
         - "Setting up Wi-Fi": wifi.md
         - "Let's Encrypt certificates": letsencrypt.md
     - "Video":
