@@ -51,7 +51,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "Does PiKVM support sound?"
-    Yes but the only officially supported version is the v3 Pre-Assembled or HAT's, v2 we will attempt best effort but ultimatly we do not support CSI modules or USB.
+    Yes but the only officially supported version is the PiKVM V3+ devices, V2 we will attempt best effort but ultimatly we do not support CSI modules or USB.
 
 
 ??? question "Can I power the Pi via PoE?"
@@ -59,9 +59,9 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "Do I need a power splitter? Why do I need one?"
-    * Yes for RPi4 - Please see the main readme for splitter types listed under V2 Hardware
+    * Yes for RPi4 - Please see the main readme for splitter types listed under V2 hardware
     * Yes for Zero W and Zero W 2, if using dedicated power you still need to split the power from the data towards the target. If using the target for power, this is not needed.
-    * This is not needed if you have a v3 HAT, as the HAT splits power and signal on the board.
+    * This is not needed if you have a PiKVM V3, as the HAT splits power and signal on the board.
 
 
 ??? question "Can I use PiKVM with non-Raspberry Pi boards (Orange, Nano, etc)?"
@@ -256,7 +256,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     * Set the timezone with `timedatectl set-timezone <YourTimeZoneHere>` e.g. `timedatectl set-timezone Australia/Victoria`.
     * Stop the time syncing service with `systemctl stop systemd-timesyncd` as this will prevent the next step if running.
     * Set the time and date with `timedatectl set-time 'YYYY-MM-DD HH:MM:SS'` e.g. `timedatectl set-time '2023-02-26 14:50:10'`.
-    * If you have hardware clock e.g. V3 & V4 HAT, update it with `hwclock --systohc` , then check it with `hwclock --show`.
+    * If you have hardware clock e.g. V3+, update it with `hwclock --systohc` , then check it with `hwclock --show`.
     * Switch filesystem to RO-mode with the command `ro`.
     
 
@@ -336,7 +336,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 ## Video problems
 
 ??? question "I can see the video but I can't see the WebRTC switch"
-    WebRTC is an alternative mode for the default MJPEG and it's only supported on v2+ platforms with the CSI video capture device. See [this](webrtc.md) page to solve any problems with WebRTC.
+    WebRTC is an alternative mode for the default MJPEG and it's only supported on V2+ platforms with the CSI video capture device. See [this](webrtc.md) page to solve any problems with WebRTC.
 
 
 ??? question "PiKVM does not show the video from the computer at all"
@@ -394,12 +394,12 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ## USB problems (keyboard, mouse, mass storage, etc)
 
-??? question "My computer does not recognize USB of PiKVM v2+ at all"
+??? question "My computer does not recognize USB of PiKVM V2+ at all"
     * Make sure that you have used the correct USB cable with DATA lines to connect the OTG port for the Raspberry to the computer. You may have decided to use a USB hub instead of a Y-cable and **it won't work**. Use good cables and follow the instructions :)
     * In rare cases, some very buggy BIOSes do not like HID and Mass Storage in one USB device. You can either [disable Mass Storage](msd.md#disable-msd), or use an [Arduino HID](arduino_hid.md) to physically separate them.
 
 
-??? question "BIOS/UEFI does not recognize USB of v2+, but computer does"
+??? question "BIOS/UEFI does not recognize USB of V2+, but computer does"
     If you are using a USB hub or USB PCI controller, this may not be handled by your BIOS. Try to use another USB port. Some ports may have a built-in hub on the motherboard and a buggy BIOS that can't handle it.
 
 
@@ -407,7 +407,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     The BIOS does not support absolute mouse mode, which is preferred by PiKVM. In this case, [you can enable relative or dual positioning mode](mouse.md).
 
 
-??? question "I can't wake up suspended computer on v2+"
+??? question "I can't wake up suspended computer on V2+"
     This feature is experimental and requires manual activation. Perform a full system update, edit `/etc/kvmd/override.yaml`, and reboot. After that, you can use remote wakeup by pressing any keyboard key or mouse button.
 
     ```yaml
@@ -415,16 +415,36 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
         remote_wakeup: true
     ```
 
+    For V4, you don't need to add this option as it is enabled by default.
 
-??? question "My mass storage drive works (I can boot an image from PiKVM v2+), but my keyboard/mouse does not"
+    If something doesn't work, please report about the problem [here](https://discord.gg/bpmXfz5) (preferred) or [here](https://github.com/pikvm/pikvm/issues).
+
+
+??? question "My mass storage drive works (I can boot an image from PiKVM V2+), but my keyboard/mouse does not"
     In rare cases, some very buggy BIOSes does not like HID and Mass Storage in one USB device. You can either [disable Mass Storage](msd.md#disable-msd), or use an [Arduino HID](arduino_hid.md) to physically separate them.
 
 
 ??? question "Buggy absolute mouse on Windows 98 as managed server"
     How to fix:
 
-    * [v2+/OTG](mouse.md#fixing-the-absolute-mouse-on-windows-98).
+    * [V2+](mouse.md#fixing-the-absolute-mouse-on-windows-98).
     * [Arduino HID](arduino_hid.md#fixing-the-usb-absolute-mouse-on-windows-98).
+
+
+??? question "The mouse does not work with NVR/DVR CCTV"
+    Often these devices have a buggy USB driver that does not understand an absolute mouse and/or a mouse with horizontal scrolling. In this case, the following configuration for `/etc/kvmd/override.yaml` will help you:
+
+    ```yaml
+    kvmd:
+        hid:
+            mouse:
+                absolute: false
+                horizontal_wheel: false
+            mouse_alt:
+                device: ""
+    ```
+
+    It will make the relative mouse without horizontal scrolling the only mice.
 
 
 ??? question "There's big mouse latency on another Raspberry Pi as managed server"
