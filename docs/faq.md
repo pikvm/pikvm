@@ -127,6 +127,13 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     /usr/bin/kvmd-oled --height=32 --interval=5 --clear-on-exit --text="turn off in 5s"
     systemctl disable --now kvmd-oled kvmd-oled-reboot kvmd-oled-shutdown
     ```
+    Then shutdown your pikvm by running `shutdown -h now` and unplugging the power supply to power cycle the display.
+    
+    To re-enable the OLED display:
+    ```
+    systemctl enable --now kvmd-oled kvmd-oled-reboot kvmd-oled-shutdown
+    ```
+
     
 ??? question "How do I rotate the OLED display?"
     Please run the following:
