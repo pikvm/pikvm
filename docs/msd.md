@@ -236,7 +236,7 @@ Once you have the desired USB stick perform the following on the RPi to create t
 
     ```
     # chown kvmd:kvmd /var/lib/kvmd/msd/windows10-2004.bin
-    # touch /var/lib/kvmd/msd/windows10-2004.bin.complete
+    # touch /var/lib/kvmd/msd/.__windows10-2004.bin.complete
     ```
 
 5. Remount msd folder as read only
