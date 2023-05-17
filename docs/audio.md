@@ -7,6 +7,7 @@ This feature allows you to receive audio over an HDMI cable and transmit it to t
     * Please note the feature is experimental. Nothing will explode for you, but something may not work. Please report about problems [here](https://discord.gg/bpmXfz5) (preferred) or [here](https://github.com/pikvm/pikvm/issues/97).
     * KVM switches may or may not work, we currently do not have a list of what works due to the feature being new/experimental.
     * MIC support is not supported at this time, it may be supported in the future.
+    * USB Dongles do NOT support sound, there is no plans to make this work in the future.
 
 !!! info
     PiKVM V4 has enabled this feature by default.
