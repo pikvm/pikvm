@@ -17,7 +17,7 @@ You can also apply the new EDID without rebooting to make sure it works:
 * Create the new EDID file `/root/edid.hex` (examples of file contents are shown below).
 * Apply EDID using the command `kvmd-edidconf --edid=/root/edid.hex --apply`.
 * DO NOT REBOOT the PiKVM. Just your PC. Check the UEFI/BIOS or the OS.
-* If everything works, you can write the same data to `/etc/kvmd/tc358743-edid.hex`.
+* If everything is working, you can make this config permanent: `kvmd-edidconf --import=/root/edid.hex`. This command will write the EDID to `/etc/kvmd/tc358743-edid.hex` in a pretty format.
 * Switch filesystem to RO-mode: `ro`.
 
 
@@ -28,7 +28,28 @@ If for some reason you need to go back to the default EDID (changing attached de
 
 ## EDID examples for V4+
 
-PiKVM can mimic other physical monitors. You can find EDID in [this database](https://github.com/linuxhw/EDID), then import the HEX code. Choose something with a maximum resolution of 1920x1080 or 1920x1200.
+PiKVM can mimic physical monitors. You can find the appropriate EDID in [this database](https://github.com/linuxhw/EDID) and import its HEX code to PiKVM. Choose something with a maximum resolution of 1920x1080 or 1920x1200.
+
+??? example "Acer 1381. 1920x1200, with sound"
+    Taken [here](https://github.com/linuxhw/EDID/blob/master/Digital/Acer/ACR0565/CCF78B30FE61), as described above.
+    ```
+    00FFFFFFFFFFFF00047265058A3F6101
+    101E0104A53420783FC125A8554EA026
+    0D5054BFEF80714F8140818081C08100
+    8B009500B300283C80A070B023403020
+    360006442100001A000000FD00304C57
+    5716010A202020202020000000FC0042
+    323436574C0A202020202020000000FF
+    0054384E4545303033383532320A01F8
+    02031CF14F9002030405060701111213
+    1415161F2309070783010000011D8018
+    711C1620582C250006442100009E011D
+    007251D01E206E28550006442100001E
+    8C0AD08A20E02D10103E960006442100
+    0018C344806E70B028401720A8040644
+    2100001E000000000000000000000000
+    00000000000000000000000000000096
+    ```
 
 ??? example "ASUS PA248QV, 1920x1200, with sound"
     Taken [here](https://github.com/linuxhw/EDID/blob/master/Digital/ASUS/AUS2487/2B473481CAE6), as described above.
