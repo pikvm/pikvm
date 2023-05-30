@@ -24,11 +24,11 @@ Specifically to V2+. When combined with configuring a DNS server, FTP, or SMB (f
 
     | Driver | Operating System|
     |--------|-------|
-    | ecm    | Linux |
+    | ecm    | Linux<br>macOS |
     | eem    | Linux |
     | rndis5 | Windows XP to Windows 7<sup>[1](#rndis5)</sup><br>Linux > 2.6.13 |
     | rndis  | Windows 7 and later<sup>[2](#rndis)<br>Linux > 2.6.13 |
-    | ncm    | Windows 10 and later<br>Linux > 2.6.37 |
+    | ncm    | Windows 10 and later<br>Linux > 2.6.37<br>macOS |
 
     <a name="rndis5">1</a>: Manual driver installation is required. [Download RNDIS 5 Windows](driver/win/pikvm-rndis5.inf)<br>
     <a name="rndis">2</a>: Automatic driver installation since kvmd-3.53
