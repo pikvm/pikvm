@@ -1,11 +1,11 @@
 # H.264 / WebRTC
 
-!!! warning "Only main browsers are supported: Chrome, Firefox and Safari"
+!!! note
+    * Officially supported browsers: Chrome, Firefox and Safari.
+    * Only for V3+ and other devices based on CSI bridge
 
-!!! warning "Only for V3+ and other devices based on CSI bridge"
-
-This is a new alternative video transfer mode available for Raspberry Pi 4 users with an HDMI-CSI bridge (including PiKVM V3 HAT).
-It uses H.264 encoding instead of MJPEG and provides significantly less traffic consumption.
+This is a main video streaming mode available for all V3+ users and DIY devices with CSI bridge.
+With the efficient H.264 encoding, a significant reduction in traffic is achieved compared to old MJPEG.
 
 If you use an OS image built after 2021.06.10, this mode will be available by default.
 If you are upgrading to an older version of the OS, you will need to manually enable the WebRTC gateway:
@@ -20,7 +20,16 @@ Then reload the Web UI and then in the **System** menu you will see the video mo
     If you don't see the switch, it means that either your browser does not support WebRTC, or the `kvmd-janus` service was not started.
 
 
-## Basics
+## H.264 parameters
+
+The main parameters available for configuration in the Web UI are **bitrate** and **gop**.
+
+* **Bitrate (H.264 kbps)** - with a large value, the quality will be better, but the network consumption will increase.
+* **Group of pictures (H.264 gop)** - the number of frames between which a reference frame must be forcibly added.
+  The recommended value is 0 for low-loss networks, this will also reduce latency. Use a value of 30 or so for unreliable networks if the image flickers frequently.
+
+
+## Details
 
 The MJPEG video stream uses the same HTTP connection that you use to get the web interface.
 This means that for remote access, you just need to forward ports 80 and 443 on your router. 
