@@ -339,6 +339,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Adam Goodbar
 * Adam S
 * Adam Stuart
+* AdamBomb
 * adipisicing
 * Adrian Basham
 * Ahmed Syed
