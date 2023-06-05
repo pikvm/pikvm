@@ -55,7 +55,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "Can I power the Pi via PoE?"
-    Yes! But you still need to ensure you isolate the 5v connection between the Raspberry Pi and host PC to prevent backpower issues that can cause instability or damage to either the host PC or the Pi. Power/Data cable + USB power blocker would work.
+    Yes! But you still need a splitter to ensure you isolate the 5v connection between the Raspberry Pi and host PC to prevent backpower issues that can cause instability or damage to either the host PC or the Pi. Power/Data cable + USB power blocker would work.
 
 
 ??? question "Do I need a power splitter? Why do I need one?"
@@ -66,6 +66,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "Can I use PiKVM with non-Raspberry Pi boards (Orange, Nano, etc)?"
     Yes, but you will have to prepare the operating system yourself. For the PiKVM software, you will need to replace some config files (such as UDEV rules). If you are a developer or an experienced system administrator, you will not have any problems with this. In addition, we are open to patches. If you need help with this, please contact us via [Discord](https://discord.gg/bpmXfz5).
+    There has been some amazing strides in getting this converted to other SBC's including x86, visit Discord and join #unofficial_ports channel for details.
 
 
 ??? question "Is PiKVM OS its own custom distro?"
@@ -174,6 +175,15 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     
 ??? question "Can I run PiKVM in a docker?"
     No, technically it might be possible but the OS requires many specific settings that cannot be performed inside the container.
+    
+??? question "How can I change the http/https ports?"
+    You can change the ports in the following files - `/etc/kvmd/nginx/listen-https.conf, listen-http.conf, redirect-to-https.conf` restart kvmd-nginx service
+    
+    ```
+    # rw
+    # systemctl restart kvmd-nginx
+    # ro
+    ```
 
 ## First steps
 
@@ -214,7 +224,8 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     # adduser <user>
     # passwd <user>
     ```
-    Keep in mind that the more users that are added, the stream if accessed, fps will drop.
+    
+   Keep in mind that the more users that are added, the stream if accessed, fps will drop.
 
 
 ??? question "How do I get root access in the web terminal?"
@@ -297,7 +308,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
             type: disabled
     ```
 
-    ... then restart `kvmd`:
+   then restart `kvmd`:
 
     ```
     # systemctl restart kvmd
