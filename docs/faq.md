@@ -123,14 +123,12 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 ??? question "How do I blank the oled screen?"
     Please run the following:
     ```
-    /usr/bin/kvmd-oled --height=32 --interval=5 --clear-on-exit --text="turn off in 5s"
-    systemctl disable --now kvmd-oled kvmd-oled-reboot kvmd-oled-shutdown
+    # systemctl disable --now kvmd-oled kvmd-oled-reboot kvmd-oled-shutdown
+    # kvmd-oled --height=32 --interval=0 --clear-on-exit --text=x
     ```
-    Then shutdown your pikvm by running `shutdown -h now` and unplugging the power supply to power cycle the display.
-    To re-enable the OLED display:
-    
+    To re-enable the display:
     ```
-    systemctl enable --now kvmd-oled kvmd-oled-reboot kvmd-oled-shutdown
+    # systemctl enable --now kvmd-oled kvmd-oled-reboot kvmd-oled-shutdown
     ```
     
 ??? question "How do I rotate the OLED display?"
