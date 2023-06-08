@@ -88,13 +88,15 @@ Mode switching for [Arduino HID](arduino_hid.md) can be performed on-the-fly sta
 
 ## Fixing the absolute mouse on Windows 98
 
-Due to an ancient buggy driver, the absolute mouse on Windows 98 moves only within the upper-left quarter of the screen. To fix this, you need to activate some magic workaround in `/etc/kvmd/override.yaml`:
+Due to an ancient buggy driver, the absolute mouse on Windows 98 moves only within the upper-left quarter of the screen. To fix this, you need to activate some magic workaround. Due to the specifics of the implementation, you will have to turn on the relative mouse too. Write it in `/etc/kvmd/override.yaml`:
 
 ```yaml
 kvmd:
     hid:
         mouse:
             absolute_win98_fix: true
+        mouse_alt:
+            device: /dev/kvmd-hid-mouse-alt
 ```
 
-... and run `systemctl restart kvmd`.
+... and run `systemctl restart kvmd`. After that, you will get 3 new buttons with mouse modes in the **System** menu in Web UI. Switch it to **Abs-Win98**.
