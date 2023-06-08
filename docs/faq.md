@@ -33,7 +33,6 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     * For HDMI-CSI bridge, bus bandwidth is not enough to transmit more than 1080p50.
     * For HDMI-USB dongle, high latency and low video quality.
     * General hardware video capture differs from software streaming and introduces additional latency.
-    
 
 
 ??? question "Can PiKVM do 4K video?"
@@ -55,7 +54,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "Can I power the Pi via PoE?"
-    Yes! But you still need to ensure you isolate the 5v connection between the Raspberry Pi and host PC to prevent backpower issues that can cause instability or damage to either the host PC or the Pi. Power/Data cable + USB power blocker would work.
+    Yes! But you still need a splitter to ensure you isolate the 5v connection between the Raspberry Pi and host PC to prevent backpower issues that can cause instability or damage to either the host PC or the Pi. Power/Data cable + USB power blocker would work.
 
 
 ??? question "Do I need a power splitter? Why do I need one?"
@@ -65,7 +64,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "Can I use PiKVM with non-Raspberry Pi boards (Orange, Nano, etc)?"
-    Yes, but you will have to prepare the operating system yourself. For the PiKVM software, you will need to replace some config files (such as UDEV rules). If you are a developer or an experienced system administrator, you will not have any problems with this. In addition, we are open to patches. If you need help with this, please contact us via [Discord](https://discord.gg/bpmXfz5).
+    Yes, but you will have to prepare the operating system yourself. For the PiKVM software, you will need to replace some config files (such as UDEV rules). If you are a developer or an experienced system administrator, you will not have any problems with this. In addition, we are open to patches. If you need help with this, please contact us via [Discord](https://discord.gg/bpmXfz5) (#unofficial_ports channel).
 
 
 ??? question "Is PiKVM OS its own custom distro?"
@@ -128,12 +127,11 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     systemctl disable --now kvmd-oled kvmd-oled-reboot kvmd-oled-shutdown
     ```
     Then shutdown your pikvm by running `shutdown -h now` and unplugging the power supply to power cycle the display.
-    
     To re-enable the OLED display:
+    
     ```
     systemctl enable --now kvmd-oled kvmd-oled-reboot kvmd-oled-shutdown
     ```
-
     
 ??? question "How do I rotate the OLED display?"
     Please run the following:
@@ -144,7 +142,8 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     ExecStart=
     ExecStart=/usr/bin/kvmd-oled --height=32 --clear-on-exit --rotate=2
     ```
-    
+
+
 ??? question "I am getting a 500/503 error when I try and access the main KVM page!"
     This maybe due to a few of the following:
 
@@ -154,23 +153,24 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "How can I use the serial console to access to access other devices"
     You need to stop the service which listens on the `/dev/ttyAMA0`:
-    
+
     ```
     rw
     systemctl stop serial-getty@ttyAMA0.service
     ```
-    
+
     If you want this change permanent (not starting again after reboot), you can disable this service, ('enable' to reverse this decision):
-    
+
     ```
     systemctl disable serial-getty@ttyAMA0.service
     ```
-    
+
     !!! note
-        * Only USB OR the RJ-45 serial connector will work, you can't use them together! 
+        * Only USB OR the RJ-45 serial connector will work, you can't use them together!
         * If you disable the service permanently, you can't recover your device via serial console if you need this.
         * There are some reports, that you need to remove `ttyAMA0` from /boot/cmdline.txt, but this is not needed on new installations.
-        
+
+
 ??? question "How can I have different hostnames for multiple pikvms?"
     Using a SSH session or the web terminal:
     - Make sure you're `root`, if you're not root use the `su` command to become root
@@ -178,9 +178,20 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     - Execute: `hostnamectl set-hostname yournewhostname.domain`
     - Optional: Edit `/etc/kvmd/meta.yaml` to alter the displayed server name in the web UI
     - Reboot the pikvm
-    
+
+
 ??? question "Can I run PiKVM in a docker?"
     No, technically it might be possible but the OS requires many specific settings that cannot be performed inside the container.
+
+
+??? question "How can I change the HTTP/HTTPS ports?"
+    You can change the ports in the following files:
+    - `/etc/kvmd/nginx/listen-https.conf`
+    - `/etc/kvmd/nginx/listen-http.conf`
+    - `/etc/kvmd/nginx/redirect-to-https.conf`
+
+    After that, restart the server: `systemctl restart kvmd-nginx`.
+
 
 ## First steps
 
@@ -206,7 +217,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "How do I add another user?"
     As stated above you need to make 2 accounts, 1 for the shell, the other for the PiKVM Web UI.
-    
+
     ```
     If you require additional users for PiKVM UI, you can use the following:
     # rw
@@ -214,13 +225,14 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     # kvmd-htpasswd set <user> # Adds a new user
     # kvmd-htpasswd set <user> # Sets the password as long as the user exists
     # kvmd-htpasswd del <user> # Removes/deletes a user
-    
+
     To add a shell/terminal account:
     # rw
     # su -
     # adduser <user>
     # passwd <user>
     ```
+
     Keep in mind that the more users that are added, the stream if accessed, fps will drop.
 
 
@@ -254,7 +266,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
         * Do the same in `/etc/fstab` for the `/boot` partition.
         * Comment `tmpfs` lines in `/etc/fstab` for `/var/lib` and `/var/log`.
         !!! danger "But again: DON'T DO THIS"
- 
+
 
 ??? question "How to set the date, time and timezone from command line?"
     * Become root with the command `su -` or `sudo -s`.
@@ -265,7 +277,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     * Set the time and date with `timedatectl set-time 'YYYY-MM-DD HH:MM:SS'` e.g. `timedatectl set-time '2023-02-26 14:50:10'`.
     * If you have hardware clock e.g. V3+, update it with `hwclock --systohc` , then check it with `hwclock --show`.
     * Switch filesystem to RO-mode with the command `ro`.
-    
+
 
 ??? question "How do I install or remove packages in PiKVM OS?"
     PiKVM OS is based on Arch Linux ARM and uses the [pacman](https://wiki.archlinux.org/title/Pacman) package manager.
@@ -304,7 +316,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
             type: disabled
     ```
 
-    ... then restart `kvmd`:
+   ... then restart `kvmd`:
 
     ```
     # systemctl restart kvmd
@@ -339,7 +351,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     * Optional: edit `/etc/kvmd/meta.yaml` to alter the displayed hostname in the web UI.
     * Run `ro` and `reboot`.
 
-   
+
 ## Video problems
 
 ??? question "I can see the video but I can't see the WebRTC switch"
@@ -397,7 +409,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "Windows shows limited Available Resolutions"
     This is due to a driver issue. A possible resolution can be found [here](https://github.com/pikvm/pikvm/issues/577#issuecomment-998713201).
-    
+
 
 ## USB problems (keyboard, mouse, mass storage, etc)
 
@@ -497,7 +509,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 ??? question "I can't click on anything when using the WebGUI on my phone"
     At this time, iOS has the buttons on the bottom if you have the correct resolution, sometimes you cannot see them due to the resolution.
     At this time, android is not supported, our suggestion is to use a VNC client.
-    
+
 
 ??? question "I changed the Display Resolution to 720p but Windows still shows 1080p and the display looks blurry"
     This is mostly seen on Windows, open `Display Settings -> Advanced display settings -> Display adapter setting for Display 1 -> List all modes -> (Toggle between 720p30hz back to 50hz)`, this may need to be done if you need to change it back for 1080p.
@@ -525,10 +537,10 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 ??? question "PiKVM complains about low power warnings"
     * Are you using a "proper" power supply? Not one you hacked together?
     * Some USB power bricks advertise 5V 2.1A or higher, but can't deliver consistent 5V.  Best to use Raspberry Pi Foundation recommended power supplies.
-    
+
 
 ??? question "PiKVM complains about a RTC low voltage detected, date/time is not reliable"
-    * This is mearly a warning that can be ignored however, the following resolves the issue: 
+    * This is mearly a warning that can be ignored however, the following resolves the issue:
     * Leave plugged in for 24+ hours and or
     * Connect to the internet using the eth cable, the internal NTP service will set the time accordlingly
     * Force a time sync: `rw && hwclock --systohc"` or `"rw && hwclock -w"`

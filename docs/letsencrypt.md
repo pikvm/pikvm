@@ -47,7 +47,9 @@ file system, special tools around Certbot are required to work with certificates
 5. Enable automatic certificate renewal:
 
       ```
+      # rw
       # systemctl enable --now kvmd-certbot.timer
+      # ro
       ```
 
 ## Cloudflare DNS
