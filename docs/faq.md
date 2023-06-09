@@ -314,7 +314,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
             type: disabled
     ```
 
-   ... then restart `kvmd`:
+    ... then restart `kvmd`:
 
     ```
     # systemctl restart kvmd
