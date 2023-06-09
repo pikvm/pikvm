@@ -336,7 +336,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
             enabled: false
     ```
 
-    ... then restart `kvmd`:
+    Then restart `kvmd`:
 
     ```
     [root@pikvm ~]# systemctl restart kvmd
