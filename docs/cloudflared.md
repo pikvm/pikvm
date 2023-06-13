@@ -1,6 +1,6 @@
 # Cloudflare Tunnels
 
-[Cloudflare Tunnels](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/) can be used to access PiKVM over the internet securely using Cloudflare Zero Trust with `cloudflared`. This is a convenient and free (for 50 users) tool for allowing access to web services running on your internal network without port forwarding or IPv4/IPv6 compatability issues. This document is provided as an example for accessing your PiKVM over the internet but you can also use Zerotier/[Tailscale](tailscale.md)/*Insert XYZ VPN service here*. Basic support like whats shown below is provided as an example, any other setting or functionality needs to be redirected to the appropriate community.
+[Cloudflare Tunnels](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/) can be used to access PiKVM over the internet securely using Cloudflare Zero Trust with Cloudflared. This is a convenient and free (for 50 users) tool for allowing access to web services running on your internal network without port forwarding or IPv4/IPv6 compatability issues. This document is provided as an example for accessing your PiKVM over the internet but you can also use Zerotier/[Tailscale](tailscale.md)/*Insert XYZ VPN service here*. Basic support like whats shown below is provided as an example, any other setting or functionality needs to be redirected to the appropriate community.
 
 
 ## Prequisites
@@ -51,7 +51,7 @@
 
 ## Updating Cloudflared
 
-Use these commands to update the Cloudflared:
+Use these commands to update Cloudflared:
   
 ```
 # rw
