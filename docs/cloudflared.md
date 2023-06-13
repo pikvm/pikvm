@@ -1,6 +1,6 @@
 # Cloudflare Tunnels
 
-[Cloudflare Tunnels](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/) can be used to access PiKVM over the internet securely using Cloudflare Zero Trust with the `cloudflared` daemon. This is a convenient and free (for private use) tool for allowing access to web services running on your internal network without port forwarding or IPv4/IPv6 compatability issues. This document is provided as an example for accessing your PiKVM over the internet but you can also use Zerotier/[Tailscale](tailscale.md)/*Insert XYZ VPN service here*. Basic support like whats shown below is provided as an example, any other setting or functionality needs to be redirected to the appropriate community.
+[Cloudflare Tunnels](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/) can be used to access PiKVM over the internet securely using Cloudflare Zero Trust with Cloudflared. This is a convenient and free (for 50 users) tool for allowing access to web services running on your internal network without port forwarding or IPv4/IPv6 compatability issues. This document is provided as an example for accessing your PiKVM over the internet but you can also use Zerotier/[Tailscale](tailscale.md)/*Insert XYZ VPN service here*. Basic support like whats shown below is provided as an example, any other setting or functionality needs to be redirected to the appropriate community.
 
 
 ## Prequisites
@@ -8,6 +8,8 @@
 1. A domain utilizing Cloudflare for DNS
 
 2. A Cloudflare tunnel configured with an application created and secured by an access policy
+
+3. Custom firewall rules configured in Cloudflare as needed
 
 
 ## Cloudflare Tunnel Steps
@@ -21,67 +23,38 @@
    * Don't skip the access policies as this important to preventing randoms from the internet from gaining access to your PiKVM. Cloudflare offers a variety of login options with the simplest being One-time PINs that are emailed to you. NOTE: This external authentication will not replace the username/password for the PiKVM but instead supplement it acting as a first line of defense from the internet.
   
 
-## Installation
+## Installation on the PiKVM
 
-Unfortunately Cloudflare does not provide binaries for ARM so we need to compile from source to generate a working build. 
-
-
-### On the PiKVM side
-
-1. Use these commands:
+1. Use these commands to install Cloudflared:
 
     ```
     # rw
-    # pacman -Syu go
-    # curl -s https://api.github.com/repos/cloudflare/cloudflared/releases/latest | grep "tarball_url" | cut -d '"' -f 4 | xargs curl -LJo cloudflared-latest.tar.gz
-    # tar -xzvf cloudflared-latest.tar.gz --transform 's|[^/]*/|cloudflared/|'
-    # cd cloudflared/cmd/cloudflared/
-    # go build
-    # mv cloudflared /usr/bin/cloudflared
+    # curl -L -o /usr/local/bin/cloudflared "$(curl -s "https://api.github.com/repos/cloudflare/cloudflared/releases/latest" | grep -e 'browser_download_url.*/cloudflared-linux-armhf"' | sed -e 's/[\ \":]//g' -e 's/browser_download_url//g' -e 's/\/\//:\/\//g')"
+    # chmod +x /usr/local/bin/cloudflared
     # cloudflared version
     ```
-
-2. Create the service configuration file
+    
+2. Install the Cloudflare tunnel service to Cloudflared:
    
     ```
-    # systemctl edit --full cloudflared.service
+    # sudo cloudflared service install SERVICE_TOKEN_HERE
+    ```
+    
+
+3. Open a web browser and attempt to connect
+
+4. Drop back in to read only mode
+   
+    ```
+    # ro
     ```
 
-3. Insert the following configuration replacing TOKEN VALUE with your token from the Cloudflare tunnel step.
+## Updating Cloudflared
 
-    ```ini
-    [Unit]
-    Description=Cloudflare Tunnel
-    After=network.target
-
-    [Service]
-    TimeoutStartSec=0
-    Type=notify
-    ExecStart=/usr/bin/cloudflared --protocol quic tunnel run --token <TOKEN VALUE>
-    Restart=on-failure
-    RestartSec=5s
-    ```
-
-4. Afterwards verify service is started and stays running
-
-    ```
-    # systemctl enable --now cloudflared
-    # systemctl status cloudflared
-    ```
-
-5. Open a web browser and attempt
-
-
-## Updating cloudflared
-
-Use these commands to update the ```cloudflared``` daemon:
+Use these commands to update Cloudflared:
   
 ```
 # rw
-# rm -rf cloudflared/
-# curl -s https://api.github.com/repos/cloudflare/cloudflared/releases/latest | grep "tarball_url" | cut -d '"' -f 4 | xargs curl -LJo cloudflared-latest.tar.gz
-# tar -xzvf cloudflared-latest.tar.gz --transform 's|[^/]*/|cloudflared/|'
-# cd cloudflared/cmd/cloudflared/
-# go build && mv cloudflared /usr/bin/cloudflared
-# systemctl restart cloudflared
+# cloudflared update
+# ro
 ```
