@@ -30,7 +30,7 @@ If for some reason you need to go back to the default EDID (changing attached de
 
 PiKVM can mimic physical monitors. You can find the appropriate EDID in [this database](https://github.com/linuxhw/EDID) and import its HEX code to PiKVM. Choose something with a maximum resolution of 1920x1080 or 1920x1200.
 
-??? example "Acer 1381. 1920x1200, with sound"
+??? example "Acer B246WL, 1920x1200, with audio"
     Taken [here](https://github.com/linuxhw/EDID/blob/master/Digital/Acer/ACR0565/CCF78B30FE61), as described above.
     ```
     00FFFFFFFFFFFF00047265058A3F6101
@@ -51,7 +51,7 @@ PiKVM can mimic physical monitors. You can find the appropriate EDID in [this da
     00000000000000000000000000000096
     ```
 
-??? example "ASUS PA248QV, 1920x1200, with sound"
+??? example "ASUS PA248QV, 1920x1200, with audio"
     Taken [here](https://github.com/linuxhw/EDID/blob/master/Digital/ASUS/AUS2487/2B473481CAE6), as described above.
     ```
     00FFFFFFFFFFFF0006B3872401010101
@@ -73,7 +73,7 @@ PiKVM can mimic physical monitors. You can find the appropriate EDID in [this da
     ```
 
 
-??? example "DELL D2721H to avoid black screen on some HDMI splitters, 1920x1080, no sound"
+??? example "DELL D2721H to avoid black screen on some HDMI splitters, 1920x1080, no audio"
     Taken [here](https://github.com/linuxhw/EDID/blob/master/Digital/Dell/DEL2013/EEE824E681BF), as described above.
     ```
     00FFFFFFFFFFFF0010AC132045393639
