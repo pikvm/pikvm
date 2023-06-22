@@ -69,6 +69,7 @@ This example shows that PiKVM may not be accessible from the internet, but you c
       # kvmd-pstrun -- mkdir -p /var/lib/kvmd/pst/data/certbot/runroot
       # kvmd-pstrun -- nano /var/lib/kvmd/pst/data/certbot/runroot/.cloudflare.auth
       # kvmd-pstrun -- chmod 600 /var/lib/kvmd/pst/data/certbot/runroot/.cloudflare.auth
+      # kvmd-pstrun -- chown kvmd-certbot: /var/lib/kvmd/pst/data/certbot/runroot/.cloudflare.auth
       ```
 
 3. Obtain the certificate:
@@ -154,6 +155,7 @@ This example shows that PiKVM may not be accessible from the internet, but you c
 
       ```
       # kvmd-pstrun -- chmod 600 /var/lib/kvmd/pst/data/certbot/runroot/.route53.auth
+      # kvmd-pstrun -- chown kvmd-certbot: /var/lib/kvmd/pst/data/certbot/runroot/.route53.auth
       ```
 
 4. Obtain the certificate:
