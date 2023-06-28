@@ -120,6 +120,7 @@ Another type of event is `ping`, which can be sent by the client: `{"event_type"
     ```python
     # python, install websocket-client
     import websocket
+    import ssl, time
     uri = "wss://10.0.0.7/api/ws?stream=0"
     headers = {"X-KVMD-User": "admin", "X-KVMD-Passwd": "admin"}
     ws = websocket.WebSocket(sslopt={"cert_reqs": ssl.CERT_NONE})
