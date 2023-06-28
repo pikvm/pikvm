@@ -661,6 +661,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Ľubor Slušný
 * Luca Di Diomede
 * Lucio De Carli
+* Luiz Bizzio
 * Lukas Bischof
 * Lukas Kammerer
 * Lukas Söder
@@ -751,6 +752,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Paul Bishop
 * Paul De La Rosa
 * Paul Pietkiewicz
+* Paul Tan
 * Pawel Trofimiuk
 * Peder Madsen
 * Peter
