@@ -517,6 +517,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Fredrik Idréus
 * Garrett Dangerfield
 * Ge Men
+* Geekworm
 * Genkinger Andreas
 * Geijer
 * George Becker
