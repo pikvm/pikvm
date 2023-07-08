@@ -71,6 +71,7 @@ This example shows that PiKVM may not be accessible from the internet, but you c
       # kvmd-pstrun -- chmod 600 /var/lib/kvmd/pst/data/certbot/runroot/.cloudflare.auth
       # kvmd-pstrun -- chown kvmd-certbot: /var/lib/kvmd/pst/data/certbot/runroot/.cloudflare.auth
       ```
+      See certbot-dns-cloudflare's doc [here](https://certbot-dns-cloudflare.readthedocs.io/en/stable/) about the content of `.cloudflare.auth`.
 
 3. Obtain the certificate:
 
@@ -85,7 +86,7 @@ This example shows that PiKVM may not be accessible from the internet, but you c
          -d pikvm.example.com
       ```
 
-4. Next follow the basic guide.
+4. Next follow the basic guide starts at step 3.
 
 ## Route53 DNS
 
