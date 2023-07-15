@@ -82,6 +82,8 @@ Note if an image is added to the NFS storage from the outside, PiKVM will not be
 
 Configuring an NFS server is beyond the scope of this guide.
 
+!!! note "It is mandatory to follow the section, Upload images manually (without Web UI), if you have existing files in your share"
+
 
 -----
 ## Multiple and writable drives
