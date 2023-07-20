@@ -1,7 +1,7 @@
 # Cloudflare Tunnels
 
 !!! warning
-	This is an unofficial instruction proposed by the community. We don't officially support this and don't know what problems may arise when using cloudflared.
+	This is unofficial instructions proposed by the community. We don't officially support this and don't know what problems may arise when using cloudflared.
 
 [Cloudflare Tunnels](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/) can be used to access PiKVM over the internet securely using Cloudflare Zero Trust with Cloudflared. This is a convenient and free (for 50 users) tool for allowing access to web services running on your internal network without port forwarding or IPv4/IPv6 compatability issues. This document is provided as an example for accessing your PiKVM over the internet but you can also use Zerotier/[Tailscale](tailscale.md)/*Insert XYZ VPN service here*. Basic support like whats shown below is provided as an example, any other setting or functionality needs to be redirected to the appropriate community.
 
@@ -9,6 +9,9 @@
 
     Due to the newer version of Go being used, this feature is currently broken.
     An upstream issue was raised [here](https://github.com/cloudflare/cloudflared/issues/888)
+
+!!! note "If you get error 1033"
+    You might need to add `127.0.0.1 localhost` into your /etc/hosts file
 
 ## Prequisites
   
