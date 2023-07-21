@@ -81,6 +81,7 @@ If you don't specify a driver for the channel in the scheme the default driver, 
 | Parameter                         | Type      | Allowed values           | Default |  Description                   |
 |-----------------------------------|-----------|--------------------------|---------|-----------------------|
 | `led1`, `button1`, `relay1`, etc. | `string`  | `a-Z`, numbers, `_`, `-` |         | A section for the named channel |
+| `driver` | `string`  | `a-Z`, numbers, `_`, `-` |         | Optional, Name of the section defined above in `Drivers` if not GPIO|
 | `pin`       | `integer` | `X >= 0`            | | Refers to a GPIO pin or driver's pin/port |
 | `mode`      | `enum`    | `input` or `output` | | Defines if a channel is used for input or output, may be limited by driver plugin |
 | **Input only** | | | | |
@@ -117,10 +118,12 @@ kvmd:
                 switch: false
 
             relay1:  # Channel 1 of the relay /dev/hidraw0
+                driver: relay  # Not GPIO, so add name from the above Drivers section
                 pin: 0  # Numerating starts from 0
                 mode: output  # Relays can't be inputs
                 initial: null  # Don't reset the state to 0 when initializing and terminating KVMD
             relay2:  # Channel 2
+                driver: relay
                 pin: 1
                 mode: output
                 initial: null
