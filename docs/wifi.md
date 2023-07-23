@@ -1,17 +1,18 @@
 # Setting up Wi-Fi
 
+!!! tip
+    There is nothing more reliable than wired Ethernet, so it's better to use it. Wi-Fi with the steel case (on V3) results in poor performance. But who are we to stop you... :)
+
 The following describes how to setup a Wi-Fi connection on the default pikvm builds based on Arch Linux.
 The process might vary for other Linux distros. We recommend to do this while having a display and keyboard
 connected directly to the Raspberry Pi as you will loose network connectivity once you connect to a Wi-Fi.
 Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (available through the browser) should also work.
 
-!!! note "Setting up WifiI for the first time (Easy wifi access)"
-    Please review [First Steps](first_steps.md) wifi section if you are setting up the following: (Mandatory) Zero(2)W or going from ethernet to wifi on any other PiKVM model (Optional).
+!!! note "Setting up Wi-Fi in the boot config (semi-auto)"
+    Check out *Optional setting up Wi-Fi* in the [First Steps](first_steps.md) guide. This is mandatory if you're using Zero 2 W board.
+    It will work in most other cases, especially if you have physical access to the memory card.
 
-!!! warning
-    There is nothing more reliable than wired Ethernet, so it's better to use it. Wi-Fi with the steel case (on V3) results in poor performance. But who are we to stop you... :)
-
-!!! note "[ADVANCED USERS ONLY] Moving Wi-Fi settings for OS older than 2021.10.19"
+??? note "Moving Wi-Fi settings for OS older than 2021.10.19"
     Starting from 2021.10.19, the old way to configure Wi-Fi using `netctl` is deprecated.
     Instead, it is proposed to use a more native path with `systemd-networkd`, which is already used to configure Ethernet.
     Follow the guide and then delete the old netctl profile:
@@ -24,7 +25,7 @@ Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (a
     ```
 
 
-## Step by step - Advanced users ONLY section
+## Setting up Wi-Fi manually
 
 1. Make filesystem writable using `rw` command.
 

@@ -2,20 +2,17 @@
 
 ## First power on
 
-!!! warning
-    - V2 DIY owners: Please follow this [first](https://github.com/pikvm/pikvm)<br>
-    - V3 HAT *or* pre-assembled users: Please follow this [first](https://docs.pikvm.org/v3/)<br>
-    - For both to work and display a video, your target system needs to be configured for the following:<br>
-        1920x1080p50Hz (In some rare instances, try 30hz)<br>
-        1600x1200p60Hz<br>
-        1280x720p60Hz<br>
-        
+!!! note
+    Before this guide:
 
+    * V4 device: please follow this [first](v4.md)
+    * V3 HAT/Pre-Assembled: follow [this](v3.md)
+    * V0-V2 DIY: follow [this](https://github.com/pikvm/pikvm)
 
 ??? example "Optional setting up Wi-Fi"
     !!! warning "Please read the following caveats" 
         1. There is nothing more reliable than wired Ethernet, so it's better to use the **cable**. But who are we to stop you... :)
-        2. Adding FIRSTBOOT=1 or FIRSTBOOT-1 will erase the msd partition, if used afterwords as a means of switching wifi networks, do not include this option. Instead, use different supplicant files for each wifi SSID, mv files to the supplicant dir as needed and reboot.
+        2. Adding FIRSTBOOT=1 or FIRSTBOOT=1 will erase the msd partition, if used afterwords as a means of switching wifi networks, do not include this option. Instead, use different supplicant files for each wifi SSID, mv files to the supplicant dir as needed and reboot.
         3. `pikvm.txt` will be removed once its been used. You will need to recreate it again if you did not provide the correct info
 
     If you want to connect PiKVM to a Wi-Fi network, you need to tell the device ESSID and password before first boot.
