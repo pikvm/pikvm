@@ -5,8 +5,8 @@ The process might vary for other Linux distros. We recommend to do this while ha
 connected directly to the Raspberry Pi as you will loose network connectivity once you connect to a Wi-Fi.
 Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (available through the browser) should also work.
 
-!!! warning
-    Please review [First Steps](first_steps.md) if you are setting up wifi for the zero2w. This guide also applies to Wi-Fi setup for v2+ devices if switching from Ethernet to Wi-Fi..
+!!! note "Setting up WifiI for the first time (Easy wifi access)"
+    Please review [First Steps](first_steps.md) wifi section if you are setting up the following: (Mandatory) Zero(2)W or going from ethernet to wifi on any other PiKVM model (Optional).
 
 !!! warning
     There is nothing more reliable than wired Ethernet, so it's better to use it. Wi-Fi with the steel case (on V3) results in poor performance. But who are we to stop you... :)
@@ -24,7 +24,7 @@ Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (a
     ```
 
 
-## Step by step - Advances users ONLY section
+## Step by step - Advanced users ONLY section
 
 1. Make filesystem writable using `rw` command.
 
