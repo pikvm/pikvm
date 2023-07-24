@@ -171,6 +171,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "How can I have different hostnames for multiple pikvms?"
     Using a SSH session or the web terminal:
+
     - Make sure you're `root`, if you're not root use the `su` command to become root
     - Enter read write mode of the PiKVM by executing the `rw` command
     - Execute: `hostnamectl set-hostname yournewhostname.domain`
@@ -184,6 +185,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "How can I change the HTTP/HTTPS ports?"
     You can change the ports in the following files:
+
     - `/etc/kvmd/nginx/listen-https.conf`
     - `/etc/kvmd/nginx/listen-http.conf`
     - `/etc/kvmd/nginx/redirect-to-https.conf`
