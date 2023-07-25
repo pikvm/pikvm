@@ -4,6 +4,9 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ## Common questions
+??? question "HELP!!!!   My pre-loaded SD card that came with the unit died and I need to reload the software!   Where is it?"
+    Pre-compiled images are available for the PiKVM 4, PiKVM3 (Raspberry Pi 4) and PiKVM2 (Raspberry Pi 4 and Zero 2 W) on the main [www.pikvm.org/download](https://www.pikvm.org/download/) site.
+
 
 ??? question "Can I connect multiple servers to a single PiKVM?"
     Yes, but it requires additional work to set up. See [this page](multiport.md).
