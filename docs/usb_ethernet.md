@@ -33,7 +33,7 @@ Specifically to V2+. When combined with configuring a DNS server, FTP, or SMB (f
     <a name="rndis5">1</a>: Manual driver installation is required. [Download RNDIS 5 Windows](driver/win/pikvm-rndis5.inf)<br>
     <a name="rndis">2</a>: Automatic driver installation since kvmd-3.53
 
-2. To automatically configure the USB network on the server recommended using the service `kvmd-otgnet`. It configures the firewall, assigns an address to the local PiKVM interface `usb0` and starts DHCP so the managed server can get the IPv4 address. By default, the address `169.254.0.1/28` to interface `usb0` will be assigned. One of the other addresses from the network `169.254.0.0./28` will be assigned to the server when it requests it via DHCP. For security reasons, all incoming connections from the server to the PiKVM side are blocked (except for ICMP and UDP port 67 which is used for DHCP). If you want to allow access from the server to the PiKVM interface, then you need to add ports 80 and 443 to the whitelist using `/etc/kvmd/override.yaml` file like this:
+2. To automatically configure the USB network on the server recommended using the service `kvmd-otgnet`. It configures the firewall, assigns an address to the local PiKVM interface `usb0` and starts DHCP so the managed server can get the IPv4 address. By default, the address `172.30.30.0/24` to interface `usb0` will be assigned. One of the other addresses from the network `172.30.30.0/24` will be assigned to the server when it requests it via DHCP. For security reasons, all incoming connections from the server to the PiKVM side are blocked (except for ICMP and UDP port 67 which is used for DHCP). If you want to allow access from the server to the PiKVM interface, then you need to add ports 80 and 443 to the whitelist using `/etc/kvmd/override.yaml` file like this:
 
     ```yaml
     otgnet:
@@ -150,5 +150,5 @@ This has been proven to work with Windows:
 14. You're done - the device should now be recognized:<br>
     ![grafik](https://user-images.githubusercontent.com/100349/149661295-97d8d8f9-5c40-4d80-b3a2-c544ca8c7224.png)
 
-15. Verify the card is working by pinging your PiKVM in a console: `ping 169.254.0.1`:<br>
+15. Verify the card is working by pinging your PiKVM in a console: `ping 172.30.30.1`:<br>
     ![grafik](https://user-images.githubusercontent.com/100349/149662794-51d34926-a6d4-425a-8cdd-b16d69e458ee.png)

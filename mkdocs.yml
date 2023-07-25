@@ -85,6 +85,7 @@ nav:
         - "Mass Storage Drive": msd.md
         - "Ethernet-over-USB": usb_ethernet.md
         - "Serial-over-USB": usb_serial.md
+        - "Dynamic USB configuration": usb_dynamic.md
         - "GPIO (pins, relays, lamps, etc)": gpio.md
     - "Advanced usage":
         - "Using VNC": vnc.md
