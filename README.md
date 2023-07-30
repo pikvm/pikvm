@@ -152,7 +152,7 @@ PiKVM supports several different hardware configurations, referred to as **platf
   * 1x [Raspberry Pi Zero Camera Cable](https://aliexpress.com/item/32953696917.html) (if using HDMI to CSI-2 Bridge, but not compatible with Auvidea B101, check pinout).
 * For ATX control (optional):
   - [4x MOSFET relays OMRON G3VM-61A1](https://www.digikey.com/products/en?keywords=G3VM-61A1).
-  - 4x 390 Ohm resistors.
+  - 4x 390 Ohm resistors (see [#46](https://github.com/pikvm/pikvm/issues/46) for alternatives).
   - 2x 4.7k Ohm resistors.
   - A breadboard and wires.
 
