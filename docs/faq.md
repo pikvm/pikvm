@@ -229,7 +229,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     To add a shell/terminal account:
     # rw
     # su -
-    # adduser <user>
+    # useradd <user>
     # passwd <user>
     ```
 
