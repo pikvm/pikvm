@@ -15,7 +15,7 @@ This operation can be done using your RPi (except Pi Zero W). Here the common st
     ```
     # rw
     # systemctl stop kvmd
-    # cp -r /usr/share/kvmd/hid ~
+    # cp -r /usr/share/kvmd/hid/arduino ~
     # cd ~/hid
     # make
     # make install
@@ -42,7 +42,7 @@ This operation can be done using your Raspberry Pi without disconnecting any wir
     ```shell
     # rw
     # systemctl stop kvmd
-    # cp -r /usr/share/kvmd/hid ~
+    # cp -r /usr/share/kvmd/hid/arduino ~
     # cd ~/hid
     # make spi
     # make install
