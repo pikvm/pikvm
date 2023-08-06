@@ -55,7 +55,7 @@ Enabling the device:
 Using the pseudo-GPIO driver, you can also control devices via the menu in the web interface.
 Read about GPIO basics [here](gpio.md).
 
-To setup the menu, use `kvmd-otgconf` to generate the configuration, and combine it
+To setup the menu, use `kvmd-otgconf --make-gpio-config` to generate the configuration, and combine it
 with your existing one in `/etc/kvmd/override.yaml` in a usual way.
 
 ```yaml
