@@ -23,15 +23,16 @@ If you are making the Pico HID for V2 or V3, then here is what you will need:
 * *x1* USB-A to Micro-USB cable.
 * *x10* dupont wires female-female.
 * Optional: *x1* 1N5819 diode. But any similar one will do.
-* Optional: *x1* male-female dupont for the diode.
 
 !!! tip "Tip for soldering guru"
     If you know how to solder, you can buy the Pico without pins and no dupond wires, and just solder everything.
 
 !!! warning
     The diode is needed to provide the power to the Pico HID regardless of the host state,
-    and prevents backpowering problem. Do not connect the red wire (the `VSYS (Pico) -> 5V (Pi)` line) without a diode.
+    and prevents backpowering problem. It will allow you to keep the keyboard buttons pressed
+    during the host power cycle, which is important for MacOS to get into the boot menus, for example.
 
+    Do not connect the red wire (the `VSYS (Pico) -> 5V (Pi)` line) without a diode.
     If you can't find the diode, don't connect this wire at all.
 
 Connect all the parts according to the scheme:
