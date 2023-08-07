@@ -351,21 +351,8 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     * Optional: edit `/etc/kvmd/meta.yaml` to alter the displayed hostname in the web UI.
     * Run `ro` and `reboot`.
 
-??? question "Why H.264 and not H.265?"
-    H.264 is free to use without any restrictions and nativaly supported on the hardware.
-    H.265 while free to a point, has licenses costs and has restrictions and is likely not going to be supported from RPi Foundations
-
 ??? question "Why not add software support for another codec?"
     Encoding is a heavy process and will add significant latency, its best to have hardware support to avoid additional latency.
-
-??? question "Why not use another SBC that supports a faster CODEC?"
-    All of these cheap arm's have a couple of common problems:
-        Poor software support from the manufactures/developers
-        Much smaller community than the RPi and are less likely to go bankrupt
-
-??? question "Are you a competitor to others like Bli/Geekworm/Banana?"
-    No, we are the original, in fact most of them could not exist without the PiKVM software"
-
 
 ## Video problems
 
