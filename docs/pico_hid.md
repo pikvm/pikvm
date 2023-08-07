@@ -25,7 +25,7 @@ If you are making the Pico HID for V2 or V3, then here is what you will need:
 * Optional: *x1* 1N5819 diode. But any similar one will do.
 * Optional: *x1* male-female dupont for the diode.
 
-!!! tip
+!!! tip "Tip for soldering guru"
     If you know how to solder, you can buy the Pico without pins and no dupond wires, and just solder everything.
 
 !!! warning
@@ -37,10 +37,10 @@ If you are making the Pico HID for V2 or V3, then here is what you will need:
 Connect all the parts according to the scheme:
 
 ??? example "Simple wiring diagram"
-    <img src="basic_breadboard.jpg" />
+    <img src="basic_breadboard.png" />
 
 ??? example "Electrical schematic diagram for advanced users"
-    <img src="basic_scheme.jpg" />
+    <img src="basic_scheme.png" />
 
 
 -----
@@ -64,7 +64,7 @@ some GPIOs with Ground (`GND`) lines.
 | `GP8`    | Prefer the relative USB mouse over the absolute one. |
 | `GP9`    | Prefer the Windows 98 USB absolute mouse over the regular absolute one (if enabled). |
 
-??? example
+!!! example
     To enable Windows 98 absolute mouse, just connect pin `GP9` to any `GND` [on the Pico](https://pico.pinout.xyz).
 
 !!! warning
