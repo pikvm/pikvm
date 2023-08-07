@@ -6,8 +6,8 @@ This is useful if you need a simple and primitive keyboard/mouse emulator device
 -----
 ## Serial HID
 
-!!! warning "PiKVM V3 HAT note"
-    Don't use it, use [SPI HID](#spi-hid) for V3. Otherwise, you won't be able to use the Serial console.
+!!! warning "PiKVM V3 note"
+    Use [the SPI HID](#spi-hid) for V3. Otherwise, you won't be able to use the Serial console.
 
 ### USB keyboard and mouse
 
