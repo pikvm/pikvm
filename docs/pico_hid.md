@@ -1,7 +1,6 @@
-!!! warning "This page is under custruction"
-
-
 # Raspberry Pi Pico HID
+
+!!! warning "This page is under construction"
 
 The Pico HID is a part of DIY PiKVM V1 platform and performs keyboard and mouse emulation.
 It has excellent compatibility, and by default emulates USB, including two mouse modes: absolute and relative.
