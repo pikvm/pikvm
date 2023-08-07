@@ -14,6 +14,7 @@ When using relative mode, the browser will exclusively capture your mouse when y
 When you press `Esc`, the browser releases the mouse.
 
 
+-----
 ## Important notes
 
 The relative mouse generates a huge number of events that can be poorly transmitted over the network or very slowly perceived by the BIOS/UEFI driver. To solve this problem, mouse events are optimized using a vector sum. This mode is enabled by activating the below first and is available in the web menu `System -> Squash mouse moves`. You can try disabling this if you have problems with mouse acceleration. This is the best and most reasonable compromise right now.
@@ -22,6 +23,7 @@ Also currently the relative mouse mode is not supported by [PiKVM VNC server](vn
 We expect to implement this in [TigerVNC](https://github.com/TigerVNC/tigervnc/issues/619). The relative mode is also not supported by mobile browsers.
 
 
+-----
 ## Relative mouse on V2+ platform (OTG HID)
 
 !!! info
@@ -33,6 +35,7 @@ We expect to implement this in [TigerVNC](https://github.com/TigerVNC/tigervnc/i
             mouse_alt:
 				device: ""
     ```
+
 
 ### Dual mode
 
@@ -81,12 +84,7 @@ This is more convenient, but for compatibility reasons it is disabled by default
 5. Don't forget to perform `reboot`.
 
 
-## Relative mouse on V0 platform (Arduino HID)
-
-Mode switching for [Arduino HID](arduino_hid.md) can be performed on-the-fly starting with KVMD 2.6 and the corresponding firmware. No additional actions are required.
-
-
-## Fixing the absolute mouse on Windows 98
+### Fixing the absolute mouse on Windows 98
 
 Due to an ancient buggy driver, the absolute mouse on Windows 98 moves only within the upper-left quarter of the screen. To fix this, you need to activate some magic workaround. Due to the specifics of the implementation, you will have to turn on the relative mouse too. Write it in `/etc/kvmd/override.yaml`:
 
@@ -100,3 +98,9 @@ kvmd:
 ```
 
 ... and run `systemctl restart kvmd`. After that, you will get 3 new buttons with mouse modes in the **System** menu in Web UI. Switch it to **Abs-Win98**.
+
+
+-----
+## Relative mouse on V0-V1 platform (Arduino/Pico HID)
+
+Mode switching for [Arduino HID](arduino_hid.md) and [Pico HID](pico_hid.md) can be performed on-the-fly starting with KVMD 2.6 and the corresponding firmware. No additional actions are required.
