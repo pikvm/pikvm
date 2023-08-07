@@ -44,10 +44,7 @@ To manage the power of your computer, you will need to install an ATX adapter bo
     ??? example
         <img src="atx_board_10.jpg" />
 
-7. Connect the ATX board to PiKVM using a [straight Ethernet cable](https://www.home-network-help.com/straight.html). 2 pair/4 wire will NOT work, must be a 4 pair/8 wire.
-
-    ??? example
-        <img src="basic_back.jpg" />
+7. Connect the ATX board to PiKVM using a [straight Ethernet cable with 8 wires](https://www.home-network-help.com/straight.html).
 
 
 ## Pinout
