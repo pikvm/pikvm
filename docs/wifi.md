@@ -1,11 +1,11 @@
 # Setting up Wi-Fi
 
 !!! tip
-    There is nothing more reliable than wired Ethernet, so it's better to use it. Wi-Fi with the steel case (on V3) results in poor performance. But who are we to stop you... :)
+    There is nothing more reliable than wired Ethernet, so it's better to use it. Wi-Fi with the steel case (on PiKVM V3 and V4) results in poor performance. But who are we to stop you... :)
 
-The following describes how to setup a Wi-Fi connection on the default pikvm builds based on Arch Linux.
-The process might vary for other Linux distros. We recommend to do this while having a display and keyboard
-connected directly to the Raspberry Pi as you will loose network connectivity once you connect to a Wi-Fi.
+The following describes how to setup a Wi-Fi connection.
+We recommend to do this while having a display and keyboard
+or a serial console connected directly to the Raspberry Pi as you will loose network connectivity once you connect to a Wi-Fi.
 Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (available through the browser) should also work.
 
 !!! note "Setting up Wi-Fi in the boot config (semi-auto)"
