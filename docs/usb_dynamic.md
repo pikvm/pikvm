@@ -60,7 +60,7 @@ Read about GPIO basics [here](gpio.md).
 To setup the menu, use `kvmd-otgconf --make-gpio-config` to generate the configuration, and merge it
 with your existing one in `/etc/kvmd/override.yaml` in a usual way.
 
-??? example "The example of `kvmd-otgconf --make-gpio-config` output`"
+??? example "The example of `kvmd-otgconf --make-gpio-config` output"
     ```yaml
     # kvmd-otgconf --make-gpio-config
     kvmd:
