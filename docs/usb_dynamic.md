@@ -16,6 +16,7 @@ to temporarily disable already configured existing emulated devices.
     that can bring devices back to life after a timeout of a few minutes.
 
 
+-----
 ## Command-line utility
 
 The `kvmd-otgconf` utility allows you to view and modify the USB configuration on the fly.
@@ -50,58 +51,48 @@ Enabling the device:
 ```
 
 
+-----
 ## Web UI menu
 
 Using the pseudo-GPIO driver, you can also control devices via the menu in the web interface.
 Read about GPIO basics [here](gpio.md).
 
-To setup the menu, use `kvmd-otgconf --make-gpio-config` to generate the configuration, and combine it
+To setup the menu, use `kvmd-otgconf --make-gpio-config` to generate the configuration, and merge it
 with your existing one in `/etc/kvmd/override.yaml` in a usual way.
 
-```yaml
-# kvmd-otgconf --make-gpio-config
-kvmd:
-    gpio:
-        drivers:
-            otgconf:
-                type: otgconf
-        scheme:
-            hid.usb0:
-                driver: otgconf
-                mode: output
-                pin: hid.usb0
-                pulse:
-                    delay: 0
-            hid.usb1:
-                driver: otgconf
-                mode: output
-                pin: hid.usb1
-                pulse:
-                    delay: 0
-            hid.usb2:
-                driver: otgconf
-                mode: output
-                pin: hid.usb2
-                pulse:
-                    delay: 0
-            mass_storage.usb0:
-                driver: otgconf
-                mode: output
-                pin: mass_storage.usb0
-                pulse:
-                    delay: 0
-        view:
-            table:
-            -   - '#Keyboard'
-                - '#hid.usb0'
-                - hid.usb0
-            -   - '#Absolute Mouse'
-                - '#hid.usb1'
-                - hid.usb1
-            -   - '#Relative Mouse'
-                - '#hid.usb2'
-                - hid.usb2
-            -   - '#Mass Storage Drive'
-                - '#mass_storage.usb0'
-                - mass_storage.usb0
-```
+??? example "The example of `kvmd-otgconf --make-gpio-config` output`"
+    ```yaml
+    # kvmd-otgconf --make-gpio-config
+    kvmd:
+        gpio:
+            drivers:
+                otgconf:
+                    type: otgconf
+            scheme:
+                hid.usb0:
+                    driver: otgconf
+                    mode: output
+                    pin: hid.usb0
+                    pulse: false
+                hid.usb1:
+                    driver: otgconf
+                    mode: output
+                    pin: hid.usb1
+                    pulse: false
+                hid.usb2:
+                    driver: otgconf
+                    mode: output
+                    pin: hid.usb2
+                    pulse: false
+                mass_storage.usb0:
+                    driver: otgconf
+                    mode: output
+                    pin: mass_storage.usb0
+                    pulse: false
+            view:
+                table:
+                    - ["#Keyboard", "#hid.usb0", hid.usb0]
+                    - ["#Absolute Mouse", "#hid.usb1", hid.usb1]
+                    - ["#Relative Mouse", "#hid.usb2", hid.usb2]
+                    - ["#Mass Storage Drive", "#mass_storage.usb0", mass_storage.usb0]
+    ```
