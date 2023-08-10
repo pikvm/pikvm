@@ -1,13 +1,15 @@
 # First steps
 
-## First power on
-
 !!! note
     Before this guide:
 
     * V4 device: please follow this [first](v4.md)
     * V3 HAT/Pre-Assembled: follow [this](v3.md)
     * V0-V2 DIY: follow [this](https://github.com/pikvm/pikvm)
+
+
+-----
+## First power on
 
 ??? example "Optional setting up Wi-Fi"
     !!! warning "Please read the following caveats" 
@@ -36,6 +38,7 @@
     After turning on the power, PiKVM OS will generate unique SSH keys and certificates and will perform all necessary operations on the memory card.
 
 
+-----
 ## Getting access to PiKVM
 
 By default, PiKVM receives a dynamic IP address via DHCP. V3+ devices show IP on the built-in display. If you don't have a display, use the tips below:
@@ -79,6 +82,7 @@ For future examples, let's assume that your PiKVM has received the address **192
 {!_passwd.md!}
 
 
+-----
 ## Configuring PiKVM
 
 Most of the PiKVM settings are done through configuration files. All configuration changes must be made from under the `root` user (= the administrator).
@@ -149,6 +153,7 @@ Comments starts with the `#` symbol.
 
 -----
 ## What's next?
+
 * Set up Internet access using [port forwarding](port_forwarding.md) or [Tailscale VPN](tailscale.md).
 * Explore PiKVM features using the table of contents on the left.
 * Join our [Discord](https://discord.gg/bpmXfz5) to contact the community and developers.
@@ -157,7 +162,8 @@ Comments starts with the `#` symbol.
 
 -----
 ## FAQ and Troubleshooting
+
 If you have any questions or run into problems, take a look at the [FAQ](faq.md).
-Seriously, it's really useful! We've probably already found a solution for it :)
+Seriously, it's really useful!
 
 For any other help and support, you can contact us via the [Discord chat](https://discord.gg/bpmXfz5).
