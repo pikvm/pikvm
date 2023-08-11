@@ -118,34 +118,36 @@ If you are making the Pico HID for V2 or V3, add the following lines to the PiKV
 
 
 -----
-## Arduino HID replacement
+## Replacing the legacy Arduino HID
 
-!!! note
-    This section is intended for advanced users of the **legacy** PiKVM V0 with Arduino HID
+!!! warning
+    **This section is intended for advanced users of the [legacy Arduino HID](arduino_hid.md).**
 
-!!! tip
-    It may seem tempting, but **don't try to use Arduino for new PiKVM builds**
-    just because you have it at your fingertips. Connecting and flashing the Arduino
+    It may seem tempting, but **don't to use the Arduino HID for new PiKVM builds**
+    just because you have it at your fingertips. Connecting and flashing Arduino
     is much more time consuming than Pico. In addition, different Arduino board works
-    with different voltages, may or may not have SPI (for Pico, we use SPI to free up
+    with different voltages, may or may not have SPI (for the Pico, we use SPI to free up
     the UART on Raspberry Pi for the console and other useful things), etc.
 
     Using the Pico HID is the recommended fast and standard way in the PiKVM world.
 
-The Pico HID can be used to replace the [legacy Arduino HID](arduino_hid.md) in DIY PiKVM V0 builds.
+The Pico HID can be used to replace the [legacy Arduino HID](arduino_hid.md).
 Moreover, it can use both Serial (UART) port and SPI. The connection scheme is also noticeably simplified,
 getting rid of the transistor for the Reset line and level shifter for RX/TX (MOSI/MISO).
 
-* **For the Arduino HID over SPI**: Throw away the Reset transistor and level shifter, and follow this guide
+??? example "For the Arduino HID over SPI"
+    Throw away the Reset transistor and level shifter, and follow this guide
     from the very beginning, as if you were connecting Pico HID for V2/V3.
 
-* **For the classic Serial (UART) HID**: Get rid of the transistor and level shifter, and follow this guide
+??? example "For the classic Serial (UART) HID"
+    Get rid of the transistor and level shifter, and follow this guide
     from the very beginning, but the schemes and configs will be slightly different.
 
     * The `GP22` on the Pico is connected directly to the `GND`. This enables UART mode instead of default SPI.
 
-    * In the original V0, `GPIO4` [on the Raspberry Pi](https://pinout.xyz) was used for the Reset line. Now we recommend using `GPIO25`
-      for consistency reasons. However, you can use `GPIO4` by changing the `reset_pin` value in the config example below.
+    * In the original V0, `GPIO4` [on the Raspberry Pi](https://pinout.xyz) was used for the Reset line.
+      Now we recommend to use `GPIO25` for consistency reasons.
+      However, you can use `GPIO4` by changing the `reset_pin` value in the config example below.
       On the scheme, this is a yellow wire, the `RUN (Pico) -> GPIO25 (Pi)` line.
 
     ??? example "Simple wiring diagram"
