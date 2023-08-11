@@ -121,9 +121,9 @@ If you are making the Pico HID for V2 or V3, add the following lines to the PiKV
 ## Arduino HID replacement
 
 !!! note
-    This section is intended for advanced users
+    This section is intended for advanced users of legacy PiKVM V0 & Arduino HID
 
-The Pico HID can be used to replace the [Arduino HID](arduino_hid.md) in legacy DIY PiKVM V0 builds.
+The Pico HID can be used to replace the [legacy Arduino HID](arduino_hid.md) in DIY PiKVM V0 builds.
 Moreover, it can use both Serial (UART) port and SPI. The connection scheme is also noticeably simplified,
 getting rid of the transistor for the Reset line and level shifter for RX/TX (MOSI/MISO).
 
