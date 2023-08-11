@@ -127,7 +127,7 @@ The Pico HID can be used to replace the [Arduino HID](arduino_hid.md) in legacy 
 Moreover, it can use both Serial (UART) port and SPI. The connection scheme is also noticeably simplified,
 getting rid of the transistor for the Reset line and level shifter for RX/TX (MOSI/MISO).
 
-* **For Arduino HID over SPI**: Throw away the Reset transistor and level shifter, and follow this guide
+* **For the Arduino HID over SPI**: Throw away the Reset transistor and level shifter, and follow this guide
     from the very beginning, as if you were connecting Pico HID for V2/V3.
 
 * **For the classic Serial (UART) HID**: Get rid of the transistor and level shifter, and follow this guide
