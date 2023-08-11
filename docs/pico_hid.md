@@ -54,7 +54,7 @@ For most cases, nothing needs to be changed here. However, if you need something
 To achieve this, the Pico HID uses a runtime configuration, which is set by connecting
 some GPIOs with Ground (`GND`) lines.
 
-| Pin name | Description |
+| Pin name on the Pico board | Description |
 |----------|-------------|
 | `GP2`    | Enable PS/2 keyboard & mouse support (see below). |
 | `GP3`    | Prefer the PS/2 keyboard over USB when turning on the HID (if PS/2 enabled). |
@@ -115,3 +115,42 @@ If you are making the Pico HID for V2 or V3, add the following lines to the PiKV
             power_detect_pin: 16
             power_detect_pull_down: true
     ```
+
+
+-----
+## Arduino HID replacement
+
+!!! note
+    This section is intended for advanced users
+
+The Pico HID can be used to replace the [Arduino HID](arduino_hid.md) in legacy DIY PiKVM V0 builds.
+Moreover, it can use both Serial (UART) port and SPI. The connection scheme is also noticeably simplified,
+getting rid of the transistor for the Reset line and level shifter for RX/TX (MOSI/MISO).
+
+* **For Arduino HID over SPI**: Throw away the Reset transistor and level shifter, and follow this guide
+    from the very beginning, as if you were connecting Pico HID for V2/V3.
+
+* **For the classic Serial (UART) HID**: Get rid of the transistor and level shifter, and follow this guide
+    from the very beginning, but the schemes and configs will be slightly different.
+
+    * The `GP22` on the Pico is connected directly to the `GND`. This enables UART mode instead of default SPI.
+
+    * In the original V0, `GPIO4` on the Raspberry Pi was used for the Reset line. Now we recommend using `GPIO25`
+      for consistency reasons. However, you can use `GPIO4` by changing the `reset_pin` value in the config example below.
+      On the scheme, this is a yellow wire, the `RUN (Pico) -> GPIO25 (Pi)` line.
+
+    ??? example "Configs"
+        * Don't add line `dtoverlay=spi0-1cs` to the `/boot/config.txt` file. It's only needed for SPI.
+
+        * `/etc/kvmd/override.yaml`:
+            ```yaml
+            kvmd:
+                hid:
+                    type: serial
+                    device: /dev/kvmd-hid
+                    reset_pin: 25
+                    reset_inverted: true
+                    reset_self: true
+                    power_detect_pin: 16
+                    power_detect_pull_down: true
+            ```
