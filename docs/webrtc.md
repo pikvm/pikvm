@@ -1,25 +1,17 @@
 # H.264 / WebRTC
 
-!!! note
-    * Officially supported browsers: Chrome, Firefox and Safari.
-    * Only for V3+ and other devices based on CSI bridge
-
-This is a main video streaming mode available for all V3+ users and DIY devices with CSI bridge.
-With the efficient H.264 encoding, a significant reduction in traffic is achieved compared to old MJPEG.
-
-If you use an OS image built after 2021.06.10, this mode will be available by default.
-If you are upgrading to an older version of the OS, you will need to manually enable the WebRTC gateway:
-
-```
-# systemctl enable --now kvmd-janus
-```
-
-Then reload the Web UI and then in the **System** menu you will see the video mode switch.
+This is a main video streaming mode available on PiKVM V3+ devices and DIY builds based on CSI bridge (USB capture devices are not supported).
+With the efficient H.264 encoding, a significant reduction in traffic is achieved compared to old MJPEG mode.
 
 !!! note
-    If you don't see the switch, it means that either your browser does not support WebRTC, or the `kvmd-janus` service was not started.
+    The video modes are switched in the **System** menu in the Web UI.
+    If you don't see the switch, probably your browser does not support H.264,
+    or Janus Gateway (the WebRTC server) is not running on PiKVM.
+
+    See the [troubleshooting](#troubleshooting) section at the below.
 
 
+-----
 ## H.264 parameters
 
 The main parameters available for configuration in the Web UI are **bitrate** and **gop**.
@@ -29,7 +21,8 @@ The main parameters available for configuration in the Web UI are **bitrate** an
   The recommended value is 0 for low-loss networks, this will also reduce latency. Use a value of 30 or so for unreliable networks if the image flickers frequently.
 
 
-## Details
+-----
+## How it's working
 
 The MJPEG video stream uses the same HTTP connection that you use to get the web interface.
 This means that for remote access, you just need to forward ports 80 and 443 on your router. 
@@ -58,6 +51,7 @@ janus:
 ... and restart `kvmd-janus` service using `systemctl restart kvmd-janus`.
 
 
+-----
 ## Custom Janus config
 
 [Janus](https://janus.conf.meetecho.com) is a WebRTC gateway that is used to transmit the [uStreamer](https://github.com/pikvm/ustreamer) video.
@@ -73,6 +67,7 @@ You can find it in `/etc/kvmd/janus/janus.jcfg`.
 ```
 
 
+-----
 ## Troubleshooting
 
 In rare cases, WebRTC may not work. Here some common tips:
