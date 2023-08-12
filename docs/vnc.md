@@ -1,22 +1,33 @@
 # VNC
 
-As an alternative to the web interface, you can use VNC with various desktop clients. The main advantage of VNC over the browser is the ability to expand the image to the full screen, as well as complete interception of all keyboard keys. In some cases, VNC will be more responsive than the browser, especially on weak computers.
+As an alternative to the web interface, a regular VNC client can be used to access to the PiKVM.
+The main advantage of VNC over the browser is the ability to expand the image to the full screen,
+as well as complete interception of all keyboard keys. In some cases, VNC will be more responsive
+than the browser, especially on weak client computers.
 
 !!! warning
-    Don't use VNC without X.509 or TLS encryption on untrusted networks! Otherwise your password will be transmitted over the network in plain text. Unfortunately, this is the reality of the VNC protocol.
+    Don't use VNC without X.509 or TLS encryption on untrusted networks!
+    Otherwise your password will be transmitted over the network in plain text.
+    Unfortunately, this is the reality of the VNC protocol.
     
-!!! note 
-    VNC and its varients/TeamViewer/RDP to a system uses the target systems framebuffer IE local display, VNC usage for PiKVM accesses the stream, there will still be a 100-200ms latency and cannot be compared with the other software solutions.
+!!! note
+    The performance of VNC on PiKVM does not make sense to compare with regular VNC servers
+    or a similar remote access tool at the OS level.
+    PiKVM will run a little slower due to the fact that access is done at the hardware level.
 
-      * NORMAL USAGE: *VNC/TM/RDP -> Target system*
-      * PiKVM USAGE: *VNC -> PiKVM (hardware capture, processing) -> Target system*
+    A typical video processing chain looks like this:
+
+    * Regular VNC/RDP/TeamViewer/Etc: `OS -> Remote access server -> Network -> Client`.
+    * PiKVM: `OS -> Video card -> PiKVM video capture -> PiKVM server -> Network -> Client`.
 
 
+-----
 ## Enabling VNC on the PiKVM side
 
-1. Switch PiKVM filesystem to read-write mode using command `rw`.
+1. Switch the PiKVM filesystem to read-write mode using command `rw`.
 
-2. *Optional:* Change client's keyboard layout if you're using an non-US keyboard. To do this edit file `/etc/kvmd/override.yaml`:
+2. *Optional:* Change client's keyboard layout if you're using an non-US keyboard.
+    To do this edit file `/etc/kvmd/override.yaml`:
 
     ```yaml
     vnc:
@@ -27,7 +38,9 @@ As an alternative to the web interface, you can use VNC with various desktop cli
 
     <img src="keymaps.png" />
 
-3. *Optional:* This step is not nessessory if using TigerVNC as it uses the webgui user:pass. Some VNC clients (for example TightVNC) can't use user/password authentication. In this case you can enable passphrases mode in `/etc/kvmd/override.yaml`:
+3. *Optional:* This step is not nessessory if you're using TigerVNC as it uses the Web UI login and password.
+    Some other VNC clients (for example TightVNC) can't use this type of authentication.
+    In this case you can enable single passphrases mode in `/etc/kvmd/override.yaml`:
 
     ```yaml
     vnc:
@@ -43,16 +56,24 @@ As an alternative to the web interface, you can use VNC with various desktop cli
 5. Switch filesystem back to read-only: `ro`.
 
 !!! note
-    With enabled [2FA](auth.md#two-factor-authentication), you will need to add the one-time code to the password without spaces. That is, if the password is `foobar` and the code is `123456`, then you need to use `foobar123456` as the password. Also note that `vncauth` (step 3) will not work with 2FA.
+    With enabled [2FA](auth.md#two-factor-authentication), you will need to append the one-time code
+    to the password without spaces. That is, if the password is `foobar` and the code is `123456`,
+    then the string `foobar123456` should be used as a password.
+
+    Also note that `vncauth` (step 3) will not work with 2FA.
 
 
+-----
 ## Configuring the client
 
 We recommend [TigerVNC](https://tigervnc.org) for a better experience on desktop.
 
-If you are using PiKVM V3+ or DIY based on CSI bridge, you can try the [latest version (>= 1.13.0) of TigerVNC with H.264 support](https://github.com/TigerVNC/tigervnc/releases). It will improve performance and save traffic.
+If you're using PiKVM V3+ or DIY based on CSI bridge, you can try
+the [latest version (>= 1.13.0) of TigerVNC with H.264 support](https://github.com/TigerVNC/tigervnc/releases).
+It will improve performance and save traffic.
 
-H.264 is available in binary builds for Windows, for other OS it needs to be compiled manually (before that, you need to install ffmpeg libraries).
+H.264 video mode is available in binary builds for Windows, for other OS it needs to be compiled manually
+(`ffmpeg` libraries required to build).
 
 Here are our recommended settings for TigerVNC:
 
@@ -67,6 +88,7 @@ For iOS and Android the recommended application is bVNC:
 * [App Store](https://apps.apple.com/us/app/bvnc-pro/id1506461202)
 
 
+-----
 ## Unsupported clients
 
 * **RealVNC** - Does not support most widely used open VNC protocol extensions.
