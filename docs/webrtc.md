@@ -8,7 +8,7 @@ With the efficient H.264 encoding, a significant reduction in traffic is achieve
     If you don't see the switch, probably your browser does not support H.264,
     or Janus Gateway (the WebRTC server) is not running on PiKVM.
 
-    See the [troubleshooting](#troubleshooting) section at the below.
+    See the [troubleshooting](#troubleshooting) section below.
 
 
 -----
