@@ -4,7 +4,7 @@ This is a main video streaming mode available on PiKVM V3+ devices and DIY build
 With the efficient H.264 encoding, a significant reduction in traffic is achieved compared to old MJPEG mode.
 
 !!! note
-    The video modes are switched in the **System** menu in the Web UI.
+    The video modes can be switched in the **System** menu in the Web UI.
     If you don't see the switch, probably your browser does not support H.264,
     or Janus Gateway (the WebRTC server) is not running on PiKVM.
 
