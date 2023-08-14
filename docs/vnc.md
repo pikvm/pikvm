@@ -38,9 +38,10 @@ than the browser, especially on weak client computers.
 
     <img src="keymaps.png" />
 
-3. *Optional:* This step is not nessessory if you're using TigerVNC as it uses the Web UI login and password.
+3. *Optional and not recommended:* This step is not nessessory if you're using TigerVNC
+    as it uses the Web UI login and password.
     Some other VNC clients (for example TightVNC) can't use this type of authentication.
-    In this case you can enable single passphrases mode in `/etc/kvmd/override.yaml`:
+    In this case you can enable single VNCAuth passphrases mode in `/etc/kvmd/override.yaml`:
 
     ```yaml
     vnc:
@@ -49,7 +50,10 @@ than the browser, especially on weak client computers.
                 enabled: true
     ```
 
-    To set passphrases edit file `/etc/kvmd/vncpasswd`.
+    To set passphrases edit the file `/etc/kvmd/vncpasswd`.
+
+    But once again: **this is an unsafe authorization method**, it is better to use another client,
+    for example, the already recommended TigerVNC.
 
 4. Enable `kvmd-vnc` daemon. VNC will be available on the port 5900: `systemctl enable --now kvmd-vnc`.
 
