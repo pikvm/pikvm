@@ -29,35 +29,37 @@ than the browser, especially on weak client computers.
 2. Switch the PiKVM filesystem to read-write mode using command `rw`.
 
 3. ??? tip "Optional for *non-TigerVNC* clients: Change the keybobard layout for non-US keyboard"
-    Some clients does not support direct keyboard access. 
 
-    Edit the file `/etc/kvmd/override.yaml` and add your layout for the client:
+        Some clients does not support direct keyboard access. 
 
-    ```yaml
-    vnc:
-        keymap: /usr/share/kvmd/keymaps/ru
-    ```
+        Edit the file `/etc/kvmd/override.yaml` and add your layout for the client:
 
-    All available keymaps are located in `/usr/share/kvmd/keymaps`:
+        ```yaml
+        vnc:
+            keymap: /usr/share/kvmd/keymaps/ru
+        ```
 
-    <img src="keymaps.png" />
+        All available keymaps are located in `/usr/share/kvmd/keymaps`:
+
+        <img src="keymaps.png" />
 
 4. ??? warning "Optional for *non-TigerVNC* and NOT RECOMMENDED: Enable VNCAuth method"
-		This step is nessessory if you're using TightVNC (don't confuse it with TigerVNC!)
-		and some other clients that does not support the user/password auth method.
 
-		In this case you can enable single VNCAuth passphrases mode in `/etc/kvmd/override.yaml`:
+        This step is nessessory if you're using TightVNC (don't confuse it with TigerVNC!)
+        and some other clients that does not support the user/password auth method.
 
-		```yaml
-		vnc:
-			auth:
-				vncauth:
-					enabled: true
-		```
+        In this case you can enable single VNCAuth passphrases mode in `/etc/kvmd/override.yaml`:
 
-		To set passphrases edit the file `/etc/kvmd/vncpasswd`.
+        ```yaml
+        vnc:
+            auth:
+                vncauth:
+                    enabled: true
+        ```
 
-		But once again: **this is an unsafe authorization method** and it is better to use TigerVNC.
+        To set passphrases edit the file `/etc/kvmd/vncpasswd`.
+
+        But once again: **this is an unsafe authorization method** and it is better to use TigerVNC.
 
 5. Enable `kvmd-vnc` daemon. VNC will be available on the port 5900: `systemctl enable --now kvmd-vnc`.
 
