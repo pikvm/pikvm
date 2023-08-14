@@ -24,10 +24,14 @@ than the browser, especially on weak client computers.
 -----
 ## Enabling VNC on the PiKVM side
 
-1. Switch the PiKVM filesystem to read-write mode using command `rw`.
+1. The recommended client is [TigerVNC](https://github.com/TigerVNC/tigervnc/releases).
 
-2. *Optional:* Change client's keyboard layout if you're using an non-US keyboard.
-    To do this edit file `/etc/kvmd/override.yaml`:
+2. Switch the PiKVM filesystem to read-write mode using command `rw`.
+
+3. ??? tip "Optional for *non-TigerVNC* clients: Change the keybobard layout for non-US keyboard"
+    Some clients does not support direct keyboard access. 
+
+    Edit the file `/etc/kvmd/override.yaml` and add your layout for the client:
 
     ```yaml
     vnc:
@@ -38,9 +42,10 @@ than the browser, especially on weak client computers.
 
     <img src="keymaps.png" />
 
-3. *Optional and not recommended:* This step is not nessessory if you're using TigerVNC
-    as it uses the Web UI login and password.
-    Some other VNC clients (for example TightVNC) can't use this type of authentication.
+4. ??? warning "Optional for *non-TigerVNC* and NOT RECOMMENDED: Enable VNCAuth method"
+   This step is nessessory if you're using TightVNC (don't confuse it with TigerVNC!)
+   and some other clients that does not support the user/password auth method.
+
     In this case you can enable single VNCAuth passphrases mode in `/etc/kvmd/override.yaml`:
 
     ```yaml
@@ -52,12 +57,11 @@ than the browser, especially on weak client computers.
 
     To set passphrases edit the file `/etc/kvmd/vncpasswd`.
 
-    But once again: **this is an unsafe authorization method**, it is better to use another client,
-    for example, the already recommended TigerVNC.
+    But once again: **this is an unsafe authorization method** and it is better to use TigerVNC.
 
-4. Enable `kvmd-vnc` daemon. VNC will be available on the port 5900: `systemctl enable --now kvmd-vnc`.
+5. Enable `kvmd-vnc` daemon. VNC will be available on the port 5900: `systemctl enable --now kvmd-vnc`.
 
-5. Switch filesystem back to read-only: `ro`.
+6. Switch filesystem back to read-only: `ro`.
 
 !!! note
     With enabled [2FA](auth.md#two-factor-authentication), you will need to append the one-time code
@@ -70,7 +74,7 @@ than the browser, especially on weak client computers.
 -----
 ## Configuring the client
 
-We recommend [TigerVNC](https://tigervnc.org) for a better experience on desktop.
+We recommend [TigerVNC](https://tigervnc.org) for a better experience on a desktop.
 
 If you're using PiKVM V3+ or DIY based on CSI bridge, you can try
 the [latest version (>= 1.13.0) of TigerVNC with H.264 support](https://github.com/TigerVNC/tigervnc/releases).
