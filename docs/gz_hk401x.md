@@ -1,4 +1,4 @@
-# GZVich 4-port HDMI USB KVM Switch
+# GZVich (广正维创) 4-port HDMI USB KVM Switch
 
 <img src="kvm_switch.avif" alt="" width="300"/>
 
