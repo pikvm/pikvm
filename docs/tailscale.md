@@ -30,13 +30,14 @@ any other setting or functionality needs to be redirected to the [Tailscale supp
 
 4. Perform the command `ip addr show tailscale0` to view the Tailscale IP address.
 
-!!! warning
-    Unfortunately sometimes updating the Tailscale client on PiKVM can cause problems.
-    This is happening because features of its interaction with PiKVM OS running in protected read-only mode
-    (since Tailscale has weak support of read-only systems).
+If everything is successful, PiKVM will become a member of your VPN network.
 
-    Do not update Tailscale if you don't have access to the device without VPN,
-    because on breaking change in Tailscale, you may lose access to PiKVM.
+!!! warning
+    **Do not update Tailscale if you don't have access to PiKVM without VPN,
+    because on breaking change in Tailscale, you may lose access.**
+
+    Unfortunately sometimes updating the Tailscale client on PiKVM can cause problems.
+    This is happening since Tailscale has weak support of read-only systems.
 
 
 ### For each device you wish to access PiKVM
@@ -61,4 +62,4 @@ To remove follow this:
 # reboot
 ```
 
-Next. follow this document from the beginning to install the Tailscale again.
+Next, follow this document from the beginning to install the Tailscale again.
