@@ -5,7 +5,7 @@ the easiest way to achieve this is a port forwarding on the router.
 In this case, an external (global) IP address must be assigned to the router.
 This service is provided by the ISP.
 
-!!! note
+!!! tip
     If using an external IP address is not possible, it is recommended to try
     the [Tailscale VPN](tailscale.md).
 
