@@ -137,7 +137,7 @@ getting rid of the transistor for the Reset line and level shifter for RX/TX (MO
 
 ??? example "For the Arduino HID over SPI"
     Throw away the Reset transistor and level shifter, and follow this guide
-    from the very beginning, as if you were connecting Pico HID for V2/V3.
+    from the very beginning, as if you were connecting Pico HID to PiKVM V2 or V3.
 
 ??? example "For the classic Serial (UART) HID"
     Get rid of the transistor and level shifter, and follow this guide
@@ -145,7 +145,7 @@ getting rid of the transistor for the Reset line and level shifter for RX/TX (MO
 
     * The `GP22` on the Pico is connected directly to the `GND`. This enables UART mode instead of default SPI.
 
-    * In the original V0, `GPIO4` [on the Raspberry Pi](https://pinout.xyz) was used for the Reset line.
+    * In the good old PiKVM V0, `GPIO4` [on the Raspberry Pi](https://pinout.xyz) was used for the Reset line.
       Now we recommend to use `GPIO25` for consistency reasons.
       However, you can use `GPIO4` by changing the `reset_pin` value in the config example below.
       On the scheme, this is a yellow wire, the `RUN (Pico) -> GPIO25 (Pi)` line.
