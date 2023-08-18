@@ -17,7 +17,11 @@ This service is provided by the ISP.
 
 !!! warning
 
-    * **[Change passwords](first_steps.md#getting-access-to-pikvm) before opening access to PiKVM from the outside Internet.**
-    * It's also a good practice to use only HTTPS with a valid SSL certificate (like [Let's Encrypt](letsencrypt.md)).
-        and using a custom port number instead of `443` from the Internet side, for example `14438` to avoid common port scanners.
+    * **[Set strong passwords and enable two-factor authorization](auth.md)
+        before opening access to PiKVM from the Internet!**
+    * It is strongly recommended to obtain a valid HTTPS certificate, for example via [Let's Encrypt](letsencrypt.md).
+    * A good practice is using a custom port number instead of `443` from the Internet side, for example `14438` to avoid common port scanners.
     * If you still decide to use the `443` port number, you may have to forward port `80` to get a redirect for your convenience.
+
+Remember that port forwarding is a powerful and convenient tool, but security depends entirely on the user.
+In some cases, a VPN may be a more secure, but less convenient option (since it requires a VPN client on all devices that access PiKVM).
