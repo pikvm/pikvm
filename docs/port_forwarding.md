@@ -12,3 +12,5 @@ If your ISP has provided you with an external IP address for the router, you can
 * [VNC](vnc.md) (if you use it) runs on port `5900`.
 
 If you don't have an external IP address, then we recommend trying [Tailscale VPN](tailscale.md).
+
+!!! note You may have to forward both the `http` and `https` ports (`80` and `443` here) in order to access the Web UI via `http`.
