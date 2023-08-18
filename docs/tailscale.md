@@ -1,27 +1,24 @@
 # Tailscale VPN
 
-The [Tailscale](https://tailscale.com/) can be used to access PiKVM from the Internet
+The [Tailscale VPN](https://tailscale.com/) can be used to access PiKVM from the Internet
 when using [port forwarding](port_forwarding.md) is not possible or does not seem secure enough.
 Tailscale is a convenient and free (for private use) tool for organizing a small VPN network.
 
-
------
-## Installation
-
-Basic support like whats shown below is provided as an example,
+Basic Tailscale usage like whats shown below is provided as an example,
 any other setting or functionality needs to be redirected to the [Tailscale support](https://tailscale.com/contact/support/).
 
 
-### On the PiKVM side
+-----
+## Configuring the PiKVM
 
-1. Execute these commands:
+1. Install the client, run `tailscaled` service and register it in the network:
 
     ```
-    # rw
-    # pacman -Syu
-    # pacman -S tailscale-pikvm
-    # systemctl enable --now tailscaled
-    # tailscale up
+    [root@pikvm ~]# rw
+    [root@pikvm ~]# pacman -Syu
+    [root@pikvm ~]# pacman -S tailscale-pikvm
+    [root@pikvm ~]# systemctl enable --now tailscaled
+    [root@pikvm ~]# tailscale up
     ```
 
 2. Follow the link to authorize this installation.
@@ -40,7 +37,8 @@ If everything is successful, PiKVM will become a member of your VPN network.
     This is happening since Tailscale has weak support of read-only systems.
 
 
-### For each device you wish to access PiKVM
+-----
+## Configuring a client device
 
 * [Download](https://tailscale.com/download) and install the Tailscale client for your OS
     to the system you are using (not to the system you want to control).
@@ -48,18 +46,18 @@ If everything is successful, PiKVM will become a member of your VPN network.
 * Follow the URL in the web browser: `https://<tailscale_kvm_ip>` and you will see PiKVM web interface.
 
 
-----
+-----
 ## Troubleshooting
 
 If something not work, the usual advice is to completely remove the Tailscale from PiKVM and perform a clean installation.
 
-To remove follow this:
+To remove Tailscale follow this:
 
 ```
-# rw
-# pacman -Rscnd tailscale
-# rm -rf /var/lib/tailscale /var/cache/tailscale
-# reboot
+[root@pikvm ~]# rw
+[root@pikvm ~]# pacman -Rscnd tailscale
+[root@pikvm ~]# rm -rf /var/lib/tailscale /var/cache/tailscale
+[root@pikvm ~]# reboot
 ```
 
-Next, follow this document from the beginning to install the Tailscale again.
+Next, follow this page from the beginning to install the Tailscale again.
