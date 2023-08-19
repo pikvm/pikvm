@@ -1,9 +1,23 @@
 # Mass Storage Drive
 
-This is an important feature that is available on all PiKVM V2+ devices.
-It is provides functionality to emulate a virtual CD-ROM or Flash Drive to connect removable media
-to the target host which will be available evein in BIOS/UEFI if you need live disk
-to revive the OS or even reinstall it.
+This powerful feature that is available on all PiKVM V2+ devices.
+It allows PiKVM to emulate a virtual CD-ROM or Flash Drive for the target host
+which will be available even in BIOS/UEFI when you need live disk to revive the OS
+or even reinstall it.
+
+| Take a look at the `Drive` menu in the Web UI |
+|-----------------------------------------------|
+| <img src="drive_menu.png" /> |
+
+The following actions are available here:
+
+* Uploading an image to the internal storage of PiKVM.
+* Selecting an image to connect to the target host.
+* Changing the media type and write availability mode.
+* Downloading an image from the PiKVM storage.
+* Drive connection management and much more.
+
+An HTTP API for Mass Storage management is also [available](api.md#mass-storage-drive) for advanced use.
 
 !!! info "The max CD-ROM image size is 2.2 GB"
     This is a Linux kernel [limitation](https://github.com/pikvm/pikvm/issues/322) on PiKVM,
@@ -13,7 +27,7 @@ to revive the OS or even reinstall it.
     you can try [this recipe](#create-a-windows-based-flash-disk-image).
 
 !!! info "Changing the media type between CD-ROM and Flash is possible only when the device is reconnected"
-    For PiKVM V3, this can be done using the `System -> Connect main USB` switch.
+    On PiKVM V3 and V4, this can be done using the `System -> Connect main USB` switch in the Web UI.
 
     In this case, the **media type is determined at the time of connecting the image, and not by clicking on the switch**.
 
