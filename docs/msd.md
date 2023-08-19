@@ -38,9 +38,15 @@ The following actions are available here:
 -----
 ## Image uploading without Web UI
 
+PiKVM stores the images on a special memory card partition mounted in `/var/lib/kvmd/msd`.
+
+Most of the time, the partition is read-only, and is remounted for writing automatically
+if the appropriate drive emulation mode is enabled, or to upload a new image.
+This protects the data from damage in the event of a sudden loss of power.
+
 ??? example "Step by step: Manual image uploading using SCP or rsync"
 
-    1. Remount internal storage to read-write mode:
+    1. Remount internal storage to read-write mode manually:
 
         ```
         [root@pikvm ~]# kvmd-helper-otgmsd-remount rw
@@ -124,7 +130,7 @@ Also additional drives consumes extra endpoints, read more under the spoiler:
 
 So, to add a second virtual drive, follow this:
 
-??? example "Step by step: Enabling the additional drive"
+??? example "Step by step: Enabling an additional drive"
 
     1. Switch the filesystem to read-write mode:
 
