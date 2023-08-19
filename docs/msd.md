@@ -7,7 +7,7 @@ or even reinstall it.
 
 | Take a look at the `Drive` menu in the Web UI |
 |-----------------------------------------------|
-| <img src="drive_menu.png" width="350" /> |
+| <img src="drive_menu.png" width="400" /> |
 
 The following actions are available here:
 
