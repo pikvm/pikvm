@@ -5,6 +5,9 @@ It allows PiKVM to emulate a virtual CD-ROM or Flash Drive for the target host
 which will be available even in BIOS/UEFI when you need live disk to revive the OS
 or even reinstall it.
 
+!!! warning "Legacy note"
+    This document is relevant for `KVMD >= 3.249`. If you are using an older version, please update the PiKVM OS.
+
 | Take a look at the `Drive` menu in the Web UI |
 |-----------------------------------------------|
 | <img src="drive_menu.png" width="400" /> |
@@ -16,6 +19,14 @@ The following actions are available here:
 * Changing the media type and write availability mode.
 * Downloading an image from the PiKVM storage.
 * Drive connection management and much more.
+
+!!! warning
+    Never turn off the power of the PiKVM while the image is being uploaded
+    or while the image is connected to the target host in write mode.
+    This may cause file corruption.
+
+    The rest of the time, power off is safe because the PiKVM filesystem
+    will be in read-only mode.
 
 !!! info "The max CD-ROM image size is 2.2 GB"
     This is a Linux kernel [limitation](https://github.com/pikvm/pikvm/issues/322) on PiKVM,
@@ -30,9 +41,6 @@ The following actions are available here:
     In this case, the **media type is determined at the time of connecting the image, and not by clicking on the switch**.
     The switch affects the settings of the future connection. For non-V3/V4 devices,
     you need to either reboot your target host or otherwise reinitialize the drive.
-
-!!! warning "Legacy note"
-    This document is relevant for `KVMD >= 3.249`. If you are using an older version, please update the PiKVM OS.
 
 
 -----
@@ -62,6 +70,73 @@ This protects the data from damage in the event of a sudden loss of power.
 
 !!! tip
     An HTTP API for Mass Storage management is also [available](api.md#mass-storage-drive) for advanced use.
+
+
+-----
+## Writable Flash Drive
+
+When emulating Flash Drive on PiKVM, you can allow the target host to write files to the image.
+After stopping the drive, this image can be downloaded and opened on the local host.
+This is useful if you need to get some files from the target host.
+
+The file system image for the virtual Flash Drive must be prepared in advance.
+This can be done either on the local host or in the PiKVM console.
+
+Here some options:
+
+??? example "Step by step: Creating simple FAT32 image on PiKVM"
+
+    1. Remount internal storage to read-write mode manually:
+
+        ```
+        [root@pikvm ~]# kvmd-helper-otgmsd-remount rw
+        ```
+
+    2. Create an empty image file in `/var/lib/kvmd/msd` (this is the internal storage of PiKVM images)
+       of desired size (512MB in this example) and format it to FAT32:
+
+        ```
+        [root@pikvm ~]# dd if=/dev/zero of=/var/lib/kvmd/flash.img bs=1M count=512 status=progress
+        [root@pikvm ~]# loop=$(losetup -f)
+        [root@pikvm ~]# echo -e 'o\nn\np\n1\n\n\nt\nc\nw\n' | fdisk /var/lib/kvmd/flash.img
+        [root@pikvm ~]# losetup -P $loop /var/lib/kvmd/flash.img
+        [root@pikvm ~]# mkfs.vfat ${loop}p1
+        [root@pikvm ~]# losetup -d $loop
+        ```
+
+    3. Remount internal storage back to safe read-only mode:
+
+        ```
+        [root@pikvm ~]# kvmd-helper-otgmsd-remount ro
+        ```
+
+??? example "Step by step: Creating DMG image for target macOS on a local macOS"
+
+    1. Open `Disk Utility`.
+
+    2. Click menu `File -> New Image -> Blank Image`.
+
+    3. Set some options:
+
+        | `Format` and `Partitions` are very important |
+        |----------------------------------------------|
+        | <img src="macos_flash_dmg.png" width="400"> |
+
+    4. Click `Save`. The drive will automatically be mounted.
+
+    5. Copy files (such as BIOS updates) onto the new image (via terminal or drag and drop in Finder).
+
+    6. Eject image.
+
+    7. Rename the image file from `.dmg` to `.img`.
+
+    8. Upload the image to PiKVM.
+
+The image `flash.img` now should be available in the `Drive` menu in Web UI.
+Change drive mode to the `Flash` position and enable `Writable` switch.
+Connect the image, do whatever is necessary, with files, and disconnect it.
+The modified image containing your files can be downloaded to a local host
+by selecting it from the menu and clicking the floppy disk icon.
 
 
 -----
@@ -162,7 +237,7 @@ So, to add a second virtual drive, follow this:
 
 
 -----
-## Second writable flash drive
+## Manual drives management
 
 The `kvmd-otgmsd` console utility is used to manage additional (and the first main one) drives.
 The full list of options can be found by running `kvmd-otgmsd --help`.
@@ -187,10 +262,11 @@ The full list of options can be found by running `kvmd-otgmsd --help`.
         [root@pikvm ~]# kvmd-otgmsd -i 1 --set-rw=1 --set-cdrom=0 --set-image=/root/flash.img
         ```
 
-    4. On this step, you will be able to access the flash drive from the target host.
-
         !!! note
             Index `0` represents the main drive that is controlled via the Web UI and API.
+
+    4. On this step, you will be able to access the flash drive from the target host
+        and format the it in the usual way.
 
     5. View the drive state:
 
@@ -331,23 +407,6 @@ Once you have the desired USB stick perform the following on the RPi to create t
 
 Boot the server and select boot device like you normally would.
 E.g. in a AMI BIOS the boot device is called "Linux File-CD Gadget 0504".
-
-
------
-## Create a drive image on macOS
-
-1. Open Disk Utility.
-2. `File > New Image > Blank Image`.
-3. Save As: `pikvm-image.dmg`. Name: `pikvm-image`. Size: 100 MB (or whatever size you want). Format: `MS-DOS (FAT)`. Partitions: `Single partition - GUID Partition Map`. Image Format: `read/write disk image`.
-4. Click Save.
-5. The drive will automatically be mounted.
-6. Copy files (such as BIOS updates) onto the new image (via terminal or drag and drop in Finder).
-7. Eject image.
-8. Rename file to .img
-9. Upload image to PiKVM interface under "Drive".
-10. Select Drive Mode: `Flash` and then `Connect drive to Server`.
-
-You should be able to then mount it locally on the server, or reboot the device to do things like BIOS updates.
 
 
 -----
