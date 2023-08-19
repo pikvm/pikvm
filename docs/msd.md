@@ -1,86 +1,85 @@
 # Mass Storage Drive
 
-## Basics
-
-This is a feature available on PiKVM v2+ that allows you to emulate a CD-ROM or Flash Drive.
-
-There are some subtleties that you should know:
+This is an important feature that is available on all PiKVM V2+ devices.
+It is provides possibility to emulate a CD-ROM or Flash Drive to connect removable media
+to the target host which will be available evein in BIOS/UEFI if you need live disk
+to revive the OS or even reinstall it.
 
 !!! info "The size of the CD-ROM image is limited to 2.2 GB"
-    This is a [limitation](https://github.com/pikvm/pikvm/issues/322) of the Linux kernel, which currently cannot emulate a DVD.
-    To use a larger boot image, use Flash emulation. If this is not possible (the image does not support Flash, for example, for Windows),
-    use [this](#create-a-windows-based-flash-disk-image) recipe.
+    This is a Linux kernel [limitation](https://github.com/pikvm/pikvm/issues/322) on PiKVM,
+    which currently cannot emulate a DVD drive.
+    To use a larger boot image, please use a Flash Drive emulation.
+    If this is not possible (the image does not support Flash, for example, for Windows),
+    you can try [this recipe](#create-a-windows-based-flash-disk-image).
 
 !!! info "Changing the media type between CD-ROM and Flash is possible only when the device is reconnected"
-    For PiKVM v3 HAT, this can be done using the switch `System -> Connect main USB`.
+    For PiKVM V3, this can be done using the `System -> Connect main USB` switch.
+
     In this case, the **media type is determined at the time of connecting the image, and not by clicking on the switch**.
-    The switch affects the settings of the future connection. For non-v3 devices,
-    you need to either reboot your server or otherwise reinitialize the connection.
+
+    The switch affects the settings of the future connection. For non-V3/V4 devices,
+    you need to either reboot your target host or otherwise reinitialize the drive.
+
+!!! warning "Legacy note"
+    This document is relevant for `KVMD >= 3.249`. If you are using an older version, please update the PiKVM OS.
+
 
 -----
-## Upload images manually (without Web UI)
+## Manual image uploading without Web UI
 
-!!! info "This instruction is relevant for KVM >= 3.203. If you are using a previous version, then update OS."
-
-1. Remount internal storage to rw (read-write):
+1. Remount internal storage to read-write mode:
 
     ```
-    # kvmd-helper-otgmsd-remount rw
+    [root@pikvm ~]# kvmd-helper-otgmsd-remount rw
     ```
 
-2. Upload the .ISO image(s) to `/var/lib/kvmd/msd` via scp or similar.
+2. Upload the image(s) to `/var/lib/kvmd/msd` using `scp` or some other tool.
 
-3. Create an empty file in `/var/lib/kvmd/msd` with the exact name (case sensitive!) of the uploaded image + prefix `.__` and suffix `.complete`. This will indicate PiKVM that the uploaded image is okay and can be used. For example:
-
-    ```
-    /var/lib/kvmd/msd/.__ubuntu-18.04.4-desktop-amd64.iso.complete
+3. Remount internal storage back to safe read-only mode:
 
     ```
-
-4. Remount internal storage back to ro (read-only):
-
-    ```
-    # kvmd-helper-otgmsd-remount ro
+    [root@pikvm ~]# kvmd-helper-otgmsd-remount ro
     ```
 
 
 -----
 ## NFS storage
 
-!!! info "This instruction is relevant for KVM >= 3.206. If you are using a previous version, then update OS."
-
 It is possible to create a shared image storage for an entire fleet of PiKVMs using [NFS](https://en.wikipedia.org/wiki/Network_File_System).
+
+!!! note
+    Configuring an NFS server is beyond the scope of this guide.
 
 If you have some shares, you can easily connect them to PiKVM by creating mount points and adding relevant records to `/etc/fstab`.
 At the same time, you will be able to upload images via PiKVM Web UI to NFS, and still use local storage.
 
-```
-# rw
-# pacman -Syu
-# pacman -S nfs-utils
-# kvmd-helper-otgmsd-remount rw
-# mkdir -p /var/lib/kvmd/msd/NFS_Primary
-# mkdir -p /var/lib/kvmd/msd/NFS_Secondary
-# kvmd-helper-otgmsd-remount ro
-```
+1. Make some preparations:
 
-Edit fstab:
+    ```
+    [root@pikvm ~]# rw
+    [root@pikvm ~]# pacman -Syu
+    [root@pikvm ~]# pacman -S nfs-utils
+    [root@pikvm ~]# kvmd-helper-otgmsd-remount rw
+    [root@pikvm ~]# mkdir -p /var/lib/kvmd/msd/NFS_Primary
+    [root@pikvm ~]# mkdir -p /var/lib/kvmd/msd/NFS_Secondary
+    [root@pikvm ~]# kvmd-helper-otgmsd-remount ro
+    ```
 
-```fstab
-server:/srv/nfs/NFS_Primary    /var/lib/kvmd/msd/NFS_Primary    nfs vers=3,timeo=1,retrans=1,soft,nolock  0 0
-server:/srv/nfs/NFS_Secondary  /var/lib/kvmd/msd/NFS_Secondary  nfs vers=3,timeo=1,retrans=1,soft,nolock  0 0
-```
+2. Add NFS shares to `/etc/fstab`:
 
-And perform `reboot`.
+    ```fstab
+    server:/srv/nfs/NFS_Primary    /var/lib/kvmd/msd/NFS_Primary    nfs vers=3,timeo=1,retrans=1,soft,nolock  0 0
+    server:/srv/nfs/NFS_Secondary  /var/lib/kvmd/msd/NFS_Secondary  nfs vers=3,timeo=1,retrans=1,soft,nolock  0 0
+    ```
 
-Make sure that the `kvmd` user has read access rights from these directories. You can also give write access if needed.
+3. Perform `reboot` to apply all changes.
+
+Make sure that the `kvmd` user has the *read* access from these directories. You can also give the *write* access if needed.
 For the best performance, it is required to ensure reliable connectivity with NFS server and use minimum `timeo` and `retrans` values.
 **Using the `soft` option is mandatory, `nolock` is recommended.**
 
 Note if an image is added to the NFS storage from the outside, PiKVM will not be able to track this event, so it is required to use
 `Drive -> Reset` in the Web UI to update the list of images.
-
-Configuring an NFS server is beyond the scope of this guide.
 
 
 -----
@@ -141,7 +140,7 @@ to the server and download some files from to PiKVM from it.
 
     After that you will have access to the flash drive from the target server. **Drive 0 represents a drive that is controlled via a web interface and API. Don't use it with kvmd-otgmsd if you don't know exactly what you're doing.**
 
-4. View the driver state:
+4. View the drive state:
 
     ```
     # kvmd-otgmsd -i 1
@@ -232,11 +231,10 @@ Once you have the desired USB stick perform the following on the RPi to create t
     4458545152 bytes (4.5 GB, 4.2 GiB) copied, 736.213 s, 6.1 MB/s
     ```
 
-4. Correct ownership of new image and make sure the website reports the file as complete (pay attention to the different folder).
+4. Correct ownership of new image and make sure the website reports the file as complete.
 
     ```
     # chown kvmd:kvmd /var/lib/kvmd/msd/windows10-2004.bin
-    # touch /var/lib/kvmd/msd/.__windows10-2004.bin.complete
     ```
 
 5. Remount msd folder as read only
@@ -319,12 +317,6 @@ ssh into the Ubuntu system (Or whatever OS you are using)
 
 ```
 # scp ventoy.img root@pikvm:/var/lib/kvmd/msd
-```
-
-* On PiKVM
-
-```
-# touch /var/lib/kvmd/msd/.__ventoy.img.complete
 ```
 
 * Mount `ventoy.img` as normal flash and select the PiKVM boot device, it should popup with the VenToy logo with the window.iso as a selection 

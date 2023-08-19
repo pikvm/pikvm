@@ -23,9 +23,17 @@ any other setting or functionality needs to be redirected to the [Tailscale supp
 
 2. Follow the link to authorize this installation.
 
-3. After success, perform soft reboot using the `reboot` command to make sure that everything is working correctly.
+3. After success, perform soft reboot to make sure that everything is working correctly:
 
-4. Perform the command `ip addr show tailscale0` to view the Tailscale IP address.
+    ```
+    [root@pikvm ~]# reboot
+    ```
+
+4. Now you can try to view the IP address of Tailscale network interface:
+
+    ```
+    [root@pikvm ~]# ip addr show tailscale0
+    ```
 
 If everything is successful, PiKVM will become a member of your VPN network.
 
@@ -49,9 +57,7 @@ If everything is successful, PiKVM will become a member of your VPN network.
 -----
 ## Troubleshooting
 
-If something not work, the usual advice is to completely remove the Tailscale from PiKVM and perform a clean installation.
-
-To remove Tailscale follow this:
+If something not work, the usual advice is to completely remove the Tailscale from PiKVM and perform a clean installation:
 
 ```
 [root@pikvm ~]# rw
