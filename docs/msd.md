@@ -63,9 +63,6 @@ The following actions are available here:
 
 It is possible to create a shared image storage for an entire fleet of PiKVMs using [NFS](https://en.wikipedia.org/wiki/Network_File_System).
 
-!!! note
-    Configuring an NFS server is beyond the scope of this guide.
-
 If you have some shares, you can easily connect them to PiKVM by creating mount points and adding relevant records to `/etc/fstab`.
 At the same time, you will be able to upload images via PiKVM Web UI to NFS, and still use local storage.
 
@@ -98,6 +95,8 @@ For the best performance, it is required to ensure reliable connectivity with NF
 
 Note if an image is added to the NFS storage from the outside, PiKVM will not be able to track this event, so it is required to use
 `Drive -> Reset` in the Web UI to update the list of images.
+
+Configuring an NFS server is beyond the scope of this guide.
 
 
 -----
