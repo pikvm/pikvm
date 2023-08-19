@@ -1,11 +1,11 @@
 # Mass Storage Drive
 
 This is an important feature that is available on all PiKVM V2+ devices.
-It is provides possibility to emulate a CD-ROM or Flash Drive to connect removable media
+It is provides functionality to emulate a virtual CD-ROM or Flash Drive to connect removable media
 to the target host which will be available evein in BIOS/UEFI if you need live disk
 to revive the OS or even reinstall it.
 
-!!! info "The size of the CD-ROM image is limited to 2.2 GB"
+!!! info "The max CD-ROM image size is 2.2 GB"
     This is a Linux kernel [limitation](https://github.com/pikvm/pikvm/issues/322) on PiKVM,
     which currently cannot emulate a DVD drive.
     To use a larger boot image, please use a Flash Drive emulation.
@@ -93,10 +93,8 @@ This is useful if there is a need to boot the target host from the first drive,
 and then connect the second to exchange files.
 
 !!! note
-    The first virtual drive is available for management both in the web interface (in the `Drive` menu)
-    and using [the console utility](#second-read-write-flash-drive).
-
-    Additional drives are controlled only from console.
+    The first virtual drive is available for management both in the Web UI (the `Drive` menu)
+    and using [the console utility](#second-writable-flash-drive). Extra drives are controlled only from console.
 
 
 The issue of additional drives concerns compatibility.
@@ -171,7 +169,7 @@ The full list of options can be found by running `kvmd-otgmsd --help`.
     4. On this step, you will be able to access the flash drive from the target host.
 
         !!! note
-            Index `0` represents the main drive that is controlled via a web interface and API
+            Index `0` represents the main drive that is controlled via the Web UI and API.
 
     5. View the drive state:
 
@@ -203,7 +201,7 @@ The full list of options can be found by running `kvmd-otgmsd --help`.
         ```
 
 !!! tip
-    The main drive can also be switched to read-write mode, this can be done from the web interface.
+    The main drive can also be switched to read-write mode, this can be done from the Web UI.
 
     In this case, the image will have to be prepared outside of PiKVM, and upload it to use,
     then download it back to your local host for files extraction.
@@ -215,7 +213,7 @@ The full list of options can be found by running `kvmd-otgmsd --help`.
 In rare cases, it may be necessary to disable Mass Storage emulation if the BIOS/UEFI
 does not recognize it correctly and even refuses to work with USB keyboard and mouse.
 
-??? example "Step by step: Permanent disabling Sass Storage"
+??? example "Step by step: Permanent disabling Mass Storage"
 
     1. Switch the filesystem to read-write mode:
 
@@ -239,7 +237,7 @@ does not recognize it correctly and even refuses to work with USB keyboard and m
         ```
 
 !!! tip
-    An alternative method may be to use the [dynamic USB configuration](usb_dynamic.md) method,
+    As an alternative method may be to use the [dynamic USB configuration](usb_dynamic.md),
     which allows you to temporarily disable any of the emulated devices, including Mass Storage Drive.
 
 
