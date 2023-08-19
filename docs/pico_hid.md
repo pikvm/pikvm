@@ -118,7 +118,7 @@ If you are making the Pico HID for V2 or V3, add the following lines to the PiKV
 
 
 -----
-## Replacing the legacy Arduino HID
+## Replacing the Arduino HID
 
 !!! warning
     **This section is intended for advanced users of the [legacy Arduino HID](arduino_hid.md).**

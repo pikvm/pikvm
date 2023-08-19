@@ -53,26 +53,28 @@ It is possible to create a shared image storage for an entire fleet of PiKVMs us
 If you have some shares, you can easily connect them to PiKVM by creating mount points and adding relevant records to `/etc/fstab`.
 At the same time, you will be able to upload images via PiKVM Web UI to NFS, and still use local storage.
 
-1. Make some preparations:
+!!! example "Step by step: Connecting NFS storage"
 
-    ```
-    [root@pikvm ~]# rw
-    [root@pikvm ~]# pacman -Syu
-    [root@pikvm ~]# pacman -S nfs-utils
-    [root@pikvm ~]# kvmd-helper-otgmsd-remount rw
-    [root@pikvm ~]# mkdir -p /var/lib/kvmd/msd/NFS_Primary
-    [root@pikvm ~]# mkdir -p /var/lib/kvmd/msd/NFS_Secondary
-    [root@pikvm ~]# kvmd-helper-otgmsd-remount ro
-    ```
+    1. Make some preparations:
 
-2. Add NFS shares to `/etc/fstab`:
+        ```
+        [root@pikvm ~]# rw
+        [root@pikvm ~]# pacman -Syu
+        [root@pikvm ~]# pacman -S nfs-utils
+        [root@pikvm ~]# kvmd-helper-otgmsd-remount rw
+        [root@pikvm ~]# mkdir -p /var/lib/kvmd/msd/NFS_Primary
+        [root@pikvm ~]# mkdir -p /var/lib/kvmd/msd/NFS_Secondary
+        [root@pikvm ~]# kvmd-helper-otgmsd-remount ro
+        ```
 
-    ```fstab
-    server:/srv/nfs/NFS_Primary    /var/lib/kvmd/msd/NFS_Primary    nfs vers=3,timeo=1,retrans=1,soft,nolock  0 0
-    server:/srv/nfs/NFS_Secondary  /var/lib/kvmd/msd/NFS_Secondary  nfs vers=3,timeo=1,retrans=1,soft,nolock  0 0
-    ```
+    2. Add NFS shares to `/etc/fstab`:
 
-3. Perform `reboot` to apply all changes.
+        ```fstab
+        server:/srv/nfs/NFS_Primary    /var/lib/kvmd/msd/NFS_Primary    nfs vers=3,timeo=1,retrans=1,soft,nolock  0 0
+        server:/srv/nfs/NFS_Secondary  /var/lib/kvmd/msd/NFS_Secondary  nfs vers=3,timeo=1,retrans=1,soft,nolock  0 0
+        ```
+
+    3. Perform `reboot` to apply all changes.
 
 Make sure that the `kvmd` user has the *read* access from these directories. You can also give the *write* access if needed.
 For the best performance, it is required to ensure reliable connectivity with NFS server and use minimum `timeo` and `retrans` values.
@@ -83,99 +85,145 @@ Note if an image is added to the NFS storage from the outside, PiKVM will not be
 
 
 -----
-## Multiple and writable drives
+## Multiple drives
 
-Unless explicitly [disabled](#disable-msd) by default, PiKVM creates only one drive for Mass Storage emulation.
-However, you can create additional drives and manage them manually via the terminal.
-This is useful if you want to boot the server from a ISO CD (specified in the web interface), then connect a virtual flash drive
-to the server and download some files from to PiKVM from it.
+By default, PiKVM creates one virtual drive for Mass Storage emulation.
+However, if necessary, you can create additional ones and manage them using console utility.
+This is useful if there is a need to boot the target host from the first drive,
+and then connect the second to exchange files.
 
-!!! info
-    The presence of an additional Mass Storage Drive should not interfere with the boot, but for reasons of compatibility paranoia, this is disabled by default. We recommend setting up the drives in advance, making sure that booting from the ISO CD is still working, and then using the drives as needed.
+!!! note
+    The first virtual drive is available for management both in the web interface (in the `Drive` menu)
+    and using [the console utility](#second-read-write-flash-drive).
+    Additional drives are controlled only from console.
+
+
+The issue of additional drives concerns compatibility.
+There is an assumption that multiple drives on the same USB may confuse some BIOS/UEFI.
+So for paranoid reasons, this feature requires manual activation.
+It is recommended setting up the drives in advance, making sure that booting from ISO CD or Flash is still working
+with your specific target host, and then using the drives as planned.
+
+Also additional drives consumes extra endpoints, read more under the spoiler:
 
 {!_usb_limits.md!}
 
+So, to add a second virtual drive, follow this:
 
-### How to enable extra drives
+!!! example "Step by step: Enabling the additional drive"
 
-1. Switch the root filesystem to `rw` mode.
+	1. Switch the filesystem to read-write mode:
 
-2. Edit `/etc/kvmd/override.yaml` and add these lines:
+		```
+		[root@pikvm ~]# rw
+		```
 
-    ``` yaml
-    otg:
-        devices:
-            drives:
-                enabled: true  # Set it to true to enable
-                count: 1  # +1 drive, default value
-                default:  # Default configuration for the all extra drives
-                    cdrom: false  # Default value (false for the generic flash drive)
-                    rw: false # Read-only by default
-    ```
+	2. Edit `/etc/kvmd/override.yaml` and add the extra drive config section:
 
-    If you specify `count: N`, you will create `N` additional drives configured the same way, as described in the `default` section.
+		```yaml
+		otg:
+			devices:
+				drives:
+					enabled: true  # Set it to true to enable
+					count: 1  # +1 drive, default value
+					default:  # Default configuration for the all extra drives
+						cdrom: false  # Default value (false for the generic flash drive)
+						rw: false # Read-only by default
+		```
 
-3. Perform `reboot`.
+		The `count` parameter determines the number of additional drives (remember the limit on endpoints).
+		Each of the drives will be created with the same initial parameters described in the `default` section.
+
+	3. Perform reboot:
+
+		```
+		[root@pikvm ~]# reboot
+		```
 
 
-### How to create a second RW flash drive
+-----
+## Second writable flash drive
 
-1. Switch the root filesystem to `rw` mode:
+The `kvmd-otgmsd` console utility is used to manage additional (and the first main one) drives.
+The full list of options can be found by running `kvmd-otgmsd --help`.
 
-    ```
-    # rw
-    ```
+Below is an example of using it to create an additional flash drive that is writable:
 
-2. Create the empty image file of the desire size (1Gb in this example).
-
-    ```
-    # dd if=/dev/zero of=/root/flash.img bs=1M count=1000 status=progress
-    ```
-
-3. Connect it to the drive 1:
-
-    ```
-    # kvmd-otgmsd -i 1 --set-rw=1 --set-cdrom=0 --set-image=/root/flash.img
-    ```
-
-    After that you will have access to the flash drive from the target server. **Drive 0 represents a drive that is controlled via a web interface and API. Don't use it with kvmd-otgmsd if you don't know exactly what you're doing.**
-
-4. View the drive state:
+1. Switch the filesystem to read-write mode:
 
     ```
-    # kvmd-otgmsd -i 1
+    [root@pikvm ~]# rw
+    ```
+
+2. Create an empty image file with desired size (1GB in this example):
+
+    ```
+    [root@pikvm ~]# dd if=/dev/zero of=/root/flash.img bs=1M count=1000 status=progress
+    ```
+
+3. Connect it to the drive `1` (the creation process is described in the previous section):
+
+    ```
+    [root@pikvm ~]# kvmd-otgmsd -i 1 --set-rw=1 --set-cdrom=0 --set-image=/root/flash.img
+    ```
+
+4. On this step, you will be able to access the flash drive from the target host.
+
+    !!! note
+        Index `0` represents the main drive that is controlled via a web interface and API
+
+5. View the drive state:
+
+    ```
+    [root@pikvm ~]# kvmd-otgmsd -i 1
     Image file:  /root/flash.img
     CD-ROM flag: no
     RW flag:     yes
     ```
 
-5. To disable the flash drive and view the files on it from the KVM, run:
+6. To disable the flash drive and view the files on it from the PiKVM, run:
 
     ```
-    # kvmd-otgmsd -i 1 --unlock --eject
+    [root@pikvm ~]# kvmd-otgmsd -i 1 --unlock --eject
     ```
 
-    **This command will interrupt the current IO operation on ALL DRIVES** including the one that is managed via the web interface. The same result is achieved by clicking the disable media button in the web interface. Right now, the Linux kernel does not allow to distinguish between internal threads that manage different drives. It is recommended to eject the media when you know that this will not cause problems for the other media.
-
-6. Don't forget to remount the root filesystem to read-only mode:
+7. Don't forget to remount the root filesystem to read-only mode:
 
     ```
-    # ro
+    [root@pikvm ~]# ro
     ```
 
-7. You can download the resulting image via SCP or mount it as a loop device on the PiKVM.
+8. You can download the resulting image via SCP or mount it as a loop device on the PiKVM:
+
+    ```
+    [root@pikvm ~]# mount -o loop /root/flash.img /mnt
+    [root@pikvm ~]# ls /mnt
+    [root@pikvm ~]# umount /mnt
+    ```
+
+!!! tip
+
+    The main drive can also be switched to read-write mode, this can be done from the web interface.
+
+    The image will have to be prepared outside of PiKVM, and upload it to use,
+    then download it back to your local host for files extraction.
 
 
 -----
 ## Disable MSD
 
-To disable mass storage emulation altogether, you can place the following piece of configuration into `/etc/kvmd/override.yaml`:
+In rare cases, it may be necessary to disable Mass Storage emulation if the BIOS/UEFI
+does not recognize it correctly and even refuses to work with USB keyboard and mouse.
+
+To permanently disable Mass Storage Drive, add the following section to `/etc/kvmd/override.yaml`:
 
 ``` yaml
 kvmd:
     msd:
         type:  disabled
-``` 
+```
+
+After that, perform `reboot` command.
 
 
 -----

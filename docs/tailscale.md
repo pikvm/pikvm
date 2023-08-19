@@ -23,7 +23,7 @@ any other setting or functionality needs to be redirected to the [Tailscale supp
 
 2. Follow the link to authorize this installation.
 
-3. After success, perform soft reboot to make sure that everything is working correctly:
+3. After success, perform reboot to make sure that everything is working correctly:
 
     ```
     [root@pikvm ~]# reboot
