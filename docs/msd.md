@@ -17,8 +17,6 @@ The following actions are available here:
 * Downloading an image from the PiKVM storage.
 * Drive connection management and much more.
 
-An HTTP API for Mass Storage management is also [available](api.md#mass-storage-drive) for advanced use.
-
 !!! info "The max CD-ROM image size is 2.2 GB"
     This is a Linux kernel [limitation](https://github.com/pikvm/pikvm/issues/322) on PiKVM,
     which currently cannot emulate a DVD drive.
@@ -39,21 +37,26 @@ An HTTP API for Mass Storage management is also [available](api.md#mass-storage-
 
 
 -----
-## Manual image uploading without Web UI
+## Image uploading without Web UI
 
-1. Remount internal storage to read-write mode:
+??? example "Step by step: Manual image uploading using SCP or rsync"
 
-    ```
-    [root@pikvm ~]# kvmd-helper-otgmsd-remount rw
-    ```
+    1. Remount internal storage to read-write mode:
 
-2. Upload the image(s) to `/var/lib/kvmd/msd` using `scp` or some other tool.
+        ```
+        [root@pikvm ~]# kvmd-helper-otgmsd-remount rw
+        ```
 
-3. Remount internal storage back to safe read-only mode:
+    2. Upload the image(s) to `/var/lib/kvmd/msd` using `scp` or some other tool.
 
-    ```
-    [root@pikvm ~]# kvmd-helper-otgmsd-remount ro
-    ```
+    3. Remount internal storage back to safe read-only mode:
+
+        ```
+        [root@pikvm ~]# kvmd-helper-otgmsd-remount ro
+        ```
+
+!!! tip
+    An HTTP API for Mass Storage management is also [available](api.md#mass-storage-drive) for advanced use.
 
 
 -----
