@@ -28,7 +28,6 @@ The following actions are available here:
     On PiKVM V3 and V4, this can be done using the `System -> Connect main USB` switch in the Web UI.
 
     In this case, the **media type is determined at the time of connecting the image, and not by clicking on the switch**.
-
     The switch affects the settings of the future connection. For non-V3/V4 devices,
     you need to either reboot your target host or otherwise reinitialize the drive.
 
