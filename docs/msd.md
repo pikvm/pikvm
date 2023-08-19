@@ -53,7 +53,7 @@ It is possible to create a shared image storage for an entire fleet of PiKVMs us
 If you have some shares, you can easily connect them to PiKVM by creating mount points and adding relevant records to `/etc/fstab`.
 At the same time, you will be able to upload images via PiKVM Web UI to NFS, and still use local storage.
 
-!!! example "Step by step: Connecting NFS storage"
+??? example "Step by step: Connecting NFS storage"
 
     1. Make some preparations:
 
@@ -95,6 +95,7 @@ and then connect the second to exchange files.
 !!! note
     The first virtual drive is available for management both in the web interface (in the `Drive` menu)
     and using [the console utility](#second-read-write-flash-drive).
+
     Additional drives are controlled only from console.
 
 
@@ -110,35 +111,35 @@ Also additional drives consumes extra endpoints, read more under the spoiler:
 
 So, to add a second virtual drive, follow this:
 
-!!! example "Step by step: Enabling the additional drive"
+??? example "Step by step: Enabling the additional drive"
 
-	1. Switch the filesystem to read-write mode:
+    1. Switch the filesystem to read-write mode:
 
-		```
-		[root@pikvm ~]# rw
-		```
+        ```
+        [root@pikvm ~]# rw
+        ```
 
-	2. Edit `/etc/kvmd/override.yaml` and add the extra drive config section:
+    2. Edit `/etc/kvmd/override.yaml` and add the extra drive config section:
 
-		```yaml
-		otg:
-			devices:
-				drives:
-					enabled: true  # Set it to true to enable
-					count: 1  # +1 drive, default value
-					default:  # Default configuration for the all extra drives
-						cdrom: false  # Default value (false for the generic flash drive)
-						rw: false # Read-only by default
-		```
+        ```yaml
+        otg:
+            devices:
+                drives:
+                    enabled: true  # Set it to true to enable
+                    count: 1  # +1 drive, default value
+                    default:  # Default configuration for the all extra drives
+                        cdrom: false  # Default value (false for the generic flash drive)
+                        rw: false # Read-only by default
+        ```
 
-		The `count` parameter determines the number of additional drives (remember the limit on endpoints).
-		Each of the drives will be created with the same initial parameters described in the `default` section.
+        The `count` parameter determines the number of additional drives (remember the limit on endpoints).
+        Each of the drives will be created with the same initial parameters described in the `default` section.
 
-	3. Perform reboot:
+    3. Perform reboot:
 
-		```
-		[root@pikvm ~]# reboot
-		```
+        ```
+        [root@pikvm ~]# reboot
+        ```
 
 
 -----
@@ -147,83 +148,99 @@ So, to add a second virtual drive, follow this:
 The `kvmd-otgmsd` console utility is used to manage additional (and the first main one) drives.
 The full list of options can be found by running `kvmd-otgmsd --help`.
 
-Below is an example of using it to create an additional flash drive that is writable:
+??? example "Step by step: Creating the flash drive image to get some files from the target host"
 
-1. Switch the filesystem to read-write mode:
+    1. Switch the filesystem to read-write mode:
 
-    ```
-    [root@pikvm ~]# rw
-    ```
+        ```
+        [root@pikvm ~]# rw
+        ```
 
-2. Create an empty image file with desired size (1GB in this example):
+    2. Create an empty image file with desired size (1GB in this example):
 
-    ```
-    [root@pikvm ~]# dd if=/dev/zero of=/root/flash.img bs=1M count=1000 status=progress
-    ```
+        ```
+        [root@pikvm ~]# dd if=/dev/zero of=/root/flash.img bs=1M count=1000 status=progress
+        ```
 
-3. Connect it to the drive `1` (the creation process is described in the previous section):
+    3. Connect it to the drive `1` (the creation process is described in the previous section):
 
-    ```
-    [root@pikvm ~]# kvmd-otgmsd -i 1 --set-rw=1 --set-cdrom=0 --set-image=/root/flash.img
-    ```
+        ```
+        [root@pikvm ~]# kvmd-otgmsd -i 1 --set-rw=1 --set-cdrom=0 --set-image=/root/flash.img
+        ```
 
-4. On this step, you will be able to access the flash drive from the target host.
+    4. On this step, you will be able to access the flash drive from the target host.
 
-    !!! note
-        Index `0` represents the main drive that is controlled via a web interface and API
+        !!! note
+            Index `0` represents the main drive that is controlled via a web interface and API
 
-5. View the drive state:
+    5. View the drive state:
 
-    ```
-    [root@pikvm ~]# kvmd-otgmsd -i 1
-    Image file:  /root/flash.img
-    CD-ROM flag: no
-    RW flag:     yes
-    ```
+        ```
+        [root@pikvm ~]# kvmd-otgmsd -i 1
+        Image file:  /root/flash.img
+        CD-ROM flag: no
+        RW flag:     yes
+        ```
 
-6. To disable the flash drive and view the files on it from the PiKVM, run:
+    6. To disable the flash drive and view the files on it from the PiKVM, run:
 
-    ```
-    [root@pikvm ~]# kvmd-otgmsd -i 1 --unlock --eject
-    ```
+        ```
+        [root@pikvm ~]# kvmd-otgmsd -i 1 --unlock --eject
+        ```
 
-7. Don't forget to remount the root filesystem to read-only mode:
+    7. Don't forget to remount the root filesystem to read-only mode:
 
-    ```
-    [root@pikvm ~]# ro
-    ```
+        ```
+        [root@pikvm ~]# ro
+        ```
 
-8. You can download the resulting image via SCP or mount it as a loop device on the PiKVM:
+    8. You can download the resulting image via SCP or mount it as a loop device on the PiKVM:
 
-    ```
-    [root@pikvm ~]# mount -o loop /root/flash.img /mnt
-    [root@pikvm ~]# ls /mnt
-    [root@pikvm ~]# umount /mnt
-    ```
+        ```
+        [root@pikvm ~]# mount -o loop /root/flash.img /mnt
+        [root@pikvm ~]# ls /mnt
+        [root@pikvm ~]# umount /mnt
+        ```
 
 !!! tip
-
     The main drive can also be switched to read-write mode, this can be done from the web interface.
 
-    The image will have to be prepared outside of PiKVM, and upload it to use,
+    In this case, the image will have to be prepared outside of PiKVM, and upload it to use,
     then download it back to your local host for files extraction.
 
 
 -----
-## Disable MSD
+## Disabling Mass Storage
 
 In rare cases, it may be necessary to disable Mass Storage emulation if the BIOS/UEFI
 does not recognize it correctly and even refuses to work with USB keyboard and mouse.
 
-To permanently disable Mass Storage Drive, add the following section to `/etc/kvmd/override.yaml`:
+??? example "Step by step: Permanent disabling Sass Storage"
 
-``` yaml
-kvmd:
-    msd:
-        type:  disabled
-```
+    1. Switch the filesystem to read-write mode:
 
-After that, perform `reboot` command.
+        ```
+        [root@pikvm ~]# rw
+        ```
+
+    2. Edit `/etc/kvmd/override.yaml` and add the extra drive config section:
+
+        ```yaml
+        kvmd:
+            msd:
+                type:  disabled
+
+        ```
+
+    3. Perform reboot:
+
+        ```
+        [root@pikvm ~]# reboot
+        ```
+
+!!! tip
+    An alternative method may be to use the [dynamic USB configuration](usb_dynamic.md) method,
+    which allows you to temporarily disable any of the emulated devices, including Mass Storage Drive.
 
 
 -----
