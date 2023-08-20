@@ -29,7 +29,7 @@ The following actions are available here:
     will be in read-only mode.
 
 !!! info "The max CD-ROM image size is 2.2 GB"
-    This is a Linux kernel [limitation](https://github.com/pikvm/pikvm/issues/322) on PiKVM,
+    This is a [Linux kernel limitation](https://github.com/pikvm/pikvm/issues/322) on PiKVM,
     which currently cannot emulate a DVD drive.
     To use a larger boot image, please use a Flash Drive emulation.
     If this is not possible (the image does not support Flash, for example, for Windows),
@@ -44,9 +44,9 @@ The following actions are available here:
 
 
 -----
-## Image uploading without Web UI
+## Manual images uploading
 
-PiKVM stores the images on a special memory card partition mounted in `/var/lib/kvmd/msd`.
+PiKVM stores images in a special memory card partition mounted in `/var/lib/kvmd/msd`.
 
 Most of the time, the partition is read-only, and is remounted for writing automatically
 if the appropriate drive emulation mode is enabled, or to upload a new image.
