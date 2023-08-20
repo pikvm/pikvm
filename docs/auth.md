@@ -2,7 +2,7 @@
 
 PiKVM OS is based on a regular Linux system, so everything about authorization in this OS is also true for PiKVM.
 
-!!! note "PiKVM comes with the following default passwords"
+!!! warning "PiKVM comes with the following default passwords"
 
     * **Linux admin** (SSH, console, etc.): user `root`, password `root`.
     * **PiKVM Web Interface** ([API](api.md), [VNC](vnc.md)...): user `admin`, password `admin`, no 2FA code.

@@ -5,6 +5,7 @@
     * **PiKVM Web Interface** ([API](api.md), [VNC](vnc.md)...): user `admin`, password `admin`, no 2FA code.
 
     **These are two separate entities with independent accounts.**
+
     To change passwords, you will need to use the console access via SSH or the Web Terminal.
     If you are using the Web Terminal, enter the `su -` command to get the `root` access (enter the `root` user password).
 
