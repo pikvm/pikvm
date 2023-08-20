@@ -1,17 +1,20 @@
 # Authentication
 
 PiKVM OS is based on a regular Linux system, so everything about authorization in this OS is also true for PiKVM.
-It comes with the following default passwords:
 
-* **Linux admin** (SSH, console, etc.): user `root`, password `root`.
-* **PiKVM Web Interface, [API](api.md), [VNC](vnc.md)...**: user `admin`, password `admin`, no 2FA code.
+!!! note "PiKVM comes with the following default passwords"
 
-**These are two separate entities with independent accounts.**
+    * **Linux admin** (SSH, console, etc.): user `root`, password `root`.
+    * **PiKVM Web Interface** ([API](api.md), [VNC](vnc.md)...): user `admin`, password `admin`, no 2FA code.
 
-Also there is another special Linux user: `kvmd-webterm`.
-It can't be used for login or remote access to PiKVM OS and has the non-privileged rights in the OS.
-Password access and `sudo` is disabled for it. It is used only for launching the Web Terminal.
-These restrictions are set for security reasons.
+    **These are two separate entities with independent accounts.**
+
+!!! note "There is another special Linux user: `kvmd-webterm`"
+    It can't be used for login or remote access to PiKVM OS and has the non-privileged rights in the OS.
+    Password access and `sudo` is disabled for it. It is used only for launching the Web Terminal.
+    These restrictions are set for security reasons.
+
+*Changing the [VNCAuth passkey](vnc.md) and [IPMI password](ipmi.md) described in the relevant documents*.
 
 
 -----
@@ -27,7 +30,7 @@ To obtain it in the Web Terminal, type `su -` and then enter the `root` user pas
 [root@pikvm kvmd-webterm]#
 ```
 
-??? tip "Disabling the Web Terminal"
+??? example "Step by step: Disabling the Web Terminal"
 
     Sometimes the actual owner of a PiKVM device and the user who is allowed to use it are different people.
     So you may want to disable console access from the Web UI. To do this, use the following:
@@ -54,6 +57,9 @@ To obtain it in the Web Terminal, type `su -` and then enter the `root` user pas
 -----
 ## Changing the KVM password
 
+This password is used, among the Web UI login, to access the [API](api.md), [VNC](vnc.md) (if enabled)
+and other functions that do not concern the OS shell.
+
 ```console
 [root@pikvm ~]# rw
 [root@pikvm ~]# kvmd-htpasswd set admin
@@ -68,6 +74,9 @@ with different passwords to access the Web UI, but keep in mind that they all ha
 [root@pikvm ~]# kvmd-htpasswd list # Show the list of users
 [root@pikvm ~]# kvmd-htpasswd del <user> # Removes/deletes a user
 ```
+
+At the moment there is no method to create any ACL for different KVM users.
+
 
 -----
 ## Two-factor authentication
