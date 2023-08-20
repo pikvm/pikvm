@@ -233,8 +233,6 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     # passwd <user>
     ```
 
-    Keep in mind that the more users that are added, the stream if accessed, fps will drop.
-
 
 ??? question "How do I get root access in the web terminal?"
     The web terminal works with the account `kvmd-webterm`. This is a regular user with no administrator privileges. In addition, `sudo` and login are disabled for this user for security reasons. To get `root` access, you need to use the `su -` command (minus is important) and **enter the root password**.

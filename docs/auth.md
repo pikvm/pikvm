@@ -8,12 +8,10 @@ It comes with the following default passwords:
 
 **These are two separate entities with independent accounts.**
 
-Also there is another Linux special user: `kvmd-webterm`.
+Also there is another special Linux user: `kvmd-webterm`.
 It can't be used for login or remote access to PiKVM OS and has the non-privileged rights in the OS.
-Password access and `sudo` is disabled for it. It is used to launch the `Web Terminal` in the Web UI.
-
-The basic idea is that the Web UI user can access the OS at the level of a regular user,
-but cannot control the core functions of PiKVM or break the OS.
+Password access and `sudo` is disabled for it. It is used only for launching the `Web Terminal`.
+These restrictions are set for security reasons.
 
 
 -----
@@ -29,6 +27,19 @@ To change the user to root in the `Web Terminal`, type `su -` and then enter the
 ...
 [root@pikvm kvmd-webterm]#
 ```
+
+!!! tip "Disabling the `Web Terminal`"
+
+    Sometimes the actual owner of a PiKVM device and the user who is allowed to use it are different people.
+    So you may want to disable console access from the Web UI. To do this, use the following:
+
+    ```
+    [root@pikvm ~]# rw
+    [root@pikvm ~]# systemctl disable --now kvmd-webterm
+    [root@pikvm ~]# ro
+    ```
+
+    For your own access to PiKVM OS, you will still have SSH.
 
 
 -----
