@@ -32,7 +32,7 @@ To obtain it in the Web Terminal, type `su -` and then enter the `root` user pas
     Sometimes the actual owner of a PiKVM device and the user who is allowed to use it are different people.
     So you may want to disable console access from the Web UI. To do this, use the following:
 
-    ```
+    ```console
     [root@pikvm ~]# rw
     [root@pikvm ~]# systemctl disable --now kvmd-webterm
     [root@pikvm ~]# ro
@@ -44,7 +44,7 @@ To obtain it in the Web Terminal, type `su -` and then enter the `root` user pas
 -----
 ## Changing the Linux password
 
-```
+```console
 [root@pikvm ~]# rw
 [root@pikvm ~]# passwd root
 [root@pikvm ~]# ro
@@ -54,7 +54,7 @@ To obtain it in the Web Terminal, type `su -` and then enter the `root` user pas
 -----
 ## Changing the KVM password
 
-```
+```console
 [root@pikvm ~]# rw
 [root@pikvm ~]# kvmd-htpasswd set admin
 [root@pikvm ~]# ro
@@ -63,7 +63,7 @@ To obtain it in the Web Terminal, type `su -` and then enter the `root` user pas
 Please note that `admin` is a name of a default user. It is possible to create several different users
 with different passwords to access the Web UI, but keep in mind that they all have the same rights:
 
-```
+```console
 [root@pikvm ~]# kvmd-htpasswd set <user> # Sets a new user with password
 [root@pikvm ~]# kvmd-htpasswd list # Show the list of users
 [root@pikvm ~]# kvmd-htpasswd del <user> # Removes/deletes a user
@@ -86,7 +86,7 @@ It is strongly recommended to enable it if you expose the PiKVM in the big and s
 
     1. Update OS and reboot:
 
-        ```
+        ```console
         [root@pikvm ~]# rw
         [root@pikvm ~]# pacman -Syu
         [root@pikvm ~]# reboot
@@ -95,18 +95,18 @@ It is strongly recommended to enable it if you expose the PiKVM in the big and s
     2. **Make sure that NTP is running otherwise you will not be able to access** (`timedatectl` command).
         The timezone doesn't matter.
 
-    3. Install the `Google Authenticator` app to your mobile device
+    3. Install the **Google Authenticator** app to your mobile device
         ([iOS](https://apps.apple.com/us/app/google-authenticator/id388497605),
         [Android](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2)). It will generate one-time access codes.
 
     4. Create a secret for one-time codes on PiKVM:
-       ```
+       ```console
        [root@pikvm ~]# rw
        [root@pikvm ~]# kvmd-totp init
        [root@pikvm ~]# ro
        ```
 
-    5. Run the `Google Authenticator` and scan the QR code.
+    5. Run the Google Authenticator and scan the QR code.
 
     6. Now, on the PiKVM login page, you will need to add 6 digits to the `2FA code` field.
 

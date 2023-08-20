@@ -13,7 +13,7 @@ any other setting or functionality needs to be redirected to the [Tailscale supp
 
 1. Install the client, run `tailscaled` service and register it in the network:
 
-    ```
+    ```console
     [root@pikvm ~]# rw
     [root@pikvm ~]# pacman -Syu
     [root@pikvm ~]# pacman -S tailscale-pikvm
@@ -25,13 +25,13 @@ any other setting or functionality needs to be redirected to the [Tailscale supp
 
 3. After success, perform reboot to make sure that everything is working correctly:
 
-    ```
+    ```console
     [root@pikvm ~]# reboot
     ```
 
 4. Now you can try to view the IP address of Tailscale network interface:
 
-    ```
+    ```console
     [root@pikvm ~]# ip addr show tailscale0
     ```
 
@@ -59,7 +59,7 @@ If everything is successful, PiKVM will become a member of your VPN network.
 
 If something not work, the usual advice is to completely remove the Tailscale from PiKVM and perform a clean installation:
 
-```
+```console
 [root@pikvm ~]# rw
 [root@pikvm ~]# pacman -Rscnd tailscale
 [root@pikvm ~]# rm -rf /var/lib/tailscale /var/cache/tailscale

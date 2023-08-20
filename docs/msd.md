@@ -56,7 +56,7 @@ This protects the data from damage in the event of a sudden loss of power.
 
     1. Remount internal storage to read-write mode manually:
 
-        ```
+        ```console
         [root@pikvm ~]# kvmd-helper-otgmsd-remount rw
         ```
 
@@ -64,7 +64,7 @@ This protects the data from damage in the event of a sudden loss of power.
 
     3. Remount internal storage back to safe read-only mode:
 
-        ```
+        ```console
         [root@pikvm ~]# kvmd-helper-otgmsd-remount ro
         ```
 
@@ -88,14 +88,14 @@ Here some options:
 
     1. Remount internal storage to read-write mode manually:
 
-        ```
+        ```console
         [root@pikvm ~]# kvmd-helper-otgmsd-remount rw
         ```
 
     2. Create an empty image file in `/var/lib/kvmd/msd` (this is the internal storage of PiKVM images)
        of desired size (512MB in this example) and format it to FAT32:
 
-        ```
+        ```console
         [root@pikvm ~]# dd if=/dev/zero of=/var/lib/kvmd/flash.img bs=1M count=512 status=progress
         [root@pikvm ~]# loop=$(losetup -f)
         [root@pikvm ~]# echo -e 'o\nn\np\n1\n\n\nt\nc\nw\n' | fdisk /var/lib/kvmd/flash.img
@@ -106,7 +106,7 @@ Here some options:
 
     3. Remount internal storage back to safe read-only mode:
 
-        ```
+        ```console
         [root@pikvm ~]# kvmd-helper-otgmsd-remount ro
         ```
 
@@ -151,7 +151,7 @@ At the same time, you will be able to upload images via PiKVM Web UI to NFS, and
 
     1. Make some preparations:
 
-        ```
+        ```console
         [root@pikvm ~]# rw
         [root@pikvm ~]# pacman -Syu
         [root@pikvm ~]# pacman -S nfs-utils
@@ -209,7 +209,7 @@ So, to add a second virtual drive, follow this:
 
     1. Switch the filesystem to read-write mode:
 
-        ```
+        ```console
         [root@pikvm ~]# rw
         ```
 
@@ -231,7 +231,7 @@ So, to add a second virtual drive, follow this:
 
     3. Perform reboot:
 
-        ```
+        ```console
         [root@pikvm ~]# reboot
         ```
 
@@ -246,19 +246,19 @@ The full list of options can be found by running `kvmd-otgmsd --help`.
 
     1. Switch the filesystem to read-write mode:
 
-        ```
+        ```console
         [root@pikvm ~]# rw
         ```
 
     2. Create an empty image file with desired size (1GB in this example):
 
-        ```
+        ```console
         [root@pikvm ~]# dd if=/dev/zero of=/root/flash.img bs=1M count=1000 status=progress
         ```
 
     3. Connect it to the drive `1` (the creation process is described in the previous section):
 
-        ```
+        ```console
         [root@pikvm ~]# kvmd-otgmsd -i 1 --set-rw=1 --set-cdrom=0 --set-image=/root/flash.img
         ```
 
@@ -270,7 +270,7 @@ The full list of options can be found by running `kvmd-otgmsd --help`.
 
     5. View the drive state:
 
-        ```
+        ```console
         [root@pikvm ~]# kvmd-otgmsd -i 1
         Image file:  /root/flash.img
         CD-ROM flag: no
@@ -279,19 +279,19 @@ The full list of options can be found by running `kvmd-otgmsd --help`.
 
     6. To disable the flash drive and view the files on it from the PiKVM, run:
 
-        ```
+        ```console
         [root@pikvm ~]# kvmd-otgmsd -i 1 --unlock --eject
         ```
 
     7. Don't forget to remount the root filesystem to read-only mode:
 
-        ```
+        ```console
         [root@pikvm ~]# ro
         ```
 
     8. You can download the resulting image via SCP or mount it as a loop device on the PiKVM:
 
-        ```
+        ```console
         [root@pikvm ~]# mount -o loop /root/flash.img /mnt
         [root@pikvm ~]# ls /mnt
         [root@pikvm ~]# umount /mnt
@@ -314,7 +314,7 @@ does not recognize it correctly and even refuses to work with USB keyboard and m
 
     1. Switch the filesystem to read-write mode:
 
-        ```
+        ```console
         [root@pikvm ~]# rw
         ```
 
@@ -329,7 +329,7 @@ does not recognize it correctly and even refuses to work with USB keyboard and m
 
     3. Perform reboot:
 
-        ```
+        ```console
         [root@pikvm ~]# reboot
         ```
 
@@ -363,7 +363,7 @@ Once you have the desired USB stick perform the following on the RPi to create t
 
 1. Insert Windows based USB stick into Pi4, generated with Microsoft USB creation tool. SSH to PiKVM as root.
 
-    ```
+    ```console
     # dmesg
     [ 3025.025401] usb-storage 2-1:1.0: USB Mass Storage device detected
     [ 3025.038911] scsi host0: usb-storage 2-1:1.0
@@ -382,13 +382,13 @@ Once you have the desired USB stick perform the following on the RPi to create t
 
 2. mount msd folder as read/write
 
-    ```
+    ```console
     # kvmd-helper-otgmsd-remount rw
     ```
 
 3. Create image of USB data PARTITION to an image file, this will take some time, in this case about 12 minutes (RPi4).
 
-    ```
+    ```console
     # dd if=/dev/sda1 of=/var/lib/kvmd/msd/windows10-2004.bin bs=8M status=progress
     4458545152 bytes (4.5 GB, 4.2 GiB) copied, 736 s, 6.1 MB/s
     531+1 records in
@@ -398,13 +398,13 @@ Once you have the desired USB stick perform the following on the RPi to create t
 
 4. Correct ownership of new image and make sure the website reports the file as complete.
 
-    ```
+    ```console
     # chown kvmd:kvmd /var/lib/kvmd/msd/windows10-2004.bin
     ```
 
 5. Remount msd folder as read only
 
-    ```
+    ```console
     # kvmd-helper-otgmsd-remount ro
     ```
 
@@ -421,7 +421,7 @@ E.g. in a AMI BIOS the boot device is called "Linux File-CD Gadget 0504".
 * Create Ventoy image (on Ubuntu x86 machine) (Unaware of a windows version).
 * There is an assumption that you know basic linux to understand that not all dev devices are named exactly like the below
 
-```
+```console
 # dd if=/dev/zero of=ventoy.img bs=1M count=4700 status=progress
 ```
 
@@ -431,7 +431,7 @@ E.g. in a AMI BIOS the boot device is called "Linux File-CD Gadget 0504".
 * On the Ubuntu machine
 * At the time of this, it was 1.0.51, change to latest version
 
-```
+```console
 # wget https://github.com/ventoy/Ventoy/releases/download/v1.0.51/ventoy-1.0.51-linux.tar.gz
 # tar zxvf ventoy-1.0.51-linux.tar.gz
 # sudo losetup -f ventoy.img
@@ -444,7 +444,7 @@ E.g. in a AMI BIOS the boot device is called "Linux File-CD Gadget 0504".
 
 * Either cp/scp over the .iso you downloaded from the Media tool or use a NFS mount
 
-```
+```console
 sudo cp windows.iso /media/XXX/ventoy
 sudo umount /dev/loopXX 
 # This is going to be different for everyone, please choose the same one you mounted earlier
@@ -456,14 +456,14 @@ ssh into the Ubuntu system (Or whatever OS you are using)
 
 * On PiKVM
 
-```
+```console
 # cd /var/lib/kvmd/msd
 # mount -o remount,rw .
 ```
 
 * On Ubuntu
 
-```
+```console
 # scp ventoy.img root@pikvm:/var/lib/kvmd/msd
 ```
 

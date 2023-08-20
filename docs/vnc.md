@@ -1,8 +1,8 @@
 # VNC
 
-As an alternative to the web interface, a regular VNC client can be used to access to the PiKVM.
+As an alternative to the Web UI, a regular VNC client can be used to access to the PiKVM.
 The main advantage of VNC over the browser is the ability to expand the image to the full screen,
-as well as complete interception of all keyboard keys. In some cases, VNC will be more responsive
+as well as complete interception of all keyboard shortcuts. In some cases, VNC will be more responsive
 than the browser, especially on weak client computers.
 
 !!! warning
