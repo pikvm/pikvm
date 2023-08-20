@@ -19,8 +19,7 @@ These restrictions are set for security reasons.
 
 As mentioned above, the `Web Terminal` runs under user `kvmd-webterm` with disabled `sudo` and password access.
 However, most PiKVM administration commands require the `root` access.
-
-To change the user to root in the `Web Terminal`, type `su -` and then enter the `root` password:
+To obtain it in the `Web Terminal`, type `su -` and then enter the `root` user password:
 
 ```
 [kvmd-webterm@pikvm ~]$ su -
@@ -28,7 +27,7 @@ To change the user to root in the `Web Terminal`, type `su -` and then enter the
 [root@pikvm kvmd-webterm]#
 ```
 
-!!! tip "Disabling the `Web Terminal`"
+??? tip "Disabling the `Web Terminal`"
 
     Sometimes the actual owner of a PiKVM device and the user who is allowed to use it are different people.
     So you may want to disable console access from the Web UI. To do this, use the following:
