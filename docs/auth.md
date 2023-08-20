@@ -1,7 +1,5 @@
 # Authentication
 
-PiKVM OS is based on a regular Linux system, so everything about authorization in this OS is also true for PiKVM.
-
 !!! warning "PiKVM comes with the following default passwords"
 
     * **Linux admin** (SSH, console, etc.): user `root`, password `root`.
@@ -60,6 +58,9 @@ To obtain it in the Web Terminal, type `su -` and then enter the `root` user pas
 This password is used, among the Web UI login, to access the [API](api.md), [VNC](vnc.md) (if enabled)
 and other functions that do not concern the OS shell.
 
+By default, an authentication method similar to Apache Server is configured: users and passwords
+are stored encrypted in the `/etc/kvmd/htpasswd` file. To manage them, there is a utility `kvmd-htpasswd`.
+
 ```console
 [root@pikvm ~]# rw
 [root@pikvm ~]# kvmd-htpasswd set admin
@@ -75,7 +76,7 @@ with different passwords to access the Web UI, but keep in mind that they all ha
 [root@pikvm ~]# kvmd-htpasswd del <user> # Removes/deletes a user
 ```
 
-At the moment there is no method to create any ACL for different KVM users.
+At the moment there is no way to create any ACL for different KVM users.
 
 
 -----
