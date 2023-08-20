@@ -4,7 +4,7 @@ PiKVM OS is based on a regular Linux system, so everything about authorization i
 It comes with the following default passwords:
 
 * **Linux admin** (SSH, console, etc.): user `root`, password `root`.
-* **PiKVM Web Interface, API, VNC...**: user `admin`, password `admin`, no 2FA code.
+* **PiKVM Web Interface, [API](api.md), [VNC](vnc.md)...**: user `admin`, password `admin`, no 2FA code.
 
 **These are two separate entities with independent accounts.**
 
@@ -64,9 +64,9 @@ Please note that `admin` is a name of a default user. It is possible to create s
 with different passwords to access the Web UI, but keep in mind that they all have the same rights:
 
 ```
-# kvmd-htpasswd set <user> # Sets a new user with password
-#
-# kvmd-htpasswd del <user> # Removes/deletes a user
+[root@pikvm ~]# kvmd-htpasswd set <user> # Sets a new user with password
+[root@pikvm ~]# kvmd-htpasswd list # Show the list of users
+[root@pikvm ~]# kvmd-htpasswd del <user> # Removes/deletes a user
 ```
 
 -----
