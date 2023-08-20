@@ -37,12 +37,9 @@ any other setting or functionality needs to be redirected to the [Tailscale supp
 
 If everything is successful, PiKVM will become a member of your VPN network.
 
-!!! warning
-    **Do not update Tailscale if you don't have access to PiKVM without VPN,
-    because on breaking change in Tailscale, you may lose access.**
-
-    Unfortunately sometimes updating the Tailscale client on PiKVM can cause problems.
-    This is happening since Tailscale has weak support of read-only systems.
+!!! warning "Do not update Tailscale if you don't have access to PiKVM without VPN"
+    Unfortunately sometimes updating the Tailscale client can cause problems due breaking changes.
+    This is a reality that has to be taken into account.
 
 
 -----
