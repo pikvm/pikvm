@@ -586,6 +586,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Jennifer Herting
 * Jennifer Rowlett
 * Jeremy Abel
+* Jeremy Combs
 * Jeremy Hines
 * Jerremy Holland
 * Jerry Nall
