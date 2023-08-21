@@ -5,7 +5,7 @@ A very simple and fully functional Raspberry Pi-based KVM (Keyboard-Video-Mouse)
 
 The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](https://docs.pikvm.org) and join to the [Discord Community Chat](https://discord.gg/bpmXfz5) for news, questions and support!
 
-| **[>>> New PiKVM V4 on Kickstarter - Soon on sale <<<](https://www.kickstarter.com/projects/mdevaev/pikvm-v4)** |
+| **[>>> New PiKVM V4 - Buy it right now! <<<](https://pikvm.org/buy)** |
 | ---------------------------------------------------------------------------------------------------------- |
 | <a href=https://www.kickstarter.com/projects/mdevaev/pikvm-v4><img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v4.jpg" alt="drawing"/></a> |
 
