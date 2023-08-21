@@ -7,7 +7,7 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 
 | **[>>> New PiKVM V4 - Buy it right now! <<<](https://pikvm.org/buy)** |
 | ---------------------------------------------------------------------------------------------------------- |
-| <a href=https://www.kickstarter.com/projects/mdevaev/pikvm-v4><img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v4.jpg" alt="drawing"/></a> |
+| <a href=https://pikvm.org/buy><img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v4.jpg" alt="drawing"/></a> |
 
 
 | **[>>> DIY Device Getting Started <<<](#diy-getting-started)** | **[>>> PiKVM V3 Getting Started <<<](#pikvm-v3)** |
