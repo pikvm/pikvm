@@ -400,6 +400,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * bitjoe
 * Bits and Bytes Computers LLC
 * Bjoern Petsch
+* Blindside
 * Blue Frog LLC
 * Bootstrapper - Programmierung erklärt
 * Bosco
@@ -848,6 +849,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Stratagem Solutions Ltd
 * Sven Breckler
 * sudo34
+* SuperHiTech
 * Tango_Echo_Alpha
 * Tarlak Desaydrone
 * TechBear
@@ -893,6 +895,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * William Hooper
 * William Perrin
 * William Stearns
+* Woojin Son
 * xMdb
 * Yanko Kaneti
 * Yaroslav Kulikovskikh
