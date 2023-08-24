@@ -384,6 +384,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * baddog
 * Bao Tin Hoang
 * Bean Co.
+* Bela Bargel
 * Belf Igor
 * Ben Gordon
 * Ben Scott
