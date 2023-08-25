@@ -679,6 +679,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Marcos Wolf
 * Marek Marczykowski-Górecki
 * Marius
+* Mariusz Stępień
 * Mar. Balske
 * Mark Farrell
 * Mark Gilbert
