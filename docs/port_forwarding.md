@@ -1,7 +1,7 @@
 # Port forwarding
 
 If you need to make PiKVM accessible from Internet,
-the easiest way to achieve this by forwarding a port on the router.
+the easiest way to achieve this is by forwarding a port on the router.
 In this case, an external (global) IP address must be assigned to the router.
 This service is provided by the ISP.
 
@@ -20,7 +20,7 @@ This service is provided by the ISP.
     * **[Set strong passwords and enable two-factor authorization](auth.md)
         before opening access to PiKVM from the Internet!**
     * It is strongly recommended to obtain a valid HTTPS certificate, for example via [Let's Encrypt](letsencrypt.md).
-    * A good practice is using a custom port number instead of `443` from the Internet side, for example `14438` to avoid common port scanners.
+    * A good practice is using a custom port number instead of `443` from the Internet side, for example `14438`, to avoid common port scanners.
     * If you still decide to use the `443` port number, you may want to forward port `80` to get a convenient redirect.
 
 Port forwarding is a powerful and convenient tool, but remember that security depends entirely on your configuration.
