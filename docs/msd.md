@@ -96,12 +96,13 @@ Here some options:
        of desired size (512MB in this example) and format it to FAT32:
 
         ```console
-        [root@pikvm ~]# dd if=/dev/zero of=/var/lib/kvmd/flash.img bs=1M count=512 status=progress
+        [root@pikvm ~]# dd if=/dev/zero of=/var/lib/kvmd/msd/flash.img bs=1M count=512 status=progress
         [root@pikvm ~]# loop=$(losetup -f)
-        [root@pikvm ~]# echo -e 'o\nn\np\n1\n\n\nt\nc\nw\n' | fdisk /var/lib/kvmd/flash.img
-        [root@pikvm ~]# losetup -P $loop /var/lib/kvmd/flash.img
+        [root@pikvm ~]# echo -e 'o\nn\np\n1\n\n\nt\nc\nw\n' | fdisk /var/lib/kvmd/msd/flash.img
+        [root@pikvm ~]# losetup -P $loop /var/lib/kvmd/msd/flash.img
         [root@pikvm ~]# mkfs.vfat ${loop}p1
         [root@pikvm ~]# losetup -d $loop
+        [root@pikvm ~]# chmod 666 *.img
         ```
 
     3. Remount internal storage back to safe read-only mode:
