@@ -105,6 +105,8 @@ Here some options:
         [root@pikvm ~]# chmod 666 /var/lib/kvmd/msd/*.img
         ```
 
+    2a. You may need to toggle this setting: System Menu -> Connect main usb to server to off, then back to on to get this to work correctly
+    
     3. Remount internal storage back to safe read-only mode:
 
         ```console
