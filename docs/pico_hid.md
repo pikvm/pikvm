@@ -5,6 +5,14 @@
 The Pico HID is a part of DIY PiKVM V1 platform and performs keyboard and mouse emulation.
 It has excellent compatibility, and by default emulates USB, including two mouse modes: absolute and relative.
 
+Full list of features:
+
+| Feature | Enabled by default |
+|---------|--------------------|
+| USB Keyboard, absolute & relative mouse | Yes |
+| USB Absolute Mouse for Windows 95 | |
+| PS/2 Keyboard & mouse | |
+
 The scope of the Pico HID is not limited to V1 platform, it can also be used with V2 and even V3 platform
 if you need to emulate a PS/2 keyboard and mouse or use [legacy multiport KVM switch](https://github.com/pikvm/pikvm/issues/7)
 which does not fully support USB standards.
