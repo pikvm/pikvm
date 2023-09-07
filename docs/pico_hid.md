@@ -43,6 +43,54 @@ Connect all the parts according to the scheme:
     <img src="basic_scheme.png" />
 
 
+### PS/2 Keyboard & Mouse
+
+!!! warning
+    PS/2 is not implemented now. Soon (r) (c) (tm)
+
+If you need PS/2 keyboard and mouse support, you will need a few additional components.
+The soldering skill will also not be superfluous.
+
+* *x1* 3.3V/5V bi-directional logic level shifter [like this](https://learn.sparkfun.com/tutorials/bi-directional-logic-level-converter-hookup-guide/).
+* Optional: *x2* PS/2 cable with male connector (can be cut off from the old keyboard and mouse).
+
+Connect all parts to the Pico HID, and don't forget to enable PS/2 mode support as described in the next paragraph.
+
+??? example "Level shifter and PS/2 wiring"
+
+    Make sure that the level shifter pinout matches the scheme, and connect everything according to the [Pico pinout](https://pico.pinout.xyz).
+
+    ```
+                     _________________
+                    |                 |
+    Pico GP11 ______| LV1         HV1 |______ PS/2 keyboard data
+    Pico GP12 ______| LV2         HV2 |______ PS/2 keyboard clock
+    Pico GP13 ______| LV          HV  |______ PS/2 5V
+    Pico  GND ______| GND         GND |______ PS/2 GND
+    Pico GP14 ______| LV3         HV3 |______ PS/2 mouse data
+    Pico GP15 ______| LV4         HV4 |______ PS/2 mouse clock
+                    |_________________|
+
+    ```
+
+    You can take the 5V power line from one of the PS/2, for example from the keyboard,
+    or from both at once, but make sure with a multimeter that it is the same line
+    on both PS/2 female connectors.
+
+    <img src="ps2_pinout.png" />
+
+    PS/2 female socket pinout of the keyboard and mouse on the motherboard is the same.
+    A purple socket is usually responsible for the keyboard, and a green one for the mouse.
+    If your motherboard only have one port, it's probably universal and can be used either
+    for the keyboard or for the mouse. Most likely, it is painted in two colors at once.
+
+    Use a multimeter to determine the purpose of the wires in your PS/2 cables.
+
+    A good idea is to mount the level shifter on top of the Pico, as in this photo:
+
+    <img src="ps2_level_shifter_soldering.png" />
+
+
 -----
 ## Configuring the HID modes
 
@@ -66,9 +114,6 @@ some GPIOs with Ground (`GND`) lines.
 
 !!! example
     To enable Windows 98 absolute mouse, just connect pin `GP9` to any `GND` [on the Pico](https://pico.pinout.xyz).
-
-!!! warning
-    PS/2 is not implemented now. Soon (r) (c) (tm)
 
 
 -----
