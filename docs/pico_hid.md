@@ -42,21 +42,16 @@ Connect all the parts according to the scheme:
 ??? example "Electrical schematic diagram for advanced users"
     <img src="basic_scheme.png" />
 
+??? success "Optional: PS/2 Keyboard & Mouse"
 
-### PS/2 Keyboard & Mouse
+    !!! warning
+        PS/2 is not implemented now. Soon (r) (c) (tm)
 
-!!! warning
-    PS/2 is not implemented now. Soon (r) (c) (tm)
+    If you need PS/2 keyboard and mouse support, you will need a few additional components.
+    The soldering skill will also not be superfluous.
 
-If you need PS/2 keyboard and mouse support, you will need a few additional components.
-The soldering skill will also not be superfluous.
-
-* *x1* 3.3V/5V bi-directional logic level shifter [like this](https://learn.sparkfun.com/tutorials/bi-directional-logic-level-converter-hookup-guide/).
-* Optional: *x2* PS/2 cable with male connector (can be cut off from the old keyboard and mouse).
-
-Connect all parts to the Pico HID, and don't forget to enable PS/2 mode support as described in the next paragraph.
-
-??? example "Level shifter and PS/2 wiring"
+    * *x1* 3.3V/5V bi-directional logic level shifter [like this](https://learn.sparkfun.com/tutorials/bi-directional-logic-level-converter-hookup-guide/).
+    * Optional: *x2* PS/2 cable with male connector (can be cut off from the old keyboard and mouse).
 
     Make sure that the level shifter pinout matches the scheme, and connect everything according to the [Pico pinout](https://pico.pinout.xyz).
 
@@ -88,7 +83,9 @@ Connect all parts to the Pico HID, and don't forget to enable PS/2 mode support 
 
     A good idea is to mount the level shifter on top of the Pico, as in this photo:
 
-    <img src="ps2_level_shifter_soldering.png" />
+    <img src="ps2_level_shifter_soldering.png" width="300" />
+
+    !!! note "Don't forget to enable PS/2 mode support as described in the next paragraph"
 
 
 -----
