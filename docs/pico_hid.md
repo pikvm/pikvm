@@ -1,7 +1,5 @@
 # Raspberry Pi Pico HID
 
-!!! warning "This page is under construction"
-
 The Pico HID is a part of DIY PiKVM V1 platform and performs keyboard and mouse emulation.
 It has excellent compatibility, and by default emulates USB, including two mouse modes: absolute and relative.
 
@@ -18,6 +16,8 @@ if you need to emulate a PS/2 keyboard and mouse or use [legacy multiport KVM sw
 which does not fully support USB standards.
 
 This page explains how to build, connect and use all the features of the Pico HID.
+
+!!! note "KVMD >= 3.241 is required for the Pico HID"
 
 
 -----
@@ -50,10 +50,9 @@ Connect all the parts according to the scheme:
 ??? example "Electrical schematic diagram for advanced users"
     <img src="basic_scheme.png" />
 
-??? success "Optional: PS/2 Keyboard & Mouse"
+### PS/2 Keyboard & Mouse
 
-    !!! warning
-        PS/2 is not implemented now. Soon (r) (c) (tm)
+??? example "Additional steps for PS/2 support"
 
     If you need PS/2 keyboard and mouse support, you will need a few additional components.
     The soldering skill will also not be superfluous.
@@ -142,8 +141,6 @@ Connect the Pico HID to the host computer using the USB cable.
 If you are building PiKVM V1, then no further action with the Pico HID is required.
 
 If you are making the Pico HID for V2 or V3, add the following lines to the PiKVM configuration and reboot it.
-
-!!! note "KVMD >= 3.241 is required for the Pico HID"
 
 * `/boot/config.txt`
     ```ini
