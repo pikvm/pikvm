@@ -415,7 +415,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "My computer does not recognize USB of PiKVM V2+ at all"
     * Make sure that you have used the correct USB cable with DATA lines to connect the OTG port for the Raspberry to the computer. You may have decided to use a USB hub instead of a Y-cable and **it won't work**. Use good cables and follow the instructions :)
-    * In rare cases, some very buggy BIOSes do not like HID and Mass Storage in one USB device. You can either [disable Mass Storage](msd.md#disable-msd), or use an [Arduino HID](arduino_hid.md) to physically separate them.
+    * In rare cases, some very buggy BIOSes do not like HID and Mass Storage in one USB device. You can either [disable Mass Storage](msd.md#disable-msd), or use the [Pico HID](pico_hid.md) to physically separate them.
 
 
 ??? question "BIOS/UEFI does not recognize USB of V2+, but computer does"
@@ -440,14 +440,14 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "My mass storage drive works (I can boot an image from PiKVM V2+), but my keyboard/mouse does not"
-    In rare cases, some very buggy BIOSes does not like HID and Mass Storage in one USB device. You can either [disable Mass Storage](msd.md#disable-msd), or use an [Arduino HID](arduino_hid.md) to physically separate them.
+    In rare cases, some very buggy BIOSes does not like HID and Mass Storage in one USB device. You can either [disable Mass Storage](msd.md#disable-msd), or use the [Pico HID](pico_hid.md) to physically separate them.
 
 
 ??? question "Buggy absolute mouse on Windows 98 as managed server"
     How to fix:
 
     * [V2+](mouse.md#fixing-the-absolute-mouse-on-windows-98).
-    * [Arduino HID](arduino_hid.md#fixing-the-usb-absolute-mouse-on-windows-98).
+    * [Pico HID](pico_hid.md#configuring-the-hid-modes).
 
 
 ??? question "The mouse does not work with NVR/DVR CCTV"
