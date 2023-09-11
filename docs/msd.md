@@ -104,15 +104,16 @@ Here some options:
         [root@pikvm ~]# losetup -d $loop
         [root@pikvm ~]# chmod 666 /var/lib/kvmd/msd/*.img
         ```
-
-    2a. You may need to toggle this setting: PiKVM System Menu -> Connect main usb to server to off, then back to on to get this to work correctly
-    
+   
     3. Remount internal storage back to safe read-only mode:
 
         ```console
         [root@pikvm ~]# kvmd-helper-otgmsd-remount ro
         ```
-
+!!! note
+    For V2 you will need to reboot your target system
+    For v3/v4 you will need to toggle the OTG usb, System Menu -> Connect Main USB to server off then on
+    
 ??? example "Step by step: Creating an image on a local macOS"
 
     1. Open `Disk Utility`.
