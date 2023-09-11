@@ -110,6 +110,7 @@ Here some options:
         ```console
         [root@pikvm ~]# kvmd-helper-otgmsd-remount ro
         ```
+        
 !!! note
     For V2 you will need to reboot your target system
     For v3/v4 you will need to toggle the OTG usb, System Menu -> Connect Main USB to server off then on
