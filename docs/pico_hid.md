@@ -1,6 +1,6 @@
 # Raspberry Pi Pico HID
 
-The Pico HID is a part of DIY PiKVM V1 platform and performs keyboard and mouse emulation.
+The Pico HID is a part of DIY PiKVM V1 platform that performs keyboard and mouse emulation.
 It has excellent compatibility, and by default emulates USB, including two mouse modes: absolute and relative.
 
 Full list of features:
@@ -11,8 +11,8 @@ Full list of features:
 | USB Absolute Mouse for Windows 95 | |
 | PS/2 Keyboard & mouse | |
 
-The scope of the Pico HID is not limited to V1 platform, it can also be used with V2 and even V3 platform
-if you need to emulate a PS/2 keyboard and mouse or use [legacy multiport KVM switch](https://github.com/pikvm/pikvm/issues/7)
+The scope of the Pico HID is not limited to V1 platform, it can also be used with V2 and even V3 platform,
+if you need to emulate a PS/2 keyboard and mouse or use a [legacy multiport KVM switch](https://github.com/pikvm/pikvm/issues/7)
 which does not fully support USB standards.
 
 This page explains how to build, connect and use all the features of the Pico HID.
@@ -24,25 +24,25 @@ This page explains how to build, connect and use all the features of the Pico HI
 ## Making the Pico HID
 
 If you are building the PiKVM V1, then all the necessary components should already be at your fingertips.
-If you are making the Pico HID for V2 or V3, then here is what you will need:
+If you are making the Pico HID for V2 or V3, then here is all that you will need:
 
 * Raspberry Pi Pico board with soldered pins. [An official green board](https://pico.pinout.xyz) is recommended.
 * *x1* USB-A to Micro-USB cable.
 * *x10* dupont wires female-female.
 * Optional: *x1* 1N5819 diode. But any similar one will do.
 
-!!! tip "Tip for soldering guru"
-    If you know how to solder, you can buy the Pico without pins and no dupond wires, and just solder everything.
+!!! tip "Tip for soldering gurus"
+    If you know how to solder, you can buy the Pico without pins and just solder everything without needig the dupond wires.
 
 !!! warning
-    The diode is needed to provide the power to the Pico HID regardless of the host state,
-    and prevents backpowering problem. It will allow you to keep the keyboard buttons pressed
-    during the host power cycle, which is important for MacOS to get into the boot menus, for example.
+    The diode is needed to provide power to the Pico HID regardless of the host state,
+    which prevents the backpowering problem. It will allow you to keep the keyboard buttons pressed
+    during the host power cycle, which is, for example, important for MacOS to get into the boot menu.
 
     Do not connect the red wire (the `VSYS (Pico) -> 5V (Pi)` line) without a diode.
-    If you can't find the diode, don't connect this wire at all.
+    If you can't find a diode, don't connect this wire at all.
 
-Connect all the parts according to the scheme:
+Connect all the parts according to this scheme:
 
 ??? example "Simple wiring diagram"
     <img src="basic_breadboard.png" />
@@ -55,10 +55,10 @@ Connect all the parts according to the scheme:
 ??? example "Additional steps for PS/2 support"
 
     If you need PS/2 keyboard and mouse support, you will need a few additional components.
-    The soldering skill will also not be superfluous.
+    Soldering skills will also come in handy.
 
     * *x1* 3.3V/5V bi-directional logic level shifter [like this](https://learn.sparkfun.com/tutorials/bi-directional-logic-level-converter-hookup-guide/).
-    * Optional: *x2* PS/2 cable with male connector (can be cut off from the old keyboard and mouse).
+    * Optional: *x2* PS/2 cable with male connector (can be salvaged from the an keyboard or mouse).
 
     Make sure that the level shifter pinout matches the scheme, and connect everything according to the [Pico pinout](https://pico.pinout.xyz).
 
@@ -76,15 +76,15 @@ Connect all the parts according to the scheme:
     ```
 
     You can take the 5V power line from one of the PS/2, for example from the keyboard,
-    or from both at once, but make sure with a multimeter that it is the same line
-    on both PS/2 female connectors.
+    or from both at once, but use a multimeter to make sure that both PS/2 female 
+    connectors have the same line.
 
     <img src="ps2_pinout.png" />
 
-    PS/2 female socket pinout of the keyboard and mouse on the motherboard is the same.
-    A purple socket is usually responsible for the keyboard, and a green one for the mouse.
-    If your motherboard only have one port, it's probably universal and can be used either
-    for the keyboard or for the mouse. Most likely, it is painted in two colors at once.
+    PS/2 female socket pinout on the motherboard is the same for the keyboard and the mouse.
+    A purple socket usually corresponds to the keyboard, and a green one to the mouse.
+    If your motherboard only has one port, it's probably universal and can be used for both
+    the keyboard and the mouse. Most likely, it will be painted both colors.
 
     Use a multimeter to determine the purpose of the wires in your PS/2 cables.
 
@@ -101,7 +101,7 @@ Connect all the parts according to the scheme:
 By default, Pico HID emulates a USB keyboard and an absolute or relative mouse
 (read [here](mouse.md) about the difference between mouse modes).
 For most cases, nothing needs to be changed here. However, if you need something special
-(like Windows 98 support), you can do it without reflashing on the current firmware.
+(like Windows 98 support), you can do it without reflashing the current firmware.
 
 To achieve this, the Pico HID uses a runtime configuration, which is set by connecting
 some GPIOs with Ground (`GND`) lines.
@@ -109,8 +109,8 @@ some GPIOs with Ground (`GND`) lines.
 | Pin name on the Pico board | Description |
 |----------|-------------|
 | `GP2`    | Enable PS/2 keyboard & mouse support (see below). |
-| `GP3`    | Prefer the PS/2 keyboard over USB when turning on the HID (if PS/2 enabled). |
-| `GP4`    | Prefer the PS/2 mouse over USB (if PS/2 enabled) |
+| `GP3`    | Prefer the PS/2 keyboard over USB when turning on the HID (if PS/2 is enabled). |
+| `GP4`    | Prefer the PS/2 mouse over USB (if PS/2 is enabled) |
 | `GP6`    | Disable USB keyboard & mouse support. This is useful if you only want to use PS/2. |
 | `GP7`    | Enable the special USB absolute mouse for Windows 98. |
 | `GP8`    | Prefer the relative USB mouse over the absolute one. |
@@ -126,11 +126,12 @@ some GPIOs with Ground (`GND`) lines.
 To upload the firmware to Pico HID, you can use any computer with a USB port.
 
 1. [Download](https://github.com/pikvm/kvmd/releases) the latest release of the firmware. The file is called `pico-hid.uf2`.
-2. Press the white button on the Pico board and plug it using USB cable to the computer.
-3. Release the button.
-4. The Pico board appears as a flash drive on the host computer.
-5. Copy the `pico-hid.uf2` file to this flash drive.
-6. Safely disconnect the USB device.
+2. Press and hold the white button on the Pico board.
+3. While still holding the button, plug it in the computer using a USB cable.
+4. Release the button.
+5. The Pico board appears as a flash drive on the host computer.
+6. Copy the `pico-hid.uf2` file to this flash drive.
+7. Safely eject the USB device.
 
 
 -----
@@ -138,9 +139,9 @@ To upload the firmware to Pico HID, you can use any computer with a USB port.
 
 Connect the Pico HID to the host computer using the USB cable.
 
-If you are building PiKVM V1, then no further action with the Pico HID is required.
+If you are building PiKVM V1, no further action with the Pico HID is required.
 
-If you are making the Pico HID for V2 or V3, add the following lines to the PiKVM configuration and reboot it.
+If you are making the Pico HID for V2 or V3, add the following lines to the PiKVM configuration and reboot it:
 
 * `/boot/config.txt`
     ```ini
@@ -170,17 +171,17 @@ If you are making the Pico HID for V2 or V3, add the following lines to the PiKV
 !!! warning
     **This section is intended for advanced users of the [legacy Arduino HID](arduino_hid.md).**
 
-    It may seem tempting, but **don't to use the Arduino HID for new PiKVM builds**
+    It may seem tempting, but **don't to use the Arduino HID for the new PiKVM builds**
     just because you have it at your fingertips. Connecting and flashing Arduino
-    is much more time consuming than Pico. In addition, different Arduino board works
-    with different voltages, may or may not have SPI (for the Pico, we use SPI to free up
-    the UART on Raspberry Pi for the console and other useful things), etc.
+    is much more time consuming than Pico. In addition, different Arduino board work
+    with different voltages, they may or may not have SPI (for the Pico, we use SPI to 
+    free up the UART on Raspberry Pi for the console and other useful things), etc.
 
     Using the Pico HID is the recommended fast and standard way in the PiKVM world.
 
 The Pico HID can be used to replace the [legacy Arduino HID](arduino_hid.md).
-Moreover, it can use both Serial (UART) port and SPI. The connection scheme is also noticeably simplified,
-getting rid of the transistor for the Reset line and level shifter for RX/TX (MOSI/MISO).
+It can use both Serial (UART) port and the SPI. The connection scheme is also much simpler,
+getting rid of the transistor for the Reset line and the level shifter for RX/TX (MOSI/MISO).
 
 ??? example "For the Arduino HID over SPI"
     Throw away the Reset transistor and level shifter, and follow this guide
@@ -190,7 +191,7 @@ getting rid of the transistor for the Reset line and level shifter for RX/TX (MO
     Get rid of the transistor and level shifter, and follow this guide
     from the very beginning, but the schemes and configs will be slightly different.
 
-    * The `GP22` on the Pico is connected directly to the `GND`. This enables UART mode instead of default SPI.
+    * The `GP22` on the Pico is connected directly to the `GND`. This enables UART mode instead of the default SPI.
 
     * In the good old PiKVM V0, `GPIO4` [on the Raspberry Pi](https://pinout.xyz) was used for the Reset line.
       Now we recommend to use `GPIO25` for consistency reasons.
