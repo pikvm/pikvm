@@ -37,27 +37,28 @@ This is not the main case of using PiKVM since you still need it to pair with a 
 
     ```
     # mkdir /etc/systemd/system/bluetooth.service.d
-    # cat << EOF > /etc/systemd/system/bluetooth.service.d/override.conf
+    # nano /etc/systemd/system/bluetooth.service.d/override.conf
+    # more /etc/systemd/system/bluetooth.service.d/override.conf
     [Service]
     ExecStart=
     ExecStart=/usr/lib/bluetooth/bluetoothd --noplugin=*
-    EOF
     # systemctl enable bluetooth
     # systemctl enable raspberrypi-btuart
     ```
-
-5. Override `kvmd` service:
+    You should get some output when enabling the service
+   
+6. Override `kvmd` service:
 
     ```
     # mkdir /etc/systemd/system/kvmd.service.d
-    # cat << EOF > /etc/systemd/system/kvmd.service.d/override.conf
+    # nano /etc/systemd/system/kvmd.service.d/override.conf
+    # more /etc/systemd/system/kvmd.service.d/override.conf
     [Service]
     AmbientCapabilities=CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_ADMIN CAP_SETUID CAP_SETGID CAP_CHOWN
     CapabilityBoundingSet=CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_ADMIN CAP_SETUID CAP_SETGID CAP_CHOWN
-    EOF
     ```
 
-6. Add following lines to `/etc/kvmd/override.yaml`:
+7. Add following lines to `/etc/kvmd/override.yaml`:
 
     ```yaml
     kvmd:
@@ -65,9 +66,9 @@ This is not the main case of using PiKVM since you still need it to pair with a 
             type: bt
     ```
 
-7. Perform `reboot`.
+8. Perform `reboot`.
 
-8. To reverse, uncomment lines from Step 2 and remove lines in Step 6, and `reboot`.
+9. To reverse, uncomment lines from Step 2 and remove lines in Step 6, and `reboot`.
 
 
 ## Using Bluetooth HID
