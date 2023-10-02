@@ -16,7 +16,7 @@
         1. There is nothing more reliable than wired Ethernet, so it's better to use the **cable**. But who are we to stop you... :)
         2. Adding FIRSTBOOT=1 or FIRSTBOOT=1 will erase the msd partition, if used afterwords as a means of switching wifi networks, do not include this option. Instead, use different supplicant files for each wifi SSID, mv files to the supplicant dir as needed and reboot.
         3. `pikvm.txt` will be removed once its been used. You will need to recreate it again if you did not provide the correct info
-        4. Use WPA2, if still not able to connect, check if your router is set for WPA3, an easy fix is to set your router to WPA2.
+        4. Use WPA2, if still not able to connect, check if your router is set for WPA3 only, an easy fix is to set your router to WPA2.
 
     If you want to connect PiKVM to a Wi-Fi network, you need to tell the device ESSID and password before first boot.
     To do this, mount the first partition of the memory card (FAT32) and edit or make the `pikvm.txt` file there.
