@@ -84,6 +84,8 @@ In rare cases, WebRTC may not work. Here some common tips:
 
 * Another option to try is if you have both wifi and eth connected, disable wifi `rfkill list wifi` then `rfkill block X` where is a number that shows in the output. Reason: Arch Linux will choose to route all outgoing packets out wifi by default.
 
-* There are some linux distro's that require more work to be able to use H.264 (WEBRTC MODE), this may include any RedHat variant.
+* There are some Linux distro's that require more work to be able to use H.264 (WEBRTC MODE), this may include any RedHat or Debian variant.
 
-    * For instance: On Fedora you can install the rpmfusion repos, then use the `chromium-freeworld` package instead of `chromium`
+    * On Fedora you can install the rpmfusion repos, then use the `chromium-freeworld` package instead of `chromium`
+
+    * If on Firefox, make sure the OpenH264 Plugin both exists and is enabled (known issue on Debian GNU/Linux). Press `Ctrl+Shift+A` to open the Add-ons Manager, then press `Plugins`. You should see *OpenH264 Video Codec provided by Cisco Systems, Inc.*. Make sure it is enabled by pressing the "more options" button (3 horizontal dots), then pressing `Always Activate`.

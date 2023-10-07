@@ -411,6 +411,10 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     This is due to a driver issue. A possible resolution can be found [here](https://github.com/pikvm/pikvm/issues/577#issuecomment-998713201).
 
 
+??? question "Firefox ESR from the Debian repo shows the black screen in H.264 mode"
+    Make sure the OpenH264 Plugin both exists and is enabled (known issue on Debian GNU/Linux). Press `Ctrl+Shift+A` to open the Add-ons Manager, then press `Plugins`. You should see *OpenH264 Video Codec provided by Cisco Systems, Inc.*. Make sure it is enabled by pressing the "more options" button (3 horizontal dots), then pressing `Always Activate`.
+
+
 ## USB problems (keyboard, mouse, mass storage, etc)
 
 ??? question "My computer does not recognize USB of PiKVM V2+ at all"
