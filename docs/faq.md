@@ -5,6 +5,13 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ## Common questions
 
+??? question "RPi5 compatible questions"
+    Is the Rpi5 case compatible? - It is not case compatible
+    Is the RPi5 going to be able to support the HAT? - Due to the form factor changing, it will not be compatible
+    Is the RPi5 going to be able to run PiKVM? - At this time, it is not. It will run the software but the hardware is what makes it function
+    Is the RPi5 going to ever run PiKVM? - At this time, no. This is due to a lack of hardware encoding/decoding, this answer might change due to development changes
+    If PiKVM software does work, will you support the dual CSI slots? - This is dependant on the above answer and what additional latency is introduced
+
 ??? question "Can I connect multiple servers to a single PiKVM?"
     Yes, but it requires additional work to set up. See [this page](multiport.md).
 
