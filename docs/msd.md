@@ -102,9 +102,9 @@ Here some options:
         [root@pikvm ~]# losetup -P $loop /var/lib/kvmd/msd/flash.img
         [root@pikvm ~]# mkfs.vfat ${loop}p1
         [root@pikvm ~]# losetup -d $loop
-        [root@pikvm ~]# chmod 666 /var/lib/kvmd/msd/*.img
+        [root@pikvm ~]# chmod 666 /var/lib/kvmd/msd/flash.img
         ```
-   
+
     3. Remount internal storage back to safe read-only mode:
 
         ```console
@@ -112,8 +112,9 @@ Here some options:
         ```
         
 !!! note
-    For V2 you will need to reboot your target system
-    For v3/v4 you will need to toggle the OTG usb, System Menu -> Connect Main USB to server off then on
+
+    * For PiKVM V3+ you'll need to toggle the USB connection using the Web UI: Switch `System -> Connect Main USB` to off, then on.
+    * For V2 you'l need to reboot the target host.
     
 ??? example "Step by step: Creating an image on a local macOS"
 
