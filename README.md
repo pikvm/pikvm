@@ -410,6 +410,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Branden Shaulis
 * Brandon Daniels
 * Brian Moses
+* Brian T Mulcahy
 * Brian Vecchiarelli
 * Brian White
 * Bruno Gomes
@@ -495,6 +496,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * DogeLabs
 * Dominic Phoon
 * Dominik Klonowski
+* Edmon Abdul Nur
 * Egan Ford
 * Elani Ferri
 * Elliot Woo
@@ -700,6 +702,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Matt Kane
 * Matthew Cameron
 * Mauricio Allende
+* Max Evans
 * Mecky
 * Mehmet Aydoğdu
 * Michael Bartholomew
@@ -792,6 +795,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Richard Freemantle
 * Richard Michael
 * Rico Cantrell
+* Rob
 * Rob Holden
 * Rob Tongue
 * Robert Klauco
@@ -842,6 +846,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Stefan Stemmer
 * Stefan Vaillant
 * Stephan Schmidt
+* Stephen
 * Stephen Hocking
 * Steve Jones
 * Steve Kerr
