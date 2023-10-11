@@ -20,7 +20,7 @@ Download the appropriate SD card image. Select it based on the board, platform, 
 * **DIY - Raspberry Pi Zero 2 W, V2 platform:**
     * [For HDMI-CSI bridge](https://files.pikvm.org/images/v2-hdmi-zero2w-latest.img.xz) <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmi-zero2w-latest.img.xz.sha1)</sub>
 * **DIY - Raspberry Pi Zero W (legacy), V2 platform:**
-    * [For HDMI-CSI bridge](https://files.pikvm.org/images/legacy/v2-hdmi-zerow-20211120.img.xz) <sub>- [*sha1*](https://files.pikvm.org/images/legacy/v2-hdmi-zerow-20211120.img.xz.sha1)</sub>
+    * Due to upstream EOL'ing this device and due to using very old unsecure kernals, we are no longer offering this as an option, please join [Discord](https://discord.gg/bpmXfz5) and ask about this in #unofficial_ports channel
 
 Pre-compiled images are only available for the Raspberry Pi 4 and Zero (2) W. For all other cases, you will need to build the operating system yourself. But don't worry, it's [very simple](building_os.md).
 
