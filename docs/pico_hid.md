@@ -25,29 +25,24 @@ This page explains how to build, connect and use all the features of the Pico HI
 -----
 ## Making the Pico HID
 
-If you are building the [PiKVM V1](v1.md), then all the necessary components should already be at your fingertips.
-If you are making the Pico HID for [V2](v2.md) or [V3](v3.md), then here is all that you will need:
+If you are building [PiKVM V1](v1.md), then the hardware should already be assembled. Skip this step unless you need PS/2 support.
 
-{!_diy_parts_pico_hid.md!}
+But if you are making the Pico HID for [V2](v2.md) or [V3](v3.md), then follow this guide:
 
-!!! tip "Tip for soldering gurus"
-    If you know how to solder, you can buy the Pico without pins and just solder everything without needig the dupond wires.
+??? example "The Pico HID from scratch"
 
-!!! warning
-    The diode is needed to provide power to the Pico HID regardless of the host state,
-    which prevents the backpowering problem. It will allow you to keep the keyboard buttons pressed
-    during the host power cycle, which is, for example, important for MacOS to get into the boot menu.
+    Parts list:
 
-    Do not connect the red wire (the `VSYS (Pico) -> 5V (Pi)` line) without a diode.
-    If you can't find a diode, don't connect this wire at all.
+    {!_diy_parts_pico_hid.md!}
 
-Connect all the parts according to this scheme:
+    Connect all the parts according to this scheme:
 
-??? example "Simple wiring diagram"
-    <img src="basic_breadboard.png" />
+    ??? example "Simple wiring diagram"
+        <img src="basic_breadboard.png" />
 
-??? example "Electrical schematic diagram for advanced users"
-    <img src="basic_scheme.png" />
+    ??? example "Electrical schematic diagram for advanced users"
+        <img src="basic_scheme.png" />
+
 
 ### PS/2 Keyboard & Mouse
 
@@ -129,7 +124,7 @@ To upload the firmware to Pico HID, you can use any computer with a USB port.
 2. Press and hold the white button on the Pico board.
 3. While still holding the button, plug it in the computer using a USB cable.
 4. Release the button.
-5. The Pico board appears as a flash drive on the host computer.
+5. The Pico board appears as a flash drive on your computer.
 6. Copy the `pico-hid.uf2` file to this flash drive.
 7. Safely eject the USB device.
 
@@ -137,7 +132,7 @@ To upload the firmware to Pico HID, you can use any computer with a USB port.
 -----
 ## The final steps
 
-Connect the Pico HID to the host computer using the USB cable.
+Connect the Pico HID to a computer using the USB cable.
 
 If you are building PiKVM [V1](v1.md), no further action with the Pico HID is required.
 

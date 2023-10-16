@@ -13,11 +13,11 @@
 1. Optional: [setting up Wi-Fi](on_boot_config.md) before booting.<br>
     *There is nothing more reliable than wired Ethernet, so it's better to use a cable.*
 
-2. Power up the device.
+2. **Power up the device.**
 
-3. Do not turn off the device until it's fully booted for the first time.<br>
+3. **Do not turn off the device until it's fully booted for the first time.**<br>
     *After turning on the power, PiKVM OS will generate unique SSH keys and certificates
-    and perform all necessary operations on the memory card.*
+    and perform all necessary operations on the memory card. It takes a few minutes.*
 
 
 -----
@@ -52,14 +52,23 @@ For future examples, let's assume that your PiKVM has received the address **192
 
     **The default `root` password is `root`.**
 
-??? example "OPTIONAL: Update PiKVM software"
-    This part is not nessessary for a working OOB experience and should only be performed if you are physically at the PiKVM to recover it, you however, may benefit from performing the below actions. These are the instructions:
+PiKVM OS often receives software updates. After installation, it makes sense to update the OS.
+It's best to do this now, when you have physical access to the device, because if something goes wrong
+(for example, the power goes out during the update), you will need to [reflash the memory card](flashing_os.md).
 
-    ```
-    rw
-    pacman -Syu
-    reboot
-    ```
+!!! tip "Obtaining root access"
+    * If you have logged in via SSH, then most likely you are already `root`.
+    * To get `root` in the Web Terminal, use command `su -` and enter the root password.
+
+To update, run these commands under the `root` user:
+
+```console
+[root@pikvm]# rw
+[root@pikvm]# pacman -Syu
+[root@pikvm]# reboot
+```
+
+**And then, after all...**
 
 {!_passwd.md!}
 
@@ -67,11 +76,7 @@ For future examples, let's assume that your PiKVM has received the address **192
 -----
 ## Configuring PiKVM
 
-Most of the PiKVM settings are done through configuration files. All configuration changes must be made from under the `root` user (= the administrator).
-
-!!! tip "Obtaining root access"
-    * If you have logged in via SSH, then most likely you are already `root`.
-    * To get `root` in the Web Terminal, use command `su -` and enter the root password.
+Most of the PiKVM settings are done through configuration files. All configuration changes must be made from under the `root` user (i.e. the administrator).
 
 The PiKVM memory card is mounted in read-only mode. It protects the filesystem from damage in case of sudden power outage. To edit any files and make changes, it is necessary to remount the file system to the read-write mode.
 
@@ -83,11 +88,13 @@ The PiKVM memory card is mounted in read-only mode. It protects the filesystem f
 In this handbook, you will often find instructions for editing configuration files. The simplest and most beginner-friendly text editor is `nano`, but you can also use `vim`.
 
 ??? example "Editing files in the Web Terminal"
-    ```
-    $ su -
-    # rw
-    # nano /etc/kvmd/override.yaml
-    # ro
+    ```console
+    [kvmd-webterm@pikvm ~]$ su -
+    [root@pikvm ~]# rw
+    [root@pikvm ~]# nano /etc/kvmd/override.yaml
+    [root@pikvm ~]# ro
+    [root@pikvm ~]# exit
+    [kvmd-webterm@pikvm ~]$
     ```
 
 -----
