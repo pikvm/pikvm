@@ -1,6 +1,6 @@
 ### Some example wiring setups
 
-# CSI (Geekworm) (Any brand will be the same)
+# HDMI-CSI
 <img src="csi_wiring.jpg" alt="drawing">
 
 List of items: (WARNING! Links may dissappear or no longer work, this just gives you an idea)
@@ -15,7 +15,7 @@ List of items: (WARNING! Links may dissappear or no longer work, this just gives
 # Another CSI example using the PCB splitter
 <img src="csi_wiring_w_pcb_splitter.jpg" alt="drawing">
 
-# USB
+# HDMI-USB
 <img src="usb_capture_wiring.jpg" alt="drawing">
 
 # Direct connect to target

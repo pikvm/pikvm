@@ -1,42 +1,23 @@
 # First steps
 
-!!! note
-    Before this guide:
+!!! note "Before this guide"
 
-    * V4 device: please follow this [first](v4.md)
-    * V3 HAT/Pre-Assembled: follow [this](v3.md)
-    * V0-V2 DIY: follow [this](https://github.com/pikvm/pikvm)
+    * PiKVM V4 device: please follow this [first](v4.md)
+    * PiKVM V3 HAT/Pre-Assembled: follow [this](v3.md)
+    * DIY V0-V2: follow [this](https://github.com/pikvm/pikvm)
 
 
 -----
 ## First power on
 
-??? example "Optional setting up Wi-Fi"
-    !!! warning "Please read the following caveats" 
-        1. There is nothing more reliable than wired Ethernet, so it's better to use the **cable**. But who are we to stop you... :)
-        2. Adding FIRSTBOOT=1 or FIRSTBOOT=1 will erase the msd partition, if used afterwords as a means of switching wifi networks, do not include this option. Instead, use different supplicant files for each wifi SSID, mv files to the supplicant dir as needed and reboot.
-        3. `pikvm.txt` will be removed once its been used. You will need to recreate it again if you did not provide the correct info
-        4. Use WPA2, if still not able to connect, check if your router is set for WPA3 only, an easy fix is to set your router to WPA2.
+1. Optional: [setting up Wi-Fi](on_boot_config.md) before booting.<br>
+    *There is nothing more reliable than wired Ethernet, so it's better to use a cable.*
 
-    If you want to connect PiKVM to a Wi-Fi network, you need to tell the device ESSID and password before first boot.
-    To do this, mount the first partition of the memory card (FAT32) and edit or make the `pikvm.txt` file there.
-    Do not remove line `FIRSTBOOT=1` or `FIRST_BOOT-1` for first time booting, just add your wifi settings like this:
+2. Power up the device.
 
-    ```
-    FIRSTBOOT=1
-    WIFI_ESSID='mynet'
-    WIFI_PASSWD='p@s$$w0rd'
-    ```
-    
-    There is a possibility that, in countries that support CH13, the device will not connect.
-    You will need to configure your router to disable channels 12-14 or disable Auto scan mode so it will connect.
-        
-    Save, unmount and follow the next step.
-    
-**Power up the device.**
-
-!!! warning "Do not turn off the device until it's fully booted for the first time"
-    After turning on the power, PiKVM OS will generate unique SSH keys and certificates and will perform all necessary operations on the memory card.
+3. Do not turn off the device until it's fully booted for the first time.<br>
+    *After turning on the power, PiKVM OS will generate unique SSH keys and certificates
+    and perform all necessary operations on the memory card.*
 
 
 -----

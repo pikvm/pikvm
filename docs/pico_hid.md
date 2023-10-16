@@ -1,35 +1,34 @@
 # Raspberry Pi Pico HID
 
-The Pico HID is a part of DIY PiKVM V1 platform that performs keyboard and mouse emulation.
-It has excellent compatibility, and by default emulates USB, including two mouse modes: absolute and relative.
+The Pico HID is a part of [DIY PiKVM V1](v1.md) platform that performs keyboard and mouse emulation.
+It has excellent compatibility, and emulates USB by default, including two mouse modes: absolute and relative.
 
 Full list of features:
 
 | Feature | Enabled by default |
 |---------|--------------------|
 | USB Keyboard, absolute & relative mouse | Yes |
-| USB Absolute Mouse for Windows 95 | |
-| PS/2 Keyboard & mouse | |
+| USB Absolute Mouse for Windows 95 | No |
+| PS/2 Keyboard & mouse | No |
 
-The scope of the Pico HID is not limited to V1 platform, it can also be used with V2 and even V3 platform,
+The scope of the Pico HID is not limited to [V1](v1.md) platform, it can also be used with [V2](v2.md) and even [V3](v3.md) platform,
 if you need to emulate a PS/2 keyboard and mouse or use a [legacy multiport KVM switch](https://github.com/pikvm/pikvm/issues/7)
 which does not fully support USB standards.
 
 This page explains how to build, connect and use all the features of the Pico HID.
 
-!!! note "KVMD >= 3.241 is required for the Pico HID"
+!!! note "Software requirements"
+    KVMD >= 3.241 is required for the Pico HID.
+    For new builds, this will be the case, but if you want to use the Pico HID on the old PiKVM, you will need to update OS.
 
 
 -----
 ## Making the Pico HID
 
-If you are building the PiKVM V1, then all the necessary components should already be at your fingertips.
-If you are making the Pico HID for V2 or V3, then here is all that you will need:
+If you are building the [PiKVM V1](v1.md), then all the necessary components should already be at your fingertips.
+If you are making the Pico HID for [V2](v2.md) or [V3](v3.md), then here is all that you will need:
 
-* Raspberry Pi Pico board with soldered pins. [An official green board](https://pico.pinout.xyz) is recommended.
-* *x1* USB-A to Micro-USB cable.
-* *x10* dupont wires female-female.
-* Optional: *x1* 1N5819 diode. But any similar one will do.
+{!_diy_parts_pico_hid.md!}
 
 !!! tip "Tip for soldering gurus"
     If you know how to solder, you can buy the Pico without pins and just solder everything without needig the dupond wires.
@@ -92,7 +91,8 @@ Connect all the parts according to this scheme:
 
     <img src="ps2_level_shifter_soldering.png" width="300" />
 
-    !!! note "Don't forget to enable PS/2 mode support as described in the next paragraph"
+    !!! note
+        Don't forget to enable PS/2 mode support as described in the next paragraph
 
 
 -----
@@ -139,9 +139,9 @@ To upload the firmware to Pico HID, you can use any computer with a USB port.
 
 Connect the Pico HID to the host computer using the USB cable.
 
-If you are building PiKVM V1, no further action with the Pico HID is required.
+If you are building PiKVM [V1](v1.md), no further action with the Pico HID is required.
 
-If you are making the Pico HID for V2 or V3, add the following lines to the PiKVM configuration and reboot it:
+If you are making the Pico HID for [V2](v2.md) or [V3](v3.md), add the following lines to the PiKVM configuration and reboot it:
 
 * `/boot/config.txt`
     ```ini
@@ -171,7 +171,7 @@ If you are making the Pico HID for V2 or V3, add the following lines to the PiKV
 !!! warning
     **This section is intended for advanced users of the [legacy Arduino HID](arduino_hid.md).**
 
-    It may seem tempting, but **don't to use the Arduino HID for the new PiKVM builds**
+    It may seem tempting, but **don't to use the Arduino HID for new PiKVM builds**
     just because you have it at your fingertips. Connecting and flashing Arduino
     is much more time consuming than Pico. In addition, different Arduino board work
     with different voltages, they may or may not have SPI (for the Pico, we use SPI to 
@@ -185,7 +185,7 @@ getting rid of the transistor for the Reset line and the level shifter for RX/TX
 
 ??? example "For the Arduino HID over SPI"
     Throw away the Reset transistor and level shifter, and follow this guide
-    from the very beginning, as if you were connecting Pico HID to PiKVM V2 or V3.
+    from the very beginning, as if you were connecting Pico HID to PiKVM [V2](v2.md) or [V3](v3.md).
 
 ??? example "For the classic Serial (UART) HID"
     Get rid of the transistor and level shifter, and follow this guide
