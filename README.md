@@ -439,6 +439,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Christof Maluck
 * Christoffer Lund
 * Christopher Bulla
+* Christopher Gelatt
 * Christopher Hearn
 * Christopher Mandlbaur
 * Christopher Mendoza
@@ -489,6 +490,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Derek Jarvis
 * Derek Yap
 * Didrik
+* digitalbaconbits
 * Dimitrij Jedich
 * dixon wong
 * dizztrukshin
@@ -503,6 +505,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Eric Phenix
 * ewook
 * eye-catcher.com
+* Fabian Druschke
 * Fabiano Sidler
 * Far Pin Solutions, LLC
 * Felyx Gabryel
@@ -784,6 +787,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Ralph Borchers
 * Ranc1d
 * Randall D Bilbrey
+* RandomJerk
 * Ref Chowdhury
 * Raphael Schitz
 * René Rathenau
