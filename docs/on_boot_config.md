@@ -73,7 +73,7 @@ A number of other parameters can be applied in the same way as with Wi-Fi.
     [systemd configuration files](https://wiki.archlinux.org/title/systemd-networkd) on the live OS.
     All three options must be set simultaneously to avoid incorrect configuration.
 
-* `WIFI_ESSID=foo`, `WIFI_REGDOM=bar`<br>
+* `WIFI_ESSID=foo`, `WIFI_PASSWD=bar`<br>
     Configures Wi-Fi, described in more detail in previous paragrpah.
     Both options must be set simultaneously to avoid incorrect configuration.
 
