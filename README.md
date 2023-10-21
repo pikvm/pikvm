@@ -376,6 +376,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Arthur Mayer
 * Arthur Woimbée
 * Ashlesh Chaudhari
+* Asim Shakour
 * Augusto Becciu
 * AVS Computer
 * awkspace
