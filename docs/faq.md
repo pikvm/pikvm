@@ -11,8 +11,8 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "Can PiKVM work on Raspberry Pi 5?"
 
-    * Not right now, but it will. RPi5 does not provide significant improvements comapred to RPi4, so you can use any build based on RPi4, including PiKVM V3 or V4.
-    * RPi5 is not compatible with PiKVM V4 HAT because of due to the difference in form factor with RPi4.
+    * Not right now, but it will. RPi5 does not provide significant improvements compared to RPi4, so you can use any build based on RPi4, including PiKVM V3 or V4.
+    * RPi5 is not compatible with PiKVM V3 HAT due to the difference in form factor with RPi4.
     * *What about dual CSI slots and hardware coding?* We are investigating this.
 
 
