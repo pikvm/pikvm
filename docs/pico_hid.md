@@ -1,4 +1,4 @@
-# Raspberry Pi Pico HID
+# The Pico HID
 
 The Pico HID is a part of [DIY PiKVM V1](v1.md) platform that performs keyboard and mouse emulation.
 It has excellent compatibility, and emulates USB by default, including two mouse modes: absolute and relative.
@@ -52,7 +52,7 @@ But if you are making the Pico HID for [V2](v2.md) or [V3](v3.md), then follow t
     Soldering skills will also come in handy.
 
     * *x1* 3.3V/5V bi-directional logic level shifter [like this](https://learn.sparkfun.com/tutorials/bi-directional-logic-level-converter-hookup-guide/).
-    * Optional: *x2* PS/2 cable with male connector (can be salvaged from the an keyboard or mouse).
+    * *x2* PS/2 cable with male connector (can be salvaged from the an keyboard or mouse).
 
     Make sure that the level shifter pinout matches the scheme, and connect everything according to the [Pico pinout](https://pico.pinout.xyz).
 
@@ -132,7 +132,7 @@ To upload the firmware to Pico HID, you can use any computer with a USB port.
 -----
 ## The final steps
 
-Connect the Pico HID to a computer using the USB cable.
+Connect the Pico HID to the target host using the USB cable.
 
 If you are building PiKVM [V1](v1.md), no further action with the Pico HID is required.
 
