@@ -11,7 +11,7 @@ Full list of features:
 | USB Absolute Mouse for Windows 95 | No |
 | PS/2 Keyboard & mouse | No |
 
-The scope of the Pico HID is not limited to [V1](v1.md) platform, it can also be used with [V2](v2.md) and even [V3](v3.md) platform,
+The scope of the Pico HID is not limited to [V1](v1.md) platform, it can also be used with [V2](v2.md)/[V3](v3.md)/[V4](v4.md) platform (except V4 Mini),
 if you need to emulate a PS/2 keyboard and mouse or use a [legacy multiport KVM switch](https://github.com/pikvm/pikvm/issues/7)
 which does not fully support USB standards.
 
@@ -20,6 +20,9 @@ This page explains how to build, connect and use all the features of the Pico HI
 !!! note "Software requirements"
     KVMD >= 3.241 is required for the Pico HID.
     For new builds, this will be the case, but if you want to use the Pico HID on the old PiKVM, you will need to update OS.
+
+!!! note "Fast way to get PS/2 on V2+"
+    If you need PS/2 on V2+ (except V4 Mini), you can use a faster and easier way: [The Pico HID Bridge](pico_hid_bridge.md).
 
 
 -----

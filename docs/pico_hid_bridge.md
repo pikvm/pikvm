@@ -1,4 +1,4 @@
-# The Pico HID PS/2 Bridge
+# The Pico HID - PS/2 Bridge
 
 The Pico HID Bridge is a special case of the [Pico HID](pico_hid.md).
 It is a simple PS/2-only emulator with a USB interface. Unlike generic [Pico HID](pico_hid.md)
