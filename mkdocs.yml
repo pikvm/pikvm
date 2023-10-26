@@ -80,8 +80,9 @@ nav:
     - "Peripheral devices":
         - "Keyboard & mouse":
             - "Mouse modes": mouse.md
-            - "Bluetooth HID": bluetooth_hid.md
+            - "Mouse jiggler": mouse_jiggler.md
             - "Pico HID (USB, PS/2)": pico_hid.md
+            - "Bluetooth HID": bluetooth_hid.md
             - "Arduino HID (USB, PS/2)": arduino_hid.md
         - "Mass Storage Drive": msd.md
         - "Ethernet-over-USB": usb_ethernet.md
