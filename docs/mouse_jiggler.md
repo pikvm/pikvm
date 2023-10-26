@@ -15,14 +15,15 @@ To enable the Jiggler, it is enough to activate the switch in the Web UI:
 ## Description of the algorithm
 
 If the Jiggler is enabled, then PiKVM counts down the time that has elapsed since the last user input:
-that is, any action with the keyboard or mouse. If there have been no actions for more than 60 seconds,
+that is, any action with the keyboard or mouse. If there have been no actions for more than **60 seconds**,
 the Jiggler performs a mouse movement and waits another 60 seconds until the next iteration.
 
 The Jiggler supports both [mouse modes](mouse.md): absolute and relative.
 
-Movement patterns are deterministic:
-* Absolute: `(-100, -100), wait, (100, 100), wait...` (the coordinates are converted depending on the screen resolution).
-* Relative: `(-10, -10), wait, (10, 10), wait...`.
+**Movement patterns are deterministic:**
+
+* **Absolute:** `(-100, -100), wait, (100, 100), wait...`<br>*The coordinates are converted depending on the screen resolution.*
+* **Relative:** `(-10, -10), wait, (10, 10), wait...`.
 
 The Jiggler works on the PiKVM side, even if the web interface was closed.
 
