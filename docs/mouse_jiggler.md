@@ -45,6 +45,6 @@ The Jiggler supports both [mouse modes](mouse.md): absolute and relative.
 
 The Jiggler works on the PiKVM device side, even if the Web UI was closed.
 
-An important feature of the Jigger is that it does not interfere with normal user work.
+An important feature of the Jiggler is that it does not interfere with normal user work.
 If the user is actively interacting with the keyboard and mouse, Jiggler will not introduce its interference
 until it notices that the period of inactivity has exceeded the threshold of 60 seconds.
