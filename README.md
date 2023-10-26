@@ -868,6 +868,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * TheSnowedOne
 * TheTechGiant
 * Thomas Charisoulis
+* Thomas Gitlin
 * Thomas Hagenmaier
 * Thomas Hedberg Jensen
 * Thomas Price
