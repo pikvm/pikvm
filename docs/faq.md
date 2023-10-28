@@ -310,8 +310,16 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     # date
     # rw
     # pacman -Syu
-    # reboot # Allow 10 to 15 minutes for a response.
+    # reboot # Allow 2 to 5 minutes for a response.
     ```
+
+    If you encounter any error during the upgrade, it is most likely due to the upgrade of the Arch Linux ARM repository upstream. In this case, just use our script, which fixes this:
+
+    ```
+    # curl https://files.pikvm.org/update-os.sh | bash
+    ```
+
+    Next time you will be able to use the usual method with `pacman -Syu`.
 
     Pacman saves all installed packages in a compressed format so that you can roll back to the old version if something goes wrong. After you've updated and made sure everything works, (ONLY for older images, newer images has this partition expended and no longer has this issue) it makes sense to clear the package cache so that it doesn't take up space on the SD card: `rw; rm -rf /var/cache/pacman/pkg; ro`.
 

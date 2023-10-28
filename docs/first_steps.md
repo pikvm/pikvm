@@ -63,12 +63,21 @@ It's best to do this now, when you have physical access to the device, because i
 To update, run these commands under the `root` user:
 
 ```console
-[root@pikvm]# rw
-[root@pikvm]# pacman -Syu
-[root@pikvm]# reboot
+[root@pikvm ~]# rw
+[root@pikvm ~]# pacman -Syu
+[root@pikvm ~]# reboot
 ```
 
-**And then, after all...**
+If you encounter any error during the upgrade, it is most likely due to the upgrade of the Arch Linux ARM repository upstream.
+In this case, just use our script, which fixes this:
+
+```console
+[root@pikvm ~]# curl https://files.pikvm.org/update-os.sh | bash
+```
+
+Next time you will be able to use the usual method with `pacman -Syu`.
+
+**And now, after all...**
 
 {!_passwd.md!}
 
