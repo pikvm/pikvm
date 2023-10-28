@@ -1,8 +1,11 @@
 # The Pico HID - PS/2 Bridge
 
-The Pico HID Bridge is a special case of the [Pico HID](pico_hid.md).
-It is a simple PS/2-only emulator with a USB interface. Unlike generic [Pico HID](pico_hid.md)
-and legacy [Arduino HID](arduino_hid.md), it doesn't require SPI wiring with GPIO.
+The Pico HID Bridge is a special version of the [generic Pico HID](pico_hid.md).
+It is a PS/2 keyboard and mouse emulator that connects to PiKVM via USB-A.
+Unlike generic [Pico HID](pico_hid.md) and legacy [Arduino HID](arduino_hid.md),
+it doesn't require SPI wiring with GPIO.
+
+It is suitable for all devices except V4 Mini and DIY based on Zero 2 W board.
 
 At one end it connects to USB-A on PiKVM, on the other side it has two PS/2 connectors for keyboard and mouse:
 

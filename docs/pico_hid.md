@@ -1,5 +1,10 @@
 # The Pico HID
 
+
+!!! tip "A fast way to get PS/2 on PiKVM V2+"
+    If you need PS/2 keyboard & mouse on PiKVM V2+ (except V4 Mini or DIY based on Zero 2 W boards),
+    you can use a faster and easier way: [The Pico HID Bridge](pico_hid_bridge.md).
+
 The Pico HID is a part of [DIY PiKVM V1](v1.md) platform that performs keyboard and mouse emulation.
 It has excellent compatibility, and emulates USB by default, including two mouse modes: absolute and relative.
 
@@ -20,9 +25,6 @@ This page explains how to build, connect and use all the features of the Pico HI
 !!! note "Software requirements"
     KVMD >= 3.241 is required for the Pico HID.
     For new builds, this will be the case, but if you want to use the Pico HID on the old PiKVM, you will need to update OS.
-
-!!! note "Fast way to get PS/2 on V2+"
-    If you need PS/2 on V2+ (except V4 Mini), you can use a faster and easier way: [The Pico HID Bridge](pico_hid_bridge.md).
 
 
 -----
