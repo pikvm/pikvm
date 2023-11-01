@@ -52,30 +52,17 @@ For future examples, let's assume that your PiKVM has received the address **192
 
     **The default `root` password is `root`.**
 
-PiKVM OS often receives software updates. After installation, it makes sense to update the OS.
-It's best to do this now, when you have physical access to the device, because if something goes wrong
-(for example, the power goes out during the update), you will need to [reflash the memory card](flashing_os.md).
-
 !!! tip "Obtaining root access"
     * If you have logged in via SSH, then most likely you are already `root`.
     * To get `root` in the Web Terminal, use command `su -` and enter the root password.
 
-To update, run these commands under the `root` user:
+PiKVM OS often receives software updates. After installation, it makes sense to update the OS.
+It's best to do this now, when you have physical access to the device, because if something goes wrong
+(for example, the power goes out during the update), you will need to [reflash the memory card](flashing_os.md).
 
-```console
-[root@pikvm ~]# rw
-[root@pikvm ~]# pacman -Syu
-[root@pikvm ~]# reboot
-```
+??? example "Updating PiKVM OS"
 
-If you encounter any error during the upgrade, it is most likely due to the upgrade of the Arch Linux ARM repository upstream.
-In this case, just use our script, which fixes this:
-
-```console
-[root@pikvm ~]# curl https://files.pikvm.org/update-os.sh | bash
-```
-
-Next time you will be able to use the usual method with `pacman -Syu`.
+    {!_update_os.md!}
 
 **And now, after all...**
 

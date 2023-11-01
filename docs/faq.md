@@ -301,27 +301,8 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "How do I update PiKVM with the latest software?"
-    This is ONLY recommended if you need a feature, otherwise this should ONLY be done if you are physically at the device and can reflash the sd card as a means of recovery. PiKVM OS is based on Arch Linux ARM and is fully updated from the repository by a regular package manager. Connect to your PiKVM via ssh and run:
 
-    * Ensure the date is correct: `date`. Otherwise you may get the error `SSL certificate problem: certificate is not yet valid`
-    * Run the following:
-
-    ```
-    # date
-    # rw
-    # pacman -Syu
-    # reboot # Allow 2 to 5 minutes for a response.
-    ```
-
-    If you encounter any error during the upgrade, it is most likely due to the upgrade of the Arch Linux ARM repository upstream. In this case, just use our script, which fixes this:
-
-    ```
-    # curl https://files.pikvm.org/update-os.sh | bash
-    ```
-
-    Next time you will be able to use the usual method with `pacman -Syu`.
-
-    Pacman saves all installed packages in a compressed format so that you can roll back to the old version if something goes wrong. After you've updated and made sure everything works, (ONLY for older images, newer images has this partition expended and no longer has this issue) it makes sense to clear the package cache so that it doesn't take up space on the SD card: `rw; rm -rf /var/cache/pacman/pkg; ro`.
+	{!_update_os.md!}
 
 
 ??? question "I don't need ATX functions. How do I disable this in the Web UI?"
