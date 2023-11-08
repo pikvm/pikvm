@@ -32,7 +32,7 @@ After applying the settings, the file is automatically deleted.
 
     If there was a string `FIRST_BOOT=1` in the file, do not remove it.
     This is the trigger needed to initialize the OS at the first boot.
-    On the contrary, if the file pikvm.txt it was not exist, you should not add this line.
+    On the contrary, if the file pikvm.txt does not exist, you should not add this line.
 
 5. Unmount partition and return the memory card to PiKVM.
 
