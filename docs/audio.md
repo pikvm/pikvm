@@ -31,7 +31,7 @@ This feature allows you to receive audio over an HDMI cable and transmit it to t
    }
    ```
 
-4. Enable the basic audio in the EDID:
+4. Enable the basic audio in the [EDID](https://docs.pikvm.org/edid/) in the file `/etc/kvmd/tc358743-edid.hex`:
    ```
    # kvmd-edidconf --set-audio=yes
    ```
