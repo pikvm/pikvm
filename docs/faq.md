@@ -102,6 +102,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "How do I emulate various USB devices on the target machine?"
     Please review [First Steps](first_steps.md) before continuing
+    
     By default this is what is set:
 
     ```yaml
@@ -128,7 +129,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "Can I run a desktop on PiKVM?"
-    Yes, but it's strongly not recommended OR supported as this OS should be used in read-only mode and it will need read-write enabled all of the time. Instructions [here](https://www.linuxfordevices.com/tutorials/linux/how-to-install-gui-on-arch-linux).
+    Yes, but it's strongly not recommended OR supported as this OS should be used in read-only mode and it will need read-write enabled all of the time, however if you insist on running one, instructions are [here](https://www.linuxfordevices.com/tutorials/linux/how-to-install-gui-on-arch-linux).
 
 
 ??? question "How do I blank the oled screen?"
