@@ -69,33 +69,38 @@ You can also use `dd_rescue` or `ddrescue`.
 
 2. Run RPi Imager:
 
-    <img src="imager-1.jpg" width="400" />
+    <img src="RPi-imager1.jpg" width="400" />
 
 3. Press **CHOOSE OS** and select **Use custom** image at bottom of the list:
 
-    <img src="imager-2.jpg" width="400" />
+    <img src="RPi-imager2.jpg" width="400" />
 
 4. After clicking on this item, select the image file (`*.img` or `*.img.xz`), then click **CHOOSE STORAGE**:
 
     !!! warning
         Check the advanced settings (`CTRL+SHIFT+X`), make sure they are blank or the flash will fail.
 
-    <img src="imager-3.jpg" width="400" />
+    <img src="RPi-imager3.jpg" width="400" />
 
 5. Insert the memory card into the card reader. Choose the card reader from this list. **Be careful** and choose the right device:
 
-    <img src="imager-4.jpg" width="400" />
+    <img src="RPi-imager4.jpg" width="400" />
 
 6. After choosing the memory card, press the **WRITE** button. Confirm the operation when you are asked about it:
 
-    <img src="imager-5.jpg" width="400" />
+    <img src="RPi-imager5.jpg" width="400" />
 
 7. Wait for the process to finish. Get yourself a coffee or do some stretching :)
     The process may hang at 99% for a long time, this is okay, just wait for it to complete.
 
-    <img src="imager-6.jpg" width="400" />
+    <img src="RPi-imager6.jpg" width="400" />
 
 8. Remove the memory card after successful completion. If an error occurs during flashing or booting PiKVM, repeat the process.
     If the error persists, use a different card.
 
-    <img src="imager-7.jpg" width="400" />
+    <img src="RPi-imager7.jpg" width="400" />
+
+    !!! tip
+        If an error occurs during flashing or booting PiKVM, repeat the process.
+        
+When you have completed these steps, please move to the [First Steps doc.](https://docs.pikvm.org/first_steps/)
