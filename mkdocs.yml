@@ -60,13 +60,17 @@ plugins:
 
 nav:
     - "Getting started":
-        - "PiKVM v3 HAT guide": v3.md
+        - "Device guides":
+            - "PiKVM V4 Mini & Plus": v4.md
+            - "PiKVM V3 HAT": v3.md
         - "First steps": first_steps.md
-        - "FAQ": faq.md
+        - "Authentication": auth.md
+        - "FAQ & Troubleshooting": faq.md
     - "Networking":
         - "Internet access":
             - "Port forwarding": port_forwarding.md
             - "Tailscale VPN": tailscale.md
+            - "Cloudflare Tunnel": cloudflared.md
         - "Setting up Wi-Fi": wifi.md
         - "Let's Encrypt certificates": letsencrypt.md
     - "Video":
@@ -77,11 +81,14 @@ nav:
     - "Peripheral devices":
         - "Keyboard & mouse":
             - "Mouse modes": mouse.md
+            - "Mouse jiggler": mouse_jiggler.md
+            - "Pico HID (USB, PS/2)": pico_hid.md
             - "Bluetooth HID": bluetooth_hid.md
             - "Arduino HID (USB, PS/2)": arduino_hid.md
         - "Mass Storage Drive": msd.md
         - "Ethernet-over-USB": usb_ethernet.md
         - "Serial-over-USB": usb_serial.md
+        - "Dynamic USB configuration": usb_dynamic.md
         - "GPIO (pins, relays, lamps, etc)": gpio.md
     - "Advanced usage":
         - "Using VNC": vnc.md
@@ -90,7 +97,8 @@ nav:
         - "IPMI & Redfish integration": ipmi.md
         - "Persistent storage": pst.md
         - "Prometheus monitoring": prometheus.md
+        - "Production deployment": on_boot_config.md
     - "Development":
-        - "Cases for 3D printing": 3d_printing.md
-        - "Building PiKVM OS": building_os.md
         - "HTTP API reference": api.md
+        - "Building PiKVM OS": building_os.md
+        - "Cases for 3D printing": 3d_printing.md

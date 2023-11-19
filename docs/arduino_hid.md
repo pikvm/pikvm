@@ -1,4 +1,4 @@
-# Using Arduino HID on non-v0 platform
+# Using Arduino HID on non-V0 platform
 
 This is useful if you need a simple and primitive keyboard/mouse emulator device. For example when used with a hardware KVM switch which [does not recognize composite HID](https://github.com/pikvm/pikvm/issues/7). You can also use the Arduino HID to emulate the PS/2 keyboard.
 
@@ -6,8 +6,8 @@ This is useful if you need a simple and primitive keyboard/mouse emulator device
 -----
 ## Serial HID
 
-!!! warning "PiKVM v3 HAT note"
-    Don't use it, use [SPI HID](#spi-hid) for v3. Otherwise, you won't be able to use the Serial console.
+!!! warning "PiKVM V3 note"
+    Use [the SPI HID](#spi-hid) for V3. Otherwise, you won't be able to use the Serial console.
 
 ### USB keyboard and mouse
 
@@ -59,7 +59,7 @@ Both of these problems will be solved in the nearest future and the two differen
 
 To select the PS/2 firmware, follow the instructions for the [USB](#usb-keyboard-and-mouse), but with one exception:
 
-??? note "Before `make` you will need to edit file `platformio.ini`"
+??? note "Before `make` you will need to edit file `platformio-avr.ini`"
     Open the file and find these lines:
 
     ```ini
@@ -179,7 +179,7 @@ Programming assumes the Arduino is powered via USB, either from the connected ho
 As of the latest package release, the kdmd service supports SPI. It should be sufficient to ensure the packages are up-to-date with the latest release, the programmer is installed, and the SPI device overlay is loaded at boot.
 
 * Switch the filesystem to read-write mode with `rw`
-* Update the system and nstall the avrdude programmer `pacman -Syu avrdude-svn`
+* Update the system and install the avrdude programmer `pacman -Syu avrdude-pikvm`
 * Add `dtoverlay=spi0-1cs` to `/boot/config.txt`
 * Reboot with `reboot` or `systemctl reboot`
 
@@ -221,4 +221,4 @@ If your device is still in read-write mode, `ro` will put the SD back in read-on
 -----
 ## Fixing the USB absolute mouse on Windows 98
 
-Due to an ancient buggy driver, the USB absolute mouse on Windows 98 moves only within the upper-left quarter of the screen. To fix this, just recompile the firmware with uncommented flag `-DHID_WITH_USB_WIN98` in `platformio.ini`.
+Due to an ancient buggy driver, the USB absolute mouse on Windows 98 moves only within the upper-left quarter of the screen. To fix this, just recompile the firmware with uncommented flag `-DHID_WITH_USB_WIN98` in `platformio-avr.ini`.

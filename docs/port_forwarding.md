@@ -1,14 +1,27 @@
 # Port forwarding
 
-If your ISP has provided you with an external IP address for the router, you can configure port forwarding to access PiKVM.
+If you need to make PiKVM accessible from Internet,
+the easiest way to achieve this is by forwarding a port on the router.
+In this case, an external (global) IP address must be assigned to the router.
+This service is provided by the ISP.
+
+!!! tip
+    If using an external IP address is not possible, it is recommended to try
+    the [Tailscale VPN](tailscale.md).
+
+* To configure port forwarding, refer to the documentation of the router.
+* The Web UI listening ports are `80` (HTTP) and `443` (HTTPS).
+* By default, port `80` performs permanent forwarding to `443` for security reasons.
+* Forwarding the port `443` is sufficient in most cases.
+* If enabled, the [VNC](vnc.md) server runs on port `5900` (disabled by default).
 
 !!! warning
 
-    * **[Change passwords](first_steps.md#getting-access-to-pikvm) before opening access to PiKVM from the outside Internet.**
-    * It's also a good practice to use only HTTPS (port 443) with a valid certificate (like [Let's Encrypt](letsencrypt.md)).
-	* Additionally, you can use a custom external port number instead of 443, for example 14438 to avoid common port scanners.
+    * **[Set strong passwords and enable two-factor authorization](auth.md)
+        before opening access to PiKVM from the Internet!**
+    * It is strongly recommended to obtain a valid HTTPS certificate, for example via [Let's Encrypt](letsencrypt.md).
+    * A good practice is using a custom port number instead of `443` from the Internet side, for example `14438`, to avoid common port scanners.
+    * If you still decide to use the `443` port number, you may want to forward port `80` to get a convenient redirect.
 
-* The Web UI runs on port `80` and `443`.
-* [VNC](vnc.md) (if you use it) runs on port `5900`.
-
-If you don't have an external IP address, then we recommend trying [Tailscale VPN](tailscale.md).
+Port forwarding is a powerful and convenient tool, but remember that security depends entirely on your configuration.
+In most cases, a VPN is a more secure, but less convenient option (since it requires a VPN client on all devices that access PiKVM).

@@ -4,10 +4,46 @@ This document describes the PiKVM API. Since the system consists of microservice
 
 
 -----
-## Authorization
+## Authentication
 
-All APIs are restricted to authorization. To make requests, you either need to authorize each request individually,
+All APIs are restricted to authentication. To make requests, you either need to auth each request individually,
 or get a token and pass it as a cookie with each request.
+
+With enabled [2FA](auth.md#two-factor-authentication), you will need to add the one-time code to the password without spaces.
+That is, if the password is `foobar` and the code is `123456`, then you need to use `foobar123456` as the password.
+
+The code can be generated using any TOTP library, for example in Python:
+
+```python
+import requests
+import pyotp
+
+user = "admin"
+passwd = "admin"
+secret = "3OBBOGSJRYRBZH35PGXURM4CMWTH3WSU"  # Can be found in /etc/kvmd/totp.secret
+
+print(requests.get(
+    url="https://pikvm/api/info",
+    verify=False,  # For self-signed SSL certificate
+    headers={
+        "X-KVMD-User": user,
+        "X-KVMD-Passwd": passwd + pyotp.TOTP(secret).now(),
+    },
+).text)
+```
+
+Since in the borderline case of the 2FA code lifetime, the code may be invalid,
+it makes sense to either handle error 403 by repeating the request in seconds.
+
+A more correct way is to combine this method and check the remaining lifetime
+and postpone the request if there is a second or so left. You can find out how much
+time is left in this way:
+
+```python
+totp = pyotp.TOTP(secret)
+now = int(time.time())
+remaining = now - (now % totp.interval)
+```
 
 
 ### Single request auth
@@ -29,7 +65,7 @@ There are two options here:
 
 ### Session-based cookie auth
 
-1. Authorize and get token for the user using `POST /api/auth/login`:
+1. Get the access token for the user using `POST /api/auth/login`:
 
     ```
     $ curl -k -v -X POST --data user=admin --data passwd=admin https://pikvm/api/auth/login
@@ -84,6 +120,7 @@ Another type of event is `ping`, which can be sent by the client: `{"event_type"
     ```python
     # python, install websocket-client
     import websocket
+    import ssl, time
     uri = "wss://10.0.0.7/api/ws?stream=0"
     headers = {"X-KVMD-User": "admin", "X-KVMD-Passwd": "admin"}
     ws = websocket.WebSocket(sslopt={"cert_reqs": ssl.CERT_NONE})
@@ -165,6 +202,7 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/info
                 },
                 "platform": {
                     "base": "Raspberry Pi 4 Model B Rev 1.1", // /proc/device-tree/model; null on error
+                    "serial": "0000000000000000", // /proc/device-tree/serial-number; null on error
                     "type": "rpi"
                 }
             },

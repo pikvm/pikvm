@@ -1,42 +1,68 @@
 # Tailscale VPN
 
-[Tailscale](https://tailscale.com/) can be used to access PiKVM on the internal network. This is a convenient and free (for private use) tool for organizing a small VPN network. This document is provided as an example for accessing your pikvm over the inet but you can also use zerotier or remote.it. Basic support like whats shown below is provided as an example, any other setting or functionality needs to be redirected to the appropriate community.
+The [Tailscale VPN](https://tailscale.com/) can be used to access PiKVM from the Internet
+if configuring [port forwarding](port_forwarding.md) is not possible or more security is desired.
+Tailscale is a convenient and free (for private use) tool for organizing a small VPN network.
+
+The basic Tailscale configuration commands are shown below.
+For detailed instructions, refer to [Tailscale support](https://tailscale.com/contact/support/).
 
 
-## Installation
+-----
+## Configuring the PiKVM
 
-### On the PiKVM side
+1. Install the client, run `tailscaled` service and register it in the network:
 
-1. Use these commands:
-
-    ```
-    # rw
-    # pacman -Syu tailscale-pikvm
-    # systemctl enable --now tailscaled
-    # tailscale up
+    ```console
+    [root@pikvm ~]# rw
+    [root@pikvm ~]# pacman -Syu
+    [root@pikvm ~]# pacman -S tailscale-pikvm
+    [root@pikvm ~]# systemctl enable --now tailscaled
+    [root@pikvm ~]# tailscale up
     ```
 
 2. Follow the link to authorize this installation.
+    You likely want to [disable key expiry](https://tailscale.com/kb/1028/key-expiry/)!
 
-3. After success, perform soft reboot using `reboot` command to make sure that everything will work correctly.
+3. After authorization success, reboot to make sure that everything works correctly:
 
-4. Perform command `ip addr show tailscale0` to view the Tailscale IP address.
-
-
-### For each device you wish to access pikvm
-
-* [Download](https://tailscale.com/download) and install tailscale for your OS to the system you are using, not to the system you want to control.
-* Check the [admin page](https://login.tailscale.com/admin/machines) to view your VPN network.
-* Follow the URL in the web browser: `https://<tailscale_kvm_ip>` and you will see PiKVM web interface.
-
-??? note
-    * BASIC troubleshooting in case this fails in some way: Uninstall tailscale, remove these dirs /var/lib/tailscale /var/cache/tailscale and reinstall
-    
+    ```console
+    [root@pikvm ~]# reboot
     ```
-    # pacman -Rscnd tailscale
-    # rm -rf /var/lib/tailscale /var/cache/tailscale
-    # reboot
+
+4. Now, you can view the IP address of the Tailscale network interface:
+
+    ```console
+    [root@pikvm ~]# ip addr show tailscale0
     ```
-    
-    * Follow the above instructions to reinstall
-    
+
+If everything is successful, PiKVM will become a member of your VPN network.
+
+!!! warning "Do not update Tailscale if you don't have access to PiKVM without VPN"
+    Unfortunately, sometimes, updating the Tailscale client can cause problems due to breaking changes.
+    These are compatibility issues on the Tailscale side.
+    Remember this when updating.
+
+
+-----
+## Configuring a client device
+
+* [Download](https://tailscale.com/download) and install the Tailscale client
+    to the system you are using (not to the system you want to control).
+* Check the [Tailscale admin page](https://login.tailscale.com/admin/machines) to view your VPN network.
+* Follow the URL in the web browser: `https://<tailscale_kvm_ip>` and you will see the PiKVM web interface.
+
+
+-----
+## Troubleshooting
+
+If something does not work, the usual advice is to completely remove Tailscale from PiKVM and perform a clean installation:
+
+```console
+[root@pikvm ~]# rw
+[root@pikvm ~]# pacman -Rscnd tailscale
+[root@pikvm ~]# rm -rf /var/lib/tailscale /var/cache/tailscale
+[root@pikvm ~]# reboot
+```
+
+Now, follow the instructions from the beginning to re-install Tailscale.
