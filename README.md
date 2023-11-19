@@ -5,6 +5,11 @@ A very simple and fully functional Raspberry Pi-based KVM (Keyboard-Video-Mouse)
 
 The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](https://docs.pikvm.org) and join to the [Discord Community Chat](https://discord.gg/bpmXfz5) for news, questions and support!
 
+| **[>>> New PiKVM V4 - Buy it right now! <<<](https://pikvm.org/buy)** |
+| ---------------------------------------------------------------------------------------------------------- |
+| <a href=https://pikvm.org/buy><img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v4.jpg" alt="drawing"/></a> |
+
+
 | **[>>> DIY Device Getting Started <<<](#diy-getting-started)** | **[>>> PiKVM V3 Getting Started <<<](#pikvm-v3)** |
 | --------------------------------------------- | ------------------------------------------ |
 | [DIY Review by **Novaspirit Tech**](https://youtu.be/plP9Y1likRg)<br>[**Hackaday**](https://hackaday.com/2020/11/24/true-networked-kvm-without-breaking-the-bank/) & [**Tom's HARDWARE**](https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi) & [**Elector MAG**](https://www.elektormagazine.com/news/pikvm-raspberry-pi-as-a-kvm-remote-control)<br>[Our boring presentation for the DIY :)](https://youtu.be/9YhPWjWv5gw) | [PiKVM V3 Review by **Linus Tech Tips**](https://www.youtube.com/watch?v=232opnNPGNo)<br>[Review by **Novaspirit Tech**](https://youtu.be/dTchVKxx7Fo)<br>[Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)<br>[Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c) |
@@ -19,7 +24,7 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 * Supported **Raspberry Pi 2**, **3**, **4** and **Zero2W**;
 * **FullHD video** using advanced **HDMI-to-CSI bridge** or **USB dongle**;
 * Extra low **video latency** with **MJPEG** or **H.264 / WebRTC** (for CSI bridge);
-* Bootable **Virtual CD-ROM** and **Flash Drive**;
+* Bootable **Virtual CD-ROM** and **Flash Drive**, ability to store images on **NFS**;
 * USB **Keyboard** and **mouse** (with leds and the wheel), PS/2 keyboard, Bluetooth HID;
 * **Control the server power** using ATX functions;
 * Access via **Web UI** or **VNC**;
@@ -147,9 +152,12 @@ PiKVM supports several different hardware configurations, referred to as **platf
   * 1x [Raspberry Pi Zero Camera Cable](https://aliexpress.com/item/32953696917.html) (if using HDMI to CSI-2 Bridge, but not compatible with Auvidea B101, check pinout).
 * For ATX control (optional):
   - [4x MOSFET relays OMRON G3VM-61A1](https://www.digikey.com/products/en?keywords=G3VM-61A1).
-  - 4x 390 Ohm resistors.
+  - 4x 390 Ohm resistors (see [#46](https://github.com/pikvm/pikvm/issues/46) for alternatives).
   - 2x 4.7k Ohm resistors.
   - A breadboard and wires.
+
+Kit parts suitable for assembly are also on [sale in Poland](https://3mdeb.com/shop/open-source-hardware/pikvm/)
+
  
 ## Hardware for V0
 * Raspberry Pi 2 or 3.
@@ -167,7 +175,7 @@ PiKVM supports several different hardware configurations, referred to as **platf
 
 #### Addition
 * If you want to capture VGA from your server instead of HDMI, buy the [VGA-to-HDMI converter](https://aliexpress.com/item/3256801728005613.html). Some VGA HDMI adapters have issues with not supporting all resolutions and refresh rates.
-* PiKVM can be powered using PoE, but it is not recommend to use the official PoE HAT: it is unreliable and [not compatible with the HDMI bridge](https://github.com/pikvm/pikvm/issues/6). Use any other PoE hat without an I2C fan controller.
+* PiKVM can be powered using PoE, but it is not recommend to use the official PoE HAT: the old generation [is not compatible with the HDMI bridge](https://github.com/pikvm/pikvm/issues/6). Use any other PoE hat without an I2C fan controller.
 * **Don't use random relay modules or random optocouplers!** Some relays or optocouplers may not be sensitive enough for the Raspberry Pi, some others may be low-level controlled. Either use relays that are activated by a high logic level, or follow the design provided and buy an OMRON. See details [here](https://github.com/pikvm/pikvm/issues/13).  
 
 
@@ -250,8 +258,6 @@ Here is a diagram shows that how to connect all of the pieces (click to full siz
 
 **Raspberry Pi Zero (2) W**: This board has two USB micro connectors: one for power supply, the second for emulating a USB OTG device. You need to prevent backpowering as in the RPi4 case. To do this, you need to cut off the red power wire in the OTG wire, or seal the +5v pin in the USB-A connector with electrical tape like this:
 <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v2_tape_off.png" alt="drawing" width="300"/>
-  
-** REQUIRED ** A full 8 pair CAT5 or a flat Cisco like serial cable is nessessary for the ATX to function properly.
 
 See video how-tos:
 * [Making USB Y-splitter cable](https://www.youtube.com/watch?v=uLuBuQUF61o).
@@ -330,6 +336,8 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Accalia
 * Adam Goodbar
 * Adam S
+* Adam Stuart
+* AdamBomb
 * adipisicing
 * Adrian Basham
 * Ahmed Syed
@@ -368,12 +376,14 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Arthur Mayer
 * Arthur Woimbée
 * Ashlesh Chaudhari
+* Asim Shakour
 * Augusto Becciu
 * AVS Computer
 * awkspace
 * baddog
 * Bao Tin Hoang
 * Bean Co.
+* Bela Bargel
 * Belf Igor
 * Ben Gordon
 * Ben Scott
@@ -390,6 +400,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * bitjoe
 * Bits and Bytes Computers LLC
 * Bjoern Petsch
+* Blindside
 * Blue Frog LLC
 * Bootstrapper - Programmierung erklärt
 * Bosco
@@ -398,6 +409,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Branden Shaulis
 * Brandon Daniels
 * Brian Moses
+* Brian T Mulcahy
 * Brian Vecchiarelli
 * Brian White
 * Bruno Gomes
@@ -415,6 +427,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * CHINATERA LIMITED
 * Chris Blackmon
 * Chris Burton
+* Chris Campbell
 * Chris Jackson
 * Chris Lewis
 * Chris Rizio
@@ -425,6 +438,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Christof Maluck
 * Christoffer Lund
 * Christopher Bulla
+* Christopher Gelatt
 * Christopher Hearn
 * Christopher Mandlbaur
 * Christopher Mendoza
@@ -472,20 +486,25 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Dennis Becker
 * Dennis Joslin
 * Dennis Lomet
+* Derek Jarvis
 * Derek Yap
 * Didrik
+* digitalbaconbits
 * Dimitrij Jedich
 * dixon wong
 * dizztrukshin
 * Dmitry Shilov
+* DogeLabs
 * Dominic Phoon
 * Dominik Klonowski
+* Edmon Abdul Nur
 * Egan Ford
 * Elani Ferri
 * Elliot Woo
 * Eric Phenix
 * ewook
 * eye-catcher.com
+* Fabian Druschke
 * Fabiano Sidler
 * Far Pin Solutions, LLC
 * Felyx Gabryel
@@ -504,6 +523,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Fredrik Idréus
 * Garrett Dangerfield
 * Ge Men
+* Geekworm
 * Genkinger Andreas
 * Geijer
 * George Becker
@@ -572,6 +592,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Jennifer Herting
 * Jennifer Rowlett
 * Jeremy Abel
+* Jeremy Combs
 * Jeremy Hines
 * Jerremy Holland
 * Jerry Nall
@@ -596,8 +617,10 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Jonathan Slenders
 * Jonathan Vaughn
 * Joost Backer
+* Joseph Swift
 * Josh Nethery
 * Josh Ricker
+* Josh VanDeraa
 * Joshua Futterer
 * Jordan Blake
 * Jordi Pakey-Rodriguez
@@ -611,11 +634,14 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Justin Waters
 * Kai Hadler
 * Kamil Chyba
+* Kari Matti Korpi
 * Karl Dunne
+* Karl Moos
 * Keith Muggleton
 * Ken Lee
 * Kenneth Younger III
 * Kenny Hui
+* KeonWoo PARK
 * Kevin Bajohr
 * Kevin Schwartz
 * Kevin Sherwood
@@ -627,6 +653,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Lance Ward
 * Larry Meaney
 * Lars
+* Lars Reinhardt
 * Lee Wilkinson
 * LeeNX
 * Leon Siegl
@@ -642,6 +669,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Ľubor Slušný
 * Luca Di Diomede
 * Lucio De Carli
+* Luiz Bizzio
 * Lukas Bischof
 * Lukas Kammerer
 * Lukas Söder
@@ -667,6 +695,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Marshall Bjerke
 * Marten Hermans
 * Martin Gasser
+* Martin Raine
 * Martin Suelmann
 * Martin Wilhelmi
 * Marvin Honderboom
@@ -675,9 +704,11 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Matt Kane
 * Matthew Cameron
 * Mauricio Allende
+* Max Evans
 * Mecky
 * Mehmet Aydoğdu
 * Michael Bartholomew
+* Michael Bell
 * Michael Bombe
 * Michael Collins
 * Michael Copeland
@@ -687,6 +718,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Michael Pennington
 * Michael Sage
 * Michael Thalmann
+* Michael Wu
 * MichaelZ
 * Michel Bissonnette
 * Mikael Wikström
@@ -697,8 +729,10 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Moez Tharani
 * Morgan Helton
 * Myron Weber
+* N Patel
 * Nathaniel Griswold
 * Nelson Lee
+* nezu
 * Nicholas Jeppson
 * Nicholas Kopas
 * Nicholas Walczak
@@ -728,6 +762,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Paul Bishop
 * Paul De La Rosa
 * Paul Pietkiewicz
+* Paul Tan
 * Pawel Trofimiuk
 * Peder Madsen
 * Peter
@@ -751,9 +786,11 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Ralph Borchers
 * Ranc1d
 * Randall D Bilbrey
+* RandomJerk
 * Ref Chowdhury
 * Raphael Schitz
 * René Rathenau
+* ReysDad
 * Ricardo Marques
 * Richard
 * Richard Bernarts
@@ -761,6 +798,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Richard Freemantle
 * Richard Michael
 * Rico Cantrell
+* Rob
 * Rob Holden
 * Rob Tongue
 * Robert Klauco
@@ -775,6 +813,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * rotx
 * Rufo Sanchez
 * Russell Scott
+* Ryan
 * Ryan Peacock
 * Samed Ozoglu
 * Sameul Davies
@@ -794,6 +833,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Seonwoo Lee
 * Sergey Lukjanov
 * Seth Jennings
+* Shane Selling
 * Shawn Butts
 * Sheran Gunasekera
 * Shichun Chen
@@ -801,6 +841,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Simon Evans
 * Simon Sundgaard
 * Simplistic Realities
+* Snowy Maslov
 * Solve Technology
 * srepac
 * Stefan Bautz
@@ -808,6 +849,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Stefan Stemmer
 * Stefan Vaillant
 * Stephan Schmidt
+* Stephen
 * Stephen Hocking
 * Steve Jones
 * Steve Kerr
@@ -817,6 +859,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Stratagem Solutions Ltd
 * Sven Breckler
 * sudo34
+* SuperHiTech
 * Tango_Echo_Alpha
 * Tarlak Desaydrone
 * TechBear
@@ -825,6 +868,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * TheSnowedOne
 * TheTechGiant
 * Thomas Charisoulis
+* Thomas Gitlin
 * Thomas Hagenmaier
 * Thomas Hedberg Jensen
 * Thomas Price
@@ -852,6 +896,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Vidru Eduard
 * Viktor Aschenbrenner
 * Viktor Ekmark
+* Vincent Chov
 * Vlad Sterescu
 * Volker Gropp
 * Walli
@@ -861,6 +906,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * William Hooper
 * William Perrin
 * William Stearns
+* Woojin Son
 * xMdb
 * Yanko Kaneti
 * Yaroslav Kulikovskikh

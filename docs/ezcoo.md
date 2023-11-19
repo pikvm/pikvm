@@ -1,15 +1,20 @@
 # ezCoo managed multiport KVM switch
 
-The ezCoo managed switch can be controlled by PiKVM to allow it to connect to multiple hosts. A typical scenario is a single PiKVM device which can control and switch between multiple hosts or servers using the ezCoo switch. UI elements can be added to the [GPIO dropdown](gpio.md) to allow switching between hosts from the PiKVM webpage. The instructions here were tested with the ~~[ezCoo SW41HA HDMI 4x1 switch](https://www.easycoolav.com/products/hdmi20-switch-4x1-with-usb20-kvm-4-port-usbsupport-4k60hz-444-and-hdr-audio-breakout)~~ [ezCoo EZ-SW41HA-KVMU3L 4x1 switch](https://www.easycoolav.com/products/hdmi20-switch-4x1-with-usb30-kvm-3-port-usbsupport-4k60hz-444-and-hdr-audio-breakout-36). Both older USB2.0 and newer USB3.0 variants are supported. The following was testing on a Raspberry Pi 4 but should also work on the Pi 2 and 3. This document was createdy using the contributions from multiple users in our [Discord](https://discord.gg/bpmXfz5) and the author appreciates their efforts.
+The ezCoo managed switch can be controlled by PiKVM to allow it to connect to multiple hosts. A typical scenario is a single PiKVM device which can control and switch between multiple hosts or servers using the ezCoo switch. UI elements can be added to the [GPIO dropdown](gpio.md) to allow switching between hosts from the PiKVM webpage. The instructions here were tested with the ~~[ezCoo SW41HA HDMI 4x1 switch](https://www.easycoolav.com/products/hdmi20-switch-4x1-with-usb20-kvm-4-port-usbsupport-4k60hz-444-and-hdr-audio-breakout)~~ [ezCoo EZ-SW41HA-KVMU3L 4x1 switch](https://www.easycoolav.com/products/hdmi20-switch-4x1-with-usb30-kvm-3-port-usbsupport-4k60hz-444-and-hdr-audio-breakout-36) OR [eccoo EZ-SW41HA-KVMU3P 4x1 switch](https://www.amazon.com/gp/product/B09ZKZK7ZB). Both older USB2.0 and newer USB3.0 variants are supported. The following was testing on a Raspberry Pi 4 but should also work on the Pi 2 and 3. This document was createdy using the contributions from multiple users in our [Discord](https://discord.gg/bpmXfz5) and the author appreciates their efforts.
 
 !!! info
     While most images of the switch do not show the sides, there is a Micro USB port on the side of the ezCoo switch. This is the management port, which is controlled via COM port on the ezCoo KVM. When plugged into the Raspberry Pi, it appears as `/dev/ttyUSB0`.
 
 !!! info
     Audio was not tested, it is assumed to be non-functional.
-
+    
+!!! tip 
+    ezCoo EZ-SW41HA-KVMU3L - includes 4x1m USB 3.0 A Male to A Male.
+    You will need 1 extra USB A Male to USB Micro B to connect from the PiKVM to the ezcoo "F/W CTL - Management" port
 
 ## Connections
+
+!!! tip "EZCOO Wiring example can be found [here](https://docs.pikvm.org/wiring_examples/) Scroll down to bottom of page for picture" 
 
 Please review the item description and manual before deploying.
 
@@ -43,6 +48,7 @@ The UI can be updated to add buttons to switch between KVM inputs and indicators
             drivers:
                 ez:
                     type: ezcoo
+                    protocol: 2
                     device: /dev/ttyUSB0
             scheme:
                 ch0_led:
@@ -113,10 +119,9 @@ The UI can be updated to add buttons to switch between KVM inputs and indicators
 
 To switch between hosts, enter the KVM UI and click the "GPIO" menu.  You should see 4 inputs, one of which will have a green circle indicating it is currently selected.  Click the other inputs to change the selected host.
 
+## Additional step for the USB 2.0 version (Old EOL version)
 
-## Additional step for the USB 3.0 version
-
-Please add `protocol: 2` to the override.yaml under the `type: ezcoo` at the same level:
+Please remove `protocol: 2` to the override.yaml under the `type: ezcoo` at the same level:
 
 ```yaml
 kvmd:
@@ -124,10 +129,8 @@ kvmd:
         drivers:
             ez:
                 type: ezcoo
-                protocol: 2
                 device: /dev/ttyUSB0
 ```
-
 
 ## Developer info
 * [The official protocol version 1 reference](ezcoo1.docx)
@@ -184,6 +187,6 @@ kvmd:
 ```
 
 
-!!! tip "EZCOO Wiring example can be found [here](https://docs.pikvm.org/wiring_examples/)"
+
     
 

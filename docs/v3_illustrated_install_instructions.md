@@ -3,13 +3,13 @@
 Remove contents from box.
 
 # Contents:
-* 8x M.2 screws for the case
-* 4x screws for the fan
+* 8x M.2 5x12mm screws for the case
+* 4x M.2 5x12mm screws for the fan
 * 4x bolts for the fan
-* 1x fan
+* 1x fan (30x30x7mm 5v)
 * 1x case top
 * 1x case bottom
-* 1x OLED display
+* 1x OLED display (0.91 IIC 128x32 LCD)
 * 2x bottom plastic risers
 * 1x plastic top riser
 * 1x plastic OLED holder that is also a front riser
@@ -42,11 +42,14 @@ There are 2 ways to insert the FCC cable, you can add it when you insert the RPI
 
 <img src="FCC_HAT_Ribbon_Cable_install.jpg" width="400" />
 
-??? note "The blue stripes on the ends of the cable will ALWAYS face the side that will be used to tighten the FCC to the camera port or have it positioned towards the power"
+??? note "The blue stripes on the ends of the cable will ALWAYS face the side that will be used to tighten the FCC to the camera port or have it positioned towards the power - Ignore the smaller FCC cable that plugs into the USB, was phased out during the KS campaign. This image was used as a means of illustrating FCC placement and orientation"
 
 # Step 5
 
 Install USB-C bridge.
+
+??? note "This is packaged with the ATX board"
+<img src="PiKVM_ATX_Packaging.png" width="400" />
 
 <img src="HAT_install_usbc_bridge.jpg" width="400" />
 

@@ -81,6 +81,7 @@ If you don't specify a driver for the channel in the scheme the default driver, 
 | Parameter                         | Type      | Allowed values           | Default |  Description                   |
 |-----------------------------------|-----------|--------------------------|---------|-----------------------|
 | `led1`, `button1`, `relay1`, etc. | `string`  | `a-Z`, numbers, `_`, `-` |         | A section for the named channel |
+| `driver` | `string`  | `a-Z`, numbers, `_`, `-` |         | Optional, Name of the section defined above in `Drivers` if not GPIO|
 | `pin`       | `integer` | `X >= 0`            | | Refers to a GPIO pin or driver's pin/port |
 | `mode`      | `enum`    | `input` or `output` | | Defines if a channel is used for input or output, may be limited by driver plugin |
 | **Input only** | | | | |
@@ -117,10 +118,12 @@ kvmd:
                 switch: false
 
             relay1:  # Channel 1 of the relay /dev/hidraw0
+                driver: relay  # Not GPIO, so add name from the above Drivers section
                 pin: 0  # Numerating starts from 0
                 mode: output  # Relays can't be inputs
                 initial: null  # Don't reset the state to 0 when initializing and terminating KVMD
             relay2:  # Channel 2
+                driver: relay
                 pin: 1
                 mode: output
                 initial: null
@@ -319,7 +322,7 @@ kvmd
     kvmd:
         gpio:
             drivers:
-				reboot:
+                reboot:
                     type: cmd
                     cmd: [/usr/bin/sudo, reboot]
             scheme:
@@ -347,7 +350,16 @@ kvmd
 ### PWM
 ??? note "Click to view"
     The `pwm` driver allows you to use [some GPIO pins](https://pinout.xyz/pinout/pwm) on the Raspberry Pi for PWM.
-        
+
+    !!! note
+        Due to hardware limitations, this module conflicts with the **kvmd-fan** (PiKVM fan controller).
+        To use it, you have to use hardware PWM for kvmfan. To do this, add the following lines to `/etc/kvmd/fan.ini`:
+
+        ```ini
+        [main]
+        pwm_soft = 80
+        ```
+
     Here the small example with servo control:
 
     1. Add to `/boot/config.txt`:
@@ -415,6 +427,15 @@ kvmd
 ### Servo
 ??? note "Click to view"
     The `servo` module is built on top of the `pwm` module and allows user to define angles instead of `duty_cyles` to control a PWM enabled servo motor like SG90. When the button is pressed the servo motor moves to an angle defined by `angle_push` and when button is released it moves back to `angle_release`. In the example configuration for a [cheap 5V SG90 Servo](https://www.ebay.co.uk/itm/184555802744), the motor moves to an angle of 45 degrees when button is pressed and moves back to 20 degress when released.
+
+    !!! note
+        Due to hardware limitations, this module conflicts with the **kvmd-fan** (PiKVM fan controller).
+        To use it, you have to use hardware PWM for kvmfan. To do this, add the following lines to `/etc/kvmd/fan.ini`:
+
+        ```ini
+        [main]
+        pwm_soft = 80
+        ```
 
     To use Servo motors in PiKVM you need to follow steps 1-3 for [PWM Module](#pwm) and then use the following configuration.
 
@@ -506,4 +527,38 @@ kvmd
                 table:
                     - ["plug_led", "plug_button"]
 
+    ```
+
+
+### ANEL NET-PwrCtrl
+??? note "Click to view"    
+    The `anelpwr` plugin allows you to use ANEL NET-PwrCrtl IP-PDUs (switchabel sockets) as gpios. There are up to 8 Ports per PDU. Input pulls the the current state from the PDU, Output switches the Socket. 
+
+    ```yaml
+    kvmd:
+        gpio:
+            drivers:
+                anel_pdu_0:
+                    type: anelpwr
+                    url: http://IP:port
+                    user: admin
+                    passwd: anel
+            scheme:
+                pdu0_0_pwr:
+                    pin: 0
+                    driver: anel_pdu_0
+                    mode: output
+                    pulse:
+                        delay: 0
+                pdu0_0_led:
+                    pin: 0
+                    driver: anel_pdu_0
+                    mode: input
+            view:
+                header:
+                   title: "PDUs"
+                table:
+                    - ["#PDU0"]
+                    - []
+                    - ["#PDU0_Port0:", pdu0_0_led, "pdu0_0_pwr|confirm|test"] 
     ```

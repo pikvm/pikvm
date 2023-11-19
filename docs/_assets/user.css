@@ -2,6 +2,10 @@
 	width: unset;
 }*/
 
+li.md-nav__item--section > label.md-nav__link {
+	font-size: large;
+}
+
 .md-main__inner {
 	margin-top: unset;
 }

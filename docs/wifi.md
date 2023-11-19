@@ -1,17 +1,18 @@
 # Setting up Wi-Fi
 
-The following describes how to setup a Wi-Fi connection on the default pikvm builds based on Arch Linux.
-The process might vary for other Linux distros. We recommend to do this while having a display and keyboard
-connected directly to the Raspberry Pi as you will loose network connectivity once you connect to a Wi-Fi.
+!!! tip
+    There is nothing more reliable than wired Ethernet, so it's better to use it. Wi-Fi with the steel case (on PiKVM V3 and V4) results in poor performance. But who are we to stop you... :)
+
+The following describes how to setup a Wi-Fi connection.
+We recommend to do this while having a display and keyboard
+or a serial console connected directly to the Raspberry Pi as you will loose network connectivity once you connect to a Wi-Fi.
 Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (available through the browser) should also work.
 
-!!! warning
-    Please review [First Steps](first_steps.md) if you are setting up wifi for zerow/z2w. Please follow this step if you are wanting to activate wifi for the first time on your PiKVM using other boards than the Zero series.
+!!! note "Setting up Wi-Fi in the boot config (semi-auto)"
+    Check out *Optional setting up Wi-Fi* in the [First Steps](first_steps.md) guide. This is mandatory if you're using Zero 2 W board.
+    It will work in most other cases, especially if you have physical access to the memory card.
 
-!!! warning
-    There is nothing more reliable than wired Ethernet, so it's better to use it. But who are we to stop you... :)
-
-!!! note "Moving Wi-Fi settings for OS older than 2021.10.19"
+??? note "Moving Wi-Fi settings for OS older than 2021.10.19"
     Starting from 2021.10.19, the old way to configure Wi-Fi using `netctl` is deprecated.
     Instead, it is proposed to use a more native path with `systemd-networkd`, which is already used to configure Ethernet.
     Follow the guide and then delete the old netctl profile:
@@ -24,7 +25,7 @@ Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (a
     ```
 
 
-## Step by step - Advances users ONLY section
+## Setting up Wi-Fi manually
 
 1. Make filesystem writable using `rw` command.
 
@@ -46,7 +47,8 @@ Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (a
 3. Set network ESSID and password:
 
     ```
-    # wpa_passphrase MyNetwork 'P@assw0rd' > /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
+    # wpa_passphrase 'MyNetwork' 'P@assw0rd' > /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
+    # chmod 640 /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
     ```
     
     !!! note "Using Wi-Fi with hidden ESSID"

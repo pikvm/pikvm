@@ -10,7 +10,7 @@ IPMI is an [old protocol](https://en.wikipedia.org/wiki/Intelligent_Platform_Man
 It can be useful for managing a large number of machines with PiKVM. Its advantage is that it is supported by many enterprise systems.
 
 !!! warning
-    Although PiKVM supports the IPMI protocol, we strongly recommend that you **DO NOT USE IT** outside of trusted networks due to the protocol's [insecurity](https://github.com/NitescuLucian/nliplace.com.blog.drafts). Use Redfish or [KVMD API](api.md) instead of it.
+    Although PiKVM supports the IPMI protocol, we strongly recommend that you **DO NOT USE IT** outside of trusted networks due to the protocol's [insecurity](https://github.com/NitescuLucian/nliplace.com.blog.drafts). Use Redfish or [KVMD API](api.md) instead of it. Also IPMI can not work with [2FA](auth.md#two-factor-authentication).
 
 To enable IPMI BMC follow these steps:
 
@@ -82,7 +82,8 @@ location /redfish {
 }
 ```
 
-!!! info Don't be confused by the parameter `auth_request off`. KVMD performs authorization on its own. The only open HTTP entrypoint is `/redfish/v1`, which returns a static document and does not change the state of the PiKVM. It's safe.
+!!! info 
+    Don't be confused by the parameter `auth_request off`. KVMD performs authorization on its own. The only open HTTP entrypoint is `/redfish/v1`, which returns a static document and does not change the state of the PiKVM. It's safe.
 
 If there is a file in your system after the update `/etc/kvmd/nginx/kvmd.ctx-server.conf.pacnew` you can just move it:
 
