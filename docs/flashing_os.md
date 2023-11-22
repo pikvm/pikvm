@@ -41,7 +41,7 @@ Download the appropriate SD card image. Select it based on the board, platform, 
             Please join [Discord](https://discord.gg/bpmXfz5) and ask about this in #unofficial_ports channel if you still want to use it.
 
 !!! abstract "Any other platforms"
-    You will need to build the image manually. But don't worry, it's [very simple](building_os.md).
+    Please check the [file archives](https://files.pikvm.org/images/), otherwise you will need to build the image manually. But don't worry, it's [very simple](building_os.md).
 
 
 -----
@@ -51,7 +51,7 @@ Download the appropriate SD card image. Select it based on the board, platform, 
     After inserting the memory card into your computer, ignore request to format. This is not nessessary.
 
 
-### Using Linux CLI
+### Using Linux CLI (ADVANCED USERS)
 
 Decompress (if nessessary) and flash the image. **Be careful when choosing the device path, it may be different on your machine**:
 
@@ -78,7 +78,7 @@ You can also use `dd_rescue` or `ddrescue`.
 4. After clicking on this item, select the image file (`*.img` or `*.img.xz`), then click **CHOOSE STORAGE**:
 
     !!! warning
-        Check the advanced settings (`CTRL+SHIFT+X`), make sure they are blank or the flash will fail.
+        This should already be set to blank though the flashing process from step 7 but its best to double check the advanced settings (`CTRL+SHIFT+X`), make sure they are blank or the flash will fail.
 
     <img src="RPi-imager3.jpg" width="400" />
 
