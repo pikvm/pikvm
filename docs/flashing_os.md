@@ -71,7 +71,7 @@ You can also use `dd_rescue` or `ddrescue`.
 
     <img src="RPi-imager1.jpg" width="400" />
 
-3. Press **CHOOSE OS** and select **Use custom** image at bottom of the list:
+3. Press **NO FILTERING** then **CHOOSE OS** and select **Use custom** image at bottom of the list:
 
     <img src="RPi-imager2.jpg" width="400" />
 
