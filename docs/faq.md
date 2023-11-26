@@ -530,6 +530,63 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     * If your device is unable to connect to the Wi-Fi network that you have set up, check the 2.4 GHz Wi-Fi channel used by your Wi-Fi access point. 
       If channels 12 to 14 are used (some countries have banned these channels) try to use a channel between 1 and 11.
 
+??? question "How do I connect to multiple Wifi networks?"
+    There are 2 ways to do this
+
+    You can stack wifi networks in `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf`
+
+    Example:
+
+    ```yaml
+    update_config=1
+
+    network={
+            ssid="SSID1"
+            psk=abcdef0123456789
+    }
+
+    network={
+            ssid="SSID2"
+            psk=abcdef0123456789
+    }
+
+    network={
+            ssid="SSID3"
+            psk=abcdef0123456789
+    }
+    ```
+
+    Create your PSK using this command: `wpa_passphrase 'MyNetwork' 'P@assw0rd' >> /etc/wpa_supplicant/wpa_supplicant-wlan0.conf`
+
+    The second way is to use NetworkManager
+
+    ```yaml
+    # rw
+    # su -
+    # pacman -S networkmanager
+    # nmcli device wifi list
+    # nmcli device wifi connect SSID1 password PASSWORD # Is needed to make the initial wifi connection
+    # nmcli device wifi connect SSID2 password PASSWORD # Is needed to make the seconadry wifi connection
+    # nmcli connection up SSID1/SSID2 # You can switch from 1 wifi network to another
+    # nmcli connection show # This shows a list of the correct connections / green shows connected state, white shows disconnected state
+    # nmcli connection modify SSID1 connection.autoconnect-priority 1 # This will make the first SSID the main one if you are in range of both
+    # nmcli connection modify SSID2 connection.autoconnect-priority 2 # If this is disconnected, it will switch to the first and visa versa
+    ```
+
+    Here are some additional commands and caveats
+
+    ```yaml
+    nmcli device wifi list
+    ```
+
+    ??? note "if you type nmcli and get the following error"
+        "nmcli (1.44.0) and NetworkManager (Unknown) versions don't match. Restarting NetworkManager is advised. Error: NetworkManager is not running."
+
+     ```yaml
+    # systemctl list-unit-files --all #look for networkmanager, if its disabled, enable it and start the service
+    # systemctl enable NetworkManager.service
+    # systemctl start NetworkManager.service
+    ````
 
 ??? question "LEDs/Switches do not work in ATX control"
     Double check your wiring as per [the documentation](/README.md#setting-up-the-v2). Make sure you placed the relays (G3VM-61A1) in the correct orientation. The relays for switches (Power, Reset) have a different orientation than the ones for LEDs.
