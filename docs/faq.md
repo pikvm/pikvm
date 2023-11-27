@@ -537,7 +537,8 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 ??? question "How do I connect to multiple Wifi networks?"
     There are 2 ways to do this
     
-    Recommended
+    Recommended:
+    
     You can stack wifi networks in `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf`
 
     Example:
