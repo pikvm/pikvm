@@ -592,7 +592,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     # systemctl list-unit-files --all #look for networkmanager, if its disabled, enable it and start the service
     # systemctl enable NetworkManager.service
     # systemctl start NetworkManager.service
-    ````
+    ```
 
 
 ??? question "LEDs/Switches do not work in ATX control"
