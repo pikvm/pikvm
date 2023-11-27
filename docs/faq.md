@@ -534,8 +534,8 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     * If your device is unable to connect to the Wi-Fi network that you have set up, check the 2.4 GHz Wi-Fi channel used by your Wi-Fi access point. 
       If channels 12 to 14 are used (some countries have banned these channels) try to use a channel between 1 and 11.
 
-??? question "How do I connect to multiple Wifi networks?"
-    There are 2 ways to do this
+??? question "How do I connect to multiple Wi-Fi networks?"
+    There are two ways to do this.
     
     Recommended:
     
@@ -543,7 +543,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
     Example:
 
-    ```yaml
+    ```c
     update_config=1
 
     network={
@@ -566,7 +566,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
     The second way is to use NetworkManager which is an alternitive but not recommended
 
-    ```yaml
+    ```console
     # rw
     # su -
     # pacman -S networkmanager
@@ -581,14 +581,14 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
     Here are some additional commands and caveats
 
-    ```yaml
-    nmcli device wifi list
+    ```console
+    # nmcli device wifi list
     ```
 
     ??? note "if you type nmcli and get the following error"
         "nmcli (1.44.0) and NetworkManager (Unknown) versions don't match. Restarting NetworkManager is advised. Error: NetworkManager is not running."
 
-     ```yaml
+    ```console
     # systemctl list-unit-files --all #look for networkmanager, if its disabled, enable it and start the service
     # systemctl enable NetworkManager.service
     # systemctl start NetworkManager.service
