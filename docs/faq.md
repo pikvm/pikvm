@@ -416,6 +416,10 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     Make sure the OpenH264 Plugin both exists and is enabled (known issue on Debian GNU/Linux). Press `Ctrl+Shift+A` to open the Add-ons Manager, then press `Plugins`. You should see *OpenH264 Video Codec provided by Cisco Systems, Inc.*. Make sure it is enabled by pressing the "more options" button (3 horizontal dots), then pressing `Always Activate`.
 
 
+??? question "Apple TB/USB-C HDMI video doesn't work"
+    A possible solution can be found [here](https://github.com/pikvm/pikvm/issues/1011).
+
+    
 ## USB problems (keyboard, mouse, mass storage, etc)
 
 ??? question "My computer does not recognize USB of PiKVM V2+ at all"
@@ -532,7 +536,8 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "How do I connect to multiple Wifi networks?"
     There are 2 ways to do this
-
+    
+    Recommended
     You can stack wifi networks in `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf`
 
     Example:
@@ -558,7 +563,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
     Create your PSK using this command: `wpa_passphrase 'MyNetwork' 'P@assw0rd' >> /etc/wpa_supplicant/wpa_supplicant-wlan0.conf`
 
-    The second way is to use NetworkManager
+    The second way is to use NetworkManager which is an alternitive but not recommended
 
     ```yaml
     # rw
@@ -587,6 +592,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     # systemctl enable NetworkManager.service
     # systemctl start NetworkManager.service
     ````
+
 
 ??? question "LEDs/Switches do not work in ATX control"
     Double check your wiring as per [the documentation](/README.md#setting-up-the-v2). Make sure you placed the relays (G3VM-61A1) in the correct orientation. The relays for switches (Power, Reset) have a different orientation than the ones for LEDs.
