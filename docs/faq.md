@@ -566,7 +566,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
     The second way is to use NetworkManager which is an alternitive but not recommended
 
-    ```console
+    ```
     # rw
     # su -
     # pacman -S networkmanager
@@ -581,14 +581,14 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
     Here are some additional commands and caveats
 
-    ```console
+    ```
     # nmcli device wifi list
     ```
 
     ??? note "if you type nmcli and get the following error"
         "nmcli (1.44.0) and NetworkManager (Unknown) versions don't match. Restarting NetworkManager is advised. Error: NetworkManager is not running."
 
-    ```console
+    ```
     # systemctl list-unit-files --all #look for networkmanager, if its disabled, enable it and start the service
     # systemctl enable NetworkManager.service
     # systemctl start NetworkManager.service
