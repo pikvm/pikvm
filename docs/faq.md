@@ -25,6 +25,10 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "Can I assign a static IP to a PiKVM"
+
+    Yes, we highly suggest using this [document](https://docs.pikvm.org/on_boot_config/#other-available-options) first for those that are not Linux savvy.
+
+    [ONLY FOR ADVANCED LINUX USERS]
     Edit file `/etc/systemd/network/eth0.network` for Ethernet or `wlan0.network` for Wi-Fi and edit the `[Network]` section:
 
     ```ini
@@ -35,9 +39,21 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     DNS=192.168.x.x
     ```
 
+    ??? warning "Do not forget the /24(CIDR), otherwise it will not work and your PiKVM will become unreachable)
     If you're using Wi-Fi but you don't have `/etc/systemd/network/wlan0.network` file, then first you will need to [`migrate the Wi-Fi settings from `netctl` to `systemd-networkd`](wifi.md).
 
+??? question "How do I recover my PiKVM, it cannot be reached now"
 
+    1. Take the USB-C end cable you have for your target and move to the PiKVM IOIO port
+    2. Take the USB-A end cable and put thos on the HOST(The controlling PC)
+    3. Turn on or reboot your PiKVM, you should now see a COMx port on your HOST PC
+    4. Connect using something like Putty, use 115200 as your baud rate
+    5. Edit the file using nano or whatever text editor you are comfortable with, save the file
+    6. Reboot your PiKVM, check for functionality
+    7. If still unreachable, edit the same file to fix it
+    8. ONLY Disconnect the IOIO port once you have fully recovered your PiKVM and place this back onto the Target system
+
+    
 ??? question "Can I use PiKVM for gaming?"
     No, because:
 
