@@ -47,6 +47,9 @@ After applying the settings, the file is automatically deleted.
 
 A number of other parameters can be applied in the same way as with Wi-Fi.
 
+!!! note
+    The parameters must be specified strictly each on a separate line.
+
 * `FIRST_BOOT=1`<br>
     Triggers initialization of the first OS startup. The following actions are performed:
 

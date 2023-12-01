@@ -65,6 +65,7 @@ nav:
             - "PiKVM V3 HAT": v3.md
         - "First steps": first_steps.md
         - "Authentication": auth.md
+        - "On-boot configuration": on_boot_config.md
         - "FAQ & Troubleshooting": faq.md
     - "Networking":
         - "Internet access":
@@ -97,7 +98,6 @@ nav:
         - "IPMI & Redfish integration": ipmi.md
         - "Persistent storage": pst.md
         - "Prometheus monitoring": prometheus.md
-        - "Production deployment": on_boot_config.md
     - "Development":
         - "HTTP API reference": api.md
         - "Building PiKVM OS": building_os.md
