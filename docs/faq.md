@@ -161,7 +161,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     * Bad YAML syntax, edit your `/etc/kvmd/override.yaml` file and undo what you did and restart PiKVM.
 
 
-??? question "How can I use the serial console to access to access other devices"
+??? question "How can I use the serial console to gain access to other devices"
     You need to stop the service which listens on the `/dev/ttyAMA0`:
 
     ```
