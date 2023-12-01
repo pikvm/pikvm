@@ -20,7 +20,7 @@ After applying the settings, the file is automatically deleted.
 3. Among the system files you will see the file `pikvm.txt`.
     If you haven't enabled PiKVM yet, this file will contain a single line `FIRST_BOOT=1`.
 
-4. To connect to Wi-Fi, you will need an ESSID (network name) and a password. Add this to `pikvm.txt`.
+4. To connect to Wi-Fi with DHCP, you will need an ESSID (network name) and a password. Add this to `pikvm.txt`.
     If the file doesn't exists, just create it. Like following:
 
     ```bash
@@ -69,17 +69,22 @@ A number of other parameters can be applied in the same way as with Wi-Fi.
     Configures Ethernet port for DHCP. This is a default for PiKVM OS.
 
 * `ETH_ADDR=192.168.0.100/24`, `ETH_DNS=8.8.8.8`, `ETH_GW=192.168.0.1`<br>
-    Configures a static IP on the Ethernet port. Only IPv4 available here. For IPv6 you'll need to change
+    Configures a static IP on the Ethernet port. Only IPv4 is available here. For IPv6 you'll need to change
     [systemd configuration files](https://wiki.archlinux.org/title/systemd-networkd) on the live OS.
     All three options must be set simultaneously to avoid incorrect configuration.
 
 * `WIFI_ESSID=foo`, `WIFI_PASSWD=bar`<br>
-    Configures Wi-Fi, described in more detail in previous paragrpah.
+    Configures Wi-Fi with DHCP, described in more detail in previous paragrpah.
     Both options must be set simultaneously to avoid incorrect configuration.
 
 * `WIFI_REGDOM=US`<br>
     Changes Wi-Fi regulatory domain to the US. Other domains available by
     [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country codes.
+
+* `WIFI_ADDR=192.168.0.100/24`, `WIFI_DNS=8.8.8.8`, `WIFI_GW=192.168.0.1`<br>
+    Configures a static IP on the Wifi. Only IPv4 is available here. For IPv6 you'll need to change
+    [systemd configuration files](https://wiki.archlinux.org/title/systemd-networkd) on the live OS.
+    All three options must be set simultaneously with `WIFI_ESSID` and `WIFI_PASSWD` to avoid incorrect configuration.
 
 
 -----
