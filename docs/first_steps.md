@@ -1,6 +1,6 @@
 # First steps
 
-!!! note "Before this guide"
+!!! note "Before using this guide, follow the document related to the PiKVM you purchased for the initial setup, skip this if already connected and configured in which case, come back to this guide"
 
     * PiKVM V4 device: please follow this [first](v4.md)
     * PiKVM V3 HAT/Pre-Assembled: follow [this](v3.md)
