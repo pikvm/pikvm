@@ -4,7 +4,7 @@
 
     * PiKVM V4 device: please follow this [first](v4.md)
     * PiKVM V3 HAT/Pre-Assembled: follow [this](v3.md)
-    * DIY V0-V2: follow [this](https://github.com/pikvm/pikvm)
+    * DIY V1-V2: follow [this](https://github.com/pikvm/pikvm)
 
 
 -----

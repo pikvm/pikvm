@@ -41,8 +41,8 @@ Docker must work in privileged mode.
         * `PLATFORM=v3-hdmi` for RPi4 and PiKVM V3 HAT.
         * `PLATFORM=v2-hdmi` for RPi3a+/RPi4 or Zero2W with HDMI-CSI bridge.
         * `PLATFORM=v2-hdmiusb` for RPi4 with HDMI-USB dongle.
-        * `PLATFORM=v0-hdmi` for RPi2 or 3b+ with HDMI-CSI bridge and Arduino HID.
-        * `PLATFORM=v0-hdmiusb` for RPi2 or 3b+ with HDMI-USB dongle and Arduino HID.
+        * `PLATFORM=v1-hdmi` for RPi2 or 3b+ with HDMI-CSI bridge and the Pico HID.
+        * `PLATFORM=v1-hdmiusb` for RPi2 or 3b+ with HDMI-USB dongle and the Pico HID.
 
 4. Create the build config file `config.mk` for the target system and and the `BOARD` and `PLATFORM` variables.
     You can also set some other parameters as you wish (see below).

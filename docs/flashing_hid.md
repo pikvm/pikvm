@@ -1,3 +1,8 @@
+!!! warning "Legacy warning"
+    This page describes the legacy keyboard and mouse emulator used in old DIY builds.
+    There is no point using it today because there is a more modern and better replacement for the [new Pico HID](pico_hid.md).
+    This one can also serve as an in-place compatible replacement for the Arduino HID in the old build.
+
 # Flashing the Arduino HID
 
 ## Serial Firmware (the default option)

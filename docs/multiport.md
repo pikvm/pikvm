@@ -7,7 +7,7 @@ Also, PiKVM can be connected to a multi-port HDMI/USB switch and the switch's bu
 If your KVM switches channels using keyboard shortcuts, there is a chance that it will not be able to work with OTG (v2+ platform, see below), since it does not fully implement the USB stack. In this case, you will have to [use the Pico HID](pico_hid.md) to emulate the keyboard & mouse (PiKVM supports this configuration).
 
 !!! warning
-    If you choose AIMOS, be aware that it has a back powering issue that you need to use work arounds for. Limitations are are listed below. Also please be aware that Arduino's will not work with the AIMOS KVM's.
+    If you choose AIMOS, be aware that it has a back powering issue that you need to use work arounds for. Limitations are are listed below. Also please be aware that Pico's will not work with the AIMOS KVM's.
 
 ??? note
     V4 MINI cannot be used with any of the below, the Mini was designed to be used 1:1

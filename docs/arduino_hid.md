@@ -1,6 +1,7 @@
-# Using Arduino HID on non-V0 platform
-
-This is useful if you need a simple and primitive keyboard/mouse emulator device. For example when used with a hardware KVM switch which [does not recognize composite HID](https://github.com/pikvm/pikvm/issues/7). You can also use the Arduino HID to emulate the PS/2 keyboard.
+!!! warning "Legacy warning"
+    This page describes the legacy keyboard and mouse emulator used in old DIY builds.
+    There is no point using it today because there is a more modern and better replacement for the [new Pico HID](pico_hid.md).
+    This one can also serve as an in-place compatible replacement for the Arduino HID in the old build.
 
 
 -----

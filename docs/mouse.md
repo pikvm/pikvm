@@ -103,4 +103,4 @@ kvmd:
 -----
 ## Relative mouse on V0-V1 platform (Pico/Arduino HID)
 
-Mode switching for the [Pico HID](pico_hid.md) or [Arduino HID](arduino_hid.md) can be performed on-the-fly starting with KVMD 2.6 and the corresponding firmware. No additional actions are required.
+Mode switching for the [Pico HID](pico_hid.md) or [legacy Arduino HID](arduino_hid.md) can be performed on-the-fly starting with KVMD 2.6 and the corresponding firmware. No additional actions are required.
