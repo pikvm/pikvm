@@ -1,11 +1,5 @@
 # First steps
 
-!!! note "Before this guide"
-
-    * PiKVM V4 device: please follow this [first](v4.md)
-    * PiKVM V3 HAT/Pre-Assembled: follow [this](v3.md)
-    * DIY V1-V2: follow [this](https://github.com/pikvm/pikvm)
-
 
 -----
 ## First power on

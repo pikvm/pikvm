@@ -71,7 +71,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 ??? question "Do I need a power splitter? Why do I need one?"
     * Yes for RPi4 - Please see the main readme for splitter types listed under V2 hardware
     * Yes for Zero W and Zero W 2, if using dedicated power you still need to split the power from the data towards the target. If using the target for power, this is not needed.
-    * This is not needed if you have a PiKVM V3, as the HAT splits power and signal on the board.
+    * This is not needed if you have a PiKVM V3 and V4, as they splits power and signal on the board.
 
 
 ??? question "Can I use PiKVM with non-Raspberry Pi boards (Orange, Nano, etc)?"
@@ -360,7 +360,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "PiKVM does not show the video from the computer at all"
-    * Double-check that the video capture device is connected correctly. For the [CSI bridge](/README.md#for-the-hdmi-csi-bridge), this should be exactly the camera port; for the [USB dongle](/README.md#for-the-hdmi-usb-dongle), strictly the port indicated in the picture.
+    * Double-check that the video capture device is connected correctly.
     * Some laptops do not output any signal until you switch the output (usually via the FN + and an F5 key on the keyboard).
     * Your computer may have turned on sleep mode for the monitor. Move the mouse to turn it off.
     * For windows you might need to check for the active signal resolution. To change the active signal resolution you have to go to Settings>System>Display>Advanced display settings>Display adapter properties then, click "List All Models" and choose the one you want. Keep trying different Hz settings.
@@ -596,7 +596,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "LEDs/Switches do not work in ATX control"
-    Double check your wiring as per [the documentation](/README.md#setting-up-the-v2). Make sure you placed the relays (G3VM-61A1) in the correct orientation. The relays for switches (Power, Reset) have a different orientation than the ones for LEDs.
+    Double check your wiring. Make sure you placed the relays (G3VM-61A1) in the correct orientation. The relays for switches (Power, Reset) have a different orientation than the ones for LEDs.
 
 
 ??? question "My PiKVM keeps disconnecting from the Wi-Fi network"

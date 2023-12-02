@@ -9,8 +9,8 @@ or a serial console connected directly to the Raspberry Pi as you will loose net
 Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (available through the browser) should also work.
 
 !!! note "Setting up Wi-Fi in the boot config (semi-auto)"
-    Check out *Optional setting up Wi-Fi* in the [First Steps](first_steps.md) guide. This is mandatory if you're using Zero 2 W board.
-    It will work in most other cases, especially if you have physical access to the memory card.
+    Check out [this guide](on_boot_config.md) guide. It is mandatory if you're using Zero 2 W board.
+    It will useful in most other cases, especially if you have physical access to the memory card.
 
 ??? note "Moving Wi-Fi settings for OS older than 2021.10.19"
     Starting from 2021.10.19, the old way to configure Wi-Fi using `netctl` is deprecated.
@@ -39,9 +39,9 @@ Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (a
     DHCP=yes
     DNSSEC=no
 
-    # Use same IP by forcing to use MAC address for clientID
     [DHCP]
     ClientIdentifier=mac
+    RouteMetric=50
     ```
 
 3. Set network ESSID and password:

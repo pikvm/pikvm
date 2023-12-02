@@ -116,11 +116,6 @@ You can also use `dd_rescue` or `ddrescue`.
     <img src="RPi-imager6.jpg" width="400" />
 
 8. Remove the memory card after successful completion. If an error occurs during flashing or booting PiKVM, repeat the process.
-    If the error persists, use a different card.
+    If the error persists, use a different memory card.
 
     <img src="RPi-imager7.jpg" width="400" />
-
-    !!! tip
-        If an error occurs during flashing or booting PiKVM, repeat the process.
-        
-When you have completed these steps, please move to the [First Steps doc.](https://docs.pikvm.org/first_steps/)
