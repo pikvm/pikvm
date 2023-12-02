@@ -95,91 +95,30 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 
 # DIY Getting Started
 ## Required hardware
-PiKVM supports several different hardware configurations, referred to as **platforms**. Now available: **V2** and **V0**.
-* **Recommended**: **V2** is the most modern implementation for **Raspberry Pi 4** and **Zero2W** supporting all of the features of PiKVM including the **Mass Storage Drive**. For Raspberry Pi 4 and Zero2W there is support for H.264 video. **It's also the easiest to make**.
-* V0 was designed to work with Raspberry Pi 2 and 3 that do not have OTG and requires a few more components for a basic implementation. It also does not support the Mass Storage Drive feature.
+PiKVM supports several different hardware configurations, referred to as **platforms**. Now available: **V2** and **V1**.
+* **Recommended**: **V2** is the most powerful implementation for **Raspberry Pi 4** and **Zero2W** supporting all of the features of PiKVM including the **Mass Storage Drive**. **It's also the easiest to make**.
+* **V1** was designed to work with **Raspberry Pi 2** and **3** that do not have USB emulation port and requires a few more components for a basic implementation. It also does not support the Mass Storage Drive feature.
 
-## Hardware for V2
-* Raspberry Pi board:
-  - **Recommended**: Raspberry Pi 4 (2 GB model is enough) for the best performance. However, the 1Gb models will also work.
-  - ... or Raspberry Pi Zero2W (no ethernet).
-* MicroSD card (min 16 GB recommended).
-* USB-A 3A charger (female socket) or official rpi recommended power supply.
-* Video capture device:
-  - **Recommended**: [HDMI to CSI-2 bridge based on TC358743](https://aliexpress.com/item/4000102166176.html) - low latency, more reliable, **H.264 video**.
-  - ... or [HDMI to USB dongle](https://aliexpress.com/item/4001043540669.html) (not available for Zero2W) - high latency >200ms, [not very reliable](#a-few-words-about-hdmi-usb-dongle-h264-is-not-officially-supported-at-this-time)), H.264 is not supported, <details><summary>Read more info about the limitations</summary>The dongle is completely supported and PiKVM works great with it. But it has some disadvantages compared with recommended [HDMI-CSI bridge](https://aliexpress.com/item/4000102166176.html): USB gives a lot of latency (200ms vs 100ms for MJPEG) and it doesn't support stream compression control (you won't be able to use PiKVM in a place with a poor internet connection). There is no H.264 support at the moment. It also cannot automatically detect screen resolution. All this is caused by the hardware limitations of the dongle itself. In addition, some users report hardware problems: the dongle may not work in the BIOS or simply stop working after a while. It's a black box, and no one knows what's inside it. If you have problems with it, it will not be possible to fix them.</details>
- 
-* Only for Raspberry Pi 4: parts for Y-splitter cable (**one variant at your choice**):
-  *  <details><summary>❓ Why is this cable necessary?</summary>
-     On a Raspberry Pi only the USB port that receives power is capable of acting as a USB Device. The other USB ports are capable only of acting as USB Hosts. Therefore a special cable must be used on the USB power port that it can simultanously act as USB Device for the PC/server and receive external power from an official RPi adapter.
-      </details>
+The full list of parts is at the very beginning according to the assembly instructions for the corresponding platform.
+You can review both options to decide which one is most suitable for you.
 
-  * <details><summary>:exclamation:Variant #1:exclamation:: (No mod solution - Amazon) Y cable with power blocker ends.</summary>
-    <ul>
-      <li>1x USB-A to USB-A cable (male-male).</li>
-      <li>1x Official Power Supply (USB-A or USB-C).</li>
-      <li>1x <a href="https://www.amazon.com/dp/B08C5FWQND">splitter</a> - This may need to be searched in your respective country.
-      <li><a href="https://www.amazon.com/gp/product/B092MLT2J3">USB Power Blocker</a> - Will go into the USB-A end towards the target</li>
-    </ul>
-    </details>
-  * <details><summary>:exclamation:Variant #2:exclamation:: DIY for soldering or twist.</summary>
-    <ul>
-      <li>1x USB-A to USB-C cable (male-male).</li>
-      <li>1x another cable USB-A to any (male-any).</li>
-      <li>1x Official Power Supply (USB-A or USB-C) depending on what cable you choose above.</li>
-    </ul>
-    </details>
-  * <details><summary>:exclamation:Variant #3:exclamation:: Ready-made using USB-micro splitter.</summary>
-    <ul>
-      <li>1x USB/Power Splitter Module (<a href="https://www.tindie.com/products/8086net/usbpwr-splitter">UK</a>/<a href="https://www.pishop.us/product/usb-pwr-splitter/">US</a>/<a href="https://www.buyapi.ca/product/usb-pwr-splitter/">CA</a>).</li>
-      <li>1x USB-A to USB-C cable (male-male) for connecting the Raspberry Pi to the splitter.</li>
-      <li>1x USB-A to micro USB-B cable (male-male) for connecting the server to the splitter.</li>
-      <li>1x USB-A to micro USB-B cable (male-male) to connect into a USB-A wall charger. Or you also can buy the official Raspberry Pi Power Supply with micro USB-B instead.</li>
-    </ul>
-    </details>
-  * <details><summary>:exclamation:Variant #4:exclamation:: Ready-made using USB-C splitter.</summary>
-    <ul>
-      <li>1x USB-C/Power Splitter Module (<a href="https://www.tindie.com/products/8086net/usb-cpwr-splitter">UK</a>/<a href="https://www.pishop.us/product/usb-c-pwr-splitter/">US</a>/<a href="https://www.buyapi.ca/product/usb-c-pwr-splitter/">CA</a>).</li>
-      <li>1x USB-C to USB-C cable (male-male) for connecting the Raspberry Pi to the splitter.</li>
-      <li>1x USB-A to USB-C cable (male-male) for connecting the server to the splitter.</li>
-      <li>1x USB-A to USB-C cable (male-male) to connect into a USB-A wall charger. Or 1x USB-C to USB-C cable to connect into a USB-C wall charger. Or you also can buy the official Raspberry Pi Power Supply with USB-C instead.</li>
-    </ul>
-    </details>
-    
+So, again, in short:
 
-* Only for Raspberry Pi Zero2W:
-  * 2x USB A-to-micro cables (male-male, for power and keyboard & mouse emulator). A power splitter OR a modded cable is required for this 2x usb configuration. 1x USB A-to-Micro is ONLY needed for direct connection to the target.
-  * 1x [Raspberry Pi Zero Camera Cable](https://aliexpress.com/item/32953696917.html) (if using HDMI to CSI-2 Bridge, but not compatible with Auvidea B101, check pinout).
-* For ATX control (optional):
-  - [4x MOSFET relays OMRON G3VM-61A1](https://www.digikey.com/products/en?keywords=G3VM-61A1).
-  - 4x 390 Ohm resistors (see [#46](https://github.com/pikvm/pikvm/issues/46) for alternatives).
-  - 2x 4.7k Ohm resistors.
-  - A breadboard and wires.
+* **DIY PiKVM V2:**
+  * [Here are the instructions and a complete list of components](https://docs.pikvm.org/v2).
+  * Requires Raspberry Pi 4 or Zero 2 W.
+  * Supports H.264 (for recommended CSI capture).
+  * Supports CD-ROM and Flash Drive (mass storage) emulation.
+  * It is recommended as a simpler and more feature-rich way compared to V1.
 
-Kit parts suitable for assembly are also on [sale in Poland](https://3mdeb.com/shop/open-source-hardware/pikvm/)
+* **DIY PiKVM V1:**
+  * [Here are the instructions and a complete list of components](https://docs.pikvm.org/v1).
+  * Requires Raspberry Pi 2 or 3.
+  * Requires Raspberry Pi Pico for the keyboard/mouse emulation.
+  * Requires extra wiring and little bit more parts.
+  * Supports H.264 (for recommended CSI capture).
+  * Doesn't support CD-ROM and Flash Drive (mass storage) emulation.
 
- 
-## Hardware for V0
-* Raspberry Pi 2 or 3.
-* MicroSD card (8 GB is enough).
-* USB-A 3A charger (female socket) or power supply.
-* For keyboard & mouse emulator (HID):
-  - Arduino Pro Micro (based on an ATMega32u4).
-  - [Logic level shifter](https://www.sparkfun.com/products/12009).
-  - 1x NPN transistor (almost any NPN transistor: 2n2222 or similar).
-  - 1x 390 Ohm resistor.
-  - A breadboard and wires.
-* 2x USB A-to-micro cables (male-male, for power and HID).
-* HDMI capture device: [see V2 description](#hardware-for-v2).
-* ATX control (optional): [see V2 description](#hardware-for-v2).
-
-#### Addition
-* If you want to capture VGA from your server instead of HDMI, buy the [VGA-to-HDMI converter](https://aliexpress.com/item/3256801728005613.html). Some VGA HDMI adapters have issues with not supporting all resolutions and refresh rates.
-* PiKVM can be powered using PoE, but it is not recommend to use the official PoE HAT: the old generation [is not compatible with the HDMI bridge](https://github.com/pikvm/pikvm/issues/6). Use any other PoE hat without an I2C fan controller.
-* **Don't use random relay modules or random optocouplers!** Some relays or optocouplers may not be sensitive enough for the Raspberry Pi, some others may be low-level controlled. Either use relays that are activated by a high logic level, or follow the design provided and buy an OMRON. See details [here](https://github.com/pikvm/pikvm/issues/13).  
-
-
-# How to set up the device can be seen from [here](https://docs.pikvm.org/wiring_examples)
 
 # PiKVM V3
 
@@ -212,107 +151,6 @@ Watch the video:
 History:
 * [PiKVM V3 HAT on Kickstarter (huge success!)](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)
 
------
-
-# Setting up the hardware
-## Connecting the video capture
-#### For the HDMI-CSI bridge
-<details>
-  <summary>:exclamation:Click to show the instructions:exclamation:</summary>
-Insert the flexible flat cable of the HDMI bridge into the narrow white connector on the Raspberry Pi (the closest one to big USB sockets). It is labeled CAMERA. To insert you need to open the connector first. On the Raspberry Pi side you can gently lift the black part up and a little bit sideways:
-
-| Opening the MIPI CSI-2 slot on the Raspberry Pi                                                  |
-| ------------------------------------------------------------------------------------------------ |
-| <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/open-MIPI-CSI2-Slot.png" alt="detailed picture of the MIPI-CSI2 slot" width="350"> |
-
-For the HDMI-CSI bridge it depends on the version you bought. Either pull it gently up as on the Raspberry or push it sideways. Make sure that the cable is inserted on the correct side and until it stops, and then push the black latch back. Never connect or disconnect the flat cable from a powered device. This is not Plug-and-Play, and you can damage it. Also use only the cable that was included with the device package, or make sure that the third-party cable has the correct pinout.
-
-| HDMI-CSI-2 bridge connected to Raspberry Pi 4                                                                |
-| ------------------------------------------------------------------------------------------------------------ |
-| <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/rpi4-hdmi-csi-connection.png" alt="HDMI-CSI-2 bridge connected to Raspberry Pi 4" width="350"> |
-
-</details>
-
-#### For the HDMI-USB dongle
-<details>
-  <summary>:exclamation:Click to show the instructions:exclamation:</summary>
-Connect USB dongle to exactly this port. It is bound in the software so the OS does not confuse the video device with something else.
-
-| Raspberry Pi 2 and 3                                          | Raspberry Pi 4                                                |
-| ------------------------------------------------------------- | ------------------------------------------------------------- |
-| <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v2_usbcap_rpi2.png" alt="drawing" width="200"/> | <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v2_usbcap_rpi4.png" alt="drawing" width="200"/> |
-
-There are many revisions of the Raspberry Pi boards and you may come across one that we haven't tested. If the binding fails, the device will be available for all ports. Everything will work, but if you use a webcam and Linux mistakes it for a dongle, [write to us](https://discord.gg/bpmXfz5) and we will fix it.
-</details>
-
-## Setting up the V2
-<details>
-  <summary>:exclamation:Click to show the instructions:exclamation:</summary>
-Here is a diagram shows that how to connect all of the pieces (click to full size).
-
-| ATX control board                                 | USB splitter cable (only for Raspberry Pi 4)               |
-| ------------------------------------------------- | ---------------------------------------------------------- |
-| <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v2.png" alt="drawing" width="400"/> | <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v2_splitter.png" alt="drawing" width="400"/> |
-
-**Raspberry Pi 4**: since one USB-C female connector is used to receive power and perform keyboard/mouse/drive emulation a special Y-cable must be made that splits the DATA and POWER lines of USB-C (see [reasons](https://github.com/pikvm/docs/issues/11)). It can be made from two suitable connecting cables, or soldered together from scratch. Be sure to check the circuit diagram below, otherwise you may damage your devices. The appropriate USB pinout(s) can easily be found on Google. Please note that if you make a Y-cable from two no-name cables, the colors of the wires may not match those shown. Use a multimeter to make sure the connections are correct.
-
-**Raspberry Pi Zero (2) W**: This board has two USB micro connectors: one for power supply, the second for emulating a USB OTG device. You need to prevent backpowering as in the RPi4 case. To do this, you need to cut off the red power wire in the OTG wire, or seal the +5v pin in the USB-A connector with electrical tape like this:
-<img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v2_tape_off.png" alt="drawing" width="300"/>
-
-See video how-tos:
-* [Making USB Y-splitter cable](https://www.youtube.com/watch?v=uLuBuQUF61o).
-* [Soldering ATX controller](https://www.youtube.com/watch?v=hKnKOuH_f8M).
-
-</details>
-
-## Setting up the V0
-<details>
-  <summary>:exclamation:Click to show the instructions:exclamation:</summary>
-
-| ATX control board and Arduino HID (keyboard & mouse) |
-| ---------------------------------------------------- |
-| <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v0.png" alt="drawing" width="400"/>    |
-
-</details>
-
------
-
-# The final steps
-1. [Flash the operating system](https://docs.pikvm.org/flashing_os).
-2. **Carefully read [the "First steps" guide](https://docs.pikvm.org/first_steps)** - how to find a device on the network, how to log in there, change passwords, and so on. **Follow the steps described there and come back here**.
-3. V0 only: [flash the Arduino HID](https://docs.pikvm.org/flashing_hid).
-4. **Learn about the [basics of working with PiKVM](https://docs.pikvm.org/first_steps) and CHANGE THE PASSWORDS**
-5. Note for the HDMI-USB dongle:
-    <details>
-      <summary>:exclamation:Click to show:exclamation:</summary>
-
-      Many USB video capture devices tell the server's video card that the HDMI cable is supposedly disconnected. This may lead to the fact that if you boot the server without an active stream, the server will not detect your capture card. This is easy to fix:
-      * Switch filesystem to RW-mode:
-        ```
-        # rw
-        ```
-      * Edit file `/etc/kvmd/override.yaml` and add these lines:
-        ```yaml
-        kvmd:
-            streamer:
-                forever: true
-                cmd_append: [--slowdown]
-        ```
-      * Finish:
-        ```
-        # ro
-        # systemctl restart kvmd
-        ```
-
-    </details>
-6. If you are a happy **PiKVM V3** user then we have a [special guide for you](https://docs.pikvm.org/v3).
-7. [**Explore the features of PiKVM**](https://docs.pikvm.org) using the documentation's table of contents.
-8. Configure access to PiKVM from the Internet using [port forwarding](https://docs.pikvm.org/port_forwarding) or [Tailscale VPN](https://docs.pikvm.org/tailscale).
-9. **If you encounter a problem**, take a look at the **[FAQ](https://docs.pikvm.org/faq)**, but if nothing helped, contact our **[Discord chat](https://discord.gg/bpmXfz5)** - experienced users and the PiKVM team will definitely help you.
-
-OPTIONAL Addon: If adding an OLED to your V2, please see [this.](https://github.com/pikvm/pikvm/issues/797)
-
-Happy using of PiKVM :)
 
 -----
 
