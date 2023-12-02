@@ -7,7 +7,7 @@ and be able to solve the problems that have arisen.
 
 ## Where to start?
 
-* *Check out the device instructions:*
+* **Check out the device instructions:**
     * [PiKVM V4 Mini & Plus](v4.md)
     * [PiKVM V3 HAT / Pre-Assembled](v3.md)
     * [DIY PiKVM V2 build](v2.md)
