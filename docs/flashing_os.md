@@ -40,8 +40,28 @@ Download the appropriate SD card image. Select it based on the board, platform, 
         * Support has been discontinued due to reaching the End-of-Life of the base board.<br>
             Please join [Discord](https://discord.gg/bpmXfz5) and ask about this in #unofficial_ports channel if you still want to use it.
 
-!!! abstract "Any other platforms"
-    Please check the [file archives](https://files.pikvm.org/images/), otherwise you will need to build the image manually. But don't worry, it's [very simple](building_os.md).
+!!! abstract "DIY PiKVM V1 Platform"
+
+    * **Raspberry Pi 3**
+        * [For HDMI-CSI bridge](https://files.pikvm.org/images/v1-hdmi-rpi3-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmi-rpi3-latest.img.xz.sha1)</sub>
+        * [For HDMI-USB dongle](https://files.pikvm.org/images/v1-hdmiusb-rpi3-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmiusb-rpi3-latest.img.xz.sha1)</sub>
+
+    * **Raspberry Pi 2**
+        * [For HDMI-CSI bridge](https://files.pikvm.org/images/v1-hdmi-rpi2-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmi-rpi2-latest.img.xz.sha1)</sub>
+        * [For HDMI-USB dongle](https://files.pikvm.org/images/v1-hdmiusb-rpi2-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmiusb-rpi2-latest.img.xz.sha1)</sub>
+
+    * **Raspberry Pi Zero 2 W**
+        * [For HDMI-CSI bridge](https://files.pikvm.org/images/v1-hdmi-zero2w-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmi-zero2w-latest.img.xz.sha1)</sub>
+        * [For HDMI-USB dongle](https://files.pikvm.org/images/v1-hdmiusb-zero2w-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmiusb-zero2w-latest.img.xz.sha1)</sub>
+
+!!! abstract "Any other combinations for advanced users"
+    Please check the [file archives](https://files.pikvm.org/images/) for ready-made image or [build the image yourself](building_os.md).
 
 
 -----
