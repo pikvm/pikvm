@@ -63,9 +63,10 @@ nav:
         - "Device guides":
             - "PiKVM V4 Mini & Plus": v4.md
             - "PiKVM V3 HAT": v3.md
+            - "DIY PiKVM V2": v2.md
+            - "DIY PiKVM V1": v1.md
         - "First steps": first_steps.md
         - "Authentication": auth.md
-        - "On-boot configuration": on_boot_config.md
         - "FAQ & Troubleshooting": faq.md
     - "Networking":
         - "Internet access":
@@ -85,13 +86,13 @@ nav:
             - "Mouse jiggler": mouse_jiggler.md
             - "Pico HID (USB, PS/2)": pico_hid.md
             - "Bluetooth HID": bluetooth_hid.md
-            - "Arduino HID (USB, PS/2)": arduino_hid.md
         - "Mass Storage Drive": msd.md
         - "Ethernet-over-USB": usb_ethernet.md
         - "Serial-over-USB": usb_serial.md
         - "Dynamic USB configuration": usb_dynamic.md
         - "GPIO (pins, relays, lamps, etc)": gpio.md
     - "Advanced usage":
+        - "On-boot configuration": on_boot_config.md
         - "Using VNC": vnc.md
         - "Multiport KVM-over-IP": multiport.md
         - "Wake-on-LAN the server": wol.md
@@ -102,3 +103,5 @@ nav:
         - "HTTP API reference": api.md
         - "Building PiKVM OS": building_os.md
         - "Cases for 3D printing": 3d_printing.md
+    - "Legacy":
+        - "Arduino HID": arduino_hid.md
