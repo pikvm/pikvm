@@ -29,6 +29,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     Yes, we highly suggest using this [document](https://docs.pikvm.org/on_boot_config/#other-available-options) first for those that are not Linux savvy.
 
     [ONLY FOR ADVANCED LINUX USERS]
+    
     Edit file `/etc/systemd/network/eth0.network` for Ethernet or `wlan0.network` for Wi-Fi and edit the `[Network]` section:
 
     ```ini
