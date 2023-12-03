@@ -222,6 +222,10 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     After that, restart the server: `systemctl restart kvmd-nginx`.
 
 
+??? question "Can I control IR devices using PiKVM?"
+    This goes far beyond the usual use of PiKVM, so there is no official way to do this, but there are [some ways](https://github.com/pikvm/pikvm/issues/291) from the community that you can try if you know how to handle a soldering iron.
+
+
 ## First steps
 
 ??? question "I can't find the PiKVM IP address in my network"
