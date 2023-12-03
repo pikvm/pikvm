@@ -7,7 +7,7 @@ All you have to do is connect the PiKVM ATX controller to their wires by making 
 Please note that the pinout differs on different motherboards, so before you continue,
 check the documentation on your motherboard for correct pinout.
 
-The following illustration shows how the connection between the power led and the power button should be performed.
+The following illustration shows how the connection between the power LED and the power button should be performed:
 
 <img src="../_diy/atx_connection.png" width="500"/>
 
@@ -16,4 +16,4 @@ and on the right are the LED and button of the target host. The implementation o
 and can be performed, for example, by cutting wires and performing twisting, followed by insulation with duct tape.
 
 Be careful and respect the polarity of the LEDs. The polarity of the button does not matter (they have no polarity at all).
-The connection of HDD led and reset switch is performed in the same way.
+The connection of HDD LED and reset switch is performed in the same way.
