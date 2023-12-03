@@ -86,6 +86,7 @@ Most of the PiKVM settings are done through configuration files. All configurati
 The PiKVM memory card is mounted in read-only mode. It protects the filesystem from damage in case of sudden power outage. To edit any files and make changes, it is necessary to remount the file system to the read-write mode.
 
 !!! tip "Enabling write mode"
+
     * To enable write-mode, run command `rw` (under `root`).
     * To disable it, run command `ro`.
     * If you receive the message "Device is busy", perform `reboot`.
@@ -93,6 +94,7 @@ The PiKVM memory card is mounted in read-only mode. It protects the filesystem f
 In this handbook, you will often find instructions for editing configuration files. The simplest and most beginner-friendly text editor is `nano`, but you can also use `vim`.
 
 ??? example "Editing files in the Web Terminal"
+
     ```console
     [kvmd-webterm@pikvm ~]$ su -
     [root@pikvm ~]# rw
