@@ -17,9 +17,10 @@
 -----
 ## Getting access to PiKVM
 
-By default, PiKVM receives a dynamic IP address via DHCP. V3+ devices show IP on the built-in display. If you don't have a display, use the tips below:
+By default, PiKVM receives a dynamic IP address via DHCP. PiKVM V3+ devices shows the IP address on the built-in OLED display.
 
-??? example "Finding PiKVM in the network"
+??? example "PiKVM without OLED: finding device in the network"
+
     To determine the IP address of your PiKVM, use one of the following methods:
 
     * **Common way:** Open the web interface of your router and find the list of issued IP addresses there. It depends on the router model.
@@ -27,12 +28,16 @@ By default, PiKVM receives a dynamic IP address via DHCP. V3+ devices show IP on
     * **Linux, MacOS, Windows:** Download and run [Angry IP Scanner](https://angryip.org).
     * **Windows PowerShell:** Use command `arp -a`.
     
-    In order to find your RaspberryPi using the arp commands, you need to look for the following MAC Address's: B827EB, DCA632 or E45F01
+    In order to find PiKVM using the ARP commands, you need to look for the following MAC Address's: `B8:27:EB`, `DC:A6:32` or `E4:5F:01`.
 
-For future examples, let's assume that your PiKVM has received the address **192.168.0.100**, which you have successfully detected using the instructions above. Then your device was assigned a hostname: **pikvm**.
+For future examples, let's assume that PiKVM has received the address `192.168.0.100`,
+which you have successfully detected using the instructions above. The device has also been assigned a hostname `pikvm`.
 
 ??? example "Access to PiKVM Web Interface"
-    In *most* networks you should be able to reach PiKVM via any browser with the URL `https://192.168.0.100/` OR `https://pikvm/`. Google Chrome (Chromium), Firefox and Safari work best with 0 extensions enabled, if one works but the other does not, this might be a browser/extension issue. Its advised you use private window or incognito mode. Internet Explorer and the pre-Chromium version of Microsoft Edge are not supported.
+    In *most* networks you should be able to reach PiKVM via any browser with the URL `https://192.168.0.100/` OR `https://pikvm/`.
+    Google Chrome (Chromium), Firefox and Safari work best without any extensions enabled, if one works but the other does not,
+    this might be a browser/extension issue. It is advised you use private window or incognito mode.
+    Internet Explorer and the pre-Chromium version of Microsoft Edge are not supported.
 
     **The default user is `admin`, the password is also `admin`, and no 2FA code.** After logging in, you will get access to the menu with the main functions. Using the Web Terminal, you can change system settings and passwords.
 
@@ -137,6 +142,7 @@ Comments starts with the `#` symbol.
 * Explore PiKVM features using the table of contents on the left.
 * Join our [Discord](https://discord.gg/bpmXfz5) to contact the community and developers.
 * Check out the [GitHub](https://github.com/pikvm) - PiKVM is a fully Open Source project!
+* For Mac OS client: [pin your PiKVM device as an app](https://github.com/pikvm/pikvm/issues/965) for quick access.
 
 
 -----
