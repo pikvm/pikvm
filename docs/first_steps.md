@@ -35,14 +35,13 @@ which you have successfully detected using the instructions above. The device ha
 
 ??? example "Access to PiKVM Web Interface"
 
-    * **We recommend using the latest Google Chrome or Chromium**, as they support the largest number of PiKVM features.
-    * Safari and Firefox are in second place.
-    * Internet Explorer and the pre-Chromium versions of Microsoft Edge are not supported.
+    **We recommend using the latest Google Chrome or Chromium**, as they support the largest number of PiKVM features.
+    Safari and Firefox are in second place. Internet Explorer and the pre-Chromium versions of Microsoft Edge are not supported.
 
     For the first time, it is better to use a browser without extensions or incognito mode,
     as some extensions may disrupt the work of PiKVM.
 
-    Type the URL in the browser's address bar and press Enter: `https://192.168.0.100/` or `https://pikvm/`.
+    **Type the URL in the browser's address bar and press Enter: `https://192.168.0.100/` or `https://pikvm/`.**
 
     **The default user is `admin`, the password is also `admin`, and no 2FA code.**
 
