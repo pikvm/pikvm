@@ -1,53 +1,100 @@
 # PiKVM V3+ Audio
 
-This feature allows you to receive audio over an HDMI cable and transmit it to the browser in WebRTC mode.
+Official PiKVM V3, V4 Mini and V4 Plus devices have an exclusive audio transmission feature.
+Audio is transmitted over an HDMI cable from the target host to PiKVM as if it were a regular monitor
+with speakers, and then from PiKVM to a web browser in [WebRTC video mode](webrtc.md).
+This brings the user experience of working with a remote host even closer to the local one.
 
-!!! warning
-    * This is only supported by PiKVM V3+ devices right now. This may or may not work on other CSI devices as most have a hw defect.
-    * Please note the feature is experimental. Nothing will explode for you, but something may not work. Please report about problems [here](https://discord.gg/bpmXfz5) (preferred) or [here](https://github.com/pikvm/pikvm/issues/97).
-    * KVM switches may or may not work, we currently do not have a list of what works due to the feature being new/experimental.
-    * MIC support is not supported at this time, it may be supported in the future.
-    * USB Dongles do NOT support sound, there is no plans to make this work in the future.
+!!! note
 
-!!! info
-    PiKVM V4 has enabled this feature by default.
+    * This feature does not work with DIY devices, either CSI or USB video dongles.
+
+    * Reverse audio transmission, that is, from the browser towards PiKVM
+        (for example, to emulate a microphone) is not yet supported.
+
+    * [VNC](vnc.md) does not support audio, it only works in the Web UI.
 
 
+-----
 ## Preparing
 
-1. Make sure that you have not removed the [jumpers related to audio (4)](v3.md#atx-connection) on the V3 board and have not deleted or commented out the `dtoverlay=tc358743-audio` line in `/boot/config.txt`. Return everything as it was, if you changed it. For V4 you can skip this step.
+For PiKVM V4, this feature is enabled by default and no special preparations are required.
 
-2. Update the OS:
-   ```
-   # rw
-   # pacman -Syu
-   ```
+For PiKVM V3, this feature is disabled by default for historical reasons so as not to break
+old user configurations that were created before audio support was added.
 
-3. Edit `/etc/kvmd/janus/janus.plugin.ustreamer.jcfg` and add the following lines at the end:
-   ```
-   audio: {
-       device = "hw:0,0"
-       tc358743 = "/dev/kvmd-video"
-   }
-   ```
+??? example "Enabling audio on PiKVM V3"
 
-4. Enable the basic audio in the [EDID](https://docs.pikvm.org/edid/) in the file `/etc/kvmd/tc358743-edid.hex`:
-   ```
-   # kvmd-edidconf --set-audio=yes
-   ```
+    1. Make sure that you have not removed the [audio jumpers (4)](v3.md#io-ports-and-jumpers)
+        on the V3 HAT board and have not deleted or commented the `dtoverlay=tc358743-audio`
+        line in `/boot/config.txt`. Return everything as it was, if you changed it.
 
-5. Reboot the device:
-   ```
-   # reboot
-   ```
+    2. Add and add the following lines to `/etc/kvmd/janus/janus.plugin.ustreamer.jcfg` if they missing:
 
-6. Your host will detect the possibility of audio output via HDMI. Mac OS usually connects automatically, Windows requires manual indication, Linux will require a ritual shamanic dance. In any case, make sure that the audio is output via HDMI on your host. PiKVM supports stereo mode with any standard bits and frequencies like 32/44.1/48 kHz with 16/24 bit.
+        ```
+        audio: {
+            device = "hw:0,0"
+            tc358743 = "/dev/kvmd-video"
+        }
+        ```
 
-7. Open the PiKVM Web UI. Click the **System** menu and switch the video mode to **H.264 / WebRTC**. After that, the volume slider will appear under the switch. Increase it to the maximum and have fun.
+    3. Enable the Basic Audio support in the [EDID](edid.md) in the `/etc/kvmd/tc358743-edid.hex`:
 
-!!! warning
-    * After the page is reloaded, the audio slider will be reset. This is a technical limitation in all browsers to avoid annoying audio ads.
-    * If something doesn't work, check the log: `journalctl -u kvmd-janus`.
-    * Try a different browser, try and clear browser cache before reporting issues.
-    * Unplug the hdmi cable and plug back in, either from the PiKVM end and or the target end.
-    * Please report about problems [here](https://discord.gg/bpmXfz5) (preferred) or [here](https://github.com/pikvm/pikvm/issues).
+        ```console
+        [root@pikvm ~]$ kvmd-edidconf --set-audio=yes
+        ```
+
+    4. Reboot the device:
+
+        ```
+        [root@pikvm ~]$ reboot
+        ```
+
+
+-----
+## Usage
+
+The target host determines whether it is possible to output audio via HDMI. Each OS does this in its own way.
+
+* Mac OS usually understands the priority of HDMI for audio output on its own,
+    but you can specify this explicitly in the settings.
+
+* Windows requires explicit specifying of the audio output device.
+
+* In Linux, everything depends on the distribution you use. In ancient times, audio required performing
+    a ritual dance on a full moon. For now, a working Pipewire or Pulseaudio most likely be enough.
+    Just specify HDMI as the audio sink in the mixer.
+
+In general, make sure that the audio output is output via HDMI.
+PiKVM supports stereo mode with any standard bits and frequencies like 32/44.1/48 kHz with 16/24 bit.
+
+To receive audio in the PiKVM Web UI, go to the **System** menu and switch the video mode to `H.264 / WebRTC`.
+If everything is in order, the volume slider will appear. Set the volume to a non-zero value.
+The video steam will restart and you should start hearing sounds from the target host.
+
+<img src="menu.png" width="350"/>
+
+!!! note
+
+    If the volume slider is set to zero, then PiKVM does not accept the audio stream to save traffic,
+    while the target host will still assume that the audio output to HDMI is available.
+
+    Besides, when the page is reloaded, the volume slider will be reset to zero.
+    Saving this setting is not possible due to browser limitation that do not allow web pages to play audio
+    immediately after opening without user activity to protect against annoying ads.
+
+
+-----
+## Troubleshooting
+
+* If the target host does not detect the HDMI audio sink,
+    [try an alternative EDID](https://github.com/pikvm/pikvm/issues/764).
+    The problem will be fixed soon.
+
+* If the browser does not play sound or does not show audio slider, try a different browser
+    and/or incognito mode without extensions. Google Chrome works best.
+
+* Check the log: `journalctl -u kvmd-janus`.
+
+* If nothing helped, please report about the problem [here](https://discord.gg/bpmXfz5) (preferred)
+    or [here](https://github.com/pikvm/pikvm/issues).
