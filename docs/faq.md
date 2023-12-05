@@ -522,7 +522,19 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     Safari on iOS contains an old bug that prevents a web application from connecting over a web socket if you use a self-signed certificate on the server (the default for PiKVM). There are two solutions:
 
     * Install a valid SSL certificate for PiKVM host to `/etc/kvmd/nginx/ssl`.
-    * Disable HTTPS at all in `/etc/kvmd/nginx/nginx.conf`. To do this, comment some lines [like in this file](https://github.com/pikvm/kvmd/blob/master/configs/nginx/nginx.conf#L39) and restart web server: `systemctl restart kvmd-nginx`.
+
+    * Disable HTTPS at all by editing `/etc/kvmd/nginx/nginx.conf`. Comment all `server` sections and add a single one like this:
+
+        ```nginx
+        server {
+            include /etc/kvmd/nginx/listen-http.conf;
+            include /etc/kvmd/nginx/certbot.ctx-server.conf;
+            include /etc/kvmd/nginx/kvmd.ctx-server.conf;
+            include /usr/share/kvmd/extras/*/nginx.ctx-server.conf;
+        }
+        ```
+
+        After that, run `systemctl restart kvmd-nginx`.
 
     !!! danger
         Don't do this for insecure networks or the Internet. Your passwords and what you type on the keyboard will be transmitted in unencrypted form.
