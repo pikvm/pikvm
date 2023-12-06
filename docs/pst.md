@@ -10,7 +10,7 @@ However, the root file system is in a read-only state and does not involve remou
 To solve this problem, new versions of PiKVM have a small 256MiB storage partition that can be used to store that data.
 A special `kvmd-pst` daemon makes sure that this partition is mounted in read-only all the time, and remounts it to RW
 only when some user script requires it. This also solves the problems of simultaneous access, so the RW mode will be
-keeped as long as at least one client is working with the storage.
+kept as long as at least one client is working with the storage.
 
 
 ## Usage
