@@ -91,6 +91,39 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
   We created [our very own MJPG video server](https://github.com/pikvm/ustreamer) written in C with multi-threading support and GPU video encoding - the fastest streaming solution available to provide the best video quality for PiKVM. We also tested a lot of hardware configurations so that you can be sure devices you assemble will work reliably.
 </details>
 
+<details>
+  <summary>Comparsion table</summary>
+
+|                                                                     | DIY V1                      | DIY V2         | V3 Kit  | V4 Mini     | V4 Plus    |
+|---------------------------------------------------------------------|:---------------------------:|:--------------:|:-------:|:-----------:|:----------:|
+| Plug and Play out of box!                                           | ❌<br>DIY                   | ❌<br>DIY      | ✅      | ✅          | ✅         |
+| Base Raspberry unit              | RPi3<br>RPi2<br>Zero2W | RPi4<br>Zero2W | **RPi4<br>Included!** | **CM4<br>Included!** | **CM4<br>Included!** |
+| **HDMI 1080p@60Hz** support for better **BIOS/UEFI compatibility**  | ❌                          | ❌             | ❌      | ✅          | ✅         |
+| **HDMI audio** capture                                              | ❌                          | ❌             | ✅      | ✅          | ✅         |
+| USB keyboard/mouse emulation                                        | ✅                          | ✅             | ✅      | ✅          | ✅         |
+| Virtual **Flash Drive** and **CD-ROM emulation**                    | ❌                          | ✅             | ✅      | ✅          | ✅         |
+| Ability to simulate **"eject/insert"** for USB                      | ❌                          | ❌             | ✅      | ✅          | ✅         |
+| **Onboard ATX controller** for power management of the host         | DIY                         | DIY            | ✅      | ✅          | ✅         |
+| **CISCO-style RJ-45 console port**                                  | ❌                          | ❌             | ✅      | ❌          | ✅         |
+| **USB serial console port**                                         | ❌                          | ❌             | ✅      | ✅          | ✅         |
+| **Built-in OLED** with IP and other info                            | ❌                          | ❌             | ✅      | ✅          | ✅         |
+| USB host support (external USB devices connectivity)                | ✅                          | ✅             | ✅      | ❌          | ✅         |
+| **Internal secured USB 3.0 storage port**                           | ❌                          | ❌             | ❌      | ❌          | ✅         |
+| **Multiport KVM switches support**                                  | ✅                          | ✅             | ✅      | ❌          | ✅         |
+| A **real-time clock** for accurate logging                          | ❌                          | ❌             | ✅      | ✅          | ✅         |
+| **Locator LED** to find device in the rack                          | ❌                          | ❌             | ❌      | ✅          | ✅         |
+| **mPCIe slot** with USB lines for **LTE/5G** cards                  | ❌                          | ❌             | ❌      | ❌          | ✅         |
+| SIM card slot for modem                                             | ❌                          | ❌             | ❌      | ❌          | ✅         |
+| **External antenna support**                                        | ❌                          | ❌             | ❌      | ✅          | ✅         |
+| Pi's GPIO ports control from the Web UI                             | ✅                          | ✅             | ✅      | ❌          | ❌         |
+| USB relays, lamps, smartplugs control                               | ✅                          | ✅             | ✅      | ❌          | ✅         |
+| Cooling system / fan type                                           | DIY                         | DIY            | Axial   | **Fanless** | **Quiet<br>Radial** |
+| PWM fan controller                                                  | ❌                          | ❌             | ✅      | ❌          | ✅         |
+| **Fan speed and health monitoring**                                 | ❌                          | ❌             | ❌      | ❌          | ✅         |
+| Power consumption in idle mode                                      |                             |                | 3.3W    | **2.65W**   | 3.3W       |
+
+</details>
+
 -----
 
 # DIY Getting Started
