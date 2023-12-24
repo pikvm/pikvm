@@ -45,8 +45,8 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "How do I recover my PiKVM, it cannot be reached now"
 
-    1. Take the USB-C end cable you have for your target and move to the PiKVM IOIO port
-    2. Take the USB-A end cable and put thos on the HOST(The controlling PC)
+    1. Take the USB-C end cable you have for your target and move to the PiKVM IOIO port or CON port
+    2. Take the USB-A end cable and put this on the HOST(The controlling PC)
     3. Turn on or reboot your PiKVM, you should now see a COMx port on your HOST PC
     4. Connect using something like Putty, use 115200 as your baud rate
     5. Edit the file using nano or whatever text editor you are comfortable with, save the file
