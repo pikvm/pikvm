@@ -360,13 +360,25 @@ kvmd
         pwm_soft = 80
         ```
 
+        _Not needed for v4-mini because it does not have a fan._ 
+
     Here the small example with servo control:
 
-    1. Add to `/boot/config.txt`:
+    1a. For ≤ v3 add to `/boot/config.txt`:
 
         ```
         dtoverlay=pwm
         ```
+
+        to enable [PWM0_0](https://github.com/dotnet/iot/blob/main/Documentation/raspi-pwm.md#enabling-hardware-pwm) on RPi GPIO18. 
+
+    1b. For ≥ v4 add to `/boot/config.txt`:
+
+        ```
+        dtoverlay=pwm,pin=12,func=4
+        ```
+
+        to enable [PWM0_0](https://github.com/dotnet/iot/blob/main/Documentation/raspi-pwm.md#enabling-hardware-pwm) on CM4 GPIO12 (CN5 NeoPixel Pin) and set the PWM function to 4 (ALT0).
 
     2. Create `/etc/udev/rules.d/99-kvmd-pwm.rules`:
 
@@ -375,7 +387,7 @@ kvmd
         SUBSYSTEM=="pwm*", ACTION=="change", ENV{TRIGGER}!="none", RUN+="/bin/chgrp -R kvmd /sys%p", RUN+="/bin/chmod -R g=u /sys%p"
         ```
 
-    3. Connect Servo motor like SG90 PWM connection to RPi GPIO18, +5V and GND to a 5V and GND pin on header:
+    3. Connect Servo motor like SG90 PWM connection to RPi GPIO18 or CM4 GPIO12, +5V and GND to a 5V and GND pin on header:
 
     4. Add to /etc/kvmd/override.yaml
 
@@ -390,6 +402,8 @@ kvmd
                         duty_cycle_push: 1500000     # Servo Motor SG90 duty_cycle for pushing button
                         duty_cycle_release: 1000000  # Servo Motor SG90 duty_cycle for releasing button
                 scheme:
+                    __v4_locator__:  # v4-mini only
+                        pin: 18      # v4-mini only
                     short_press:
                         driver: servo1
                         pin: 0  # Pin number is the PWM channel number on the PWM Chip
@@ -426,7 +440,7 @@ kvmd
 
 ### Servo
 ??? note "Click to view"
-    The `servo` module is built on top of the `pwm` module and allows user to define angles instead of `duty_cyles` to control a PWM enabled servo motor like SG90. When the button is pressed the servo motor moves to an angle defined by `angle_push` and when button is released it moves back to `angle_release`. In the example configuration for a [cheap 5V SG90 Servo](https://www.ebay.co.uk/itm/184555802744), the motor moves to an angle of 45 degrees when button is pressed and moves back to 20 degress when released.
+    The `servo` module is built on top of the `pwm` module and allows user to define angles instead of `duty_cyles` to control a PWM enabled servo motor like SG90. When the button is pressed the servo motor moves to an angle defined by `angle_push` and when button is released it moves back to `angle_release`. In the example configuration for a [cheap 5V SG90 Servo](https://www.ebay.co.uk/sch/i.html?_nkw=5V+SG90+Servo), the motor moves to an angle of 45 degrees when button is pressed and moves back to 20 degress when released.
 
     !!! note
         Due to hardware limitations, this module conflicts with the **kvmd-fan** (PiKVM fan controller).
@@ -436,6 +450,8 @@ kvmd
         [main]
         pwm_soft = 80
         ```
+
+        _Not needed for v4-mini because it does not have a fan._ 
 
     To use Servo motors in PiKVM you need to follow steps 1-3 for [PWM Module](#pwm) and then use the following configuration.
 
@@ -456,30 +472,33 @@ kvmd
                     angle_push: 45           # Servo Motor SG90 angle to push button
                     angle_release: 20        # Servo Motor SG90 angle to release button
             scheme:
-                short_press:
-                    driver: servo1
-                    pin: 0  # Pin number is the PWM channel number on the PWM Chip
-                    mode: output
-                    switch: false
-                    pulse:
-                        delay: 0.5
-                        max_delay: 2
-                long_press:
-                    driver: servo1
-                    pin: 0
-                    mode: output
-                    switch: false
-                    pulse:
-                        delay: 2
-                        max_delay: 2
-                extra_long_press:
-                    driver: servo1
-                    pin: 0
-                    mode: output
-                    switch: false
-                    pulse:
-                        delay: 10
-                        max_delay: 20
+                scheme:
+                    __v4_locator__:  # v4-mini only
+                        pin: 18      # v4-mini only
+                    short_press:
+                        driver: servo1
+                        pin: 0  # Pin number is the PWM channel number on the PWM Chip
+                        mode: output
+                        switch: false
+                        pulse:
+                            delay: 0.5
+                            max_delay: 2
+                    long_press:
+                        driver: servo1
+                        pin: 0
+                        mode: output
+                        switch: false
+                        pulse:
+                            delay: 2
+                            max_delay: 2
+                    extra_long_press:
+                        driver: servo1
+                        pin: 0
+                        mode: output
+                        switch: false
+                        pulse:
+                            delay: 10
+                            max_delay: 20
             view:
                 header:
                     title: Controls
