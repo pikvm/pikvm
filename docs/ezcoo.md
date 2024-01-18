@@ -40,7 +40,7 @@ The UI can be updated to add buttons to switch between KVM inputs and indicators
 
 1. Enable read-write mode on the SD card via `rw`
 
-2. Edit the file: `nano /etc/kvmd/override.yaml` and include the following. Note the assumption that the KVM switch is present on `/dev/ttyUSB0`:
+2. Edit the file: `nano /etc/kvmd/override.yaml` and include the following. (Mandatory) Note the assumption that the KVM switch is present on `/dev/ttyUSB0`:
 
     ```yaml
     kvmd:
@@ -184,6 +184,9 @@ kvmd:
     Switching issues:
         SSH or open a web terminal to your PiKVM
         `ls -la /dev/ttyUSB*` - This should give you an output. If not, try a different cable till an output is displayed.
+        /dev/ttyUSB0 is mandatory, this cannot be made by hand as the OS need to make this device, if this is still not seen, there are a few possibilities
+        Port on the ezcoo is defective
+        Port on the PiKVM is defective (v2/v3 or v4+, mini does not work)
 ```
 
 
