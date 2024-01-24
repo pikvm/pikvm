@@ -119,7 +119,7 @@ Copy the contents into a file, for example `/root/edid.hex`, then follow the sam
     00000000000000000000000000000045
     ```
 
-??? example "1920x1080 as preferred. Useful for Gigabyte GA-H77-DS3H, Intel NUC or [ASRock H670 PG Riptide](https://github.com/pikvm/pikvm/issues/715)"
+??? example "1920x1080 as preferred. Useful for motherboards such as [ASRock H670 PG Riptide](https://github.com/pikvm/pikvm/issues/715), Gigabyte GA-H77-DS3H, MSI series such as B550M, B660M, Z690-A and X570. Also the Intel NUC."
     ```
     00FFFFFFFFFFFF005262888800888888
     1C150103800000780AEE91A3544C9926
