@@ -2,6 +2,7 @@
 
 As a first step, we recommend carefully reading our documentation on [GitHub](https://github.com/pikvm/pikvm) or the updated [documentation](https://docs.pikvm.org). Most steps to successfully set up your PiKVM are already described there. If you run into any issues you can check this page which will list common errors. If that still doesn't help you you're welcome to raise an [issue ticket](https://github.com/pikvm/pikvm/issues) or [join our Discord](https://discord.gg/bpmXfz5) for further help.
 
+!!! warning "Everything presented in thie FAQ has been provided by the community and/or from various Arch/RPF Wiki references, it is posted here as a convenience"
 
 ## Common questions
 
@@ -42,6 +43,33 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
     ??? warning "Do not forget the /24(CIDR), otherwise it will not work and your PiKVM will become unreachable)
     If you're using Wi-Fi but you don't have `/etc/systemd/network/wlan0.network` file, then first you will need to [`migrate the Wi-Fi settings from `netctl` to `systemd-networkd`](wifi.md).
+
+??? question "How do I fully disable IPv6 on the PiKVM?"
+
+    There are 2 things that need to be done to be effective:
+
+    ```ini
+    # su -
+    # rw
+    # nano /boot/cmdline.txt
+    ```
+    
+    Add `ipv6.disable=1` to the end of the line
+    
+    ```ini
+    # nano /etc/sysctl.d/40-disable-ipv6.conf
+    ```
+    
+    Add the following to the file
+    
+    ```ini
+    # Disable IPv6 for eth0 and wlan0
+    net.ipv6.conf.all.disable_ipv6 = 1      # ALL
+    net.ipv6.conf.eth0.disable_ipv6 = 1     # ETH0
+    net.ipv6.conf.wlan0.disable_ipv6 = 1    # WLAN0
+    ```
+
+    Reboot
 
 ??? question "How do I recover my PiKVM, it cannot be reached now"
 
