@@ -11,11 +11,14 @@ without having to move the mouse manually to avoid the screensaver.
 ## Enabling the Jiggler
 To enable the Jiggler, it is required to allow some config lines to `/etc/kvmd/override.yaml`:
 
+Please note: `active: true` will allow jiggler to activate after a reboot, if you do not want this, remove this line.
+
 ```yaml
 kvmd:
     hid:
         jiggler:
             enabled: true
+            active: true
 ```
 
 ... and restart KVMD:
