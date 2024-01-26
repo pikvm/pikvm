@@ -373,6 +373,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Elani Ferri
 * Elliot Woo
 * Eric Phenix
+* Eugene Sukhodolin
 * ewook
 * eye-catcher.com
 * Fabian Druschke
@@ -397,6 +398,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Geekworm
 * Genkinger Andreas
 * Geijer
+* Geoffrey Wright
 * George Becker
 * Georgy Brodsky
 * Gerald
