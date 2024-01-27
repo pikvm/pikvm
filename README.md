@@ -99,30 +99,30 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 | **===== KEY FEATURES =====**                                        |                             |                |         |             |            |
 | Plug and Play out of box!                                           | ❌<br>DIY                   | ❌<br>DIY      | ✅      | ✅          | ✅         |
 | Base Raspberry unit              | RPi3<br>RPi2<br>Zero2W | RPi4<br>Zero2W | **RPi4<br>Included!** | **CM4<br>Included!** | **CM4<br>Included!** |
-| **HDMI 1080p@60Hz** support for better **BIOS/UEFI compatibility**  | ❌                          | ❌             | ❌      | ✅          | ✅         |
-| **HDMI audio** capture                                              | ❌                          | ❌             | ✅      | ✅          | ✅         |
+| HDMI 1080p@60Hz support for better BIOS/UEFI compatibility  | ❌                          | ❌             | ❌      | ✅          | ✅         |
+| HDMI audio capture                                              | ❌                          | ❌             | ✅      | ✅          | ✅         |
 | USB keyboard/mouse emulation                                        | ✅                          | ✅             | ✅      | ✅          | ✅         |
-| Virtual **Flash Drive** and **CD-ROM emulation**                    | ❌                          | ✅             | ✅      | ✅          | ✅         |
-| Ability to simulate **"eject/insert"** for USB                      | ❌                          | ❌             | ✅      | ✅          | ✅         |
-| **Onboard ATX controller** for power management of the host         | DIY                         | DIY            | ✅      | ✅          | ✅         |
-| **Built-in OLED** with IP and other info                            | ❌                          | ❌             | ✅      | ✅          | ✅         |
-| **Multiport KVM switches support**                                  | ✅                          | ✅             | ✅      | ❌          | ✅         |
-| **===== HARDWARE ABILITIES =====**                                  |                             |                |         |             |            |
-| **CISCO-style RJ-45 console port**                                  | ❌                          | ❌             | ✅      | ❌          | ✅         |
-| **USB serial console port**                                         | ❌                          | ❌             | ✅      | ✅          | ✅         |
-| **Internal secured USB 3.0 storage port**                           | ❌                          | ❌             | ❌      | ❌          | ✅         |
-| A **real-time clock** for accurate logging                          | ❌                          | ❌             | ✅      | ✅          | ✅         |
-| **Locator LED** to find device in the rack                          | ❌                          | ❌             | ❌      | ✅          | ✅         |
-| **mPCIe slot** with USB lines for **LTE/5G** cards                  | ❌                          | ❌             | ❌      | ❌          | ✅         |
+| Virtual Flash Drive and CD-ROM emulation                    | ❌                          | ✅             | ✅      | ✅          | ✅         |
+| Ability to simulate "eject/insert" for USB                      | ❌                          | ❌             | ✅      | ✅          | ✅         |
+| Onboard ATX controller for power management of the host         | DIY                         | DIY            | ✅      | ✅          | ✅         |
+| Built-in OLED with IP and other info                            | ❌                          | ❌             | ✅      | ✅          | ✅         |
+| Multiport KVM switches support                                  | ✅                          | ✅             | ✅      | ❌          | ✅         |
+| **===== HARDWARE ABILITIES =====**                                  | **DIY V1**                      | **DIY V2**         | **V3 Kit**  | **V4 Mini**     | **V4 Plus**    |
+| CISCO-style RJ-45 console port                                  | ❌                          | ❌             | ✅      | ❌          | ✅         |
+| USB serial console port                                         | ❌                          | ❌             | ✅      | ✅          | ✅         |
+| Internal secured USB 3.0 storage port                           | ❌                          | ❌             | ❌      | ❌          | ✅         |
+| mPCIe slot with USB lines for LTE/5G cards                  | ❌                          | ❌             | ❌      | ❌          | ✅         |
 | SIM card slot for modem                                             | ❌                          | ❌             | ❌      | ❌          | ✅         |
-| **External antenna support**                                        | ❌                          | ❌             | ❌      | ✅          | ✅         |
+| External antenna support                                        | ❌                          | ❌             | ❌      | ✅          | ✅         |
+| A real-time clock for accurate logging                          | ❌                          | ❌             | ✅      | ✅          | ✅         |
+| Locator LED to find device in the rack                          | ❌                          | ❌             | ❌      | ✅          | ✅         |
 | USB host support (external USB devices connectivity)                | ✅                          | ✅             | ✅      | ❌          | ✅         |
-| **===== POWER AND COOLING ======**                                  |                             |                |         |             |            |
+| **===== POWER AND COOLING ======**                                  | **DIY V1**                      | **DIY V2**         | **V3 Kit**  | **V4 Mini**     | **V4 Plus**    |
 | Cooling system / fan type                                           | DIY                         | DIY            | Axial   | **Fanless** | **Quiet<br>Radial** |
 | PWM fan controller                                                  | ❌                          | ❌             | ✅      | ❌          | ✅         |
-| **Fan speed and health monitoring**                                 | ❌                          | ❌             | ❌      | ❌          | ✅         |
+| Fan speed and health monitoring                                 | ❌                          | ❌             | ❌      | ❌          | ✅         |
 | Power consumption in idle mode                                      |                             |                | 3.3W    | **2.65W**   | 3.3W       |
-| **===== MISCELLANEOUS =====**
+| **===== MISCELLANEOUS =====**                                       | **DIY V1**                      | **DIY V2**         | **V3 Kit**  | **V4 Mini**     | **V4 Plus**    |
 | USB relays, lamps, smartplugs control                               | ✅                          | ✅             | ✅      | ❌          | ✅         |
 | Pi's GPIO ports control from the Web UI                             | ✅                          | ✅             | ✅      | ❌          | ❌         |
 
