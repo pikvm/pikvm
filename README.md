@@ -96,6 +96,7 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 
 |                                                                     | DIY V1                      | DIY V2         | V3 Kit  | V4 Mini     | V4 Plus    |
 |---------------------------------------------------------------------|:---------------------------:|:--------------:|:-------:|:-----------:|:----------:|
+| **===== KEY FEATURES =====**                                        |                             |                |         |             |            |
 | Plug and Play out of box!                                           | ❌<br>DIY                   | ❌<br>DIY      | ✅      | ✅          | ✅         |
 | Base Raspberry unit              | RPi3<br>RPi2<br>Zero2W | RPi4<br>Zero2W | **RPi4<br>Included!** | **CM4<br>Included!** | **CM4<br>Included!** |
 | **HDMI 1080p@60Hz** support for better **BIOS/UEFI compatibility**  | ❌                          | ❌             | ❌      | ✅          | ✅         |
@@ -104,23 +105,26 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 | Virtual **Flash Drive** and **CD-ROM emulation**                    | ❌                          | ✅             | ✅      | ✅          | ✅         |
 | Ability to simulate **"eject/insert"** for USB                      | ❌                          | ❌             | ✅      | ✅          | ✅         |
 | **Onboard ATX controller** for power management of the host         | DIY                         | DIY            | ✅      | ✅          | ✅         |
+| **Built-in OLED** with IP and other info                            | ❌                          | ❌             | ✅      | ✅          | ✅         |
+| **Multiport KVM switches support**                                  | ✅                          | ✅             | ✅      | ❌          | ✅         |
+| **===== HARDWARE ABILITIES =====**                                  |                             |                |         |             |            |
 | **CISCO-style RJ-45 console port**                                  | ❌                          | ❌             | ✅      | ❌          | ✅         |
 | **USB serial console port**                                         | ❌                          | ❌             | ✅      | ✅          | ✅         |
-| **Built-in OLED** with IP and other info                            | ❌                          | ❌             | ✅      | ✅          | ✅         |
-| USB host support (external USB devices connectivity)                | ✅                          | ✅             | ✅      | ❌          | ✅         |
 | **Internal secured USB 3.0 storage port**                           | ❌                          | ❌             | ❌      | ❌          | ✅         |
-| **Multiport KVM switches support**                                  | ✅                          | ✅             | ✅      | ❌          | ✅         |
 | A **real-time clock** for accurate logging                          | ❌                          | ❌             | ✅      | ✅          | ✅         |
 | **Locator LED** to find device in the rack                          | ❌                          | ❌             | ❌      | ✅          | ✅         |
 | **mPCIe slot** with USB lines for **LTE/5G** cards                  | ❌                          | ❌             | ❌      | ❌          | ✅         |
 | SIM card slot for modem                                             | ❌                          | ❌             | ❌      | ❌          | ✅         |
 | **External antenna support**                                        | ❌                          | ❌             | ❌      | ✅          | ✅         |
-| Pi's GPIO ports control from the Web UI                             | ✅                          | ✅             | ✅      | ❌          | ❌         |
-| USB relays, lamps, smartplugs control                               | ✅                          | ✅             | ✅      | ❌          | ✅         |
+| USB host support (external USB devices connectivity)                | ✅                          | ✅             | ✅      | ❌          | ✅         |
+| **===== POWER AND COOLING ======**                                  |                             |                |         |             |            |
 | Cooling system / fan type                                           | DIY                         | DIY            | Axial   | **Fanless** | **Quiet<br>Radial** |
 | PWM fan controller                                                  | ❌                          | ❌             | ✅      | ❌          | ✅         |
 | **Fan speed and health monitoring**                                 | ❌                          | ❌             | ❌      | ❌          | ✅         |
 | Power consumption in idle mode                                      |                             |                | 3.3W    | **2.65W**   | 3.3W       |
+| **===== MISCELLANEOUS =====**
+| USB relays, lamps, smartplugs control                               | ✅                          | ✅             | ✅      | ❌          | ✅         |
+| Pi's GPIO ports control from the Web UI                             | ✅                          | ✅             | ✅      | ❌          | ❌         |
 
 </details>
 
