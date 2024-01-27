@@ -5,23 +5,13 @@ A very simple and fully functional Raspberry Pi-based KVM (Keyboard-Video-Mouse)
 
 The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](https://docs.pikvm.org) and join to the [Discord Community Chat](https://discord.gg/bpmXfz5) for news, questions and support!
 
-| **[>>> New PiKVM V4 - Buy it right now! <<<](https://pikvm.org/buy)** |
-| ---------------------------------------------------------------------------------------------------------- |
-| <a href=https://pikvm.org/buy><img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v4.jpg" alt="drawing"/></a> |
-
-
-| **[>>> DIY Device Getting Started <<<](#diy-getting-started)** | **[>>> PiKVM V3 Getting Started <<<](#pikvm-v3)** |
-| --------------------------------------------- | ------------------------------------------ |
-| [DIY Review by **Novaspirit Tech**](https://youtu.be/plP9Y1likRg)<br>[**Hackaday**](https://hackaday.com/2020/11/24/true-networked-kvm-without-breaking-the-bank/) & [**Tom's HARDWARE**](https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi) & [**Elector MAG**](https://www.elektormagazine.com/news/pikvm-raspberry-pi-as-a-kvm-remote-control)<br>[Our boring presentation for the DIY :)](https://youtu.be/9YhPWjWv5gw) | [PiKVM V3 Review by **Linus Tech Tips**](https://www.youtube.com/watch?v=232opnNPGNo)<br>[Review by **Novaspirit Tech**](https://youtu.be/dTchVKxx7Fo)<br>[Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)<br>[Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c) |
-| <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v2_example.jpg" alt="drawing"/> | <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v3_preasm.jpg" alt="drawing"/> |
-
 | Web UI                                     |
 | ------------------------------------------ |
-| <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/screen1.png" alt="drawing" height=200/> |
+| <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/screen1.png" height=400 /> |
 
 
 # Features
-* Supported **Raspberry Pi 2**, **3**, **4** and **Zero2W**;
+* Can be made based on **Raspberry Pi 2**, **3**, **4** and **Zero2W**;
 * **FullHD video** using advanced **HDMI-to-CSI bridge** or **USB dongle**;
 * Extra low **video latency** with **MJPEG** or **H.264 / WebRTC** (for CSI bridge);
 * Bootable **Virtual CD-ROM** and **Flash Drive**, ability to store images on **NFS**;
@@ -33,8 +23,105 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 * **Extensible authorization** and HTTPS out of the box;
 * **Health monitoring** of the Pi;
 * Control **GPIO** ports and **USB relays**;
-* It only costs between $30 and $100 for parts!
 * 100% Open Source!
+
+# Variants
+
+PiKVM supports several different hardware configurations, referred to as **platforms**.
+All of them uses our common open source software stack.
+
+* **PiKVM V4** and **V3** are our own **plug-and-play, ready-made** devices (Raspberry Pi included).<br>
+    Supports **H.264 video & audio** transmission, **host power management**, **mass-storage emulation** and much more.
+    They are really well-made, reliable things which you can use yourself or provide to your clients.
+    V4 and V3 also have more features than DIY builds.
+
+* **PiKVM V2** and **V1** devices are **DIY** so you can make it with your own hands.<br>
+   If you don't know where to put your old Raspberry Pi, here's a great goal.
+
+**Look at what Tech Bloggers are saying about us :)**
+
+<table>
+<tr>
+    <td align="center"><b>PiKVM V4 Plus &amp; Mini</b></td>
+    <td align="center"><b>PiKVM V3</b></td>
+    <td align="center"><b>DIY PiKVM</b></td>
+</tr>
+<tr>
+    <td align="center"> <!-- V4 Plus/Mini -->
+        <a href=https://youtu.be/2HqbQdZUEmY><b>Novaspirit Tech</b></a><br>
+        <a href=https://youtu.be/Kx5MlT2jYxU><b>Level1Techs</b></a><br>
+        <a href=https://www.youtube.com/watch?v=PppcpSVYh0E><b>Jeff Geerling</b><br>
+    </td>
+    <td align="center"> <!-- V3 -->
+        <a href=https://www.youtube.com/watch?v=232opnNPGNo><b>~~~ LINUS TECH TIPS ~~~</b></a><br>
+        <a href=https://youtu.be/dTchVKxx7Fo><b>Novaspirit Tech</b></a><br>
+        <a href=https://www.youtube.com/watch?v=LwsznhIBPMc><b>Level1Techs</b></a><br>
+        <a href=https://www.youtube.com/watch?v=aOgcqVcY4Yg><b>Techno Tim</b></a><br>
+        <a href=https://www.youtube.com/watch?v=fnd6wojrw3c><b>The Geek Freaks</b> (DE)</a><br>
+    </td>
+    <td align="center"> <!-- DIY -->
+        <a href=https://youtu.be/plP9Y1likRg><b>Novaspirit Tech</b></a><br>
+        <a href=https://hackaday.com/2020/11/24/true-networked-kvm-without-breaking-the-bank><b>Hackaday</b></a><br>
+        <a href=https://www.tomshardware.com/how-to/kvm-over-ip-raspberry-pi><b>Tom's HARDWARE</b></a><br>
+        <a href=https://www.elektormagazine.com/news/pikvm-raspberry-pi-as-a-kvm-remote-control><b>Elector MAG</b></a><br>
+        <a href=https://youtu.be/9YhPWjWv5gw>Our boring presentation of DIY</a><br>
+    </td>
+</tr>
+<tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v4.jpg" width=200 /></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v3_preasm.jpg" width=200 /></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v2_example.jpg" width=200 /></td>
+</tr>
+<tr>
+    <td align="center"><a href=https://pikvm.org/buy><br><b>~~~ BUY IT NOW ~~~</b></a><br><br></td>
+    <td align="center"><a href=https://pikvm.org/buy><br><b>~~~ BUY IT NOW ~~~</b></a><br><br></td>
+    <td align="center"><a href=#diy-getting-started><br><b>DIY Getting Started</b></a><br><br></td>
+</tr>
+</table>
+
+<hr>
+
+| <div align="center">⭐ ⭐ ⭐ **KEY FEATURES** ⭐ ⭐ ⭐</div>       | **V4 Plus** | **V4 Mini** |   |  **V3**  |   | **DIY V2** | **DIY V1** |
+|--------------------------------------------------------------------|:-----------:|:-----------:|---|:--------:|---|:----------:|:----------:|
+|                                                                    |             |             |   |          |   |            |            |
+| **Plug and Play out of box!**                                      | ✅          | ✅          |   | ✅       |   | ❌<br>DIY  | ❌<br>DIY  |
+| Base Raspberry unit | **CM4<br><sup>Included!</sup>** | **CM4<br><sup>Included!</sup>** | | **RPi4<br><sup>Included!</sup>** | | RPi4<br>Zero2W | RPi3<br>RPi2<br>Zero2W |
+| **HDMI 1080p@60Hz** support for better **BIOS/UEFI compatibility** | ✅          | ✅          |   | ❌       |   | ❌         | ❌         |
+| **HDMI audio** capture                                             | ✅          | ✅          |   | ✅       |   | ❌         | ❌         |
+| USB keyboard/mouse emulation                                       | ✅          | ✅          |   | ✅       |   | ✅         | ✅         |
+| Virtual **Flash Drive** / **CD-ROM emulation**                     | ✅          | ✅          |   | ✅       |   | ✅         | ❌         |
+| Ability to simulate **"eject/insert"** for USB                     | ✅          | ✅          |   | ✅       |   | ❌         | ❌         |
+| **Onboard ATX controller** for power management of the host        | ✅          | ✅          |   | ✅       |   | DIY        | DIY        |
+| **Built-in OLED** with IP and other info                           | ✅          | ✅          |   | ✅       |   | ❌         | ❌         |
+| **Multiport KVM switches** support                                 | ✅          | ❌          |   | ✅       |   | ✅         | ✅         |
+||
+||
+| <div align="center">⭐ ⭐ ⭐ **HARDWARE ABILITIES** ⭐ ⭐ ⭐</div> | **V4 Plus** | **V4 Mini** |   |  **V3**  |   | **DIY V2** | **DIY V1** |
+||
+| **CISCO-style RJ-45** console port                                 | ✅          | ❌          |   | ✅       |   | ❌         |  ❌        |
+| **USB serial** console port                                        | ✅          | ✅          |   | ✅       |   | ❌         |  ❌        |
+| **Internal secured USB 3.0** storage port                          | ✅          | ❌          |   | ❌       |   | ❌         |  ❌        |
+| A **real-time clock** for accurate logging                         | ✅          | ✅          |   | ✅       |   | ❌         |  ❌        |
+| **Locator LED** to find device in the rack                         | ✅          | ✅          |   | ❌       |   | ❌         |  ❌        |
+| **mPCIe slot** with USB lines for **LTE/5G** cards                 | ✅          | ❌          |   | ❌       |   | ❌         |  ❌        |
+| **SIM card slot** for modem                                        | ✅          | ❌          |   | ❌       |   | ❌         |  ❌        |
+| **External antenna** support                                       | ✅          | ✅          |   | ❌       |   | ❌         |  ❌        |
+| USB host support (external USB devices connectivity)               | ✅          | ❌          |   | ✅       |   | ✅         |  ✅        |
+||
+||
+| <div align="center">⭐ ⭐ ⭐ **POWER AND COOLING** ⭐ ⭐ ⭐</div>  | **V4 Plus** | **V4 Mini** |   |  **V3**  |   | **DIY V2** | **DIY V1** |
+||
+| Cooling system / fan type                                      | Quiet<br>Radial | Fanless     |   | Axial    |   | DIY        | DIY        |
+| PWM fan controller                                                 | ✅          | ❌          |   | ✅       |   | ❌         |  ❌        |
+| **Fan speed and health** monitoring                                | ✅          | ❌          |   | ❌       |   | ❌         |  ❌        |
+| Power consumption in idle mode                                     | 3.3W        | 2.65W       |   | 3.3W     |   |            |            |
+||
+||
+| <div align="center">⭐ ⭐ ⭐ **MISCELLANEOUS** ⭐ ⭐ ⭐</div>      | **V4 Plus** | **V4 Mini** |   |  **V3**  |   | **DIY V2** | **DIY V1** |
+||
+| USB relays, lamps, smartplugs control                              | ✅          | ❌          |     | ✅     |   | ✅         | ✅         |
+| Pi's GPIO ports control from the Web UI                            | ❌          | ❌          |     | ✅     |   | ✅         | ✅         |
+
 
 <details>
   <summary><b>More indepth details about the PiKVM features</b></summary>
@@ -91,48 +178,10 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
   We created [our very own MJPG video server](https://github.com/pikvm/ustreamer) written in C with multi-threading support and GPU video encoding - the fastest streaming solution available to provide the best video quality for PiKVM. We also tested a lot of hardware configurations so that you can be sure devices you assemble will work reliably.
 </details>
 
-<details>
-  <summary>Comparsion table</summary>
-
-|                                                                     | DIY V1                      | DIY V2         | V3 Kit  | V4 Mini     | V4 Plus    |
-|---------------------------------------------------------------------|:---------------------------:|:--------------:|:-------:|:-----------:|:----------:|
-| **===== KEY FEATURES =====**                                        |                             |                |         |             |            |
-| Plug and Play out of box!                                           | ❌<br>DIY                   | ❌<br>DIY      | ✅      | ✅          | ✅         |
-| Base Raspberry unit              | RPi3<br>RPi2<br>Zero2W | RPi4<br>Zero2W | **RPi4<br>Included!** | **CM4<br>Included!** | **CM4<br>Included!** |
-| HDMI 1080p@60Hz support for better BIOS/UEFI compatibility  | ❌                          | ❌             | ❌      | ✅          | ✅         |
-| HDMI audio capture                                              | ❌                          | ❌             | ✅      | ✅          | ✅         |
-| USB keyboard/mouse emulation                                        | ✅                          | ✅             | ✅      | ✅          | ✅         |
-| Virtual Flash Drive and CD-ROM emulation                    | ❌                          | ✅             | ✅      | ✅          | ✅         |
-| Ability to simulate "eject/insert" for USB                      | ❌                          | ❌             | ✅      | ✅          | ✅         |
-| Onboard ATX controller for power management of the host         | DIY                         | DIY            | ✅      | ✅          | ✅         |
-| Built-in OLED with IP and other info                            | ❌                          | ❌             | ✅      | ✅          | ✅         |
-| Multiport KVM switches support                                  | ✅                          | ✅             | ✅      | ❌          | ✅         |
-| **===== HARDWARE ABILITIES =====**                                  | **DIY V1**                      | **DIY V2**         | **V3 Kit**  | **V4 Mini**     | **V4 Plus**    |
-| CISCO-style RJ-45 console port                                  | ❌                          | ❌             | ✅      | ❌          | ✅         |
-| USB serial console port                                         | ❌                          | ❌             | ✅      | ✅          | ✅         |
-| Internal secured USB 3.0 storage port                           | ❌                          | ❌             | ❌      | ❌          | ✅         |
-| mPCIe slot with USB lines for LTE/5G cards                  | ❌                          | ❌             | ❌      | ❌          | ✅         |
-| SIM card slot for modem                                             | ❌                          | ❌             | ❌      | ❌          | ✅         |
-| External antenna support                                        | ❌                          | ❌             | ❌      | ✅          | ✅         |
-| A real-time clock for accurate logging                          | ❌                          | ❌             | ✅      | ✅          | ✅         |
-| Locator LED to find device in the rack                          | ❌                          | ❌             | ❌      | ✅          | ✅         |
-| USB host support (external USB devices connectivity)                | ✅                          | ✅             | ✅      | ❌          | ✅         |
-| **===== POWER AND COOLING ======**                                  | **DIY V1**                      | **DIY V2**         | **V3 Kit**  | **V4 Mini**     | **V4 Plus**    |
-| Cooling system / fan type                                           | DIY                         | DIY            | Axial   | **Fanless** | **Quiet<br>Radial** |
-| PWM fan controller                                                  | ❌                          | ❌             | ✅      | ❌          | ✅         |
-| Fan speed and health monitoring                                 | ❌                          | ❌             | ❌      | ❌          | ✅         |
-| Power consumption in idle mode                                      |                             |                | 3.3W    | **2.65W**   | 3.3W       |
-| **===== MISCELLANEOUS =====**                                       | **DIY V1**                      | **DIY V2**         | **V3 Kit**  | **V4 Mini**     | **V4 Plus**    |
-| USB relays, lamps, smartplugs control                               | ✅                          | ✅             | ✅      | ❌          | ✅         |
-| Pi's GPIO ports control from the Web UI                             | ✅                          | ✅             | ✅      | ❌          | ❌         |
-
-</details>
-
 -----
 
 # DIY Getting Started
-## Required hardware
-PiKVM supports several different hardware configurations, referred to as **platforms**. Now available: **V2** and **V1**.
+PiKVM supports several different DIY platforms. Now available: **V2** and **V1**.
 * **Recommended**: **V2** is the most powerful implementation for **Raspberry Pi 4** and **Zero2W** supporting all of the features of PiKVM including the **Mass Storage Drive**. **It's also the easiest to make**.
 * **V1** was designed to work with **Raspberry Pi 2** and **3** that do not have USB emulation port and requires a few more components for a basic implementation. It also does not support the Mass Storage Drive feature.
 
@@ -155,39 +204,6 @@ So, again, in short:
   * Requires extra wiring and little bit more parts.
   * Supports H.264 (for recommended CSI capture).
   * Doesn't support CD-ROM and Flash Drive (mass storage) emulation.
-
-
-# PiKVM V3
-
-We have developed our own HAT and pre-assembled device based on the Raspberry Pi 4.
-
-| **The Pre-Assembled device** | **The DIY kit** |
-| ---------------------------- | --------------- |
-| <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v3_preasm.jpg" alt="drawing" height=200 /> | <img src="https://raw.githubusercontent.com/pikvm/pikvm/master/img/v3_kit.jpg" alt="drawing" height=200 /> |
-
-
-**[>>> Buy PiKVM V3 right now! <<<](https://pikvm.org/buy)**
-
-**[>>> PiKVM V3 User Guide <<<](https://docs.pikvm.org/v3)**
-
-* **HDMI video capture** for extra low latency with **MJPEG** or **H.264/WebRTC** (1080p 50Hz max).
-* **HDMI audio capture**.
-* **USB keyboard** & **mouse**, bootable **Virtual CD-ROM** & **Flash Drive**;
-* Ability to simulate "**removal and insertion**" for **USB**.
-* **Onboard ATX controller** to manage the server's power.
-* **PWM fan controller**.
-* **A real-time clock** for accurate logging.
-* CISCO-style and USB **serial console port** (to manage PiKVM OS or to connect the server).
-* **No need for soldering or breadboarding**. It's a ready-made, reliable thing which you can use yourself or provide to your clients.
-
-Watch the video:
-* [PiKVM V3 Review by **Novaspirit Tech**](https://youtu.be/dTchVKxx7Fo)
-* [Another review by **Level1Techs**](https://www.youtube.com/watch?v=LwsznhIBPMc)
-* [Review by **The Geek Freaks** (DE)](https://www.youtube.com/watch?v=fnd6wojrw3c)
-
-History:
-* [PiKVM V3 HAT on Kickstarter (huge success!)](https://www.kickstarter.com/projects/mdevaev/pikvm-v3-hat)
-
 
 -----
 
