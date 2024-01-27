@@ -65,9 +65,11 @@ which you have successfully detected using the instructions above. The device ha
     * If you have logged in via SSH, then most likely you are already `root`.
     * To get `root` in the Web Terminal, use command `su -` and enter the root password.
 
-(PiKVM) ARCH OS often receives software updates. After installation, it makes sense to update the OS.
+PiKVM OS (and the underlying Arch Linux ARM upstream) often receives software updates.
+After installation, it makes sense to update the OS.
 It's best to do this now, when you have physical access to the device, because if something goes wrong
-(for example, the power goes out during the update or some upstream change), you will need to [reflash the memory card](flashing_os.md).
+(for example, the power goes out during the update or some upstream change),
+you will need to [reflash the memory card](flashing_os.md).
 
 ??? example "Updating PiKVM OS"
 
