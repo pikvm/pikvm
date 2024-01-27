@@ -106,7 +106,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     * Raspbian did not have all the necessary packages in the repositories to satisfy most software dependencies.
     * PiKVM was born as a pet project, and the founder likes Arch the most.
 
-    However, we plan to provide an alternative OS image based on RPi OS in the future - now it is quite stable.
+    However, we plan to provide an alternative OS image based on Raspberry Pi OS in the future - now it is quite stable.
 
 ??? question "Can I use an iPad on PiKVM?"
     * Yes, with the correct hardware you can control an iPad.
