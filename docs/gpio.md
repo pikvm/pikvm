@@ -352,7 +352,7 @@ kvmd
     The `pwm` driver allows you to use [some GPIO pins](https://pinout.xyz/pinout/pwm) on the Raspberry Pi for PWM.
 
     !!! note
-        Due to hardware limitations, this module conflicts with the **kvmd-fan** (PiKVM fan controller).
+        Due to hardware limitations, this module conflicts with the **kvmd-fan** (the fan controller) on PiKVM V3 and V4 Plus.
         To use it, you have to use hardware PWM for kvmfan. To do this, add the following lines to `/etc/kvmd/fan.ini`:
 
         ```ini
@@ -360,25 +360,23 @@ kvmd
         pwm_soft = 80
         ```
 
-        _Not needed for v4-mini because it does not have a fan._ 
+        *Not needed for V4 Mini because it does not have a fan.*
 
     Here the small example with servo control:
 
-    1a. For ≤ v3 add to `/boot/config.txt`:
+    1. Add some params to `/boot/config.txt`:
 
-        ```
-        dtoverlay=pwm
-        ```
+        * For PiKVM V3 or DIY device to enable [PWM0_0](https://github.com/dotnet/iot/blob/main/Documentation/raspi-pwm.md#enabling-hardware-pwm) on RPi GPIO18:
 
-        to enable [PWM0_0](https://github.com/dotnet/iot/blob/main/Documentation/raspi-pwm.md#enabling-hardware-pwm) on RPi GPIO18. 
+            ```ini
+            dtoverlay=pwm
+            ```
 
-    1b. For ≥ v4 add to `/boot/config.txt`:
+        * For PiKVM V4 to enable [PWM0_0](https://github.com/dotnet/iot/blob/main/Documentation/raspi-pwm.md#enabling-hardware-pwm) on CM4 GPIO12 (CN5 NeoPixel Pin) and set the PWM function to 4 (ALT0):
 
-        ```
-        dtoverlay=pwm,pin=12,func=4
-        ```
-
-        to enable [PWM0_0](https://github.com/dotnet/iot/blob/main/Documentation/raspi-pwm.md#enabling-hardware-pwm) on CM4 GPIO12 (CN5 NeoPixel Pin) and set the PWM function to 4 (ALT0).
+            ```ini
+            dtoverlay=pwm,pin=12,func=4
+            ```
 
     2. Create `/etc/udev/rules.d/99-kvmd-pwm.rules`:
 
@@ -443,7 +441,7 @@ kvmd
     The `servo` module is built on top of the `pwm` module and allows user to define angles instead of `duty_cyles` to control a PWM enabled servo motor like SG90. When the button is pressed the servo motor moves to an angle defined by `angle_push` and when button is released it moves back to `angle_release`. In the example configuration for a [cheap 5V SG90 Servo](https://www.ebay.co.uk/sch/i.html?_nkw=5V+SG90+Servo), the motor moves to an angle of 45 degrees when button is pressed and moves back to 20 degress when released.
 
     !!! note
-        Due to hardware limitations, this module conflicts with the **kvmd-fan** (PiKVM fan controller).
+        Due to hardware limitations, this module conflicts with the **kvmd-fan** (the fan controller) on PiKVM V3 and V4 Plus.
         To use it, you have to use hardware PWM for kvmfan. To do this, add the following lines to `/etc/kvmd/fan.ini`:
 
         ```ini
@@ -451,7 +449,7 @@ kvmd
         pwm_soft = 80
         ```
 
-        _Not needed for v4-mini because it does not have a fan._ 
+        *Not needed for v4-mini because it does not have a fan.*
 
     To use Servo motors in PiKVM you need to follow steps 1-3 for [PWM Module](#pwm) and then use the following configuration.
 
