@@ -89,7 +89,7 @@ All of them uses our common open source software stack.
 | **HDMI 1080p@60Hz** support for better **BIOS/UEFI compatibility** | ✅          | ✅          |   | ❌       |   | ❌         | ❌         |
 | **HDMI audio** capture                                             | ✅          | ✅          |   | ✅       |   | ❌         | ❌         |
 | USB keyboard/mouse emulation                                       | ✅          | ✅          |   | ✅       |   | ✅         | ✅         |
-| Virtual **Flash Drive** / **CD-ROM emulation**                     | ✅          | ✅          |   | ✅       |   | ✅         | ❌         |
+| Virtual **Flash Drive** / **CD-ROM** emulation                     | ✅          | ✅          |   | ✅       |   | ✅         | ❌         |
 | Ability to simulate **"eject/insert"** for USB                     | ✅          | ✅          |   | ✅       |   | ❌         | ❌         |
 | **Onboard ATX controller** for power management of the host        | ✅          | ✅          |   | ✅       |   | DIY        | DIY        |
 | **Built-in OLED** with IP and other info                           | ✅          | ✅          |   | ✅       |   | ❌         | ❌         |
