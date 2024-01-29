@@ -95,7 +95,7 @@ The UI can be updated to add buttons to switch between KVM inputs and indicators
                     - ["#Input 4", ch3_led, ch3_button]
     ```
 
-    ??? note "Editing '#Input X' will change the table name in the GUI drop down, if you want a different name, name it something else and restart kvmd."
+    ??? note "Editing '#Input X' to '#Something else' will change the table name in the GUI drop down, if you want a different name, name it something else and restart kvmd."
 
     !!! warning "This now only applies to older images, newer images do not have this issue. Make sure to notate the spaces for each line, needs to be a total of 4 spaces added per line (NOT tabs):"
     
