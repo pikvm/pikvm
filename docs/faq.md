@@ -43,6 +43,14 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     ??? warning "Do not forget the /24(CIDR), otherwise it will not work and your PiKVM will become unreachable)
     If you're using Wi-Fi but you don't have `/etc/systemd/network/wlan0.network` file, then first you will need to [`migrate the Wi-Fi settings from `netctl` to `systemd-networkd`](wifi.md).
 
+
+??? question "How to disable IPv6 on PiKVM?"
+
+    To do this, you need at least KVMD 3.301 installed on your device. If this is not the case, update the OS.
+
+    Next, append the `ipv6.disable=1` parameter to `/boot/cmdline.txt` and perform `reboot`.
+
+
 ??? question "How do I recover my PiKVM, it cannot be reached now"
 
     1. Take the USB-C end cable you have for your target and move to the PiKVM IOIO port or CON port
@@ -213,11 +221,18 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "How can I change the HTTP/HTTPS ports?"
-    You can change the ports in the following files:
 
-    - `/etc/kvmd/nginx/listen-https.conf`
-    - `/etc/kvmd/nginx/listen-http.conf`
-    - `/etc/kvmd/nginx/redirect-to-https.conf`
+    To do this, you need at least KVMD 3.301 installed on your device. If this is not the case, update the OS.
+
+    Add some of these lines to `/etc/kvmd/override.yaml`:
+
+    ```yaml
+    nginx:
+        https:
+            port: 4430
+        http:
+            port: 8080
+    ```
 
     After that, restart the server: `systemctl restart kvmd-nginx`.
 
@@ -324,7 +339,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "How do I update PiKVM with the latest software?"
 
-	{!_update_os.md!}
+    {!_update_os.md!}
 
 
 ??? question "I don't need ATX functions. How do I disable this in the Web UI?"
@@ -516,28 +531,6 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "Pressing ESC in full screen mode causes the PiKVM page to close"
     Your browser does not support [keyboard lock](https://caniuse.com/mdn-api_keyboard_lock). Right now (January 2022), only Chromium implements this, so it works on Chrome, Edge, and Opera.
-
-
-??? question "I can't use the PiKVM web interface on iOS: the Web UI network indicator flashes yellow"
-    Safari on iOS contains an old bug that prevents a web application from connecting over a web socket if you use a self-signed certificate on the server (the default for PiKVM). There are two solutions:
-
-    * Install a valid SSL certificate for PiKVM host to `/etc/kvmd/nginx/ssl`.
-
-    * Disable HTTPS at all by editing `/etc/kvmd/nginx/nginx.conf`. Comment all `server` sections and add a single one like this:
-
-        ```nginx
-        server {
-            include /etc/kvmd/nginx/listen-http.conf;
-            include /etc/kvmd/nginx/certbot.ctx-server.conf;
-            include /etc/kvmd/nginx/kvmd.ctx-server.conf;
-            include /usr/share/kvmd/extras/*/nginx.ctx-server.conf;
-        }
-        ```
-
-        After that, run `systemctl restart kvmd-nginx`.
-
-    !!! danger
-        Don't do this for insecure networks or the Internet. Your passwords and what you type on the keyboard will be transmitted in unencrypted form.
 
 
 ??? question "The Web UI doesn't work properly in Firefox while it works fine in Chrome"
