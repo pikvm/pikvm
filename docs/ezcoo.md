@@ -1,5 +1,7 @@
 # ezCoo managed multiport KVM switch
 
+{!_multiport_usb.md!}
+
 The ezCoo managed switch can be controlled by PiKVM to allow it to connect to multiple hosts. A typical scenario is a single PiKVM device which can control and switch between multiple hosts or servers using the ezCoo switch. UI elements can be added to the [GPIO dropdown](gpio.md) to allow switching between hosts from the PiKVM webpage. The instructions here were tested with the ~~[ezCoo SW41HA HDMI 4x1 switch](https://www.easycoolav.com/products/hdmi20-switch-4x1-with-usb20-kvm-4-port-usbsupport-4k60hz-444-and-hdr-audio-breakout)~~ [ezCoo EZ-SW41HA-KVMU3L 4x1 switch](https://www.easycoolav.com/products/hdmi20-switch-4x1-with-usb30-kvm-3-port-usbsupport-4k60hz-444-and-hdr-audio-breakout-36) OR [eccoo EZ-SW41HA-KVMU3P 4x1 switch](https://www.amazon.com/gp/product/B09ZKZK7ZB). Both older USB2.0 and newer USB3.0 variants are supported. The following was testing on a Raspberry Pi 4 but should also work on the Pi 2 and 3. This document was createdy using the contributions from multiple users in our [Discord](https://discord.gg/bpmXfz5) and the author appreciates their efforts.
 
 !!! info
