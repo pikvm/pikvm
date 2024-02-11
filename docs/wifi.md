@@ -12,17 +12,7 @@ Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (a
     Check out [this guide](on_boot_config.md) guide. It is mandatory if you're using Zero 2 W board.
     It will useful in most other cases, especially if you have physical access to the memory card.
 
-??? note "Moving Wi-Fi settings for OS older than 2021.10.19"
-    Starting from 2021.10.19, the old way to configure Wi-Fi using `netctl` is deprecated.
-    Instead, it is proposed to use a more native path with `systemd-networkd`, which is already used to configure Ethernet.
-    Follow the guide and then delete the old netctl profile:
-
-    ```
-    # rw
-    # systemctl disable netctl-auto@wlan0.service
-    # rm /etc/netctl/wlan0-*
-    # ro
-    ```
+??? note "Devices based on Raspberry Pi Zero 2 W does not support 5GHz Wi-Fi"
 
 
 ## Setting up Wi-Fi manually

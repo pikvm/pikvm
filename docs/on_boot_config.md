@@ -13,6 +13,8 @@ After applying the settings, the file is automatically deleted.
 -----
 ## Setting up Wi-Fi
 
+??? note "Devices based on Raspberry Pi Zero 2 W does not support 5GHz Wi-Fi"
+
 1. Remove the PiKVM memory card. The device must be turned off.
 
 2. Insert the memory card into the computer and mount the first FAT32 partition.

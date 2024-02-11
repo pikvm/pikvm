@@ -40,11 +40,10 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     DNS=192.168.x.x
     ```
 
-    ??? warning "Do not forget the /24(CIDR), otherwise it will not work and your PiKVM will become unreachable)
-    If you're using Wi-Fi but you don't have `/etc/systemd/network/wlan0.network` file, then first you will need to [`migrate the Wi-Fi settings from `netctl` to `systemd-networkd`](wifi.md).
+    ??? warning "Don't forget the `/24` suffix (CIDR), otherwise it will not work and your PiKVM will become unreachable"
 
 
-??? question "How to disable IPv6 on PiKVM?"
+??? question "How can I disable IPv6 on PiKVM?"
 
     To do this, you need at least KVMD 3.301 installed on your device. If this is not the case, update the OS.
 
