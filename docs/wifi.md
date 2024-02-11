@@ -12,7 +12,8 @@ Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (a
     Check out [this guide](on_boot_config.md) guide. It is mandatory if you're using Zero 2 W board.
     It will useful in most other cases, especially if you have physical access to the memory card.
 
-??? note "Devices based on Raspberry Pi Zero 2 W does not support 5GHz Wi-Fi"
+!!! note
+    Devices based on Raspberry Pi Zero 2 W does not support 5GHz Wi-Fi.
 
 
 ## Setting up Wi-Fi manually
