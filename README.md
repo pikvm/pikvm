@@ -388,6 +388,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * DogeLabs
 * Dominic Phoon
 * Dominik Klonowski
+* Donald Hays
 * Edmon Abdul Nur
 * Egan Ford
 * Elani Ferri
@@ -449,6 +450,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Icculus
 * iks
 * Invader Monks
+* Ioannis Karageorgos
 * IT Lifesaver
 * Ivan Ganev
 * Ivan Josiah Lapis
