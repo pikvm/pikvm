@@ -70,7 +70,7 @@ PiKVM supports stereo mode with any standard bits and frequencies like 32/44.1/4
 
 To receive audio in the PiKVM Web UI, go to the **System** menu and switch the video mode to `H.264 / WebRTC`.
 If everything is in order, the volume slider will appear. Set the volume to a non-zero value.
-The video steam will restart and you should start hearing sounds from the target host.
+The video stream will restart and you should start hearing sounds from the target host.
 
 <img src="menu.png" width="350"/>
 
