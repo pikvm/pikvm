@@ -23,7 +23,17 @@ You can also apply the new EDID without rebooting to make sure it works:
 
 ## Default EDID
 
-If for some reason you need to go back to the default EDID (changing attached device etc), you can find it locally on the Pi at `/usr/share/kvmd/configs.default/kvmd/edid` or in the [kvmd repo](https://github.com/pikvm/kvmd/blob/master/configs/kvmd/edid).
+If you need to restore the default EDID you can easily do this with `kvmd-edidconf`, for example:
+
+```console
+# rw
+# kvmd-edidconf --restore-default=v4plus
+# reboot
+```
+Available options: `v0`, `v1`, `v2`, `v3`, `v4mini` and `v4plus`.
+
+Also defaults edid can be found locally on your PiKVM: `/usr/share/kvmd/configs.default/kvmd/edid`,
+or in the [kvmd repo](https://github.com/pikvm/kvmd/blob/master/configs/kvmd/edid).
 
 
 ## EDID examples for V4+
