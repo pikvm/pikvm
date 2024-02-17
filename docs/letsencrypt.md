@@ -15,44 +15,42 @@ file system, special tools around Certbot are required to work with certificates
 
 1. Update the OS and make sure that you are using a new image with [PST storage](pst.md).
 
-      ```
-      # rw
-      # pacman -Syu
-      # reboot
-      ...
-      # kvmd-pstrun -- true
-      ```
+    {!_update_os.md!}
 
-      If the storage is not available, you need to [reflash the OS image](flashing_os.md) to the latest one from our official website.
+    ```
+    # kvmd-pstrun -- true
+    ```
+
+    If the storage is not available, you need to [reflash the OS image](flashing_os.md) to the latest one from our official website.
 
 2. Switch filesystem to RW and obtain the certificate (for example, `pikvm.example.com`. The method depends on the network configuration. In the simplest case, if PiKVM is open for access from the Internet, it is recommended to use the webroot. Another examples will be described below.
 
-      ```
-      # rw
-      # kvmd-certbot certonly_webroot --agree-tos -n --email user@example.com -d pikvm.example.com
-      ```
+    ```
+    # rw
+    # kvmd-certbot certonly_webroot --agree-tos -n --email user@example.com -d pikvm.example.com
+    ```
 
 3. Install the certificate for KVMD-Nginx and (optionally) [KVMD-VNC](vnc.md). Running services will be restarted/reloaded automatically. Switch filesystem to RO.
 
-      ```
-      # kvmd-certbot install_nginx pikvm.example.com
-      # kvmd-certbot install_vnc pikvm.example.com
-      # ro
-      ```
+    ```
+    # kvmd-certbot install_nginx pikvm.example.com
+    # kvmd-certbot install_vnc pikvm.example.com
+    # ro
+    ```
 
 4. Check the renewal immediately, just for testing:
 
-      ```
-      # kvmd-certbot renew --force-renewal
-      ```
+    ```
+    # kvmd-certbot renew --force-renewal
+    ```
 
 5. Enable automatic certificate renewal:
 
-      ```
-      # rw
-      # systemctl enable --now kvmd-certbot.timer
-      # ro
-      ```
+    ```
+    # rw
+    # systemctl enable --now kvmd-certbot.timer
+    # ro
+    ```
 
 
 -----

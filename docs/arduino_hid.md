@@ -177,12 +177,11 @@ Programming assumes the Arduino is powered via USB, either from the connected ho
 
 ### Preparing the installation for SPI devices and programming
 
-As of the latest package release, the kdmd service supports SPI. It should be sufficient to ensure the packages are up-to-date with the latest release, the programmer is installed, and the SPI device overlay is loaded at boot.
+As of the latest package release, the kvmd service supports SPI. It should be sufficient to ensure the packages are up-to-date with the latest release, the programmer is installed, and the SPI device overlay is loaded at boot.
 
 * Switch the filesystem to read-write mode with `rw`
-* Update the system and install the avrdude programmer `pacman -Syu avrdude-pikvm`
 * Add `dtoverlay=spi0-1cs` to `/boot/config.txt`
-* Reboot with `reboot` or `systemctl reboot`
+* Perform `reboot`.
 
 
 ### Flashing the Arduino

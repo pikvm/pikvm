@@ -1,20 +1,22 @@
-To update, run following commands under the `root` user:
+??? example "Updating PiKVM OS"
 
-```console
-[root@pikvm ~]# rw
-[root@pikvm ~]# pacman -Syu
-[root@pikvm ~]# reboot
-```
+    To update, run following commands under the `root` user:
 
-If you encounter any error during the upgrade, it is most likely due to the upgrade of the Arch Linux ARM repository upstream.
-In this case, just use our script, which fixes this:
+    ```console
+    [root@pikvm ~]# pikvm-update
+    ```
 
-```console
-[root@pikvm ~]# curl https://files.pikvm.org/update-os.sh | bash
-```
+    If you encounter an error like:
 
-Next time you will be able to use the usual method with `pacman -Syu`.
+    ```console
+    [root@pikvm ~]# pikvm-update
+    bash: pikvm-update: command not found
+    ```
 
-Pacman saves all installed packages in a compressed format so that you can roll back to the old version if something goes wrong.
-After you've updated and made sure everything works, it makes sense to clear the package cache so that it doesn't take up space
-on the SD card (under the `root`): `rw; rm -rf /var/cache/pacman/pkg; ro`.
+    It's most likely you have an old OS release. You can update the OS as follows:
+
+    ```console
+    [root@pikvm ~]# curl https://files.pikvm.org/update-os.sh | bash
+    ```
+
+    Next time you will be able to use the usual method with `pikvm-update`.

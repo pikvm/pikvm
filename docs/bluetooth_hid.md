@@ -12,11 +12,12 @@ This is not the main case of using PiKVM since you still need it to pair with a 
 
 ## Configuring the OS
 
-1. Switch filesystem to RW-mode, perform update and install some packages:
+1. Switch filesystem to RW-mode and install some packages:
 
     ```
     # rw
-    # pacman -Syu bluez bluez-utils raspberrypi-bluetooth
+    # pacman -Syy	
+    # pacman -Su bluez bluez-utils raspberrypi-bluetooth
     ```
 
 2. Edit `/boot/config.txt` and comment these lines:

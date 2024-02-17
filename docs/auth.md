@@ -96,11 +96,7 @@ It is strongly recommended to enable it if you expose the PiKVM in the big and s
 
     1. Update OS and reboot:
 
-        ```console
-        [root@pikvm ~]# rw
-        [root@pikvm ~]# pacman -Syu
-        [root@pikvm ~]# reboot
-        ```
+        {!_update_os.md!}
 
     2. **Make sure that NTP is running otherwise you will not be able to access** (`timedatectl` command).
         The timezone doesn't matter.

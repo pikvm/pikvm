@@ -11,26 +11,29 @@ For detailed instructions, refer to [Tailscale support](https://tailscale.com/co
 -----
 ## Configuring the PiKVM
 
-1. Install the client, run `tailscaled` service and register it in the network:
+1. Update OS:
+
+    {!_update_os.md!}
+
+2. Install the Tailscale client, run `tailscaled` service and register it in the network:
 
     ```console
     [root@pikvm ~]# rw
-    [root@pikvm ~]# pacman -Syu
     [root@pikvm ~]# pacman -S tailscale-pikvm
     [root@pikvm ~]# systemctl enable --now tailscaled
     [root@pikvm ~]# tailscale up
     ```
 
-2. Follow the link to authorize this installation.
+3. Follow the link to authorize this installation.
     You likely want to [disable key expiry](https://tailscale.com/kb/1028/key-expiry/)!
 
-3. After authorization success, reboot to make sure that everything works correctly:
+4. After authorization success, reboot to make sure that everything works correctly:
 
     ```console
     [root@pikvm ~]# reboot
     ```
 
-4. Now, you can view the IP address of the Tailscale network interface:
+5. Now, you can view the IP address of the Tailscale network interface:
 
     ```console
     [root@pikvm ~]# ip addr show tailscale0

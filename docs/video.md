@@ -5,18 +5,22 @@
 !!! info
     H.264 is available on Pi 3 and Pi 4. Older boards won't handle it. Best of all this feature only works for HDMI to CSI bridge. For the USB HDMI dongle, there will be a decrease in FPS to 10-15 for 1080p. Work in progress.
 
-1. Perform full system update to get the latest uStreamer and install ffmpeg:
+1. Update OS:
+
+    {!_update_os.md!}
+
+2. Install ffmpeg:
 
     ```
     # rw
-    # pacman -Syu ffmpeg
+    # pacman -S ffmpeg
     ```
 
-2. For USB dongle only: Add line `gpu_mem=256` to `/boot/config.txt`.
+3. For USB dongle only: Add line `gpu_mem=256` to `/boot/config.txt`.
 
-3. Perform `reboot` command.
+4. Perform `reboot` command.
 
-4. Run `rw` after the reboot.
+5. Run `rw` after the reboot.
 
 6. To record a video, you need to enable the stream (open the web interface or connect via VNC). Then run something like this in the console:
 

@@ -71,9 +71,7 @@ It's best to do this now, when you have physical access to the device, because i
 (for example, the power goes out during the update or some upstream change),
 you will need to [reflash the memory card](flashing_os.md).
 
-??? example "Updating PiKVM OS"
-
-    {!_update_os.md!}
+{!_update_os.md!}
 
 **And now, after all...**
 

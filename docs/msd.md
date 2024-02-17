@@ -155,11 +155,14 @@ At the same time, you will be able to upload images via PiKVM Web UI to NFS, and
 
 ??? example "Step by step: Connecting NFS storage"
 
-    1. Make some preparations:
+    1. Update OS:
+
+        {!_update_os.md!}
+
+    2. Make some preparations:
 
         ```console
         [root@pikvm ~]# rw
-        [root@pikvm ~]# pacman -Syu
         [root@pikvm ~]# pacman -S nfs-utils
         [root@pikvm ~]# kvmd-helper-otgmsd-remount rw
         [root@pikvm ~]# mkdir -p /var/lib/kvmd/msd/NFS_Primary

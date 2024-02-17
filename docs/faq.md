@@ -324,21 +324,21 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     * Switch filesystem to RO-mode with the command `ro`.
 
 
+??? question "How do I update PiKVM with the latest software?"
+
+    {!_update_os.md!}
+
+
 ??? question "How do I install or remove packages in PiKVM OS?"
     PiKVM OS is based on Arch Linux ARM and uses the [pacman](https://wiki.archlinux.org/title/Pacman) package manager.
 
     * Ensure the date is correct: `date`. Otherwise you may get the error `SSL certificate problem: certificate is not yet valid`
+    * It is recommended to update the OS before installing new packages (see the tip upper ^^^).
     * Switch filesystem to RW-mode: `rw`.
     * Find some packages (`emacs` for example): `pacman -Ss emacs`.
-    * Install it, while keeping the system updated: `pacman -Syu emacs`.
-    * To only update packages without installing new ones, use `pacman -Syu`
+    * Install it: `pacman -Syy` to update local packages list and `pacman -Su emacs` to install.
     * Remove it: `pacman -R emacs`.
     * Switch filesystem to RO-mode: `ro`.
-
-
-??? question "How do I update PiKVM with the latest software?"
-
-    {!_update_os.md!}
 
 
 ??? question "I don't need ATX functions. How do I disable this in the Web UI?"
