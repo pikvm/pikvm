@@ -204,17 +204,6 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
         * If you disable the service permanently, you can't recover your device via serial console if you need this.
         * There are some reports, that you need to remove `ttyAMA0` from /boot/cmdline.txt, but this is not needed on new installations.
 
-
-??? question "How can I have different hostnames for multiple pikvms?"
-    Using a SSH session or the web terminal:
-
-    - Make sure you're `root`, if you're not root use the `su` command to become root
-    - Enter read write mode of the PiKVM by executing the `rw` command
-    - Execute: `hostnamectl set-hostname yournewhostname.domain`
-    - Optional: Edit `/etc/kvmd/meta.yaml` to alter the displayed server name in the web UI
-    - Reboot the pikvm
-
-
 ??? question "Can I run PiKVM in a docker?"
     No, technically it might be possible but the OS requires many specific settings that cannot be performed inside the container.
 
