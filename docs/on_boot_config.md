@@ -41,7 +41,7 @@ After applying the settings, the file is automatically deleted.
 
 6. A few things to keep in mind:
     * Note that after applying the settings, the pikvm.txt file will be deleted.
-    * WPA3 is not supported. Enable WPA2 on your router and disable AES.
+    * WPA3 is not supported. Enable WPA2 on your router, while AES is supported, some aspects of it is not and you may need to disable AES for it to connect.
     * There is a possibility that, in countries that support channel 13, the device will not connect.
         You will need to configure your router to disable channels 12-14 or disable Auto scan mode.
 
