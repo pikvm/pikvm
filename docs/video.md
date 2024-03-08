@@ -3,7 +3,7 @@
 ## Video recording
 
 !!! info
-    H.264 is available on Pi 3 and Pi 4. Older boards won't handle it. Best of all this feature only works for HDMI to CSI bridge. For the USB HDMI dongle, there will be a decrease in FPS to 10-15 for 1080p. Work in progress.
+    H.264 is available on Pi 3 and Pi 4. Older boards won't handle it. Best of all this feature only works for HDMI to CSI bridge. For the USB HDMI dongle, there will be a decrease in FPS to 10-15 for 1080p.
 
 1. Update OS:
 
