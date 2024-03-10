@@ -12,6 +12,7 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 
 # Features
 * Can be made based on **Raspberry Pi 2**, **3**, **4** and **Zero2W**;
+    * *Raspberry Pi 5 is not supported right now. It doesn't have GPU video encoders, therefore, there is no point in using it for PiKVM, it will not give any performance boost for this case. The Pi 5 is a great device, just not suitable for PiKVM.*
 * **FullHD video** using advanced **HDMI-to-CSI bridge** or **USB dongle**;
 * Extra low **video latency** with **MJPEG** or **H.264 / WebRTC** (for CSI bridge);
 * Bootable **Virtual CD-ROM** and **Flash Drive**, ability to store images on **NFS**;
