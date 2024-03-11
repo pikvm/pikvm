@@ -314,6 +314,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Cameron Tacklind
 * Carl Mercier
 * Carl-Fredrik Johansson
+* Carlos Garcia
 * Carlos Manuel Torres
 * cbad536
 * CHINATERA LIMITED
@@ -362,8 +363,10 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Daniel Davila
 * Danilo Saft
 * Danne
+* Dariusz Techmański
 * David
 * David Brausewetter
+* David Davis
 * David Godibadze
 * David Howell
 * David Irvine
@@ -395,6 +398,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Elani Ferri
 * Elliot Woo
 * Eric Phenix
+* Ethan Shold
 * Eugene Sukhodolin
 * ewook
 * eye-catcher.com
@@ -450,6 +454,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * HyunohRyu
 * Icculus
 * iks
+* INFO TRX INC
 * Invader Monks
 * Ioannis Karageorgos
 * IT Lifesaver
@@ -472,6 +477,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Jamie Murphy
 * Jamie Scott
 * Jan Niehusmann
+* Jannick Oursin
 * Jari Hiltunen
 * Jason Crossley
 * Jason Downey
@@ -505,6 +511,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * John Andersen
 * John Copeland
 * John F Glenn
+* John Holmes
 * John Kelley
 * John McGovern
 * Johnny Henson
@@ -613,6 +620,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Michael Lynch
 * Michael Pennington
 * Michael Sage
+* Michael Stella
 * Michael Thalmann
 * Michael Wu
 * MichaelZ
@@ -713,6 +721,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Ryan Peacock
 * Samed Ozoglu
 * Sameul Davies
+* Samuel Cote
 * Samuel Vetsch
 * Samuel Walker
 * Sarah Foster
@@ -723,6 +732,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Scott Spicola
 * Scott Tusing
 * Scott Worthington
+* Scuba
 * Sean
 * SEAT
 * Sebastian
@@ -737,6 +747,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Simon Evans
 * Simon Sundgaard
 * Simplistic Realities
+* Sirmo
 * Snowy Maslov
 * Solve Technology
 * srepac
@@ -808,6 +819,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Yaroslav Kulikovskikh
 * Yethal
 * Yevgeniy Kuksenko
+* Yew Kay Yan
 * Yogi
 * Yigal Dar
 * YURI LEE
