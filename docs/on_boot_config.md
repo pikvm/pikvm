@@ -75,12 +75,12 @@ A number of other parameters can be applied in the same way as with Wi-Fi.
 * `ETH_DHCP=1`<br>
     Configures Ethernet port for DHCP. This is a default for PiKVM OS.
 
-* `ETH_ADDR=192.168.0.100/24`, `ETH_DNS=8.8.8.8`, `ETH_GW=192.168.0.1`<br>
+* `ETH_ADDR=192.168.0.100/24`<br>`ETH_DNS=8.8.8.8`<br>`ETH_GW=192.168.0.1`<br>
     Configures a static IP on the Ethernet port. Only IPv4 is available here. For IPv6 you'll need to change
     [systemd configuration files](https://wiki.archlinux.org/title/systemd-networkd) on the live OS.
     All three options must be set simultaneously to avoid incorrect configuration.
 
-* `WIFI_ESSID=foo`, `WIFI_PASSWD=bar`<br>
+* `WIFI_ESSID=foo`<br>`WIFI_PASSWD=bar`<br>
     Configures Wi-Fi with DHCP, described in more detail in previous paragrpah.
     Both options must be set simultaneously to avoid incorrect configuration.
 
@@ -88,7 +88,7 @@ A number of other parameters can be applied in the same way as with Wi-Fi.
     Changes Wi-Fi regulatory domain to the US. Other domains available by
     [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country codes.
 
-* `WIFI_ADDR=192.168.0.100/24`, `WIFI_DNS=8.8.8.8`, `WIFI_GW=192.168.0.1`<br>
+* `WIFI_ADDR=192.168.0.100/24`<br>`WIFI_DNS=8.8.8.8`<br>`WIFI_GW=192.168.0.1`<br>
     Configures a static IP on the Wifi. Only IPv4 is available here. For IPv6 you'll need to change
     [systemd configuration files](https://wiki.archlinux.org/title/systemd-networkd) on the live OS.
     All three options must be set simultaneously with `WIFI_ESSID` and `WIFI_PASSWD` to avoid incorrect configuration.
