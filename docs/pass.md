@@ -60,6 +60,6 @@ and redirected to the remote access session.
 Please note the feature is still new and will be improved.
 
 * The video cannot be shown simultaneously on the display or in a remote access session.
-    During a remote session, you will see the `STREAM IS ACTIVE` text on the display instad of image.
+    During a remote session, you will see the `STREAM IS ACTIVE` text on the display instead of the image.
 
 * Audio is not supported at the moment.
