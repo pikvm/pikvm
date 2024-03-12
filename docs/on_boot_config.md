@@ -84,6 +84,9 @@ A number of other parameters can be applied in the same way as with Wi-Fi.
     Configures Wi-Fi with DHCP, described in more detail in previous paragrpah.
     Both options must be set simultaneously to avoid incorrect configuration.
 
+* `WIFI_HIDDEN=1`<br>
+    Allows to connect to hidden Wi-Fi network. Available only on new images >= 2024.03.12.
+
 * `WIFI_REGDOM=US`<br>
     Changes Wi-Fi regulatory domain to the US. Other domains available by
     [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country codes.
