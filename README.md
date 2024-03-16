@@ -87,7 +87,9 @@ All of them uses our common open source software stack.
 |                                                                    |             |             |   |          |   |            |            |
 | **Plug and Play out of box!**                                      | ✅          | ✅          |   | ✅       |   | ❌<br>DIY  | ❌<br>DIY  |
 | Base Raspberry unit | **CM4<br><sup>Included!</sup>** | **CM4<br><sup>Included!</sup>** | | **RPi4<br><sup>Included!</sup>** | | RPi4<br>Zero2W | RPi3<br>RPi2<br>Zero2W |
-| **HDMI 1080p@60Hz** support for better **BIOS/UEFI compatibility** | ✅          | ✅          |   | ❌       |   | ❌         | ❌         |
+| **HDMI 1920x*1200*@60Hz** support<br>for big displays                     | ✅   | ✅          |   | ❌       |   | ❌         | ❌         |
+| **HDMI 1920x1080@60Hz** support<br>for better **BIOS/UEFI compatibility** | ✅   | ✅          |   | ❌       |   | ❌         | ❌         |
+| [**Video passthrough** to physical display](https://docs.pikvm.org/pass)  | ✅   | ❌          |   | ❌       |   | ❌         | ❌         |
 | **HDMI audio** capture                                             | ✅          | ✅          |   | ✅       |   | ❌         | ❌         |
 | USB keyboard/mouse emulation                                       | ✅          | ✅          |   | ✅       |   | ✅         | ✅         |
 | Virtual **Flash Drive** / **CD-ROM** emulation                     | ✅          | ✅          |   | ✅       |   | ✅         | ❌         |
