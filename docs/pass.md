@@ -59,7 +59,16 @@ and redirected to the remote access session.
 
 Please note the feature is still new and will be improved.
 
-* The video cannot be shown simultaneously on the display or in a remote access session.
+* The video cannot be shown simultaneously on the display and in a remote access session.
     During a remote session, you will see the `STREAM IS ACTIVE` text on the display instead of the image.
+
+* Display resolution must be greater than or equal to that used by PiKVM capture.
+    If the maximum display resolution is 720p and the signal has a 1080p resolution, you will not see the image.
+    PiKVM does not perform any downscaling.
+
+* At the same time, PiKVM will try to show at least something than nothing.
+    If the input signal has a resolution of 1920x1200, and the display supports only 1920x1080,
+    the image will be shown but cropped from the bottom so that you at least have the opportunity
+    to adjust the image parameters of the host.
 
 * Audio is not supported at the moment.
