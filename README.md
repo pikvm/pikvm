@@ -82,15 +82,24 @@ All of them uses our common open source software stack.
 
 <hr>
 
-| <div align="center">⭐ ⭐ ⭐ **KEY FEATURES** ⭐ ⭐ ⭐</div>       | **V4 Plus** | **V4 Mini** |   |  **V3**  |   | **DIY V2** | **DIY V1** |
+| <div align="center">⭐ ⭐ ⭐ **CORE SYSTEM** ⭐ ⭐ ⭐</div>       | **V4 Plus** | **V4 Mini** |   |  **V3**  |   | **DIY V2** | **DIY V1** |
 |--------------------------------------------------------------------|:-----------:|:-----------:|---|:--------:|---|:----------:|:----------:|
 |                                                                    |             |             |   |          |   |            |            |
 | **Plug and Play out of box!**                                      | ✅          | ✅          |   | ✅       |   | ❌<br>DIY  | ❌<br>DIY  |
 | Base Raspberry unit | **CM4<br><sup>Included!</sup>** | **CM4<br><sup>Included!</sup>** | | **RPi4<br><sup>Included!</sup>** | | RPi4<br>Zero2W | RPi3<br>RPi2<br>Zero2W |
-| **HDMI 1920x*1200*@60Hz** support<br>for big displays                     | ✅   | ✅          |   | ❌       |   | ❌         | ❌         |
-| **HDMI 1920x1080@60Hz** support<br>for better **BIOS/UEFI compatibility** | ✅   | ✅          |   | ❌       |   | ❌         | ❌         |
-| [**Video passthrough** to physical display](https://docs.pikvm.org/pass)  | ✅   | ❌          |   | ❌       |   | ❌         | ❌         |
-| **HDMI audio** capture                                             | ✅          | ✅          |   | ✅       |   | ❌         | ❌         |
+||
+||
+| <div align="center">⭐ ⭐ ⭐ **VIDEO** ⭐ ⭐ ⭐</div> | **V4 Plus** | **V4 Mini** |   |  **V3**  |   | **DIY V2** | **DIY V1** |
+||
+| [**Video passthrough** to local display](https://docs.pikvm.org/pass)     | ✅   | ❌          |   | ❌       |   | ❌         | ❌         |
+| **HDMI 1920x1200@60Hz** support<br>for big displays                          | ✅   | ✅          |   | ❌       |   | ❌         | ❌         |
+| **HDMI 1920x1080@60Hz** support<br>for better BIOS/UEFI compatibility        | ✅   | ✅          |   | ❌       |   | ❌         | ❌         |
+| **HDMI audio** capture                                                       | ✅   | ✅          |   | ✅       |   | ❌         | ❌         |
+| **Super fast H.264 & MJPEG video:**<br>720p - 60fps, 1080p - 30fps for H.264 | ✅   | ✅          |   | ✅       |   | ✅         | ✅         |
+||
+||
+| <div align="center">⭐ ⭐ ⭐ **PERIPHERY** ⭐ ⭐ ⭐</div> | **V4 Plus** | **V4 Mini** |   |  **V3**  |   | **DIY V2** | **DIY V1** |
+||
 | USB keyboard/mouse emulation                                       | ✅          | ✅          |   | ✅       |   | ✅         | ✅         |
 | Virtual **Flash Drive** / **CD-ROM** emulation                     | ✅          | ✅          |   | ✅       |   | ✅         | ❌         |
 | Ability to simulate **"eject/insert"** for USB                     | ✅          | ✅          |   | ✅       |   | ❌         | ❌         |
@@ -101,9 +110,9 @@ All of them uses our common open source software stack.
 ||
 | <div align="center">⭐ ⭐ ⭐ **HARDWARE ABILITIES** ⭐ ⭐ ⭐</div> | **V4 Plus** | **V4 Mini** |   |  **V3**  |   | **DIY V2** | **DIY V1** |
 ||
-| **CISCO-style RJ-45** console port                                 | ✅          | ❌          |   | ✅       |   | ❌         |  ❌        |
-| **USB serial** console port                                        | ✅          | ✅          |   | ✅       |   | ❌         |  ❌        |
 | **Internal secured USB 3.0** storage port                          | ✅          | ❌          |   | ❌       |   | ❌         |  ❌        |
+| **USB serial** console port                                        | ✅          | ✅          |   | ✅       |   | ❌         |  ❌        |
+| **CISCO-style RJ-45** console port                                 | ✅          | ❌          |   | ✅       |   | ❌         |  ❌        |
 | A **real-time clock** for accurate logging                         | ✅          | ✅          |   | ✅       |   | ❌         |  ❌        |
 | **Locator LED** to find device in the rack                         | ✅          | ✅          |   | ❌       |   | ❌         |  ❌        |
 | **mPCIe slot** with USB lines for **LTE/5G** cards                 | ✅          | ❌          |   | ❌       |   | ❌         |  ❌        |
