@@ -48,13 +48,16 @@ Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (a
     !!! note "Using 5GHz Wi-Fi in the USA"
         Add option `country=US` to `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf`
 
+    !!! note "Block 2ghz or 5ghz"
+        Add option `bssid=xx:xx:xx:xx:xx:xx` to `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf` within the `network={` block
 
-4. Enable WPA-supplicant service:
+
+5. Enable WPA-supplicant service:
    ```
    systemctl enable wpa_supplicant@wlan0.service
    ```
 
-5. Make filesystem read-only again using `ro` command
+6. Make filesystem read-only again using `ro` command
 
 
 ## Useful console commands
