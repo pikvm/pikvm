@@ -82,16 +82,16 @@ All of them uses our common open source software stack.
 
 <hr>
 
-| <div align="center">⭐ ⭐ ⭐ **CORE SYSTEM** ⭐ ⭐ ⭐</div>       | **V4 Plus** | **V4 Mini** |   |  **V3**  |   | **DIY V2** | **DIY V1** |
+| <div align="center">⭐ ⭐ ⭐ **CORE SYSTEM** ⭐ ⭐ ⭐</div>        | **V4 Plus** | **V4 Mini** |   |  **V3**  |   | **DIY V2** | **DIY V1** |
 |--------------------------------------------------------------------|:-----------:|:-----------:|---|:--------:|---|:----------:|:----------:|
 |                                                                    |             |             |   |          |   |            |            |
-| **Plug and Play out of box!**                                      | ✅          | ✅          |   | ✅       |   | ❌<br>DIY  | ❌<br>DIY  |
-| Base Raspberry unit | **CM4<br><sup>Included!</sup>** | **CM4<br><sup>Included!</sup>** | | **RPi4<br><sup>Included!</sup>** | | RPi4<br>Zero2W | RPi3<br>RPi2<br>Zero2W |
+| **Plug and Play out of box!**                                      | ✅          | ✅          |   | ✅       |   | DIY        | DIY        |
+| Base Raspberry unit | CM4<br><sup>Included!</sup> | CM4<br><sup>Included!</sup> | | RPi4<br><sup>Included!</sup> | | RPi4<br>Zero2W | RPi3<br>RPi2<br>Zero2W |
 ||
 ||
 | <div align="center">⭐ ⭐ ⭐ **VIDEO** ⭐ ⭐ ⭐</div> | **V4 Plus** | **V4 Mini** |   |  **V3**  |   | **DIY V2** | **DIY V1** |
 ||
-| [**Video passthrough** to local display](https://docs.pikvm.org/pass)     | ✅   | ❌          |   | ❌       |   | ❌         | ❌         |
+| [**Video passthrough** to local display](https://docs.pikvm.org/pass)        | ✅   | ❌          |   | ❌       |   | ❌         | ❌         |
 | **HDMI 1920x1200@60Hz** support<br>for big displays                          | ✅   | ✅          |   | ❌       |   | ❌         | ❌         |
 | **HDMI 1920x1080@60Hz** support<br>for better BIOS/UEFI compatibility        | ✅   | ✅          |   | ❌       |   | ❌         | ❌         |
 | **HDMI audio** capture                                                       | ✅   | ✅          |   | ✅       |   | ❌         | ❌         |
