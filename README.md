@@ -795,6 +795,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Tim Wilkinson
 * Timo Brinkmann
 * Timothee Besset
+* TitomusPrime
 * Tom Lawson
 * Tom York
 * Tomas Kuchta
