@@ -745,6 +745,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Scott Worthington
 * Scuba
 * Sean
+* Sean Akers
 * SEAT
 * Sebastian
 * Seonwoo Lee
