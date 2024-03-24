@@ -2,7 +2,8 @@
 
 
 !!! tip "A fast way to get PS/2 on PiKVM V2+"
-    If you need PS/2 keyboard & mouse on PiKVM V2+ (except V4 Mini or DIY based on Zero 2 W boards),
+    If you need PS/2 keyboard & mouse on [PiKVM V2](v2.md), [V3](v3.md) and [V4 Plus](v4.md)
+    (but not V4 Mini or DIY based on Zero 2 W boards),
     you can use a faster and easier way: [The Pico HID Bridge](pico_hid_bridge.md).
 
 The Pico HID is a part of [DIY PiKVM V1](v1.md) platform that performs keyboard and mouse emulation.
@@ -16,7 +17,7 @@ Full list of features:
 | USB Absolute Mouse for Windows 95 | No |
 | PS/2 Keyboard & mouse | No |
 
-The scope of the Pico HID is not limited to [V1](v1.md) platform, it can also be used with [V2](v2.md)/[V3](v3.md)/[V4](v4.md) platform (except V4 Mini),
+The scope of the Pico HID is not limited to [V1](v1.md) platform, it can also be used with [V2](v2.md) and [V3](v3.md),
 if you need to emulate a PS/2 keyboard and mouse or use a [legacy multiport KVM switch](https://github.com/pikvm/pikvm/issues/7)
 which does not fully support USB standards.
 
