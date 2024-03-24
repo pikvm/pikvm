@@ -84,5 +84,6 @@ Add following lines to the PiKVM configuration and reboot it:
     kvmd:
         hid:
             type: serial
-			device: /dev/kvmd-hid-bridge
+            device: /dev/kvmd-hid-bridge
+            reset_pin: -1
     ```
