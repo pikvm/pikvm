@@ -579,3 +579,58 @@ kvmd
                     - []
                     - ["#PDU0_Port0:", pdu0_0_led, "pdu0_0_pwr|confirm|test"] 
     ```
+
+
+### Extron SW Series Switchers
+??? note "Click to view"
+    The `extron` plugin allows you to control Extron SW series switchers (ex. SW4 USB, SW4 VGA, etc.). There are up to 4 Ports per switcher. Input pulls the the current state from the switcher, Output switches the active port.
+
+    ```yaml
+    kvmd:
+        gpio:
+            drivers:
+                extron_vga:
+                    type: extron
+                    device: /dev/ttyUSB0  # The path to the RS-232 serial adapter
+            scheme:
+                vga_port1_led:
+                    pin: 0
+                    driver: extron_vga
+                    mode: input
+                vga_port2_led:
+                    pin: 1
+                    driver: extron_vga
+                    mode: input
+                vga_port3_led:
+                    pin: 2
+                    driver: extron_vga
+                    mode: input
+                vga_port4_led:
+                    pin: 3
+                    driver: extron_vga
+                    mode: input
+                vga_port1_button:
+                    pin: 0
+                    driver: extron_vga
+                    mode: output
+                vga_port2_button:
+                    pin: 1
+                    driver: extron_vga
+                    mode: output
+                vga_port3_button:
+                    pin: 2
+                    driver: extron_vga
+                    mode: output
+                vga_port4_button:
+                    pin: 3
+                    driver: extron_vga
+                    mode: output
+            view:
+                header:
+                   title: "Extron SW4 VGA"
+                table:
+                    - ["vga_port1_led|red", "vga_port1_button||Port 1"]
+                    - ["vga_port2_led|red", "vga_port2_button||Port 2"]
+                    - ["vga_port3_led|red", "vga_port3_button||Port 3"]
+                    - ["vga_port4_led|red", "vga_port4_button||Port 4"]
+    ```
