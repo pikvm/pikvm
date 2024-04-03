@@ -443,9 +443,11 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 ??? question "Apple TB/USB-C HDMI video doesn't work"
     A possible solution can be found [here](https://github.com/pikvm/pikvm/issues/1011).
 
-??? question "I am seeing a No Signal, what can I do?"
-    If you are using v2 or a v3, you need to ensure that your target is using the maximum resolution 1920x1080@50Hz, 60Hz will not work. 
-    If you are using the v4, ensure that you are getting a signal out from the target by using a physical monitor using the same exact cable/dongle, ensure that you are using the maximum resolution 1920x1080@60hz, 2K/4K resolutions will not work.
+
+??? question "I am seeing a NO SIGNAL, what can I do?"
+    If you are using PiKVM V2 or a V3, you need to ensure that your target is using the maximum resolution **1920x1080@50Hz**, 60Hz will not work.
+
+    If you are using the PiKVM V4, ensure that you are getting a signal out from the target by using a physical monitor using the same exact cable/dongle, ensure that you are using the maximum resolution **1920x1200@60hz**, 2K/4K resolutions will not work.
 
     
 ## USB problems (keyboard, mouse, mass storage, etc)
