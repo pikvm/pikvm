@@ -55,6 +55,21 @@ and redirected to the remote access session.
 
 
 -----
+## My monitor does not support the 1920x1200 mode
+
+PiKVM V4 supports the advanced capture mode of 1920x1200.
+If your physical monitor is limited to 1920x1080, then part of the image from the bottom will be cropped.
+
+To avoid this, you can change the resolution of the host OS, or if the OS does not support this,
+disable the 1920x1200 mode on PiKVM itself:
+
+```console
+# rw
+# kvmd-edidconf --import-preset=v4plus.no-1920x1200  # Or v4mini.no-1920x1200
+# reboot
+```
+
+-----
 ## Current limitations
 
 Please note the feature is still new and will be improved.

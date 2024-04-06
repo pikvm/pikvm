@@ -27,7 +27,7 @@ If you need to restore the default EDID you can easily do this with `kvmd-edidco
 
 ```console
 # rw
-# kvmd-edidconf --restore-default=v4plus
+# kvmd-edidconf --import-preset=v4plus
 # reboot
 ```
 Available options: `v0`, `v1`, `v2`, `v3`, `v4mini` and `v4plus`.
@@ -36,9 +36,35 @@ Also defaults edid can be found locally on your PiKVM: `/usr/share/kvmd/configs.
 or in the [kvmd repo](https://github.com/pikvm/kvmd/blob/master/configs/kvmd/edid).
 
 
-## EDID examples for V4+
+## Force 1080p by defailt on PiKVM V0+
 
-PiKVM can mimic physical monitors. You can find the appropriate EDID in [this database](https://github.com/linuxhw/EDID) and import its HEX code to PiKVM. Choose something with a maximum resolution of 1920x1080 or 1920x1200.
+PiKVM V3 (or DIY V0-V2) has a hardware limit of 50Hz for 1080p mode, and this is a less common frequency than 60Hz.
+Therefore, on V3, the default mode is 720p. Some OS (like Proxmox) may not work well with 720p,
+so you can force 1080p resolution by default:
+
+```console
+# rw
+# kvmd-edidconf --import-preset=v3.1080p-by-default  # Or, for example, v1.1080p-by-default
+# reboot
+```
+
+
+## Disable 1920x1200 on PiKVM V4
+
+PiKVM V4 supports the advanced capture mode of 1920x1200. If it bothers you
+(for example, if you use a physical monitor 1920x1080 with [video passthrough](pass.md)),
+you can easily disable it and use only 1920x1080:
+
+```console
+# rw
+# kvmd-edidconf --import-preset=v4plus.no-1920x1200  # Or v4mini.no-1920x1200
+# reboot
+```
+
+
+## Other EDID examples for PiKVM V4
+
+PiKVM V4 can mimic many physical monitors. You can find the appropriate EDID in [this database](https://github.com/linuxhw/EDID) and import its HEX code to PiKVM. Choose something with a maximum resolution of 1920x1080 or 1920x1200.
 
 ??? example "Acer B246WL, 1920x1200, with audio"
     Taken [here](https://github.com/linuxhw/EDID/blob/master/Digital/Acer/ACR0565/CCF78B30FE61), as described above.
@@ -105,7 +131,7 @@ PiKVM can mimic physical monitors. You can find the appropriate EDID in [this da
     ```
 
 
-## EDID examples for V2+
+## EDID examples for PiKVM V2+
 
 Copy the contents into a file, for example `/root/edid.hex`, then follow the same steps as above.
 
