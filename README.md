@@ -243,6 +243,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * AdamBomb
 * adipisicing
 * Adrian Basham
+* Adrian Popescu
 * Ahmed Syed
 * Alberto Bassi
 * alejandro
@@ -408,6 +409,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Egan Ford
 * Elani Ferri
 * Elliot Woo
+* Entt
 * Eric Phenix
 * Ethan Shold
 * Eugene Sukhodolin
