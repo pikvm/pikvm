@@ -1,7 +1,7 @@
 # HDMI Video Passthrough
 
 This is a new exclusive feature available only on **PiKVM V4 Plus**.
-It allows you to connect PiKVM to the gap between the target host and the display.
+It allows you to connect PiKVM to the gap between the target host and physical display.
 Thus, PiKVM does not interfere with the normal operation of the display and passes
 the video signal through itself until you need remote access via PiKVM
 In this case, PiKVM directs the video stream to the Web UI or VNC.
@@ -37,21 +37,27 @@ This is shown more clearly below:
     disable_overscan=1
     ```
 
-4. Enable the passthrough service:
+4. Add some config to `/etc/kvmd/override.yaml`:
 
-    ```console
-    # systemctl enable kvmd-pass
+    ```yaml
+    kvmd:
+        streamer:
+            forever: true
+            cmd_append:
+                - "--format=rgb24"
+                - "--buffers=8"
+                - "--encoder=cpu"
+                - "--v4p"
     ```
 
-5. Perform the soft reboot:
+5. Disable old alpha passthrough service and perform the soft reboot:
 
     ```console
+    # systemctl disable kvmd-pass
     # reboot
     ```
 
-After rebooting, you will see an image on the display.
-If you open the stream in the Web UI or VNC, the image on display will be temporarily stopped
-and redirected to the remote access session.
+After rebooting, you will see an image on the physical display.
 
 
 -----
@@ -72,10 +78,11 @@ disable the 1920x1200 mode on PiKVM itself:
 -----
 ## Current limitations
 
-Please note the feature is still new and will be improved.
+Please note the feature is pretty new and will be improved.
 
-* The video cannot be shown simultaneously on the display and in a remote access session.
-    During a remote session, you will see the `STREAM IS ACTIVE` text on the display instead of the image.
+* The colors in the H.264 webstream will be slightly highlighted,
+    [this is a bug in the Raspberry firmware](https://github.com/raspberrypi/firmware/issues/1885),
+    it will be fixed soon.
 
 * Display resolution must be greater than or equal to that used by PiKVM capture.
     If the maximum display resolution is 720p and the signal has a 1080p resolution, you will not see the image.
