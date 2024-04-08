@@ -512,6 +512,11 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 ??? question "What speed is the USB OTG port?"
     Per the official RPI documentation, this is a limitation of the SoC.  The OTG port is only USB2.0, so is limited to 455 Mbit/s.
 
+??? question "On MacOSX, my mouse/keyboard does not work!"
+    There are a few fixes the community has suggested:
+    If using a USB-C to USB-C cable, you need to use the included USB-C to USB-A cable then use a USB-A to USB-C adapter
+    You may need to allow new accessories to connect. [Source](https://support.apple.com/en-us/102282)
+
 
 ## Web UI problems
 
