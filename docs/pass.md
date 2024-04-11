@@ -35,7 +35,7 @@ This is shown more clearly below:
 4. Switch filesystem to RW-mode:
 
     ```console
-    # rw
+    [root@pikvm ~]# rw
     ```
 
 3. Make sure that you have these lines in `/boot/config.txt`, add them if not:
@@ -60,8 +60,8 @@ This is shown more clearly below:
 5. Disable old alpha passthrough service and perform the soft reboot:
 
     ```console
-    # systemctl disable kvmd-pass
-    # reboot
+    [root@pikvm ~]# systemctl disable kvmd-pass
+    [root@pikvm ~]# reboot
     ```
 
 After rebooting, you will see an image on the physical display.
@@ -77,9 +77,9 @@ To avoid this, you can change the resolution of the host OS, or if the OS does n
 disable the 1920x1200 mode on PiKVM itself:
 
 ```console
-# rw
-# kvmd-edidconf --import-preset=v4plus.no-1920x1200  # Or v4mini.no-1920x1200
-# reboot
+[root@pikvm ~]# rw
+[root@pikvm ~]# kvmd-edidconf --import-preset=v4plus.no-1920x1200  # Or v4mini.no-1920x1200
+[root@pikvm ~]# reboot
 ```
 
 
