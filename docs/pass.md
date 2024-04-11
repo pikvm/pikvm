@@ -6,14 +6,22 @@ Thus, PiKVM does not interfere with the normal operation of the display and pass
 the video signal through itself until you need remote access via PiKVM
 In this case, PiKVM directs the video stream to the Web UI or VNC.
 
+
+!!! tip "Beta version"
+
+    This feature is in beta, so it requires manual activation.
+
+
 !!! info
 
     * The passthrough feature supports a screen resolution **up to 1920x1200** pixels.
     * Other PiKVM devices besides V4 Plus do not support the passthrough due to hardware limitations.
 
+
 This is shown more clearly below:
 
 <img src="pass.png" />
+
 
 -----
 ## Setting up the passthrough
@@ -30,7 +38,7 @@ This is shown more clearly below:
     # rw
     ```
 
-3. Add these lines to `/boot/config.txt`:
+3. Make sure that you have these lines in `/boot/config.txt`, add them if not:
 
     ```ini
     dtoverlay=vc4-kms-v3d
@@ -45,7 +53,6 @@ This is shown more clearly below:
             forever: true
             cmd_append:
                 - "--format=rgb24"
-                - "--buffers=8"
                 - "--encoder=cpu"
                 - "--v4p"
     ```
@@ -74,6 +81,7 @@ disable the 1920x1200 mode on PiKVM itself:
 # kvmd-edidconf --import-preset=v4plus.no-1920x1200  # Or v4mini.no-1920x1200
 # reboot
 ```
+
 
 -----
 ## Current limitations

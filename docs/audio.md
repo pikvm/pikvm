@@ -29,7 +29,11 @@ old user configurations that were created before audio support was added.
         on the V3 HAT board and have not deleted or commented the `dtoverlay=tc358743-audio`
         line in `/boot/config.txt`. Return everything as it was, if you changed it.
 
-    2. Add and add the following lines to `/etc/kvmd/janus/janus.plugin.ustreamer.jcfg` if they missing:
+    2. Update OS and reboot:
+
+        {!_update_os.md!}
+
+    3. Add the following lines to `/etc/kvmd/janus/janus.plugin.ustreamer.jcfg` if they missing:
 
         ```
         audio: {
@@ -38,16 +42,16 @@ old user configurations that were created before audio support was added.
         }
         ```
 
-    3. Enable the Basic Audio support in the [EDID](edid.md) in the `/etc/kvmd/tc358743-edid.hex`:
+    4. Enable the Basic Audio support in the [EDID](edid.md) in the `/etc/kvmd/tc358743-edid.hex`:
 
         ```console
-        [root@pikvm ~]$ kvmd-edidconf --set-audio=yes
+        [root@pikvm ~]# kvmd-edidconf --set-audio=yes
         ```
 
-    4. Reboot the device:
+    5. Reboot the device:
 
-        ```
-        [root@pikvm ~]$ reboot
+        ```console
+        [root@pikvm ~]# reboot
         ```
 
 
@@ -87,14 +91,9 @@ The video stream will restart and you should start hearing sounds from the targe
 -----
 ## Troubleshooting
 
-* If the target host does not detect the HDMI audio sink,
-    [try an alternative EDID](https://github.com/pikvm/pikvm/issues/764).
-    The problem will be fixed soon.
-
 * If the browser does not play sound or does not show audio slider, try a different browser
     and/or incognito mode without extensions. Google Chrome works best.
 
 * Check the log: `journalctl -u kvmd-janus`.
 
-* If nothing helped, please report about the problem [here](https://discord.gg/bpmXfz5) (preferred)
-    or [here](https://github.com/pikvm/pikvm/issues).
+* If nothing helped, please report about the problem [to our support](https://discord.gg/bpmXfz5)
