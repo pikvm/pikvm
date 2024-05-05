@@ -38,21 +38,36 @@
     # chmod +x /usr/local/bin/cloudflared
     # cloudflared version
     ```
-    
-2. Install the Cloudflare tunnel service to Cloudflared:
-   
+
+2. Update /etc/systemd/resolved.conf and set cloudflare nameservers.
+
+    ```
+    # sudo vim /etc/systemd/resolved.conf
+    # Uncomment DNS line and set 'DNS=1.1.1.1 1.0.0.1'
+    # systemctl restart systemd-resolved
+    ```
+
+3. Install the Cloudflare tunnel service to Cloudflared.
+
     ```
     # sudo cloudflared service install SERVICE_TOKEN_HERE
     ```
-    
 
-3. Open a web browser and attempt to connect
+4. Ensure cloudflared service is enabled so it starts on boot.
 
-4. Drop back in to read only mode
+    ```
+    # sudo systemctl enable cloudflared
+    ```
+
+5. Open a web browser and attempt to connect to your tunnel.
+
+6. Drop back in to read only mode
    
     ```
     # ro
     ```
+
+7. Reboot pikvm and ensure your tunnel comes back up.  This may take a few minutes. 
 
 ## Updating Cloudflared
 
