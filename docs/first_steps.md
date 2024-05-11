@@ -60,6 +60,24 @@ which you have successfully detected using the instructions above. The device ha
 
     **The default `root` password is `root`.**
 
+??? example "Access to PiKVM via serial"
+
+    Serial is sometimes needed to recover your PiKVM or review what it's doing due to boot failures or due to general network issues
+
+    * **Step 1.** Remove the PiKVM from the Target system
+
+    * **Step 2.** You can reuse the OTG cable for this step, place the USB-C end into the IOIOI port (CON port on the v3), V2 you'll need to get the right TTY to USB cable, we recommend the [RPi Debug Probe](https://www.pishop.us/product/raspberry-pi-debug-probe/) and follow existing RPi TTY serial setups.
+
+    * **Step 3.** Place the USB-A end into the port you want serial to be accessed, typically done on the host
+
+    * **Step 4.** For windows you may need to install this [driver](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers), other OS's may not need one
+
+    * **Step 5.** Install Putty (Windows) or use GNU screen (may need to install this on your Host if using another OS)
+
+    * **Step 6.** Select the COM port in Putty (you can verify this looking in Device Manager), then select 115200 or use `screen /dev/ttyUSB0 115200` for other OS's
+
+    * **Step 7.** You should now be able to see and interact with the Serial Port
+
 !!! tip "Obtaining root access"
 
     * If you have logged in via SSH, then most likely you are already `root`.
