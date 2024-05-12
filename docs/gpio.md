@@ -170,6 +170,7 @@ Some rules and customization options:
 * To change the LED's color specify it after the channel name like `"led1|red"`. Available: `green`, `yellow` and `red`.
 * To change title of the button, write some its name like `"relay1|My cool relay"`.
 * Buttons and switches can request confirmation on acting. To do this write its name like `"relay1|confirm|My cool relay"`. The third argument with a title is required in this case.
+* The button can automatically close the menu when clicked. Use something like `"relay1|hide|My button"`. It can be used with confirmation option: `"relay1|confirm,hide|My button"`.
 
 Also you can place some leds in the menu title using the similar syntax:
 
