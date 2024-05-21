@@ -16,7 +16,10 @@
     It's most likely you have an old OS release. You can update the OS as follows:
 
     ```console
-    [root@pikvm ~]# curl https://files.pikvm.org/update-os.sh | bash
+    [root@pikvm ~]# rw
+    [root@pikvm ~]# pacman -Syy
+    [root@pikvm ~]# pacman -S pikvm-os-updater
+    [root@pikvm ~]# pikvm-update
     ```
 
     Next time you will be able to use the usual method with `pikvm-update`.
