@@ -190,6 +190,38 @@ Configuring an NFS server is beyond the scope of this guide.
 
 
 -----
+## Samba/CIFS storage
+
+If you already have a local samba server e.g. Unraid or another NAS you can use the isos from there.
+
+To refresh the list of available isos on the share it is currently necessary to reboot.
+
+??? example "Step by step: Connecting Samba/CIFS storage"
+
+    1. Update OS:
+
+        {!_update_os.md!}
+
+    2. Make some preparations:
+
+        ```console
+        [root@pikvm ~]# rw
+        [root@pikvm ~]# pacman -S cifs-utils
+        [root@pikvm ~]# kvmd-helper-otgmsd-remount rw
+        [root@pikvm ~]# mkdir -p /var/lib/kvmd/msd/isos
+        [root@pikvm ~]# kvmd-helper-otgmsd-remount ro
+        ```
+
+    2. Add Samba/CIFS shares to `/etc/fstab`:
+
+        ```fstab
+        //192.168.0.1/isos   /var/lib/kvmd/msd/isos   cifs  guest,_netdev,nofail 0 0
+        ```
+
+    3. Perform `reboot` to apply all changes.
+
+
+-----
 ## Multiple drives
 
 By default, PiKVM creates one virtual drive for Mass Storage emulation.
