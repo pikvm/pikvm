@@ -89,7 +89,13 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "Can I power the Pi via PoE?"
-    Yes! But you still need a splitter to ensure you isolate the 5v connection between the Raspberry Pi and host PC to prevent backpower issues that can cause instability or damage to either the host PC or the Pi. Power/Data cable + USB power blocker would work.
+    Yes! 
+
+    For a POE HATS
+    You still need a splitter to ensure you isolate the 5v connection between the Raspberry Pi and host PC to prevent backpower issues that can cause instability or damage to either the host PC or the Pi. Power/Data cable + USB power blocker would work.
+
+    For a POE Splitter
+    No, there is no need for anything additional, you can power your RPi and or the PiKVM Mini with the USB-C variant.
 
 
 ??? question "Do I need a power splitter? Why do I need one?"
