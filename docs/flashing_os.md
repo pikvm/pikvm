@@ -110,12 +110,22 @@ You can also use `dd_rescue` or `ddrescue`.
 
     <img src="RPi-imager5.jpg" width="400" />
 
-7. Wait for the process to finish. Get yourself a coffee or do some stretching :)
-    The process may hang at 99% for a long time, this is okay, just wait for it to complete.
+7. Refuse customization options.
 
+    !!! warning
+
+        The customization is designed for Raspberry OS and will not work in PiKVM OS.
+        If you apply any custom settings, this will cause the image to malfunction.
+
+        PiKVM OS has its [own settings mechanism](on_boot_config.md), please use it after the flashing
+        if you need to configure Wi-Fi or something similar.
+        
     <img src="RPi-imager6.jpg" width="400" />
 
-8. Remove the memory card after successful completion. If an error occurs during flashing or booting PiKVM, repeat the process.
-    If the error persists, use a different memory card.
+8. Wait for the process to finish. Get yourself a coffee or do some stretching :)
+    The process may hang at 99% for a long time, this is okay, just wait for it to complete.
 
     <img src="RPi-imager7.jpg" width="400" />
+
+9. Remove the memory card after successful completion. If an error occurs during flashing or booting PiKVM, repeat the process.
+    If the error persists, use a different memory card.
