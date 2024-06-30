@@ -45,58 +45,178 @@ The UI can be updated to add buttons to switch between KVM inputs and indicators
 2. Edit the `/etc/kvmd/override.yaml` file and include the following:
 
     ```yaml
-    kvmd:
-        gpio:
-            drivers:
-                tes:
-                    type: tesmart
-                    host: 10.10.1.10
-                    port: 5000
-            scheme:
-                server0_led:
-                    driver: tes
-                    pin: 0
-                    mode: input
-                server0_switch:
-                    driver: tes
-                    pin: 0
-                    mode: output
-                    switch: false    
-                server1_led:
-                    driver: tes
-                    pin: 1
-                    mode: input
-                server1_switch:
-                    driver: tes
-                    pin: 1
-                    mode: output
-                    switch: false    
-                server2_led:
-                    driver: tes
-                    pin: 2
-                    mode: input
-                server2_switch:
-                    driver: tes
-                    pin: 2
-                    mode: output
-                    switch: false    
-                server3_led:
-                    driver: tes
-                    pin: 3
-                    mode: input
-                server3_switch:
-                    driver: tes
-                    pin: 3
-                    mode: output
-                    switch: false    
-            view:
-                table:
-                    - ["TESMART Switch"]
-                    - []
-                    - ["#Server 1", server0_led, server0_switch|Switch]
-                    - ["#Server 2", server1_led, server1_switch|Switch]
-                    - ["#Server 3", server2_led, server2_switch|Switch]
-                    - ["#Server 4", server3_led, server3_switch|Switch]
+       kvmd:
+       gpio:
+              drivers:
+              tes:
+                     type: tesmart
+                     host: 192.168.1.10
+                     port: 5000
+              scheme:
+              server0_led:
+                     driver: tes
+                     pin: 0
+                     mode: input
+              server0_switch:
+                     driver: tes
+                     pin: 0
+                     mode: output
+                     switch: false
+              server1_led:
+                     driver: tes
+                     pin: 1
+                     mode: input
+              server1_switch:
+                     driver: tes
+                     pin: 1
+                     mode: output
+                     switch: false
+              server2_led:
+                     driver: tes
+                     pin: 2
+                     mode: input
+              server2_switch:
+                     driver: tes
+                     pin: 2
+                     mode: output
+                     switch: false
+              server3_led:
+                     driver: tes
+                     pin: 3
+                     mode: input
+              server3_switch:
+                     driver: tes
+                     pin: 3
+                     mode: output
+                     switch: false
+              server4_led:
+                     driver: tes
+                     pin: 4
+                     mode: input
+              server4_switch:
+                     driver: tes
+                     pin: 4
+                     mode: output
+                     switch: false
+              server5_led:
+                     driver: tes
+                     pin: 5
+                     mode: input
+              server5_switch:
+                     driver: tes
+                     pin: 5
+                     mode: output
+                     switch: false
+              server6_led:
+                     driver: tes
+                     pin: 6
+                     mode: input
+              server6_switch:
+                     driver: tes
+                     pin: 6
+                     mode: output
+                     switch: false
+              server7_led:
+                     driver: tes
+                     pin: 7
+                     mode: input
+              server7_switch:
+                     driver: tes
+                     pin: 7
+                     mode: output
+                     switch: false
+              server8_led:
+                     driver: tes
+                     pin: 8
+                     mode: input
+              server8_switch:
+                     driver: tes
+                     pin: 8
+                     mode: output
+                     switch: false
+              server9_led:
+                     driver: tes
+                     pin: 9
+                     mode: input
+              server9_switch:
+                     driver: tes
+                     pin: 9
+                     mode: output
+                     switch: false
+              server10_led:
+                     driver: tes
+                     pin: 10
+                     mode: input
+              server10_switch:
+                     driver: tes
+                     pin: 10
+                     mode: output
+                     switch: false
+              server11_led:
+                     driver: tes
+                     pin: 11
+                     mode: input
+              server11_switch:
+                     driver: tes
+                     pin: 11
+                     mode: output
+                     switch: false
+              server12_led:
+                     driver: tes
+                     pin: 12
+                     mode: input
+              server12_switch:
+                     driver: tes
+                     pin: 12
+                     mode: output
+                     switch: false
+              server13_led:
+                     driver: tes
+                     pin: 13
+                     mode: input
+              server13_switch:
+                     driver: tes
+                     pin: 13
+                     mode: output
+                     switch: false
+              server14_led:
+                     driver: tes
+                     pin: 14
+                     mode: input
+              server14_switch:
+                     driver: tes
+                     pin: 14
+                     mode: output
+                     switch: false
+              server15_led:
+                     driver: tes
+                     pin: 15
+                     mode: input
+              server15_switch:
+                     driver: tes
+                     pin: 15
+                     mode: output
+                     switch: false
+              view:
+              header:
+                     title: "TESMART Switch"
+              table:
+                     - ["#Server  1", server0_led, server0_switch|Switch]
+                     - ["#Server  2", server1_led, server1_switch|Switch]
+                     - ["#Server  3", server2_led, server2_switch|Switch]
+                     - ["#Server  4", server3_led, server3_switch|Switch]
+                     - ["#Server  5", server4_led, server4_switch|Switch]
+                     - ["#Server  6", server5_led, server5_switch|Switch]
+                     - ["#Server  7", server6_led, server6_switch|Switch]
+                     - ["#Server  8", server7_led, server7_switch|Switch]
+                     - ["#Server  9", server8_led, server8_switch|Switch]
+                     - ["#Server 10", server9_led, server9_switch|Switch]
+                     - ["#Server 11", server10_led, server10_switch|Switch]
+                     - ["#Server 12", server11_led, server11_switch|Switch]
+                     - ["#Server 13", server12_led, server12_switch|Switch]
+                     - ["#Server 14", server13_led, server13_switch|Switch]
+                     - ["#Server 15", server14_led, server14_switch|Switch]
+                     - ["#Server 16", server15_led, server15_switch|Switch]
     ```
 
 3. Return to read-only mode for the sd card via `ro`
