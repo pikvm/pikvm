@@ -1,5 +1,7 @@
 # Setting up Wi-Fi
 
+!!! warning "This is for ADVANCED Users, for non advanced users please follow [this guide](first_steps.md).
+
 !!! tip
     There is nothing more reliable than wired Ethernet, so it's better to use it. Wi-Fi with the steel case (on PiKVM V3 and V4) results in poor performance. But who are we to stop you... :)
 
