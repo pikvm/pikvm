@@ -22,7 +22,7 @@ Here the status is:
 | Model | Status | Notes |
 |:------|:-------|:------|
 | [ezCoo EZ-SW41HA-KVMU3L 4x1 switch](https://www.easycoolav.com/products/hdmi20-switch-4x1-with-usb30-kvm-3-port-usbsupport-4k60hz-444-and-hdr-audio-breakout-36) ~~[ezCoo SW41HA HDMI 4x1 switch](https://www.easycoolav.com/products/hdmi20-switch-4x1-with-usb20-kvm-4-port-usbsupport-4k60hz-444-and-hdr-audio-breakout)~~ (legacy) | ✔ | [Using with PiKVM](ezcoo.md) - 4 Port is the ONLY supported KVM, 2 Port does not work the same and is not supported, the same can be said about any of the HDMI splitters 1-in-2 Out |
-| [eccoo EZ-SW41HA-KVMU3P 4x1 switch](https://www.amazon.com/gp/product/B09ZKZK7ZB) |  ✔ |  make sure you buy the with hotkey version as that has the control port | 
+| [eccoo EZ-SW41HA-KVMU3P 4x1 switch](https://www.amazon.com/gp/product/B09ZKZK7ZB) |  ✔ | [Using with PiKVM](ezcoo.md). Make sure you buy the with hotkey version as that has the control port | 
 | [ezcoo EZ-SW41H21-KVMU3P 8K 4x1 switch](https://www.easycoolav.com/products/8k-hdmi-kvm-switch-4x1-with-usb30-kvm-4k120hz-hotkey-switch) |  ✔ | Does NOT have a control port. MSD Works. Can be managed through key combo (ctrl+ctrl+#)
 | [TESmart 8 PORT - HDMI KVM SWITCH](https://buytesmart.com/collections/8-ports) |  ✔ | Use OTG with USB 2.0 Hub only, no hotkey support. Switching available with serial or IP-to-serial interface using fixed IP (/31 peer-to-peer addressing supported). Can be managed [via WebUI](tesmart.md) or [CLI tool](https://github.com/bbeaudoin/bash/tree/master/tesmart) |
 | [XH-HK4401 4-port HDMI USB KVM Switch](https://www.aliexpress.com/item/4000849336545.html) | ✔ | [Using with PiKVM](xh_hk4401.md) - USB MSD works, requires the HDMI backpower solutions found below |
