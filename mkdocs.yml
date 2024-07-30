@@ -68,6 +68,7 @@ nav:
         - "First steps": first_steps.md
         - "Authentication": auth.md
         - "FAQ & Troubleshooting": faq.md
+        - "Flashing OS": flashing_os.md
     - "Networking":
         - "Internet access":
             - "Port forwarding": port_forwarding.md
