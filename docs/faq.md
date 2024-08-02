@@ -83,6 +83,10 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
     100-200ms is very, very fast for this. But we are working to speed things up even more.
 
+??? question "I am expecting to see 60fps and I am not, why?"
+
+    Most companies or people misunderstand 60Hz and 60FPS, in the context of PiKVM, FPS is (divided by) HZ.
+    For example, 60HZ = 30FPS, 30HZ = 15FPS and so on...the rest is based on network latency as described above.
 
 ??? question "Does PiKVM support sound?"
     Yes but the only officially supported version is the PiKVM V3+ devices, V2 we will attempt best effort but ultimatly we do not support CSI modules or USB.
