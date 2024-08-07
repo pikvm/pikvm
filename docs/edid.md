@@ -215,29 +215,29 @@ So, to tune EDID on PiKVM, use the following steps:
 
 2. Export the system edid to the binary file `myedid.bin`:
 
-   ```console
-   # kvmd-edidconf --export-bin=/root/myedid.bin
-   ```
+    ```console
+    # kvmd-edidconf --export-bin=/root/myedid.bin
+    ```
 
 3. Copy this file to your PC with the editor. Use SCP, Putty or something like that. Open this binary file in the editor and change the necessary parameters. Edit, save and copy it back to PiKVM.
 
 4. Convert the binary file to the HEX and test it:
 
-   ```console
-   [root@pikvm ~]# kvmd-edidconf --import=/root/myedid.bin --edid=/root/myedid.hex --apply
-   ```
+    ```console
+    [root@pikvm ~]# kvmd-edidconf --import=/root/myedid.bin --edid=/root/myedid.hex --apply
+    ```
 
 5. If everything works fine, install the new EDID file into the system:
 
-   ```console
-   [root@pikvm ~]# cp /root/myedid.hex /etc/kvmd/tc358743-edid.hex
-   ```
+    ```console
+    [root@pikvm ~]# cp /root/myedid.hex /etc/kvmd/tc358743-edid.hex
+    ```
 
 6. Alternative to step (4) and (5): if you are confident in your abilities, you can immediately install the new `myedit.bin` into the system and apply it instantly, without the need to use the temporary `myedid.hex`:
 
-   ```console
-   [root@pikvm ~]# kvmd-edidconf --import=/root/myedid.bin --apply
-   ```
+    ```console
+    [root@pikvm ~]# kvmd-edidconf --import=/root/myedid.bin --apply
+    ```
 
 7. Switch filesystem to RO-mode: `ro`.
 
