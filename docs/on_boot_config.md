@@ -20,6 +20,10 @@ After applying the settings, the file is automatically deleted.
 
 2. Insert the memory card into the computer and mount the first FAT32 partition.
 
+!!! note
+    This assumes Windows is being used and will mount only 1 parition
+    If using another OS, it will be assumed that the end user will know what Partition to use but if not, place in the `*boot` dir
+    
 3. Among the system files you will see the file `pikvm.txt`.
     If you haven't enabled PiKVM yet, this file will contain a single line `FIRST_BOOT=1`.
 
@@ -30,13 +34,9 @@ After applying the settings, the file is automatically deleted.
     WIFI_ESSID='mynet'
     WIFI_PASSWD='p@s$$w0rd'
     ```
-
+  
 !!! note
-    This assumes Windows is being used and will mount only 1 parition
-    If using another OS, it will be assumed that the end user will know what Partition to use but if not, place in the `*boot` dir
-    
-!!! note
-    Please keep in mind that if a backslash is used in the password, it should be escaped: `\` and should be written as `\\`.
+    Please note that if a backslash is included in the password, it needs to be escaped: `\` should be written as `\\`.
 
     If there was a string `FIRST_BOOT=1` in the file, do not remove it.
     This is the trigger needed to initialize the OS at the first boot.
