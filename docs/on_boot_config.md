@@ -31,7 +31,12 @@ After applying the settings, the file is automatically deleted.
     WIFI_PASSWD='p@s$$w0rd'
     ```
 
-    Note that backslash in the password should be escaped: `\` should be written as `\\`.
+!!! note
+    This assumes Windows is being used and will mount only 1 parition
+    If using another OS, it will be assumed that the end user will know what Partition to use but if not, place in the `*boot` dir
+    
+!!! note
+    Please keep in mind that if a backslash is used in the password, it should be escaped: `\` and should be written as `\\`.
 
     If there was a string `FIRST_BOOT=1` in the file, do not remove it.
     This is the trigger needed to initialize the OS at the first boot.
