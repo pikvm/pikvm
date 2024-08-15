@@ -85,8 +85,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "I am expecting to see 60fps and I am not, why?"
 
-    Most companies or people misunderstand 60Hz and 60FPS, in the context of PiKVM, FPS is (divided by) HZ.
-    For example, 60HZ = 30FPS, 30HZ = 15FPS and so on...the rest is based on network latency as described above.
+    PiKVM receives the entire signal, but then the encoding is the bottleneck. For 1080p, this is no more than 30 fps. V4 throws out every second frame of 60 hz/fps, and 30 fps is encoded. V3 and DIY can't process 60 hz and is only able to capture 50 hz, and in the same way they take every second frame, all you get out is 25 fps. The reason why V3 and DIY does not encode 30 out of 50 is that the picture will be jerky, but smooth at 25.
 
 ??? question "Does PiKVM support sound?"
     Yes but the only officially supported version is the PiKVM V3+ devices, V2 we will attempt best effort but ultimatly we do not support CSI modules or USB.
