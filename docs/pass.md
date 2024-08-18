@@ -7,11 +7,6 @@ the video signal through itself until you need remote access via PiKVM
 In this case, PiKVM directs the video stream to the Web UI or VNC.
 
 
-!!! tip "Beta version"
-
-    This feature is in beta, so it requires manual activation.
-
-
 !!! info
 
     * The passthrough feature supports a screen resolution **up to 1920x1200** pixels.
@@ -26,45 +21,16 @@ This is shown more clearly below:
 -----
 ## Setting up the passthrough
 
-1. Connect the display to `OUT2` port on the back side of PiKVM V4 Plus.
+Connect the display to `OUT2` port on the back side of PiKVM V4 Plus.
+This feature should be enabled by default on new images.
 
-2. Update OS and reboot:
+If not, follow two simple steps:
+
+1. Update OS and reboot:
 
     {!_update_os.md!}
 
-4. Switch filesystem to RW-mode:
-
-    ```console
-    [root@pikvm ~]# rw
-    ```
-
-3. Make sure that you have these lines in `/boot/config.txt`, add them if not:
-
-    ```ini
-    dtoverlay=vc4-kms-v3d
-    disable_overscan=1
-    ```
-
-4. Add some config to `/etc/kvmd/override.yaml`:
-
-    ```yaml
-    kvmd:
-        streamer:
-            forever: true
-            cmd_append:
-                - "--format=rgb24"
-                - "--encoder=cpu"
-                - "--v4p"
-    ```
-
-5. Disable old alpha passthrough service and perform the soft reboot:
-
-    ```console
-    [root@pikvm ~]# systemctl disable kvmd-pass
-    [root@pikvm ~]# reboot
-    ```
-
-After rebooting, you will see an image on the physical display.
+2. After rebooting, you will see an image on the physical display.
 
 
 -----
@@ -78,7 +44,7 @@ disable the 1920x1200 mode on PiKVM itself:
 
 ```console
 [root@pikvm ~]# rw
-[root@pikvm ~]# kvmd-edidconf --import-preset=v4plus.no-1920x1200  # Or v4mini.no-1920x1200
+[root@pikvm ~]# kvmd-edidconf --import-preset=v4plus.no-1920x1200
 [root@pikvm ~]# reboot
 ```
 
@@ -87,10 +53,6 @@ disable the 1920x1200 mode on PiKVM itself:
 ## Current limitations
 
 Please note the feature is pretty new and will be improved.
-
-* The colors in the H.264 webstream will be slightly highlighted,
-    [this is a bug in the Raspberry firmware](https://github.com/raspberrypi/firmware/issues/1885),
-    it will be fixed soon.
 
 * Display resolution must be greater than or equal to that used by PiKVM capture.
     If the maximum display resolution is 720p and the signal has a 1080p resolution, you will not see the image.
@@ -102,3 +64,19 @@ Please note the feature is pretty new and will be improved.
     to adjust the image parameters of the host.
 
 * Audio is not supported at the moment.
+
+
+-----
+## Disabling the passthrough
+
+1. Add few lines to `/etc/kvmd/override.yaml`:
+
+    ```yaml
+    kvmd:
+        streamer:
+            forever: false
+            cmd_remove:
+                - "--v4p"
+    ```
+
+2. Perform `reboot`.
