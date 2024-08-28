@@ -33,7 +33,7 @@ The following actions are available here:
     which currently cannot emulate a DVD drive.
     To use a larger boot image, please use a Flash Drive emulation.
     If this is not possible (the image does not support Flash, for example, for Windows),
-    you can try [this recipe](#create-a-windows-based-flash-disk-image).
+    you can try [this recipe](#making-windows-boot-flash-image).
 
 !!! info "Changing the media type between CD-ROM and Flash is possible only when the device is reconnected"
     On PiKVM V3 and V4, this can be done using the `System -> Connect main USB` switch in the Web UI.
