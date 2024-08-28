@@ -66,6 +66,7 @@ nav:
             - "DIY PiKVM V2": v2.md
             - "DIY PiKVM V1": v1.md
         - "First steps": first_steps.md
+        - "Web UI Overview": webui.md
         - "Authentication": auth.md
         - "FAQ & Troubleshooting": faq.md
         - "Flashing OS": flashing_os.md
