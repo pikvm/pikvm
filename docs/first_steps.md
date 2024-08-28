@@ -170,6 +170,7 @@ Comments starts with the `#` symbol.
 
 * Set up Internet access using [port forwarding](port_forwarding.md) or [Tailscale VPN](tailscale.md).
 * Explore PiKVM features using the table of contents on the left.
+* Get to know the [interface](webui.md)
 * Join our [Discord](https://discord.gg/bpmXfz5) to contact the community and developers.
 * Check out the [GitHub](https://github.com/pikvm) - PiKVM is a fully Open Source project!
 * For Mac OS client: [pin your PiKVM device as an app](https://github.com/pikvm/pikvm/issues/965) for quick access.
