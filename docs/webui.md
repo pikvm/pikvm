@@ -2,7 +2,7 @@
 
 After following the first steps document on setup, you will be presented with the following pages (Chrome is being used in the following examples)
 
-    <img src="Page1.jpg" width="400" />
+<img src="Page1.jpg" width="400" />
 
 1. Click Advanced
 
@@ -10,7 +10,7 @@ After following the first steps document on setup, you will be presented with th
 
 1. Click Proceed
 
-Log into you PiKVM using the credentials from the frst_steps document
+    Log into you PiKVM using the credentials from the frst_steps document
 
     <img src="Login.jpg" width="400" />
 
