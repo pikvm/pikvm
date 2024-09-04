@@ -58,12 +58,17 @@ A number of other parameters can be applied in the same way as with Wi-Fi.
     Triggers initialization of the first OS startup. The following actions are performed:
 
     * Generates unique `/etc/machine-id` for internal systemd machinery.
+    * Generates unique SSH host keys.
     * Generates unique SSL certificates for HTTPS and VNC.
+    * Generates Avahi ZeroConf service `/etc/avahi/services/pikvm.service` with Pi's serial number. But keeps Avahi disabled by default.
     * Mass Storage image partition is reformatted to fill the available space at the end of SD card (only for V2+).
     * Different minor things are performed like fc-cache update.
 
     Note that this option does not reset the OS to factory defaults.
     There is no way to do this other than [reflashing](flashing_os.md).
+
+* `ENABLE_AVAHI=1`<br>
+    Triggers Avahi service generation (if needed) and enables `avahi-daemon`. It's disabled by default.
 
 * `ENABLE_OTG_SERIAL=1`<br>
     Only for V2+. Enables a virtual serial port on a USB emulator, that can be used to log in
