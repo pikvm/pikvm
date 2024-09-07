@@ -331,6 +331,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Cameron Tacklind
 * Carl Mercier
 * Carl-Fredrik Johansson
+* Carlos Eduardo Porter Herrera
 * Carlos Garcia
 * Carlos Manuel Torres
 * cbad536
@@ -412,6 +413,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Dominik Klonowski
 * Donald Hays
 * Edmon Abdul Nur
+* Edward Wang
 * Egan Ford
 * Elani Ferri
 * Elliot Woo
@@ -586,6 +588,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * LeeNX
 * Leon Siegl
 * Leonard Feineis
+* Lewis Wild
 * Liran
 * Liviu Dimitriu
 * Lizardo Hernandez
@@ -799,6 +802,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Tango_Echo_Alpha
 * Tarlak Desaydrone
 * TechBear
+* techlobo
 * Ted
 * Tejun Heo
 * TheSnowedOne
@@ -819,6 +823,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Tomas Kuchta
 * Tomáš hrubý
 * Torsten Droste
+* Torsten Knoll
 * Tobias Schafferhans
 * Tracy Fitch
 * Tristan Schoening
