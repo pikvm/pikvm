@@ -311,6 +311,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
         * Do the same in `/etc/fstab` for the `/boot` partition.
         * Comment `tmpfs` lines in `/etc/fstab` for `/var/lib` and `/var/log`.
         !!! danger "But again: DON'T DO THIS"
+        !!! warning "If you do plan on doing this, no assistance will be provided beyond this point other than the existing documentation."
 
 
 ??? question "How to set the date, time and timezone from command line?"
