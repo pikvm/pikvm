@@ -64,19 +64,17 @@ which you have successfully detected using the instructions above. The device ha
 
     A serial console is a convenient and fast way to connect to PiKVM when there is no network, or get boot logs and a console if something goes wrong.
 
-    1. Remove the PiKVM from the target system.
-
-    2. Connect to the physical UART console:
+    1. Connect to the physical UART console:
 
         * On PiKVM V3 or V4, you have a built-in USB-UART adapter in your device. Just disconnect the OTG cable and place the USB-C end into `IOIOI` port on V4 (or `CON` port on V3). Place the USB-A end into the port you want serial to be accessed, typically done on the host. If you have a Windows host, you may need to install this [driver](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers), other OS's may not need one.
 
         * On DIY PiKVM V1 or V2, you'll need to get the right TTY to USB cable, we recommend the [RPi Debug Probe](https://www.pishop.us/product/raspberry-pi-debug-probe/) and follow existing RPi TTY serial setups.
 
-    3. Install GNU Screen on Linux or macOS host, or [Putty](https://www.putty.org/) on Windows.
+    2. Install GNU Screen on Linux or macOS host, or [Putty](https://www.putty.org/) on Windows.
 
-    4. Select the COM port in Putty (you can verify this looking in Device Manager), then select 115200, or use `screen /dev/ttyUSB0 115200` for other OS's
+    3. Select the COM port in Putty (you can verify this looking in Device Manager), then select 115200, or use `screen /dev/ttyUSB0 115200` for other OS's
 
-    5. You should now be able to see and interact with the Serial Port.
+    4. You should now be able to see and interact with the Serial Port.
 
 !!! tip "Obtaining root access"
 
