@@ -57,6 +57,12 @@ plugins:
     - search:
         lang: en
     - mkdocs-video
+    - redirects:
+        redirects_maps:
+            "lte.md": "modem.md"
+            "gsm.md": "modem.md"
+            "3g.md": "modem.md"
+            "4g.md": "modem.md"
 
 nav:
     - "Device guides":
@@ -76,6 +82,7 @@ nav:
             - "Tailscale VPN": tailscale.md
             - "Cloudflare Tunnel": cloudflared.md
         - "Setting up Wi-Fi": wifi.md
+        - "Setting up 3G/4G/LTE modem": modem.md
         - "Let's Encrypt certificates": letsencrypt.md
     - "Video":
         - "Tuning HDMI EDID": edid.md

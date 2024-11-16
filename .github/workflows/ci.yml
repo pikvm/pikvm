@@ -13,5 +13,5 @@ jobs:
         with:
           python-version: 3.x
       # We're using the own fork of markdown-include because of indention
-      - run: pip install mkdocs-material mkdocs-video markdown==3.3.7 git+https://github.com/pikvm/markdown-include
+      - run: pip install mkdocs-material mkdocs-video mkdocs-redirects markdown==3.3.7 git+https://github.com/pikvm/markdown-include
       - run: mkdocs gh-deploy --force
