@@ -63,6 +63,7 @@ But if you are making the Pico HID for [V2](v2.md) or [V3](v3.md), then follow t
     Make sure that the level shifter pinout matches the scheme, and connect everything according to the [Pico pinout](https://pico.pinout.xyz).
 
     ```
+                                       >>> To the PC <<<
                      _________________
                     |                 |
     Pico GP11 ______| LV1         HV1 |______ PS/2 keyboard data
@@ -94,6 +95,26 @@ But if you are making the Pico HID for [V2](v2.md) or [V3](v3.md), then follow t
 
     !!! note
         Don't forget to enable PS/2 mode support as described in the next paragraph
+
+    ??? example "Optional: PS/2 passthrough"
+
+        This optional addon allows to use a real PS/2 keyboard and mouse together with emulated by PiKVM.
+
+        These two ports work as PS/2 inputs and are passed through to the PS/2 output ports.
+
+        ```
+                                           >>> To the REAL keyboard and mouse <<<
+        				 _________________
+        				|                 |
+        Pico GP26 ______| LV1         HV1 |______ PS/2 keyboard data
+        Pico GP27 ______| LV2         HV2 |______ PS/2 keyboard clock
+        Pico GP13  _____| LV          HV  |______ PS/2 5V
+        Pico  GND ______| GND         GND |______ PS/2 GND
+        Pico GP14 ______| LV3         HV3 |______ PS/2 mouse data
+        Pico GP15 ______| LV4         HV4 |______ PS/2 mouse clock
+        				|_________________|
+
+        ```
 
 
 -----
