@@ -82,8 +82,8 @@ Pico GP26 ______| LV1         HV1 |______ PS/2 keyboard data
 Pico GP27 ______| LV2         HV2 |______ PS/2 keyboard clock
 Pico GP13  _____| LV          HV  |______ PS/2 5V
 Pico  GND ______| GND         GND |______ PS/2 GND
-Pico GP14 ______| LV3         HV3 |______ PS/2 mouse data
-Pico GP15 ______| LV4         HV4 |______ PS/2 mouse clock
+Pico GP16 ______| LV3         HV3 |______ PS/2 mouse data
+Pico GP17 ______| LV4         HV4 |______ PS/2 mouse clock
 				|_________________|
 
 ```
