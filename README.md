@@ -115,7 +115,7 @@ All of them uses our common open source software stack.
 | **CISCO-style RJ-45** console port                                 | ✅          | ❌          |   | ✅       |   | ❌         |  ❌        |
 | A **real-time clock** for accurate logging                         | ✅          | ✅          |   | ✅       |   | ❌         |  ❌        |
 | **Locator LED** to find device in the rack                         | ✅          | ✅          |   | ❌       |   | ❌         |  ❌        |
-| **mPCIe slot** with USB lines for **LTE/5G** cards                 | ✅          | ❌          |   | ❌       |   | ❌         |  ❌        |
+| [**mPCIe slot** with USB lines for **LTE/5G** cards](https://docs.pikvm.org/modem)   | ✅          | ❌          |   | ❌       |   | ❌         |  ❌        |
 | **SIM card slot** for modem                                        | ✅          | ❌          |   | ❌       |   | ❌         |  ❌        |
 | **External antenna** support                                       | ✅          | ✅          |   | ❌       |   | ❌         |  ❌        |
 | USB host support (external USB devices connectivity)               | ✅          | ❌          |   | ✅       |   | ✅         |  ✅        |
