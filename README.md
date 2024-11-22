@@ -261,6 +261,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Alok Anand
 * Alucard
 * Ananthaneshan Elampoornan
+* Andreas Grundler
 * Andreas Marufke
 * Andreas Schmid
 * Andrew Brant
@@ -321,6 +322,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Brian T Mulcahy
 * Brian Vecchiarelli
 * Brian White
+* brodonalds
 * Bruno Gomes
 * Bryan Adams
 * Bryan Montgomery
@@ -657,6 +659,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Mikael Wikström
 * Mike Mason
 * Mikhael Mariano
+* Milan Burda
 * Milan Múčka
 * Miles Davis
 * Minh Tang
@@ -675,6 +678,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Nick Roethemeier
 * Nico Baumgartner
 * Nicolai Kragh-Hansen
+* Nicolas Christener
 * Nigel Smith
 * Nihal Fernando
 * Nils Orbat
@@ -682,6 +686,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Nithin Philips
 * Nod Swal
 * Nolan Haynes
+* Noxigen LLC
 * nubbn
 * nybble
 * Oh Be
@@ -766,6 +771,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Scuba
 * Sean
 * Sean Akers
+* Sean c Rickard
 * SEAT
 * Sebastian
 * Seonwoo Lee
@@ -834,6 +840,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Udo Schroeter
 * Uli Fahrer
 * Vasily Lazarev
+* Venmo
 * Vicente Salvador Cubedo
 * Vidru Eduard
 * Viktor Aschenbrenner
