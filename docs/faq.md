@@ -11,9 +11,8 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "Can PiKVM work on Raspberry Pi 5?"
 
-    * Not right now, but it will. RPi5 does not provide significant improvements compared to RPi4, so you can use any build based on RPi4, including PiKVM V3 or V4.
+    * Not now, but it will. Pi5 does not support hardware video encoding so there is no any reaason to use it for PiKVM.
     * RPi5 is not compatible with PiKVM V3 HAT due to the difference in form factor with RPi4.
-    * *What about dual CSI slots and hardware coding?* We are investigating this.
 
 
 ??? question "Can I connect multiple servers to a single PiKVM?"
