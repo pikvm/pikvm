@@ -100,7 +100,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
     For a POE Splitter
     
-    No, there is no need for anything additional, you can power your RPi and or the PiKVM Mini with the USB-C variant.
+    No, if using a v3 HAT/Preassembled or a PiKVM Mini with the POE USB-C variant, yes for v2.
 
 
 ??? question "Do I need a power splitter? Why do I need one?"
