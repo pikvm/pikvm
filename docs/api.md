@@ -380,6 +380,7 @@ Parameters:
 
 * `image=...` *(optional)* - Change the current image.
 * `cdrom=1|0` *(optional)* - Change the media type to the CD-ROM on `1`, otherwise to the Flash.
+* `rw=0|1` *(optional)* - Make the MSD read-write on `1`, otherwise read-only. Ignored (always read-only) when `cdrom=1`.
 
 ```
 $ curl -X POST -k -u admin:admin "https://<pikvm-ip>/api/msd/set_params?image=test.iso&cdrom=1"
