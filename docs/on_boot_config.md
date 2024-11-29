@@ -21,7 +21,10 @@ After applying the settings, the file is automatically deleted.
 2. Insert the memory card into the computer and mount the first FAT32 partition.
 
 3. Among the system files you will see the file `pikvm.txt`.
-    If you haven't enabled PiKVM yet, this file will contain a single line `FIRST_BOOT=1`. If it does not exist, make it `pikvm.txt`.
+
+    * If you haven't powered up PiKVM yet, this file will contain a single line `FIRST_BOOT=1`. Do not remove it, just add following lines from the next step.
+
+    * If the file does not exist, create an empty file (don't add `FIRST_BOOT` option).
 
 4. To connect to Wi-Fi with DHCP, you will need an ESSID (network name) and a password. Add this to `pikvm.txt`.
     If the file doesn't exists, just create it. Like following:
