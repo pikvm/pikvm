@@ -38,7 +38,7 @@ or in the [kvmd repo](https://github.com/pikvm/kvmd/blob/master/configs/kvmd/edi
 
 
 -----
-## Force 1080p by defailt on PiKVM V0+
+## Force 1080p by default on PiKVM V0+
 
 PiKVM V3 (or DIY V0-V2) has a hardware limit of 50Hz for 1080p mode, and this is a less common frequency than 60Hz.
 Therefore, on V3, the default mode is 720p. Some OS (like Proxmox) may not work well with 720p,
