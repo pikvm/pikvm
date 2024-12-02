@@ -8,7 +8,7 @@ We recommend to do this while having a display and keyboard
 or a serial console connected directly to the Raspberry Pi as you will loose network connectivity once you connect to a Wi-Fi.
 Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (available through the browser) should also work.
 
-!!! note "The easy way"
+!!! warning "Take a look at the easiest way"
     This guide describes how to manually set up a Wi-Fi. An easier way is to use [On-boot config](on_boot_config.md).
     It is also mandatory for Zero 2 W board.
 
