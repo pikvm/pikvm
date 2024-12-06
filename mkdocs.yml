@@ -115,3 +115,4 @@ nav:
         - "Cases for 3D printing": 3d_printing.md
     - "Legacy":
         - "Arduino HID": arduino_hid.md
+    - "Compliance": compliance.md
