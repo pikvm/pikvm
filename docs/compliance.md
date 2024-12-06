@@ -1,3 +1,3 @@
 # Compliance Information
 
-* [PiKVM Switch](pikvm_switch_ce.pdf)
+* [PiKVM CE/UKCA](pikvm_ce_ukca.pdf)
