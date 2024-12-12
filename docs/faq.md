@@ -11,7 +11,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "Can PiKVM work on Raspberry Pi 5?"
 
-    * Not now, but it will. Pi5 does not support hardware video encoding so there is no any reaason to use it for PiKVM.
+    * Not now, but it will. Pi5 does not support hardware video encoding so there is no any reason to use it for PiKVM.
     * RPi5 is not compatible with PiKVM V3 HAT due to the difference in form factor with RPi4.
 
 
@@ -71,7 +71,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "Can PiKVM do 4K video?"
     * For HDMI-CSI bridge, no. There is not enough bandwidth in the CSI bus for that much data. 1080p50 will max out the bandwidth.
-    * For the USB capture devices: technically yes, they will downsample to something smaller to meet the USB 2.0 bandwidth limitations, so the source may be 4k, but the stream will not.
+    * For the USB capture devices: technically yes, they will down sample to something smaller to meet the USB 2.0 bandwidth limitations, so the source may be 4k, but the stream will not.
     * The 4K real-time video will not fit through the network anyway.
 
 
@@ -87,7 +87,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     PiKVM receives the entire signal, but then the encoding is the bottleneck. For 1080p, this is no more than 30 fps. V4 throws out every second frame of 60 hz/fps, and 30 fps is encoded. V3 and DIY can't process 60 hz and is only able to capture 50 hz, and in the same way they take every second frame, all you get out is 25 fps. The reason why V3 and DIY does not encode 30 out of 50 is that the picture will be jerky, but smooth at 25.
 
 ??? question "Does PiKVM support sound?"
-    Yes but the only officially supported version is the PiKVM V3+ devices, V2 we will attempt best effort but ultimatly we do not support CSI modules or USB.
+    Yes but the only officially supported version is the PiKVM V3+ devices, V2 we will attempt best effort but ultimately we do not support CSI modules or USB.
 
 
 ??? question "Can I power the Pi via PoE?"
@@ -95,7 +95,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
     For a POE HAT
     
-    You still need a splitter to ensure you isolate the 5v connection between the Raspberry Pi and host PC to prevent backpower issues that can cause instability or damage to either the host PC or the Pi. Power/Data cable + USB power blocker would work.
+    You still need a splitter to ensure you isolate the 5v connection between the Raspberry Pi and host PC to prevent back power issues that can cause instability or damage to either the host PC or the Pi. Power/Data cable + USB power blocker would work.
 
     For a POE Splitter
     
@@ -103,7 +103,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "Do I need a power splitter? Why do I need one?"
-    * Yes for RPi4 - Please see the main readme for splitter types listed under V2 hardware
+    * Yes for RPi4 - Please see the main v2 document for splitter types listed under V2 hardware
     * Yes for Zero W and Zero W 2, if using dedicated power you still need to split the power from the data towards the target. If using the target for power, this is not needed.
     * This is not needed if you have a PiKVM V3 and V4, as they splits power and signal on the board.
 
@@ -440,7 +440,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "No image from computer with Linux + Awesome WM"
-    Sometimes Awesome WM on Linux can't recognize a video output change on a cable. That is, if the cable was first inserted into the monitor, and then you reconnected it to PiKVM - it may happen that you will not see the image. It seems that the problem is Awesome WM, since for example with KDE, it is not reproducable. If you turn on your workstation with PiKVM already connected, everything will work fine.
+    Sometimes Awesome WM on Linux can't recognize a video output change on a cable. That is, if the cable was first inserted into the monitor, and then you reconnected it to PiKVM - it may happen that you will not see the image. It seems that the problem is Awesome WM, since for example with KDE, it is not reproducible. If you turn on your workstation with PiKVM already connected, everything will work fine.
 
 
 ??? question "Windows shows limited Available Resolutions"
@@ -465,7 +465,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "My computer does not recognize USB of PiKVM V2+ at all"
     * Make sure that you have used the correct USB cable with DATA lines to connect the OTG port for the Raspberry to the computer. You may have decided to use a USB hub instead of a Y-cable and **it won't work**. Use good cables and follow the instructions :)
-    * In rare cases, some very buggy BIOSes do not like HID and Mass Storage in one USB device. You can either [disable Mass Storage](msd.md#disable-msd), or use the [Pico HID](pico_hid.md) to physically separate them.
+    * In rare cases, some very buggy BIOS's do not like HID and Mass Storage in one USB device. You can either [disable Mass Storage](msd.md#disable-msd), or use the [Pico HID](pico_hid.md) to physically separate them.
 
 
 ??? question "BIOS/UEFI does not recognize USB of V2+, but computer does"
@@ -490,7 +490,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "My mass storage drive works (I can boot an image from PiKVM V2+), but my keyboard/mouse does not"
-    In rare cases, some very buggy BIOSes does not like HID and Mass Storage in one USB device. You can either [disable Mass Storage](msd.md#disable-msd), or use the [Pico HID](pico_hid.md) to physically separate them.
+    In rare cases, some very buggy BIOS's does not like HID and Mass Storage in one USB device. You can either [disable Mass Storage](msd.md#disable-msd), or use the [Pico HID](pico_hid.md) to physically separate them.
 
 
 ??? question "Buggy absolute mouse on Windows 98 as managed server"
