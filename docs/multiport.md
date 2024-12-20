@@ -1,6 +1,43 @@
 # Multiport KVM over IP
 
-There are many ways to do this, but the best and most documented one right now is to use the [ezCoo KVM switch](ezcoo.md).
+
+??? note
+    V4 MINI cannot be used with any of the below, the Mini was designed to be used 1:1
+
+
+<img src="../switch/switch.png" width="400" />
+
+If you need to connect multiple hosts to a single PiKVM, then the best way to do this is to use our [Pikvm Switch](switch.md).
+It is designed specifically for PiKVM and has many advantages and features compared to regular desktop multiport switches.
+
+* ATX control on each port.
+* Per-port EDID configuration.
+* HDMI dummy plug functionality.
+* True Plug-n-Play with no need for override.yaml setups and complete control via Web UI.
+* Multifunctional RGB LEDs with beacon mode and customizable color schemes.
+* Firmware update directly from PiKVM and ready for future hardware extensions.
+* Compatible with V4 Plus, V3 and DIY devices based on Pi2-Pi4 except Zero and V4 Mini.
+
+And now the best part: **the switches can be chained!** Need four ports? Get a PiKVM Switch.
+As your server fleet expands to eight, simply add another switch and link it to the first one.
+Need even more? No worries — **connect up to five switches and enjoy 20 fully functional ports on your PiKVM**.
+
+[Just take a look!](switch.md).
+
+You can order PiKVM Switch Multiport Extender from our [international store](https://shop.hipi.io/product/pikvm-switch-multiport-extender).
+
+Canadian customers can place an order at [PiShop.ca](https://www.pishop.ca/product/pikvm-switch-multiport-extender/).
+
+
+If your KVM switches channels using keyboard shortcuts, there is a chance that it will not be able to work with OTG (v2+ platform, see below), since it does not fully implement the USB stack. In this case, you will have to [use the Pico HID](pico_hid.md) to emulate the keyboard & mouse (PiKVM supports this configuration).
+
+!!! warning
+    If you choose AIMOS, be aware that it has a back powering issue that you need to use work arounds for. Limitations are are listed below. Also please be aware that Pico's will not work with the AIMOS KVM's.
+
+   
+## List of tested third-party KVMs
+
+There are many ways to do this with third-party switches. For example you can choose a switch with USB control connection like [ezCoo KVM switch](ezcoo.md).
 
 Also, PiKVM can be connected to a multi-port HDMI/USB switch and the switch's buttons can be connected via optocouplers to [the Pi's GPIO to switch channels](gpio.md).
 
@@ -9,10 +46,6 @@ If your KVM switches channels using keyboard shortcuts, there is a chance that i
 !!! warning
     If you choose AIMOS, be aware that it has a back powering issue that you need to use work arounds for. Limitations are are listed below. Also please be aware that Pico's will not work with the AIMOS KVM's.
 
-??? note
-    V4 MINI cannot be used with any of the below, the Mini was designed to be used 1:1
-    
-## List of tested KVMs
 Here the status is:
 
 * ✔ - Everything is working as expected. There may be some subtleties.
