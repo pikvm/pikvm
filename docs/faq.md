@@ -364,19 +364,8 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "How do I completely disable authorization in PiKVM?"
-    Edit the file `/etc/kvmd/override.yaml`:
 
-    ```yaml
-    kvmd:
-        auth:
-            enabled: false
-    ```
-
-    ... then restart `kvmd`:
-
-    ```
-    [root@pikvm ~]# systemctl restart kvmd
-    ```
+	See [here](auth.md).
 
 
 ??? question "Can I have different hostnames for each of my PiKVMs?"

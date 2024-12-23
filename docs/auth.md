@@ -126,3 +126,35 @@ In other words, **the secret is the same for all users**.
 To view the current QR code of the secret use command `kvmd-totp show`.
 
 To disable 2FA and remove the secret, use command `kvmd-totp del`.
+
+
+----
+## Disable authentication
+If necessary, you can disable authentication for the Web UI.
+
+!!! warning
+
+    Don't do this on untrusted networks and optionally disable the Web Terminal so as not to open the shell access to PiKVM console.
+    You still can use SSH to access to the console.
+
+1. Switch filesystem to read-write mode:
+
+    ```
+    [root@pikvm ~]# rw
+    ```
+
+2. Edit the file `/etc/kvmd/override.yaml`:
+
+    ```yaml
+    kvmd:
+	    auth:
+		    enabled: false
+    ```
+
+3. Restart `kvmd`, optionally disable web terminal switch filesystem to read-only mode:
+
+    ```
+    [root@pikvm ~]# systemctl restart kvmd
+    [root@pikvm ~]# systemctl disable --now kvmd-webterm  # Optional if you have SSH access
+    [root@pikvm ~]# ro
+    ```
