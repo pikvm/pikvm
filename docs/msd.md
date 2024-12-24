@@ -220,6 +220,24 @@ To refresh the list of available isos on the share it is currently necessary to 
 
     3. Perform `reboot` to apply all changes.
 
+-----
+### 'exfat' Filesystem warning
+
+Using the existing USB ports you can reduce writes to the internal SSD card by storing
+images on a USB thumb drive.  This is mounted as would NFS or Samba, above. As recent
+drives are starting to come formatted with `exfat` instead of `fat` or `NTFS`, the
+linux kernel will default to 'root' ownership of the mountpoint.  This means the
+volume will be visible in the 'Media' menu, but will be marked as `[read-only]`, without
+any obvious reason.
+
+The correct `/etc/fstab` entry for a USB drive that presents as `/dev/sda1` with an
+exfat filesystem is:
+
+        ```fstab
+        /dev/sda1   /var/lib/kvmd/msd/usb   exfat  auto,nofail,rw,umask=0000  0 0
+        ```
+This says to mount it automatically, do not fail if it's missing, mount it read/write by
+default, and allow all users and groups access to it.
 
 -----
 ## Multiple drives
