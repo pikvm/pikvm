@@ -1,5 +1,10 @@
 # The Pico HID - PS/2 Bridge
 
+!!! note "Pico requirements"
+    [Raspberri Pi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/)
+    (the first model) based on RP2040 microcontroller is required.
+    Pico 2 is not supported right now.
+
 The Pico HID Bridge is a special version of the [generic Pico HID](pico_hid.md).
 It is a PS/2 keyboard and mouse emulator that connects to PiKVM via USB-A.
 Unlike generic [Pico HID](pico_hid.md) and legacy [Arduino HID](arduino_hid.md),

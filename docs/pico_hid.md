@@ -6,6 +6,11 @@
     (but not V4 Mini or DIY based on Zero 2 W boards),
     you can use a faster and easier way: [The Pico HID Bridge](pico_hid_bridge.md).
 
+!!! note "Pico requirements"
+    [Raspberri Pi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/)
+    (the first model) based on RP2040 microcontroller is required.
+    Pico 2 is not supported right now.
+
 The Pico HID is a part of [DIY PiKVM V1](v1.md) platform that performs keyboard and mouse emulation.
 It has excellent compatibility, and emulates USB by default, including two mouse modes: absolute and relative.
 
