@@ -8,28 +8,41 @@ without having to move the mouse manually to avoid the screensaver.
 
 
 -----
-## Enabling the Jiggler
-To enable the Jiggler, it is mandatory that you update to the latest version and it is required to allow some config lines to `/etc/kvmd/override.yaml`:
+## Using the Jiggler
 
-Please note: `active: true` will allow jiggler to activate after a reboot, if you do not want this, remove this line.
-
-```yaml
-kvmd:
-    hid:
-        jiggler:
-            enabled: true
-            active: true
-```
-
-... and restart KVMD:
-
-```console
-[root@pikvm ~]# systemctl restart kvmd
-```
-
-After that, it will be available in the Web UI for activation:
+With a latest PiKVM OS, the jiggler is available in the Web UI:
 
 <img src="mouse_jiggler_menu.png" width="400"/>
+
+If you don't see this switch, please update OS first:
+
+{!_update_os.md!}
+
+
+-----
+## Jiggler settings
+
+This is not required usually, but it is possible to change some of the parameters of the jiggler or disable it completely.
+
+Here are some examples to place it to `/etc/kvmd/override.yaml`.
+
+1. Make the jiggler unavailable in the menu:
+
+    ```yaml
+    kvmd:
+        hid:
+            jiggler:
+                enabled: false
+    ```
+
+2. Activate it by default after PiKVM reboot:
+
+    ```yaml
+    kvmd:
+        hid:
+            jiggler:
+                active: true
+    ```
 
 
 -----
@@ -41,7 +54,7 @@ the Jiggler performs a mouse movement and waits another 60 seconds until the nex
 
 The Jiggler supports both [mouse modes](mouse.md): absolute and relative.
 
-**Movement patterns are deterministic:**
+Movement patterns are deterministic:
 
 * **Absolute:** `(-100, -100), wait, (100, 100), wait...`<br>*The coordinates are converted depending on the screen resolution.*
 * **Relative:** `(-10, -10), wait, (10, 10), wait...`
