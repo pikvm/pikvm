@@ -174,3 +174,38 @@ In the port settings, you can set the display name (can be used for the name of 
 and the individual EDID from the Collection.
 
 Other parameters relate to the ATX intervals for pressing the power and reset buttons of the target host.
+
+
+-----
+## Firmware updating
+
+Sometimes we release firmware updates for the Switch, which are distributed along with PiKVM OS updates.
+When the software detects that your switch has an old firmware, it will inform you about it via
+the web interface. After that, you will be able update the Switch.
+
+If you have several switches in the chain, then all devices will be updated: first, PiKVM uploads the update
+to the first switch, then it updates the next one, and so on.
+This is very convenient because you don't have to perform complex manual manipulations to maintain your equipment.
+The Switches are intelligent and save you time.
+
+!!! warning
+
+    We recommend updating the firmware only if you have physical access to the hardware.
+
+    Switches are extremely difficult to brick, but if there is a power failure during updating,
+    you will need physical access to restore the device. So don't worry, it can't be bricked forever.
+
+    It is also recommended to perform all the operations described below via SSH, and not via a web terminal.
+
+### Performing update
+
+Just run these commands via SSH under root:
+
+```console
+[root@pikvm ~]# cd /usr/share/kvmd/switch
+[root@pikvm switch]# systemctl stop kvmd   # This will stop the KVM web service
+[root@pikvm switch]# make install          # Flash the first switch
+[root@pikvm switch]# systemctl start kvmd  # Start it again
+```
+
+The switches will show the progress of the update on the front LEDs and will gradually return to service.
