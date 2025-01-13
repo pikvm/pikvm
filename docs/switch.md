@@ -1,5 +1,11 @@
 # PiKVM Switch Multiport Extender
 
+!!! info "Where to buy?"
+
+    * [International store](https://shop.hipi.io/product/pikvm-switch-multiport-extender).
+    * [Canadian store](https://www.pishop.ca/product/pikvm-switch-multiport-extender/).
+    * EU is coming!
+
 <img src="switch.png" width="400" />
 
 * [PiKVM Switch Multiport Extender](switch_datasheet.pdf)
