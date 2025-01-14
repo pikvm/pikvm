@@ -82,6 +82,12 @@ All of them uses our common open source software stack.
 
 <hr>
 
+**NEW PRODUCT! [PiKVM Switch](https://docs.pikvm.org/switch) will help you to transform PiKVM into a multiport device!**
+
+<a href=https://docs.pikvm.org/switch><img src="https://docs.pikvm.org/switch/switch.png" width=300 /></a>
+
+<hr>
+
 | <div align="center">⭐ ⭐ ⭐ **CORE SYSTEM** ⭐ ⭐ ⭐</div>        | **V4 Plus** | **V4 Mini** |   |  **V3**  |   | **DIY V2** | **DIY V1** |
 |--------------------------------------------------------------------|:-----------:|:-----------:|---|:--------:|---|:----------:|:----------:|
 |                                                                    |             |             |   |          |   |            |            |
