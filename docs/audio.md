@@ -1,4 +1,4 @@
-# PiKVM V3+ Audio
+# PiKVM V3+ two-way audio
 
 Official [PiKVM V3](v3.md) and [PiKVM V4 Mini/Plus](v4.md) devices have an exclusive audio transmission feature,
 including **two-way** communication with microphone directly in the browser.
