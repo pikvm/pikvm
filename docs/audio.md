@@ -95,7 +95,7 @@ This feature is disabled by default for backward compatibility reasons.
                     enabled: true
         ```
 
-    4. Add few lines to `/etc/kvmd/janus/janus.plugin.ustreamer.jcfg`:
+    4. Add few lines at the end of `/etc/kvmd/janus/janus.plugin.ustreamer.jcfg`:
 
         ```
         aplay: {
