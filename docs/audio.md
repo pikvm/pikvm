@@ -95,7 +95,15 @@ This feature is disabled by default for backward compatibility reasons.
                     enabled: true
         ```
 
-    4. Perform reboot:
+    4. Add few lines to `/etc/kvmd/janus/janus.plugin.ustreamer.jcfg`:
+
+        ```
+        aplay: {
+            device = "plughw:UAC2Gadget,0"
+        }
+        ```
+
+    5. Perform reboot:
 
         ```console
         [root@pikvm ~]# reboot
