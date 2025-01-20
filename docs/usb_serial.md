@@ -1,6 +1,6 @@
 # Serial-over-USB connection
 
-Specifically to V2+. This can be used for terminal access from the managed server to the PiKVM, or for any other purpose that requires a serial connection. In the last case, you only need to perform step 1 and reboot.
+Specifically to V2+. This can be used for terminal access from the target host to the PiKVM, or for any other purpose that requires a serial connection. In the last case, you only need to perform step 1 and reboot.
 
 {!_usb_limits.md!}
 

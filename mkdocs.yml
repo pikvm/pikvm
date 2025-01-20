@@ -63,6 +63,7 @@ plugins:
             "gsm.md": "modem.md"
             "3g.md": "modem.md"
             "4g.md": "modem.md"
+            "usb_dynamic.md": "usb.md"
 
 nav:
     - "Device guides":
@@ -90,8 +91,9 @@ nav:
         - "HDMI passthrough": pass.md
         - "H.264 / WebRTC": webrtc.md
         - "Working with video": video.md
-        - "HDMI audio": audio.md
     - "Peripheral devices":
+        - "USB configuration": usb.md
+        - "Audio / microphone": audio.md
         - "Keyboard & mouse":
             - "Mouse modes": mouse.md
             - "Mouse jiggler": mouse_jiggler.md
@@ -100,7 +102,6 @@ nav:
         - "Mass Storage Drive": msd.md
         - "Ethernet-over-USB": usb_ethernet.md
         - "Serial-over-USB": usb_serial.md
-        - "Dynamic USB configuration": usb_dynamic.md
         - "GPIO (pins, relays, lamps, etc)": gpio.md
     - "Advanced usage":
         - "On-boot configuration": on_boot_config.md
