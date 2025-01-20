@@ -1,6 +1,6 @@
 # PiKVM V3+ Audio
 
-Official [PiKVM V3](v3.md) and [PiKVM V4](v4.md) devices have an exclusive audio transmission feature,
+Official [PiKVM V3](v3.md) and [PiKVM V4 Mini/Plus](v4.md) devices have an exclusive audio transmission feature,
 including **two-way** communication with microphone directly in the browser.
 
 The incoming stream is captured from the target host via HDMI, the outgoing stream is transmitted to an emulated USB microphone.
@@ -16,7 +16,7 @@ This brings the user experience of working with voice applications on the remote
 -----
 ## Speakers (incoming audio)
 
-* On [PiKVM V4](v4.md), this feature is enabled by default, unless you didn't disable it [with custom EDID](edid.md).
+* On [PiKVM V4 Mini and Plus](v4.md), this feature is enabled by default, unless you didn't disable it [with custom EDID](edid.md).
 
 * On [PiKVM V3](v3.md), this is disabled for historical reasons so as not to break old user's configurations
     that was created before audio support was introduced.

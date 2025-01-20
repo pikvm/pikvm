@@ -2,7 +2,7 @@
 
 PiKVM V2+ emulates a small set of USB devices to ensure normal operation: a keyboard, [mouse](mouse.md) and [mass storage drive](msd.md).
 However, the possibilities are not limited to this. Optionally, you can add a [USB ethernet](usb_ethernet.md),
-[serial port](usb_serial.md), or (exclusive to [PiKVM V3](v3.md) and [V4](v4.md)) [a microphone to support two-way audio](audio.md).
+[serial port](usb_serial.md), or (exclusive to [PiKVM V3](v3.md) and [V4 Mini/Plus](v4.md)) [a microphone to support two-way audio](audio.md).
 
 In rare cases, the target host's BIOS/UEFI may not understand such a large number of emulated devices on single USB port,
 and some of them may need to be disabled.
@@ -29,7 +29,7 @@ Depending on the device, the number of required endpoints varies:
 
 * PiKVM V2-V3 emulates one absolute mouse and one mass storage and uses 4 of 9 endpoints.
 
-* PiKVM V4 also adds a relative mouse by default so it uses 5 of 9 endpoints.
+* PiKVM V4 Mini/Plus also adds a relative mouse by default so it uses 5 of 9 endpoints.
 
 You can add other devices remaining endpoints, disable existing ones at all to free some endpoints, or do this only temporarily.
 
@@ -42,7 +42,7 @@ the least important of them will be inactive. You can enable them using dynamic 
 To configure additional devices, please refer to the corresponding pages:
 
 * [USB Microphone](audio.md) - Two-way audio communication for voice applications on the target host.
-    Exclusive to [PiKVM V3](v3.md) and [V4](v4.md).
+    Exclusive to [PiKVM V3](v3.md) and [V4 Mini/Plus](v4.md).
 
 * [Absolute and relative mouse](mouse.md) - The most convenient type of mouse is an absolute mouse,
     but some BIOSes may not understand it. In this case, the relative one will help you.
@@ -117,7 +117,6 @@ In this case you can disable all devices except keyboard and relative mouse, and
 # Endpoints used: 2 of 9
 # Endpoints free: 7
 - acm.usb0  # [3] Serial Port
-- ecm.usb0  # [3] Ethernet
 + hid.usb0  # [1] Keyboard
 - hid.usb1  # [1] Absolute Mouse
 + hid.usb2  # [1] Relative Mouse
@@ -134,7 +133,6 @@ Exit the BIOS, and turn on mass storage again. Use it as usual to boot the image
 # Endpoints used: 4 of 9
 # Endpoints free: 5
 - acm.usb0  # [3] Serial Port
-- ecm.usb0  # [3] Ethernet
 + hid.usb0  # [1] Keyboard
 - hid.usb1  # [1] Absolute Mouse
 + hid.usb2  # [1] Relative Mouse
