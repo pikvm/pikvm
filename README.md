@@ -1,7 +1,7 @@
 # Open and inexpensive DIY IP-KVM based on Raspberry Pi
 [![Discord](https://img.shields.io/discord/580094191938437144?logo=discord)](https://discord.gg/bpmXfz5) [![Reddit](https://img.shields.io/badge/reddit-join-orange?logo=reddit)](https://www.reddit.com/r/pikvm)
 
-A very simple and fully functional Raspberry Pi-based KVM (Keyboard-Video-Mouse) over IP that you can make with your own hands. This device helps to manage servers or workstations remotely, regardless of the health of the operating system or whether one is installed. You can fix any problem, configure the BIOS, and even reinstall the OS using the virtual CD-ROM or Flash Drive.
+A very simple and fully functional Raspberry Pi-based KVM (Keyboard-Video-Mouse) over IP that you can make with your own hands. This device helps to manage servers or workstations remotely, regardless of the health of the operating system or whether one is installed. You can fix any problem, configure the BIOS, and even reinstall the OS using the virtual CD/DVD or Flash Drive.
 
 The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](https://docs.pikvm.org) and join to the [Discord Community Chat](https://discord.gg/bpmXfz5) for news, questions and support!
 
@@ -15,7 +15,7 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
     * *Raspberry Pi 5 is not supported right now. It doesn't have GPU video encoders, therefore, there is no point in using it for PiKVM, it will not give any performance boost for this case. The Pi 5 is a great device, just not suitable for PiKVM.*
 * **FullHD video** using advanced **HDMI-to-CSI bridge** or **USB dongle**;
 * Extra low **video latency** with **MJPEG** or **H.264** via direct HTTP or WebRTC streaming (for CSI bridge);
-* Bootable **Virtual CD-ROM** and **Flash Drive**, ability to store images on **NFS**;
+* Bootable **Virtual CD/DVD** and **Flash Drive**, ability to store images on **NFS**;
 * USB **Keyboard** and **mouse** (with leds and the wheel), Bluetooth HID, Mouse jiggler, full support of PS/2;
 * **Control the server power** using ATX functions;
 * Access via **Web UI** or **VNC**;
@@ -108,7 +108,7 @@ All of them uses our common open source software stack.
 | <div align="center">⭐ ⭐ ⭐ **PERIPHERY** ⭐ ⭐ ⭐</div> | **V4 Plus** | **V4 Mini** |   |  **V3**  |   | **DIY V2** | **DIY V1** |
 ||
 | USB keyboard/mouse emulation                                       | ✅          | ✅          |   | ✅       |   | ✅         | ✅         |
-| Virtual **Flash Drive** / **CD-ROM** emulation                     | ✅          | ✅          |   | ✅       |   | ✅         | ❌         |
+| Virtual **Flash Drive** / **CD/DVD** emulation                     | ✅          | ✅          |   | ✅       |   | ✅         | ❌         |
 | Ability to simulate **"eject/insert"** for USB                     | ✅          | ✅          |   | ✅       |   | ❌         | ❌         |
 | **Onboard ATX controller** for power management of the host        | ✅          | ✅          |   | ✅       |   | DIY        | DIY        |
 | **Built-in OLED** with IP and other info                           | ✅          | ✅          |   | ✅       |   | ❌         | ❌         |
@@ -159,7 +159,7 @@ All of them uses our common open source software stack.
 * **Keyboard and mouse**  
   Mouse usage works directly in the browser. The keyboard emulator supports displaying the state of the keyboard LEDs.
 * **Mass Storage Drive**  
-  On the Raspberry Pi 4 and Zero2W, PiKVM can emulate a virtual CD-ROM or Flash Drive. A live image can be uploaded to boot the attached server.
+  On the Raspberry Pi 4 and Zero2W, PiKVM can emulate a virtual CD/DVD or Flash Drive. A live image can be uploaded to boot the attached server.
 * **ATX power management**  
   With a very simple circuit that can be assembled on a breadboard, the power button of the attached server can be controlled using the ATX button headers on the motherboard.
 * **Security**  
@@ -213,7 +213,7 @@ So, again, in short:
   * [Here are the instructions and a complete list of components](https://docs.pikvm.org/v2).
   * Requires Raspberry Pi 4 or Zero 2 W.
   * Supports H.264 (for recommended CSI capture).
-  * Supports CD-ROM and Flash Drive (mass storage) emulation.
+  * Supports CD/DVD and Flash Drive (mass storage) emulation.
   * It is recommended as a simpler and more feature-rich way compared to V1.
 
 * **DIY PiKVM V1:**
@@ -222,7 +222,7 @@ So, again, in short:
   * Requires Raspberry Pi Pico for the keyboard/mouse emulation.
   * Requires extra wiring and little bit more parts.
   * Supports H.264 (for recommended CSI capture).
-  * Doesn't support CD-ROM and Flash Drive (mass storage) emulation.
+  * Doesn't support CD/DVD and Flash Drive (mass storage) emulation.
 
 -----
 

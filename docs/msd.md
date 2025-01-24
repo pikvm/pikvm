@@ -1,12 +1,18 @@
 # Mass Storage Drive
 
 This powerful feature that is available on all PiKVM V2+ devices.
-It allows PiKVM to emulate a virtual CD-ROM or Flash Drive for the target host
+It allows PiKVM to emulate a virtual CD/DVD or Flash Drive for the target host
 which will be available even in BIOS/UEFI when you need live disk to revive the OS
 or even reinstall it.
 
-!!! warning "Legacy note"
-    This document is relevant for `KVMD >= 3.249`. If you are using an older version, please update the PiKVM OS.
+!!! warning
+    This document is relevant for `KVMD >= 4.49`.
+
+    **Also since this version, PiKVM supports DVD emulation!**
+
+    If you are using an older version, please update the PiKVM OS:
+
+    {!_update_os.md!}
 
 | Take a look at the `Drive` menu in the Web UI |
 |-----------------------------------------------|
@@ -28,14 +34,7 @@ The following actions are available here:
     The rest of the time, power off is safe because the PiKVM filesystem
     will be in read-only mode.
 
-!!! info "The max CD-ROM image size is 2.2 GB"
-    This is a [Linux kernel limitation](https://github.com/pikvm/pikvm/issues/322) on PiKVM,
-    which currently cannot emulate a DVD drive.
-    To use a larger boot image, please use a Flash Drive emulation.
-    If this is not possible (the image does not support Flash, for example, for Windows),
-    you can try [this recipe](#making-windows-boot-flash-image).
-
-!!! info "Changing the media type between CD-ROM and Flash is possible only when the device is reconnected"
+!!! info "Changing the media type between CD/DVD and Flash is possible only when the device is reconnected"
     On PiKVM V3 and V4, this can be done using the `System -> Connect main USB` switch in the Web UI.
 
     In this case, the **media type is determined at the time of connecting the image, and not by clicking on the switch**.
@@ -221,7 +220,7 @@ To refresh the list of available isos on the share it is currently necessary to 
     3. Perform `reboot` to apply all changes.
 
 -----
-### 'exfat' Filesystem warning
+### exFAT filesystem warning
 
 Using the existing USB ports you can reduce writes to the internal SSD card by storing
 images on a USB thumb drive.  This is mounted as would NFS or Samba, above. As recent
@@ -238,6 +237,7 @@ exfat filesystem is:
         ```
 This says to mount it automatically, do not fail if it's missing, mount it read/write by
 default, and allow all users and groups access to it.
+
 
 -----
 ## Multiple drives
@@ -281,7 +281,7 @@ So, to add a second virtual drive, follow this:
                     enabled: true  # Set it to true to enable
                     count: 1  # +1 drive, default value
                     default:  # Default configuration for the all extra drives
-                        cdrom: false  # Default value (false for the generic flash drive)
+                        cdrom: false  # Default value (false for the generic flash drive, true for CD/DVD)
                         rw: false # Read-only by default
         ```
 
@@ -322,7 +322,11 @@ The full list of options can be found by running `kvmd-otgmsd --help`.
         ```
 
         !!! note
-            Index `0` represents the main drive that is controlled via the Web UI and API.
+
+            * Index `0` represents the main drive that is controlled via the Web UI and API.
+
+            * If `--set-cdrom=1`, the drive will work as CD-ROM for small images, and as DVD-ROM for big.
+              Please note that CD/DVD can't be writable (you should use `--set-rw=0` in this case).
 
     4. On this step, you will be able to access the flash drive from the target host
         and format the it in the usual way.
@@ -332,7 +336,7 @@ The full list of options can be found by running `kvmd-otgmsd --help`.
         ```console
         [root@pikvm ~]# kvmd-otgmsd -i 1
         Image file:  /root/flash.img
-        CD-ROM flag: no
+        CD/DVD flag: no
         RW flag:     yes
         ```
 
@@ -382,7 +386,7 @@ does not recognize it correctly and even refuses to work with USB keyboard and m
         ```yaml
         kvmd:
             msd:
-                type:  disabled
+                type: disabled
 
         ```
 
