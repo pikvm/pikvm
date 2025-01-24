@@ -117,4 +117,5 @@ nav:
         - "Cases for 3D printing": 3d_printing.md
     - "Legacy":
         - "Arduino HID": arduino_hid.md
+        - "Big DVD images on old PiKVM": msd_legacy.md
     - "Compliance": compliance.md
