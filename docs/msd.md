@@ -406,7 +406,7 @@ does not recognize it correctly and even refuses to work with USB keyboard and m
 
 Since KVMD 4.49, PiKVM is able to emulate DVD images.
 
-Before that, users had to use Vento and other utilities to pre-convert large DVD images
+Before that, users had to use Ventoy and other utilities to pre-convert large DVD images
 such as the official Windows ISO to Flash.
 
 We strongly recommend updating the PiKVM OS to simplify your Mass Storage experience when using DVDs:
