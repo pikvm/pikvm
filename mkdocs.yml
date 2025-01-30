@@ -58,7 +58,7 @@ plugins:
         lang: en
     - mkdocs-video
     - redirects:
-        redirects_maps:
+        redirect_maps:
             "lte.md": "modem.md"
             "gsm.md": "modem.md"
             "3g.md": "modem.md"
