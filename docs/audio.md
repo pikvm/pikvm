@@ -10,7 +10,7 @@ This brings the user experience of working with voice applications on the remote
 
     * Audio does not work with DIY devices, either CSI or USB video dongles.
 
-    * [VNC](vnc.md) does not support audio, it only works in the Web UI in [WebRTC](webrtc.md) mode.
+    * [VNC](vnc.md) does not support audio, it only works in the Web UI in [WebRTC](video.md) mode.
 
 
 -----

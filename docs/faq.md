@@ -359,7 +359,9 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ??? question "How do I disable the web terminal?"
     ```
+    # rw
     # systemctl disable --now kvmd-webterm
+    # ro
     ```
 
 
@@ -379,8 +381,9 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 ## Video problems
 
-??? question "I can see the video but I can't see the WebRTC switch"
-    WebRTC is an alternative mode for the default MJPEG and it's only supported on V2+ platforms with the CSI video capture device. See [this](webrtc.md) page to solve any problems with WebRTC.
+??? question "I can see the video but I can't see the WebRTC / video mode switch"
+    [WebRTC and Direct H.264](video.md) modes are only available on V2+ platforms with HDMI-CSI capture device,
+    including PiKVM [V3](v3.md) or [V4 Plus/Mini](v4.md). See the [modes guide](video.md) to solve any problems.
 
 
 ??? question "PiKVM does not show the video from the computer at all"

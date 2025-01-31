@@ -4,7 +4,7 @@
 
 
 site_name: PiKVM Handbook
-site_description: Open and cheap DIY IP-KVM on Raspberry Pi
+site_description: KVM over IP on Raspberry Pi
 site_author: Maxim Devaev
 site_url: https://pikvm.github.io/pikvm
 
@@ -12,7 +12,7 @@ repo_name: pikvm/pikvm
 repo_url: https://github.com/pikvm/pikvm
 edit_uri: ""
 
-copyright: "Copyright &copy; 2018-2022 Maxim Devaev"
+copyright: "Copyright &copy; 2018-2025 Maxim Devaev"
 
 docs_dir: docs
 
@@ -64,6 +64,7 @@ plugins:
             "3g.md": "modem.md"
             "4g.md": "modem.md"
             "usb_dynamic.md": "usb.md"
+            "webrtc.md": "video.md"
 
 nav:
     - "Device guides":
@@ -87,13 +88,13 @@ nav:
         - "Setting up 3G/4G/LTE modem": modem.md
         - "Let's Encrypt certificates": letsencrypt.md
     - "Video":
+        - "Video modes (WebRTC, Direct)": video.md
+        - "WebRTC configuration": webrtc_config.md
         - "Tuning HDMI EDID": edid.md
         - "HDMI passthrough": pass.md
-        - "H.264 / WebRTC": webrtc.md
-        - "Working with video": video.md
     - "Peripheral devices":
         - "USB configuration": usb.md
-        - "Audio / microphone": audio.md
+        - "Audio / Microphone": audio.md
         - "Keyboard & mouse":
             - "Mouse modes": mouse.md
             - "Mouse jiggler": mouse_jiggler.md
