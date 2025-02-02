@@ -82,6 +82,7 @@ nav:
     - "Networking":
         - "Internet access":
             - "Port forwarding": port_forwarding.md
+            - "Reverse proxy": reverse_proxy.md
             - "Tailscale VPN": tailscale.md
             - "Cloudflare Tunnel": cloudflared.md
         - "Setting up Wi-Fi": wifi.md
