@@ -2,17 +2,34 @@
 
 !!! warning "PiKVM comes with the following default passwords"
 
-    * **Linux admin** (SSH, console, etc.): user `root`, password `root`.
-    * **PiKVM Web Interface** ([API](api.md), [VNC](vnc.md)...): user `admin`, password `admin`, no 2FA code.
+    * **Linux OS-level admin** (SSH, console...):
+        * Username: `root`
+        * Password: `root`
 
-    **These are two separate entities with independent accounts.**
+    * **KVM user** (Web Interface, [API](api.md), [VNC](vnc.md)...):
+        * Username: `admin`
+        * Password: `admin`
+        * No 2FA code
 
-!!! note "There is another special Linux user: `kvmd-webterm`"
-    It can't be used for login or remote access to PiKVM OS and has the non-privileged rights in the OS.
-    Password access and `sudo` is disabled for it. It is used only for launching the Web Terminal.
-    These restrictions are set for security reasons.
+    **They are two separate entities with independent passwords.**
 
-*Changing the [VNCAuth passkey](vnc.md) and [IPMI password](ipmi.md) described in the relevant documents*.
+!!! danger "Don't forget to change BOTH passwords on the new device"
+
+    This page describes how to do this and enable two-factor authentication.
+
+    The 2FA is also strongly recommended if you plan to expose PiKVM to the internet
+    or use it in untrusted networks.
+
+In addition to the KVM user and Linux root, there are some other auth entities:
+
+* **The OS user `kvmd-webterm`**<br>
+    This is a special user with non-privileged rights in PiKVM OS.
+    It can't be used for login or remote access via SSH. Password access and `sudo` are also disabled.
+    It is used only for the Web Terminal. These restrictions are set for security reasons.
+
+* [**VNCAuth key**](vnc.md) - disabled by default.<br>
+
+* [**IPMI password**](ipmi.md) - disabled by default.<br>
 
 
 -----
@@ -39,7 +56,7 @@ To obtain it in the Web Terminal, type `su -` and then enter the `root` user pas
     [root@pikvm ~]# ro
     ```
 
-    For your own access to PiKVM OS, you will still have SSH.
+    For your own access to PiKVM OS, you still have SSH.
 
 
 -----
@@ -67,26 +84,30 @@ are stored encrypted in the `/etc/kvmd/htpasswd` file. To manage them, there is 
 [root@pikvm ~]# ro
 ```
 
-Please note that `admin` is a name of a default user. It is possible to create several different users
-with different passwords to access the Web UI, but keep in mind that they all have the same rights:
+The `admin` is a name of a default user.
 
-```console
-[root@pikvm ~]# kvmd-htpasswd set <user> # Sets a new user with password
-[root@pikvm ~]# kvmd-htpasswd list # Show the list of users
-[root@pikvm ~]# kvmd-htpasswd del <user> # Removes/deletes a user
-```
+??? example "Step by step: Add KVM users"
 
-At the moment there is no way to create any ACL for different KVM users.
+    It is possible to create several different KVM users with different passwords to access
+    the Web UI and VNC, but keep in mind that they all have the same rights:
+
+    ```console
+    [root@pikvm ~]# kvmd-htpasswd set <user> # Sets a new user with password
+    [root@pikvm ~]# kvmd-htpasswd list # Show the list of users
+    [root@pikvm ~]# kvmd-htpasswd del <user> # Removes/deletes a user
+    ```
+
+    At the moment there is no way to create any ACL for different KVM users.
 
 
 -----
 ## Two-factor authentication
 
-This is a new method of strengthening the protection of PiKVM, available since `KVM >= 3.196`.
+The 2FA a new method of strengthening the protection of PiKVM, available since `KVM >= 3.196`.
 It is strongly recommended to enable it if you expose the PiKVM in the big and scary Internet.
 
 !!! warning
-    Using 2FA eliminates the possibility of using [IPMI](ipmi) and [VNC with vncauth](vnc) (both disabled by default).
+    Using 2FA eliminates the possibility of using [IPMI](ipmi.md) and [VNC with vncauth](vnc.md) (both disabled by default).
     It also slightly affects the use of [API](api.md) and regular VNC with user/password, read below.
 
     Please note that 2FA does not concern the Linux OS access for the `root` user, so take care of a strong password
@@ -106,6 +127,7 @@ It is strongly recommended to enable it if you expose the PiKVM in the big and s
         [Android](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2)). It will generate one-time access codes.
 
     4. Create a secret for one-time codes on PiKVM:
+
        ```console
        [root@pikvm ~]# rw
        [root@pikvm ~]# kvmd-totp init
@@ -129,32 +151,95 @@ To disable 2FA and remove the secret, use command `kvmd-totp del`.
 
 
 ----
-## Disable authentication
-If necessary, you can disable authentication for the Web UI.
+## Session expiration
+
+Since KVMD 4.53, on the PiKVM Web UI login page, you can choose the maximum duration of the authentication session:
+1 hour, 12 hours or infinite (until PiKVM is rebooted or the `kvmd` system service is restarted).
+The selected session duration is valid for this browser and this user.
+When the time is up, the auth cookie will be revoked.
+It will not affect other sessions for the same user in other browsers.
+
+Note if you click the **Logout** button on the main page, it will log out all sessions of this user in all browsers.
+
+!!! note "Long-lived connections"
+
+    PiKVM actively uses websockets and long-lived HTTP connections for video streaming.
+
+    If the session has expired, this will cause its authorization cookie to be revoked
+    and new connections with this auth cookie will not be able to be established.
+    However, long-lived connections will not be terminated until the user closes the browser tab.
+    The session expiration feature is primarily intended to "clean up" when the user closes
+    the browser but don't hit the Logout button.
+
+    In the future, we plan to add immediate termination of expired connections.
+
+??? example "Step by step: Set a global session expiration limit"
+
+    You can set the default expiration time to limit the user's ability to create endless sessions.
+    This will be an invisible limit valid on KVM login for Web UI (but **not for VNC**, please note that VNC sessions are always endless).
+
+    1. Switch filesystem to read-write mode:
+
+        ```console
+        [root@pikvm ~]# rw
+        ```
+
+    2. Edit the file `/etc/kvmd/override.yaml`:
+
+        ```yaml
+        kvmd:
+            auth:
+                expire: 21600  # 21600 seconds is 6 shours
+        ```
+
+    3. Restart the `kvmd` service and make sure that the limit is applied:
+
+        ```console
+        [root@pikvm ~]# systemctl restart kvmd
+        [root@pikvm ~]# journalctl -u kvmd -g 'Maximum user session'
+        ... INFO --- Maximum user session time is limited: 6:00:00
+        ```
+
+    4. Switch filesystem to read-only mode back:
+
+        ```console
+        [root@pikvm ~]# ro
+        ```
+
+
+----
+## Disabling authentication
+
+If necessary, you can disable authentication for KVM access (Web UI, VNC, etc. except SSH).
 
 !!! warning
 
-    Don't do this on untrusted networks and optionally disable the Web Terminal so as not to open the shell access to PiKVM console.
+    Don't do this in untrusted networks, because you can give a potential attacker access to your target machine.
+
+    If you really need this, please consider to disable the Web Terminal so as not to open the shell access to PiKVM console.
     You still can use SSH to access to the console.
 
-1. Switch filesystem to read-write mode:
 
-    ```
-    [root@pikvm ~]# rw
-    ```
+??? example "Step by step: Disabling authentication"
 
-2. Edit the file `/etc/kvmd/override.yaml`:
+    1. Switch filesystem to read-write mode:
 
-    ```yaml
-    kvmd:
-	    auth:
-		    enabled: false
-    ```
+        ```console
+        [root@pikvm ~]# rw
+        ```
 
-3. Restart `kvmd`, optionally disable web terminal switch filesystem to read-only mode:
+    2. Edit the file `/etc/kvmd/override.yaml`:
 
-    ```
-    [root@pikvm ~]# systemctl restart kvmd
-    [root@pikvm ~]# systemctl disable --now kvmd-webterm  # Optional if you have SSH access
-    [root@pikvm ~]# ro
-    ```
+        ```yaml
+        kvmd:
+            auth:
+                enabled: false
+        ```
+
+    3. Restart `kvmd`, optionally disable web terminal switch filesystem to read-only mode:
+
+        ```console
+        [root@pikvm ~]# systemctl restart kvmd
+        [root@pikvm ~]# systemctl disable --now kvmd-webterm  # Optional if you have SSH access
+        [root@pikvm ~]# ro
+        ```

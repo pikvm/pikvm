@@ -76,7 +76,7 @@ nav:
     - "Getting started":
         - "First steps": first_steps.md
         - "Web UI Overview": webui.md
-        - "Authentication": auth.md
+        - "Authentication & 2FA": auth.md
         - "FAQ & Troubleshooting": faq.md
         - "Flashing OS": flashing_os.md
     - "Networking":
