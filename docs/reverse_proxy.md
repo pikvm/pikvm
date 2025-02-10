@@ -113,6 +113,7 @@ handle_path /pikvm/* {
             tls_insecure_skip_verify  # Same behaviour as Nginx
         }
         header_up Host {upstream_hostport}
+        header_down Location "^(/.*)$" "/pikvm$1"
     }
 }
 ```
