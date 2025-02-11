@@ -25,5 +25,5 @@
 
     **Optionally you can enable the [two-factor authentication](auth.md#two-factor-authentication) for more security.**
 
-    *Changing the [VNCAuth passkey](vnc.md) and [IPMI password](ipmi.md) at the first start of PiKVM is not required,
+    *Changing the [VNCAuth key](vnc.md) and [IPMI password](ipmi.md) at the first start of PiKVM is not required,
     since these services are disabled by default. But it is here just so that you remember their existence.*
