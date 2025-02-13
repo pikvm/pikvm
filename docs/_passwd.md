@@ -1,10 +1,16 @@
 ??? danger "✮ ✮ ✮ CHANGE THE PASSWORDS! ✮ ✮ ✮"
     PiKVM comes with the following default passwords:
 
-    * **Linux admin** (SSH, console, etc.): user `root`, password `root`.
-    * **PiKVM Web Interface** ([API](api.md), [VNC](vnc.md)...): user `admin`, password `admin`, no 2FA code.
+    * **Linux OS-level admin** (SSH, console...):
+        * Username: `root`
+        * Password: `root`
 
-    **These are two separate entities with independent accounts.**
+    * **KVM user** (Web Interface, [API](api.md), [VNC](vnc.md)...):
+        * Username: `admin`
+        * Password: `admin`
+        * No 2FA code
+
+    **They are two separate accounts with independent passwords.**
 
     To change passwords, you will need to use the console access via SSH or the Web Terminal.
     If you are using the Web Terminal, enter the `su -` command to get the `root` access (enter the `root` user password).

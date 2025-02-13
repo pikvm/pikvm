@@ -11,7 +11,7 @@
         * Password: `admin`
         * No 2FA code
 
-    **They are two separate entities with independent passwords.**
+    **They are two separate accounts with independent passwords.**
 
 !!! danger "Don't forget to change BOTH passwords on the new device"
 

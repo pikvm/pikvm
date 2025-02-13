@@ -33,6 +33,21 @@ By default, PiKVM receives a dynamic IP address via DHCP. PiKVM V3+ devices show
 For future examples, let's assume that PiKVM has received the address `192.168.0.100`,
 which you have successfully detected using the instructions above. The device has also been assigned a hostname `pikvm`.
 
+!!! warning "PiKVM comes with the following default passwords"
+
+    * **Linux OS-level admin** (SSH, console...):
+        * Username: `root`
+        * Password: `root`
+
+    * **KVM user** (Web Interface, [API](api.md), [VNC](vnc.md)...):
+        * Username: `admin`
+        * Password: `admin`
+        * No 2FA code
+
+    They are two separate accounts with independent passwords.
+
+    **One of the last steps tells you how to change them. Don't forget to do it!**
+
 ??? example "Access to PiKVM Web Interface"
 
     **We recommend using the latest Google Chrome or Chromium**, as they support the largest number of PiKVM features.
@@ -46,7 +61,7 @@ which you have successfully detected using the instructions above. The device ha
     **The default user is `admin`, the password is also `admin`, and no 2FA code.**
 
     After logging in, you will get access to the menu with the main functions.
-    Using the Web Terminal, you can change system settings and passwords.
+    Using the Web Terminal, you can change system settings and passwords as described below.
 
     *The latest versions of Google Chrome on Mac OS do not allow access to the page with a self-signed certificate,
     which is used in PiKVM by default. You can proceed by typing `thisisunsafe` and Chrome will then load the page.*
@@ -79,7 +94,7 @@ which you have successfully detected using the instructions above. The device ha
 !!! tip "Obtaining root access"
 
     * If you have logged in via SSH, then most likely you are already `root`.
-    * To get `root` in the Web Terminal, use command `su -` and enter the root password.
+    * To get `root` in the Web Terminal, use command `su -` and enter the root password. The default `root` password is `root`.*
 
 PiKVM OS (and the underlying Arch Linux ARM upstream) often receives software updates.
 After installation, it makes sense to update the OS.
