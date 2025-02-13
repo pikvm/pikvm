@@ -25,7 +25,7 @@
     If you require additional user for the Web UI access, use the following:
 
     ```console
-    [root@pikvm ~]# kvmd-htpasswd set <user> # Set a new user with password or change of an existing one
+    [root@pikvm ~]# kvmd-htpasswd add <user> # Add a new user with password
     [root@pikvm ~]# kvmd-htpasswd del <user> # Remove/delete a user
     ```
 

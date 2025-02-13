@@ -92,7 +92,7 @@ The `admin` is a name of a default user.
     the Web UI and VNC, but keep in mind that they all have the same rights:
 
     ```console
-    [root@pikvm ~]# kvmd-htpasswd set <user> # Sets a new user with password
+    [root@pikvm ~]# kvmd-htpasswd add <user> # Add a new user with password
     [root@pikvm ~]# kvmd-htpasswd list # Show the list of users
     [root@pikvm ~]# kvmd-htpasswd del <user> # Removes/deletes a user
     ```

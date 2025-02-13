@@ -246,42 +246,15 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "What is the default password? How do I change it?"
-    There are two types of accounts: OS and PiKVM (web interface) accounts. The system account `root` can be used for SSH/UART access and has the password `root`. The web interface account is called `admin` and has the password `admin`, no 2FA code. The PiKVM account cannot be used for SSH access and vice versa.
-
-    To change passwords, use the following commands (under root):
-
-    ```bash
-    su -  # If you're in the webterm
-    rw  # Switch filesystem to read-write mode
-    passwd root  # Change OS root password
-    kvmd-htpasswd set admin  # Change web ui admin password
-    ro  # Back to read-only
-    ```
-
-    Optionally you can enable the [two-factor authentication](auth.md#two-factor-authentication).
+    See [here](auth.md).
 
 
 ??? question "How do I add another user?"
-    As stated above you need to make 2 accounts, 1 for the shell, the other for the PiKVM Web UI.
-
-    ```
-    If you require additional users for PiKVM UI, you can use the following:
-    # rw
-    # su -
-    # kvmd-htpasswd set <user> # Adds a new user
-    # kvmd-htpasswd set <user> # Sets the password as long as the user exists
-    # kvmd-htpasswd del <user> # Removes/deletes a user
-
-    To add a shell/terminal account:
-    # rw
-    # su -
-    # useradd <user>
-    # passwd <user>
-    ```
+    See [here](auth.md#changing-the-kvm-password).
 
 
 ??? question "How do I get root access in the web terminal?"
-    The web terminal works with the account `kvmd-webterm`. This is a regular user with no administrator privileges. In addition, `sudo` and login are disabled for this user for security reasons. To get `root` access, you need to use the `su -` command (minus is important) and **enter the root password**.
+	See [here](auth.md#root-access-in-the-web-terminal).
 
 
 ??? question "Where is the PiKVM configuration located?"
