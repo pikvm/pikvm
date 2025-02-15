@@ -29,12 +29,7 @@ You can order PiKVM Switch Multiport Extender from our [international store](htt
 Canadian customers can place an order at [PiShop.ca](https://www.pishop.ca/product/pikvm-switch-multiport-extender/).
 
 
-If your KVM switches channels using keyboard shortcuts, there is a chance that it will not be able to work with OTG (v2+ platform, see below), since it does not fully implement the USB stack. In this case, you will have to [use the Pico HID](pico_hid.md) to emulate the keyboard & mouse (PiKVM supports this configuration).
-
-!!! warning
-    If you choose AIMOS, be aware that it has a back powering issue that you need to use work arounds for. Limitations are are listed below. Also please be aware that Pico's will not work with the AIMOS KVM's.
-
-   
+----- 
 ## List of tested third-party KVMs
 
 There are many ways to do this with third-party switches. For example you can choose a switch with USB control connection like [ezCoo KVM switch](ezcoo.md).

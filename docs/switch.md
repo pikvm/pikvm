@@ -215,3 +215,39 @@ Just run these commands via SSH under root:
 ```
 
 The switches will show the progress of the update on the front LEDs and will gradually return to service.
+
+
+-----
+## Known issues
+
+??? info "A DIY PiKVM device based on HDMI-CSI board does not receive a video through the Switch"
+
+    Some HDMI-CSI boards does not follow the HDMI specification correctly.
+    We have provided a special compatibility mode for them,
+    which should be enabled using the following configuration:
+
+    1. Switch filesystem to RW-mode:
+
+        ```console
+        [root@pikvm ~]# rw
+        ```
+
+    2. Add some lines to `/etc/kvmd/override.yaml`:
+
+        ```yaml
+        kvmd:
+            switch:
+                ignore_hpd_on_top: true
+        ```
+
+    3. Restart KVMD:
+
+        ```yaml
+        [root@pikvm ~]# systemctl restart kvmd
+        ```
+
+    4. Switch filesystem back to RO-mode:
+
+        ```console
+        [root@pikvm ~]# ro
+        ```
