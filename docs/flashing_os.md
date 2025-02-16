@@ -13,28 +13,28 @@ Download the appropriate SD card image. Select it based on the board, platform, 
     These images are not suitable for DIY and are intended only for our branded devices.
 
     * **PiKVM V4**
-        * [PiKVM V4 Mini](https://files.pikvm.org/images/v4mini-hdmi-rpi4-latest.img.xz)
-            <sub>- [*sha1*](https://files.pikvm.org/images/v4mini-hdmi-rpi4-latest.img.xz.sha1)
-        * [PiKVM V4 Plus](https://files.pikvm.org/images/v4plus-hdmi-rpi4-latest.img.xz)
-            <sub>- [*sha1*](https://files.pikvm.org/images/v4plus-hdmi-rpi4-latest.img.xz.sha1)
+        * [PiKVM V4 Mini](https://files.pikvm.org/images/v4mini-hdmi-rpi4/arm/v4mini-hdmi-rpi4-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v4mini-hdmi-rpi4/arm/v4mini-hdmi-rpi4-latest.img.xz.sha1)
+        * [PiKVM V4 Plus](https://files.pikvm.org/images/v4plus-hdmi-rpi4/arm/v4plus-hdmi-rpi4-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v4plus-hdmi-rpi4/arm/v4plus-hdmi-rpi4-latest.img.xz.sha1)
 
     * **PiKVM V3**
-        * [PiKVM V3 HAT BOX Image, OLED/FAN preactivated](https://files.pikvm.org/images/v3-hdmi-rpi4-box-latest.img.xz)
-            <sub>- [*sha1*](https://files.pikvm.org/images/v3-hdmi-rpi4-box-latest.img.xz.sha1)
-        * [PiKVM V3 HAT DIY Assembly](https://files.pikvm.org/images/v3-hdmi-rpi4-latest.img.xz)
-            <sub>- [*sha1*](https://files.pikvm.org/images/v3-hdmi-rpi4-latest.img.xz.sha1)</sub>
+        * [PiKVM V3 HAT BOX Image, OLED/FAN preactivated](https://files.pikvm.org/images/v3-hdmi-rpi4/arm/v3-hdmi-rpi4-box-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v3-hdmi-rpi4/arm/v3-hdmi-rpi4-box-latest.img.xz.sha1)
+        * [PiKVM V3 HAT DIY Assembly](https://files.pikvm.org/images/v3-hdmi-rpi4/arm/v3-hdmi-rpi4-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v3-hdmi-rpi4/arm/v3-hdmi-rpi4-latest.img.xz.sha1)</sub>
 
 !!! abstract "DIY PiKVM V2 Platform"
 
     * **Raspberry Pi 4**
-        * [For HDMI-CSI bridge](https://files.pikvm.org/images/v2-hdmi-rpi4-latest.img.xz)
-            <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmi-rpi4-latest.img.xz.sha1)</sub>
-        * [For HDMI-USB dongle](https://files.pikvm.org/images/v2-hdmiusb-rpi4-latest.img.xz)
-            <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmiusb-rpi4-latest.img.xz.sha1)</sub>
+        * [For HDMI-CSI bridge](https://files.pikvm.org/images/v2-hdmi-rpi4/arm/v2-hdmi-rpi4-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmi-rpi4/arm/v2-hdmi-rpi4-latest.img.xz.sha1)</sub>
+        * [For HDMI-USB dongle](https://files.pikvm.org/images/v2-hdmiusb-rpi4/arm/v2-hdmiusb-rpi4-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmiusb-rpi4/arm/v2-hdmiusb-rpi4-latest.img.xz.sha1)</sub>
 
     * **Raspberry Pi Zero 2 W**
-        * [For HDMI-CSI bridge](https://files.pikvm.org/images/v2-hdmi-zero2w-latest.img.xz)
-            <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmi-zero2w-latest.img.xz.sha1)</sub>
+        * [For HDMI-CSI bridge](https://files.pikvm.org/images/v2-hdmi-zero2w/arm/v2-hdmi-zero2w-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmi-zero2w/arm/v2-hdmi-zero2w-latest.img.xz.sha1)</sub>
 
     * **Raspberry Pi Zero W (obsolete)**
         * Support has been discontinued due to reaching the End-of-Life of the base board.<br>
@@ -43,22 +43,22 @@ Download the appropriate SD card image. Select it based on the board, platform, 
 !!! abstract "DIY PiKVM V1 Platform"
 
     * **Raspberry Pi 3**
-        * [For HDMI-CSI bridge](https://files.pikvm.org/images/v1-hdmi-rpi3-latest.img.xz)
-            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmi-rpi3-latest.img.xz.sha1)</sub>
-        * [For HDMI-USB dongle](https://files.pikvm.org/images/v1-hdmiusb-rpi3-latest.img.xz)
-            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmiusb-rpi3-latest.img.xz.sha1)</sub>
+        * [For HDMI-CSI bridge](https://files.pikvm.org/images/v1-hdmi-rpi3/arm/v1-hdmi-rpi3-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmi-rpi3/arm/v1-hdmi-rpi3-latest.img.xz.sha1)</sub>
+        * [For HDMI-USB dongle](https://files.pikvm.org/images/v1-hdmiusb-rpi3/arm/v1-hdmiusb-rpi3-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmiusb-rpi3/arm/v1-hdmiusb-rpi3-latest.img.xz.sha1)</sub>
 
     * **Raspberry Pi 2**
-        * [For HDMI-CSI bridge](https://files.pikvm.org/images/v1-hdmi-rpi2-latest.img.xz)
-            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmi-rpi2-latest.img.xz.sha1)</sub>
-        * [For HDMI-USB dongle](https://files.pikvm.org/images/v1-hdmiusb-rpi2-latest.img.xz)
-            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmiusb-rpi2-latest.img.xz.sha1)</sub>
+        * [For HDMI-CSI bridge](https://files.pikvm.org/images/v1-hdmi-rpi2/arm/v1-hdmi-rpi2-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmi-rpi2/arm/v1-hdmi-rpi2-latest.img.xz.sha1)</sub>
+        * [For HDMI-USB dongle](https://files.pikvm.org/images/v1-hdmiusb-rpi2/arm/v1-hdmiusb-rpi2-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmiusb-rpi2/arm/v1-hdmiusb-rpi2-latest.img.xz.sha1)</sub>
 
     * **Raspberry Pi Zero 2 W**
-        * [For HDMI-CSI bridge](https://files.pikvm.org/images/v1-hdmi-zero2w-latest.img.xz)
-            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmi-zero2w-latest.img.xz.sha1)</sub>
-        * [For HDMI-USB dongle](https://files.pikvm.org/images/v1-hdmiusb-zero2w-latest.img.xz)
-            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmiusb-zero2w-latest.img.xz.sha1)</sub>
+        * [For HDMI-CSI bridge](https://files.pikvm.org/images/v1-hdmi-zero2w/arm/v1-hdmi-zero2w-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmi-zero2w/arm/v1-hdmi-zero2w-latest.img.xz.sha1)</sub>
+        * [For HDMI-USB dongle](https://files.pikvm.org/images/v1-hdmiusb-zero2w/arm/v1-hdmiusb-zero2w-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmiusb-zero2w/arm/v1-hdmiusb-zero2w-latest.img.xz.sha1)</sub>
 
 !!! abstract "Any other combinations for advanced users"
     Please check the [file archives](https://files.pikvm.org/images/) for ready-made image or [build the image yourself](building_os.md).
