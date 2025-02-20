@@ -29,8 +29,8 @@ Download the appropriate SD card image. Select it based on the board, platform, 
             <sub>- [*sha1*](https://files.pikvm.org/images/v4plus-hdmi-rpi4/aarch64/v4plus-hdmi-rpi4-aarch64-latest.img.xz.sha1)
 
     * **PiKVM V3**
-        * [PiKVM V3 HAT BOX Image, OLED/FAN preactivated](https://files.pikvm.org/images/v3-hdmi-rpi4/aarch64/v3-hdmi-rpi4-box-aarch64-latest.img.xz)
-            <sub>- [*sha1*](https://files.pikvm.org/images/v3-hdmi-rpi4/aarch64/v3-hdmi-rpi4-box-aarch64-latest.img.xz.sha1)
+        * [PiKVM V3 HAT BOX Image, OLED/FAN preactivated](https://files.pikvm.org/images/v3-hdmi-rpi4/aarch64/v3-hdmi-rpi4-aarch64-box-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v3-hdmi-rpi4/aarch64/v3-hdmi-rpi4-aarch64-box-latest.img.xz.sha1)
         * [PiKVM V3 HAT DIY Assembly](https://files.pikvm.org/images/v3-hdmi-rpi4/aarch64/v3-hdmi-rpi4-aarch64-latest.img.xz)
             <sub>- [*sha1*](https://files.pikvm.org/images/v3-hdmi-rpi4/aarch64/v3-hdmi-rpi4-aarch64-latest.img.xz.sha1)</sub>
 
