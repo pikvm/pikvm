@@ -39,10 +39,12 @@ Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (a
 
     ```
     # wpa_passphrase 'MyNetwork' 'P@assw0rd' > /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
-    # sed -i '$i\\tkey_mgmt=WPA-PSK-SHA256 WPA-PSK\n\tieee80211w=1' /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
     # chmod 640 /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
     ```
-    
+
+    !!! note "WPA2 and WPA3 support"
+        Add options `key_mgmt=WPA-PSK-SHA256 WPA-PSK` and `ieee80211w=1` to `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf`
+
     !!! note "Using Wi-Fi with hidden ESSID"
         Add option `scan_ssid=1` to `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf`
 
