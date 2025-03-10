@@ -46,6 +46,8 @@ markdown_extensions:
     - pymdownx.details
     - pymdownx.superfences
     - pymdownx.magiclink
+    - pymdownx.tabbed:
+        alternate_style: true
     - toc:
         permalink: true
     - codehilite:
