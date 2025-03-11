@@ -4,14 +4,6 @@
 
     Minimum **32 Gb, Class 10** recommended.
 
-!!! info "PiKVM OS 64-bit images"
-
-    Since 2025.02.18, PiKVM OS was moved to 64-bit images for all devices except DIY based on Raspberry Pi 2.
-
-    If you have previously used PiKVM OS and want to upgrade to 64-bit,
-    then you need to reinstall the OS completely with the new image from links below.
-
-    PiKVMs previously installed using 32-bit images will continue to be supported and updated as before.
 
 -----
 ## Download the image
@@ -22,13 +14,13 @@ Download the appropriate SD card image. Select it based on the board, platform, 
 
     These images are not suitable for DIY and are intended only for our branded devices.
 
-    * **PiKVM V4**
+    * **PiKVM V4** <sub>*64-bit*</sub>
         * [PiKVM V4 Mini](https://files.pikvm.org/images/v4mini-hdmi-rpi4/aarch64/v4mini-hdmi-rpi4-aarch64-latest.img.xz)
             <sub>- [*sha1*](https://files.pikvm.org/images/v4mini-hdmi-rpi4/aarch64/v4mini-hdmi-rpi4-aarch64-latest.img.xz.sha1)
         * [PiKVM V4 Plus](https://files.pikvm.org/images/v4plus-hdmi-rpi4/aarch64/v4plus-hdmi-rpi4-aarch64-latest.img.xz)
             <sub>- [*sha1*](https://files.pikvm.org/images/v4plus-hdmi-rpi4/aarch64/v4plus-hdmi-rpi4-aarch64-latest.img.xz.sha1)
 
-    * **PiKVM V3**
+    * **PiKVM V3** <sub>*64-bit*</sub>
         * [PiKVM V3 HAT BOX Image, OLED/FAN preactivated](https://files.pikvm.org/images/v3-hdmi-rpi4/aarch64/v3-hdmi-rpi4-aarch64-box-latest.img.xz)
             <sub>- [*sha1*](https://files.pikvm.org/images/v3-hdmi-rpi4/aarch64/v3-hdmi-rpi4-aarch64-box-latest.img.xz.sha1)
         * [PiKVM V3 HAT DIY Assembly](https://files.pikvm.org/images/v3-hdmi-rpi4/aarch64/v3-hdmi-rpi4-aarch64-latest.img.xz)
@@ -36,23 +28,23 @@ Download the appropriate SD card image. Select it based on the board, platform, 
 
 !!! abstract "DIY PiKVM V2 Platform"
 
-    * **Raspberry Pi 4**
+    * **Raspberry Pi 4** <sub>*64-bit*</sub>
         * [For HDMI-CSI bridge](https://files.pikvm.org/images/v2-hdmi-rpi4/aarch64/v2-hdmi-rpi4-aarch64-latest.img.xz)
             <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmi-rpi4/aarch64/v2-hdmi-rpi4-aarch64-latest.img.xz.sha1)</sub>
         * [For HDMI-USB dongle](https://files.pikvm.org/images/v2-hdmiusb-rpi4/aarch64/v2-hdmiusb-rpi4-aarch64-latest.img.xz)
             <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmiusb-rpi4/aarch64/v2-hdmiusb-rpi4-aarch64-latest.img.xz.sha1)</sub>
 
-    * **Raspberry Pi Zero 2 W**
-        * [For HDMI-CSI bridge](https://files.pikvm.org/images/v2-hdmi-zero2w/aarch64/v2-hdmi-zero2w-aarch64-latest.img.xz)
-            <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmi-zero2w/aarch64/v2-hdmi-zero2w-aarch64-latest.img.xz.sha1)</sub>
+    * **Raspberry Pi Zero 2 W** <sub>*32-bit*</sub>
+        * [For HDMI-CSI bridge](https://files.pikvm.org/images/v2-hdmi-zero2w/arm/v2-hdmi-zero2w-arm-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmi-zero2w/arm/v2-hdmi-zero2w-arm-latest.img.xz.sha1)</sub>
 
 !!! abstract "DIY PiKVM V1 Platform"
 
-    * **Raspberry Pi 3**
-        * [For HDMI-CSI bridge](https://files.pikvm.org/images/v1-hdmi-rpi3/aarch64/v1-hdmi-rpi3-aarch64-latest.img.xz)
-            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmi-rpi3/aarch64/v1-hdmi-rpi3-aarch64-latest.img.xz.sha1)</sub>
-        * [For HDMI-USB dongle](https://files.pikvm.org/images/v1-hdmiusb-rpi3/aarch64/v1-hdmiusb-rpi3-aarch64-latest.img.xz)
-            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmiusb-rpi3/aarch64/v1-hdmiusb-rpi3-aarch64-latest.img.xz.sha1)</sub>
+    * **Raspberry Pi 3** <sub>*32-bit*</sub>
+        * [For HDMI-CSI bridge](https://files.pikvm.org/images/v1-hdmi-rpi3/arm/v1-hdmi-rpi3-arm-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmi-rpi3/arm/v1-hdmi-rpi3-arm-latest.img.xz.sha1)</sub>
+        * [For HDMI-USB dongle](https://files.pikvm.org/images/v1-hdmiusb-rpi3/arm/v1-hdmiusb-rpi3-arm-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmiusb-rpi3/arm/v1-hdmiusb-rpi3-arm-latest.img.xz.sha1)</sub>
 
     * **Raspberry Pi 2** <sub>*32-bit*</sub>
         * [For HDMI-CSI bridge](https://files.pikvm.org/images/v1-hdmi-rpi2/arm/v1-hdmi-rpi2-arm-latest.img.xz)
@@ -60,11 +52,11 @@ Download the appropriate SD card image. Select it based on the board, platform, 
         * [For HDMI-USB dongle](https://files.pikvm.org/images/v1-hdmiusb-rpi2/arm/v1-hdmiusb-rpi2-arm-latest.img.xz)
             <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmiusb-rpi2/arm/v1-hdmiusb-rpi2-arm-latest.img.xz.sha1)</sub>
 
-    * **Raspberry Pi Zero 2 W**
-        * [For HDMI-CSI bridge](https://files.pikvm.org/images/v1-hdmi-zero2w/aarch64/v1-hdmi-zero2w-aarch64-latest.img.xz)
-            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmi-zero2w/aarch64/v1-hdmi-zero2w-aarch64-latest.img.xz.sha1)</sub>
-        * [For HDMI-USB dongle](https://files.pikvm.org/images/v1-hdmiusb-zero2w/aarch64/v1-hdmiusb-zero2w-aarch64-latest.img.xz)
-            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmiusb-zero2w/aarch64/v1-hdmiusb-zero2w-aarch64-latest.img.xz.sha1)</sub>
+    * **Raspberry Pi Zero 2 W** <sub>*32-bit*</sub>
+        * [For HDMI-CSI bridge](https://files.pikvm.org/images/v1-hdmi-zero2w/arm/v1-hdmi-zero2w-arm-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmi-zero2w/arm/v1-hdmi-zero2w-arm-latest.img.xz.sha1)</sub>
+        * [For HDMI-USB dongle](https://files.pikvm.org/images/v1-hdmiusb-zero2w/arm/v1-hdmiusb-zero2w-arm-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v1-hdmiusb-zero2w/arm/v1-hdmiusb-zero2w-arm-latest.img.xz.sha1)</sub>
 
 !!! abstract "Any other combinations for advanced users"
     Please check the [file archives](https://files.pikvm.org/images/) for ready-made image or [build the image yourself](building_os.md).
