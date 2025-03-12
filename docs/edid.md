@@ -9,7 +9,8 @@ EDID is information about the video modes supported by the video capture device.
 In the case of PiKVM, this is an HDMI CSI bridge. Usually, you don't need to change this, since the default configuration is quite flexible,
 but sometimes, for example for strange UEFIs/BIOSes, this may be necessary (the [story](https://github.com/pikvm/pikvm/issues/78)).
 
-The EDID is stored on the PiKVM in the file `/etc/kvmd/tc358743-edid.hex`. If you write new data there, it will be applied after rebooting.
+The EDID is stored on the PiKVM in the file `/etc/kvmd/tc358743-edid.hex`. If you write new data there, it will be applied after rebooting
+or using the command `kvmd-edidconf --apply`.
 
 You can also apply the new EDID without rebooting to make sure it works:
 
@@ -22,14 +23,32 @@ You can also apply the new EDID without rebooting to make sure it works:
 
 
 -----
-## Default EDID
+## Adopt real display indentifiers on V4 Plus
+
+PiKVM V4 Plus has a simple way read and adopt display identifiers like model and serial number
+from the physical monitor connected to `OUT2` port (it's also used for [HDMI passthrough](pass.md)).
+This way, the target host will recognize PiKVM as your display.
+
+To adopt display identifiers, connect the display to `OUT2` port and run these commands:
+
+```console
+[root@pikvm ~]# rw
+[root@pikvm ~]# kvmd-edidconf --import-display-ids --apply
+[root@pikvm ~]# ro
+```
+
+The display can be unplugged. PiKVM will remember the new settings.
+
+
+-----
+## Restore default EDID
 
 If you need to restore the default EDID you can easily do this with `kvmd-edidconf`, for example:
 
 ```console
 [root@pikvm ~]# rw
-[root@pikvm ~]# kvmd-edidconf --import-preset=v4plus
-[root@pikvm ~]# reboot
+[root@pikvm ~]# kvmd-edidconf --import-preset=v4plus --apply
+[root@pikvm ~]# ro
 ```
 Available options: `v0`, `v1`, `v2`, `v3`, `v4mini` and `v4plus`.
 
@@ -38,7 +57,7 @@ or in the [kvmd repo](https://github.com/pikvm/kvmd/blob/master/configs/kvmd/edi
 
 
 -----
-## Force 1080p by default on PiKVM V0+
+## Force 1080p by default on PiKVM V0-V3
 
 PiKVM V3 (or DIY V0-V2) has a hardware limit of 50Hz for 1080p mode, and this is a less common frequency than 60Hz.
 Therefore, on V3, the default mode is 720p. Some OS (like Proxmox) may not work well with 720p,
@@ -46,8 +65,8 @@ so you can force 1080p resolution by default:
 
 ```console
 [root@pikvm ~]# rw
-[root@pikvm ~]# kvmd-edidconf --import-preset=v3.1080p-by-default  # Or, for example, v1.1080p-by-default
-[root@pikvm ~]# reboot
+[root@pikvm ~]# kvmd-edidconf --import-preset=v3.1080p-by-default --apply  # Or, for example, v1.1080p-by-default
+[root@pikvm ~]# ro
 ```
 
 
@@ -60,8 +79,8 @@ you can easily disable it and use only 1920x1080:
 
 ```console
 [root@pikvm ~]# rw
-[root@pikvm ~]# kvmd-edidconf --import-preset=v4plus.no-1920x1200  # Or v4mini.no-1920x1200
-[root@pikvm ~]# reboot
+[root@pikvm ~]# kvmd-edidconf --import-preset=v4plus.no-1920x1200 --apply  # Or v4mini.no-1920x1200
+[root@pikvm ~]# ro
 ```
 
 
@@ -244,8 +263,7 @@ So, to tune EDID on PiKVM, use the following steps:
 The `kvmd-edidconfig` utility has the ability to change some simple parameters without using an external editor. For example you can change the vendor, model name and enable [HDMI audio](audio.md) on the PiKVM virtual display:
 
 ```console
-[root@pikvm ~]# kvmd-edidconf --set-mfc-id=LNX --set-monitor-name=PiKVM --set-audio=1
-[root@pikvm ~]# reboot
+[root@pikvm ~]# kvmd-edidconf --set-mfc-id=LNX --set-monitor-name=PiKVM --set-audio=1 --apply
 ```
 
 !!! note
