@@ -7,17 +7,17 @@
 
 ## Note for the recent images
 
-Current image no longer ships with platformio, therefore if during the build the error message below occurs
+Current image no longer ships with platformio, therefore if during the build the error message below occurs:
 
-    ```shell
-    make[1]: platformio: No such file or directory
-    ```
+```
+make[1]: platformio: No such file or directory
+```
 
 Please install `platformio-core` and continue:
 
-    ```shell
-    # pacman -S platformio-core
-    ```
+```
+# pacman -S platformio-core
+```
 
 ## Serial Firmware (the default option)
 
