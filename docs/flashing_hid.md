@@ -5,6 +5,21 @@
 
 # Flashing the Arduino HID
 
+## Note for the recent images
+
+Current image no longer ships with platformio, therefore if during the build the error message below occurs:
+
+```
+make[1]: platformio: No such file or directory
+```
+
+Please install `platformio-core` and continue:
+
+```shell
+pacman -Syu
+pacman -S platformio-core
+```
+
 ## Serial Firmware (the default option)
 
 This operation can be done using your RPi (except Pi Zero W). Here the common steps:
@@ -21,7 +36,7 @@ This operation can be done using your RPi (except Pi Zero W). Here the common st
     # rw
     # systemctl stop kvmd
     # cp -r /usr/share/kvmd/hid/arduino ~
-    # cd ~/hid
+    # cd ~/arduino
     # make
     # make install
     # reboot
@@ -48,7 +63,7 @@ This operation can be done using your Raspberry Pi without disconnecting any wir
     # rw
     # systemctl stop kvmd
     # cp -r /usr/share/kvmd/hid/arduino ~
-    # cd ~/hid
+    # cd ~/arduino
     # make spi
     # make install
     # reboot
