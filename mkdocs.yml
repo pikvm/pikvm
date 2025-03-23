@@ -115,6 +115,7 @@ nav:
         - "IPMI & Redfish integration": ipmi.md
         - "Persistent storage": pst.md
         - "Prometheus monitoring": prometheus.md
+        - "DIP switches": dip_switches.md
     - "Development":
         - "HTTP API reference": api.md
         - "Building PiKVM OS": building_os.md
