@@ -15,8 +15,9 @@ make[1]: platformio: No such file or directory
 
 Please install `platformio-core` and continue:
 
-```
-# pacman -S platformio-core
+```shell
+pacman -Syu
+pacman -S platformio-core
 ```
 
 ## Serial Firmware (the default option)
