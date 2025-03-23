@@ -116,6 +116,7 @@ nav:
         - "Persistent storage": pst.md
         - "Prometheus monitoring": prometheus.md
         - "DIP switches": dip_switches.md
+        - "USB 3.0 support": usb3v4.md
     - "Development":
         - "HTTP API reference": api.md
         - "Building PiKVM OS": building_os.md
