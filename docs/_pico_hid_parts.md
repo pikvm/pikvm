@@ -1,3 +1,9 @@
+---
+search:
+    exclude: true
+---
+
+
 * *x1* [Raspberry Pi Pico board](https://www.raspberrypi.com/products/raspberry-pi-pico/) with soldered pins. Pico 2 is not supported right now.
 
 * *x1* USB-A to Micro-USB cable.

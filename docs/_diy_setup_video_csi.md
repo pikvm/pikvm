@@ -1,3 +1,9 @@
+---
+search:
+    exclude: true
+---
+
+
 Insert the flexible flat cable of the HDMI-CSI bridge into the narrow white connector on the Raspberry Pi
 (the closest one to big USB sockets). It is labeled `CAMERA`. To insert you need to open the connector first.
 On the Raspberry Pi side you can gently lift the black part up and a little bit sideways:

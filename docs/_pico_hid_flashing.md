@@ -1,3 +1,9 @@
+---
+search:
+    exclude: true
+---
+
+
 To upload the firmware to Pico HID, you can use any computer with a USB port.
 
 1. [Download](https://github.com/pikvm/kvmd/releases) the latest release of the firmware. The file is called `pico-hid.uf2`.

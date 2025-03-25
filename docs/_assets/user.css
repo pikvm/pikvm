@@ -30,6 +30,10 @@ li.md-nav__item--section > label.md-nav__link {
 	position: unset;
 }*/
 
+.md-nav__toggle~.md-nav>.md-nav__list {
+	margin-left: 15px;
+}
+
 .md-sidebar.md-sidebar--secondary {
 	padding-top: 10px;
 }

@@ -1,3 +1,9 @@
+---
+search:
+    exclude: true
+---
+
+
 ??? example "Updating PiKVM OS"
 
     To update, run following commands under the `root` user:
