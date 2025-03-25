@@ -13,6 +13,12 @@ li.md-nav__item--section > label.md-nav__link {
 .md-nav__title {
 	display: none;
 }
+.md-post__back > .md-nav__title { /* Blog: Enable "Back to index" */
+	display: block;
+}
+.md-post__back { /* Blog */
+	padding-top: 1.2rem;
+}
 
 /*.md-header,*/ .md-footer {
 	background-color: #333333;
@@ -38,7 +44,8 @@ li.md-nav__item--section > label.md-nav__link {
 	padding-top: 10px;
 }
 
-.md-sidebar.md-sidebar--primary .md-sidebar__scrollwrap {
+.md-sidebar.md-sidebar--primary .md-sidebar__scrollwrap,
+.md-sidebar.md-sidebar--post .md-sidebar__scrollwrap {
 	/*overflow-y: unset;*/
 	padding-right: 1px;
 	border-right: 1px solid #adadad;
@@ -60,6 +67,9 @@ li.md-nav__item--section > label.md-nav__link {
 	margin-top: 25px;
 	/*border-left: 1px solid #adadad;
 	border-right: 1px solid #adadad;*/
+}
+.md-content.md-content--post { /* Blog */
+	margin-top: 0px;
 }
 
 .md-top {
