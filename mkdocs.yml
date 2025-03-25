@@ -30,7 +30,6 @@ theme:
         - navigation.indexes
         - navigation.sections
         - navigation.top
-#        - navigation.tracking
         - navigation.expand
         - search.highlight
         - search.share
@@ -43,6 +42,7 @@ markdown_extensions:
     - admonition
     - def_list
     - attr_list
+    - md_in_html
     - pymdownx.tilde
     - pymdownx.details
     - pymdownx.superfences
