@@ -7,17 +7,11 @@
 
 ## Note for the recent images
 
-Current image no longer ships with platformio, therefore if during the build the error message below occurs:
-
-```
-make[1]: platformio: No such file or directory
-```
-
-Please install `platformio-core` and continue:
+Current image no longer ships with necessary tools for flashing Arduino HID, therefore please install `platformio-core` and `avrdude` and continue:
 
 ```shell
 pacman -Syu
-pacman -S platformio-core
+pacman -S platformio-core avrdude
 ```
 
 ## Serial Firmware (the default option)
