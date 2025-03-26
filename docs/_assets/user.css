@@ -1,3 +1,9 @@
+:root  > * {
+	--md-primary-fg-color:			#435071;
+	--md-primary-fg-color--light:	#575b64;
+	--md-primary-fg-color--dark:	#1c1d20;
+}
+
 /*.md-header__button.md-logo img {
 	width: unset;
 }*/
