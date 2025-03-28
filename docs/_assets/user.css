@@ -33,11 +33,11 @@ li.md-nav__item--section > label.md-nav__link {
 	display: none;
 }
 
-.md-nav__link--active {
+.md-sidebar--primary .md-nav__link--active {
 	font-weight: bold;
 	color: #e82062 !important;
 }
-.md-nav__link--active:before {
+.md-sidebar--primary .md-nav__link--active:before {
     content: "\21D2";
     margin-right: 6px;
 }
