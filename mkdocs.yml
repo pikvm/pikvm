@@ -1,6 +1,8 @@
-# https://squidfunk.github.io/mkdocs-material/getting-started
-# https://squidfunk.github.io/mkdocs-material/reference/admonitions
 # https://github.com/squidfunk/mkdocs-material/blob/master/mkdocs.yml
+# https://github.com/normanlorrain/mkdocs-thumbnails
+# https://squidfunk.github.io/mkdocs-material/reference/admonitions
+# https://squidfunk.github.io/mkdocs-material/reference/images
+# https://blueswen.github.io/mkdocs-glightbox/caption/caption
 
 
 site_name: PiKVM Handbook
