@@ -1,3 +1,9 @@
+---
+search:
+    exclude: true
+---
+
+
 With this part, you will be able to remotely turn on, turn off and restart your computer!
 
 * *x4* MOSFET relays [OMRON G3VM-61A1](https://www.digikey.com/products/en?keywords=G3VM-61A1)

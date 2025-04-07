@@ -1,3 +1,9 @@
+---
+search:
+    exclude: true
+---
+
+
 !!! info "USB limitations"
 
     Each emulated USB device consumes a limited hardware resource called **endpoints**.

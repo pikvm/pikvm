@@ -1,3 +1,9 @@
+---
+search:
+    exclude: true
+---
+
+
 1. Double-check the correct assembly of the device, and make sure that you have connected
     all the necessary cables to the host: USB, HDMI and ATX.
 

@@ -1,3 +1,9 @@
+---
+search:
+    exclude: true
+---
+
+
 To control the power, two display LEDs (power and HDD activity) and two buttons (power and reset) are provided
 on the front panel of the computer case. They are connected by wires to pins on the motherboard.
 

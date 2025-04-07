@@ -1,3 +1,9 @@
+---
+search:
+    exclude: true
+---
+
+
 !!! info "PiKVM + Multiport Switches compatibility"
 
 	Please note that this switch requires a USB port for control. The following devices can provide this:

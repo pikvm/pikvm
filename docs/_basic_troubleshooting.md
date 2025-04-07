@@ -1,3 +1,9 @@
+---
+search:
+    exclude: true
+---
+
+
 * Ensure that you are using the right [OS image](flashing_os.md) for your platform
     by running the following command: `pacman -Q | grep kvmd-platform`.
 

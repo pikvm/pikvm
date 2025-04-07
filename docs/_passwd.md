@@ -1,3 +1,9 @@
+---
+search:
+    exclude: true
+---
+
+
 ??? danger "✮ ✮ ✮ CHANGE THE PASSWORDS! ✮ ✮ ✮"
     PiKVM comes with the following default passwords:
 

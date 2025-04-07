@@ -1,6 +1,8 @@
-# https://squidfunk.github.io/mkdocs-material/getting-started
-# https://squidfunk.github.io/mkdocs-material/reference/admonitions
 # https://github.com/squidfunk/mkdocs-material/blob/master/mkdocs.yml
+# https://github.com/normanlorrain/mkdocs-thumbnails
+# https://squidfunk.github.io/mkdocs-material/reference/admonitions
+# https://squidfunk.github.io/mkdocs-material/reference/images
+# https://blueswen.github.io/mkdocs-glightbox/caption/caption
 
 
 site_name: PiKVM Handbook
@@ -20,8 +22,9 @@ theme:
     logo: _assets/logo.png
     favicon: _assets/favicon.ico
     name: material
-    palette:
-        accent: pink
+#    palette:
+#        primary: black
+#        accent: black
     font:
         text: "arial, sans-serif"
         code: monospace
@@ -29,7 +32,6 @@ theme:
         - navigation.indexes
         - navigation.sections
         - navigation.top
-        - navigation.tracking
         - navigation.expand
         - search.highlight
         - search.share
@@ -42,12 +44,14 @@ markdown_extensions:
     - admonition
     - def_list
     - attr_list
+    - md_in_html
     - pymdownx.tilde
     - pymdownx.details
     - pymdownx.superfences
     - pymdownx.magiclink
     - pymdownx.tabbed:
         alternate_style: true
+    - pymdownx.blocks.caption
     - toc:
         permalink: true
     - codehilite:
@@ -67,6 +71,18 @@ plugins:
             "4g.md": "modem.md"
             "usb_dynamic.md": "usb.md"
             "webrtc.md": "video.md"
+    - glightbox:
+        touchNavigation: false
+        loop: false
+        slide_effect: slide
+        width: 95%
+        height: auto
+        zoomable: true
+        auto_caption: false
+        caption_position: bottom
+        background: white
+        shadow: true
+        manual: false
 
 nav:
     - "Device guides":

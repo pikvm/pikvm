@@ -1,3 +1,9 @@
+---
+search:
+    exclude: true
+---
+
+
 Connect USB dongle to exactly this port. It is bound in the software so the OS does not confuse the video device with something else.
 
 | Raspberry Pi 2 and 3 | Raspberry Pi 4 |
