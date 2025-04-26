@@ -87,7 +87,7 @@ plugins:
 nav:
     - "Device guides":
         - "PiKVM V4 Mini & Plus": v4.md
-        - "PiKVM V3 HAT": v3.md
+        - "PiKVM V3": v3.md
         - "PiKVM Switch": switch.md
         - "DIY PiKVM V2": v2.md
         - "DIY PiKVM V1": v1.md
