@@ -1,8 +1,25 @@
+---
+title: First steps with PiKVM
+description: "Getting started with PiKVM: power on and access the remote host"
+---
+
 # First steps
 
+This guide is written primarily with V3 and V4 Mini/Plus in mind and covers the basic steps: what ports to connect and how to access a remote host that your PiKVM is connected to.
 
 -----
-## First power on
+
+## Wiring
+
+Let's connect all the wires before you power up the device.
+
+1. Connect **Ethernet** to the network (**not applicable** to DIY PiKVM built with Pi Zero 2).
+
+2. Connect the **HDMI input** and the **OTG** port (USB emulation) to the remote computer.
+
+3. Optionally, connect the **[ATX port](atx_board.md)** to control the power of the remote host.
+
+## Power up
 
 1. Optional: [setting up Wi-Fi or static IP](on_boot_config.md) before booting.<br>
     *Remember that there is nothing more reliable than wired Ethernet.*
@@ -13,11 +30,23 @@
     *After turning on the power, PiKVM OS will generate unique SSH keys and certificates
     and perform all necessary operations on the memory card. It takes a few minutes.*
 
+## Connect and set up
 
------
-## Getting access to PiKVM
+### Configure the display
 
-By default, PiKVM receives a dynamic IP address via DHCP. PiKVM V3+ devices show it on the built-in OLED display.
+The operating system on your remote computer will treat PiKVM as an additional display and use it in the Extend mode by default. That's why you will see an empty desktop when you first connect.
+
+To avoid that, go to the display settings in your remote computer's operating system and enable the mirror mode for the external screen that you operating system identifies as PiKVM. Refer to your operating system's documentation on that.
+
+### Access PiKVM
+
+By default, PiKVM receives a dynamic IP address via DHCP. PiKVM V3 and V4 will show it in the top row of the OLED display:
+
+```console
+192.168.0.100
+(|) iface: eth0
+cpu: 1% mem: 13%
+```
 
 ??? example "PiKVM without OLED: finding device in the network"
 
@@ -30,43 +59,85 @@ By default, PiKVM receives a dynamic IP address via DHCP. PiKVM V3+ devices show
     
     In order to find PiKVM using the ARP commands, you need to look for the following MACs: `B8:27:EB`, `DC:A6:32` or `E4:5F:01`.
 
-For future examples, let's assume that PiKVM has received the address `192.168.0.100`,
-which you have successfully detected using the instructions above. The device has also been assigned a hostname `pikvm`.
+Let's assume that PiKVM has received the address `192.168.0.100` and has also been assigned a hostname `pikvm`.
 
-!!! warning "PiKVM comes with the following default passwords"
+Type the URL in the browser's address bar and press **Enter**: https://192.168.0.26/ or https://pikvm/.
 
-    * **Linux OS-level admin** (SSH, console...):
-        * Username: `root`
-        * Password: `root`
+![Login screen](../v4/login-prompt.png)
 
-    * **KVM user** (Web Interface, [API](api.md), [VNC](vnc.md)...):
-        * Username: `admin`
-        * Password: `admin`
-        * No 2FA code
+Submit the default credentials and click **Login**:
 
-    They are two separate accounts with independent passwords.
+- Username: `admin`
+- Password: `admin`
+- 2FA Code: disabled by default, skip this field
 
-    **One of the last steps tells you how to change them. Don't forget to do it!**
+You will see the initial dashboard screen of the PiKVM where you can access the remote desktop, connect to the PiKVM over SSH, or log out:
 
-??? example "Access to PiKVM Web Interface"
+![Initial UI](../v4/initial-ui.png)
 
-    **We recommend using the latest Google Chrome or Chromium**, as they support the largest number of PiKVM features.
-    Safari and Firefox are in second place. Internet Explorer and the pre-Chromium versions of Microsoft Edge are not supported.
+### Change the default passwords
 
-    For the first time, it is better to use a browser without extensions or incognito mode,
-    as some extensions may disrupt the work of PiKVM.
+For security's sake, it's best to change the default passwords immediately after running PiKVM for the first time. To do that:
 
-    **Type the URL in the browser's address bar and press Enter: `https://192.168.0.100/` or `https://pikvm/`.**
+1. On the initial dashboard screen, click the **Terminal** button to open the web terminal. You will see this command line interface:
 
-    **The default user is `admin`, the password is also `admin`, and no 2FA code.**
+    ![MISSING SCREENSHOT](../v4/pikvm-web-terminal-start.png)
 
-    After logging in, you will get access to the menu with the main functions.
-    Using the Web Terminal, you can change system settings and passwords as described below.
+2. Gain superuser privileges:
 
-    *The latest versions of Google Chrome on Mac OS do not allow access to the page with a self-signed certificate,
-    which is used in PiKVM by default. You can proceed by typing `thisisunsafe` and Chrome will then load the page.*
+    ```console
+    $ su -
+    ```
 
-??? example "Access to PiKVM via SSH"
+    When prompted for password, use `root`.
+
+3. Run `rw` to change the access to the SD card to the write mode:
+
+    ```console
+    [root@pikvm ~]# rw
+    ```
+
+4. Change the password for the superuser:
+
+    ```console
+    [root@pikvm ~]# passwd root
+    ```
+
+    Submit the new password, retype it the second time to confirm, press **Enter**, and you should see this:
+
+    ```console
+    passwd: password updated successfully
+    ```
+
+5. Change the password for web access:
+
+    ```console
+    [root@pikvm ~]# kvmd-htpasswd set admin
+    ```
+
+    Submit the new password, retype it the second time to confirm, and press **Enter**.
+
+6. Run `ro` to change the access to the SD card back to the read-only mode:
+
+    ```console
+    [root@pikvm ~]# ro
+    ```
+
+7. Press **Ctrl+D** or type "exit" and press **Enter** to drop the root privileges.
+
+8. Go back one page in the browser. You should be back to the initial dashboard screen.
+
+### Access the remote system
+
+1. On the initial dashboard screen, click the **KVM** button to access the remote desktop.
+
+2. You should now see the host system's display and interact with it remotely using a keyboard and a mouse.
+
+    ![Work remotely](../v4/remote-screen.png)
+
+There are two alternative ways to connect to the PiKVM:
+
+??? example "Connect to PiKVM via SSH"
 
     SSH is the most common remote access method in the Linux world. PiKVM is accessible via SSH. This method is used to manage the device:
 
@@ -75,7 +146,7 @@ which you have successfully detected using the instructions above. The device ha
 
     **The default `root` password is `root`.**
 
-??? example "Access to PiKVM via serial console"
+??? example "Connect to PiKVM via serial console"
 
     A serial console is a convenient and fast way to connect to PiKVM when there is no network, or get boot logs and a console if something goes wrong.
 
@@ -91,108 +162,50 @@ which you have successfully detected using the instructions above. The device ha
 
     4. You should now be able to see and interact with the Serial Port.
 
-!!! tip "Obtaining root access"
+## Further steps
 
-    * If you have logged in via SSH, then most likely you are already `root`.
-    * To get `root` in the Web Terminal, use command `su -` and enter the root password. The default `root` password is `root`.*
+1. **Get to know PiKVM OS**: read [this help section](webui.md) to better understand all the possibilities of the web user interface.
 
-PiKVM OS (and the underlying Arch Linux ARM upstream) often receives software updates.
-After installation, it makes sense to update the OS.
-It's best to do this now, when you have physical access to the device, because if something goes wrong
-(for example, the power goes out during the update or some upstream change),
-you will need to [reflash the memory card](flashing_os.md).
+2. **Update and customize the system**:
 
-{!_update_os.md!}
+    - [Update](_update_os.md) the PiKVM operating system.
+    - [Harden the remote access](auth.md) by enabling 2FA and setting session expiration time.
+    - Configure access to PiKVM from the Internet using [port forwarding](port_forwarding.md) or [Tailscale VPN](tailscale.md).
+    - Enable a microphone for [two-way audio](audio.md) (**only for PiKVM V3 and V4 Mini/Plus**).
+    - Enable [HDMI pass-through](pass.md) (**only for PiKVM V4 Plus**)..
 
-**And now, after all...**
+3. **Configure hardware**:
 
-{!_passwd.md!}
+    - Set up [ATX connection](atx_board.md).
+    - Configure [DIP switches](dip_switches.md)
+    - Install and set up [Wi-Fi antenna](wifi.md).
+    - Install and set up [LTE/5G modem](modem.md) (**only for PiKVM V4 Plus**).
+    - Set up [USB 3.0](usb3v4.md) (**only for PiKVM V4 Plus**).
+    - Choose Fahrenheit over Celsius to display on the OLED:
 
+??? note "How to set up Fahrenheit"
 
------
-## Configuring PiKVM
+        Create a directory for a configuration file:
 
-Most of the PiKVM settings are done through configuration files. All configuration changes must be made from under the `root` user (i.e. the administrator).
-
-The PiKVM memory card is mounted in read-only mode. It protects the filesystem from damage in case of sudden power outage. To edit any files and make changes, it is necessary to remount the file system to the read-write mode.
-
-!!! tip "Enabling write mode"
-
-    * To enable write-mode, run command `rw` (under `root`).
-    * To disable it, run command `ro`.
-    * If you receive the message "Device is busy", perform `reboot`.
-
-In this handbook, you will often find instructions for editing configuration files. The simplest and most beginner-friendly text editor is `nano`, but you can also use `vim`.
-
-??? example "Editing files in the Web Terminal"
-
-    ```console
-    [kvmd-webterm@pikvm ~]$ su -
-    [root@pikvm ~]# rw
-    [root@pikvm ~]# nano /etc/kvmd/override.yaml
-    [root@pikvm ~]# ro
-    [root@pikvm ~]# exit
-    [kvmd-webterm@pikvm ~]$
-    ```
-
------
-## Structure of configuration files
-
-Most of the PiKVM configuration files are located in the `/etc/kvmd` directory.
-
-The `/etc/kvmd/main.yaml` file defines the platform config and **you should never edit it**. To redefine system parameters use the file `/etc/kvmd/override.yaml`. All other files that are also not recommended for editing have read-only permissions.
-
-In the `/etc/kvmd/meta.yaml` file you can specify some information regarding the host that this PiKVM manages.
-
-!!! tip
-    A complete list of all parameters can be viewed using the `kvmd -m` command.
-
-Files with the suffix `*.yaml` uses the [YAML syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html)
-and describes a parameter tree with key-value pairs of different types.
-To define the parameters within one section, an indent of 4 spaces is used.
-Comments starts with the `#` symbol.
-
-!!! warning "Only 4 spaces should be used for indentation"
-    Be careful when editing YAML and follow this rule.
-    Invalid indentation or tabs instead of spaces will cause an error when starting the services.
-
-??? example "Sections under the same keys should be merged"
-    * **Wrong:**
-
-        ```yaml
-        kvmd:
-            gpio:
-                drivers: ...
-        kvmd:
-            gpio:
-                scheme: ...
+        ```console
+        [root@pikvm ~]# mkdir -p /etc/systemd/system/kvmd-oled.service.d
         ```
 
-    * **Correct:**
+        Create file `/etc/systemd/system/kvmd-oled.service.d/override.conf`:
 
-        ```yaml
-        kvmd:
-            gpio:
-                drivers: ...
-                scheme: ...
+        ```ini
+        [Service]
+        ExecStart=
+        ExecStart=/usr/bin/kvmd-oled --clear-on-exit --fahrenheit
         ```
 
+        Then run `systemctl restart kvmd-oled`. In some cases, if you still do not see Fahrenheit being displayed, reboot the device.
 
------
-## What's next?
+## Basic troubleshooting
 
-* Set up Internet access using [port forwarding](port_forwarding.md) or [Tailscale VPN](tailscale.md).
-* Explore PiKVM features using the table of contents on the left.
-* Get to know the [interface](webui.md)
-* Join our [Discord](https://discord.gg/bpmXfz5) to contact the community and developers.
-* Check out the [GitHub](https://github.com/pikvm) - PiKVM is a fully Open Source project!
-* For Mac OS client: [pin your PiKVM device as an app](https://github.com/pikvm/pikvm/issues/965) for quick access.
+{!_basic_troubleshooting.md!}
 
 
------
-## FAQ and Troubleshooting
+## Getting user support
 
-If you have any questions or run into problems, take a look at the [FAQ](faq.md).
-Seriously, it's really useful!
-
-For any other help and support, you can contact us via the [Discord chat](https://discord.gg/bpmXfz5).
+If something doesn't work, check out our [FAQ](faq.md). Otherwise, head straight to our [Discord chat](https://discord.gg/bpmXfz5).

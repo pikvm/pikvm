@@ -124,6 +124,7 @@ nav:
         - "Serial-over-USB": usb_serial.md
         - "GPIO (pins, relays, lamps, etc)": gpio.md
     - "Advanced usage":
+        - "Structure of configuration files": conf_files_structure.md
         - "On-boot configuration": on_boot_config.md
         - "Using VNC": vnc.md
         - "Multiport KVM-over-IP": multiport.md
