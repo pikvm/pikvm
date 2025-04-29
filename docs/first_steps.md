@@ -71,7 +71,7 @@ Submit the default credentials and click **Login**:
 - Password: `admin`
 - 2FA Code: disabled by default, skip this field
 
-You will see the initial dashboard screen of the PiKVM where you can access the remote desktop, connect to the PiKVM over SSH, or log out:
+You will see the initial dashboard screen of the PiKVM where you can access the remote desktop, connect to the PiKVM command line, or log out:
 
 ![Initial UI](../v4/initial-ui.png)
 
@@ -177,10 +177,8 @@ There are two alternative ways to connect to the PiKVM:
 3. **Configure hardware**:
 
     - Set up [ATX connection](atx_board.md).
-    - Configure [DIP switches](dip_switches.md)
     - Install and set up [Wi-Fi antenna](wifi.md).
     - Install and set up [LTE/5G modem](modem.md) (**only for PiKVM V4 Plus**).
-    - Set up [USB 3.0](usb3v4.md) (**only for PiKVM V4 Plus**).
     - Choose Fahrenheit over Celsius to display on the OLED:
 
 ??? note "How to set up Fahrenheit"
