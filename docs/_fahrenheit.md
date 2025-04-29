@@ -1,4 +1,4 @@
-??? note "Choose Fahrenheit over Celsius to display on the OLED"
+??? note "How to set up Fahrenheit on the OLED"
 
     Create a directory for a configuration file:
 
