@@ -14,4 +14,4 @@ search:
 
     If you see a failed message on that output, be sure verify the orientation of the CSI cable or try reseating it.
 
-    Not that this is not a hotplug device and you must first turn off the power.
+    Note that this is not a hotplug device, and you must first turn off the power.
