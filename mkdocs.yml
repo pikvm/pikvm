@@ -49,6 +49,8 @@ markdown_extensions:
     - pymdownx.details
     - pymdownx.superfences
     - pymdownx.magiclink
+    - pymdownx.tabbed:
+        alternate_style: true
     - pymdownx.blocks.caption
     - toc:
         permalink: true
@@ -85,7 +87,7 @@ plugins:
 nav:
     - "Device guides":
         - "PiKVM V4 Mini & Plus": v4.md
-        - "PiKVM V3 HAT": v3.md
+        - "PiKVM V3": v3.md
         - "PiKVM Switch": switch.md
         - "DIY PiKVM V2": v2.md
         - "DIY PiKVM V1": v1.md
@@ -122,6 +124,7 @@ nav:
         - "Serial-over-USB": usb_serial.md
         - "GPIO (pins, relays, lamps, etc)": gpio.md
     - "Advanced usage":
+        - "Structure of configuration files": conf_files_structure.md
         - "On-boot configuration": on_boot_config.md
         - "Using VNC": vnc.md
         - "Multiport KVM-over-IP": multiport.md
@@ -129,6 +132,8 @@ nav:
         - "IPMI & Redfish integration": ipmi.md
         - "Persistent storage": pst.md
         - "Prometheus monitoring": prometheus.md
+        - "DIP switches": dip_switches.md
+        - "USB 3.0 support": usb3v4.md
     - "Development":
         - "HTTP API reference": api.md
         - "Building PiKVM OS": building_os.md
