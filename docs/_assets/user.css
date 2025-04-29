@@ -134,6 +134,13 @@ ol li::marker {
 	font-weight: bold;
 }
 
-.md-typeset li details {
+.md-typeset details:not([open]) {
+	border-left-width: 16px;
+}
+
+.md-typeset li p + details,
+.md-typeset li p + .admonition,
+.md-typeset li details:only-child,
+.md-typeset li .admonition:only-child {
 	margin: 0;
 }
