@@ -144,3 +144,7 @@ ol li::marker {
 .md-typeset li .admonition:only-child {
 	margin: 0;
 }
+
+.md-button--stretch {
+	width: 100%;
+}

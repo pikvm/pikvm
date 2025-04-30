@@ -71,6 +71,8 @@ plugins:
             "4g.md": "modem.md"
             "usb_dynamic.md": "usb.md"
             "webrtc.md": "video.md"
+            "first_steps.md": "cheatsheet.md"
+            "cheat_sheet.md": "cheatsheet.md"
     - glightbox:
         touchNavigation: false
         loop: false
@@ -94,7 +96,6 @@ nav:
     - "Getting started":
         - "First steps": first_steps.md
         - "Web UI Overview": webui.md
-        - "Configure PiKVM OS": config.md
         - "Authentication & 2FA": auth.md
         - "FAQ & Troubleshooting": faq.md
         - "Flashing OS": flashing_os.md

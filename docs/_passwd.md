@@ -4,7 +4,7 @@ search:
 ---
 
 
-??? danger "✮ ✮ ✮ CHANGE THE PASSWORDS! ✮ ✮ ✮"
+??? note "Changing PiKVM Passwords"
     PiKVM comes with the following default passwords:
 
     * **Linux OS-level admin** (SSH, console...):
