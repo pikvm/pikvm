@@ -40,6 +40,10 @@ theme:
 extra_css:
     - _assets/user.css
 
+extra_javascript:
+  - _assets/add_paragraphs.js
+  - _assets/scroll_to_summary.js
+
 markdown_extensions:
     - admonition
     - def_list
