@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (!summary) return;
 
+    if (window.matchMedia('(hover: none)').matches) return;
+
     let linkEl;
 
     details.addEventListener('mouseenter', () => {

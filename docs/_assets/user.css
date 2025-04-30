@@ -145,6 +145,10 @@ ol li::marker {
 	font-weight: bold;
 }
 
+[dir=ltr] .md-typeset summary {
+	padding-right: 80px;
+}
+
 .md-typeset summary:after {
 	background-color: unset;
 	content: " Expand ▼";
@@ -158,15 +162,17 @@ ol li::marker {
 	-webkit-mask-size: unset;
 	mask-size: unset;
 	position: absolute;
-	top: unset;
+	top: 8px;
 	transform: unset;
 	transition: unset;
-	width: unset;
+	width: 80px;
+	text-align: right;
 }
 
 .md-typeset details[open]>summary:after {
 	transform: unset;
 	content: " Collapse ▲";
+	width: 80px;
 }
 
 .md-typeset details:not([open]) {
@@ -190,6 +196,8 @@ ol li::marker {
 	text-decoration: none;
 }
 
-.hoverlink:hover {
-	text-decoration: none;
+@media (hover: hover) {
+	.hoverlink:hover {
+		text-decoration: none;
+	}
 }
