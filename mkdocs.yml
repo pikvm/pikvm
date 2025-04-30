@@ -94,7 +94,7 @@ nav:
         - "DIY PiKVM V2": v2.md
         - "DIY PiKVM V1": v1.md
     - "Getting started":
-        - "First steps": first_steps.md
+        - "Cheat Sheet": first_steps.md
         - "Web UI Overview": webui.md
         - "Authentication & 2FA": auth.md
         - "FAQ & Troubleshooting": faq.md
