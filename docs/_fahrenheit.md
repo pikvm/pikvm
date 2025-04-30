@@ -1,3 +1,9 @@
+---
+search:
+    exclude: true
+---
+
+
 ??? note "How to set up Fahrenheit on the OLED"
 
     Create a directory for a configuration file:

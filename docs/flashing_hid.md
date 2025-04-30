@@ -22,7 +22,7 @@ This operation can be done using your RPi (except Pi Zero W). Here the common st
 
 2. Connect the Arduino and RPi with a suitable USB cable.
 
-3. [Log in to the Raspberry Pi using SSH](https://docs.pikvm.org/first_steps/#getting-access-to-pikvm).
+3. Log in to the Raspberry Pi console using SSH or Web Terminal.
 
 4. Upload the firmware (USB keyboard & mouse is used by default, on this step [you can choose PS/2 keyboard](arduino_hid.md#ps2-keyboard)):
 
@@ -47,7 +47,7 @@ This operation can be done using your Raspberry Pi without disconnecting any wir
 
 1. Connect the Arduino and RPi with a suitable USB cable.
 
-2. [Log in to the Raspberry Pi using SSH](https://docs.pikvm.org/first_steps/#getting-access-to-pikvm).
+2. Log in to the Raspberry Pi console using SSH or Web Terminal.
 
 3. Execute `rw`, add line `dtoverlay=spi0-1cs` to `/boot/config.txt` and perform `reboot`.
 

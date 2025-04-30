@@ -39,7 +39,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
     DNS=192.168.x.x
     ```
 
-    ??? warning "Don't forget the `/24` suffix (CIDR), otherwise it will not work and your PiKVM will become unreachable"
+    Don't forget the `/24` suffix (CIDR), otherwise it will not work and your PiKVM will become unreachable.
 
 
 ??? question "How can I disable IPv6 on PiKVM?"
@@ -135,8 +135,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "How do I emulate various USB devices on the target machine?"
-    Please review [First Steps](first_steps.md) before continuing
-    
+
     By default this is what is set:
 
     ```yaml
@@ -242,7 +241,8 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 ## First steps
 
 ??? question "I can't find the PiKVM IP address in my network"
-    Follow [this guide](first_steps.md#getting-access-to-pikvm).
+
+	Follow the device guide of your PiKVM [here](cheatsheet.md).
 
 
 ??? question "What is the default password? How do I change it?"
