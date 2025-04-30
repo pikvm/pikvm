@@ -183,3 +183,13 @@ ol li::marker {
 .md-button--stretch {
 	width: 100%;
 }
+
+.hoverlink {
+	font-size: 1.0em;
+	margin-left: 8px;
+	text-decoration: none;
+}
+
+.hoverlink:hover {
+	text-decoration: none;
+}
