@@ -68,6 +68,8 @@ Here are **first steps guides** for each PiKVM device:
 
         In that case, log out and then log back in for the changes to take effect. After that, you can run `screen` without root privileges on your host computer.
 
+        With `screen`, you will see a blank screen by default. Press **Enter** to get a login prompt.
+
     5. After submitting your PiKVM credentials (`root` for username and the corresponding password), you should be able to see and interact with the serial port. All the system tools in PiKVM will be available in the terminal window.
 
     6. `screen` has some advanced features for opening multiple windows and reattaching to existing sessions. See [this guide](https://www.gnu.org/software/screen/manual/screen.html) for more details. However, if you only need one window to troubleshoot the device or install updates, the main command you need to know is to how to close the session. Press **Ctrl+a**, release the buttons, and then immediately press **\\**. This will terminate all sessions without a prompt.
