@@ -21,12 +21,28 @@ Here are **first steps guides** for each PiKVM device:
 
 ??? note "Connect to PiKVM via SSH"
 
-    SSH is the most common remote access method in the Linux world. PiKVM is accessible via SSH. This method is used to manage the device:
+    SSH is the most common remote access method in the Linux world. Normally, it should be possible to simply run `ssh root@pikvm` in a terminal window to connect to your PiKVM. However, this can fail for various reasons. In that case, you will have to connect using PiKVM's IP address.
 
-    * **Linux, MacOS:** Open any terminal application and run: `ssh root@192.168.0.100` or `ssh root@pikvm`.
-    * **Windows:** Use [PuTTY](https://www.putty.org/) for this.
+    To connect to PiKVM via SSH, do this:
 
-    **The default `root` password is `root`.**
+    1. Discover PiKVM's IP address in the local network. There are several ways to do that:
+
+        * Open the web interface of your router and find the list of issued IP addresses there.
+        * Linux-only: install and run [arp-scan](https://github.com/royhills/arp-scan): `sudo arp-scan --localnet`.
+        * Linux, MacOS, Windows: Download and run [Angry IP Scanner](https://angryip.org/).
+        * Windows PowerShell: Use the `arp -a` command.
+
+        In each case, look for the entry that says "Raspberry Pi Trading Ltd" and copy its IP address to the clipboard. Let's assume that the IP address is `192.168.0.100`.
+
+    2. Run the SSH client to connect to PiKVM:
+
+        * **Linux, MacOS:** Open any terminal application and run: `ssh root@192.168.0.100`.
+        * **Windows:** Use [PuTTY](https://www.putty.org/) for this.
+
+    3. Submit your `root` user credentials. The default password is `root`. If you haven't changed it, you absolutely should do it.
+
+    4. You should now be able to see and interact with the serial port. All the system tools in PiKVM will be available in the terminal window. Once you are done, type `exit` and press **Enter**, or simply press **Ctrl+d** to terminate the session.
+
 
 ??? note "Connect to PiKVM via serial console"
 
