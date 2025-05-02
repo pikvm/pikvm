@@ -38,7 +38,7 @@ Here are **first steps guides** for each PiKVM device:
 
         * On DIY PiKVM V1 or V2, you'll need to get the right TTY to USB cable, we recommend the [RPi Debug Probe](https://www.pishop.us/product/raspberry-pi-debug-probe/) and follow existing RPi TTY serial setups.
 
-    2. Install `picocom` on a Linux or a macOS host, or [Putty](https://www.putty.org/) on Windows.
+    2. Install `picocom` on a Linux or a macOS host (available in [Homebrew](https://formulae.brew.sh/formula/picocom) and [MacPorts](https://ports.macports.org/port/picocom/)), or [Putty](https://www.putty.org/) on Windows.
 
     3. Identify the port that your operating system exposes for connecting to the PiKVM.
 
