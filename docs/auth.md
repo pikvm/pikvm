@@ -103,7 +103,7 @@ The `admin` is a name of a default user.
 -----
 ## Two-factor authentication
 
-The 2FA a new method of strengthening the protection of PiKVM, available since `KVM >= 3.196`.
+Two-factor authentication (2FA) is a new method of strengthening the protection of PiKVM, available since `KVM >= 3.196`.
 It is strongly recommended to enable it if you expose the PiKVM in the big and scary Internet.
 
 !!! warning
