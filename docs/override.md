@@ -31,9 +31,9 @@ ipmi:
         file: /etc/kvmd/ipmipasswd
 ```
 
-To nest key-value pair correctly, **use four spaces** rather than tabulation for indentation.
+To nest key-value pairs correctly, **use four spaces** rather than tabulation for indentation.
 
-There is no need to copy and paste an entire configuration tree of key-value pairs to change just one setting. For example, if you want to change just the `kvmd` timeout, you only need the `timeout` setting and its parent keys:
+There is no need to copy and paste an entire configuration tree of key-value pairs to change just one setting. For example, if you want to change just the `kvmd` timeout, you only need the `timeout` setting and its parent keys, kvmd and vnc:
 
 ```yaml
 vnc:
@@ -41,7 +41,7 @@ vnc:
         timeout: 7.0
 ```
 
-Anything that start with `#` is considered a comment. This is useful when you need to document your customizations, e.g. write down the rationale for changing a particular default.
+Anything that starts with `#` is considered a comment. This is useful when you need to document your customizations, e.g., write down the rationale for changing a particular default.
 
 You can start new lines with comments if you need to write a longer explanation.
 
@@ -60,7 +60,7 @@ vnc:
         timeout: 7.0 #this seems to work better
 ```
 
-Let's practice changing a default setting by switching to a German keyboard map by default.
+Let's practice changing a default setting by switching to a German keyboard map by default. **This is just an example to explain how overrides work.**
 
 ## Change file system access to read-write
 
@@ -116,7 +116,7 @@ Now, you need to save the configuration file and exit. Nano displays hints on th
 
 ![Save and exit](save-exit.png)
 
-`^` stands for **Ctrl** on Windows and Linux, and for **Cmd** on macOS. `M` stands for **Alt**.
+`^` stands for **Ctrl** on Windows and Linux and for **Cmd** on macOS. `M` stands for **Alt**.
 
 Press **Ctrl+O** to save the configuration file and then **Ctrl+X** to quit nano.
 
@@ -136,7 +136,7 @@ keymap; /usr/share/kvmd/keymaps/de
 ConfigError: The node 'vnc' must be a dictionary
 ```
 
-If you see any errors in the output, fix them, and run `kvmd -m` again to verify that the error is gone.
+If you see any errors in the output, fix them and run `kvmd -m` again to verify that the error is gone.
 
 Note that `kvmd -m` does not validate configuration entries for correct key names. So if your changes don't work, that's #1 thing to check for when troubleshooting.
 
@@ -150,10 +150,10 @@ Before you go to the next step, change the file system access mode to read-only.
 
 ## Reboot your PiKVM
 
-There's close to a dozen various system daemons that depend on configuration settings. The easiest way to apply your changes is to simply reboot your PiKVM:
+There are close to a dozen various system daemons that depend on configuration settings. The easiest way to apply your changes is to simply reboot your PiKVM:
 
 ```sh
 [root@pikvm ~]# reboot
 ```
 
-Once the device restarts, you changes take effect.
+Once the device restarts, your changes take effect.
