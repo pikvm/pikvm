@@ -71,8 +71,6 @@ than the browser, especially on weak client computers.
     to the password without spaces. That is, if the password is `foobar` and the code is `123456`,
     then the string `foobar123456` should be used as a password.
 
-    Also note that `vncauth` (step 3) will not work with 2FA.
-
 
 -----
 ## Configuring the client

@@ -107,9 +107,6 @@ Two-factor authentication (2FA) is a new method of strengthening the protection 
 It is strongly recommended to enable it if you expose the PiKVM in the big and scary Internet.
 
 !!! warning
-    Using 2FA eliminates the possibility of using [IPMI](ipmi.md) and [VNC with vncauth](vnc.md) (both disabled by default).
-    It also slightly affects the use of [API](api.md) and regular VNC with user/password, read below.
-
     Please note that 2FA does not concern the Linux OS access for the `root` user, so take care of a strong password
     for it for SSH access (or setup the [key access](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server)).
 
@@ -142,7 +139,7 @@ All Web UI users will be required to enter a one-time password on login.
 In other words, **the secret is the same for all users**.
 
 !!! note
-    With 2FA for API or VNC authentication, you will need to append the one-time code to the password without spaces.
+    With 2FA for API or VNC authentication (except VNCAuth mode), you will need to append the one-time code to the password without spaces.
     That is, if the password is `foobar` and the code is `123456`, then you need to use `foobar123456` as the password.
 
 To view the current QR code of the secret use command `kvmd-totp show`.

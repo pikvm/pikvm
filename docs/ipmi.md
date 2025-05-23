@@ -11,8 +11,6 @@
 
     Please consider to using the Redfish or [KVMD API](api.md) instead of it.
 
-    Also, IPMI can not work with [2FA](auth.md#two-factor-authentication).
-
 
 ----
 ## IPMI BMC
