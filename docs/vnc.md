@@ -98,6 +98,21 @@ For iOS and Android the recommended application is bVNC:
 
 
 -----
+## Hotkeys
+
+Inside a VNC session, you can use several hotkeys related to PiKVM, independent of the VNC client.
+Hotkeys are triggered by quickly pressing and releasing each key sequentially (that is, you don't need to hold them down like `Ctrl+Alt+Del`).
+
+* `LeftAlt, LeftAlt, P` - Paste text from the clipboard.<br>
+    *PiKVM does not have access to the clipboard, so pasting works as if you had typed this text. ASCII always works, layout switching is not supported. To type text in a different language, you need the layout on the host to match the one you are using (and keymap is also configured as described above for some VNC clients)*
+
+* `LeftAlt, LeftAlt, 1` (1-8) - Switch to channel 1 with [PiKVM Switch](switch.md), when you have one or two switches.
+
+* `LeftAlt, LeftAlt, 3, 2` - Switch to unit 3, channel 2 of [PiKVM Switch](switch.md) chain, when you have more than two switches.<br>
+    *Single-key port numbers do not work if there are more than two candles.*
+
+
+-----
 ## Unsupported clients
 
 * **RealVNC** - Does not support most widely used open VNC protocol extensions.
