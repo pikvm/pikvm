@@ -397,7 +397,7 @@ does not recognize it correctly and even refuses to work with USB keyboard and m
         ```
 
 !!! tip
-    As an alternative method may be to use the [dynamic USB configuration](usb_dynamic.md),
+    As an alternative method may be to use the [dynamic USB configuration](usb.md),
     which allows you to temporarily disable any of the emulated devices, including Mass Storage Drive.
 
 
