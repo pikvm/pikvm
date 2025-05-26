@@ -21,6 +21,8 @@ With both HDMI passthrough and USB passthrough enabled, you would be able to do 
 - Control them directly from this single keyboard/mouse pair (in addition to remote control);
 - See the video output from the selected host on the local display.
 
+
+-----
 ## Enabling USB passthrough
 
 Follow these steps to enable USB passthrough on your PiKVM:
@@ -43,6 +45,8 @@ Follow these steps to enable USB passthrough on your PiKVM:
 
 Once you've done that, you should be able to use your USB keyboard and mouse connected directly to your PiKVM to control the host.
 
+
+-----
 ## Toggling USB passthrough
 
 Every once in a while you may want using keyboard/mouse to control your PiKVM instead of controlling a host. Once USB passthrough is enabled in the system, you can switch it on and off with shortcuts:
@@ -53,6 +57,8 @@ Every once in a while you may want using keyboard/mouse to control your PiKVM in
 
 Press these keys **immediately** one after another: `LeftAlt`, then `LeftAlt` again, then the mnemonic key. 
 
+
+-----
 ## Switching the PiKVM Switch channels
 
 If you have one or two PiKVM Switches, you can use `LeftAlt, LeftAlt, 1` (1-8) to switch between up to 8 channels.

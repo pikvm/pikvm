@@ -119,6 +119,7 @@ nav:
         - "HDMI passthrough": pass.md
     - "Peripheral devices":
         - "USB configuration": usb.md
+        - "USB passthrough": usb_pass.md
         - "Audio / Microphone": audio.md
         - "Keyboard & mouse":
             - "Mouse modes": mouse.md
@@ -129,7 +130,6 @@ nav:
         - "Ethernet-over-USB": usb_ethernet.md
         - "Serial-over-USB": usb_serial.md
         - "GPIO (pins, relays, lamps, etc)": gpio.md
-        - "USB passthrough": usb-passthrough.md
     - "Advanced usage":
         - "Overriding system defaults": override.md
         - "On-boot configuration": on_boot_config.md
