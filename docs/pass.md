@@ -1,3 +1,8 @@
+---
+title: HDMI Video Passthrough
+description: "How to set up HDMI passthrough on PiKVM V4 Plus"
+---
+
 # HDMI Video Passthrough
 
 This is a new exclusive feature available only on **PiKVM V4 Plus**.

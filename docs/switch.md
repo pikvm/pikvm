@@ -1,3 +1,8 @@
+---
+title: PiKVM Switch Multiport Extender Quickstart Guide
+description: "How to get started with PiKVM Switch Multiport Extender"
+---
+
 # PiKVM Switch Multiport Extender
 
 !!! info "Where to buy?"
@@ -6,9 +11,9 @@
     * [Canadian store](https://www.pishop.ca/product/pikvm-switch-multiport-extender/).
     * EU is coming!
 
-<img src="switch.png" width="400" />
+![PiKVM Switch](switch.png){ width="400" }
 
-* [PiKVM Switch Multiport Extender](switch_datasheet.pdf)
+[PiKVM Switch Datasheet (PDF)](switch_datasheet.pdf){ .md-button }
 
 The PiKVM Switch Multiport Extender enables one PiKVM device to view and control multiple target
 computers connected to each port. Target computers are viewed using HDMI video capture and then
