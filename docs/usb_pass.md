@@ -5,7 +5,7 @@ description: "How to set up USB Passthrough on PiKVM"
 
 # USB Passthrough
 
-For USB keyboards and mice connected to PiKVM directly, USB passthrough allows forwarding their input to the host system. This feature is available for all versions of PiKVM except the DIY version based on Pi Zero.
+For USB keyboards and mice connected to PiKVM directly, USB passthrough allows forwarding their input to the host system. This feature is available for all versions of PiKVM except the DIY version based on Pi Zero. It works best with [HDMI passthrough](pass.md) available on PiKVM V4 Plus.
 
 Let's consider this setup:
 
