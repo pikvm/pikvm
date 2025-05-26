@@ -5,18 +5,11 @@ description: "How to set up HDMI passthrough on PiKVM V4 Plus"
 
 # HDMI Video Passthrough
 
-This is a new exclusive feature available only on **PiKVM V4 Plus**.
-It allows you to connect PiKVM to the gap between the target host and physical display.
-Thus, PiKVM does not interfere with the normal operation of the display and passes
-the video signal through itself until you need remote access via PiKVM
-In this case, PiKVM directs the video stream to the Web UI or VNC.
-
+This feature allows directing the video stream from the host to a display attached directly to the HDMI output of PiKVM V4 Plus. This simplifies accessing the host locally while retaining the remote access to the host via the Web UI or VNC. **This feature is limited to PiKVM V4 Plus** because it’s the only PiKVM version with an HDMI Out port. It also works best with [USB [passthrough]](usb_pass.md) enabled.
 
 !!! info
 
     * The passthrough feature supports a screen resolution **up to 1920x1200** pixels.
-    * Other PiKVM devices besides V4 Plus do not support the passthrough due to hardware limitations.
-
 
 This is shown more clearly below:
 
