@@ -402,7 +402,7 @@ kvmd
                         duty_cycle_release: 1000000  # Servo Motor SG90 duty_cycle for releasing button
                 scheme:
                     __v4_locator__:  # v4-mini only
-                        pin: 18      # v4-mini only
+                        pin: 25      # v4-mini only
                     short_press:
                         driver: servo1
                         pin: 0  # Pin number is the PWM channel number on the PWM Chip
@@ -473,7 +473,7 @@ kvmd
             scheme:
                 scheme:
                     __v4_locator__:  # v4-mini only
-                        pin: 18      # v4-mini only
+                        pin: 25      # v4-mini only
                     short_press:
                         driver: servo1
                         pin: 0  # Pin number is the PWM channel number on the PWM Chip
