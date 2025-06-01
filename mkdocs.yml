@@ -77,6 +77,7 @@ plugins:
             "webrtc.md": "video.md"
             "first_steps.md": "cheatsheet.md"
             "cheat_sheet.md": "cheatsheet.md"
+            "override.md": "config.md"
     - glightbox:
         touchNavigation: false
         loop: false

@@ -1,25 +1,42 @@
 # EDID
 
+!!! info
+
+    This applies to [PiKVM V3](v3.md), [V4](v4.md) and DIY based on CSI bridge.
+    It is impossible to change the EDID for the HDMI-USB dongle.
+
+
+The EDID provides an information about the video modes supported by the video capture device.
+In the case of PiKVM, this is an HDMI CSI bridge.
+Usually, you don't need to change this, since the default configuration is quite flexible,
+but sometimes, for example for strange UEFIs/BIOSes, this may be necessary
+([a story](https://github.com/pikvm/pikvm/issues/78)).
+
+
+-----
+## Basics
+
+The EDID is stored on the PiKVM in the file `/etc/kvmd/tc358743-edid.hex` in HEX format.
+When booting PiKVM OS, it is used by `kvmd-tc358743.service` and loaded into the video capture chip.
+
+If you replace the EDID in this file, the EDID can be applied manually without rebooting
+using the command `kvmd-edidconf --apply`.
+
+If you just want to change the monitor's identification, we don't recommend that you change the entire EDID.
+Just use `kvmd-edidconf` and its built-in EDID changing options.
+
 !!! note
-    This will only apply to the CSI models include V3+, USB capture is not compatable.
-    Modifing the EDID may or may not work in some instances where a "no signal" might be a result of outside factors.
 
+    Windows caches drivers and registry settings so changing the monitor name is not enough,
+    you will also need to change the product ID and/or the serial number along with the monitor name:
 
-EDID is information about the video modes supported by the video capture device.
-In the case of PiKVM, this is an HDMI CSI bridge. Usually, you don't need to change this, since the default configuration is quite flexible,
-but sometimes, for example for strange UEFIs/BIOSes, this may be necessary (the [story](https://github.com/pikvm/pikvm/issues/78)).
+    ```console
+    [root@pikvm ~]# kvmd-edidconf --set-monitor-name=TOSHIBA --set-mfc-id=TTP --set-product-id=34953 --set-serial=2290649089 --apply
+    ```
 
-The EDID is stored on the PiKVM in the file `/etc/kvmd/tc358743-edid.hex`. If you write new data there, it will be applied after rebooting
-or using the command `kvmd-edidconf --apply`.
+{!_edidconf_options.md!}
 
-You can also apply the new EDID without rebooting to make sure it works:
-
-* Switch filesystem to RW-mode: `rw`.
-* Create the new EDID file `/root/edid.hex` (examples of file contents are shown below).
-* Apply EDID using the command `kvmd-edidconf --edid=/root/edid.hex --apply`.
-* DO NOT REBOOT the PiKVM. Just your PC. Check the UEFI/BIOS or the OS.
-* If everything is working, you can make this config permanent: `kvmd-edidconf --import=/root/edid.hex`. This command will write the EDID to `/etc/kvmd/tc358743-edid.hex` in a pretty format.
-* Switch filesystem to RO-mode: `ro`.
+Typical examples of working with EDID and the full cycle of using custom EDID will be shown below.
 
 
 -----
@@ -37,7 +54,7 @@ To adopt display identifiers, connect the display to `OUT2` port and run these c
 [root@pikvm ~]# ro
 ```
 
-The display can be unplugged. PiKVM will remember the new settings.
+Now the display can be unplugged. PiKVM will remember the new settings.
 
 
 -----
@@ -73,7 +90,7 @@ so you can force 1080p resolution by default:
 -----
 ## Disable 1920x1200 on PiKVM V4
 
-PiKVM V4 supports the advanced capture mode of 1920x1200. If it bothers you
+PiKVM V4 supports the advanced capture mode with 1920x1200. If it bothers you
 (for example, if you use a physical monitor 1920x1080 with [video passthrough](pass.md)),
 you can easily disable it and use only 1920x1080:
 
@@ -85,9 +102,24 @@ you can easily disable it and use only 1920x1080:
 
 
 -----
-## Other EDID examples for PiKVM V4
+## Applying a custom EDID
 
-PiKVM V4 can mimic many physical monitors. You can find the appropriate EDID in [this database](https://github.com/linuxhw/EDID) and import its HEX code to PiKVM. Choose something with a maximum resolution of 1920x1080 or 1920x1200.
+PiKVM is able to emulate a physical display with a specific EDID.
+You can find EDID examples in the [community database](https://github.com/linuxhw/EDID)
+and then use it on PiKVM.
+
+At the same time, you should pay attention to the hardware capabilities of PiKVM
+and the EDID capabilities that you use. For example, if EDID reports 8K support,
+then this obviously won't work: your host will try to send an 8K signal,
+while PiKVM can process no more than 1080p.
+
+* PiKVM V1-V3: The maximum resolution is 1920x1080 at 50Hz.
+* PiKVM V4: The maximum is 1920x1200 at 60Hz.
+
+In the case of the [PiKVM V4](v4.md), almost any EDID for 1080p monitors will work.
+All EDIDs that are suitable for [PiKVM V3](v3.md) will work too.
+
+### Example EDIDs for PiKVM V4
 
 ??? example "Acer B246WL, 1920x1200, with audio"
     Taken [here](https://github.com/linuxhw/EDID/blob/master/Digital/Acer/ACR0565/CCF78B30FE61), as described above.
@@ -131,7 +163,6 @@ PiKVM V4 can mimic many physical monitors. You can find the appropriate EDID in 
     001800000000000000000000000000DC
     ```
 
-
 ??? example "DELL D2721H to avoid black screen on some HDMI splitters, 1920x1080, no audio"
     Taken [here](https://github.com/linuxhw/EDID/blob/master/Digital/Dell/DEL2013/EEE824E681BF), as described above.
     ```
@@ -153,11 +184,7 @@ PiKVM V4 can mimic many physical monitors. You can find the appropriate EDID in 
     0000000000000000000000000000004F
     ```
 
-
------
-## EDID examples for PiKVM V2+
-
-Copy the contents into a file, for example `/root/edid.hex`, then follow the same steps as above.
+### Example EDIDs for PiKVM V1-V3
 
 ??? example "1280x1024 as preferred. Useful for Gigabyte GA-H77-DS3H"
     ```
@@ -219,6 +246,40 @@ Copy the contents into a file, for example `/root/edid.hex`, then follow the sam
     00000000000000000000000000000045
     ```
 
+### Applying a choosen custom EDID
+
+To apply the selected EDID, follow these steps:
+
+1. Switch filesystem to RW-mode:
+
+    ```console
+    [root@pikvm ~]# rw
+    ```
+
+2. Open the file `/etc/kvmd/tc358743-edid.hex` with any text editor, for example, with Nano:
+
+    ```console
+    [root@pikvm ~]# nano /etc/kvmd/tc358743-edid.hex
+    ```
+
+3. Replace the HEX data with the new, save and close the editor.
+
+4. Apply the EDID:
+
+    ```console
+    [root@pikvm ~]# kvmd-edidconf --apply
+    ```
+
+5. Sometimes it may be necessary to reboot the target host. Check the OS on the host, UEFI/BIOS.
+    If everything works, then your goal has been achieved and proceed to the last step.
+    If something went wrong, you can always undo these changes and [restore the default EDID](#restore-default-edid).
+
+6. Don't forget to switch filesystem to the RO-mode:
+
+    ```console
+    [root@pikvm ~]# ro
+    ```
+
 
 -----
 ## Editing EDID
@@ -230,46 +291,34 @@ to PiKVM using the `kvmd-edidconf` utility.
 
 So, to tune EDID on PiKVM, use the following steps:
 
-1. Switch filesystem to RW-mode: `rw`.
+1. Switch filesystem to RW-mode:
 
-2. Export the system edid to the binary file `myedid.bin`:
+    ```console
+    [root@pikvm ~]# rw
+    ```
+
+2. Export the system EDID to the binary file `myedid.bin`:
 
     ```console
     # kvmd-edidconf --export-bin=/root/myedid.bin
     ```
 
-3. Copy this file to your PC with the editor. Use SCP, Putty or something like that. Open this binary file in the editor and change the necessary parameters. Edit, save and copy it back to PiKVM.
+3. Copy this file to your PC using SCP, Putty or something like that.
+    Open this binary file in the EDID editor and change the necessary parameters.
+    Save your changes and copy the binary file back to PiKVM.
 
 4. Convert the binary file to the HEX and test it:
-
-    ```console
-    [root@pikvm ~]# kvmd-edidconf --import=/root/myedid.bin --edid=/root/myedid.hex --apply
-    ```
-
-5. If everything works fine, install the new EDID file into the system:
-
-    ```console
-    [root@pikvm ~]# cp /root/myedid.hex /etc/kvmd/tc358743-edid.hex
-    ```
-
-6. Alternative to step (4) and (5): if you are confident in your abilities, you can immediately install the new `myedit.bin` into the system and apply it instantly, without the need to use the temporary `myedid.hex`:
 
     ```console
     [root@pikvm ~]# kvmd-edidconf --import=/root/myedid.bin --apply
     ```
 
-7. Switch filesystem to RO-mode: `ro`.
+5. Sometimes it may be necessary to reboot the target host. Check the OS on the host, UEFI/BIOS.
+    If everything works, then your goal has been achieved and proceed to the last step.
+    If something went wrong, you can always undo these changes and [restore the default EDID](#restore-default-edid).
 
-The `kvmd-edidconfig` utility has the ability to change some simple parameters without using an external editor. For example you can change the vendor, model name and enable [HDMI audio](audio.md) on the PiKVM virtual display:
-
-```console
-[root@pikvm ~]# kvmd-edidconf --set-mfc-id=LNX --set-monitor-name=PiKVM --set-audio=1 --apply
-```
-
-!!! note
-
-    Windows cache's drivers and registry settings so changing the monitor name is not enough, you will also need to change the product ID and/or the serial number along with the monitor name:
+6. Don't forget to switch filesystem to the RO-mode:
 
     ```console
-    [root@pikvm ~]# kvmd-edidconf --set-monitor-name=TOSHIBA --set-mfc-id=TTP --set-product-id=34953 --set-serial=2290649089 --apply
+    [root@pikvm ~]# ro
     ```
