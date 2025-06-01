@@ -107,12 +107,15 @@ The generally accepted names from the USB specifications are shown in parenthese
 * `serial` (`iSerialNumber` to 0x409) - ASCII serial number of the product.
 * `device_version` (`bcdDevice`) - Kinda the revision of the device. Assigned automatically. It can be changed to 256, 257, 258 or something like this.
 
+These IDs are also used for the [microphone](audio.md#microphone-outgoing-audio) on PiKVM V4.
+
 The strings under `otg/drives` and `otg/msd` sections deserve a special description.
 They relate to virtual media emulation and are separate parts of the SCSI inquiry string, the drive identifier used by the OS driver.
 All three parameters `vendor`, `product`, and `revision` are short ASCII strings responsible for CD/DVD or Flash representation.
 
 The `msd` refers to a virtual drive accessible from the Web UI,
 and the `drives` describes all additional drives if you have configured them (disabled by default).
+Note that mass storage drive can be [completely disabled](msd.md#disabling-mass-storage).
 
 To change the parameters, use the `/etc/kvmd/override.yaml`, for example, like this:
 
@@ -143,6 +146,3 @@ After changing validate the config using `kvmd -m`. You will see the full config
 or a message about configuration error.
 
 If everything is fine, perform the soft reboot.
-
-* Mass storage drive can be [completely disabled](msd.md#disabling-mass-storage).
-* [Microphone](audio.md#microphone-outgoing-audio) identifiers are generated from generic USB IDs described above.
