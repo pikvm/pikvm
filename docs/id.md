@@ -143,3 +143,6 @@ After changing validate the config using `kvmd -m`. You will see the full config
 or a message about configuration error.
 
 If everything is fine, perform the soft reboot.
+
+* Mass storage drive can be [completely disabled](msd.md#disabling-mass-storage).
+* [Microphone](audio.md#microphone-outgoing-audio) identifiers are generated from generic USB IDs described above.
