@@ -119,7 +119,7 @@ while PiKVM can process no more than 1080p.
 In the case of the [PiKVM V4](v4.md), almost any EDID for 1080p monitors will work.
 All EDIDs that are suitable for [PiKVM V3](v3.md) will work too.
 
-### Example EDIDs for PiKVM V4
+#### Example EDIDs for V4
 
 ??? example "Acer B246WL, 1920x1200, with audio"
     Taken [here](https://github.com/linuxhw/EDID/blob/master/Digital/Acer/ACR0565/CCF78B30FE61), as described above.
@@ -184,7 +184,7 @@ All EDIDs that are suitable for [PiKVM V3](v3.md) will work too.
     0000000000000000000000000000004F
     ```
 
-### Example EDIDs for PiKVM V1-V3
+#### Example EDIDs for V1-V3
 
 ??? example "1280x1024 as preferred. Useful for Gigabyte GA-H77-DS3H"
     ```
@@ -246,7 +246,7 @@ All EDIDs that are suitable for [PiKVM V3](v3.md) will work too.
     00000000000000000000000000000045
     ```
 
-### Applying a choosen custom EDID
+#### Applying a choosen custom EDID
 
 To apply the selected EDID, follow these steps:
 
