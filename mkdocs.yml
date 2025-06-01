@@ -120,6 +120,7 @@ nav:
         - "Tuning HDMI EDID": edid.md
         - "HDMI passthrough": pass.md
     - "Peripheral devices":
+        - "ATX board": atx_board.md
         - "USB configuration": usb.md
         - "USB passthrough": usb_pass.md
         - "Audio / Microphone": audio.md
