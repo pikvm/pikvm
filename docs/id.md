@@ -48,6 +48,12 @@ There you can also find out how to set the EDID from a real monitor, or quickly 
 -----
 ## USB Identifiers
 
+!!! info
+
+    This applies to PiKVM V2+. Identifiers on V1 and/or the [Pico HID](pico_hid.md) can't be changed
+    without recompilation and reflashing of the firmware.
+
+
 USB is a much more complex subsystem and another part of PiKVM is responsible for it.
 Be careful when changing the settings here, it may cause the USB to fail.
 
