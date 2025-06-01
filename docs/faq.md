@@ -135,28 +135,7 @@ As a first step, we recommend carefully reading our documentation on [GitHub](ht
 
 
 ??? question "How do I emulate various USB devices on the target machine?"
-
-    By default this is what is set:
-
-    ```yaml
-    otg:
-        manufacturer: PiKVM
-        product: Composite KVM Device
-        vendor_id: 0x1D6B
-        product_id: 0x0104
-        serial: CAFEBABE
-    ```
-
-    You can change how this is displayed with the following example for `/etc/kvmd/override.yaml` file:
-
-    ```yaml
-    otg:
-        manufacturer: Corsair
-        product: Corsair Gaming RGB
-        vendor_id: 0x6940
-        product_id: 0x6973
-        serial:
-    ```
+    For a detailed description, see [here](id.md).
 
     Use the following USB database to get the desired devices: https://the-sz.com/products/usbid or https://devicehunt.com.
 

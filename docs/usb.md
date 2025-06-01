@@ -53,6 +53,8 @@ To configure additional devices, please refer to the corresponding pages:
 * [USB Serial Port](usb_serial.md) - It can be used for terminal access from the target host to the PiKVM,
     or for any other purpose that requires a serial connection.
 
+For information on how emulated devices are represented on the target host and how to change it, read [here](id.md).
+
 
 -----
 ## Default preset

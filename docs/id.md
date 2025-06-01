@@ -51,6 +51,9 @@ There you can also find out how to set the EDID from a real monitor, or quickly 
 USB is a much more complex subsystem and another part of PiKVM is responsible for it.
 Be careful when changing the settings here, it may cause the USB to fail.
 
+For information on how to control emulated devices see [here](usb.md).
+The identification is described below.
+
 As you may have found out from the [PiKVM configuration guide](config.md) (if you haven't read it yet, now is the time),
 you can get the list of all configuration parameters using the `kvmd -m` command.
 
