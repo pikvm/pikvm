@@ -101,6 +101,7 @@ nav:
     - "Getting started":
         - "Cheat Sheet": cheatsheet.md
         - "Web UI Overview": webui.md
+        - "Configuring PiKVM": config.md
         - "Authentication & 2FA": auth.md
         - "FAQ & Troubleshooting": faq.md
         - "Flashing OS": flashing_os.md
@@ -132,7 +133,7 @@ nav:
         - "Serial-over-USB": usb_serial.md
         - "GPIO (pins, relays, lamps, etc)": gpio.md
     - "Advanced usage":
-        - "Overriding system defaults": override.md
+        - "PiKVM identification": id.md
         - "On-boot configuration": on_boot_config.md
         - "Using VNC": vnc.md
         - "Multiport KVM-over-IP": multiport.md

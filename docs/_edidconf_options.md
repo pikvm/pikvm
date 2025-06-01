@@ -27,7 +27,7 @@ To change the values of the EDID fields, use the `kvmd-edidconf` with options, a
 
 Here the small example of changing all available fields from the previous listing:
 
-```
+```console
 [root@pikvm ~]# rw
 [root@pikvm ~]# kvmd-edidconf --set-mfc-id=TTP --set-product-id=0x5B81 --set-serial=0x8DE11B79 --set-monitor-name=TOSHIBA --set-monitor-serial=ABCD1234 --apply
 Manufacturer ID: TTP
