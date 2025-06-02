@@ -107,14 +107,16 @@ otg:
 
 Pay attention to the nesting levels. The parameters are always located in certain sections.
 All numeric values are displayed in decimal form, but in the config you can use a hex form.
-The generally accepted names from the USB specifications are shown in parentheses.
+The generally accepted names from the USB specifications are shown too.
 
-* `vendor_id` (`idVendor`) - Unique [vendor ID](https://usb.org/sites/default/files/vendor_ids051920_0.pdf) assigned by USB.org.
-* `product_id` (`idProduct`) - Just an ID for the product assigned by this vendor.
-* `manufacturer` (`iManufacturer` to 0x409) - ASCII name of the vendor.
-* `product` (`iProduct` to 0x409) - ASCII name of the product.
-* `serial` (`iSerialNumber` to 0x409) - ASCII serial number of the product.
-* `device_version` (`bcdDevice`) - Kinda the revision of the device. Assigned automatically. It can be changed to 256, 257, 258 or something like this.
+| Parameter | USB Spec | Description |
+|-----------|----------|-------------|
+| `vendor_id`      | `idVendor`               | Unique [vendor ID](https://usb.org/sites/default/files/vendor_ids051920_0.pdf) assigned by USB.org. |
+| `product_id`     | `idProduct`              | Just an ID for the product assigned by this vendor. |
+| `manufacturer`   | `iManufacturer` to 0x409 | ASCII name of the vendor. |
+| `product`        | `iProduct` to 0x409      | ASCII name of the product. |
+| `serial`         | `iSerialNumber` to 0x409 | ASCII serial number of the product. |
+| `device_version` | `bcdDevice`              | Kinda the revision of the device. Assigned automatically. It can be changed to 256, 257, 258 or something like this |
 
 These IDs are also used for the [microphone](audio.md#microphone-outgoing-audio) on PiKVM V4.
 

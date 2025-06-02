@@ -1,10 +1,16 @@
 # Ethernet-over-USB network
 
+Specifically to PiKVM V2+. When combined with configuring a DNS server, FTP, or SMB (for example), this is a powerful way to extend the capabilities of PiKVM.
+
+-----
 ## Basic configuration
 
-Specifically to V2+. When combined with configuring a DNS server, FTP, or SMB (for example), this is a powerful way to extend the capabilities of PiKVM.
-
 {!_usb_limits.md!}
+
+!!! info
+
+    Before exploring this page, we recommend to read the [PiKVM configuration guide](config.md)
+    so that you understand the terminology and how exactly the parameters described below change.
 
 1. Edit `/etc/kvmd/override.yaml` and add these lines:
 
@@ -18,12 +24,16 @@ Specifically to V2+. When combined with configuring a DNS server, FTP, or SMB (f
                 kvm_mac: 42:61:64:55:53:42
     ```
 
-    The `host_mac` address will be used on the server's network interface. The `kvm_mac` means the address that will be assigned to the local interface on the PiKVM. The KVM interface will be called `usb0`network interface. If the `host_mac` or `kvm_mac` is not specified, a random value will be used. The `driver` parameter means the protocol that will be used for the USB network. The default value is `ecm` so it can be passed it this example. Other possible values are `eem`, `ncm`, `rndis` and `rndis5`.
+    The `enable: true` option was used for activation the USB network. The values of the remaining options are described in the tables.
 
-    **Driver compatibility:**
+    | Parameter  | Default    | Description |
+    |------------|------------|-------------|
+    | `host_mac` | `<random>` | The MAC address of the host's network interface. |
+    | `kvm_mac`  | `<random>` | The MAC address of the network interface on the PiKVM side called `usb0`. |
+    | `driver`   | `ecm`      | Protocol driver os the USB network. Different drivers are required for different OS. See below. |
 
-    | Driver | Operating System|
-    |--------|-------|
+    | Driver | Compatibility with Operating Systems|
+    |--------|-------------------------------------|
     | ecm    | Linux<br>macOS |
     | eem    | Linux |
     | rndis5 | Windows XP to Windows 7<sup>[1](#rndis5)</sup><br>Linux > 2.6.13 |
@@ -33,7 +43,15 @@ Specifically to V2+. When combined with configuring a DNS server, FTP, or SMB (f
     <a name="rndis5">1</a>: Manual driver installation is required. [Download RNDIS 5 Windows](driver/win/pikvm-rndis5.inf)<br>
     <a name="rndis">2</a>: Automatic driver installation since kvmd-3.53
 
-2. To automatically configure the USB network on the server recommended using the service `kvmd-otgnet`. It configures the firewall, assigns an address to the local PiKVM interface `usb0` and starts DHCP so the managed server can get the IPv4 address. By default, the address `172.30.30.0/24` to interface `usb0` will be assigned. One of the other addresses from the network `172.30.30.0/24` will be assigned to the server when it requests it via DHCP. For security reasons, all incoming connections from the server to the PiKVM side are blocked (except for ICMP and UDP port 67 which is used for DHCP). If you want to allow access from the server to the PiKVM interface, then you need to add ports 80 and 443 to the whitelist using `/etc/kvmd/override.yaml` file like this:
+2. To automatically configure the USB network on the host recommended using the service `kvmd-otgnet`.
+    It configures the firewall, assigns an address to the local PiKVM interface `usb0` and starts DHCP so the target host can get the IPv4 address.
+
+    By default, the address `172.30.30.1/24` to interface `usb0` will be assigned.
+    One of the other addresses from the network `172.30.30.0/24` will be assigned to the host when it requests it via DHCP.
+
+    For security reasons, all incoming connections from the host to the PiKVM side are blocked (except for ICMP and UDP port 67 which is used for DHCP).
+    If you want to allow access from the host to the PiKVM interface, you will need to add ports 80 and 443 to the whitelist using `/etc/kvmd/override.yaml`
+    file like this:
 
     ```yaml
     otgnet:
@@ -41,7 +59,16 @@ Specifically to V2+. When combined with configuring a DNS server, FTP, or SMB (f
             allow_tcp: [80, 443]
     ```
 
-    To view other available configuration parameters, use the command `kvmd -m`.
+    Other useful firewall options are listed here:
+
+    | Parameter       | Default  |
+    |-----------------|----------|
+    | `allow_icmp`    | `true`   | Optional ICMP allowed to PiKVM. |
+    | `allow_tcp`     | `[]`     | List of allowed TCP connections from the host to PiKVM. |
+    | `allow_udp`     | `[]`     | List of allowed UDP connections from the host to PiKVM. |
+    | `forward_iface` | `<none>` | Default gateway interface on PiKVM for network forwarding (see below). |
+
+    See other parameters and command hooks in `kvmd -m`.
 
 3. To enable the service, use the command `systemctl enable kvmd-otgnet`.
 
@@ -50,11 +77,15 @@ Specifically to V2+. When combined with configuring a DNS server, FTP, or SMB (f
 
 ## Routing via PiKVM
 
-By default, `kvmd-otgnet` will configure network connection between PiKVM and the server host only. The server host will not be able to reach other hosts beyond PiKVM. If the full network access is required from the server host through the USB-Ethernet feature (access all hosts PiKVM can access), additional settings are needed in `/etc/kvmd/override.yaml`.
+By default, `kvmd-otgnet` will configure network connection between PiKVM and the host only.
+The target host controlled by PiKVM will not be able to reach other hosts beyond PiKVM.
+If the full network access is required from the host through the USB-Ethernet feature (access all hosts PiKVM can access),
+additional settings are needed in `/etc/kvmd/override.yaml`.
 
 1. Run `echo "net.ipv4.ip_forward = 1" > /etc/sysctl.d/99-kvmd-extra.conf`.
 
-2. Add network interface to forward requests to (default gateway) by adding a line `forward_iface: <interface name>` under `firewall:`. Typically it would be `eth0` if the built-in ethernet port is used::
+2. Add network interface to forward requests to (default gateway) by adding a line `forward_iface: <interface name>` under the `firewall` section.
+    Typically it would be `eth0` if the built-in ethernet port is used::
 
     ```yaml
     otgnet:
@@ -62,7 +93,9 @@ By default, `kvmd-otgnet` will configure network connection between PiKVM and th
             forward_iface: eth0
     ```
 
-3. Add DNS server to provide host name resolution service. For example, adding `8.8.8.8` as DNS server requires addition of `dnsmasq` dhcp options. This can be done by adding following lines to `/etc/kvmd/override.yaml`:
+3. Add DNS server to provide host name resolution service.
+    For example, adding `8.8.8.8` as DNS server requires addition of `dnsmasq` dhcp options.
+    This can be done by adding following lines:
 
     ```yaml
     otgnet:
@@ -81,18 +114,25 @@ By default, `kvmd-otgnet` will configure network connection between PiKVM and th
             post_start_cmd_append:
             - "--dhcp-option=6,8.8.8.8"
     ```
-5. To enable internet access for the server host, add the following to the otgnet configuration::
+
+5. To enable internet access for the target host, add the following to the otgnet configuration::
     
     ```yaml
      otgnet:
         iface:
             net: 10.65.0.0/28
     ```
-    The 'net' parameter defines the network address range of the usb0 network. The server host will automatically receive an IP address within this network including the DNS servers defined under 'post_start_cmd_append'. Note: This network should *not* be same as the network PiKVM is connected to.
-    
+
+    The 'net' parameter defines the network address range of the `usb0` network.
+    The host will automatically receive an IP address within this network including the DNS servers defined under 'post_start_cmd_append'.
+    Note: This network should *not* be same as the network PiKVM is connected to.
+
+    See other parameters and command hooks in `kvmd -m`.
+
 6. Don't forget to `reboot`.
 
-??? example "An example of what the config would look like for a server host that can access PiKVM and has internet access:"
+??? example "An example of what the config would look like for a host that can access PiKVM and has internet access:"
+
     ```
     otgnet:
         firewall:
