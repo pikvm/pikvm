@@ -61,8 +61,8 @@ Specifically to PiKVM V2+. When combined with configuring a DNS server, FTP, or 
 
     Other useful firewall options are listed here:
 
-    | Parameter       | Default  |
-    |-----------------|----------|
+    | Parameter       | Default  | Description |
+    |-----------------|----------|-------------|
     | `allow_icmp`    | `true`   | Optional ICMP allowed to PiKVM. |
     | `allow_tcp`     | `[]`     | List of allowed TCP connections from the host to PiKVM. |
     | `allow_udp`     | `[]`     | List of allowed UDP connections from the host to PiKVM. |
