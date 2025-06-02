@@ -30,7 +30,7 @@ Specifically to PiKVM V2+. When combined with configuring a DNS server, FTP, or 
     |------------|------------|-------------|
     | `host_mac` | `<random>` | The MAC address of the host's network interface. |
     | `kvm_mac`  | `<random>` | The MAC address of the network interface on the PiKVM side called `usb0`. |
-    | `driver`   | `ecm`      | Protocol driver os the USB network. Different drivers are required for different OS. See below. |
+    | `driver`   | `ecm`      | Protocol driver of the USB network. Different drivers are required for different OS. See below. |
 
     | Driver | Compatibility with Operating Systems|
     |--------|-------------------------------------|
