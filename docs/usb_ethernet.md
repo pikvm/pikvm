@@ -32,13 +32,13 @@ Specifically to PiKVM V2+. When combined with configuring a DNS server, FTP, or 
     | `kvm_mac`  | `<random>` | The MAC address of the network interface on the PiKVM side called `usb0`. |
     | `driver`   | `ecm`      | Protocol driver of the USB network. Different drivers are required for different OS. See below. |
 
-    | Driver | Compatibility with Operating Systems|
-    |--------|-------------------------------------|
-    | ecm    | Linux; Mac OS |
-    | eem    | Linux |
-    | rndis5 | Windows XP...7 <sup>[1](#rndis5)</sup>; Linux > 2.6.13 |
-    | rndis  | Windows >= 7 <sup>[2](#rndis)</sup>; Linux > 2.6.13 |
-    | ncm    | Windows >= 10; Linux > 2.6.37; Mac OS |
+    | Driver   | Compatibility with Operating Systems|
+    |----------|-------------------------------------|
+    | `ecm`    | Linux; Mac OS |
+    | `eem`    | Linux |
+    | `rndis5` | Windows XP...7 <sup>[1](#rndis5)</sup>; Linux > 2.6.13 |
+    | `rndis`  | Windows >= 7 <sup>[2](#rndis)</sup>; Linux > 2.6.13 |
+    | `ncm`    | Windows >= 10; Linux > 2.6.37; Mac OS |
 
     <a name="rndis5">1</a>: Manual driver installation is required. [Download RNDIS 5 Windows](driver/win/pikvm-rndis5.inf)<br>
     <a name="rndis">2</a>: Automatic driver installation since KVMD 3.53.
@@ -82,9 +82,7 @@ The target host controlled by PiKVM will not be able to reach other hosts beyond
 If the full network access is required from the host through the USB-Ethernet feature (access all hosts PiKVM can access),
 additional settings are needed in `/etc/kvmd/override.yaml`.
 
-1. Run `echo "net.ipv4.ip_forward = 1" > /etc/sysctl.d/99-kvmd-extra.conf`.
-
-2. Add network interface to forward requests to (default gateway) by adding a line `forward_iface: <interface name>` under the `firewall` section.
+1. Add network interface to forward requests to (default gateway) by adding a line `forward_iface: <interface name>` under the `firewall` section.
     Typically it would be `eth0` if the built-in ethernet port is used::
 
     ```yaml
@@ -93,7 +91,7 @@ additional settings are needed in `/etc/kvmd/override.yaml`.
             forward_iface: eth0
     ```
 
-3. Add DNS server to provide host name resolution service.
+2. Add DNS server to provide host name resolution service.
     For example, adding `8.8.8.8` as DNS server requires addition of `dnsmasq` dhcp options.
     This can be done by adding following lines:
 
@@ -104,7 +102,7 @@ additional settings are needed in `/etc/kvmd/override.yaml`.
             - "--dhcp-option=6,8.8.8.8"
     ```
 
-4. Combining above two together::
+3. Combining above two together::
 
     ```yaml
     otgnet:
@@ -115,7 +113,7 @@ additional settings are needed in `/etc/kvmd/override.yaml`.
             - "--dhcp-option=6,8.8.8.8"
     ```
 
-5. To enable internet access for the target host, add the following to the otgnet configuration::
+4. To enable internet access for the target host, add the following to the otgnet configuration::
     
     ```yaml
      otgnet:
@@ -129,7 +127,7 @@ additional settings are needed in `/etc/kvmd/override.yaml`.
 
     See other parameters and command hooks in `kvmd -m`.
 
-6. Don't forget to `reboot`.
+5. Don't forget to `reboot`.
 
 ??? example "An example of what the config would look like for a host that can access PiKVM and has internet access:"
 
