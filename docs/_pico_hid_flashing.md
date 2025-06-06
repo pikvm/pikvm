@@ -13,3 +13,5 @@ To upload the firmware to Pico HID, you can use any computer with a USB port.
 5. The Pico board appears as a flash drive on your computer.
 6. Copy the `pico-hid.uf2` file to this flash drive.
 7. Safely eject the USB device.
+
+If you want to compile the firmware yourself, you can find the source code [here](https://github.com/pikvm/kvmd/tree/master/hid/pico).
