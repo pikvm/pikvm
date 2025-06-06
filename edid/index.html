@@ -1,0 +1,2627 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="KVM over IP on Raspberry Pi">
+      
+      
+        <meta name="author" content="Maxim Devaev">
+      
+      
+        <link rel="canonical" href="https://pikvm.github.io/pikvm/edid/">
+      
+      
+        <link rel="prev" href="../webrtc_config/">
+      
+      
+        <link rel="next" href="../pass/">
+      
+      
+      <link rel="icon" href="../_assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Tuning HDMI EDID - PiKVM Handbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=arial,+sans-serif:300,300i,400,400i,700,700i%7Cmonospace:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"arial, sans-serif";--md-code-font:"monospace"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../_assets/user.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#edid" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="PiKVM Handbook" class="md-header__button md-logo" aria-label="PiKVM Handbook" data-md-component="logo">
+      
+  <img src="../_assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PiKVM Handbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tuning HDMI EDID
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/pikvm/pikvm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pikvm/pikvm
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="PiKVM Handbook" class="md-nav__button md-logo" aria-label="PiKVM Handbook" data-md-component="logo">
+      
+  <img src="../_assets/logo.png" alt="logo">
+
+    </a>
+    PiKVM Handbook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/pikvm/pikvm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pikvm/pikvm
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Device guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Device guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PiKVM V4 Mini & Plus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PiKVM V3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../switch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PiKVM Switch
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIY PiKVM V2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIY PiKVM V1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cheatsheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cheat Sheet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Web UI Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configuring PiKVM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authentication & 2FA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQ & Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flashing_os/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Flashing OS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Networking
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Networking
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Internet access
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Internet access
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../port_forwarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Port forwarding
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reverse_proxy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reverse proxy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tailscale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tailscale VPN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloudflared/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloudflare Tunnel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wifi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setting up Wi-Fi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setting up 3G/4G/LTE modem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../letsencrypt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Let's Encrypt certificates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Video
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Video
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../video/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Video modes (WebRTC, Direct)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webrtc_config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebRTC configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Tuning HDMI EDID
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tuning HDMI EDID
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adopt-real-display-indentifiers-on-v4-plus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adopt real display indentifiers on V4 Plus
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restore-default-edid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore default EDID
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#force-1080p-by-default-on-pikvm-v0-v3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Force 1080p by default on PiKVM V0-V3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disable-1920x1200-on-pikvm-v4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disable 1920x1200 on PiKVM V4
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applying-a-custom-edid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applying a custom EDID
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Applying a custom EDID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-edids-for-v4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example EDIDs for V4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-edids-for-v1-v3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example EDIDs for V1-V3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applying-a-choosen-custom-edid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applying a choosen custom EDID
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#editing-edid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Editing EDID
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HDMI passthrough
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Peripheral devices
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Peripheral devices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../atx_board/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ATX board
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    USB configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usb_pass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    USB passthrough
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Audio / Microphone
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Keyboard & mouse
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Keyboard & mouse
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mouse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mouse modes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mouse_jiggler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mouse jiggler
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pico_hid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pico HID (USB, PS/2)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bluetooth_hid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bluetooth HID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../msd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mass Storage Drive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usb_ethernet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ethernet-over-USB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usb_serial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Serial-over-USB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GPIO (pins, relays, lamps, etc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Advanced usage
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced usage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../id/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PiKVM identification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../on_boot_config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    On-boot configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vnc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using VNC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multiport/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Multiport KVM-over-IP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wake-on-LAN the server
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ipmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    IPMI & Redfish integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pst/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Persistent storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prometheus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prometheus monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Development
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HTTP API reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../building_os/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building PiKVM OS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3d_printing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cases for 3D printing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Legacy
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Legacy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arduino_hid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arduino HID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../msd_legacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Big DVD images on old PiKVM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compliance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Compliance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adopt-real-display-indentifiers-on-v4-plus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adopt real display indentifiers on V4 Plus
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restore-default-edid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restore default EDID
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#force-1080p-by-default-on-pikvm-v0-v3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Force 1080p by default on PiKVM V0-V3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disable-1920x1200-on-pikvm-v4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disable 1920x1200 on PiKVM V4
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applying-a-custom-edid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applying a custom EDID
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Applying a custom EDID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-edids-for-v4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example EDIDs for V4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-edids-for-v1-v3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example EDIDs for V1-V3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applying-a-choosen-custom-edid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applying a choosen custom EDID
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#editing-edid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Editing EDID
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<div><h1 id="edid">EDID<a class="headerlink" href="#edid" title="Permanent link">¶</a></h1>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>This applies to <a href="../v3/">PiKVM V3</a>, <a href="../v4/">V4</a> and DIY based on CSI bridge.
+It is impossible to change the EDID for the HDMI-USB dongle.</p>
+</div>
+<p>The EDID provides an information about the video modes supported by the video capture device.
+In the case of PiKVM, this is an HDMI CSI bridge.
+Usually, you don't need to change this, since the default configuration is quite flexible,
+but sometimes, for example for strange UEFIs/BIOSes, this may be necessary
+(<a href="https://github.com/pikvm/pikvm/issues/78">a story</a>).</p>
+<hr>
+<h2 id="basics">Basics<a class="headerlink" href="#basics" title="Permanent link">¶</a></h2>
+<p>The EDID is stored on the PiKVM in the file <code>/etc/kvmd/tc358743-edid.hex</code> in HEX format.
+When booting PiKVM OS, it is used by <code>kvmd-tc358743.service</code> and loaded into the video capture chip.</p>
+<p>If you replace the EDID in this file, the EDID can be applied manually without rebooting
+using the command <code>kvmd-edidconf --apply</code>.</p>
+<p>If you just want to change the monitor's identification, we don't recommend that you change the entire EDID.
+Just use <code>kvmd-edidconf</code> and its built-in EDID changing options.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Windows caches drivers and registry settings so changing the monitor name is not enough,
+you will also need to change the product ID and/or the serial number along with the monitor name:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">[root@pikvm ~]# </span>kvmd-edidconf<span class="w"> </span>--set-monitor-name<span class="o">=</span>TOSHIBA<span class="w"> </span>--set-mfc-id<span class="o">=</span>TTP<span class="w"> </span>--set-product-id<span class="o">=</span><span class="m">34953</span><span class="w"> </span>--set-serial<span class="o">=</span><span class="m">2290649089</span><span class="w"> </span>--apply
+</code></pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Quick IDs changing on PiKVM V4 Plus</p>
+<p>PiKVM V4 Plus has a simple way read and adopt display identifiers like model and serial number
+from your physical display. See <a href="./#adopt-real-display-indentifiers-on-v4-plus">here</a> for details.</p>
+</div>
+<p>Run <code>kvmd-edidconf</code> on PiKVM:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">[root@pikvm ~]# </span>kvmd-edidconf
+<span class="go">Manufacturer ID: LNX</span>
+<span class="go">Product ID:      0x7773 (30579)</span>
+<span class="go">Serial number:   0x01010101 (16843009)</span>
+<span class="go">Monitor name:    PiKVM V4 Plus</span>
+<span class="go">Monitor serial:  CAFEBABE</span>
+<span class="go">Audio:           yes</span>
+</code></pre></div>
+<p>The fields have obvious names and purposes. Note the two similar fields <code>Serial number</code> and <code>Monitor serial</code>.
+The first has a numeric value, and the second is ASCII. If you are using a custom EDID from some real display, some fields may be missing.</p>
+<p>To change the values of the EDID fields, use the <code>kvmd-edidconf</code> with options, a complete list is available in <code>kvmd-edidconfi --help</code>.</p>
+<p>Here the small example of changing all available fields from the previous listing:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">[root@pikvm ~]# </span>rw
+<span class="gp">[root@pikvm ~]# </span>kvmd-edidconf<span class="w"> </span>--set-mfc-id<span class="o">=</span>TTP<span class="w"> </span>--set-product-id<span class="o">=</span>0x5B81<span class="w"> </span>--set-serial<span class="o">=</span>0x8DE11B79<span class="w"> </span>--set-monitor-name<span class="o">=</span>TOSHIBA<span class="w"> </span>--set-monitor-serial<span class="o">=</span>ABCD1234<span class="w"> </span>--apply
+<span class="go">Manufacturer ID: TTP</span>
+<span class="go">Product ID:      0x5B81 (23425)</span>
+<span class="go">Serial number:   0x8DE11B79 (2380340089)</span>
+<span class="go">Monitor name:    TOSHIBA</span>
+<span class="go">Monitor serial:  ABCD1234</span>
+<span class="go">Audio:           yes</span>
+<span class="go">...</span>
+<span class="gp">[root@pikvm ~]# </span>ro
+</code></pre></div>
+<p>The full list of manufacturer IDs is available <a href="https://uefi.org/pnp_id_list">here</a>.</p>
+<p>Typical examples of working with EDID and the full cycle of using custom EDID will be shown below.</p>
+<hr>
+<h2 id="adopt-real-display-indentifiers-on-v4-plus">Adopt real display indentifiers on V4 Plus<a class="headerlink" href="#adopt-real-display-indentifiers-on-v4-plus" title="Permanent link">¶</a></h2>
+<p>PiKVM V4 Plus has a simple way read and adopt display identifiers like model and serial number
+from the physical monitor connected to <code>OUT2</code> port (it's also used for <a href="../pass/">HDMI passthrough</a>).
+This way, the target host will recognize PiKVM as your display.</p>
+<p>To adopt display identifiers, connect the display to <code>OUT2</code> port and run these commands:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">[root@pikvm ~]# </span>rw
+<span class="gp">[root@pikvm ~]# </span>kvmd-edidconf<span class="w"> </span>--import-display-ids<span class="w"> </span>--apply
+<span class="gp">[root@pikvm ~]# </span>ro
+</code></pre></div>
+<p>Now the display can be unplugged. PiKVM will remember the new settings.</p>
+<hr>
+<h2 id="restore-default-edid">Restore default EDID<a class="headerlink" href="#restore-default-edid" title="Permanent link">¶</a></h2>
+<p>If you need to restore the default EDID you can easily do this with <code>kvmd-edidconf</code>, for example:</p>
+<p></p><div class="highlight"><pre><span></span><code><span class="gp">[root@pikvm ~]# </span>rw
+<span class="gp">[root@pikvm ~]# </span>kvmd-edidconf<span class="w"> </span>--import-preset<span class="o">=</span>v4plus<span class="w"> </span>--apply
+<span class="gp">[root@pikvm ~]# </span>ro
+</code></pre></div>
+Available options: <code>v0</code>, <code>v1</code>, <code>v2</code>, <code>v3</code>, <code>v4mini</code> and <code>v4plus</code>.
+<p>Also defaults edid can be found locally on your PiKVM: <code>/usr/share/kvmd/configs.default/kvmd/edid</code>,
+or in the <a href="https://github.com/pikvm/kvmd/blob/master/configs/kvmd/edid">kvmd repo</a>.</p>
+<hr>
+<h2 id="force-1080p-by-default-on-pikvm-v0-v3">Force 1080p by default on PiKVM V0-V3<a class="headerlink" href="#force-1080p-by-default-on-pikvm-v0-v3" title="Permanent link">¶</a></h2>
+<p>PiKVM V3 (or DIY V0-V2) has a hardware limit of 50Hz for 1080p mode, and this is a less common frequency than 60Hz.
+Therefore, on V3, the default mode is 720p. Some OS (like Proxmox) may not work well with 720p,
+so you can force 1080p resolution by default:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">[root@pikvm ~]# </span>rw
+<span class="gp">[root@pikvm ~]# </span>kvmd-edidconf<span class="w"> </span>--import-preset<span class="o">=</span>v3.1080p-by-default<span class="w"> </span>--apply<span class="w">  </span><span class="c1"># Or, for example, v1.1080p-by-default</span>
+<span class="gp">[root@pikvm ~]# </span>ro
+</code></pre></div>
+<hr>
+<h2 id="disable-1920x1200-on-pikvm-v4">Disable 1920x1200 on PiKVM V4<a class="headerlink" href="#disable-1920x1200-on-pikvm-v4" title="Permanent link">¶</a></h2>
+<p>PiKVM V4 supports the advanced capture mode with 1920x1200. If it bothers you
+(for example, if you use a physical monitor 1920x1080 with <a href="../pass/">video passthrough</a>),
+you can easily disable it and use only 1920x1080:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">[root@pikvm ~]# </span>rw
+<span class="gp">[root@pikvm ~]# </span>kvmd-edidconf<span class="w"> </span>--import-preset<span class="o">=</span>v4plus.no-1920x1200<span class="w"> </span>--apply<span class="w">  </span><span class="c1"># Or v4mini.no-1920x1200</span>
+<span class="gp">[root@pikvm ~]# </span>ro
+</code></pre></div>
+<hr>
+<h2 id="applying-a-custom-edid">Applying a custom EDID<a class="headerlink" href="#applying-a-custom-edid" title="Permanent link">¶</a></h2>
+<p>PiKVM is able to emulate a physical display with a specific EDID.
+You can find EDID examples in the <a href="https://github.com/linuxhw/EDID">community database</a>
+and then use it on PiKVM.</p>
+<p>At the same time, you should pay attention to the hardware capabilities of PiKVM
+and the EDID capabilities that you use. For example, if EDID reports 8K support,
+then this obviously won't work: your host will try to send an 8K signal,
+while PiKVM can process no more than 1080p.</p>
+<ul>
+<li>PiKVM V1-V3: The maximum resolution is 1920x1080 at 50Hz.</li>
+<li>PiKVM V4: The maximum is 1920x1200 at 60Hz.</li>
+</ul>
+<p>In the case of the <a href="../v4/">PiKVM V4</a>, almost any EDID for 1080p monitors will work.
+All EDIDs that are suitable for <a href="../v3/">PiKVM V3</a> will work too.</p>
+<h4 id="example-edids-for-v4">Example EDIDs for V4<a class="headerlink" href="#example-edids-for-v4" title="Permanent link">¶</a></h4>
+<details class="example">
+<summary>Acer B246WL, 1920x1200, with audio</summary>
+<p>Taken <a href="https://github.com/linuxhw/EDID/blob/master/Digital/Acer/ACR0565/CCF78B30FE61">here</a>, as described above.
+</p><div class="highlight"><pre><span></span><code>00FFFFFFFFFFFF00047265058A3F6101
+101E0104A53420783FC125A8554EA026
+0D5054BFEF80714F8140818081C08100
+8B009500B300283C80A070B023403020
+360006442100001A000000FD00304C57
+5716010A202020202020000000FC0042
+323436574C0A202020202020000000FF
+0054384E4545303033383532320A01F8
+02031CF14F9002030405060701111213
+1415161F2309070783010000011D8018
+711C1620582C250006442100009E011D
+007251D01E206E28550006442100001E
+8C0AD08A20E02D10103E960006442100
+0018C344806E70B028401720A8040644
+2100001E000000000000000000000000
+00000000000000000000000000000096
+</code></pre></div>
+</details>
+<details class="example">
+<summary>ASUS PA248QV, 1920x1200, with audio</summary>
+<p>Taken <a href="https://github.com/linuxhw/EDID/blob/master/Digital/ASUS/AUS2487/2B473481CAE6">here</a>, as described above.
+</p><div class="highlight"><pre><span></span><code>00FFFFFFFFFFFF0006B3872401010101
+021F010380342078EA6DB5A7564EA025
+0D5054BF6F00714F8180814081C0A940
+9500B300D1C0283C80A070B023403020
+360006442100001A000000FD00314B1E
+5F19000A202020202020000000FC0050
+4132343851560A2020202020000000FF
+004D314C4D51533035323135370A014D
+02032AF14B900504030201111213141F
+230907078301000065030C001000681A
+00000101314BE6E2006A023A80187138
+2D40582C450006442100001ECD5F80B0
+72B0374088D0360006442100001C011D
+007251D01E206E28550006442100001E
+8C0AD08A20E02D10103E960006442100
+001800000000000000000000000000DC
+</code></pre></div>
+</details>
+<details class="example">
+<summary>DELL D2721H to avoid black screen on some HDMI splitters, 1920x1080, no audio</summary>
+<p>Taken <a href="https://github.com/linuxhw/EDID/blob/master/Digital/Dell/DEL2013/EEE824E681BF">here</a>, as described above.
+</p><div class="highlight"><pre><span></span><code>00FFFFFFFFFFFF0010AC132045393639
+201E0103803C22782ACD25A3574B9F27
+0D5054A54B00714F8180A9C0D1C00101
+010101010101023A801871382D40582C
+450056502100001E000000FF00335335
+475132330A2020202020000000FC0044
+454C4C204432373231480A20000000FD
+00384C1E5311000A2020202020200181
+02031AB14F9005040302071601061112
+1513141F65030C001000023A80187138
+2D40582C450056502100001E011D8018
+711C1620582C250056502100009E011D
+007251D01E206E28550056502100001E
+8C0AD08A20E02D10103E960056502100
+00180000000000000000000000000000
+0000000000000000000000000000004F
+</code></pre></div>
+</details>
+<h4 id="example-edids-for-v1-v3">Example EDIDs for V1-V3<a class="headerlink" href="#example-edids-for-v1-v3" title="Permanent link">¶</a></h4>
+<details class="example">
+<summary>1280x1024 as preferred. Useful for Gigabyte GA-H77-DS3H</summary>
+<div class="highlight"><pre><span></span><code>00FFFFFFFFFFFF005262888800888888
+1C150103800000780AEE91A3544C9926
+0F505425400001000100010001000100
+010001010101D51B0050500019400820
+B80080001000001EEC2C80A070381A40
+3020350040442100001E000000FC0050
+492D4B564D20566964656F0A000000FD
+00323D0F2E0F0000000000000000014D
+02030400DE0D20A03058122030203400
+F0B400000018E01500A0400016303020
+3400000000000018B41400A050D01120
+3020350080D810000018AB22A0A05084
+1A3030203600B00E1100001800000000
+00000000000000000000000000000000
+00000000000000000000000000000000
+00000000000000000000000000000045
+</code></pre></div>
+</details>
+<details class="example">
+<summary>1920x1080 as preferred. Useful for motherboards such as <a href="https://github.com/pikvm/pikvm/issues/715">ASRock H670 PG Riptide</a>, Gigabyte GA-H77-DS3H, MSI series such as B550M, B660M, Z690-A and X570. Also the Intel NUC.</summary>
+<div class="highlight"><pre><span></span><code>00FFFFFFFFFFFF005262888800888888
+1C150103800000780AEE91A3544C9926
+0F505425400001000100010001000100
+010001010101D32C80A070381A403020
+350040442100001E7E1D00A050001940
+3020370080001000001E000000FC0050
+492D4B564D20566964656F0A000000FD
+00323D0F2E0F000000000000000001C4
+02030400DE0D20A03058122030203400
+F0B400000018E01500A0400016303020
+3400000000000018B41400A050D01120
+3020350080D810000018AB22A0A05084
+1A3030203600B00E1100001800000000
+00000000000000000000000000000000
+00000000000000000000000000000000
+00000000000000000000000000000045
+</code></pre></div>
+</details>
+<details class="example">
+<summary>1280x1024 as preferred, disabled 1080p at all. This may be necessary in extremely rare cases if the BIOS is completely buggy. In the future, we will provide a way to dynamically switch EDID</summary>
+<div class="highlight"><pre><span></span><code>00FFFFFFFFFFFF005262888800888888
+1C150103800000780AEE91A3544C9926
+0F50542FCF0001000100010001000100
+0100010101018C2300A050001E403020
+370080001000001E000000FC0050492D
+4B564D20566964656F0A000000FD0032
+3D0F2E0F000000000000000000000010
+0000000000000000000000000000016B
+02030400DE0D20A03058122030203400
+F0B400000018E01500A0400016303020
+3400000000000018B41400A050D01120
+3020350080D810000018AB22A0A05084
+1A3030203600B00E1100001800000000
+00000000000000000000000000000000
+00000000000000000000000000000000
+00000000000000000000000000000045
+</code></pre></div>
+</details>
+<h4 id="applying-a-choosen-custom-edid">Applying a choosen custom EDID<a class="headerlink" href="#applying-a-choosen-custom-edid" title="Permanent link">¶</a></h4>
+<p>To apply the selected EDID, follow these steps:</p>
+<ol>
+<li>
+<p>Switch filesystem to RW-mode:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">[root@pikvm ~]# </span>rw
+</code></pre></div>
+</li>
+<li>
+<p>Open the file <code>/etc/kvmd/tc358743-edid.hex</code> with any text editor, for example, with Nano:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">[root@pikvm ~]# </span>nano<span class="w"> </span>/etc/kvmd/tc358743-edid.hex
+</code></pre></div>
+</li>
+<li>
+<p>Replace the HEX data with the new, save and close the editor.</p>
+</li>
+<li>
+<p>Apply the EDID:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">[root@pikvm ~]# </span>kvmd-edidconf<span class="w"> </span>--apply
+</code></pre></div>
+</li>
+<li>
+<p>Sometimes it may be necessary to reboot the target host. Check the OS on the host, UEFI/BIOS.
+    If everything works, then your goal has been achieved and proceed to the last step.
+    If something went wrong, you can always undo these changes and <a href="#restore-default-edid">restore the default EDID</a>.</p>
+</li>
+<li>
+<p>Don't forget to switch filesystem to the RO-mode:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">[root@pikvm ~]# </span>ro
+</code></pre></div>
+</li>
+</ol>
+<hr>
+<h2 id="editing-edid">Editing EDID<a class="headerlink" href="#editing-edid" title="Permanent link">¶</a></h2>
+<p>To edit the EDID, it is best to use third-party utilities, such as the recommended advanced
+<a href="https://www.analogway.com/emea/products/software-tools/aw-edid-editor">AW EDID Editor</a> for Windows (it's working great in wine)
+or <a href="https://sourceforge.net/projects/wxedid">wxEDID</a>. Both editors work with the binary EDID format, but you can easily import and export it
+to PiKVM using the <code>kvmd-edidconf</code> utility.</p>
+<p>So, to tune EDID on PiKVM, use the following steps:</p>
+<ol>
+<li>
+<p>Switch filesystem to RW-mode:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">[root@pikvm ~]# </span>rw
+</code></pre></div>
+</li>
+<li>
+<p>Export the system EDID to the binary file <code>myedid.bin</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>kvmd-edidconf<span class="w"> </span>--export-bin<span class="o">=</span>/root/myedid.bin
+</code></pre></div>
+</li>
+<li>
+<p>Copy this file to your PC using SCP, Putty or something like that.
+    Open this binary file in the EDID editor and change the necessary parameters.
+    Save your changes and copy the binary file back to PiKVM.</p>
+</li>
+<li>
+<p>Convert the binary file to the HEX and test it:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">[root@pikvm ~]# </span>kvmd-edidconf<span class="w"> </span>--import<span class="o">=</span>/root/myedid.bin<span class="w"> </span>--apply
+</code></pre></div>
+</li>
+<li>
+<p>Sometimes it may be necessary to reboot the target host. Check the OS on the host, UEFI/BIOS.
+    If everything works, then your goal has been achieved and proceed to the last step.
+    If something went wrong, you can always undo these changes and <a href="#restore-default-edid">restore the default EDID</a>.</p>
+</li>
+<li>
+<p>Don't forget to switch filesystem to the RO-mode:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">[root@pikvm ~]# </span>ro
+</code></pre></div>
+</li>
+</ol></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2018-2025 Maxim Devaev
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "navigation.expand", "search.highlight", "search.share", "search.suggest"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../_assets/add_paragraphs.js"></script>
+      
+        <script src="../_assets/scroll_to_summary.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": false, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

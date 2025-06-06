@@ -1,0 +1,2631 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="KVM over IP on Raspberry Pi">
+      
+      
+        <meta name="author" content="Maxim Devaev">
+      
+      
+        <link rel="canonical" href="https://pikvm.github.io/pikvm/letsencrypt/">
+      
+      
+        <link rel="prev" href="../modem/">
+      
+      
+        <link rel="next" href="../video/">
+      
+      
+      <link rel="icon" href="../_assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Let's Encrypt certificates - PiKVM Handbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=arial,+sans-serif:300,300i,400,400i,700,700i%7Cmonospace:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"arial, sans-serif";--md-code-font:"monospace"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../_assets/user.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lets-encrypt-certificates" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="PiKVM Handbook" class="md-header__button md-logo" aria-label="PiKVM Handbook" data-md-component="logo">
+      
+  <img src="../_assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PiKVM Handbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Let's Encrypt certificates
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/pikvm/pikvm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pikvm/pikvm
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="PiKVM Handbook" class="md-nav__button md-logo" aria-label="PiKVM Handbook" data-md-component="logo">
+      
+  <img src="../_assets/logo.png" alt="logo">
+
+    </a>
+    PiKVM Handbook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/pikvm/pikvm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pikvm/pikvm
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Device guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Device guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PiKVM V4 Mini & Plus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PiKVM V3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../switch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PiKVM Switch
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIY PiKVM V2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIY PiKVM V1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cheatsheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cheat Sheet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Web UI Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configuring PiKVM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authentication & 2FA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQ & Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flashing_os/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Flashing OS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Networking
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Networking
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Internet access
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Internet access
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../port_forwarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Port forwarding
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reverse_proxy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reverse proxy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tailscale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tailscale VPN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloudflared/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloudflare Tunnel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wifi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setting up Wi-Fi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setting up 3G/4G/LTE modem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Let's Encrypt certificates
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Let's Encrypt certificates
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloudflare-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloudflare DNS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route53-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Route53 DNS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acme-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACME DNS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ACME DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assumptions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-in-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Not in Scope
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instructions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wireguard-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wireguard proxy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wireguard proxy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assumptions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assumptions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instructions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instructions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Video
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Video
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../video/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Video modes (WebRTC, Direct)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webrtc_config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebRTC configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tuning HDMI EDID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HDMI passthrough
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Peripheral devices
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Peripheral devices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../atx_board/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ATX board
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    USB configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usb_pass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    USB passthrough
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Audio / Microphone
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Keyboard & mouse
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Keyboard & mouse
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mouse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mouse modes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mouse_jiggler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mouse jiggler
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pico_hid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pico HID (USB, PS/2)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bluetooth_hid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bluetooth HID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../msd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mass Storage Drive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usb_ethernet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ethernet-over-USB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usb_serial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Serial-over-USB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GPIO (pins, relays, lamps, etc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Advanced usage
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced usage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../id/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PiKVM identification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../on_boot_config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    On-boot configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vnc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using VNC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multiport/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Multiport KVM-over-IP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wake-on-LAN the server
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ipmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    IPMI & Redfish integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pst/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Persistent storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prometheus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prometheus monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Development
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HTTP API reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../building_os/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building PiKVM OS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3d_printing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cases for 3D printing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Legacy
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Legacy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arduino_hid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arduino HID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../msd_legacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Big DVD images on old PiKVM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compliance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Compliance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloudflare-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloudflare DNS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route53-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Route53 DNS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acme-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACME DNS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ACME DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assumptions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-in-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Not in Scope
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instructions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wireguard-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wireguard proxy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wireguard proxy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assumptions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assumptions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instructions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instructions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<div><h1 id="lets-encrypt-certificates">Let's Encrypt certificates<a class="headerlink" href="#lets-encrypt-certificates" title="Permanent link">¶</a></h1>
+<p>PiKVM uses self-signed SSL certificates out of the box. If you have a domain name, you can use Let's Encrypt certificates.</p>
+<p>Usually Let's Encrypt certificates are issued and updated automatically using Certbot, however, since PiKVM uses a read-only
+file system, special tools around Certbot are required to work with certificates. KVMD 3.117 provides them.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This feature is available on images as old as 2022.06.19 since it requires <a href="../pst/">PST storage partition on SD card</a>.
+Ports 80+443 need to be opened if you are port forwarding for this to work properly.</p>
+</div>
+<hr>
+<h2 id="basic-setup">Basic setup<a class="headerlink" href="#basic-setup" title="Permanent link">¶</a></h2>
+<ol>
+<li>
+<p>Update the OS and make sure that you are using a new image with <a href="../pst/">PST storage</a>.</p>
+<details class="note">
+<summary>Updating PiKVM OS</summary>
+<p>To update, run following commands under the <code>root</code> user:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">[root@pikvm ~]# </span>pikvm-update
+</code></pre></div>
+<p>If you encounter an error like:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">[root@pikvm ~]# </span>pikvm-update
+<span class="go">bash: pikvm-update: command not found</span>
+</code></pre></div>
+<p>It's most likely you have an old OS release. You can update the OS as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">[root@pikvm ~]# </span>rw
+<span class="gp">[root@pikvm ~]# </span>pacman<span class="w"> </span>-Syy
+<span class="gp">[root@pikvm ~]# </span>pacman<span class="w"> </span>-S<span class="w"> </span>pikvm-os-updater
+<span class="gp">[root@pikvm ~]# </span>pikvm-update
+</code></pre></div>
+<p>Next time you will be able to use the usual method with <code>pikvm-update</code>.</p>
+</details>
+<div class="highlight"><pre><span></span><code># kvmd-pstrun -- true
+</code></pre></div>
+<p>If the storage is not available, you need to <a href="../flashing_os/">reflash the OS image</a> to the latest one from our official website.</p>
+</li>
+<li>
+<p>Switch filesystem to RW and obtain the certificate (for example, <code>pikvm.example.com</code>. The method depends on the network configuration. In the simplest case, if PiKVM is open for access from the Internet, it is recommended to use the webroot. Another examples will be described below.</p>
+<div class="highlight"><pre><span></span><code># rw
+# kvmd-certbot certonly_webroot --agree-tos -n --email user@example.com -d pikvm.example.com
+</code></pre></div>
+</li>
+<li>
+<p>Install the certificate for KVMD-Nginx and (optionally) <a href="../vnc/">KVMD-VNC</a>. Running services will be restarted/reloaded automatically. Switch filesystem to RO.</p>
+<div class="highlight"><pre><span></span><code># kvmd-certbot install_nginx pikvm.example.com
+# kvmd-certbot install_vnc pikvm.example.com
+# ro
+</code></pre></div>
+</li>
+<li>
+<p>Check the renewal immediately, just for testing:</p>
+<div class="highlight"><pre><span></span><code># kvmd-certbot renew --force-renewal
+</code></pre></div>
+</li>
+<li>
+<p>Enable automatic certificate renewal:</p>
+<div class="highlight"><pre><span></span><code># rw
+# systemctl enable --now kvmd-certbot.timer
+# ro
+</code></pre></div>
+</li>
+</ol>
+<hr>
+<h2 id="cloudflare-dns">Cloudflare DNS<a class="headerlink" href="#cloudflare-dns" title="Permanent link">¶</a></h2>
+<p>This example shows that PiKVM may not be accessible from the internet, but you can still get a certificate if you use Cloudflare DNS.</p>
+<ol>
+<li>
+<p>Switch filesystem to RW and install the Cloudflare DNS plugin:</p>
+<div class="highlight"><pre><span></span><code># rw
+# pacman -S certbot-dns-cloudflare
+</code></pre></div>
+</li>
+<li>
+<p>Prepare the environment for the DNS plugin (place the auth data):</p>
+<p></p><div class="highlight"><pre><span></span><code># kvmd-pstrun -- mkdir -p /var/lib/kvmd/pst/data/certbot/runroot
+# kvmd-pstrun -- nano /var/lib/kvmd/pst/data/certbot/runroot/.cloudflare.auth
+# kvmd-pstrun -- chmod 600 /var/lib/kvmd/pst/data/certbot/runroot/.cloudflare.auth
+# kvmd-pstrun -- chown kvmd-certbot: /var/lib/kvmd/pst/data/certbot/runroot/.cloudflare.auth
+</code></pre></div>
+  See certbot-dns-cloudflare's doc <a href="https://certbot-dns-cloudflare.readthedocs.io/en/stable/">here</a> about the content of <code>.cloudflare.auth</code>.
+</li>
+<li>
+<p>Obtain the certificate:</p>
+<div class="highlight"><pre><span></span><code># kvmd-certbot certonly \
+   --dns-cloudflare \
+   --dns-cloudflare-propagation-seconds 60 \
+   --dns-cloudflare-credentials /var/lib/kvmd/pst/data/certbot/runroot/.cloudflare.auth \
+   --agree-tos \
+   -n \
+   --email user@example.com \
+   -d pikvm.example.com
+</code></pre></div>
+</li>
+<li>
+<p>Next follow the basic guide starts at step 3.</p>
+</li>
+</ol>
+<hr>
+<h2 id="route53-dns">Route53 DNS<a class="headerlink" href="#route53-dns" title="Permanent link">¶</a></h2>
+<p>This example shows that PiKVM may not be accessible from the internet, but you can still get a certificate if you use AWS Route53 DNS. Make sure you are running an image newer than 2022.06.20 and kvmd version 3.119-1 or greater.</p>
+<ol>
+<li>
+<p>Switch filesystem to RW and install the Route53 DNS plugin:</p>
+<div class="highlight"><pre><span></span><code># rw
+# pacman -S certbot-dns-route53
+</code></pre></div>
+</li>
+<li>
+<p>Configure Your AWS User
+      For the certbot_dns_route53 plugin to work it needs to be able to connect to AWS using an access key with the correct permissions.</p>
+<p>To do this securely you’ll want to create a new AWS user that only has the necessary permissions it needs to work.</p>
+<p>You can find instructions for creating a user <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console">here</a>. The basics of it is you’ll want a user with Programmatic access (not console), add it to a group (I created a new one just for this user and any future certbot users I might need).</p>
+<p>The user will need specific permissions that are required to allow the certbot plugin to create the necessary CNAME records. These can be added by manually selecting them from a very long list or you can use the json view to give it the following permissions.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
+<span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"route53:ListHostedZones"</span><span class="p">,</span><span class="w"> </span><span class="s2">"route53:GetChange"</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"*"</span><span class="p">]</span>
+<span class="w">   </span><span class="p">},</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"route53:ChangeResourceRecordSets"</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"arn:aws:route53:::hostedzone/YOURHOSTEDZONEID"</span><span class="p">]</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Make sure you replace YOURHOSTEDZONEID with the instance ID of your hosted zone.</p>
+<p>Once the user is created don’t forget to download and save your access key and secret access key (somewhere secure, these are as sensitive as your passwords).</p>
+</li>
+<li>
+<p>Setup credentials:</p>
+<p>We now need to put the AWS credentials on the PiKVM so the certbot can use them.</p>
+<div class="highlight"><pre><span></span><code># kvmd-pstrun -- mkdir -p /var/lib/kvmd/pst/data/certbot/runroot
+</code></pre></div>
+<p>Copy and paste your AWS credentials into the nano editor and save the file.</p>
+<div class="highlight"><pre><span></span><code># kvmd-pstrun -- nano /var/lib/kvmd/pst/data/certbot/runroot/.route53.auth
+</code></pre></div>
+<p>Here is an example .route53.auth file. Replace the placeholders with the access key and secret access key that you just saved from AWS and fill them in.</p>
+<div class="highlight"><pre><span></span><code><span class="k">[default]</span>
+<span class="na">aws_access_key_id</span><span class="o">=</span><span class="s">XXXXXX</span>
+<span class="na">aws_secret_access_key</span><span class="o">=</span><span class="s">XXXX/XXXXX</span>
+</code></pre></div>
+<p>Update permissions:</p>
+<div class="highlight"><pre><span></span><code># kvmd-pstrun -- chmod 600 /var/lib/kvmd/pst/data/certbot/runroot/.route53.auth
+# kvmd-pstrun -- chown kvmd-certbot: /var/lib/kvmd/pst/data/certbot/runroot/.route53.auth
+</code></pre></div>
+</li>
+<li>
+<p>Obtain the certificate:</p>
+<div class="highlight"><pre><span></span><code># export AWS_SHARED_CREDENTIALS_FILE="/var/lib/kvmd/pst/data/certbot/runroot/.route53.auth"
+# kvmd-certbot certonly \
+   --dns-route53 \
+   --agree-tos \
+   -n \
+   --email user@example.com \
+   -d pikvm.example.com
+</code></pre></div>
+</li>
+<li>
+<p>Enable automatic certificate renewal:</p>
+<p>Create the file: <code>/etc/conf.d/kvmd-certbot</code> with the following contents so the renewall service can find the authentication file containing the AWS credentials:</p>
+<div class="highlight"><pre><span></span><code>AWS_SHARED_CREDENTIALS_FILE="/var/lib/kvmd/pst/data/certbot/runroot/.route53.auth"
+</code></pre></div>
+<p>Now enable the renewal service:</p>
+<div class="highlight"><pre><span></span><code># systemctl enable --now kvmd-certbot.timer
+</code></pre></div>
+</li>
+</ol>
+<hr>
+<h2 id="acme-dns">ACME DNS<a class="headerlink" href="#acme-dns" title="Permanent link">¶</a></h2>
+<p><a href="https://github.com/joohoi/acme-dns">ACME DNS</a> is a <em>"Limited DNS server with RESTful HTTP API to handle ACME DNS challenges easily and securely."</em> The <a href="https://github.com/acme-dns/acme-dns-client">acme-dns-client</a> works, in conjunction, with Certbot (<strong><code>kvmd-certbot</code></strong>) to enable <strong><code>DNS-01</code></strong> challenge support via ACME DNS.</p>
+<p>These instructions are for how to install and use the <strong><code>acme-dns-client</code></strong> with ACME DNS for PiKVM.</p>
+<h3 id="assumptions">Assumptions<a class="headerlink" href="#assumptions" title="Permanent link">¶</a></h3>
+<ul>
+<li>ACME DNS is already set up and functioning in the environment</li>
+<li>ACME DNS Server is <strong><code>auth.example.org</code></strong></li>
+<li>PiKVM Fully Qualified Domain Name (FQDN) is <strong><code>pikvm.example.org</code></strong></li>
+<li>PiKVM is running on a supported Raspberry Pi using the <a href="https://github.com/pikvm/os">PiKVM OS</a> (which is 32-bit as of the writing of this documentation)</li>
+<li>All configuration examples below are as user <strong><code>root</code></strong> via a terminal session to PiKVM</li>
+</ul>
+<h3 id="not-in-scope">Not in Scope<a class="headerlink" href="#not-in-scope" title="Permanent link">¶</a></h3>
+<ul>
+<li>Installation and Setup of ACME DNS Server</li>
+</ul>
+<h3 id="instructions">Instructions<a class="headerlink" href="#instructions" title="Permanent link">¶</a></h3>
+<ol>
+<li>Ensure that Step 1 from <a href="https://docs.pikvm.org/letsencrypt/#basic-setup">Basic Setup</a> has been completed</li>
+<li>Visit the <a href="https://github.com/acme-dns/acme-dns-client/releases">Releases</a> page to get the download URL for the latest <strong><code>acme-dns-client</code></strong> release (<em>PiKVM OS</em> is 32-bit, which is <strong><code>linux_armv6</code></strong>)</li>
+<li>
+<p>Install <strong><code>acme-dns-client</code></strong></p>
+<p>The <strong><code>acme-dns-client</code></strong> is not distributed by <strong><code>pacman</code></strong> and is a manual installation. The steps below are for:</p>
+<ul>
+<li>Creating a folder for <strong><code>acme-dns-client</code></strong></li>
+<li>Downloading and extracting the <strong><code>acme-dns-client</code></strong> TAR from Github</li>
+<li>Moving the <strong><code>acme-dns-client</code></strong> binary to the created folder</li>
+<li>Cleaning up files from the download</li>
+<li>Creating the necessary persistent symbolic link to allow <strong><code>acme-dns-client</code></strong> to be ran</li>
+<li>Initialize <strong><code>acme-dns-client</code></strong></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure to replace the URL below with the one gathered from Step 1.<br>
+As of the writing of this documentation:<br>
+- The latest (and demonstrated) version is <strong>v0.3</strong><br>
+- (Demonstrated) Platform is <strong><code>linux-armv6</code></strong>  </p>
+</div>
+<div class="highlight"><pre><span></span><code># mkdir /etc/acmedns
+# curl -LO https://github.com/acme-dns/acme-dns-client/releases/download/v0.3/acme-dns-client_0.3_linux_armv6.tar.gz
+# tar -zxvf acme-dns-client_0.3_linux_armv6.tar.gz
+# mv acme-dns-client /etc/acmedns/acme-dns-client
+# ln -sf /etc/acmedns/acme-dns-client /usr/local/bin/acme-dns-client
+# rm LICENSE README.md acme-dns-client_0.3_linux_armv6.tar.gz
+# acme-dns-client
+</code></pre></div>
+</li>
+<li>
+<p>Register <strong><code>acme-dns-client</code></strong> with ACME DNS  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is interactive, follow instructions for creating and verifying the appropriate <code>CNAME</code> record.  </p>
+</div>
+<div class="highlight"><pre><span></span><code># acme-dns-client register -d pikvm.example.org -s http://auth.example.org
+</code></pre></div>
+<p>Once registration is complete ownership of <code>clientstorage.json</code> must be changed to <code>kvmd-certbot</code>.</p>
+<div class="highlight"><pre><span></span><code># chown kvmd-certbot:kvmd-certbot /etc/acmedns/clientstorage.json
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If using <code>acme-dns-client</code> on an internal/private domain with an ACME compatible Certificate Authority do not forget to add <code>-ns &lt;dns-server-ip&gt;:&lt;dns-server-port&gt;</code> to <code>acme-dns-client register</code></p>
+</div>
+</li>
+<li>
+<p>Register Certbot</p>
+<div class="highlight"><pre><span></span><code># kvmd-certbot register
+</code></pre></div>
+</li>
+<li>
+<p>Request Certificate via Certbot</p>
+<div class="highlight"><pre><span></span><code># kvmd-certbot certonly --manual --preferred-challenges dns --manual-auth-hook 'acme-dns-client' -d pikvm.example.org
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If using an ACME compatible Certificate Authority (other than Let's Encrypt) do not forget to add <code>--server https://ca.example.org/acme/acme/directory</code> to <code>kvmd-certbot</code></p>
+</div>
+</li>
+<li>
+<p>Follow steps 3 through 5 under <a href="https://docs.pikvm.org/letsencrypt/#basic-setup">Basic Setup</a> to complete setup and renewal of certificates</p>
+</li>
+</ol>
+<h2 id="wireguard-proxy">Wireguard proxy<a class="headerlink" href="#wireguard-proxy" title="Permanent link">¶</a></h2>
+<p>If you don't have public IP, and you don't want to put your API keys in PiKVM,
+you can forward HTTP traffic over wireguard. To Let's Encrypt you'll appear to
+serve ACME challenges from a host they can reach from the Internet (e.g. VPS),
+to which you'll connect over wireguard.</p>
+<h3 id="assumptions_1">Assumptions<a class="headerlink" href="#assumptions_1" title="Permanent link">¶</a></h3>
+<ul>
+<li>FQDN of your pikvm is <code>pikvm1.int.example</code>;</li>
+<li>FQDN of the proxy VPS is <code>acme-proxy.example</code>;</li>
+<li>public IP addresses of VPS are <code>198.51.100.1</code> and <code>2001:db8::1</code>;</li>
+<li>internal (wireguard) IPv4 address of the PiKVM is <code>10.11.12.13</code>.</li>
+</ul>
+<h3 id="instructions_1">Instructions<a class="headerlink" href="#instructions_1" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Setup wireguard and ensure it's working.</p>
+</li>
+<li>
+<p>Setup public DNS zone to point the domain address at the public VPS:</p>
+<div class="highlight"><pre><span></span><code><span class="n">acme-proxy.example.</span><span class="w"> </span><span class="nc">IN</span><span class="w"> </span><span class="kt">A</span><span class="w">      </span><span class="l">198.51.100.1</span>
+<span class="n">acme-proxy.example.</span><span class="w"> </span><span class="nc">IN</span><span class="w"> </span><span class="kt">AAAA</span><span class="w">   </span><span class="l">2001:db8::1</span>
+<span class="n">pikvm1.int.example.</span><span class="w"> </span><span class="nc">IN</span><span class="w"> </span><span class="kt">CNAME</span><span class="w">  </span><span class="l">acme-proxy.example.</span>
+</code></pre></div>
+</li>
+<li>
+<p>On the public VPS, configure HTTP proxy to forward
+      <code>/.well-known/acme-challenge</code> to PiKVM. For example in nginx:</p>
+<div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<span class="w">   </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
+
+<span class="w">   </span><span class="kn">server_name</span><span class="w"> </span><span class="s">pikvm1.int.example</span><span class="p">;</span>
+
+<span class="w">   </span><span class="kn">location</span><span class="w"> </span><span class="s">^~</span><span class="w"> </span><span class="s">/.well-known/acme-challenge</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://10.11.12.13:80</span><span class="p">;</span>
+<span class="w">      </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<span class="w">   </span><span class="p">}</span>
+
+<span class="w">   </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kn">return</span><span class="w"> </span><span class="mi">404</span><span class="p">;</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Now you can use <code>kvmd-certbot certonly_webroot</code> as in basic scenario above.</p>
+</li>
+</ol></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2018-2025 Maxim Devaev
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "navigation.expand", "search.highlight", "search.share", "search.suggest"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../_assets/add_paragraphs.js"></script>
+      
+        <script src="../_assets/scroll_to_summary.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": false, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

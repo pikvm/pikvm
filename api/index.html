@@ -1,0 +1,3019 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="KVM over IP on Raspberry Pi">
+      
+      
+        <meta name="author" content="Maxim Devaev">
+      
+      
+        <link rel="canonical" href="https://pikvm.github.io/pikvm/api/">
+      
+      
+        <link rel="prev" href="../prometheus/">
+      
+      
+        <link rel="next" href="../building_os/">
+      
+      
+      <link rel="icon" href="../_assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>HTTP API reference - PiKVM Handbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=arial,+sans-serif:300,300i,400,400i,700,700i%7Cmonospace:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"arial, sans-serif";--md-code-font:"monospace"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../_assets/user.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="PiKVM Handbook" class="md-header__button md-logo" aria-label="PiKVM Handbook" data-md-component="logo">
+      
+  <img src="../_assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PiKVM Handbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              HTTP API reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/pikvm/pikvm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pikvm/pikvm
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="PiKVM Handbook" class="md-nav__button md-logo" aria-label="PiKVM Handbook" data-md-component="logo">
+      
+  <img src="../_assets/logo.png" alt="logo">
+
+    </a>
+    PiKVM Handbook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/pikvm/pikvm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pikvm/pikvm
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Device guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Device guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PiKVM V4 Mini & Plus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PiKVM V3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../switch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PiKVM Switch
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIY PiKVM V2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DIY PiKVM V1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cheatsheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cheat Sheet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Web UI Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configuring PiKVM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authentication & 2FA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQ & Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flashing_os/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Flashing OS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Networking
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Networking
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Internet access
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Internet access
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../port_forwarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Port forwarding
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reverse_proxy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reverse proxy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tailscale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tailscale VPN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloudflared/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloudflare Tunnel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wifi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setting up Wi-Fi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setting up 3G/4G/LTE modem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../letsencrypt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Let's Encrypt certificates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Video
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Video
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../video/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Video modes (WebRTC, Direct)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webrtc_config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WebRTC configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tuning HDMI EDID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HDMI passthrough
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Peripheral devices
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Peripheral devices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../atx_board/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ATX board
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    USB configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usb_pass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    USB passthrough
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Audio / Microphone
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Keyboard & mouse
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Keyboard & mouse
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mouse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mouse modes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mouse_jiggler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mouse jiggler
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pico_hid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pico HID (USB, PS/2)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bluetooth_hid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bluetooth HID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../msd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mass Storage Drive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usb_ethernet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ethernet-over-USB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usb_serial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Serial-over-USB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GPIO (pins, relays, lamps, etc)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Advanced usage
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced usage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../id/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PiKVM identification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../on_boot_config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    On-boot configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vnc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using VNC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multiport/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Multiport KVM-over-IP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wake-on-LAN the server
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ipmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    IPMI & Redfish integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pst/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Persistent storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prometheus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prometheus monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Development
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    HTTP API reference
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    HTTP API reference
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-request-auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single request auth
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-based-cookie-auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session-based cookie auth
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#websocket-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      WebSocket events
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      System functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-system-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get system info
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-system-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get system log
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atx-power-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      ATX power management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ATX power management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-atx-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get ATX state
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-atx-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set ATX power
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#click-atx-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      Click ATX button
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mass-storage-drive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mass Storage Drive
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mass Storage Drive">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-msd-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get MSD state
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-msd-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload MSD image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-msd-image-by-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload MSD image by URL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-msd-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set MSD parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-msd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control MSD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-msd-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remove MSD image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset-msd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reset MSD
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpio" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPIO
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPIO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-gpio-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get GPIO state
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch-gpio-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Switch GPIO channel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pulse-gpio-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pulse GPIO channel
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#misc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Misc
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Misc">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-prometheus-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Prometheus metrics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../building_os/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building PiKVM OS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3d_printing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cases for 3D printing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Legacy
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Legacy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arduino_hid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arduino HID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../msd_legacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Big DVD images on old PiKVM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compliance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Compliance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-request-auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single request auth
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-based-cookie-auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session-based cookie auth
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#websocket-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      WebSocket events
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      System functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-system-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get system info
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-system-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get system log
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atx-power-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      ATX power management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ATX power management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-atx-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get ATX state
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-atx-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set ATX power
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#click-atx-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      Click ATX button
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mass-storage-drive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mass Storage Drive
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mass Storage Drive">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-msd-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get MSD state
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-msd-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload MSD image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-msd-image-by-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload MSD image by URL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-msd-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set MSD parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-msd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control MSD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-msd-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remove MSD image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset-msd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reset MSD
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpio" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPIO
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPIO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-gpio-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get GPIO state
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch-gpio-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Switch GPIO channel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pulse-gpio-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pulse GPIO channel
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#misc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Misc
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Misc">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-prometheus-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Prometheus metrics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<div><h1 id="api">API<a class="headerlink" href="#api" title="Permanent link">¶</a></h1>
+<p>This document describes the PiKVM API. Since the system consists of microservices, here is a common API with a common entry point provided by Nginx. The examples above use <code>curl</code> and <a href="https://github.com/vi/websocat"><code>websocat</code></a> with the <code>-k</code> option to disable SSL certificate verification, since the self-signed certificateis used in the default installation.</p>
+<p>There is a <a href="https://github.com/guanana/pikvm-lib">third-party library</a> for using the PiKVM API.
+Please note that this is an unofficial library, so use it carefully.</p>
+<hr>
+<h2 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">¶</a></h2>
+<p>All APIs are restricted to authentication. To make requests, you either need to auth each request individually,
+or get a token and pass it as a cookie with each request.</p>
+<p>With enabled <a href="../auth/#two-factor-authentication">2FA</a>, you will need to add the one-time code to the password without spaces.
+That is, if the password is <code>foobar</code> and the code is <code>123456</code>, then you need to use <code>foobar123456</code> as the password.</p>
+<p>The code can be generated using any TOTP library, for example in Python:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyotp</span>
+
+<span class="n">user</span> <span class="o">=</span> <span class="s2">"admin"</span>
+<span class="n">passwd</span> <span class="o">=</span> <span class="s2">"admin"</span>
+<span class="n">secret</span> <span class="o">=</span> <span class="s2">"3OBBOGSJRYRBZH35PGXURM4CMWTH3WSU"</span>  <span class="c1"># Can be found in /etc/kvmd/totp.secret</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">"https://pikvm/api/info"</span><span class="p">,</span>
+    <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># For self-signed SSL certificate</span>
+    <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">"X-KVMD-User"</span><span class="p">:</span> <span class="n">user</span><span class="p">,</span>
+        <span class="s2">"X-KVMD-Passwd"</span><span class="p">:</span> <span class="n">passwd</span> <span class="o">+</span> <span class="n">pyotp</span><span class="o">.</span><span class="n">TOTP</span><span class="p">(</span><span class="n">secret</span><span class="p">)</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span>
+    <span class="p">},</span>
+<span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div>
+<p>Since in the borderline case of the 2FA code lifetime, the code may be invalid,
+it makes sense to either handle error 403 by repeating the request in seconds.</p>
+<p>A more correct way is to combine this method and check the remaining lifetime
+and postpone the request if there is a second or so left. You can find out how much
+time is left in this way:</p>
+<div class="highlight"><pre><span></span><code><span class="n">totp</span> <span class="o">=</span> <span class="n">pyotp</span><span class="o">.</span><span class="n">TOTP</span><span class="p">(</span><span class="n">secret</span><span class="p">)</span>
+<span class="n">now</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+<span class="n">remaining</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="p">(</span><span class="n">now</span> <span class="o">%</span> <span class="n">totp</span><span class="o">.</span><span class="n">interval</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="single-request-auth">Single request auth<a class="headerlink" href="#single-request-auth" title="Permanent link">¶</a></h3>
+<p>There are two options here:</p>
+<ul>
+<li>
+<p><strong>Using X-headers.</strong> Just pass <code>X-KVMD-User</code> and <code>X-KVMD-Passwd</code> with the request:</p>
+<div class="highlight"><pre><span></span><code>$ curl -k -H X-KVMD-User:admin -H X-KVMD-Passwd:admin https://&lt;pikvm-ip&gt;/api/auth/check
+</code></pre></div>
+</li>
+<li>
+<p><strong>Using HTTP Basic Auth.</strong> Please note: contrary to the standard, this method DOES NOT use the <code>WWW-Authenticate</code> header. HTTP Basic Auth in this implementation is intended only for compatibility with other systems, such as <a href="../prometheus/">Prometheus</a>.</p>
+<div class="highlight"><pre><span></span><code>$ curl -k -u admin:admin https://&lt;pikvm-ip&gt;/api/auth/check
+</code></pre></div>
+</li>
+</ul>
+<h3 id="session-based-cookie-auth">Session-based cookie auth<a class="headerlink" href="#session-based-cookie-auth" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Get the access token for the user using <code>POST /api/auth/login</code>:</p>
+<div class="highlight"><pre><span></span><code>$ curl -k -v -X POST --data user=admin --data passwd=admin https://pikvm/api/auth/login
+...
+&lt; Set-Cookie: auth_token=796cb83b11de4fcb749bc1bad14a91fb06dede84672b2f847fef1e988e6900de; Path=/
+...
+</code></pre></div>
+<p>On success the cookie <code>auth_token</code> will be received with <code>200 OK</code>. On invalid user or password you will get <code>403 Forbidden</code>.</p>
+</li>
+<li>
+<p>The handle <code>GET /api/auth/check</code> can be used for check the auth status. Return of <code>200 OK</code> will signal that user is authenticated. If the token or any of the single-request auth methods are missing, <code>401 Unauthorized</code> will be returned. In case of incorrect credentials or token, <code>403 Forbidden</code> will be returned.</p>
+</li>
+<li>
+<p>The handle <code>POST /api/auth/logout</code> can be used to invalidate session token. The response codes will be similar to the previous handle.</p>
+</li>
+</ol>
+<hr>
+<h2 id="websocket-events">WebSocket events<a class="headerlink" href="#websocket-events" title="Permanent link">¶</a></h2>
+<p>Most of the data during the user's work with pikvm is transmitted over WebSocket. This includes mouse events, keyboard input, change the state of the various subsystems (such as ATX and Mass Storage Drive). Each event type will be described in the corresponding paragraph for its component. When connecting via WebSocket, the client receives current states as separate events. Then, as the states change, it will receive new events.</p>
+<p>In a normal situation, opening a socket session triggers the video streamer to start. The streamer works as long as there is at least one client connected via WebSocket. After the last connection is closed and the client timeout expires, the streamer will also be terminated.</p>
+<p>It is possible create a session that will not start the streamer and will not be counted when counting clients to stop the streamer. To do this, use the URL parameter <code>stream=0</code>:</p>
+<div class="highlight"><pre><span></span><code>$ websocat -k wss://&lt;pikvm-ip&gt;/api/ws?stream=0 -H X-KVMD-User:admin -H X-KVMD-Passwd:admin
+</code></pre></div>
+<details class="example">
+<summary>Output with initial events</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="s2">"event_type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"gpio_model_state"</span><span class="p">,</span><span class="w"> </span><span class="s2">"event"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"scheme"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"inputs"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"led1"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"hw"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"driver"</span><span class="o">:</span><span class="w"> </span><span class="s2">"__gpio__"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pin"</span><span class="o">:</span><span class="w"> </span><span class="mf">19</span><span class="p">}},</span><span class="w"> </span><span class="s2">"led2"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"hw"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"driver"</span><span class="o">:</span><span class="w"> </span><span class="s2">"__gpio__"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pin"</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">}}},</span><span class="w"> </span><span class="s2">"outputs"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"button1"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"switch"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"pulse"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"delay"</span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="s2">"min_delay"</span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="s2">"max_delay"</span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">},</span><span class="w"> </span><span class="s2">"hw"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"driver"</span><span class="o">:</span><span class="w"> </span><span class="s2">"__gpio__"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pin"</span><span class="o">:</span><span class="w"> </span><span class="mf">26</span><span class="p">}},</span><span class="w"> </span><span class="s2">"button2"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"switch"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"pulse"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"delay"</span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="s2">"min_delay"</span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="s2">"max_delay"</span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">},</span><span class="w"> </span><span class="s2">"hw"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"driver"</span><span class="o">:</span><span class="w"> </span><span class="s2">"__gpio__"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pin"</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">}},</span><span class="w"> </span><span class="s2">"relay1"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"switch"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"pulse"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"delay"</span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="s2">"min_delay"</span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="s2">"max_delay"</span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">},</span><span class="w"> </span><span class="s2">"hw"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"driver"</span><span class="o">:</span><span class="w"> </span><span class="s2">"relay"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pin"</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">}},</span><span class="w"> </span><span class="s2">"relay2"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"switch"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"pulse"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"delay"</span><span class="o">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="s2">"min_delay"</span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="s2">"max_delay"</span><span class="o">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">},</span><span class="w"> </span><span class="s2">"hw"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"driver"</span><span class="o">:</span><span class="w"> </span><span class="s2">"relay"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pin"</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">}}}},</span><span class="w"> </span><span class="s2">"view"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"header"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"title"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Switches"</span><span class="p">},</span><span class="w"> </span><span class="s2">"table"</span><span class="o">:</span><span class="w"> </span><span class="p">[[{</span><span class="s2">"type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w"> </span><span class="s2">"text"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Generic GPIO leds"</span><span class="p">}],</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="p">[{</span><span class="s2">"type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w"> </span><span class="s2">"text"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Test 1:"</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s2">"type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"input"</span><span class="p">,</span><span class="w"> </span><span class="s2">"channel"</span><span class="o">:</span><span class="w"> </span><span class="s2">"led1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"color"</span><span class="o">:</span><span class="w"> </span><span class="s2">"green"</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s2">"type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"output"</span><span class="p">,</span><span class="w"> </span><span class="s2">"channel"</span><span class="o">:</span><span class="w"> </span><span class="s2">"button1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"text"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Click"</span><span class="p">}],</span><span class="w"> </span><span class="p">[{</span><span class="s2">"type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w"> </span><span class="s2">"text"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Test 2:"</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s2">"type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"input"</span><span class="p">,</span><span class="w"> </span><span class="s2">"channel"</span><span class="o">:</span><span class="w"> </span><span class="s2">"led2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"color"</span><span class="o">:</span><span class="w"> </span><span class="s2">"green"</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s2">"type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"output"</span><span class="p">,</span><span class="w"> </span><span class="s2">"channel"</span><span class="o">:</span><span class="w"> </span><span class="s2">"button2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"text"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Click"</span><span class="p">}],</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="p">[{</span><span class="s2">"type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w"> </span><span class="s2">"text"</span><span class="o">:</span><span class="w"> </span><span class="s2">"HID Relays /dev/hidraw0"</span><span class="p">}],</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="p">[{</span><span class="s2">"type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w"> </span><span class="s2">"text"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Relay #1:"</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s2">"type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"output"</span><span class="p">,</span><span class="w"> </span><span class="s2">"channel"</span><span class="o">:</span><span class="w"> </span><span class="s2">"relay1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"text"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Boop 0.1"</span><span class="p">}],</span><span class="w"> </span><span class="p">[{</span><span class="s2">"type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w"> </span><span class="s2">"text"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Relay #2:"</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s2">"type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"output"</span><span class="p">,</span><span class="w"> </span><span class="s2">"channel"</span><span class="o">:</span><span class="w"> </span><span class="s2">"relay2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"text"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Boop 2.0"</span><span class="p">}]]}}}</span>
+<span class="p">{</span><span class="s2">"event_type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"info_extras_state"</span><span class="p">,</span><span class="w"> </span><span class="s2">"event"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"vnc"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"name"</span><span class="o">:</span><span class="w"> </span><span class="s2">"VNC"</span><span class="p">,</span><span class="w"> </span><span class="s2">"description"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Show VNC information"</span><span class="p">,</span><span class="w"> </span><span class="s2">"icon"</span><span class="o">:</span><span class="w"> </span><span class="s2">"share/svg/vnc.svg"</span><span class="p">,</span><span class="w"> </span><span class="s2">"path"</span><span class="o">:</span><span class="w"> </span><span class="s2">"vnc"</span><span class="p">,</span><span class="w"> </span><span class="s2">"keyboard_cap"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"daemon"</span><span class="o">:</span><span class="w"> </span><span class="s2">"kvmd-vnc"</span><span class="p">,</span><span class="w"> </span><span class="s2">"port"</span><span class="o">:</span><span class="w"> </span><span class="mf">5900</span><span class="p">,</span><span class="w"> </span><span class="s2">"place"</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="s2">"enabled"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">},</span><span class="w"> </span><span class="s2">"ipmi"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"name"</span><span class="o">:</span><span class="w"> </span><span class="s2">"IPMI"</span><span class="p">,</span><span class="w"> </span><span class="s2">"description"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Show IPMI information"</span><span class="p">,</span><span class="w"> </span><span class="s2">"icon"</span><span class="o">:</span><span class="w"> </span><span class="s2">"share/svg/ipmi.svg"</span><span class="p">,</span><span class="w"> </span><span class="s2">"path"</span><span class="o">:</span><span class="w"> </span><span class="s2">"ipmi"</span><span class="p">,</span><span class="w"> </span><span class="s2">"keyboard_cap"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"daemon"</span><span class="o">:</span><span class="w"> </span><span class="s2">"kvmd-ipmi"</span><span class="p">,</span><span class="w"> </span><span class="s2">"port"</span><span class="o">:</span><span class="w"> </span><span class="mf">623</span><span class="p">,</span><span class="w"> </span><span class="s2">"place"</span><span class="o">:</span><span class="w"> </span><span class="mf">21</span><span class="p">,</span><span class="w"> </span><span class="s2">"enabled"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}}}</span>
+<span class="p">{</span><span class="s2">"event_type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"info_hw_state"</span><span class="p">,</span><span class="w"> </span><span class="s2">"event"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"platform"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"rpi"</span><span class="p">,</span><span class="w"> </span><span class="s2">"base"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Virtual Raspberry Pi"</span><span class="p">},</span><span class="w"> </span><span class="s2">"health"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"temp"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"cpu"</span><span class="o">:</span><span class="w"> </span><span class="mf">36.511</span><span class="p">,</span><span class="w"> </span><span class="s2">"gpu"</span><span class="o">:</span><span class="w"> </span><span class="mf">35.0</span><span class="p">},</span><span class="w"> </span><span class="s2">"throttling"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"raw_flags"</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="s2">"parsed_flags"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"undervoltage"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"now"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"past"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">},</span><span class="w"> </span><span class="s2">"freq_capped"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"now"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"past"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">},</span><span class="w"> </span><span class="s2">"throttled"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"now"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"past"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">}}}}}}</span>
+<span class="p">{</span><span class="s2">"event_type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"info_meta_state"</span><span class="p">,</span><span class="w"> </span><span class="s2">"event"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"server"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"host"</span><span class="o">:</span><span class="w"> </span><span class="s2">"localhost.localdomain"</span><span class="p">},</span><span class="w"> </span><span class="s2">"kvm"</span><span class="o">:</span><span class="w"> </span><span class="p">{}}}</span>
+<span class="p">{</span><span class="s2">"event_type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"info_system_state"</span><span class="p">,</span><span class="w"> </span><span class="s2">"event"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"kvmd"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"version"</span><span class="o">:</span><span class="w"> </span><span class="s2">"1.102"</span><span class="p">},</span><span class="w"> </span><span class="s2">"streamer"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"app"</span><span class="o">:</span><span class="w"> </span><span class="s2">"ustreamer"</span><span class="p">,</span><span class="w"> </span><span class="s2">"version"</span><span class="o">:</span><span class="w"> </span><span class="s2">"1.25"</span><span class="p">,</span><span class="w"> </span><span class="s2">"features"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"WITH_OMX"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"WITH_GPIO"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"WITH_PTHREAD_NP"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"WITH_SETPROCTITLE"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"HAS_PDEATHSIG"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}},</span><span class="w"> </span><span class="s2">"kernel"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"system"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Linux"</span><span class="p">,</span><span class="w"> </span><span class="s2">"release"</span><span class="o">:</span><span class="w"> </span><span class="s2">"5.8.10-arch1-1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"version"</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1 SMP PREEMPT Thu, 17 Sep 2020 18:01:06 +0000"</span><span class="p">,</span><span class="w"> </span><span class="s2">"machine"</span><span class="o">:</span><span class="w"> </span><span class="s2">"x86_64"</span><span class="p">}}}</span>
+<span class="p">{</span><span class="s2">"event_type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"wol_state"</span><span class="p">,</span><span class="w"> </span><span class="s2">"event"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"enabled"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"target"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"ip"</span><span class="o">:</span><span class="w"> </span><span class="s2">"255.255.255.255"</span><span class="p">,</span><span class="w"> </span><span class="s2">"port"</span><span class="o">:</span><span class="w"> </span><span class="mf">9</span><span class="p">,</span><span class="w"> </span><span class="s2">"mac"</span><span class="o">:</span><span class="w"> </span><span class="s2">""</span><span class="p">}}}</span>
+<span class="p">{</span><span class="s2">"event_type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"gpio_state"</span><span class="p">,</span><span class="w"> </span><span class="s2">"event"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"inputs"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"led1"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"online"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"state"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">},</span><span class="w"> </span><span class="s2">"led2"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"online"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"state"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">}},</span><span class="w"> </span><span class="s2">"outputs"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"button1"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"online"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"state"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"busy"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">},</span><span class="w"> </span><span class="s2">"button2"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"online"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"state"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"busy"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">},</span><span class="w"> </span><span class="s2">"relay1"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"online"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"state"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"busy"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">},</span><span class="w"> </span><span class="s2">"relay2"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"online"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"state"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"busy"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">}}}}</span>
+<span class="p">{</span><span class="s2">"event_type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"hid_state"</span><span class="p">,</span><span class="w"> </span><span class="s2">"event"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"online"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"keyboard"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"online"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"leds"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"caps"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"scroll"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"num"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">}},</span><span class="w"> </span><span class="s2">"mouse"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"online"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}}}</span>
+<span class="p">{</span><span class="s2">"event_type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"atx_state"</span><span class="p">,</span><span class="w"> </span><span class="s2">"event"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"enabled"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"busy"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"leds"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"power"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"hdd"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">}}}</span>
+<span class="p">{</span><span class="s2">"event_type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"msd_state"</span><span class="p">,</span><span class="w"> </span><span class="s2">"event"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"enabled"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"online"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"busy"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"storage"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"size"</span><span class="o">:</span><span class="w"> </span><span class="mf">234950152192</span><span class="p">,</span><span class="w"> </span><span class="s2">"free"</span><span class="o">:</span><span class="w"> </span><span class="mf">23514271744</span><span class="p">,</span><span class="w"> </span><span class="s2">"images"</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="s2">"uploading"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">},</span><span class="w"> </span><span class="s2">"drive"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"image"</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="s2">"connected"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s2">"cdrom"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">},</span><span class="w"> </span><span class="s2">"features"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"multi"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"cdrom"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}}}</span>
+<span class="p">{</span><span class="s2">"event_type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"streamer_state"</span><span class="p">,</span><span class="w"> </span><span class="s2">"event"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"limits"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"max_fps"</span><span class="o">:</span><span class="w"> </span><span class="mf">40</span><span class="p">},</span><span class="w"> </span><span class="s2">"params"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"desired_fps"</span><span class="o">:</span><span class="w"> </span><span class="mf">30</span><span class="p">,</span><span class="w"> </span><span class="s2">"quality"</span><span class="o">:</span><span class="w"> </span><span class="mf">80</span><span class="p">},</span><span class="w"> </span><span class="s2">"snapshot"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"saved"</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">},</span><span class="w"> </span><span class="s2">"streamer"</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="s2">"features"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"quality"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s2">"resolution"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">}}}</span>
+<span class="p">{</span><span class="s2">"event_type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"loop"</span><span class="p">,</span><span class="w"> </span><span class="s2">"event"</span><span class="o">:</span><span class="w"> </span><span class="p">{}}</span>
+</code></pre></div>
+</details>
+<p>After connecting the client receives a bundle of states of all KVMD subsystems. After the batch is completed, it sends a <code>loop</code> event, which means that the websocket has entered event loop mode. Now it will send new states and respond to client's requests.</p>
+<p>Another type of event is <code>ping</code>, which can be sent by the client: <code>{"event_type": "ping", "event": {}}</code>. If the server is running, it will respond with pong: <code>{"event_type": "pong", "event": {}}</code>.</p>
+<details class="example">
+<summary>Sending key events using Python</summary>
+<p>For keypresses, set <code>event_type</code> to <code>key</code> and fill in the <code>event</code> structure with <code>key</code> and <code>state</code>, where <code>key</code> is the key from mapping and <code>state</code> is boolean that determines if the key is pressed or released: </p>
+<div class="highlight"><pre><span></span><code><span class="c1"># python, install websocket-client</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">websocket</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssl</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span>
+<span class="n">uri</span> <span class="o">=</span> <span class="s2">"wss://10.0.0.7/api/ws?stream=0"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"X-KVMD-User"</span><span class="p">:</span> <span class="s2">"admin"</span><span class="p">,</span> <span class="s2">"X-KVMD-Passwd"</span><span class="p">:</span> <span class="s2">"admin"</span><span class="p">}</span>
+<span class="n">ws</span> <span class="o">=</span> <span class="n">websocket</span><span class="o">.</span><span class="n">WebSocket</span><span class="p">(</span><span class="n">sslopt</span><span class="o">=</span><span class="p">{</span><span class="s2">"cert_reqs"</span><span class="p">:</span> <span class="n">ssl</span><span class="o">.</span><span class="n">CERT_NONE</span><span class="p">})</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="c1"># Key codes: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code/code_values</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">'{"event_type": "key", "event": {"key": "Enter", "state": true}}'</span><span class="p">)</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">'{"event_type": "key", "event": {"key": "Enter", "state": false}}'</span><span class="p">)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+</details>
+<hr>
+<h2 id="system-functions">System functions<a class="headerlink" href="#system-functions" title="Permanent link">¶</a></h2>
+<h3 id="get-system-info">Get system info<a class="headerlink" href="#get-system-info" title="Permanent link">¶</a></h3>
+<p>The <code>GET /api/info</code> handle returns the general information about the PiKVM device.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>fields=...</code> <em>(optional)</em> - Only specified categories will be returned, for example <code>fields=system,hw</code>. By default all categories will be displayed.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$ curl -k -u admin:admin https://&lt;pikvm-ip&gt;/api/info
+</code></pre></div>
+<details class="note">
+<summary>Click to expand</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">"ok"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"result"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">"extras"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Installed applications; null on internal error</span>
+<span class="w">            </span><span class="s2">"ipmi"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="s2">"daemon"</span><span class="o">:</span><span class="w"> </span><span class="s2">"kvmd-ipmi"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"description"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Show IPMI information"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"enabled"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"icon"</span><span class="o">:</span><span class="w"> </span><span class="s2">"share/svg/ipmi.svg"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"keyboard_cap"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"name"</span><span class="o">:</span><span class="w"> </span><span class="s2">"IPMI"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"path"</span><span class="o">:</span><span class="w"> </span><span class="s2">"ipmi"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"place"</span><span class="o">:</span><span class="w"> </span><span class="mf">21</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"port"</span><span class="o">:</span><span class="w"> </span><span class="mf">623</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="s2">"vnc"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="s2">"daemon"</span><span class="o">:</span><span class="w"> </span><span class="s2">"kvmd-vnc"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"description"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Show VNC information"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"enabled"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"icon"</span><span class="o">:</span><span class="w"> </span><span class="s2">"share/svg/vnc.svg"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"keyboard_cap"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"name"</span><span class="o">:</span><span class="w"> </span><span class="s2">"VNC"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"path"</span><span class="o">:</span><span class="w"> </span><span class="s2">"vnc"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"place"</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"port"</span><span class="o">:</span><span class="w"> </span><span class="mf">5900</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="s2">"hw"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Hardware info</span>
+<span class="w">            </span><span class="s2">"health"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="s2">"temp"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s2">"cpu"</span><span class="o">:</span><span class="w"> </span><span class="mf">36.511</span><span class="p">,</span><span class="w"> </span><span class="c1">// /sys/class/thermal/thermal_zone0/temp / 1000; null on error</span>
+<span class="w">                    </span><span class="s2">"gpu"</span><span class="o">:</span><span class="w"> </span><span class="mf">35.0</span><span class="w">    </span><span class="c1">// vcgencmd measure_temp; null on error</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s2">"throttling"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// vcgencmd get_throttled; null on error</span>
+<span class="w">                    </span><span class="s2">"parsed_flags"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="s2">"freq_capped"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="s2">"now"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"past"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="s2">"throttled"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="s2">"now"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"past"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="s2">"undervoltage"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="s2">"now"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                            </span><span class="s2">"past"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="s2">"raw_flags"</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="s2">"platform"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="s2">"base"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Raspberry Pi 4 Model B Rev 1.1"</span><span class="p">,</span><span class="w"> </span><span class="c1">// /proc/device-tree/model; null on error</span>
+<span class="w">                </span><span class="s2">"serial"</span><span class="o">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span><span class="w"> </span><span class="c1">// /proc/device-tree/serial-number; null on error</span>
+<span class="w">                </span><span class="s2">"type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"rpi"</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="s2">"meta"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// /etc/kvmd/meta.yaml; null on error</span>
+<span class="w">            </span><span class="s2">"kvm"</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">            </span><span class="s2">"server"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="s2">"host"</span><span class="o">:</span><span class="w"> </span><span class="s2">"localhost.localdomain"</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="s2">"system"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">"kernel"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="s2">"machine"</span><span class="o">:</span><span class="w"> </span><span class="s2">"x86_64"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"release"</span><span class="o">:</span><span class="w"> </span><span class="s2">"5.8.14-arch1-1"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"system"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Linux"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"version"</span><span class="o">:</span><span class="w"> </span><span class="s2">"#1 SMP PREEMPT Wed, 07 Oct 2020 23:59:46 +0000"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="s2">"kvmd"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="s2">"version"</span><span class="o">:</span><span class="w"> </span><span class="s2">"2.1"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="s2">"streamer"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="s2">"app"</span><span class="o">:</span><span class="w"> </span><span class="s2">"ustreamer"</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"features"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// {} on error</span>
+<span class="w">                    </span><span class="s2">"HAS_PDEATHSIG"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">"WITH_GPIO"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">"WITH_OMX"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">"WITH_PTHREAD_NP"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">"WITH_SETPROCTITLE"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="s2">"version"</span><span class="o">:</span><span class="w"> </span><span class="s2">"2.1"</span><span class="w"> </span><span class="c1">// "" on error</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<p>Each category is represented by its own event in the websocket (<code>info_hw_state</code>, <code>info_system_state</code>, etc). The event content has the same format as the category content in API.</p>
+<h3 id="get-system-log">Get system log<a class="headerlink" href="#get-system-log" title="Permanent link">¶</a></h3>
+<p>The <code>GET /api/log</code> handle displays logs from all KVMD services as plain text.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>follow=1</code> <em>(optional)</em> - Turns the request into long-polling mode and follow log messages in real time.</li>
+<li><code>seek=N</code> <em>(optional)</em> - Runs the log for the specified time in seconds, for example <code>seek=3600</code> will show the log for the last hour.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$ curl -k -u admin:admin https://&lt;pikvm-ip&gt;/api/log
+</code></pre></div>
+<hr>
+<h2 id="atx-power-management">ATX power management<a class="headerlink" href="#atx-power-management" title="Permanent link">¶</a></h2>
+<h3 id="get-atx-state">Get ATX state<a class="headerlink" href="#get-atx-state" title="Permanent link">¶</a></h3>
+<p>The <code>GET /api/atx</code> handle shows the current ATX state.</p>
+<div class="highlight"><pre><span></span><code>$ curl -k -u admin:admin https://&lt;pikvm-ip&gt;/api/atx
+</code></pre></div>
+<details class="note">
+<summary>Click to expand</summary>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">"ok"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"result"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">"busy"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// True if ATX is busy performing an operation and does not accept commands</span>
+<span class="w">        </span><span class="s2">"enabled"</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"leds"</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">"hdd"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">"power"</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h3 id="set-atx-power">Set ATX power<a class="headerlink" href="#set-atx-power" title="Permanent link">¶</a></h3>
+<p>The <code>POST /api/atx/power</code> handle changes ATX power state to desired.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>action=...</code> - Describes desired state:<ul>
+<li><code>on</code> - Turn on (do nothing in case PSU is already on).</li>
+<li><code>off</code> - Turn off (aka soft-off), emulates click on the power button.</li>
+<li><code>off_hard</code> - Perform long press on the power button (5+ seconds).</li>
+<li><code>reset_hard</code> - Emulates pressing reset button (hardware hot reset).</li>
+</ul>
+</li>
+<li><code>wait=1</code> <em>(optional)</em> - Says if call should return immediately or just after finishing operation.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$ curl -X POST -k -u admin:admin https://&lt;pikvm-ip&gt;/api/atx/power?action=on
+</code></pre></div>
+<h3 id="click-atx-button">Click ATX button<a class="headerlink" href="#click-atx-button" title="Permanent link">¶</a></h3>
+<p>The <code>POST /api/atx/click</code> handle sends the ATX button press event.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>button=...</code> - Specifies the desired PC case button:<ul>
+<li><code>power</code> - Short click on the power button.</li>
+<li><code>power_long</code> - Long press on the power button (5+ seconds).</li>
+<li><code>reset</code> - Short click on the reset button.</li>
+</ul>
+</li>
+<li><code>wait=1</code> <em>(Optional)</em> - Says if call should return immediately or just after finishing operation.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$ curl -X POST -k -u admin:admin https://&lt;pikvm-ip&gt;/api/atx/click?button=power
+</code></pre></div>
+<hr>
+<h2 id="mass-storage-drive">Mass Storage Drive<a class="headerlink" href="#mass-storage-drive" title="Permanent link">¶</a></h2>
+<h3 id="get-msd-state">Get MSD state<a class="headerlink" href="#get-msd-state" title="Permanent link">¶</a></h3>
+<p>The <code>GET /api/msd</code> handle shows the current MSD state.</p>
+<div class="highlight"><pre><span></span><code>$ curl -k -u admin:admin https://&lt;pikvm-ip&gt;/api/msd
+</code></pre></div>
+<h3 id="upload-msd-image">Upload MSD image<a class="headerlink" href="#upload-msd-image" title="Permanent link">¶</a></h3>
+<p>The <code>POST /api/msd/write</code> uploads an image to MSD.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>image=...</code> - Specifies the name of the image.</li>
+<li>Binary data should be passed to the POST body.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$ # create a test image
+$ dd if=/dev/zero of=test.iso bs=1M count=1
+
+$ # upload it to pikvm
+$ curl -v -X POST --data-binary @test.iso -k -u admin:admin https://&lt;pikvm-ip&gt;/api/msd/write?image=test.iso
+</code></pre></div>
+<h3 id="upload-msd-image-by-url">Upload MSD image by URL<a class="headerlink" href="#upload-msd-image-by-url" title="Permanent link">¶</a></h3>
+<p>The <code>POST /api/msd/write_remote</code> handle downloads an image from HTTP(S) URL to the MSD.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>url=...</code> - Image URL.</li>
+<li><code>image=...</code> <em>(optional)</em> - Image name.</li>
+<li><code>timeout=N</code> <em>(optional)</em> - Remote request timeout, 10 seconds by default.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a long-polling request. Do not interrupt the request until the download is complete, otherwise the download will stop.</p>
+</div>
+<div class="highlight"><pre><span></span><code>$ # create test image
+$ dd if=/dev/zero of=test.iso bs=1M count=1
+
+$ # upload it to pikvm
+$ curl -v -X POST -k -u admin:admin https://&lt;pikvm-ip&gt;/api/msd/write_remote?url=http://example.com/test.iso
+</code></pre></div>
+<h3 id="set-msd-parameters">Set MSD parameters<a class="headerlink" href="#set-msd-parameters" title="Permanent link">¶</a></h3>
+<p>The <code>POST /api/msd/set_params</code> handle changes the current image and/or set drive parameters</p>
+<p>Parameters:</p>
+<ul>
+<li><code>image=...</code> <em>(optional)</em> - Change the current image.</li>
+<li><code>cdrom=1|0</code> <em>(optional)</em> - Change the media type to the CD-ROM on <code>1</code>, otherwise to the Flash.</li>
+<li><code>rw=0|1</code> <em>(optional)</em> - Make the MSD read-write on <code>1</code>, otherwise read-only. Ignored (always read-only) when <code>cdrom=1</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$ curl -X POST -k -u admin:admin "https://&lt;pikvm-ip&gt;/api/msd/set_params?image=test.iso&amp;cdrom=1"
+</code></pre></div>
+<h3 id="control-msd">Control MSD<a class="headerlink" href="#control-msd" title="Permanent link">¶</a></h3>
+<p>The <code>POST /api/msd/set_connected</code> connects or disconnect the MSD to the host.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>connected=1|0</code> - Change the state.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$ curl -X POST -k -u admin:admin https://&lt;pikvm-ip&gt;/api/msd/set_connected?connected=1
+</code></pre></div>
+<h3 id="remove-msd-image">Remove MSD image<a class="headerlink" href="#remove-msd-image" title="Permanent link">¶</a></h3>
+<p>The <code>POST /api/msd/remove</code> handle removes the specified image.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>image=...</code> - The image name.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$ curl -X POST -k -u admin:admin https://&lt;pikvm-ip&gt;/api/msd/remove?image=test.iso
+</code></pre></div>
+<h3 id="reset-msd">Reset MSD<a class="headerlink" href="#reset-msd" title="Permanent link">¶</a></h3>
+<p>The <code>POST /api/msd/reset</code> handle resets the drive.</p>
+<div class="highlight"><pre><span></span><code>$ curl -X POST -k -u admin:admin https://&lt;pikvm-ip&gt;/api/msd/reset
+</code></pre></div>
+<hr>
+<h2 id="gpio">GPIO<a class="headerlink" href="#gpio" title="Permanent link">¶</a></h2>
+<h3 id="get-gpio-state">Get GPIO state<a class="headerlink" href="#get-gpio-state" title="Permanent link">¶</a></h3>
+<p>The <code>GET /api/gpio</code> handle shows the current GPIO state.</p>
+<div class="highlight"><pre><span></span><code>$ curl -k -u admin:admin https://&lt;pikvm-ip&gt;/api/gpio
+</code></pre></div>
+<h3 id="switch-gpio-channel">Switch GPIO channel<a class="headerlink" href="#switch-gpio-channel" title="Permanent link">¶</a></h3>
+<p>The <code>POST /api/gpio/switch</code> handle interacts with selected GPIO driver channel in <code>switch</code> mode.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>channel=...</code> - The GPIO driver channel.</li>
+<li><code>state=1|0</code> - The new switch state.</li>
+<li><code>wait=1</code> <em>(optional)</em> - Says if call should return immediately or just after finishing operation.</li>
+</ul>
+<h3 id="pulse-gpio-channel">Pulse GPIO channel<a class="headerlink" href="#pulse-gpio-channel" title="Permanent link">¶</a></h3>
+<p>The <code>POST /api/gpio/pulse</code> handle interacts with selected GPIO driver channel in <code>pulse</code> mode.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>channel=...</code> - The GPIO driver channel.</li>
+<li><code>delay=N.N</code> <em>(optional)</em> - The pulse time in seconds (float), <code>0</code> for default delay.</li>
+<li><code>wait=1</code> <em>(optional)</em> - Says if call should return immediately or just after finishing operation.</li>
+</ul>
+<hr>
+<h2 id="misc">Misc<a class="headerlink" href="#misc" title="Permanent link">¶</a></h2>
+<h3 id="get-prometheus-metrics">Get Prometheus metrics<a class="headerlink" href="#get-prometheus-metrics" title="Permanent link">¶</a></h3>
+<p>The <code>GET /api/export/prometheus/metrics</code> handle returns the Prometheus metrics. Also see <a href="../prometheus/">here</a> for details.</p>
+<div class="highlight"><pre><span></span><code>$ curl -k -u admin:admin https://&lt;pikvm-ip&gt;/api/export/prometheus/metrics
+</code></pre></div>
+<hr>
+<h1 id="to-be-continued">To be continued ===&gt;<a class="headerlink" href="#to-be-continued" title="Permanent link">¶</a></h1>
+<p>You can find all existing APIs in the <a href="https://github.com/pikvm/kvmd/tree/master/kvmd/apps/kvmd/api">KVMD source tree</a>. We would appreciate your help with documentation.</p></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2018-2025 Maxim Devaev
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "navigation.expand", "search.highlight", "search.share", "search.suggest"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../_assets/add_paragraphs.js"></script>
+      
+        <script src="../_assets/scroll_to_summary.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": false, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
