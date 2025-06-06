@@ -15,7 +15,7 @@ For detailed instructions, refer to [Tailscale support](https://tailscale.com/co
 
     {!_update_os.md!}
 
-3. Install the Tailscale client, run `tailscaled` service and register it in the network:
+2. Install the Tailscale client, run `tailscaled` service and register it in the network:
 
     ```console
     [root@pikvm ~]# rw
@@ -25,16 +25,16 @@ For detailed instructions, refer to [Tailscale support](https://tailscale.com/co
     [root@pikvm ~]# tailscale up
     ```
 
-4. Follow the link to authorize this installation.
+3. Follow the link to authorize this installation.
     You likely want to [disable key expiry](https://tailscale.com/kb/1028/key-expiry/)!
 
-5. After authorization success, reboot to make sure that everything works correctly:
+4. After authorization success, reboot to make sure that everything works correctly:
 
     ```console
     [root@pikvm ~]# reboot
     ```
 
-6. Now, you can view the IP address of the Tailscale network interface:
+5. Now, you can view the IP address of the Tailscale network interface:
 
     ```console
     [root@pikvm ~]# ip addr show tailscale0
