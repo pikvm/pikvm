@@ -259,6 +259,468 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/log
 ```
 
 -----
+## HID
+
+This API provides comprehensive control over virtual HID devices.
+
+### Get devices state
+
+The `GET /hid` handle get the current HID devices state.
+
+**Query parameters**: none.
+
+**Example of use**:
+
+``` sh
+$ curl -k -u admin:admin https://<pikvm-ip>/api/hid
+```
+
+??? note "Example output"
+    ``` json
+    {
+        "ok": true,
+        "result": {
+            "busy": false,
+            "connected": null,
+            "enabled": true,
+            "jiggler": {
+                "active": false,
+                "enabled": true,
+                "interval": 60
+            },
+            "keyboard": {
+                "leds": {
+                    "caps": false,
+                    "num": false,
+                    "scroll": false
+                },
+                "online": false,
+                "outputs": {
+                    "active": "",
+                    "available": []
+                }
+            },
+            "mouse": {
+                "absolute": true,
+                "online": false,
+                "outputs": {
+                    "active": "usb",
+                    "available": [
+                        "usb",
+                        "usb_rel"
+                    ]
+                }
+            },
+            "online": true
+        }
+    }⏎
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Set parameters
+
+The `POST /hid/set_params` handle helps configure HID device parameters.
+
+**Query parameters**:
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `keyboard_output` | string | optional | Sets the type of the emulated keyboard | `usb`, `ps2`, `disabled` |
+| `mouse_output` | string |  optional | Sets the type of the emulated mouse | `usb`, `usb_win98`, `usb_rel`, `ps2`, `disabled` |
+| `jiggler` | boolean | optional | Enable/disable [mouse jiggler](mouse_jiggler.md) functionality | `true`
+
+**Example of use**:
+
+``` sh
+$ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/set_params?jiggler=0
+```
+
+??? note "Example output"
+    ``` json
+    {
+        "ok": true,
+        "result": {}
+    }⏎ 
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Set the connected state
+
+The `POST /hid/set_connected` handle set the HID devices connection state.
+
+**Available parameters**:
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `connected` | boolean | required | Sets the connection state | Enable: `1`, `true`, or `yes`. Disable: `0`, `false`, or `no` |
+
+**Example of use**:
+
+``` sh
+$ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/set_connected?connected=0
+```
+
+??? note "Example output"
+    ``` json
+    {
+        "ok": true,
+        "result": {}
+    }⏎ 
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Reset devices' state
+
+The `POST /hid/reset` handles resets HID devices to their initial state.
+
+**Query parameters**: none
+
+**Example of use**:
+
+``` sh
+$ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/reset
+```
+
+??? note "Example output"
+    ``` json
+    {
+        "ok": true,
+        "result": {}
+    }⏎   
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Get keyboard layouts
+
+The `GET /hid/keymaps` handle gets available keyboard layouts and the current defaults.
+
+**Query parameters**: none
+
+**Example of use**:
+
+``` sh
+$ curl -k -u admin:admin https://<pikvm-ip>/api/hid/keymaps
+```
+
+??? note "Example output"
+    ``` json
+    {
+        "ok": true,
+        "result": {
+            "keymaps": {
+                "available": [
+                    "ar",
+                    "bepo",
+                    "cz",
+                    "da",
+                    "de",
+                    "de-ch",
+                    "en-gb",
+                    "en-us",
+                    "en-us-altgr-intl",
+                    "en-us-colemak",
+                    "es",
+                    "et",
+                    "fi",
+                    "fo",
+                    "fr",
+                    "fr-be",
+                    "fr-ca",
+                    "fr-ch",
+                    "hr",
+                    "hu",
+                    "is",
+                    "it",
+                    "ja",
+                    "lt",
+                    "lv",
+                    "mk",
+                    "nl",
+                    "no",
+                    "pl",
+                    "pt",
+                    "pt-br",
+                    "ru",
+                    "sl",
+                    "sv",
+                    "th",
+                    "tr"
+                ],
+                "default": "de"
+            }
+        }
+    }⏎ 
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Type text remotely
+
+The `POST /hid/print` handle transmits user-defined text to emulate typing it on the PiKVM by sequencing key presses.
+
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `limit` | integer | optional | Maximum characters to process | 0 = no limit. No maximum value. Default: 1024 |
+| `keymap` | string | optional | Keymap to use (defaults to system default) | Any keymap listed in the output of `GET /hid/keymaps` |
+| `slow` | boolean | optional | Enables slow typing mode (regular large intervals between key presses), `false` by default | Enable: `1`, `true`, or `yes`. Disable: `0`, `false`, or `no` |
+
+**Example of use**:
+
+``` sh
+$ curl -k -X POST -u admin:admin -d "Einige Worte" https://<pikvm-ip>/api/hid/print?keymap=de
+```
+
+??? note "Example output"
+    ``` json
+    {
+    "ok": true,
+    "result": {}
+    }⏎ 
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Send a keyboard shortcut
+
+The `POST /hid/events/send_shortcut` handle sends a keyboard shortcut, or key combination, to be emulated on the PiKVM.
+
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `keys` | string | required | Comma-separated list of key names | For a full list of supported values, please [see here](https://github.com/pikvm/kvmd/blob/master/keymap.csv) |
+
+**Example of use**:
+
+``` sh
+$ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/events/send_shortcut?keys=ControlLeft,KeyL
+```
+
+??? note "Example output"
+    ``` json
+    {
+    "ok": true,
+    "result": {}
+    }⏎
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Send a single key event
+
+The `POST /hid/events/send_key` handle transmits a command to emulate a single key press on the PiKVM.
+
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `key` | string | required | Key identifier to send | For a full list of supported values, please [see here](https://github.com/pikvm/kvmd/blob/master/keymap.csv) |
+| `state` | boolean | optional | Key state: `true` for press, `false` for release | Enable: `1`, `true`, or `yes`. Disable: `0`, `false`, or `no` |
+| `finish` | boolean | optional | Releases non-modifier keys right after pressing them so that they don't get stuck when the connection is not stable. Defaults to `false` | Enable: `1`, `true`, or `yes`. Disable: `0`, `false`, or `no` |
+
+**Example of use**:
+
+``` sh
+$ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/events/send_key?key=Delete
+```
+
+??? note "Example output"
+    ``` json
+    {
+    "ok": true,
+    "result": {}
+    }⏎
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Send mouse button events
+
+The `POST /hid/events/send_mouse_button` handle sends mouse button press/release events.
+
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `button` | string | required | Mouse button identifier | `left`, `middle`, `right`, `up`, `down` |
+| `state` | boolean | optional | Mouse button state: `true` for press, `false` for release | Enable: `1`, `true`, or `yes`. Disable: `0`, `false`, or `no` |
+
+**Example of use**:
+
+``` sh
+$ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/events/send_mouse_button?button=left
+```
+
+??? note "Example output"
+    ``` json
+    {
+    "ok": true,
+    "result": {}
+    }⏎
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Move the mouse pointer
+
+The `POST /hid/events/send_mouse_move` handle moves the mouse pointer to user-defined coordinates where 0,0 is the center of the screen.
+
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `to_x` | integer | required | Target X coordinate | Any negative or positive integer value |
+| `to_y` | integer | required | Target Y coordinate | Any negative or positive integer value |
+
+**Example of use**:
+
+``` sh
+$ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/send_mouse_move?to_x=0&to_y=50
+```
+
+??? note "Example output"
+    ``` json
+    {
+    "ok": true,
+    "result": {}
+    }⏎  
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Move the mouse ppinter relatively
+
+The `POST /hid/events/send_mouse_relative` handles moves the mouse pointer by a relative offset.
+
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `delta_x` | integer | required | Horizontal movement delta | Any negative or positive integer value |
+| `delta_y` | integer | required | Vertical movement delta | Any negative or positive integer value |
+
+**Example of use**:
+
+``` sh
+$ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/send_mouse_relative?delta_x=20&delta_y=200
+```
+
+??? note "Example output"
+    ``` json
+    {
+    "ok": true,
+    "result": {}
+    }⏎  
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Send mouse wheel scroll events
+
+The `POST /hid/events/send_mouse_wheel` handle sends mouse wheel scroll events to the PiKVM.
+
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `delta_x` | integer | required | Horizontal scroll delta | Any negative or positive integer value |
+| `delta_y` | integer | required | Vertical scroll delta | Any negative or positive integer value |
+
+**Example of use**: Send mouse wheel scroll events.
+
+``` sh
+$ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/send_mouse_wheel?delta_x=0&delta_y=200
+```
+
+??? note "Example output"
+    ``` json
+    {
+    "ok": true,
+    "result": {}
+    }⏎  
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+-----
 ## ATX power management
 
 ### Get ATX state
