@@ -764,7 +764,6 @@ Parameters:
 $ curl -X POST -k -u admin:admin https://<pikvm-ip>/api/atx/power?action=on
 ```
 
-
 ### Click ATX button
 
 The `POST /api/atx/click` handle sends the ATX button press event.
@@ -780,7 +779,6 @@ Parameters:
 ```
 $ curl -X POST -k -u admin:admin https://<pikvm-ip>/api/atx/click?button=power
 ```
-
 
 -----
 ## Mass Storage Drive
@@ -917,6 +915,181 @@ Parameters:
 * `delay=N.N` *(optional)* - The pulse time in seconds (float), `0` for default delay.
 * `wait=1` *(optional)* - Says if call should return immediately or just after finishing operation.
 
+
+----
+## Streamer
+
+### Get streamer state
+
+**Method**: `GET`
+
+**Route**: `/streamer`
+
+**Description**: Retrieves the current state of the streamer.
+
+**Query parameters**: None
+
+**Example of use**:
+
+``` sh
+$ curl -k -u admin:admin https://<pikvm-ip>/api/streamer
+```
+
+??? note "Example output"
+    ``` json
+    {
+        "ok": true,
+        "result": {
+            "features": {
+                "h264": true,
+                "quality": true,
+                "resolution": false
+            },
+            "limits": {
+                "desired_fps": {
+                    "max": 70,
+                    "min": 0
+                },
+                "h264_bitrate": {
+                    "max": 20000,
+                    "min": 25
+                },
+                "h264_gop": {
+                    "max": 60,
+                    "min": 0
+                }
+            },
+            "params": {
+                "desired_fps": 40,
+                "h264_bitrate": 5000,
+                "h264_gop": 30,
+                "quality": 80
+            },
+            "snapshot": {
+                "saved": null
+            },
+            "streamer": null
+        }
+    }⏎  
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Take Snapshot
+
+**Method**: `GET`
+
+**Route**: `/streamer/snapshot`
+
+**Description**: Captures a snapshot from the video stream. Can optionally perform OCR text recognition or generate a preview image.
+
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `save` | boolean | optional | Whether to save the snapshot, default: `false` | Enable: `1`, `true`, or `yes`. Disable: `0`, `false`, or `no` |
+| `load` | boolean | optional | Whether to load an existing snapshot, default: `false` | Enable: `1`, `true`, or `yes`. Disable: `0`, `false`, or `no` |
+| `allow_offline` | boolean | optional | Whether to allow taking snapshots when offline, default: `false` | Enable: `1`, `true`, or `yes`. Disable: `0`, `false`, or `no` |
+| `ocr` | boolean | optional | Whether to perform OCR text recognition on the snapshot, default: `false` | Enable: `1`, `true`, or `yes`. Disable: `0`, `false`, or `no` |
+| `ocr_langs` | string | optional | Comma-separated list of language codes for OCR recognition | FIXME |
+| `ocr_left` | number | optional | Left boundary for OCR region, default: `-1` | FIXME |
+| `ocr_top` | number | optional | Top boundary for OCR region, default: `-1` | FIXME |
+| `ocr_right` | number | optional | Right boundary for OCR region, default: `-1` | FIXME |
+| `ocr_bottom` | number | optional | Bottom boundary for OCR region, default: `-1` | FIXME |
+| `preview` | boolean | optional | Whether to generate a preview image, default: `false` | Enable: `1`, `true`, or `yes`. Disable: `0`, `false`, or `no` |
+| `preview_max_width` | integer | optional | Maximum width for preview image, default: `0` | Any positive integer value |
+| `preview_max_height` | integer | optional | Maximum height for preview image, default: `0` | Any positive integer value |
+| `preview_quality` | integer | optional | JPEG quality for preview (valid stream quality value), default: `80` | Any integer value in the 0..100 range |
+
+**Example of use**:
+
+``` sh
+$ curl -k -u admin:admin https://<pikvm-ip>/api/streamer/snapshot
+```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+- When `ocr=true`:
+    - Content-Type: `text/plain`
+    - Body: Recognized text from the image
+- When `preview=true` or default:
+    - Content-Type: `image/jpeg`
+    - Body: JPEG image data (either preview or full snapshot)
+- When snapshot unavailable:
+    - Status: 503 Service Unavailable
+    - Error: UnavailableError
+
+### Remove snapshot
+
+**Method**: `DELETE`
+
+**Route**: `/streamer/snapshot`
+
+**Description**: Removes/deletes the current snapshot from memory.
+
+**Query parameters**: None
+
+**Example of use**:
+
+``` sh
+$ curl -k -X DELETE -u admin:admin https://<pikvm-ip>/api/streamer/snapshot
+```
+
+??? note "Example output"
+    ``` json
+    {
+        "ok": true,
+        "result": {}
+    }⏎ 
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Get OCR state
+
+**Method**: GET
+
+**Route**: /streamer/ocr
+
+**Description**: Retrieves the current state and configuration of the optical character recognition (OCR) service.
+
+**Query parameters**: None
+
+**Example of use**:
+
+``` sh
+$ curl -k -u admin:admin https://<pikvm-ip>/api/streamer/ocr
+```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
 
 ----
 ## Misc
