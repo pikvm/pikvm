@@ -261,11 +261,19 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/log
 -----
 ## HID
 
-This API provides comprehensive control over virtual HID devices.
+The PiKVM HID (Human Interface Device) API provides remote control capabilities for keyboard and mouse input devices. It allows users to perform the following operations:
+
+- Get the device state and set/reset parameters.
+- Send keyboard shortcuts and text to be typed in the host system.
+- Send various mouse events: move to absolute coordinates and relatively, click virtual mouse buttons, and scroll the virtual mouse wheel.
 
 ### Get devices state
 
-The `GET /hid` handle get the current HID devices state.
+**Method**: `GET`
+
+**Route**: `/hid`
+
+**Description**: Gets the current HID devices state.
 
 **Query parameters**: none.
 
@@ -326,7 +334,11 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/hid
 
 ### Set parameters
 
-The `POST /hid/set_params` handle helps configure HID device parameters.
+**Method**: `POST`
+
+**Route**: `/hid/set_params`
+
+**Description**: Configures HID device parameters, such as the type of emulated keyboard and mouse.
 
 **Query parameters**:
 
@@ -339,7 +351,9 @@ The `POST /hid/set_params` handle helps configure HID device parameters.
 **Example of use**:
 
 ``` sh
-$ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/set_params?jiggler=0
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/hid/set_params?jiggler=0
 ```
 
 ??? note "Example output"
@@ -360,9 +374,13 @@ $ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/set_params?jiggler=0
 
 ### Set the connected state
 
-The `POST /hid/set_connected` handle set the HID devices connection state.
+**Method**: `POST`
 
-**Available parameters**:
+**Route**: `/hid/set_connected`
+
+**Description**: Sets the HID devices connection state.
+
+**Query parameters**:
 
 | Parameter | Type | Optionality | Description | Acceptable values |
 |-----------|------|-------------|-------------|-------------------|
@@ -371,7 +389,9 @@ The `POST /hid/set_connected` handle set the HID devices connection state.
 **Example of use**:
 
 ``` sh
-$ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/set_connected?connected=0
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/hid/set_connected?connected=0
 ```
 
 ??? note "Example output"
@@ -392,7 +412,11 @@ $ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/set_connected?connec
 
 ### Reset devices' state
 
-The `POST /hid/reset` handle resets HID devices to their initial state.
+**Method**: `POST`
+
+**Route**: `/hid/reset`
+
+**Description**: Resets HID devices to their initial state.
 
 **Query parameters**: none
 
@@ -420,7 +444,11 @@ $ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/reset
 
 ### Get keyboard layouts
 
-The `GET /hid/keymaps` handle gets available keyboard layouts and the current defaults.
+**Method**: `GET`
+
+**Route**: `/hid/keymaps`
+
+**Description**: Gets available keyboard layouts and the current defaults.
 
 **Query parameters**: none
 
@@ -490,7 +518,11 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/hid/keymaps
 
 ### Type text remotely
 
-The `POST /hid/print` handle transmits user-defined text to emulate typing it on the PiKVM by sequencing key presses.
+**Method**: `POST`
+
+**Route**: `/hid/print`
+
+**Description**: Transmits user-defined text to emulate typing it on the PiKVM by sequencing key presses.
 
 **Query parameters**: 
 
@@ -503,7 +535,10 @@ The `POST /hid/print` handle transmits user-defined text to emulate typing it on
 **Example of use**:
 
 ``` sh
-$ curl -k -X POST -u admin:admin -d "Einige Worte" https://<pikvm-ip>/api/hid/print?keymap=de
+$ curl -k -X POST \
+    -u admin:admin \
+    -d "Einige Worte" \
+    https://<pikvm-ip>/api/hid/print?keymap=de
 ```
 
 ??? note "Example output"
@@ -524,7 +559,11 @@ $ curl -k -X POST -u admin:admin -d "Einige Worte" https://<pikvm-ip>/api/hid/pr
 
 ### Send a keyboard shortcut
 
-The `POST /hid/events/send_shortcut` handle sends a keyboard shortcut, or key combination, to be emulated on the PiKVM.
+**Method**: `POST`
+
+**Route**: `/hid/events/send_shortcut`
+
+**Description**: Sends a keyboard shortcut, or key combination, to be typed on the PiKVM.
 
 **Query parameters**: 
 
@@ -535,7 +574,9 @@ The `POST /hid/events/send_shortcut` handle sends a keyboard shortcut, or key co
 **Example of use**:
 
 ``` sh
-$ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/events/send_shortcut?keys=ControlLeft,KeyL
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/hid/events/send_shortcut?keys=ControlLeft,KeyL
 ```
 
 ??? note "Example output"
@@ -556,7 +597,11 @@ $ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/events/send_shortcut
 
 ### Send a single key event
 
-The `POST /hid/events/send_key` handle transmits a command to emulate a single key press on the PiKVM.
+**Method**: `POST`
+
+**Route**: `/hid/events/send_key`
+
+**Description**: Transmits a command to emulate a single key press on the PiKVM.
 
 **Query parameters**: 
 
@@ -569,7 +614,9 @@ The `POST /hid/events/send_key` handle transmits a command to emulate a single k
 **Example of use**:
 
 ``` sh
-$ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/events/send_key?key=Delete
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/hid/events/send_key?key=Delete
 ```
 
 ??? note "Example output"
@@ -590,7 +637,11 @@ $ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/events/send_key?key=
 
 ### Send mouse button events
 
-The `POST /hid/events/send_mouse_button` handle sends mouse button press/release events.
+**Method**: `POST`
+
+**Route**: `/hid/events/send_mouse_button`
+
+**Description**: Sends mouse button press/release events.
 
 **Query parameters**: 
 
@@ -602,7 +653,9 @@ The `POST /hid/events/send_mouse_button` handle sends mouse button press/release
 **Example of use**:
 
 ``` sh
-$ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/events/send_mouse_button?button=left
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/hid/events/send_mouse_button?button=left
 ```
 
 ??? note "Example output"
@@ -623,7 +676,11 @@ $ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/events/send_mouse_bu
 
 ### Move the mouse pointer
 
-The `POST /hid/events/send_mouse_move` handle moves the mouse pointer to user-defined coordinates where 0,0 is the center of the screen.
+**Method**: `POST`
+
+**Route**: `/hid/events/send_mouse_move`
+
+**Description**: Sends a command to move the mouse pointer to user-defined coordinates where 0,0 is the center of the screen.
 
 **Query parameters**: 
 
@@ -635,7 +692,9 @@ The `POST /hid/events/send_mouse_move` handle moves the mouse pointer to user-de
 **Example of use**:
 
 ``` sh
-$ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/send_mouse_move?to_x=0&to_y=50
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/hid/send_mouse_move?to_x=0&to_y=50
 ```
 
 ??? note "Example output"
@@ -656,7 +715,11 @@ $ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/send_mouse_move?to_x
 
 ### Move the mouse ppinter relatively
 
-The `POST /hid/events/send_mouse_relative` handles moves the mouse pointer by a relative offset.
+**Method**: `POST`
+
+**Route**: `/hid/events/send_mouse_relative`
+
+**Description**: Sends a command to move the mouse pointer by a relative offset in pixels.
 
 **Query parameters**: 
 
@@ -668,7 +731,9 @@ The `POST /hid/events/send_mouse_relative` handles moves the mouse pointer by a 
 **Example of use**:
 
 ``` sh
-$ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/send_mouse_relative?delta_x=20&delta_y=200
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/hid/send_mouse_relative?delta_x=20&delta_y=200
 ```
 
 ??? note "Example output"
@@ -689,7 +754,11 @@ $ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/send_mouse_relative?
 
 ### Send mouse wheel scroll events
 
-The `POST /hid/events/send_mouse_wheel` handle sends mouse wheel scroll events to the PiKVM.
+**Method**: `POST`
+
+**Route**: `/hid/events/send_mouse_wheel`
+
+**Description**: Sends mouse wheel scroll events to be emulated on the host by PiKVM.
 
 **Query parameters**: 
 
@@ -698,10 +767,12 @@ The `POST /hid/events/send_mouse_wheel` handle sends mouse wheel scroll events t
 | `delta_x` | integer | required | Horizontal scroll delta | Any negative or positive integer value |
 | `delta_y` | integer | required | Vertical scroll delta | Any negative or positive integer value |
 
-**Example of use**: Send mouse wheel scroll events.
+**Example of use**: Sends mouse wheel scroll events.
 
 ``` sh
-$ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/send_mouse_wheel?delta_x=0&delta_y=200
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/hid/send_mouse_wheel?delta_x=0&delta_y=200
 ```
 
 ??? note "Example output"
@@ -917,6 +988,12 @@ Parameters:
 ----
 ## Streamer
 
+The PiKVM Streamer API provides remote access to video stream capture and management functionality of PiKVM devices. It allows users perform the following operations:
+
+- Capture screenshots.
+- Perform optical character recognition (OCR) on captured images.
+- Monitor the streamer's operational status.
+
 ### Get streamer state
 
 **Method**: `GET`
@@ -979,7 +1056,7 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/streamer
 | 400 | FIXME |
 | 500 | FIXME | 
 
-### Take Snapshot
+### Take snapshot
 
 **Method**: `GET`
 
@@ -1096,7 +1173,7 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/streamer/ocr
 ----
 ## Switch
 
-This API provides handles to control the [PiKVM Switch](switch.md): get information, set active ports, and control beacons.
+The PiKVM Switch API provides handles to control the [PiKVM Switch](switch.md): get information, set active ports, and control beacons.
 
 The API heavily relies on specifying ports on the PiKVM Switch. There are two ways to do that: with continuous numbering or with float numbers. Both options are equally valid and supported.
 
@@ -1109,7 +1186,7 @@ The API heavily relies on specifying ports on the PiKVM Switch. There are two wa
 
 **Route**: `/switch`
 
-**Description**: Return the information about the PiKVM Switch state.
+**Description**: Returns the information about the PiKVM Switch state.
 
 **Query parameters**: None.
 
@@ -1138,7 +1215,7 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/switch
 
 **Route**: `/switch/set_active_prev`
 
-**Description**: Switch to the previous active port.
+**Description**: Switches to the previous active port.
 
 **Query parameters**: None.
 
@@ -1169,7 +1246,7 @@ $ curl -k -X POST \
 
 **Route**: `/switch/set_active_next`
 
-**Description**: Switch to the next active port.
+**Description**: Switches to the next active port.
 
 **Query parameters**: None.
 
@@ -1200,7 +1277,7 @@ $ curl -k -X POST \
 
 **Route**: `/switch/set_active`
 
-**Description**: Switch to a specific port.
+**Description**: Switches to a specific port.
 
 **Query parameters**: 
 
@@ -1235,7 +1312,7 @@ $ curl -k -X POST \
 
 **Route**: `/switch/set_beacon`
 
-**Description**: Control beacon lights on ports or uplink/downlink units.
+**Description**: Controls beacon lights on ports or uplink/downlink units.
 
 **Query parameters**: 
 
@@ -1273,7 +1350,7 @@ $ curl -k -X POST \
 
 **Route**: `/switch/set_port_params`
 
-**Description**: Configure parameters for a specific port.
+**Description**: Configures parameters for a specific port.
 
 **Query parameters**: 
 
@@ -1314,7 +1391,7 @@ $ curl -k -X POST \
 
 **Route**: `/switch/set_colors`
 
-**Description**: Set the beacon color for the PiKVM Switch and all switches in the downlink (where applicable).
+**Description**: Sets the beacon color for the PiKVM Switch and all switches in the downlink (where applicable).
 
 **Query parameters**:
 
@@ -1386,7 +1463,7 @@ $ curl -k -X POST \
 
 **Route**: `/switch/edids/create`
 
-**Description**: Create a new EDID configuration from user-specified EDID name and data.
+**Description**: Creates a new EDID configuration from user-specified EDID name and data.
 
 **Query parameters**: 
 
@@ -1562,7 +1639,7 @@ $ curl -k -X POST \
 | 500 | FIXME | 
 
 ----
-## Redfish API
+## Redfish
 
 The PiKVM Redfish API implements the industry-standard [DMTF Redfish specification](https://www.dmtf.org/standards/redfish) for remote server control. It allows you to monitor and control the power of the target system.
 
@@ -1574,7 +1651,7 @@ Most endpoints require authentication using your PiKVM credentials. You can inte
 
 **Route**: `/redfish/v1`
 
-**Description**: Entry point for Redfish service discovery, returns basic service information and links to available resources. Doesn't require authentication.
+**Description**: Returns the basic Redfish service information and links to available resources. Doesn't require authentication.
 
 **Query parameters**: None.
 
