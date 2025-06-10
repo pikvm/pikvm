@@ -392,7 +392,7 @@ $ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/set_connected?connec
 
 ### Reset devices' state
 
-The `POST /hid/reset` handles resets HID devices to their initial state.
+The `POST /hid/reset` handle resets HID devices to their initial state.
 
 **Query parameters**: none
 
@@ -881,7 +881,6 @@ The `POST /api/msd/reset` handle resets the drive.
 $ curl -X POST -k -u admin:admin https://<pikvm-ip>/api/msd/reset
 ```
 
-
 -----
 ## GPIO
 
@@ -892,7 +891,6 @@ The `GET /api/gpio` handle shows the current GPIO state.
 ```
 $ curl -k -u admin:admin https://<pikvm-ip>/api/gpio
 ```
-
 
 ### Switch GPIO channel
 
@@ -1010,7 +1008,9 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/streamer
 **Example of use**:
 
 ``` sh
-$ curl -k -u admin:admin https://<pikvm-ip>/api/streamer/snapshot
+$ curl -k \
+    -u admin:admin \
+    https://<pikvm-ip>/api/streamer/snapshot?save=1&preview_quality=95
 ```
 
 ??? note "Example output"
@@ -1043,7 +1043,9 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/streamer/snapshot
 **Example of use**:
 
 ``` sh
-$ curl -k -X DELETE -u admin:admin https://<pikvm-ip>/api/streamer/snapshot
+$ curl -k -X DELETE \
+    -u admin:admin \
+    https://<pikvm-ip>/api/streamer/snapshot
 ```
 
 ??? note "Example output"
@@ -1090,6 +1092,634 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/streamer/ocr
 | 200 | FIXME |
 | 400 | FIXME |
 | 500 | FIXME | 
+
+----
+## Switch
+
+This API provides handles to control the [PiKVM Switch](switch.md): get information, set active ports, and control beacons.
+
+The API heavily relies on specifying ports on the PiKVM Switch. There are two ways to do that: with continuous numbering or with float numbers. Both options are equally valid and supported.
+
+1. With continuous numbering, ports enumeration starts at 0 and ends at 19, because you can create up to 20 ports by adding more PiKVM Switch devices to the first Switch's downlink.
+2. If you use a float value, the integer part specifies the number of the unit in the downlink, while the fractional part specifies the number of the port on that unit.
+
+### Get Switch state
+
+**Method**: `GET`
+
+**Route**: `/switch`
+
+**Description**: Return the information about the PiKVM Switch state.
+
+**Query parameters**: None.
+
+**Example of use**:
+
+``` sh
+$ curl -k -u admin:admin https://<pikvm-ip>/api/switch
+```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Set active port (previous)
+
+**Method**: `POST`
+
+**Route**: `/switch/set_active_prev`
+
+**Description**: Switch to the previous active port.
+
+**Query parameters**: None.
+
+**Example of use**:
+
+``` sh
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/switch/set_active_prev
+```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Set active port (next)
+
+**Method**: `POST`
+
+**Route**: `/switch/set_active_next`
+
+**Description**: Switch to the next active port.
+
+**Query parameters**: None.
+
+**Example of use**:
+
+``` sh
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/switch/set_active_next
+```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Set active port (specific)
+
+**Method**: `POST`
+
+**Route**: `/switch/set_active`
+
+**Description**: Switch to a specific port.
+
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `port` | float | required | Specifies the port number | Integer in the 0..19 range or float (0,0 through 4,3) |
+
+**Example of use**:
+
+``` sh
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/switch/set_active?port=2,2
+```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Set beacon
+
+**Method**: `POST`
+
+**Route**: `/switch/set_beacon`
+
+**Description**: Control beacon lights on ports or uplink/downlink units.
+
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `state` | boolean | required | Turn beacon on/off | Enable: `1`, `true`, or `yes`. Disable: `0`, `false`, or `no` |
+| `port` | float | optional | Specify the port beacon | Integer in the 0..19 range or float (0,0 through 4,3) |
+| `uplink` | integer | optional | Number of the uplink beacon, same as the port | Integer in the 0..19 range or float (0,0 through 4,3) |
+| `downlink` | integer | optional | Number of the downlink beacon, same as the port | Integer in the 0..19 range or float (0,0 through 4,3) |
+
+**Example of use**:
+
+``` sh
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/switch/set_beacon
+```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Set port parameters
+
+**Method**: `POST`
+
+**Route**: `/switch/set_port_params`
+
+**Description**: Configure parameters for a specific port.
+
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `port` | float | required | Specifies the port number | `0..19` |
+| `edid_id` | string | optional | EDID identifier (allows default value) | Alphanumeric string like `ca3d7114-79ca-47fc-80b4-b80ac63fc329` |
+| `dummy` | boolean | optional | When enabled, the switch will pretend the host has a display attached | Enable: `1`, `true`, or `yes`. Disable: `0`, `false`, or `no` |
+| `name` | string | optional | String port name, none set by default | Any combination of ASCII letters and numbers |
+| `atx_click_power_delay` | float | optional | ATX power click delay value | `0..10` |
+| `atx_click_power_long_delay` | float | optional | ATX long power click delay value | `0..10` |
+| `atx_click_reset_delay` | float | optional | ATX reset click delay value | `0..10` |
+
+**Example of use**:
+
+``` sh
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/switch/set_port_params?port=2&name=PORT3
+```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Set beacon color
+
+**Method**: `POST`
+
+**Route**: `/switch/set_colors`
+
+**Description**: Set the beacon color for the PiKVM Switch and all switches in the downlink (where applicable).
+
+**Query parameters**:
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `beacon` | hex | required | Sets color, brightness, and blink interval (ms) | A valid hex value (see example below) |
+
+**Example of use**: Let's set the beacon to be orange at 75% of full brightness, blinking with an interval of 40ms.
+
+``` sh
+$ curl -k -X POST \
+    -u admin:admin \
+    -d "FFA500:BF:0028" \
+    https://<pikvm-ip>/api/switch/set_colors
+```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Reboot the device
+
+**Method**: `POST`
+
+**Route**: `/switch/reset`
+
+**Description**: Reboots the PiKVM Switch with an option to enter the reflashing mode after the reboot.
+
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `unit` | integer | required | Specifies the unit number | `0..4` |
+| `bootloader` | boolean | optional | Whether to enter the reflashing mode after rebooting, defaults to `false` | Enable: `1`, `true`, or `yes`. Disable: `0`, `false`, or `no` |
+
+**Example of use**:
+
+``` sh
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/switch/reset?unit=0&bootloader=1
+```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Create a new EDID configuration
+
+**Method**: `POST`
+
+**Route**: `/switch/edids/create`
+
+**Description**: Create a new EDID configuration from user-specified EDID name and data.
+
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `name` | string | required | EDID name | Alphanumeric name (see example below) |
+| `data` | string | required | EDID data | Hexadecimal string (see example below) |
+
+**Example of use**:
+
+``` sh
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/switch/edids/create?name=Gigabyte-GA-H77-DS3H&data=00FFFFFFFFFFFF0052628888008888881C150103800000780AEE91A3544C99260F505425400001000100010001000100010001010101D51B0050500019400820B80080001000001EEC2C80A070381A403020350040442100001E000000FC0050492D4B564D20566964656F0A000000FD00323D0F2E0F0000000000000000014D02030400DE0D20A03058122030203400F0B400000018E01500A04000163030203400000000000018B41400A050D011203020350080D810000018AB22A0A050841A3030203600B00E1100001800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000045
+```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Change EDID configuration
+
+**Method**: `POST`
+
+**Route**: `/switch/edids/change`
+
+**Description**: Modifies an existing EDID configuration.
+
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `id` | string | required | EDID identifier | Alphanumeric id (see example below) |
+| `name` | string | optional | New EDID name | Alphanumeric name (see example below) |
+| `data` | string | optional | New EDID data | Hexadecimal string (see example below) |
+
+
+**Example of use**:
+
+``` sh
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/switch/edids/change?id=ca3d7114-79ca-47fc-80b4-b80ac63fc329&name=Gigabyte-GA-H77-DS3H&data=00FFFFFFFFFFFF0052628888008888881C150103800000780AEE91A3544C99260F505425400001000100010001000100010001010101D51B0050500019400820B80080001000001EEC2C80A070381A403020350040442100001E000000FC0050492D4B564D20566964656F0A000000FD00323D0F2E0F0000000000000000014D02030400DE0D20A03058122030203400F0B400000018E01500A04000163030203400000000000018B41400A050D011203020350080D810000018AB22A0A050841A3030203600B00E1100001800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000045
+```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Remove EDID configuration
+
+**Method**: `POST`
+
+**Route**: `/switch/edids/remove`
+
+**Description**: Deletes an EDID configuration.
+
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `id` | string | required | EDID identifier | Alphanumeric id (see example below) |
+
+**Example of use**:
+
+``` sh
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/switch/edids/remove?id=ca3d7114-79ca-47fc-80b4-b80ac63fc329
+```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### ATX Power Control
+
+**Method**: `POST`
+
+**Route**: `/switch/atx/power`
+
+**Description**: Controls ATX power states for a specific port.
+
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `port` | float | required | Specifies the port number | 0..19 |
+| `action` | string | required | Power action | `on` - Power on, `off` - Power off, `off_hard` - Hard power off, `reset_hard` - Hard reset |
+
+**Example of use**:
+
+``` sh
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/switch/atx/power?port=0&action=reset_hard
+```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### ATX Button Click
+
+**Method**: `POST`
+
+**Route**: `/switch/atx/click`
+
+**Description**: Simulates ATX button clicks for a specific port.
+
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `port` | float | required | Specifies the port number | `0..19` |
+| `button` | string | required | Power action | `power` - Power button click, `power_long` - Long power button press, `reset` - Reset button click |
+
+**Example of use**:
+
+``` sh
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/switch/atx/click?port=0&button=power_long
+```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+----
+## Redfish API
+
+The PiKVM Redfish API implements the industry-standard [DMTF Redfish specification](https://www.dmtf.org/standards/redfish) for remote server control. It allows you to monitor and control the power of the target system.
+
+Most endpoints require authentication using your PiKVM credentials. You can interact with the API using standard HTTP clients, `curl`, or the [specialized Redfish tools](https://github.com/DMTF/Redfishtool).
+
+### Root service discovery
+
+**Method**: `GET`
+
+**Route**: `/redfish/v1`
+
+**Description**: Entry point for Redfish service discovery, returns basic service information and links to available resources. Doesn't require authentication.
+
+**Query parameters**: None.
+
+**Example of use**:
+
+``` sh
+$ curl -k https://<pikvm-ip>/api/redfish/v1
+```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Systems collection
+
+**Method**: `GET`
+
+**Route**: `/redfish/v1/Systems`
+
+**Description**: Returns collection of available computer systems.
+
+**Query parameters**: None.
+
+**Example of use**:
+
+``` sh
+$ curl -k -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems
+```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### Individual system information
+
+**Method**: `GET`
+
+**Route**: `/redfish/v1/Systems/0`
+
+**Description**: Returns detailed information about the specific system, including power state, hostname, and available actions.
+
+**Query parameters**: None.
+
+**Example of use**:
+
+``` sh
+$ curl -k -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems/0
+```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
+### System configuration update
+
+**Method**: `PATCH`
+
+**Route**: `/redfish/v1/Systems/0`
+
+**Description**: This handle was added to aid in scenarios where installing OKD (Kubernetes) using installer-provisioned infrastructure involves expecting two fields to be returned and the patch request to return a 204. Hence, this handle is currently a no-op that just returns success.
+
+**Query parameters**: None
+
+**Example of use**:
+
+``` sh
+$ curl -k -X PATCH -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems/0
+```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 204 | Returns success | 
+
+### System power control
+
+**Method**: `POST`
+
+**Route**: `/redfish/v1/Systems/0/Actions/ComputerSystem.Reset`
+
+**Description**: Performs power control actions on the system.
+
+**Query parameters**: This handles expects JSON with `ResetType` in the request body and one of the following values:
+
+- `On` - Power on
+- `ForceOff` - Hard power off
+- `GracefulShutdown` - Graceful power off
+- `ForceRestart` - Hard reset
+- `ForceOn` - Force power on
+- `PushPowerButton` - Simulate power button press
+
+**Example of use**:
+
+``` sh
+$ curl -k -X POST \
+    -H "Content-Type: application/json" \
+    -u admin:admin \
+    -d '{"ResetType": "ForceRestart"}' \
+    https://<pikvm-ip>/api/redfish/v1/Systems/0/Actions/ComputerSystem.Reset
+```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 204 | Success |
+| 400 | Invalid or missing ResetType |
 
 ----
 ## Misc
