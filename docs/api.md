@@ -58,7 +58,7 @@ There are two options here:
 
 * **Using HTTP Basic Auth.** Please note: contrary to the standard, this method DOES NOT use the `WWW-Authenticate` header. HTTP Basic Auth in this implementation is intended only for compatibility with other systems, such as [Prometheus](prometheus.md).
 
-    ```
+    ```console
     $ curl -k -u admin:admin https://<pikvm-ip>/api/auth/check
     ```
 
@@ -66,7 +66,7 @@ There are two options here:
 
 1. Get the access token for the user using `POST /api/auth/login`:
 
-    ```
+    ```console
     $ curl -k -v -X POST --data user=admin --data passwd=admin https://pikvm/api/auth/login
     ...
     < Set-Cookie: auth_token=796cb83b11de4fcb749bc1bad14a91fb06dede84672b2f847fef1e988e6900de; Path=/
@@ -88,7 +88,7 @@ In a normal situation, opening a socket session triggers the video streamer to s
 
 It is possible create a session that will not start the streamer and will not be counted when counting clients to stop the streamer. To do this, use the URL parameter `stream=0`:
 
-```
+```console
 $ websocat -k wss://<pikvm-ip>/api/ws?stream=0 -H X-KVMD-User:admin -H X-KVMD-Passwd:admin
 ```
 
@@ -149,7 +149,7 @@ Another type of event is `ping`, which can be sent by the client: `{"event_type"
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -u admin:admin https://<pikvm-ip>/api/info?fields=hw
 ```
 
@@ -228,7 +228,7 @@ Each category is represented by its own event in the websocket (`info_hw_state`,
 
 **Example of use**: the following query returns commit messages for the last 1 hour and enables the long-polling mode:
 
-``` sh
+```console
 $ curl -k -u admin:admin https://<pikvm-ip>/api/log?follow=1&seek=3600
 ```
 
@@ -259,7 +259,7 @@ The PiKVM HID (Human Interface Device) API provides remote control capabilities 
 
 **Method**: `GET`
 
-**Route**: `/hid`
+**Route**: `/api/hid`
 
 **Description**: Gets the current HID devices state.
 
@@ -267,12 +267,12 @@ The PiKVM HID (Human Interface Device) API provides remote control capabilities 
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -u admin:admin https://<pikvm-ip>/api/hid
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     {
         "ok": true,
         "result": {
@@ -324,7 +324,7 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/hid
 
 **Method**: `POST`
 
-**Route**: `/hid/set_params`
+**Route**: `/api/hid/set_params`
 
 **Description**: Configures HID device parameters, such as the type of emulated keyboard and mouse.
 
@@ -338,14 +338,14 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/hid
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     https://<pikvm-ip>/api/hid/set_params?jiggler=0
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     {
         "ok": true,
         "result": {}
@@ -364,7 +364,7 @@ $ curl -k -X POST \
 
 **Method**: `POST`
 
-**Route**: `/hid/set_connected`
+**Route**: `/api/hid/set_connected`
 
 **Description**: Sets the HID devices connection state.
 
@@ -376,14 +376,14 @@ $ curl -k -X POST \
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     https://<pikvm-ip>/api/hid/set_connected?connected=0
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     {
         "ok": true,
         "result": {}
@@ -402,7 +402,7 @@ $ curl -k -X POST \
 
 **Method**: `POST`
 
-**Route**: `/hid/reset`
+**Route**: `/api/hid/reset`
 
 **Description**: Resets HID devices to their initial state.
 
@@ -410,12 +410,12 @@ $ curl -k -X POST \
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/reset
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     {
         "ok": true,
         "result": {}
@@ -434,7 +434,7 @@ $ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/reset
 
 **Method**: `GET`
 
-**Route**: `/hid/keymaps`
+**Route**: `/api/hid/keymaps`
 
 **Description**: Gets available keyboard layouts and the current defaults.
 
@@ -442,12 +442,12 @@ $ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/reset
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -u admin:admin https://<pikvm-ip>/api/hid/keymaps
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     {
         "ok": true,
         "result": {
@@ -508,7 +508,7 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/hid/keymaps
 
 **Method**: `POST`
 
-**Route**: `/hid/print`
+**Route**: `/api/hid/print`
 
 **Description**: Transmits user-defined text to emulate typing it on the PiKVM by sequencing key presses.
 
@@ -522,7 +522,7 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/hid/keymaps
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     -d "Einige Worte" \
@@ -530,7 +530,7 @@ $ curl -k -X POST \
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     {
     "ok": true,
     "result": {}
@@ -549,7 +549,7 @@ $ curl -k -X POST \
 
 **Method**: `POST`
 
-**Route**: `/hid/events/send_shortcut`
+**Route**: `/api/hid/events/send_shortcut`
 
 **Description**: Sends a keyboard shortcut, or key combination, to be typed on the PiKVM.
 
@@ -561,14 +561,14 @@ $ curl -k -X POST \
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     https://<pikvm-ip>/api/hid/events/send_shortcut?keys=ControlLeft,KeyL
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     {
     "ok": true,
     "result": {}
@@ -587,7 +587,7 @@ $ curl -k -X POST \
 
 **Method**: `POST`
 
-**Route**: `/hid/events/send_key`
+**Route**: `/api/hid/events/send_key`
 
 **Description**: Transmits a command to emulate a single key press on the PiKVM.
 
@@ -601,14 +601,14 @@ $ curl -k -X POST \
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     https://<pikvm-ip>/api/hid/events/send_key?key=Delete
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     {
     "ok": true,
     "result": {}
@@ -627,7 +627,7 @@ $ curl -k -X POST \
 
 **Method**: `POST`
 
-**Route**: `/hid/events/send_mouse_button`
+**Route**: `/api/hid/events/send_mouse_button`
 
 **Description**: Sends mouse button press/release events.
 
@@ -640,14 +640,14 @@ $ curl -k -X POST \
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     https://<pikvm-ip>/api/hid/events/send_mouse_button?button=left
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     {
     "ok": true,
     "result": {}
@@ -666,7 +666,7 @@ $ curl -k -X POST \
 
 **Method**: `POST`
 
-**Route**: `/hid/events/send_mouse_move`
+**Route**: `/api/hid/events/send_mouse_move`
 
 **Description**: Sends a command to move the mouse pointer to user-defined coordinates where 0,0 is the center of the screen.
 
@@ -679,14 +679,14 @@ $ curl -k -X POST \
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     https://<pikvm-ip>/api/hid/send_mouse_move?to_x=0&to_y=50
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     {
     "ok": true,
     "result": {}
@@ -705,7 +705,7 @@ $ curl -k -X POST \
 
 **Method**: `POST`
 
-**Route**: `/hid/events/send_mouse_relative`
+**Route**: `/api/hid/events/send_mouse_relative`
 
 **Description**: Sends a command to move the mouse pointer by a relative offset in pixels.
 
@@ -718,14 +718,14 @@ $ curl -k -X POST \
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     https://<pikvm-ip>/api/hid/send_mouse_relative?delta_x=20&delta_y=200
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     {
     "ok": true,
     "result": {}
@@ -744,7 +744,7 @@ $ curl -k -X POST \
 
 **Method**: `POST`
 
-**Route**: `/hid/events/send_mouse_wheel`
+**Route**: `/api/hid/events/send_mouse_wheel`
 
 **Description**: Sends mouse wheel scroll events to be emulated on the host by PiKVM.
 
@@ -757,14 +757,14 @@ $ curl -k -X POST \
 
 **Example of use**: Sends mouse wheel scroll events.
 
-``` sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     https://<pikvm-ip>/api/hid/send_mouse_wheel?delta_x=0&delta_y=200
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     {
     "ok": true,
     "result": {}
@@ -800,7 +800,7 @@ The PiKVM ATX API provides control over ATX (Advanced Technology eXtended) power
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -u admin:admin https://<pikvm-ip>/api/atx
 ```
 
@@ -844,14 +844,14 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/atx
 
 **Example of use**:
 
-```sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     https://<pikvm-ip>/api/atx/power?action=on
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 **Responses**:
@@ -879,14 +879,14 @@ $ curl -k -X POST \
 
 **Example of use**:
 
-```sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     https://<pikvm-ip>/api/atx/click?button=power
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 
@@ -917,7 +917,6 @@ The `GET /api/msd` handle shows the current MSD state.
 $ curl -k -u admin:admin https://<pikvm-ip>/api/msd
 ```
 
-
 ### Upload MSD image
 
 The `POST /api/msd/write` uploads an image to MSD.
@@ -935,7 +934,6 @@ $ # upload it to pikvm
 $ curl -v -X POST --data-binary @test.iso -k -u admin:admin https://<pikvm-ip>/api/msd/write?image=test.iso
 ```
 
-
 ### Upload MSD image by URL
 
 The `POST /api/msd/write_remote` handle downloads an image from HTTP(S) URL to the MSD.
@@ -949,14 +947,13 @@ Parameters:
 !!! note
     This is a long-polling request. Do not interrupt the request until the download is complete, otherwise the download will stop.
 
-```sh
+```console
 $ # create test image
 $ dd if=/dev/zero of=test.iso bs=1M count=1
 
 $ # upload it to pikvm
 $ curl -v -X POST -k -u admin:admin https://<pikvm-ip>/api/msd/write_remote?url=http://example.com/test.iso
 ```
-
 
 ### Set MSD parameters
 
@@ -968,10 +965,9 @@ Parameters:
 * `cdrom=1|0` *(optional)* - Change the media type to the CD-ROM on `1`, otherwise to the Flash.
 * `rw=0|1` *(optional)* - Make the MSD read-write on `1`, otherwise read-only. Ignored (always read-only) when `cdrom=1`.
 
-```
+```console
 $ curl -X POST -k -u admin:admin "https://<pikvm-ip>/api/msd/set_params?image=test.iso&cdrom=1"
 ```
-
 
 ### Control MSD
 
@@ -981,10 +977,9 @@ Parameters:
 
 * `connected=1|0` - Change the state.
 
-```
+```console
 $ curl -X POST -k -u admin:admin https://<pikvm-ip>/api/msd/set_connected?connected=1
 ```
-
 
 ### Remove MSD image
 
@@ -994,7 +989,7 @@ Parameters:
 
 * `image=...` - The image name.
 
-```
+```console
 $ curl -X POST -k -u admin:admin https://<pikvm-ip>/api/msd/remove?image=test.iso
 ```
 
@@ -1003,7 +998,7 @@ $ curl -X POST -k -u admin:admin https://<pikvm-ip>/api/msd/remove?image=test.is
 
 The `POST /api/msd/reset` handle resets the drive.
 
-```
+```console
 $ curl -X POST -k -u admin:admin https://<pikvm-ip>/api/msd/reset
 ```
 
@@ -1014,7 +1009,7 @@ $ curl -X POST -k -u admin:admin https://<pikvm-ip>/api/msd/reset
 
 The `GET /api/gpio` handle shows the current GPIO state.
 
-```
+```console
 $ curl -k -u admin:admin https://<pikvm-ip>/api/gpio
 ```
 
@@ -1053,7 +1048,7 @@ The PiKVM Streamer API provides remote access to video stream capture and manage
 
 **Method**: `GET`
 
-**Route**: `/streamer`
+**Route**: `/api/streamer`
 
 **Description**: Retrieves the current state of the streamer.
 
@@ -1061,12 +1056,12 @@ The PiKVM Streamer API provides remote access to video stream capture and manage
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -u admin:admin https://<pikvm-ip>/api/streamer
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     {
         "ok": true,
         "result": {
@@ -1115,7 +1110,7 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/streamer
 
 **Method**: `GET`
 
-**Route**: `/streamer/snapshot`
+**Route**: `/api/streamer/snapshot`
 
 **Description**: Captures a snapshot from the video stream. Can optionally perform OCR text recognition or generate a preview image.
 
@@ -1139,14 +1134,14 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/streamer
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k \
     -u admin:admin \
     https://<pikvm-ip>/api/streamer/snapshot?save=1&preview_quality=95
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 
@@ -1166,7 +1161,7 @@ $ curl -k \
 
 **Method**: `DELETE`
 
-**Route**: `/streamer/snapshot`
+**Route**: `/api/streamer/snapshot`
 
 **Description**: Removes/deletes the current snapshot from memory.
 
@@ -1174,14 +1169,14 @@ $ curl -k \
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X DELETE \
     -u admin:admin \
     https://<pikvm-ip>/api/streamer/snapshot
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     {
         "ok": true,
         "result": {}
@@ -1200,7 +1195,7 @@ $ curl -k -X DELETE \
 
 **Method**: GET
 
-**Route**: /streamer/ocr
+**Route**: `/api/streamer/ocr`
 
 **Description**: Retrieves the current state and configuration of the optical character recognition (OCR) service.
 
@@ -1208,12 +1203,12 @@ $ curl -k -X DELETE \
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -u admin:admin https://<pikvm-ip>/api/streamer/ocr
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 
@@ -1239,7 +1234,7 @@ The API heavily relies on specifying ports on the PiKVM Switch. There are two wa
 
 **Method**: `GET`
 
-**Route**: `/switch`
+**Route**: `/api/switch`
 
 **Description**: Returns the information about the PiKVM Switch state.
 
@@ -1247,12 +1242,12 @@ The API heavily relies on specifying ports on the PiKVM Switch. There are two wa
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -u admin:admin https://<pikvm-ip>/api/switch
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 
@@ -1268,7 +1263,7 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/switch
 
 **Method**: `POST`
 
-**Route**: `/switch/set_active_prev`
+**Route**: `/api/switch/set_active_prev`
 
 **Description**: Switches to the previous active port.
 
@@ -1276,14 +1271,14 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/switch
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     https://<pikvm-ip>/api/switch/set_active_prev
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 
@@ -1299,7 +1294,7 @@ $ curl -k -X POST \
 
 **Method**: `POST`
 
-**Route**: `/switch/set_active_next`
+**Route**: `/api/switch/set_active_next`
 
 **Description**: Switches to the next active port.
 
@@ -1307,14 +1302,14 @@ $ curl -k -X POST \
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     https://<pikvm-ip>/api/switch/set_active_next
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 
@@ -1330,7 +1325,7 @@ $ curl -k -X POST \
 
 **Method**: `POST`
 
-**Route**: `/switch/set_active`
+**Route**: `/api/switch/set_active`
 
 **Description**: Switches to a specific port.
 
@@ -1342,14 +1337,14 @@ $ curl -k -X POST \
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     https://<pikvm-ip>/api/switch/set_active?port=2,2
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 
@@ -1365,7 +1360,7 @@ $ curl -k -X POST \
 
 **Method**: `POST`
 
-**Route**: `/switch/set_beacon`
+**Route**: `/api/switch/set_beacon`
 
 **Description**: Controls beacon lights on ports or uplink/downlink units.
 
@@ -1380,14 +1375,14 @@ $ curl -k -X POST \
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     https://<pikvm-ip>/api/switch/set_beacon
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 
@@ -1403,7 +1398,7 @@ $ curl -k -X POST \
 
 **Method**: `POST`
 
-**Route**: `/switch/set_port_params`
+**Route**: `/api/switch/set_port_params`
 
 **Description**: Configures parameters for a specific port.
 
@@ -1421,14 +1416,14 @@ $ curl -k -X POST \
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     https://<pikvm-ip>/api/switch/set_port_params?port=2&name=PORT3
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 
@@ -1444,7 +1439,7 @@ $ curl -k -X POST \
 
 **Method**: `POST`
 
-**Route**: `/switch/set_colors`
+**Route**: `/api/switch/set_colors`
 
 **Description**: Sets the beacon color for the PiKVM Switch and all switches in the downlink (where applicable).
 
@@ -1456,7 +1451,7 @@ $ curl -k -X POST \
 
 **Example of use**: Let's set the beacon to be orange at 75% of full brightness, blinking with an interval of 40ms.
 
-``` sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     -d "FFA500:BF:0028" \
@@ -1464,7 +1459,7 @@ $ curl -k -X POST \
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 
@@ -1480,7 +1475,7 @@ $ curl -k -X POST \
 
 **Method**: `POST`
 
-**Route**: `/switch/reset`
+**Route**: `/api/switch/reset`
 
 **Description**: Reboots the PiKVM Switch with an option to enter the reflashing mode after the reboot.
 
@@ -1493,14 +1488,14 @@ $ curl -k -X POST \
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     https://<pikvm-ip>/api/switch/reset?unit=0&bootloader=1
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 
@@ -1516,7 +1511,7 @@ $ curl -k -X POST \
 
 **Method**: `POST`
 
-**Route**: `/switch/edids/create`
+**Route**: `/api/switch/edids/create`
 
 **Description**: Creates a new EDID configuration from user-specified EDID name and data.
 
@@ -1529,14 +1524,14 @@ $ curl -k -X POST \
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     https://<pikvm-ip>/api/switch/edids/create?name=Gigabyte-GA-H77-DS3H&data=00FFFFFFFFFFFF0052628888008888881C150103800000780AEE91A3544C99260F505425400001000100010001000100010001010101D51B0050500019400820B80080001000001EEC2C80A070381A403020350040442100001E000000FC0050492D4B564D20566964656F0A000000FD00323D0F2E0F0000000000000000014D02030400DE0D20A03058122030203400F0B400000018E01500A04000163030203400000000000018B41400A050D011203020350080D810000018AB22A0A050841A3030203600B00E1100001800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000045
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 
@@ -1552,7 +1547,7 @@ $ curl -k -X POST \
 
 **Method**: `POST`
 
-**Route**: `/switch/edids/change`
+**Route**: `/api/switch/edids/change`
 
 **Description**: Modifies an existing EDID configuration.
 
@@ -1567,14 +1562,14 @@ $ curl -k -X POST \
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     https://<pikvm-ip>/api/switch/edids/change?id=ca3d7114-79ca-47fc-80b4-b80ac63fc329&name=Gigabyte-GA-H77-DS3H&data=00FFFFFFFFFFFF0052628888008888881C150103800000780AEE91A3544C99260F505425400001000100010001000100010001010101D51B0050500019400820B80080001000001EEC2C80A070381A403020350040442100001E000000FC0050492D4B564D20566964656F0A000000FD00323D0F2E0F0000000000000000014D02030400DE0D20A03058122030203400F0B400000018E01500A04000163030203400000000000018B41400A050D011203020350080D810000018AB22A0A050841A3030203600B00E1100001800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000045
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 
@@ -1590,7 +1585,7 @@ $ curl -k -X POST \
 
 **Method**: `POST`
 
-**Route**: `/switch/edids/remove`
+**Route**: `/api/switch/edids/remove`
 
 **Description**: Deletes an EDID configuration.
 
@@ -1602,14 +1597,14 @@ $ curl -k -X POST \
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     https://<pikvm-ip>/api/switch/edids/remove?id=ca3d7114-79ca-47fc-80b4-b80ac63fc329
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 
@@ -1625,7 +1620,7 @@ $ curl -k -X POST \
 
 **Method**: `POST`
 
-**Route**: `/switch/atx/power`
+**Route**: `/api/switch/atx/power`
 
 **Description**: Controls ATX power states for a specific port.
 
@@ -1638,14 +1633,14 @@ $ curl -k -X POST \
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     https://<pikvm-ip>/api/switch/atx/power?port=0&action=reset_hard
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 
@@ -1661,7 +1656,7 @@ $ curl -k -X POST \
 
 **Method**: `POST`
 
-**Route**: `/switch/atx/click`
+**Route**: `/api/switch/atx/click`
 
 **Description**: Simulates ATX button clicks for a specific port.
 
@@ -1674,14 +1669,14 @@ $ curl -k -X POST \
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X POST \
     -u admin:admin \
     https://<pikvm-ip>/api/switch/atx/click?port=0&button=power_long
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 
@@ -1704,7 +1699,7 @@ Most endpoints require authentication using your PiKVM credentials. You can inte
 
 **Method**: `GET`
 
-**Route**: `/redfish/v1`
+**Route**: `/api/redfish/v1`
 
 **Description**: Returns the basic Redfish service information and links to available resources. Doesn't require authentication.
 
@@ -1712,12 +1707,12 @@ Most endpoints require authentication using your PiKVM credentials. You can inte
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k https://<pikvm-ip>/api/redfish/v1
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 
@@ -1733,7 +1728,7 @@ $ curl -k https://<pikvm-ip>/api/redfish/v1
 
 **Method**: `GET`
 
-**Route**: `/redfish/v1/Systems`
+**Route**: `/api/redfish/v1/Systems`
 
 **Description**: Returns collection of available computer systems.
 
@@ -1741,12 +1736,12 @@ $ curl -k https://<pikvm-ip>/api/redfish/v1
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 
@@ -1762,7 +1757,7 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems
 
 **Method**: `GET`
 
-**Route**: `/redfish/v1/Systems/0`
+**Route**: `/api/redfish/v1/Systems/0`
 
 **Description**: Returns detailed information about the specific system, including power state, hostname, and available actions.
 
@@ -1770,12 +1765,12 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems/0
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 
@@ -1791,7 +1786,7 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems/0
 
 **Method**: `PATCH`
 
-**Route**: `/redfish/v1/Systems/0`
+**Route**: `/api/redfish/v1/Systems/0`
 
 **Description**: This handle was added to aid in scenarios where installing OKD (Kubernetes) using installer-provisioned infrastructure involves expecting two fields to be returned and the patch request to return a 204. Hence, this handle is currently a no-op that just returns success.
 
@@ -1799,12 +1794,12 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems/0
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X PATCH -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems/0
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 
@@ -1818,7 +1813,7 @@ $ curl -k -X PATCH -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems/0
 
 **Method**: `POST`
 
-**Route**: `/redfish/v1/Systems/0/Actions/ComputerSystem.Reset`
+**Route**: `/api/redfish/v1/Systems/0/Actions/ComputerSystem.Reset`
 
 **Description**: Performs power control actions on the system.
 
@@ -1833,7 +1828,7 @@ $ curl -k -X PATCH -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems/0
 
 **Example of use**:
 
-``` sh
+```console
 $ curl -k -X POST \
     -H "Content-Type: application/json" \
     -u admin:admin \
@@ -1842,7 +1837,7 @@ $ curl -k -X POST \
 ```
 
 ??? note "Example output"
-    ``` json
+    ```json
     FIXME
     ```
 
@@ -1860,11 +1855,6 @@ $ curl -k -X POST \
 
 The `GET /api/export/prometheus/metrics` handle returns the Prometheus metrics. Also see [here](prometheus.md) for details.
 
-```
+```console
 $ curl -k -u admin:admin https://<pikvm-ip>/api/export/prometheus/metrics
 ```
-
------
-# To be continued ===>
-
-You can find all existing APIs in the [KVMD source tree](https://github.com/pikvm/kvmd/tree/master/kvmd/apps/kvmd/api). We would appreciate your help with documentation.
