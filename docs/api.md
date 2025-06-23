@@ -1,6 +1,6 @@
 # API
 
-This document describes the PiKVM API. Since the system consists of microservices, here is a common API with a common entry point provided by Nginx. The examples above use `curl` and [`websocat`](https://github.com/vi/websocat) with the `-k` option to disable SSL certificate verification, since the self-signed certificateis used in the default installation.
+This document describes the PiKVM API. Since the system consists of microservices, here is a common API with a common entry point provided by Nginx. The below examples use `curl` and [`websocat`](https://github.com/vi/websocat) with the `-k` option disables SSL certificate verification, since the self-signed certificateis are used in the default installation.
 
 There is a [third-party library](https://github.com/guanana/pikvm-lib) for using the PiKVM API.
 Please note that this is an unofficial library, so use it carefully.
@@ -9,11 +9,9 @@ Please note that this is an unofficial library, so use it carefully.
 -----
 ## Authentication
 
-All APIs are restricted to authentication. To make requests, you either need to auth each request individually,
-or get a token and pass it as a cookie with each request.
+All APIs are restricted to authentication. To make requests, you either need to auth each request individually, or get a token and pass it as a cookie with each request.
 
-With enabled [2FA](auth.md#two-factor-authentication), you will need to add the one-time code to the password without spaces.
-That is, if the password is `foobar` and the code is `123456`, then you need to use `foobar123456` as the password.
+With enabled [2FA](auth.md#two-factor-authentication), you will need to add the one-time code to the password without spaces. That is, if the password is `foobar` and the code is `123456`, then you need to use `foobar123456` as the password.
 
 The code can be generated using any TOTP library, for example in Python:
 
@@ -48,8 +46,7 @@ now = int(time.time())
 remaining = now - (now % totp.interval)
 ```
 
-
-### Single request auth
+### Single-request authentication
 
 There are two options here:
 
@@ -64,7 +61,6 @@ There are two options here:
     ```
     $ curl -k -u admin:admin https://<pikvm-ip>/api/auth/check
     ```
-
 
 ### Session-based cookie auth
 
@@ -82,7 +78,6 @@ There are two options here:
 2. The handle `GET /api/auth/check` can be used for check the auth status. Return of `200 OK` will signal that user is authenticated. If the token or any of the single-request auth methods are missing, `401 Unauthorized` will be returned. In case of incorrect credentials or token, `403 Forbidden` will be returned.
 
 3. The handle `POST /api/auth/logout` can be used to invalidate session token. The response codes will be similar to the previous handle.
-
 
 -----
 ## WebSocket events
@@ -135,58 +130,49 @@ Another type of event is `ping`, which can be sent by the client: `{"event_type"
     ws.close()
     ```
 
-
 -----
 ## System functions
 
 ### Get system info
 
-The `GET /api/info` handle returns the general information about the PiKVM device.
+**Method**: `GET`
 
-Parameters:
+**Route**: `/api/info`
 
-* `fields=...` *(optional)* - Only specified categories will be returned, for example `fields=system,hw`. By default all categories will be displayed.
+**Description**: Returns the general information about the PiKVM device.
 
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `fields` | string | optional | Return only specified categories | `auth`, `extras`, `fan`, `hw`, `meta`, `system` |
+
+**Example of use**:
+
+``` sh
+$ curl -k -u admin:admin https://<pikvm-ip>/api/info?fields=hw
 ```
-$ curl -k -u admin:admin https://<pikvm-ip>/api/info
-```
 
-??? note "Click to expand"
-    ```js
+??? note "Example output"
+    ```json
     {
         "ok": true,
         "result": {
-            "extras": { // Installed applications; null on internal error
-                "ipmi": {
-                    "daemon": "kvmd-ipmi",
-                    "description": "Show IPMI information",
-                    "enabled": true,
-                    "icon": "share/svg/ipmi.svg",
-                    "keyboard_cap": false,
-                    "name": "IPMI",
-                    "path": "ipmi",
-                    "place": 21,
-                    "port": 623
-                },
-                "vnc": {
-                    "daemon": "kvmd-vnc",
-                    "description": "Show VNC information",
-                    "enabled": true,
-                    "icon": "share/svg/vnc.svg",
-                    "keyboard_cap": false,
-                    "name": "VNC",
-                    "path": "vnc",
-                    "place": 20,
-                    "port": 5900
-                }
-            },
-            "hw": { // Hardware info
+            "hw": {
                 "health": {
-                    "temp": {
-                        "cpu": 36.511, // /sys/class/thermal/thermal_zone0/temp / 1000; null on error
-                        "gpu": 35.0    // vcgencmd measure_temp; null on error
+                    "cpu": {
+                        "percent": 2
                     },
-                    "throttling": { // vcgencmd get_throttled; null on error
+                    "mem": {
+                        "available": 1568993280,
+                        "percent": 14.6,
+                        "total": 1836331008
+                    },
+                    "temp": {
+                        "cpu": 45.277
+                    },
+                    "throttling": {
+                        "ignore_past": false,
                         "parsed_flags": {
                             "freq_capped": {
                                 "now": false,
@@ -205,58 +191,60 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/info
                     }
                 },
                 "platform": {
-                    "base": "Raspberry Pi 4 Model B Rev 1.1", // /proc/device-tree/model; null on error
-                    "serial": "0000000000000000", // /proc/device-tree/serial-number; null on error
-                    "type": "rpi"
-                }
-            },
-            "meta": {  // /etc/kvmd/meta.yaml; null on error
-                "kvm": {},
-                "server": {
-                    "host": "localhost.localdomain"
-                }
-            },
-            "system": {
-                "kernel": {
-                    "machine": "x86_64",
-                    "release": "5.8.14-arch1-1",
-                    "system": "Linux",
-                    "version": "#1 SMP PREEMPT Wed, 07 Oct 2020 23:59:46 +0000"
-                },
-                "kvmd": {
-                    "version": "2.1"
-                },
-                "streamer": {
-                    "app": "ustreamer",
-                    "features": { // {} on error
-                        "HAS_PDEATHSIG": true,
-                        "WITH_GPIO": false,
-                        "WITH_OMX": false,
-                        "WITH_PTHREAD_NP": true,
-                        "WITH_SETPROCTITLE": true
-                    },
-                    "version": "2.1" // "" on error
+                    "base": "Raspberry Pi 4 Model B Rev 1.5",
+                    "board": "rpi4",
+                    "model": "v3",
+                    "serial": "10000000C8DA432D",
+                    "type": "rpi",
+                    "video": "hdmi"
                 }
             }
         }
-    }
+    }⏎  
     ```
 
-Each category is represented by its own event in the websocket (`info_hw_state`, `info_system_state`, etc). The event content has the same format as the category content in API.
+Each category is represented by its own event in the websocket (`info_hw_state`, `info_system_state`, etc). The event content has the same format as the category content in the API.
 
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
 
 ### Get system log
 
-The `GET /api/log` handle displays logs from all KVMD services as plain text.
+**Method**: `GET`
 
-Parameters:
+**Route**: `/api/log`
 
-* `follow=1` *(optional)* - Turns the request into long-polling mode and follow log messages in real time.
-* `seek=N` *(optional)* - Runs the log for the specified time in seconds, for example `seek=3600` will show the log for the last hour.
+**Description**: Displays logs from all KVMD services as plain text.
 
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `follow` | boolean | optional | Turns the request into long-polling mode and follow log messages in real time | Enable: `1`, `true`, or `yes`. Disable: `0`, `false`, or `no` |
+| `seek` | integer | optional | Runs the log for the specified time in seconds | `≥0` |
+
+**Example of use**: the following query returns commit messages for the last 1 hour and enables the long-polling mode:
+
+``` sh
+$ curl -k -u admin:admin https://<pikvm-ip>/api/log?follow=1&seek=3600
 ```
-$ curl -k -u admin:admin https://<pikvm-ip>/api/log
-```
+
+??? note "Example output"
+    ```
+    [2025-06-10 22:38:07 kvmd.service] --- kvmd.apps.kvmd.auth               INFO --- Authorized user 'admin' via auth service 'htpasswd'
+    [2025-06-10 22:38:15 kvmd.service] --- kvmd.apps.kvmd.auth               INFO --- Authorized user 'admin' via auth service 'htpasswd'
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
 
 -----
 ## HID
@@ -794,16 +782,30 @@ $ curl -k -X POST \
 -----
 ## ATX power management
 
+The PiKVM ATX API provides control over ATX (Advanced Technology eXtended) power management functions. It allows users perform the following operations:
+
+- Get the current ATX state.
+- Change the ATX state.
+- Send an ATX button press event.
+
 ### Get ATX state
 
-The `GET /api/atx` handle shows the current ATX state.
+**Method**: `GET`
 
-```
+**Route**: `/api/atx`
+
+**Description**: Shows the current ATX state
+
+**Query parameters**: None.
+
+**Example of use**:
+
+``` sh
 $ curl -k -u admin:admin https://<pikvm-ip>/api/atx
 ```
 
-??? note "Click to expand"
-    ```js
+??? note "Example output"
+    ```json
     {
         "ok": true,
         "result": {
@@ -817,42 +819,95 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/atx
     }
     ```
 
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
 
 ### Set ATX power
 
-The `POST /api/atx/power` handle changes ATX power state to desired.
+**Method**: `POST`
 
-Parameters:
+**Route**: `/api/atx/power`
 
-* `action=...` - Describes desired state:
-    * `on` - Turn on (do nothing in case PSU is already on).
-    * `off` - Turn off (aka soft-off), emulates click on the power button.
-    * `off_hard` - Perform long press on the power button (5+ seconds).
-    * `reset_hard` - Emulates pressing reset button (hardware hot reset).
-* `wait=1` *(optional)* - Says if call should return immediately or just after finishing operation.
+**Description**: Changes the ATX power state to desired.
 
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `action` | string | optional | Specifies desired state | `on` - Turn on (do nothing in case PSU is already on). `off` - Turn off (aka soft-off), emulates click on the power button. `off_hard` - Perform long press on the power button (5+ seconds). `reset_hard` - Emulate pressing reset button (hardware hot reset) |
+| `wait` | boolean | optional | Says if call should return immediately or just after finishing operation. | Enable: `1`, `true`, or `yes`. Disable: `0`, `false`, or `no` |
+
+**Example of use**:
+
+```sh
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/atx/power?action=on
 ```
-$ curl -X POST -k -u admin:admin https://<pikvm-ip>/api/atx/power?action=on
-```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
 
 ### Click ATX button
 
-The `POST /api/atx/click` handle sends the ATX button press event.
+**Method**: `POST`
 
-Parameters:
+**Route**: `/api/atx/click`
 
-* `button=...` - Specifies the desired PC case button:
-    * `power` - Short click on the power button.
-    * `power_long` - Long press on the power button (5+ seconds).
-    * `reset` - Short click on the reset button.
-* `wait=1` *(Optional)* - Says if call should return immediately or just after finishing operation.
+**Description**: Sends the ATX button press event.
 
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `button` | string | optional | Specifies the desired PC case button | `power` - Short click on the power button. `power_long` - Long press on the power button (5+ seconds). `reset` - Short click on the reset button. |
+| `wait` | boolean | optional | Says if call should return immediately or just after finishing operation. | Enable: `1`, `true`, or `yes`. Disable: `0`, `false`, or `no` |
+
+**Example of use**:
+
+```sh
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/atx/click?button=power
 ```
-$ curl -X POST -k -u admin:admin https://<pikvm-ip>/api/atx/click?button=power
-```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
 
 -----
 ## Mass Storage Drive
+
+The PiKVM Mass Storage Drive API provides controls for remote management of disk images that can be mounted as virtual storage devices. It allows users perform the following operations:
+
+- Get current MSD status and configuration
+- Upload, download, and delete disk images
+- Fetch disk images directly from URLs with progress streaming
+- Connect/disconnect virtual storages, enable CD-ROM and read-write modes
+- Set image names, access modes, and device type settings
 
 ### Get MSD state
 
@@ -894,7 +949,7 @@ Parameters:
 !!! note
     This is a long-polling request. Do not interrupt the request until the download is complete, otherwise the download will stop.
 
-```
+```sh
 $ # create test image
 $ dd if=/dev/zero of=test.iso bs=1M count=1
 
