@@ -471,33 +471,32 @@ kvmd
                     angle_push: 45           # Servo Motor SG90 angle to push button
                     angle_release: 20        # Servo Motor SG90 angle to release button
             scheme:
-                scheme:
-                    __v4_locator__:  # v4-mini only
-                        pin: 25      # v4-mini only
-                    short_press:
-                        driver: servo1
-                        pin: 0  # Pin number is the PWM channel number on the PWM Chip
-                        mode: output
-                        switch: false
-                        pulse:
-                            delay: 0.5
-                            max_delay: 2
-                    long_press:
-                        driver: servo1
-                        pin: 0
-                        mode: output
-                        switch: false
-                        pulse:
-                            delay: 2
-                            max_delay: 2
-                    extra_long_press:
-                        driver: servo1
-                        pin: 0
-                        mode: output
-                        switch: false
-                        pulse:
-                            delay: 10
-                            max_delay: 20
+				__v4_locator__:  # v4-mini only
+					pin: 25      # v4-mini only
+				short_press:
+					driver: servo1
+					pin: 0  # Pin number is the PWM channel number on the PWM Chip
+					mode: output
+					switch: false
+					pulse:
+						delay: 0.5
+						max_delay: 2
+				long_press:
+					driver: servo1
+					pin: 0
+					mode: output
+					switch: false
+					pulse:
+						delay: 2
+						max_delay: 2
+				extra_long_press:
+					driver: servo1
+					pin: 0
+					mode: output
+					switch: false
+					pulse:
+						delay: 10
+						max_delay: 20
             view:
                 header:
                     title: Controls
