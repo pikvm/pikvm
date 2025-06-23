@@ -7,7 +7,7 @@
 
 !!! warning
     Although PiKVM supports the IPMI protocol, we strongly recommend that you **DO NOT USE IT** outside of trusted networks
-    due to the protocol's [insecurity](https://github.com/NitescuLucian/nliplace.com.blog.drafts).
+    due to the protocol's [insecurity](http://fish2.com/ipmi/).
 
     Please consider to using the Redfish or [KVMD API](api.md) instead of it.
 
