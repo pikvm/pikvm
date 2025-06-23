@@ -36,6 +36,7 @@ theme:
         - search.highlight
         - search.share
         - search.suggest
+        - content.code.copy
 
 extra_css:
     - _assets/user.css

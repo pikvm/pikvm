@@ -2,9 +2,7 @@
 
 This document describes the PiKVM API. Since the system consists of microservices, here is a common API with a common entry point provided by Nginx. The below examples use `curl` and [`websocat`](https://github.com/vi/websocat) with the `-k` option disables SSL certificate verification, since the self-signed certificateis are used in the default installation.
 
-There is a [third-party library](https://github.com/guanana/pikvm-lib) for using the PiKVM API.
-Please note that this is an unofficial library, so use it carefully.
-
+There is a [third-party library](https://github.com/guanana/pikvm-lib) for using the PiKVM API. Please note that this is an unofficial library, so use it carefully.
 
 -----
 ## Authentication
@@ -229,7 +227,7 @@ Each category is represented by its own event in the websocket (`info_hw_state`,
 **Example of use**: the following query returns commit messages for the last 1 hour and enables the long-polling mode:
 
 ```console
-$ curl -k -u admin:admin https://<pikvm-ip>/api/log?follow=1&seek=3600
+$ curl -k -u admin:admin 'https://<pikvm-ip>/api/log?follow=1&seek=3600'
 ```
 
 ??? note "Example output"
@@ -436,7 +434,7 @@ $ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/reset
 
 **Route**: `/api/hid/keymaps`
 
-**Description**: Gets available keyboard layouts and the current defaults.
+**Description**: Gets available keyboard layouts and the current defaults for use with `POST /api/hid/print`.
 
 **Query parameters**: none
 
@@ -557,7 +555,7 @@ $ curl -k -X POST \
 
 | Parameter | Type | Optionality | Description | Acceptable values |
 |-----------|------|-------------|-------------|-------------------|
-| `keys` | string | required | Comma-separated list of key names | For a full list of supported values, please [see here](https://github.com/pikvm/kvmd/blob/master/keymap.csv) |
+| `keys` | string | required | Comma-separated list of key names | For a full list of supported values, please [see here](https://github.com/pikvm/kvmd/blob/master/keymap.csv). Use values from the `web_name` column |
 
 **Example of use**:
 
@@ -668,7 +666,7 @@ $ curl -k -X POST \
 
 **Route**: `/api/hid/events/send_mouse_move`
 
-**Description**: Sends a command to move the mouse pointer to user-defined coordinates where 0,0 is the center of the screen.
+**Description**: Sends a command to move the mouse pointer to user-defined coordinates where 0,0 is the center of the screen. Only works if the mouse mode is set to `absolute` in the configuration.
 
 **Query parameters**: 
 
@@ -682,7 +680,7 @@ $ curl -k -X POST \
 ```console
 $ curl -k -X POST \
     -u admin:admin \
-    https://<pikvm-ip>/api/hid/send_mouse_move?to_x=0&to_y=50
+    'https://<pikvm-ip>/api/hid/send_mouse_move?to_x=0&to_y=50'
 ```
 
 ??? note "Example output"
@@ -707,7 +705,7 @@ $ curl -k -X POST \
 
 **Route**: `/api/hid/events/send_mouse_relative`
 
-**Description**: Sends a command to move the mouse pointer by a relative offset in pixels.
+**Description**: Sends a command to move the mouse pointer by a relative offset in pixels. Only works if the mouse mode is set to `absolute` in the configuration.
 
 **Query parameters**: 
 
@@ -721,7 +719,7 @@ $ curl -k -X POST \
 ```console
 $ curl -k -X POST \
     -u admin:admin \
-    https://<pikvm-ip>/api/hid/send_mouse_relative?delta_x=20&delta_y=200
+    'https://<pikvm-ip>/api/hid/send_mouse_relative?delta_x=20&delta_y=200'
 ```
 
 ??? note "Example output"
@@ -760,7 +758,7 @@ $ curl -k -X POST \
 ```console
 $ curl -k -X POST \
     -u admin:admin \
-    https://<pikvm-ip>/api/hid/send_mouse_wheel?delta_x=0&delta_y=200
+    'https://<pikvm-ip>/api/hid/send_mouse_wheel?delta_x=0&delta_y=200'
 ```
 
 ??? note "Example output"
@@ -966,7 +964,7 @@ Parameters:
 * `rw=0|1` *(optional)* - Make the MSD read-write on `1`, otherwise read-only. Ignored (always read-only) when `cdrom=1`.
 
 ```console
-$ curl -X POST -k -u admin:admin "https://<pikvm-ip>/api/msd/set_params?image=test.iso&cdrom=1"
+$ curl -X POST -k -u admin:admin 'https://<pikvm-ip>/api/msd/set_params?image=test.iso&cdrom=1'
 ```
 
 ### Control MSD
@@ -1137,7 +1135,7 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/streamer
 ```console
 $ curl -k \
     -u admin:admin \
-    https://<pikvm-ip>/api/streamer/snapshot?save=1&preview_quality=95
+    'https://<pikvm-ip>/api/streamer/snapshot?save=1&preview_quality=95'
 ```
 
 ??? note "Example output"
@@ -1419,7 +1417,7 @@ $ curl -k -X POST \
 ```console
 $ curl -k -X POST \
     -u admin:admin \
-    https://<pikvm-ip>/api/switch/set_port_params?port=2&name=PORT3
+    'https://<pikvm-ip>/api/switch/set_port_params?port=2&name=PORT3'
 ```
 
 ??? note "Example output"
@@ -1491,7 +1489,7 @@ $ curl -k -X POST \
 ```console
 $ curl -k -X POST \
     -u admin:admin \
-    https://<pikvm-ip>/api/switch/reset?unit=0&bootloader=1
+    'https://<pikvm-ip>/api/switch/reset?unit=0&bootloader=1'
 ```
 
 ??? note "Example output"
@@ -1527,7 +1525,7 @@ $ curl -k -X POST \
 ```console
 $ curl -k -X POST \
     -u admin:admin \
-    https://<pikvm-ip>/api/switch/edids/create?name=Gigabyte-GA-H77-DS3H&data=00FFFFFFFFFFFF0052628888008888881C150103800000780AEE91A3544C99260F505425400001000100010001000100010001010101D51B0050500019400820B80080001000001EEC2C80A070381A403020350040442100001E000000FC0050492D4B564D20566964656F0A000000FD00323D0F2E0F0000000000000000014D02030400DE0D20A03058122030203400F0B400000018E01500A04000163030203400000000000018B41400A050D011203020350080D810000018AB22A0A050841A3030203600B00E1100001800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000045
+    'https://<pikvm-ip>/api/switch/edids/create?name=Gigabyte-GA-H77-DS3H&data=00FFFFFFFFFFFF0052628888008888881C150103800000780AEE91A3544C99260F505425400001000100010001000100010001010101D51B0050500019400820B80080001000001EEC2C80A070381A403020350040442100001E000000FC0050492D4B564D20566964656F0A000000FD00323D0F2E0F0000000000000000014D02030400DE0D20A03058122030203400F0B400000018E01500A04000163030203400000000000018B41400A050D011203020350080D810000018AB22A0A050841A3030203600B00E1100001800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000045'
 ```
 
 ??? note "Example output"
@@ -1565,7 +1563,7 @@ $ curl -k -X POST \
 ```console
 $ curl -k -X POST \
     -u admin:admin \
-    https://<pikvm-ip>/api/switch/edids/change?id=ca3d7114-79ca-47fc-80b4-b80ac63fc329&name=Gigabyte-GA-H77-DS3H&data=00FFFFFFFFFFFF0052628888008888881C150103800000780AEE91A3544C99260F505425400001000100010001000100010001010101D51B0050500019400820B80080001000001EEC2C80A070381A403020350040442100001E000000FC0050492D4B564D20566964656F0A000000FD00323D0F2E0F0000000000000000014D02030400DE0D20A03058122030203400F0B400000018E01500A04000163030203400000000000018B41400A050D011203020350080D810000018AB22A0A050841A3030203600B00E1100001800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000045
+    'https://<pikvm-ip>/api/switch/edids/change?id=ca3d7114-79ca-47fc-80b4-b80ac63fc329&name=Gigabyte-GA-H77-DS3H&data=00FFFFFFFFFFFF0052628888008888881C150103800000780AEE91A3544C99260F505425400001000100010001000100010001010101D51B0050500019400820B80080001000001EEC2C80A070381A403020350040442100001E000000FC0050492D4B564D20566964656F0A000000FD00323D0F2E0F0000000000000000014D02030400DE0D20A03058122030203400F0B400000018E01500A04000163030203400000000000018B41400A050D011203020350080D810000018AB22A0A050841A3030203600B00E1100001800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000045'
 ```
 
 ??? note "Example output"
@@ -1636,7 +1634,7 @@ $ curl -k -X POST \
 ```console
 $ curl -k -X POST \
     -u admin:admin \
-    https://<pikvm-ip>/api/switch/atx/power?port=0&action=reset_hard
+    'https://<pikvm-ip>/api/switch/atx/power?port=0&action=reset_hard'
 ```
 
 ??? note "Example output"
@@ -1672,7 +1670,7 @@ $ curl -k -X POST \
 ```console
 $ curl -k -X POST \
     -u admin:admin \
-    https://<pikvm-ip>/api/switch/atx/click?port=0&button=power_long
+    'https://<pikvm-ip>/api/switch/atx/click?port=0&button=power_long'
 ```
 
 ??? note "Example output"
