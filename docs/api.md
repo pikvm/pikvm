@@ -1303,7 +1303,7 @@ $ curl -k -X POST \
 
 **Route**: `/api/gpio/pulse`
 
-**Description**: Sends a pulse signal to a GPIO channel (briefly activates then deactivates).
+**Description**: Sends a pulse signal to a GPIO channel (briefly activates then deactivates). Only works for channels that support the pulse mode.
 
 **Query parameters**: 
 
