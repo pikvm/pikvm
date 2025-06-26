@@ -909,129 +909,431 @@ The PiKVM Mass Storage Drive API provides controls for remote management of disk
 
 ### Get MSD state
 
-The `GET /api/msd` handle shows the current MSD state.
+**Method**: `GET`
 
-```
+**Route**: `/api/msd`
+
+**Description**: Retrieves the current state of the Mass Storage Device.
+
+**Query parameters**: None.
+
+**Example of use**:
+
+```console
 $ curl -k -u admin:admin https://<pikvm-ip>/api/msd
 ```
 
+??? note "Example output"
+    ``` json
+    {
+        "ok": true,
+        "result": {
+            "busy": false,
+            "drive": {
+                "cdrom": true,
+                "connected": false,
+                "image": null,
+                "rw": false
+            },
+            "enabled": true,
+            "online": true,
+            "storage": {
+                "downloading": null,
+                "images": {},
+                "parts": {
+                    "": {
+                        "free": 24358789120,
+                        "size": 24375590912,
+                        "writable": true
+                    }
+                },
+                "uploading": null
+            }
+        }
+    }⏎
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
 ### Upload MSD image
 
-The `POST /api/msd/write` uploads an image to MSD.
+**Method**: `POST`
 
-Parameters:
+**Route**: `/api/msd/write`
 
-* `image=...` - Specifies the name of the image.
-* Binary data should be passed to the POST body.
+**Description**: uploads an ISO to the Mass Storage Device.
 
-```
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `image` | string | required | Specifies the name of the image. Binary data should be passed to the POST body | `filename.iso` |
+
+**Example of use**:
+
+```console
 $ # create a test image
 $ dd if=/dev/zero of=test.iso bs=1M count=1
 
 $ # upload it to pikvm
-$ curl -v -X POST --data-binary @test.iso -k -u admin:admin https://<pikvm-ip>/api/msd/write?image=test.iso
+$ curl -v -X POST --data-binary @test.iso -k \
+    -u admin:admin \
+    https://<pikvm-ip>/api/msd/write?image=test.iso
 ```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
 
 ### Upload MSD image by URL
 
-The `POST /api/msd/write_remote` handle downloads an image from HTTP(S) URL to the MSD.
+**Method**: `POST`
 
-Parameters:
+**Route**: `/api/msd/write_remote`
 
-* `url=...` - Image URL.
-* `image=...` *(optional)* - Image name.
-* `timeout=N` *(optional)* - Remote request timeout, 10 seconds by default.
+**Description**: Downloads an image from HTTP(S) URL to the MSD.
 
 !!! note
     This is a long-polling request. Do not interrupt the request until the download is complete, otherwise the download will stop.
+
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `url` | string | required | Image URL | Any URL using HTTP(S) |
+| `image` | string | optional | Image name | FIXME |
+| `timeout` | integer | optional |  Remote request timeout, 10 seconds by default | `≥0` |
+
+**Example of use**:
 
 ```console
 $ # create test image
 $ dd if=/dev/zero of=test.iso bs=1M count=1
 
 $ # upload it to pikvm
-$ curl -v -X POST -k -u admin:admin https://<pikvm-ip>/api/msd/write_remote?url=http://example.com/test.iso
+$ curl -v -X POST -k \
+    -u admin:admin \
+    https://<pikvm-ip>/api/msd/write_remote?url=http://example.com/test.iso
 ```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
 
 ### Set MSD parameters
 
-The `POST /api/msd/set_params` handle changes the current image and/or set drive parameters
+**Method**: `POST`
 
-Parameters:
+**Route**: `/api/msd/set_params`
 
-* `image=...` *(optional)* - Change the current image.
-* `cdrom=1|0` *(optional)* - Change the media type to the CD-ROM on `1`, otherwise to the Flash.
-* `rw=0|1` *(optional)* - Make the MSD read-write on `1`, otherwise read-only. Ignored (always read-only) when `cdrom=1`.
+**Description**: Changes the current image and/or set drive parameters.
+
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `image` | string | optional | Change the current image | `filename.iso` |
+| `cdrom` | boolean | optional | Change the media type to the CD-ROM or Flash. | `1` (CD-ROM) or `0` (Flash) |
+| `rw` | boolean | optional | Sets read-write or read-only mode. Ignored (always read-only) when `cdrom=1` | `1` (read-write) or `0` (read-only) |
+
+**Example of use**:
 
 ```console
-$ curl -X POST -k -u admin:admin 'https://<pikvm-ip>/api/msd/set_params?image=test.iso&cdrom=1'
+$ curl -X POST -k \
+    -u admin:admin \
+    'https://<pikvm-ip>/api/msd/set_params?image=test.iso&cdrom=1'
 ```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
 
 ### Control MSD
 
-The `POST /api/msd/set_connected` connects or disconnect the MSD to the host.
+**Method**: `POST`
 
-Parameters:
+**Route**: `/api/msd/set_connected`
 
-* `connected=1|0` - Change the state.
+**Description**: Connects or disconnects the MSD to/from the host.
+
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `connected` | boolean | required | Changes the state | `1` connects the MSD, `0` disconnects it |
+
+**Example of use**:
 
 ```console
-$ curl -X POST -k -u admin:admin https://<pikvm-ip>/api/msd/set_connected?connected=1
+$ curl -X POST -k \
+    -u admin:admin \
+    https://<pikvm-ip>/api/msd/set_connected?connected=1
 ```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
 
 ### Remove MSD image
 
-The `POST /api/msd/remove` handle removes the specified image.
+**Method**: `POST`
 
-Parameters:
+**Route**: `/api/msd/remove`
 
-* `image=...` - The image name.
+**Description**: Removes the specified image.
+
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `image` | string | required | Name of the image to remove | `filename.iso` |
+
+**Example of use**:
 
 ```console
-$ curl -X POST -k -u admin:admin https://<pikvm-ip>/api/msd/remove?image=test.iso
+$ curl -X POST -k \
+    -u admin:admin \
+    https://<pikvm-ip>/api/msd/remove?image=test.iso
 ```
 
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
 
 ### Reset MSD
 
-The `POST /api/msd/reset` handle resets the drive.
+**Method**: `POST`
+
+**Route**: `/api/msd/reset`
+
+**Description**: Drops all the custom parameters you set before and resets the Mass Storage Device to its default state.
+
+**Query parameters**: None.
+
+**Example of use**:
 
 ```console
-$ curl -X POST -k -u admin:admin https://<pikvm-ip>/api/msd/reset
+$ curl -X POST -k \
+    -u admin:admin \
+    https://<pikvm-ip>/api/msd/reset
 ```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
 
 -----
 ## GPIO
 
+This is a PiKVP API for controlling User GPIO (General Purpose Input/Output) pins. It allows users perform the following operations:
+
+- Read GPIO states.
+- Switch pins on/off.
+- Send pulses to GPIO channels.
+
 ### Get GPIO state
 
-The `GET /api/gpio` handle shows the current GPIO state.
+**Method**: `GET`
+
+**Route**: `/api/gpio`
+
+**Description**: Retrieves the current state of all GPIO channels.
+
+**Query parameters**: None.
+
+**Example of use**:
 
 ```console
 $ curl -k -u admin:admin https://<pikvm-ip>/api/gpio
 ```
 
+??? note "Example output"
+    ``` json
+    {
+        "ok": true,
+        "result": {
+            "model": {
+                "scheme": {
+                    "inputs": {},
+                    "outputs": {
+                        "__v3_usb_breaker__": {
+                            "hw": {
+                                "driver": "__gpio__",
+                                "pin": "5"
+                            },
+                            "pulse": {
+                                "delay": 0.0,
+                                "max_delay": 0.0,
+                                "min_delay": 0.0
+                            },
+                            "switch": true
+                        }
+                    }
+                },
+                "view": {
+                    "header": {
+                        "title": [
+                            {
+                                "text": "GPIO",
+                                "type": "label"
+                            }
+                        ]
+                    },
+                    "table": []
+                }
+            },
+            "state": {
+                "inputs": {},
+                "outputs": {
+                    "__v3_usb_breaker__": {
+                        "busy": false,
+                        "online": true,
+                        "state": true
+                    }
+                }
+            }
+        }
+    }⏎ 
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
+
 ### Switch GPIO channel
 
-The `POST /api/gpio/switch` handle interacts with selected GPIO driver channel in `switch` mode.
+**Method**: `POST`
 
-Parameters:
+**Route**: `/gpio/switch`
 
-* `channel=...` - The GPIO driver channel.
-* `state=1|0` - The new switch state.
-* `wait=1` *(optional)* - Says if call should return immediately or just after finishing operation.
+**Description**: Sets a GPIO channel to a specific state (on/off).
 
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `channel` | string | required | The GPIO driver channel | Alphanumeric channel name, e.g., `__v3_usb_breaker__` |
+| `state` | boolean | required | The new switch state | `1` to switch on, `0` to switch off |
+| `wait` | boolean | optional | Defines when a call should return | `1` return immediately, `0` return after finishing operation |
+
+**Example of use**:
+
+```console
+# Switch GPIO channel __v3_usb_breaker__ to OFF state without waiting
+$ curl -k -X POST \
+    -u admin:admin \
+    https://<pikvm-ip>/api/gpio/switch?channel=__v3_usb_breaker__&state=0&wait=0
+```
+
+??? note "Example output"
+    ``` json
+    {
+        "ok": true,
+        "result": {}
+    }⏎
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
 
 ### Pulse GPIO channel
 
-The `POST /api/gpio/pulse` handle interacts with selected GPIO driver channel in `pulse` mode.
+**Method**: `POST`
 
-Parameters:
+**Route**: `/api/gpio/pulse`
 
-* `channel=...` - The GPIO driver channel.
-* `delay=N.N` *(optional)* - The pulse time in seconds (float), `0` for default delay.
-* `wait=1` *(optional)* - Says if call should return immediately or just after finishing operation.
+**Description**: Sends a pulse signal to a GPIO channel (briefly activates then deactivates).
 
+**Query parameters**: 
+
+| Parameter | Type | Optionality | Description | Acceptable values |
+|-----------|------|-------------|-------------|-------------------|
+| `channel` | string | required | The GPIO driver channel | Alphanumeric channel name, e.g., `FIXME` |
+| `delay` | float | optional | The pulse time in seconds | Any float number, `0` for default delay |
+| `wait` | boolean | optional | Defines when a call should return | `1` return immediately, `0` return after finishing operation |
+
+**Example of use**:
+
+```console
+# Send a pulse to GPIO channel FIXME with 2 sec delay without waiting
+$ curl -k -X POST \
+    -u admin:admin \
+    'https://<pikvm-ip>/api/gpio/pulse?channel=FIXME&delay=2.0&wait=0'
+```
+
+??? note "Example output"
+    ``` json
+    FIXME
+    ```
+
+**Responses**:
+
+| Code | Description |
+|------|-------------|
+| 200 | FIXME |
+| 400 | FIXME |
+| 500 | FIXME | 
 
 ----
 ## Streamer
