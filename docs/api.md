@@ -203,14 +203,6 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/info?fields=hw
 
 Each category is represented by its own event in the websocket (`info_hw_state`, `info_system_state`, etc). The event content has the same format as the category content in the API.
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Get system log
 
 **Method**: `GET`
@@ -235,14 +227,6 @@ $ curl -k -u admin:admin 'https://<pikvm-ip>/api/log?follow=1&seek=3600'
     [2025-06-10 22:38:07 kvmd.service] --- kvmd.apps.kvmd.auth               INFO --- Authorized user 'admin' via auth service 'htpasswd'
     [2025-06-10 22:38:15 kvmd.service] --- kvmd.apps.kvmd.auth               INFO --- Authorized user 'admin' via auth service 'htpasswd'
     ```
-
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 -----
 ## HID
@@ -310,14 +294,6 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/hid
     }⏎
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Set parameters
 
 **Method**: `POST`
@@ -350,14 +326,6 @@ $ curl -k -X POST \
     }⏎ 
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Set the connected state
 
 **Method**: `POST`
@@ -388,14 +356,6 @@ $ curl -k -X POST \
     }⏎ 
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Reset devices' state
 
 **Method**: `POST`
@@ -419,14 +379,6 @@ $ curl -k -X POST -u admin:admin https://<pikvm-ip>/api/hid/reset
         "result": {}
     }⏎   
     ```
-
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 ### Get keyboard layouts
 
@@ -494,14 +446,6 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/hid/keymaps
     }⏎ 
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Type text remotely
 
 **Method**: `POST`
@@ -535,14 +479,6 @@ $ curl -k -X POST \
     }⏎ 
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Send a keyboard shortcut
 
 **Method**: `POST`
@@ -572,14 +508,6 @@ $ curl -k -X POST \
     "result": {}
     }⏎
     ```
-
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 ### Send a single key event
 
@@ -613,14 +541,6 @@ $ curl -k -X POST \
     }⏎
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Send mouse button events
 
 **Method**: `POST`
@@ -651,14 +571,6 @@ $ curl -k -X POST \
     "result": {}
     }⏎
     ```
-
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 ### Move the mouse pointer
 
@@ -691,14 +603,6 @@ $ curl -k -X POST \
     }⏎  
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Move the mouse ppinter relatively
 
 **Method**: `POST`
@@ -730,14 +634,6 @@ $ curl -k -X POST \
     }⏎  
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Send mouse wheel scroll events
 
 **Method**: `POST`
@@ -768,14 +664,6 @@ $ curl -k -X POST \
     "result": {}
     }⏎  
     ```
-
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 -----
 ## ATX power management
@@ -817,14 +705,6 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/atx
     }
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Set ATX power
 
 **Method**: `POST`
@@ -852,13 +732,6 @@ $ curl -k -X POST \
     ```json
     FIXME
     ```
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 ### Click ATX button
 
@@ -887,14 +760,6 @@ $ curl -k -X POST \
     ```json
     FIXME
     ```
-
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 -----
 ## Mass Storage Drive
@@ -952,14 +817,6 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/msd
         }
     }⏎
     ```
-
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 ### Upload MSD image
 
@@ -1028,14 +885,6 @@ $ curl -v -X POST -k \
     FIXME
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Set MSD parameters
 
 **Method**: `POST`
@@ -1065,14 +914,6 @@ $ curl -X POST -k \
     FIXME
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Control MSD
 
 **Method**: `POST`
@@ -1099,14 +940,6 @@ $ curl -X POST -k \
     ``` json
     FIXME
     ```
-
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 ### Remove MSD image
 
@@ -1135,14 +968,6 @@ $ curl -X POST -k \
     FIXME
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Reset MSD
 
 **Method**: `POST`
@@ -1165,14 +990,6 @@ $ curl -X POST -k \
     ``` json
     FIXME
     ```
-
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 -----
 ## GPIO
@@ -1248,14 +1065,6 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/gpio
     }⏎ 
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Switch GPIO channel
 
 **Method**: `POST`
@@ -1289,14 +1098,6 @@ $ curl -k -X POST \
     }⏎
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Pulse GPIO channel
 
 **Method**: `POST`
@@ -1326,14 +1127,6 @@ $ curl -k -X POST \
     ``` json
     FIXME
     ```
-
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 ----
 ## Streamer
@@ -1397,14 +1190,6 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/streamer
         }
     }⏎  
     ```
-
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 ### Take snapshot
 
@@ -1483,14 +1268,6 @@ $ curl -k -X DELETE \
     }⏎ 
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Get OCR state
 
 **Method**: GET
@@ -1511,14 +1288,6 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/streamer/ocr
     ```json
     FIXME
     ```
-
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 ----
 ## Switch
@@ -1551,14 +1320,6 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/switch
     FIXME
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Set active port (previous)
 
 **Method**: `POST`
@@ -1582,14 +1343,6 @@ $ curl -k -X POST \
     FIXME
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Set active port (next)
 
 **Method**: `POST`
@@ -1612,14 +1365,6 @@ $ curl -k -X POST \
     ```json
     FIXME
     ```
-
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 ### Set active port (specific)
 
@@ -1647,14 +1392,6 @@ $ curl -k -X POST \
     ```json
     FIXME
     ```
-
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 ### Set beacon
 
@@ -1685,14 +1422,6 @@ $ curl -k -X POST \
     ```json
     FIXME
     ```
-
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 ### Set port parameters
 
@@ -1727,14 +1456,6 @@ $ curl -k -X POST \
     FIXME
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Set beacon color
 
 **Method**: `POST`
@@ -1762,14 +1483,6 @@ $ curl -k -X POST \
     ```json
     FIXME
     ```
-
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 ### Reboot the device
 
@@ -1799,14 +1512,6 @@ $ curl -k -X POST \
     FIXME
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Create a new EDID configuration
 
 **Method**: `POST`
@@ -1834,14 +1539,6 @@ $ curl -k -X POST \
     ```json
     FIXME
     ```
-
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 ### Change EDID configuration
 
@@ -1873,14 +1570,6 @@ $ curl -k -X POST \
     FIXME
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Remove EDID configuration
 
 **Method**: `POST`
@@ -1907,14 +1596,6 @@ $ curl -k -X POST \
     ```json
     FIXME
     ```
-
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 ### ATX Power Control
 
@@ -1944,14 +1625,6 @@ $ curl -k -X POST \
     FIXME
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### ATX Button Click
 
 **Method**: `POST`
@@ -1979,14 +1652,6 @@ $ curl -k -X POST \
     ```json
     FIXME
     ```
-
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 ----
 ## Redfish
@@ -2016,14 +1681,6 @@ $ curl -k https://<pikvm-ip>/api/redfish/v1
     FIXME
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
-
 ### Systems collection
 
 **Method**: `GET`
@@ -2044,14 +1701,6 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems
     ```json
     FIXME
     ```
-
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 ### Individual system information
 
@@ -2074,13 +1723,6 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems/0
     FIXME
     ```
 
-**Responses**:
-
-| Code | Description |
-|------|-------------|
-| 200 | FIXME |
-| 400 | FIXME |
-| 500 | FIXME | 
 
 ### System configuration update
 
