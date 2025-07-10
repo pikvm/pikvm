@@ -19,6 +19,7 @@ For detailed instructions, refer to [Tailscale support](https://tailscale.com/co
 
     ```console
     [root@pikvm ~]# rw
+    # If you were afraid to pikvm-update above first run pacman -Syy
     [root@pikvm ~]# pacman -S tailscale-pikvm
     [root@pikvm ~]# systemctl enable --now tailscaled
     [root@pikvm ~]# tailscale up
