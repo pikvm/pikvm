@@ -1,4 +1,7 @@
-# API
+---
+title: HTTP API reference
+#description: Getting started with PiKVM V4 Mini & Plus
+---
 
 This document describes the PiKVM API. Since the system consists of microservices, here is a common API with a common entry point provided by Nginx. The below examples use `curl` and [`websocat`](https://github.com/vi/websocat) with the `-k` option disables SSL certificate verification, since the self-signed certificateis are used in the default installation.
 
@@ -730,7 +733,10 @@ $ curl -k -X POST \
 
 ??? note "Example output"
     ```json
-    FIXME
+    {
+        "ok": true,
+        "result": {}
+    }⏎
     ```
 
 ### Click ATX button
@@ -758,7 +764,10 @@ $ curl -k -X POST \
 
 ??? note "Example output"
     ```json
-    FIXME
+    {
+        "ok": true,
+        "result": {}
+    }⏎   
     ```
 
 -----
@@ -845,8 +854,11 @@ $ curl -v -X POST --data-binary @test.iso -k \
 ```
 
 ??? note "Example output"
-    ``` json
-    FIXME
+    ```json
+    {
+        "ok": true,
+        "result": {}
+    }⏎   
     ```
 
 ### Upload MSD image by URL
@@ -865,7 +877,7 @@ $ curl -v -X POST --data-binary @test.iso -k \
 | Parameter | Type | Optionality | Description | Acceptable values |
 |-----------|------|-------------|-------------|-------------------|
 | `url` | string | required | Image URL | Any URL using HTTP(S) |
-| `image` | string | optional | Image name | FIXME |
+| `image` | string | optional | Image name | Any alphanumeric name like `image321.iso` |
 | `timeout` | integer | optional |  Remote request timeout, 10 seconds by default | `≥0` |
 
 **Example of use**:
@@ -881,8 +893,11 @@ $ curl -v -X POST -k \
 ```
 
 ??? note "Example output"
-    ``` json
-    FIXME
+    ```json
+    {
+        "ok": true,
+        "result": {}
+    }⏎   
     ```
 
 ### Set MSD parameters
@@ -910,8 +925,11 @@ $ curl -X POST -k \
 ```
 
 ??? note "Example output"
-    ``` json
-    FIXME
+    ```json
+    {
+        "ok": true,
+        "result": {}
+    }⏎   
     ```
 
 ### Control MSD
@@ -937,8 +955,11 @@ $ curl -X POST -k \
 ```
 
 ??? note "Example output"
-    ``` json
-    FIXME
+    ```json
+    {
+        "ok": true,
+        "result": {}
+    }⏎   
     ```
 
 ### Remove MSD image
@@ -964,8 +985,11 @@ $ curl -X POST -k \
 ```
 
 ??? note "Example output"
-    ``` json
-    FIXME
+    ```json
+    {
+        "ok": true,
+        "result": {}
+    }⏎   
     ```
 
 ### Reset MSD
@@ -987,8 +1011,11 @@ $ curl -X POST -k \
 ```
 
 ??? note "Example output"
-    ``` json
-    FIXME
+    ```json
+    {
+        "ok": true,
+        "result": {}
+    }⏎   
     ```
 
 -----
@@ -1084,10 +1111,10 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/gpio
 **Example of use**:
 
 ```console
-# Switch GPIO channel __v3_usb_breaker__ to OFF state without waiting
+# Switch GPIO channel led1 to OFF state without waiting
 $ curl -k -X POST \
     -u admin:admin \
-    https://<pikvm-ip>/api/gpio/switch?channel=__v3_usb_breaker__&state=0&wait=0
+    https://<pikvm-ip>/api/gpio/switch?channel=led1&state=0&wait=0
 ```
 
 ??? note "Example output"
@@ -1110,22 +1137,25 @@ $ curl -k -X POST \
 
 | Parameter | Type | Optionality | Description | Acceptable values |
 |-----------|------|-------------|-------------|-------------------|
-| `channel` | string | required | The GPIO driver channel | Alphanumeric channel name, e.g., `FIXME` |
+| `channel` | string | required | The GPIO driver channel | Alphanumeric channel name, e.g., `led1` |
 | `delay` | float | optional | The pulse time in seconds | Any float number, `0` for default delay |
 | `wait` | boolean | optional | Defines when a call should return | `1` return immediately, `0` return after finishing operation |
 
 **Example of use**:
 
 ```console
-# Send a pulse to GPIO channel FIXME with 2 sec delay without waiting
+# Send a pulse to GPIO channel led1 with 2 sec delay without waiting
 $ curl -k -X POST \
     -u admin:admin \
-    'https://<pikvm-ip>/api/gpio/pulse?channel=FIXME&delay=2.0&wait=0'
+    'https://<pikvm-ip>/api/gpio/pulse?channel=led1&delay=2.0&wait=0'
 ```
 
 ??? note "Example output"
     ``` json
-    FIXME
+    {
+        "ok": true,
+        "result": {}
+    }⏎
     ```
 
 ----
@@ -1186,7 +1216,41 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/streamer
             "snapshot": {
                 "saved": null
             },
-            "streamer": null
+            "streamer": {
+                "encoder": {
+                    "quality": 80,
+                    "type": "M2M-IMAGE"
+                },
+                "h264": {
+                    "bitrate": 5000,
+                    "fps": 60,
+                    "gop": 30,
+                    "online": true
+                },
+                "instance_id": "",
+                "sinks": {
+                    "h264": {
+                        "has_clients": true
+                    },
+                    "jpeg": {
+                        "has_clients": false
+                    }
+                },
+                "source": {
+                    "captured_fps": 59,
+                    "desired_fps": 40,
+                    "online": true,
+                    "resolution": {
+                        "height": 720,
+                        "width": 1280
+                    }
+                },
+                "stream": {
+                    "clients": 0,
+                    "clients_stat": {},
+                    "queued_fps": 0
+                }
+            }
         }
     }⏎  
     ```
@@ -1197,7 +1261,7 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/streamer
 
 **Route**: `/api/streamer/snapshot`
 
-**Description**: Captures a snapshot from the video stream. Can optionally perform OCR text recognition or generate a preview image.
+**Description**: Captures a snapshot from the video stream. Can optionally perform OCR text recognition or generate a preview image. For optical character recognition, the coordinates origin starts at top left.
 
 **Query parameters**: 
 
@@ -1207,28 +1271,39 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/streamer
 | `load` | boolean | optional | Whether to load an existing snapshot, default: `false` | Enable: `1`, `true`, or `yes`. Disable: `0`, `false`, or `no` |
 | `allow_offline` | boolean | optional | Whether to allow taking snapshots when offline, default: `false` | Enable: `1`, `true`, or `yes`. Disable: `0`, `false`, or `no` |
 | `ocr` | boolean | optional | Whether to perform OCR text recognition on the snapshot, default: `false` | Enable: `1`, `true`, or `yes`. Disable: `0`, `false`, or `no` |
-| `ocr_langs` | string | optional | Comma-separated list of language codes for OCR recognition | FIXME |
-| `ocr_left` | number | optional | Left boundary for OCR region, default: `-1` | FIXME |
-| `ocr_top` | number | optional | Top boundary for OCR region, default: `-1` | FIXME |
-| `ocr_right` | number | optional | Right boundary for OCR region, default: `-1` | FIXME |
-| `ocr_bottom` | number | optional | Bottom boundary for OCR region, default: `-1` | FIXME |
+| `ocr_langs` | string | optional | Comma-separated list of language codes for OCR recognition | Typically, a 3-letter  code, such as `eng` for English or `deu` for German. Run `pacman -Ss tesseract-data` on PiKVM to get the full list |
+| `ocr_left` | integer | optional | X coordinate of the top left corner of the OCR region, default: `-1` | `≥0` |
+| `ocr_top` | integer | optional | Y coordinate of the top left corner of the OCR region, default: `-1` | `≥0` |
+| `ocr_right` | integer | optional | Width of the OCR region, default: `-1` | `≥0` |
+| `ocr_bottom` | integer | optional | Height of the OCR region, default: `-1` | `≥0` |
 | `preview` | boolean | optional | Whether to generate a preview image, default: `false` | Enable: `1`, `true`, or `yes`. Disable: `0`, `false`, or `no` |
 | `preview_max_width` | integer | optional | Maximum width for preview image, default: `0` | Any positive integer value |
 | `preview_max_height` | integer | optional | Maximum height for preview image, default: `0` | Any positive integer value |
 | `preview_quality` | integer | optional | JPEG quality for preview (valid stream quality value), default: `80` | Any integer value in the 0..100 range |
 
-**Example of use**:
+**Example of use**: the following command will capture a snapshot of the current video stream and save it to a JPEG file.
 
 ```console
 $ curl -k \
     -u admin:admin \
-    'https://<pikvm-ip>/api/streamer/snapshot?save=1&preview_quality=95'
+    'https://<pikvm-ip>/api/streamer/snapshot?save=1&preview_quality=95' \
+    --output=file.jpg
 ```
 
 ??? note "Example output"
-    ```json
-    FIXME
+    ```console
+      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                     Dload  Upload   Total   Spent    Left  Speed
+    100  107k  100  107k    0     0   619k      0 --:--:-- --:--:-- --:--:--  619k
     ```
+
+**Example of use**: the following command will capture a region of the current video stream (left corner starts at the top left, extends 1000px to the right and 150px to the bottom), run it through Tesseract for optical character recognition (language defined as English), and output the recognized text into the console.
+
+```console
+$ curl -k \
+    -u admin:admin \
+    'https://<pikvm-ip>/api/streamer/snapshot?ocr=true&ocr_left=0&ocr_top=0&ocr_right=1000&ocr_bottom=150&ocr_langs=eng'
+```
 
 **Responses**:
 
@@ -1286,7 +1361,23 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/streamer/ocr
 
 ??? note "Example output"
     ```json
-    FIXME
+    {
+        "ok": true,
+        "result": {
+            "ocr": {
+                "enabled": true,
+                "langs": {
+                    "available": [
+                        "eng",
+                        "osd"
+                    ],
+                    "default": [
+                        "eng"
+                    ]
+                }
+            }
+        }
+    }⏎
     ```
 
 ----
@@ -1678,7 +1769,16 @@ $ curl -k https://<pikvm-ip>/api/redfish/v1
 
 ??? note "Example output"
     ```json
-    FIXME
+    {
+        "@odata.id": "/redfish/v1",
+        "@odata.type": "#ServiceRoot.v1_6_0.ServiceRoot",
+        "Id": "RootService",
+        "Name": "Root Service",
+        "RedfishVersion": "1.6.0",
+        "Systems": {
+            "@odata.id": "/redfish/v1/Systems"
+        }
+    }⏎
     ```
 
 ### Systems collection
@@ -1699,7 +1799,17 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems
 
 ??? note "Example output"
     ```json
-    FIXME
+    {
+        "@odata.id": "/redfish/v1/Systems",
+        "@odata.type": "#ComputerSystemCollection.ComputerSystemCollection",
+        "Members": [
+            {
+                "@odata.id": "/redfish/v1/Systems/0"
+            }
+        ],
+        "Members@odata.count": 1,
+        "Name": "Computer System Collection"
+    }⏎
     ```
 
 ### Individual system information
@@ -1720,9 +1830,34 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems/0
 
 ??? note "Example output"
     ```json
-    FIXME
+    {
+        "@odata.id": "/redfish/v1/Systems/0",
+        "@odata.type": "#ComputerSystem.v1_10_0.ComputerSystem",
+        "Actions": {
+            "#ComputerSystem.Reset": {
+                "ResetType@Redfish.AllowableValues": [
+                    "On",
+                    "ForceOff",
+                    "GracefulShutdown",
+                    "ForceRestart",
+                    "ForceOn",
+                    "PushPowerButton"
+                ],
+                "target": "/redfish/v1/Systems/0/Actions/ComputerSystem.Reset"
+            },
+            "#ComputerSystem.SetDefaultBootOrder": {
+                "target": "/redfish/v1/Systems/0/Actions/ComputerSystem.SetDefaultBootOrder"
+            }
+        },
+        "Boot": {
+            "BootSourceOverrideEnabled": "Disabled",
+            "BootSourceOverrideTarget": null
+        },
+        "HostName": "pikvm",
+        "Id": "0",
+        "PowerState": "Off"
+    }⏎
     ```
-
 
 ### System configuration update
 
@@ -1740,10 +1875,7 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems/0
 $ curl -k -X PATCH -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems/0
 ```
 
-??? note "Example output"
-    ```json
-    FIXME
-    ```
+There will be zero output for this command by design.
 
 **Responses**:
 
@@ -1778,10 +1910,7 @@ $ curl -k -X POST \
     https://<pikvm-ip>/api/redfish/v1/Systems/0/Actions/ComputerSystem.Reset
 ```
 
-??? note "Example output"
-    ```json
-    FIXME
-    ```
+There will be zero output for this command by design.
 
 **Responses**:
 
