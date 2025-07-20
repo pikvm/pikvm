@@ -238,6 +238,14 @@ exfat filesystem is:
 This says to mount it automatically, do not fail if it's missing, mount it read/write by
 default, and allow all users and groups access to it.
 
+Don't forget to create `/var/lib/kvmd/msd/usb` directory:
+
+```console
+[root@pikvm ~]# kvmd-helper-otgmsd-remount
+[root@pikvm ~]# mkdir -p /var/lib/kvmd/msd/usb
+[root@pikvm ~]# kvmd-helper-otgmsd-remount ro
+```
+
 
 -----
 ## Multiple drives
