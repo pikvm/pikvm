@@ -45,6 +45,28 @@ vnc:
         timeout: 7.0
 ```
 
+An important rule is that sections under the same keys **should be merged**:
+
+* **Wrong:**
+
+    ```yaml
+    kvmd:
+        gpio:
+            drivers: ...
+    kvmd:
+        gpio:
+            scheme: ...
+    ```
+
+* **Correct:**
+
+    ```yaml
+    kvmd:
+        gpio:
+            drivers: ...
+            scheme: ...
+    ```
+
 Anything that starts with `#` is considered a comment. This is useful when you need to document your customizations, e.g., write down the rationale for changing a particular default.
 
 You can start new lines with comments if you need to write a longer explanation.
@@ -175,3 +197,14 @@ There are close to a dozen various system daemons that depend on configuration s
 ```
 
 Once the device restarts, your changes take effect.
+
+-----
+## Keeping customizations atomic
+
+When you apply massive customizations, it may help separating changes into several files to keep them manageable.
+
+To do that, create these YAML files inside the `/etc/kvmd/override.d/` directory. KVMD will apply all configurations in the following order: `main.yaml` -> `override.d` -> `override.yaml`. Inside the `override.d` directory, KVMD will apply YAML files in alphabetical order, so please pay attention to how you name them.
+
+We recommend sticking with a particular file-naming scheme, e.g. `0000-vendor-otg-serial.yaml`. We do reserve `-vendor-` и `-pikvm-` prefixes for our own future needs, though.
+
+Once you completed the customization and validated newly created/edited files, reboot your PiKVM for the changes to take effect. 
