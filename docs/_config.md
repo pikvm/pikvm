@@ -6,14 +6,13 @@ search:
 
 ??? note "Configuring PiKVM OS"
 
+    The following is a brief guide to configuring PiKVM. For more information (including the basics of YAML syntax and how to use a text editor in the Linux console), please refer to [this page](config.md).
+
     Most of the PiKVM configuration files are located in the `/etc/kvmd` directory.
 
-    The `/etc/kvmd/main.yaml` file defines the platform config and **you should never edit it**. To redefine system parameters use the file `/etc/kvmd/override.yaml`. All other files that are also not recommended for editing have read-only permissions.
+    The `/etc/kvmd/main.yaml` file defines the platform config and **you should never edit it**. To redefine system parameters use the file `/etc/kvmd/override.yaml`. All other files that are also not recommended for editing have read-only permissions. You can also create several files with the `.*yaml` extension and put then into `/etc/kvmd/override.d` directory to split your customization into logical parts. The `override.yaml` file definitions takes precedence over the `override.d` directory.
 
-    In the `/etc/kvmd/meta.yaml` file you can specify some information regarding the host that this PiKVM manages.
-
-    !!! tip
-        A complete list of all parameters can be viewed using the `kvmd -m` command.
+    A complete list of all parameters can be viewed using the `kvmd -m` command.
 
     Files with the suffix `*.yaml` uses the [YAML syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html)
     and describes a parameter tree with key-value pairs of different types.
@@ -45,3 +44,5 @@ search:
 				drivers: ...
 				scheme: ...
 		```
+
+    In the `/etc/kvmd/meta.yaml` file you can specify some information regarding this PiKVM installation in an almost free YAML format.

@@ -5,12 +5,16 @@ description: How to override PiKVM defaults the right way
 
 PiKVM OS has various low-level settings you can customize: timeout for the `kvmd` daemon, default keymap for the emulated keyboard, scroll rate for VNC sessions, logs formatting, etc. To do that, you need to override default settings.
 
+
+-----
 ## How overrides work in PiKVM OS
 
 Main default settings are stored in `/etc/kvmd/main.yaml`. However, you should **never edit that file**. To override these and other defaults, you need to edit `/etc/kvmd/override.yaml` instead.
 
 PiKVM OS applies settings from `main.yaml` first and then applies anything it finds in `override.yaml`. This approach helps keeping defaults and customizations safely separate from each other.
 
+
+-----
 ## How `override.yaml` is structured
 
 The `/etc/kvmd/override.yaml` file has YAML syntax. All configurations are stored as key-value pairs.
@@ -62,6 +66,8 @@ vnc:
 
 Let's practice changing a default setting by switching to a German keyboard map by default. **This is just an example to explain how overrides work.**
 
+
+-----
 ## Change file system access to read-write
 
 For safety reasons, access to the file system of PiKVM OS is read-only by default. You need to temporarily change it to read-write to be able to save changes to the configuration file. To do it, use the `rw` command:
@@ -70,6 +76,8 @@ For safety reasons, access to the file system of PiKVM OS is read-only by defaul
 [root@pikvm ~]# rw
 ```
 
+
+-----
 ## Identify the configuration entry
 
 Before you start editing, you need to find the setting you will need to override. Run `kvmd -m` to look up configuration entries you can redefine. This command will print the entire list. We need the `keymap` setting somewhere in the `kvmd` group:
@@ -88,6 +96,8 @@ bepo  da  de-ch  en-us  en-us-colemak     et  fo  fr-be  fr-ch  hu  it  lt  mk  
 
 You will need `de`, which is a two-letter code for German.
 
+
+-----
 ## Edit `override.yaml`
 
 Now, let's open `override.yaml` for editing. PiKVM ships with both `nano` and `vim`. We generally recommend `nano` over `vim` for new users:
@@ -110,6 +120,8 @@ kvmd:
 
 Don't forget to indent each child key with four spaces.
 
+
+-----
 ## Save the file
 
 Now, you need to save the configuration file and exit. Nano displays hints on the most important keyboard shortcuts at the bottom of its window.
@@ -120,6 +132,8 @@ Now, you need to save the configuration file and exit. Nano displays hints on th
 
 Press **Ctrl+O** to save the configuration file and then **Ctrl+X** to quit nano.
 
+
+-----
 ## Validate the configuration
 
 Before attempting to make your changes take effect, you should always validate `override.yaml`. To do that, run `kvmd -m`. If there are any syntax errors, `kvmd` will complain about them.
@@ -140,6 +154,8 @@ If you see any errors in the output, fix them and run `kvmd -m` again to verify 
 
 Note that `kvmd -m` does not validate configuration entries for correct key names. So if your changes don't work, that's #1 thing to check for when troubleshooting.
 
+
+-----
 ## Change access to read-only
 
 Before you go to the next step, change the file system access mode to read-only. To do that, run the `ro` command:
@@ -148,6 +164,8 @@ Before you go to the next step, change the file system access mode to read-only.
 [root@pikvm kvmd-webterm]# ro
 ```
 
+
+-----
 ## Reboot your PiKVM
 
 There are close to a dozen various system daemons that depend on configuration settings. The easiest way to apply your changes is to simply reboot your PiKVM:
