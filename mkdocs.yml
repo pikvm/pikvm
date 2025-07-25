@@ -144,6 +144,7 @@ nav:
     - "Advanced usage":
         - "PiKVM identification": id.md
         - "On-boot configuration": on_boot_config.md
+        - "Automatic snapshots": auto_snapshots.md
         - "Using VNC": vnc.md
         - "Multiport KVM-over-IP": multiport.md
         - "Wake-on-LAN the server": wol.md
