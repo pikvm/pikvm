@@ -33,6 +33,7 @@ theme:
         - navigation.sections
         - navigation.top
         - navigation.expand
+#        - navigation.tabs
         - search.highlight
         - search.share
         - search.suggest
@@ -67,7 +68,10 @@ markdown_extensions:
 plugins:
     - search:
         lang: en
-    - mkdocs-video
+    - mkdocs-video:
+        is_video: True
+        video_muted: True
+        video_controls: True
     - redirects:
         redirect_maps:
             "lte.md": "modem.md"
@@ -91,6 +95,9 @@ plugins:
         background: white
         shadow: true
         manual: false
+    - blog:
+        blog_dir: blog
+        blog_toc: true
 
 nav:
     - "Device guides":
@@ -151,3 +158,5 @@ nav:
         - "Arduino HID": arduino_hid.md
         - "Big DVD images on old PiKVM": msd_legacy.md
     - "Compliance": compliance.md
+    - Blog:
+        - blog/index.md
