@@ -157,6 +157,7 @@ nav:
     - "Legacy":
         - "Arduino HID": arduino_hid.md
         - "Big DVD images on old PiKVM": msd_legacy.md
-    - "Compliance": compliance.md
-    - Blog:
-        - blog/index.md
+    - "PiKVM Info":
+        - "Compliance": compliance.md
+        - "Blog & News":
+            - blog/index.md
