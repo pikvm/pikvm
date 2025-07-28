@@ -1,7 +1,11 @@
-# Reverse Proxy
+---
+title: Reverse proxy
+description: How to configure a reverse proxy on your PiKVM
+---
 
-A reverse proxy allows you to pass requests through your web server to another site or program.
-The reverse proxy will make it look like PiKVM Web UI is a page within your existing site.
+A reverse proxy allows you to pass requests through your web server to
+another site or program. The reverse proxy will make it look like PiKVM
+Web UI is a page within your existing site.
 
 This is especially useful if:
 

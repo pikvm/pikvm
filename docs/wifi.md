@@ -1,13 +1,18 @@
-# Setting up Wi-Fi
+---
+title: Setting up Wi-Fi
+description: Learn how to configure a Wi-Fi connection on your PiKVM to one or multiple networks
+---
 
 !!! tip
     * There is nothing more reliable than wired Ethernet, so it's better to use it. Wi-Fi with the steel case (on PiKVM V3 and V4) results in poor performance. But who are we to stop you... :)
     * Devices based on Raspberry Pi Zero 2 W does not support 5GHz Wi-Fi.
 
-The following describes how to setup a Wi-Fi connection.
-We recommend to do this while having a display and keyboard
-or a serial console connected directly to the Raspberry Pi as you will loose network connectivity once you connect to a Wi-Fi.
-Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (available through the browser) should also work.
+The following describes how to setup a Wi-Fi connection. We recommend to
+do this while having a display and keyboard or a serial console
+connected directly to the Raspberry Pi as you will loose network
+connectivity once you connect to a Wi-Fi. Alternatively you can connect
+to the PiKVM via SSH. The built-in Web Terminal (available through the
+browser) should also work.
 
 !!! warning "Take a look at the easiest way"
     This guide describes how to manually set up a Wi-Fi. An easier way is to use [On-boot config](on_boot_config.md).
@@ -17,9 +22,9 @@ Alternatively you can connect to the PiKVM via SSH. The built-in Web Terminal (a
 -----
 ## Setting up Wi-Fi manually
 
-1. Make filesystem writable using `rw` command.
+1. Make filesystem writable using the `rw` command.
 
-2. Create Wi-Fi settings file `/etc/systemd/network/wlan0.network` with following content:
+2. Create the Wi-Fi settings file `/etc/systemd/network/wlan0.network` with the following content:
 
     ```ini
     [Match]

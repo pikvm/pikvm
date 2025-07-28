@@ -1,4 +1,7 @@
-# Mouse
+---
+title: Mouse
+description: How to use the absolute, relative, and dual modes for your mouse on a PiKVM
+---
 
 There are two modes of pointer device: absolute and relative.
 

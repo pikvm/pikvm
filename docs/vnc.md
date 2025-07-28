@@ -1,9 +1,17 @@
+---
+title: VNC
+description: How to enable and configure VNC for accessing your PiKVM
+---
+
 # VNC
 
-As an alternative to the Web UI, a regular VNC client can be used to access to the PiKVM.
-The main advantage of VNC over the browser is the ability to expand the image to the full screen,
-as well as complete interception of all keyboard shortcuts. In some cases, VNC will be more responsive
-than the browser, especially on weak client computers.
+As an alternative to the Web UI, a regular VNC client can be used to
+access to the PiKVM.
+
+The main advantage of VNC over the browser is the ability to expand the
+image to the full screen, as well as complete interception of all
+keyboard shortcuts. In some cases, VNC will be more responsive than the
+browser, especially on weak client computers.
 
 !!! warning
     Don't use VNC without X.509 or TLS encryption on untrusted networks!

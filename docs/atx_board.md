@@ -1,4 +1,7 @@
-# ATX control board
+---
+title: ATX control board
+desription: How to connect the ATX board to a PiKVM
+---
 
 To manage the power of your computer, you will need to install an ATX adapter board inside the case and connect it to the motherboard. There is a female to female ribbon cable that goes from the motherboard to the ATX adapter board and a male to female ribbon cable that goes from the adapter board to the front panel ribbon cable. There are two rows of pins on the ATX adapter board, it does not matter which ribbon cable is attached to which row. The columns must line up from the front panel through the ATX adapter to the motherboard.
 

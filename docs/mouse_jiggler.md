@@ -1,4 +1,7 @@
-# Mouse Jiggler
+---
+title: Mouse Jiggler
+description: How to configure and use mouse jiggler to simulate the movement of a computer mouse
+---
 
 The mouse jiggler is a feature used to simulate the movement of a computer mouse.
 It prevents sleep mode, standby mode or the screensaver from activating.
