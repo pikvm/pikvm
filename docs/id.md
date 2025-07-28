@@ -1,7 +1,12 @@
-# Identifying PiKVM on the target host
+---
+title: Identifying PiKVM on the target host
+description: How PiKVM is presented to the target host's operating system, and how this can be changed
+---
 
-This page explains how PiKVM is presented to the target host's operating system, and how this can be changed.
-This is useful for developers, testers and system administrators who need PiKVM to emulate a specific USB device or monitor.
+This page explains how PiKVM is presented to the target host's operating
+system, and how this can be changed. This is useful for developers,
+testers and system administrators who need PiKVM to emulate a specific
+USB device or monitor.
 
 !!! info
 

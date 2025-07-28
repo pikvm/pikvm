@@ -1,4 +1,7 @@
-# GPIO
+---
+title: GPIO
+description: "How to use GPIO on a PiKVM: drivers, configuration, modules, and more"
+---
 
 [GPIO (general-purpose input/output)](https://en.wikipedia.org/wiki/General-purpose_input/output) is a series of digital interfaces that can be used to connect relays, LEDs, sensors, and other components.
 

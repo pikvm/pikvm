@@ -1,16 +1,17 @@
-# Setting up 3G/4G/LTE modem
+---
+title: Setting up 3G/4G/LTE modem
+description: How to configure a 3G/4G/LTE modem to connect to Internet without a permanent wired network access
+---
 
-With PiKVM, you can create a portable device to work in a distant environment without
-a permanent wired internet connection. A cellular modem in combination with any VPN
-like [Tailscale](tailscale.md) is also an excellent backup for emergency access to the host.
-
+With PiKVM, you can create a portable device to work in a distant
+environment without a permanent wired internet connection. A cellular
+modem in combination with any VPN like [Tailscale](tailscale.md) is also
+an excellent backup for emergency access to the host.
 
 -----
 ## Choosing a modem
 
-PiKVM supports a huge number of USB modems.
-If the modem works with a desktop Linux, it will work with PiKVM as well.
-
+PiKVM supports a huge number of USB modems. If the modem works with a desktop Linux, it will work with PiKVM as well.
 
 ### Mini-PCI on PiKVM V4 Plus
 

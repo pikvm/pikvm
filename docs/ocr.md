@@ -1,8 +1,14 @@
-# OCR
+---
+title: OCR
+description: How to install optical character recognition data for Tesseract
+---
 
-This feature allows you to select a screen region, recognize it as text and copy this text to the clipboard.
-Recognition works locally on your PiKVM and does not use any cloud services. It uses the [Tesseract OCR library](https://github.com/tesseract-ocr/tesseract).
-Tesseract does not see your image until you explicitly give the recognition command. The evil AI is not watching your screen.
+This feature allows you to select a screen region, recognize it as text
+and copy this text to the clipboard. Recognition works locally on your
+PiKVM and does not use any cloud services. It uses the [Tesseract OCR
+library](https://github.com/tesseract-ocr/tesseract). Tesseract does not
+see your image until you explicitly give the recognition command. The
+evil AI is not watching your screen.
 
 ## Language support
 

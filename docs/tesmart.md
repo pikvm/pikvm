@@ -1,6 +1,19 @@
-# TESMART managed multiport KVM switch
+---
+title: TESMART managed multiport KVM switch
+description: How to control the TESMART managed switch with PiKVM to allow the switch to connect to multiple hosts
+---
 
-The TESMART managed switch can be controlled by PiKVM to allow it to connect to multiple hosts. A typical scenario is a single PiKVM device which can control and switch between multiple hosts or servers using the TESMART switch. UI elements can be added to the [GPIO dropdown](gpio.md) to allow switching between hosts from the PiKVM webpage. The instructions here were tested with the [TESMART HKS1601A10 HDMI 16x1 switch](https://www.amazon.com/dp/B07D2ZMF5B ). This should work with any of the other TESMART variants which have a LAN port - there is both a 8x1 and 4x1 variant.  This was tested with an RPI4, but as this is executed over a network protocol, this should with almost anything.
+The TESMART managed switch can be controlled by PiKVM to allow it to
+connect to multiple hosts. A typical scenario is a single PiKVM device
+which can control and switch between multiple hosts or servers using the
+TESMART switch. UI elements can be added to the [GPIO dropdown](gpio.md)
+to allow switching between hosts from the PiKVM webpage.
+
+The instructions here were tested with the [TESMART HKS1601A10 HDMI 16x1
+switch](https://www.amazon.com/dp/B07D2ZMF5B ). This should work with
+any of the other TESMART variants which have a LAN port - there is both
+a 8x1 and 4x1 variant.  This was tested with an RPI4, but as this is
+executed over a network protocol, this should with almost anything.
 
 
 ## Connections

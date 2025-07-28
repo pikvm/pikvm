@@ -1,4 +1,7 @@
-# IPMI & Redfish
+---
+title: IPMI & Redfish
+description: How to use IPMI and Redfish for remote PiKVM management
+---
 
 !!! info
     This page is about the server-side IPMI emulation if you want to manage PiKVM using `ipmitool` or something similar.

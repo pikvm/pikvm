@@ -1,14 +1,19 @@
-# On-boot configuration & production deployment
+---
+title: On-boot configuration & production deployment
+description: How to configure parameters that are applied the first time a PiKVM is booted
+---
 
-At the first boot, PiKVM generates encryption keys and performs other actions necessary to configure the device.
+At the first boot, PiKVM generates encryption keys and performs other
+actions necessary to configure the device.
 
-Some parameters, such as connecting to Wi-Fi, or configuring a static interface for wired Ethernet,
-can be easily changed by the user if there is physical access to the memory card.
-This is convenient for quick customization of your device before the first use.
+Some parameters, such as connecting to Wi-Fi, or configuring a static
+interface for wired Ethernet, can be easily changed by the user if there
+is physical access to the memory card. This is convenient for quick
+customization of your device before the first use.
 
-All settings are made using a file `pikvm.txt` on the first section of the memory card.
-After applying the settings, the file is automatically deleted.
-
+All settings are made using a file `pikvm.txt` on the first section of
+the memory card. After applying the settings, the file is automatically
+deleted.
 
 -----
 ## Setting up Wi-Fi

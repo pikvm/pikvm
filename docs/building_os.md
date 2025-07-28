@@ -1,4 +1,7 @@
-# Building PiKVM OS
+---
+title: Building PiKVM OS
+description: How to build PiKVM OS from source code with Docker
+---
 
 The assembly of PiKVM OS is carried out using a special build environment.
 Here the minimum required for its use, imposed on the build machine:

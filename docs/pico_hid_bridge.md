@@ -1,4 +1,7 @@
-# The Pico HID - PS/2 Bridge
+---
+title: The Pico HID - PS/2 Bridge
+description: How to use a special version of the generic Pico HID to emulate a PS/2 keyboard and mouse emulator on DIY PiKVM V1
+---
 
 !!! note "Pico requirements"
     [Raspberri Pi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico/)

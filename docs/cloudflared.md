@@ -1,4 +1,7 @@
-# Cloudflare Tunnels
+---
+title: Cloudflare tunnels
+description: How to configure Cloudflare tunnels for your PiKVM
+---
 
 !!! warning
 	This is unofficial instructions proposed by the community. We don't officially support this and don't know what problems may arise when using cloudflared.

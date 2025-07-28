@@ -1,5 +1,7 @@
-# The Pico HID
-
+---
+title: The Pico HID
+description: How to perform keyboard and mouse emulation on DIY PiKVM V1 with Pico HID
+---
 
 !!! tip "A fast way to get PS/2 on PiKVM V2+"
     If you need PS/2 keyboard & mouse on [PiKVM V2](v2.md), [V3](v3.md) and [V4 Plus](v4.md)
@@ -11,8 +13,10 @@
     (the first model) based on RP2040 microcontroller is required.
     Pico 2 is not supported right now.
 
-The Pico HID is a part of [DIY PiKVM V1](v1.md) platform that performs keyboard and mouse emulation.
-It has excellent compatibility, and emulates USB by default, including two mouse modes: absolute and relative.
+The Pico HID is a part of [DIY PiKVM V1](v1.md) platform that performs
+keyboard and mouse emulation. It has excellent compatibility, and
+emulates USB by default, including two mouse modes: absolute and
+relative.
 
 Full list of features:
 

@@ -1,4 +1,7 @@
-# Flashing PiKVM OS image
+---
+title: Flashing PiKVM OS image
+description: How to flash a PiKVM OS image to an SD card
+---
 
 !!! warning "Micro-SD Card Requirements"
 

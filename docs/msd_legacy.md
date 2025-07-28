@@ -1,4 +1,7 @@
-# Big DVD images on old PiKVM
+---
+title: Big DVD images on old PiKVM
+description: If you need to emulate DVD images on an old PiKVM, here is how you can do it
+---
 
 Since KVMD 4.49, PiKVM is able to emulate DVD images.
 
