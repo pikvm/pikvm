@@ -1,4 +1,9 @@
-## GETTING TO KNOW THE INTERFACE
+---
+title: Getting to know the web UI
+description: How to get started with using the web interface for your PiKVM
+---
+
+## Logging in
 
 After following the first steps document on setup, you will be presented with the following pages (Chrome is being used in the following examples)
 
@@ -14,8 +19,11 @@ Click Proceed
 
 <img src="Login.jpg" width="400" />
 
-This is where you fill in the login credentials, please be sure to review the first steps document first.
-This is also where you configure the 2FA token
+This is where you fill in the login credentials, please be sure to
+review the first steps document first. This is also where you configure
+the 2FA token.
+
+## Initial screen
 
 <img src="Portal.jpg" width="400" />
 
@@ -30,6 +38,8 @@ This is also where you configure the 2FA token
     7. These are links to the PiKVM project, current documentation and support (Discord)
     8. **NOT SHOWN**, in the lower left of the KVM screen is some information that when you mouse over, will let you know what they are for
 
+## Web UI toolbar
+
 <img src="Toolbar.jpg" />
 
 ??? note "Please expand to see what each number represents"
@@ -41,6 +51,8 @@ This is also where you configure the 2FA token
     5. This is where you can SEND text to the Target or using OCR, you can copy FROM the target, be mindful that OCR can make mistakes, please review before finalizing
     6. This is where you can find most Shortcuts (Windows only, for now) (Not editable)
     7. This is placed here to give you an idea what you can achieve if you make your own menu item
+
+## The System menu
 
 <img src="System.jpg" width="400" />
 
@@ -68,18 +80,26 @@ This is also where you configure the 2FA token
     3. ONLY for MJPEG mode
     4. ONLY for H.264 (WebRTC) mode
 
+## The ATX menu
+
 <img src="ATX.jpg" width="400" />
 
-1. This ONLY works if you have the hardware connected to the MB, otherwise will not work
+This ONLY works if you have the hardware connected to the MB, otherwise will not work
+
+## The Drive menu
 
 <img src="Drive.jpg" width="400" />
 
-1. This is where you can select the IMG or ISO's that are stored
+This is where you can select the IMG or ISO's that are stored
+
+## The Macro menu
 
 <img src="Macro.jpg" width="400" />
 
 1. Please read and understand this section
-2. This is where you can upload or Download your scripts
+2. This is where you can upload or download your scripts
+
+## The Text menu
 
 <img src="Text.jpg" width="400" />
 
@@ -87,10 +107,12 @@ This is also where you configure the 2FA token
     This is not like VNC/AnyDesk/TeamViewer as these are software solutions, this is a hardware solution therefor cannot change the behavior of the target system.
     This does not act like a clipboard
 
-1. This will allow you to paste text to the target system - Be mindful whats being pasted to the target and how
-2. This will allow you to ONLY copy text from the target - Be mindful that OCR will do its best to recognize text but may fail at it
+1. This will allow you to paste text to the target system—be mindful whats being pasted to the target and how.
+
+2. This will allow you to ONLY copy text from the target—be mindful that OCR will do its best to recognize text but may fail at it.
+
+## The Shortcuts menu
 
 <img src="Shortcuts.jpg" width="400" />
 
-1. This is an expanded view and shows the shortcuts for mostly Windows
-
+This is an expanded view and shows the shortcuts mostly for Windows.

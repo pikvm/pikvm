@@ -1,4 +1,7 @@
-# EDID
+---
+title: EDID
+description: How to manipulate the EDID information on your PiKVM
+---
 
 !!! info
 

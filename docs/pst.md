@@ -1,15 +1,22 @@
-# Persistent storage
+---
+title: Persistent storage
+description: How to use the 256MiB partition on your PiKVM to store data
+---
 
 !!! note
     This feature is available on images newer than 2022.06.20
 
-Sometimes advanced use of PiKVM requires storing some data on disk like API keys, config files, or something like that.
-For example, you want to have a script that will update SSL certificates once a week.
-However, the root file system is in a read-only state and does not involve remounting automatically by user scripts.
+Sometimes advanced use of PiKVM requires storing some data on disk like
+API keys, config files, or something like that. For example, you want to
+have a script that will update SSL certificates once a week. However,
+the root file system is in a read-only state and does not involve
+remounting automatically by user scripts.
 
-To solve this problem, new versions of PiKVM have a small 256MiB storage partition that can be used to store that data.
-A special `kvmd-pst` daemon makes sure that this partition is mounted in read-only all the time, and remounts it to RW
-only when some user script requires it. This also solves the problems of simultaneous access, so the RW mode will be
+To solve this problem, new versions of PiKVM have a small 256MiB storage
+partition that can be used to store that data. A special `kvmd-pst`
+daemon makes sure that this partition is mounted in read-only all the
+time, and remounts it to RW only when some user script requires it. This
+also solves the problems of simultaneous access, so the RW mode will be
 kept as long as at least one client is working with the storage.
 
 

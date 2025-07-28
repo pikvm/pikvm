@@ -1,9 +1,15 @@
-# Let's Encrypt certificates
+---
+title: Let's Encrypt certificates
+description: How to use Let's Encrypt certificates instead of the default self-signed SSL certificates on your PiKVM
+---
 
-PiKVM uses self-signed SSL certificates out of the box. If you have a domain name, you can use Let's Encrypt certificates.
+PiKVM uses self-signed SSL certificates out of the box. If you have a
+domain name, you can use Let's Encrypt certificates.
 
-Usually Let's Encrypt certificates are issued and updated automatically using Certbot, however, since PiKVM uses a read-only
-file system, special tools around Certbot are required to work with certificates. KVMD 3.117 provides them.
+Usually Let's Encrypt certificates are issued and updated automatically
+using Certbot, however, since PiKVM uses a read-only file system,
+special tools around Certbot are required to work with certificates.
+KVMD 3.117 provides them.
 
 !!! note
     This feature is available on images as old as 2022.06.19 since it requires [PST storage partition on SD card](pst.md).

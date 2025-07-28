@@ -1,8 +1,14 @@
-# Prometheus metrics
+---
+title: Prometheus metrics
+description: How to configure Prometheus to monitor your PiKVM metrics
+---
 
-[Prometheus](https://prometheus.io) is one of the popular monitoring systems.
-It pulls service's endpoint to get metrics in a [simple text format](https://prometheus.io/docs/instrumenting/exposition_formats).
-PiKVM has the ability to export some information to this system such as the server's ATX state, Pi's temperature, [GPIO](gpio.md) state and some other things.
+[Prometheus](https://prometheus.io) is one of the popular monitoring
+systems. It pulls service's endpoint to get metrics in a [simple text
+format](https://prometheus.io/docs/instrumenting/exposition_formats).
+PiKVM has the ability to export some information to this system such as
+the server's ATX state, Pi's temperature, [GPIO](gpio.md) state and some
+other things.
 
 
 ## Configure Prometheus

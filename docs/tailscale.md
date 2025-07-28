@@ -1,11 +1,16 @@
-# Tailscale VPN
+---
+title: Tailscale VPN
+description: How to configure the access to your PiKVM using Tailscale VPN
+---
 
-The [Tailscale VPN](https://tailscale.com/) can be used to access PiKVM from the Internet
-if configuring [port forwarding](port_forwarding.md) is not possible or more security is desired.
-Tailscale is a convenient and free (for private use) tool for organizing a small VPN network.
+The [Tailscale VPN](https://tailscale.com/) can be used to access PiKVM
+from the Internet if configuring [port forwarding](port_forwarding.md)
+is not possible or more security is desired. Tailscale is a convenient
+and free (for private use) tool for organizing a small VPN network.
 
-The basic Tailscale configuration commands are shown below.
-For detailed instructions, refer to [Tailscale support](https://tailscale.com/contact/support/).
+The basic Tailscale configuration commands are shown below. For detailed
+instructions, refer to [Tailscale
+support](https://tailscale.com/contact/support/).
 
 -----
 

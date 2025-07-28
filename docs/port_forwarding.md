@@ -1,9 +1,12 @@
-# Port forwarding
+---
+title: Port forwarding
+description: How to setup port forwarding to make your PiKVM accessible from Internet
+---
 
-If you need to make PiKVM accessible from Internet,
-the easiest way to achieve this is by forwarding a port on the router.
-In this case, an external (global) IP address must be assigned to the router.
-This service is provided by the ISP.
+If you need to make PiKVM accessible from Internet, the easiest way to
+achieve this is by forwarding a port on the router. In this case, an
+external (global) IP address must be assigned to the router. This
+service is provided by the ISP.
 
 !!! tip
     If using an external IP address is not possible, it is recommended to try

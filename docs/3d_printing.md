@@ -1,4 +1,7 @@
-# Cases for 3D printing
+---
+title: Cases for 3D printing
+description: Download and 3D-print your own case for a PiKVM
+---
 
 ## PiKVM V3 HAT cases
 

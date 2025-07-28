@@ -1,3 +1,8 @@
+---
+title: Wake-on-LAN
+description: "How to use Wake-on-LAN with a server: a simplified method for one host and a GPIO method for multiple hosts"
+---
+
 # Wake-on-LAN
 
 ## Simplified method (one host)

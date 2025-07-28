@@ -1,10 +1,14 @@
-# PiKVM Handbook
+---
+title: PiKVM Handbook
+description: Comprehensive guide to configuring and using your PiKVM
+---
 
-**Welcome to the [PiKVM](https://pikvm.org) Handbook** - a complete documentation of the Open Source KVM over IP on Raspberry Pi!
+**Welcome to the [PiKVM](https://pikvm.org) Handbook**—a complete
+documentation of the Open-Source KVM-over-IP on Raspberry Pi!
 
-Here you will find comprehensive information about all aspects of the operation of PiKVM, get answers to your most difficult questions
-and be able to solve the problems that have arisen.
-
+Here you will find comprehensive information about all aspects of the
+operation of PiKVM, get answers to your most difficult questions and be
+able to solve the problems that have arisen.
 
 ## Where to start?
 

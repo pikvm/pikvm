@@ -1,4 +1,7 @@
-# Mass Storage Drive
+---
+title: Mass Storage Drive
+description: Mass storage drive allows PiKVM to emulate a virtual CD/DVD or Flash Drive for the target host
+---
 
 This powerful feature that is available on all PiKVM V2+ devices.
 It allows PiKVM to emulate a virtual CD/DVD or Flash Drive for the target host

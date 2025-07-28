@@ -1,4 +1,7 @@
-# Bluetooth HID
+---
+title: Bluetooth HID
+description: How to configure PiKVM to emulate a Bluetooth keyboard & mouse
+---
 
 PiKVM is able to emulate a Bluetooth keyboard & mouse.
 This is not the main case of using PiKVM since you still need it to pair with a remote host, but can be used for something like mobile KVM.

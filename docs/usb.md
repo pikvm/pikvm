@@ -1,14 +1,22 @@
-# USB configuration
+---
+title: USB configuration
+description: How USB works on the PiKVM, what endpoints are available, and how to configure it
+---
 
-PiKVM V2+ emulates a small set of USB devices to ensure normal operation: a keyboard, [mouse](mouse.md) and [mass storage drive](msd.md).
-However, the possibilities are not limited to this. Optionally, you can add a [USB ethernet](usb_ethernet.md),
-[serial port](usb_serial.md), or (exclusive to [PiKVM V3](v3.md) and [V4 Mini/Plus](v4.md)) [a microphone to support two-way audio](audio.md).
+PiKVM V2+ emulates a small set of USB devices to ensure normal
+operation: a keyboard, [mouse](mouse.md) and [mass storage
+drive](msd.md). However, the possibilities are not limited to this.
+Optionally, you can add a [USB ethernet](usb_ethernet.md), [serial
+port](usb_serial.md), or (exclusive to [PiKVM V3](v3.md) and [V4
+Mini/Plus](v4.md)) [a microphone to support two-way audio](audio.md).
 
-In rare cases, the target host's BIOS/UEFI may not understand such a large number of emulated devices on single USB port,
-and some of them may need to be disabled.
+In rare cases, the target host's BIOS/UEFI may not understand such a
+large number of emulated devices on single USB port, and some of them
+may need to be disabled.
 
-A complete USB configuration changing (adding or removing devices) requires a reboot, but it is possible
-to temporarily disable and then re-enable existing emulated devices in preset.
+A complete USB configuration changing (adding or removing devices)
+requires a reboot, but it is possible to temporarily disable and then
+re-enable existing emulated devices in preset.
 
 
 -----
@@ -61,9 +69,10 @@ For information on how emulated devices are represented on the target host and h
 
 Device setup includes two stages: adding to config and starting.
 
-When you add a device as described on the pages above, it automatically turns on after PiKVM reboot
-and becomes available on the target device. This behaviour can be changed: the device will be created,
-but not active until you turn it on dynamically.
+When you add a device as described on the pages above, it automatically
+turns on after PiKVM reboot and becomes available on the target device.
+This behaviour can be changed: the device will be created, but not
+active until you turn it on dynamically.
 
 The `/etc/kvmd/override.yaml` file is used for such changes. In the following example,
 there are [USB Serial Port](usb_serial.md) and [Microphone](audio.md) enabled,

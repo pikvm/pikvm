@@ -1,6 +1,6 @@
 ---
 title: HTTP API reference
-#description: Getting started with PiKVM V4 Mini & Plus
+description: Documentation for all functions of PiKVM microservices exposed via RESTful APIs
 ---
 
 This document describes the PiKVM API. Since the system consists of microservices, here is a common API with a common entry point provided by Nginx. The below examples use `curl` and [`websocat`](https://github.com/vi/websocat) with the `-k` option disables SSL certificate verification, since the self-signed certificateis are used in the default installation.
@@ -83,7 +83,7 @@ There are two options here:
 -----
 ## WebSocket events
 
-Most of the data during the user's work with pikvm is transmitted over WebSocket. This includes mouse events, keyboard input, change the state of the various subsystems (such as ATX and Mass Storage Drive). Each event type will be described in the corresponding paragraph for its component. When connecting via WebSocket, the client receives current states as separate events. Then, as the states change, it will receive new events.
+Most of the data during the user's work with PiKVM is transmitted over WebSocket. This includes mouse events, keyboard input, and changing the state of the various subsystems (such as ATX and Mass Storage Drive). Each event type will be described in the corresponding paragraph for its component. When connecting via WebSocket, the client receives current states as separate events. Then, as the states change, it will receive new events.
 
 In a normal situation, opening a socket session triggers the video streamer to start. The streamer works as long as there is at least one client connected via WebSocket. After the last connection is closed and the client timeout expires, the streamer will also be terminated.
 

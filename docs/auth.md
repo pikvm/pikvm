@@ -1,4 +1,7 @@
-# Authentication
+---
+title: "Authentication"
+description: Regular and 2FA authentication on PiKVM
+---
 
 !!! warning "PiKVM comes with the following default passwords"
 

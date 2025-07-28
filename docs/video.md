@@ -1,10 +1,18 @@
+---
+title: Video modes
+description: Key differences between available video modes on PiKVM and tips for using them
+---
+
 # Video modes
 
-PiKVM [V3](v3.md), [V4 Plus/Mini](v4.md) and all DIY devices based on HDMI-CSI bridge provides three video streaming modes.
-This page explains the key differences between them and helps you to achieve optimal video performance.
+PiKVM [V3](v3.md), [V4 Plus/Mini](v4.md) and all DIY devices based on
+HDMI-CSI bridge provides three video streaming modes. This page explains
+the key differences between them and helps you to achieve optimal video
+performance.
 
-The video mode can be switched in the **System** menu in the Web UI.
-If you don't see the switch, probably your browser does not support H.264 video.
+The video mode can be switched in the **System** menu in the Web UI. If
+you don't see the switch, probably your browser does not support H.264
+video.
 
 
 <img src="menu.png" width="350" />
@@ -34,10 +42,12 @@ If you don't see the switch, probably your browser does not support H.264 video.
 -----
 ## WebRTC H.264 mode
 
-This is the default mode. It'is using the efficient H.264 encoding to save traffic.
-The video is streamed over WebRTC protocol which you may have encountered when you used video calls in Discord or Google Chat.
-Since WebRTC does not use HTTP for video, establishing a connection is quite tricky (but PiKVM automates 99% of cases).
-If you have problems with the WebRTC mode, please [check this guide](webrtc_config.md).
+This is the default mode. It'is using the efficient H.264 encoding to
+save traffic. The video is streamed over WebRTC protocol which you may
+have encountered when you used video calls in Discord or Google Chat.
+Since WebRTC does not use HTTP for video, establishing a connection is
+quite tricky (but PiKVM automates 99% of cases). If you have problems
+with the WebRTC mode, please [check this guide](webrtc_config.md).
 
 !!! info "Advantages / Disadvantages"
 

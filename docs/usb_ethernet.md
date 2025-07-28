@@ -1,4 +1,7 @@
-# Ethernet-over-USB network
+---
+title: Ethernet-over-USB network
+description: How to configure a Ethernet-over-USB network on PiKVM V2+
+---
 
 Specifically to PiKVM V2+. When combined with configuring a DNS server, FTP, or SMB (for example), this is a powerful way to extend the capabilities of PiKVM.
 
@@ -73,7 +76,6 @@ Specifically to PiKVM V2+. When combined with configuring a DNS server, FTP, or 
 3. To enable the service, use the command `systemctl enable kvmd-otgnet`.
 
 4. Perform `reboot`.
-
 
 ## Routing via PiKVM
 

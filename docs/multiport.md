@@ -1,5 +1,7 @@
-# Multiport KVM over IP
-
+---
+title: Multiport KVM-over-IP
+description: If you need to connect multiple hosts to a single PiKVM, your options are PiKVM Switch and a number of 3rd-party KVMs
+---
 
 ??? note
     V4 MINI can ONLY be used with the TESmart or other KVMs with LAN control, the TESmart has a convenience driver for easier setup
@@ -7,8 +9,7 @@
 
 <img src="../switch/switch.png" width="400" />
 
-If you need to connect multiple hosts to a single PiKVM, then the best way to do this is to use our [Pikvm Switch](switch.md).
-It is designed specifically for PiKVM and has many advantages and features compared to regular desktop multiport switches.
+If you need to connect multiple hosts to a single PiKVM, then the best way to do this is to use our [PiKVM Switch](switch.md). It is designed specifically for PiKVM and has many advantages and features compared to regular desktop multiport switches.
 
 * ATX control on each port.
 * Per-port EDID configuration.
