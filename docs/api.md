@@ -464,6 +464,7 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/hid/keymaps
 | `limit` | integer | optional | Maximum characters to process | 0 = no limit. No maximum value. Default: 1024 |
 | `keymap` | string | optional | Keymap to use (defaults to system default) | Any keymap listed in the output of `GET /hid/keymaps` |
 | `slow` | boolean | optional | Enables slow typing mode (regular large intervals between key presses), `false` by default | Enable: `1`, `true`, or `yes`. Disable: `0`, `false`, or `no` |
+| `delay` | float | optional | How many seconds to delay the transmission of keys by in the `slow` mode. Defaults to `0.02` when `slow` is enabled, otherwise defaults to `0` | `0..5.0` |
 
 **Example of use**:
 
