@@ -69,9 +69,8 @@ plugins:
     - search:
         lang: en
     - mkdocs-video:
-        is_video: True
-        video_muted: True
-        video_controls: True
+        video_autoplay: false
+        video_controls: true
     - redirects:
         redirect_maps:
             "lte.md": "modem.md"
