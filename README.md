@@ -3,7 +3,7 @@
 
 A very simple and fully functional Raspberry Pi-based KVM (Keyboard-Video-Mouse) over IP that you can make with your own hands. This device helps to manage servers or workstations remotely, regardless of the health of the operating system or whether one is installed. You can fix any problem, configure the BIOS, and even reinstall the OS using the virtual CD/DVD or Flash Drive.
 
-The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](https://docs.pikvm.org) and join to the [Discord Community Chat](https://discord.gg/bpmXfz5) for news, questions and support!
+The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](https://docs.pikvm.org)join to the [Discord Community Chat](https://discord.gg/bpmXfz5) for news, questions and support! Also you can visit our [Support Forum](https://forum.pishop.com/c/pikvm).
 
 | Web UI                                     |
 | ------------------------------------------ |
@@ -188,7 +188,7 @@ All of them uses our common open source software stack.
 
 ## Open Source
 * **Community & support**  
-  PiKVM has a large community. Join the [discord chat](https://discord.gg/bpmXfz5) if you have any questions.
+  PiKVM has a large community. Join the [discord chat](https://discord.gg/bpmXfz5) or [Forum](https://forum.pishop.com/c/pikvm) if you have any questions.
 * **Extensible**  
   PiKVM was designed as a set of microservices with a plug-in architecture. It's very easy to modify and maintain.
 * **Comprehensive API**  

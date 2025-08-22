@@ -5,7 +5,7 @@ description: Frequently asked questions and troubleshooting for your PiKVM
 
 As a first step, we recommend carefully reading our documentation on [GitHub](https://github.com/pikvm/pikvm) or the updated [documentation](https://docs.pikvm.org). Most steps to successfully set up your PiKVM are already described there.
 
-If you run into any issues you can check this page which will list common errors. If that still doesn't help you you're welcome to raise an [issue ticket](https://github.com/pikvm/pikvm/issues) or [join our Discord](https://discord.gg/bpmXfz5) for further help.
+If you run into any issues you can check this page which will list common errors. If that still doesn't help you you're welcome to raise an [issue ticket](https://github.com/pikvm/pikvm/issues) or [contact our Suppor](https://pikvm.org/support/) for further help.
 
 
 ## Common questions
@@ -423,19 +423,6 @@ If you run into any issues you can check this page which will list common errors
 
 ??? question "My keyboard works in BIOS/UEFI, but my mouse does not"
     The BIOS does not support absolute mouse mode, which is preferred by PiKVM. In this case, [you can enable relative or dual positioning mode](mouse.md).
-
-
-??? question "I can't wake up suspended computer on V2+"
-    This feature is experimental and requires manual activation. Perform a full system update, edit `/etc/kvmd/override.yaml`, and reboot. After that, you can use remote wakeup by pressing any keyboard key or mouse button.
-
-    ```yaml
-    otg:
-        remote_wakeup: true
-    ```
-
-    For V4, you don't need to add this option as it is enabled by default.
-
-    If something doesn't work, please report about the problem [here](https://discord.gg/bpmXfz5) (preferred) or [here](https://github.com/pikvm/pikvm/issues).
 
 
 ??? question "My mass storage drive works (I can boot an image from PiKVM V2+), but my keyboard/mouse does not"

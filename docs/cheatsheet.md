@@ -86,4 +86,4 @@ Here are **first steps guides** for each PiKVM device:
 -----
 ## Getting User Support
 
-If something doesn't work, check out our [FAQ](faq.md). Otherwise, head straight to our [Discord chat](https://discord.gg/bpmXfz5).
+If something doesn't work, check out our [FAQ](faq.md). Otherwise, head straight to our [Support](https://pikvm.org/support/).

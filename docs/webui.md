@@ -35,7 +35,7 @@ the 2FA token.
     4. By default this will not show up till its activated, this will tell you the VNC address you need to use
     5. This is so you can logout of your PiKVM
     6. Please read carefully
-    7. These are links to the PiKVM project, current documentation and support (Discord)
+    7. These are links to the PiKVM project, current documentation and support
     8. **NOT SHOWN**, in the lower left of the KVM screen is some information that when you mouse over, will let you know what they are for
 
 ## Web UI toolbar

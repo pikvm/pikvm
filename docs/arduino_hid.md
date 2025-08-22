@@ -192,7 +192,7 @@ If programming fails, ensure the Arduino is powered and check the wiring again. 
 
 After you have double and triple-checked your wiring (in particular make sure the pins you are using on the Pi are correct, the documentation uses the GPIO pin labels, NOT the sequential pin numbers from 1-40. A good pinout reference is [@Gadgetoid's version](https://pinout.xyz/#), you might try flashing the Arduino by holding down the RESET button on the chip while running `make install`.  If this works, then at least you know your SPI wiring is correct.
 
-Wiring problems are a common issue but there could be other reasons for programming not to complete. While it is not possible to list every possible problem and solution here, there is an active user community in our [Discord](https://discord.gg/bpmXfz5) with others familiar with the solution and willing to help.
+Wiring problems are a common issue but there could be other reasons for programming not to complete. While it is not possible to list every possible problem and solution here, there is an active [user community](https://pikvm.org/support/) with others familiar with the solution and willing to help.
 
 ### Enable the SPI configuration and restart kvmd
 

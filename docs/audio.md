@@ -118,7 +118,7 @@ The microphone signal will not be transmitted if the volume level is zero.
 
     This feature is very new, so we don't know how much it affects the ability to interact with the BIOS and UEFI.
 
-     Please try this and [let us know](https://discord.gg/bpmXfz5) if you have lost the ability to access
+     Please try this and [let us know](https://pikvm.org/support/) if you have lost the ability to access
      the BIOS or boot OS from PiKVM Mass Storage after turning on the USB microphone.
 
      But even if this happens, don't worry. You can use [the dynamic USB device control](usb.md)
@@ -133,4 +133,4 @@ The microphone signal will not be transmitted if the volume level is zero.
 
 * Check the log: `journalctl -u kvmd-janus`.
 
-* If nothing helped, please report about the problem [to our support](https://discord.gg/bpmXfz5)
+* If nothing helped, please report about the problem [to our support](https://pikvm.org/support/)

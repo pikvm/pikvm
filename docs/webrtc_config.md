@@ -86,4 +86,4 @@ In some cases, WebRTC may not work. Here some common tips:
 
 * A paranoid firewall can interfere too when you try to connect to the PiKVM by forwarding port 443 to the Internet from the internal network. WebRTC is not enough of this, it uses UDP on ports 20000-40000 for a P2P connection. Make sure that the Firewall does not block them.
 
-* If nothing helps, open the browser's JavaScript console, look at the log and contact our community via [Discord](https://discord.gg/bpmXfz5). Developers and/or experienced users will definitely help you.
+* If nothing helps, open the browser's JavaScript console, look at the log and contact our [Support](https://pikvm.org/support/). Developers and/or experienced users will definitely help you.
