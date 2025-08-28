@@ -34,7 +34,7 @@ From a high level, the TESMART switch uses standard connections to the host mach
 
 ## Setting the IP Address of the TESMART switch
 
-In some ways, this is the most complex part of this. The default IP address of the TESMART switch is 192.168.1.10. If that happens to work with your IP addressing scheme and current set of addresses, then you may be all set. This IP address is not configurable via DHCP or other standard mechanisms. The only way to change it is with a Windows utility available on the [TESMART Downloads Page](https://buytesmart.com/pages/downloads).
+In some ways, this is the most complex part of this. The default IP address of the TESMART switch is 192.168.1.10. If that happens to work with your IP addressing scheme and current set of addresses, then you may be all set. This IP address is not configurable via DHCP or other standard mechanisms. The only way to change it is with a Windows utility available on the [TESMART Downloads Page](https://support.tesmart.com/hc/en-us/articles/10271501164953-LAN-RS232-Control-Software).
 
 If you need to change it, you will first need to connect to the switch with a Windows machine, most easily directly through an ethernet cord, with your Windows laptop (or VM) up and assigned to a fixed IP address, such as 192.168.1.5. Once you've launched the utility you will see this screen:
 
