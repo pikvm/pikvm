@@ -205,6 +205,6 @@ When you apply massive customizations, it may help separating changes into sever
 
 To do that, create these YAML files inside the `/etc/kvmd/override.d/` directory. KVMD will apply all configurations in the following order: `main.yaml` -> `override.d` -> `override.yaml`. Inside the `override.d` directory, KVMD will apply YAML files in alphabetical order, so please pay attention to how you name them.
 
-We recommend sticking with a particular file-naming scheme, e.g. `0000-vendor-otg-serial.yaml`. We do reserve `-vendor-` и `-pikvm-` prefixes for our own future needs, though.
+We recommend sticking with a particular file-naming scheme, e.g. `0000-vendor-otg-serial.yaml`. We do reserve `-vendor-` and `-pikvm-` prefixes for our own future needs, though.
 
 Once you completed the customization and validated newly created/edited files, reboot your PiKVM for the changes to take effect. 
