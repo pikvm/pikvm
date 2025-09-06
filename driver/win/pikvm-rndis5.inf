@@ -1,0 +1,45 @@
+; Remote NDIS device setup file for PIKVM
+
+[Version]
+Signature           = "$Windows NT$"
+Class               = Net
+ClassGUID           = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider            = "PIKVM"
+DriverVer           =01/17/2021,6.0.6000.16385
+
+[Manufacturer]
+"PIKVM"         = RndisDevices,NTx86,NTamd64,NTia64
+
+[RndisDevices.NTx86]
+%RndisDevice%    = RNDIS.NT.5.1, USB\VID_1D6B&PID_0104&MI_00
+
+[RndisDevices.NTamd64]
+%RndisDevice%    = RNDIS.NT.5.1, USB\VID_1D6B&PID_0104&MI_00
+
+[RndisDevices.NTia64]
+%RndisDevice%    = RNDIS.NT.5.1, USB\VID_1D6B&PID_0104&MI_00
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[RNDIS.NT.5.1]
+Characteristics = 0x84   ; NCF_PHYSICAL + NCF_HAS_UI
+BusType         = 15
+include         = netrndis.inf
+needs           = Usb_Rndis.ndi
+AddReg          = Rndis_AddReg_Vista
+
+[RNDIS.NT.5.1.Services]
+include     = netrndis.inf
+needs       = Usb_Rndis.ndi.Services
+
+[RNDIS_AddReg_Vista] 
+HKR, NDI\params\VistaProperty, ParamDesc,  0, "PIKVM"
+HKR, NDI\params\VistaProperty, type,       0, "edit"
+HKR, NDI\params\VistaProperty, LimitText,  0, "12"
+HKR, NDI\params\VistaProperty, UpperCase,  0, "1"
+HKR, NDI\params\VistaProperty, default,    0, " "
+HKR, NDI\params\VistaProperty, optional,   0, "1"
+
+[Strings]
+RndisDevice           = "PIKVM RNDIS Ethernet"
