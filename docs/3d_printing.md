@@ -24,3 +24,4 @@ description: Download and 3D-print your own case for a PiKVM
 | https://www.thingiverse.com/thing:4950281 | PiKVM RETRO Case for CSI-2 C779 Bridge w/ OLED Display Screen |
 | https://www.thingiverse.com/thing:4950280 | USB Power Blocker Case |
 | https://www.thingiverse.com/thing:4642116 | Conix's PI-KVM case for v2 |
+| https://www.thingiverse.com/thing:7148243 | Wall mount for PiKVM v3 |
