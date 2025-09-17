@@ -149,7 +149,7 @@ This ensures that certificate rotation and state writes work without breaking Pi
 
 ### Solution
 
-Idea:
+Core idea:
 - Mount a **tmpfs** over Tailscale's state folder stored in root's home: /root/tailscale-state. 
 - Mount the resulting *merged* layer onto the actual Tailscale state folder at /var/lib/tailscale.
 - An **overlayfs** will transparently present this folder to Tailscale, while changes are kept in the RAM-based overlay layer.
@@ -229,6 +229,7 @@ WantedBy=multi-user.target
 ```console
 [root@pikvm ~]# systemctl daemon-reload
 [root@pikvm ~]# systemctl enable tailscale-overlay.service
+[root@pikvm ~]# ro
 ```
 
 ---
