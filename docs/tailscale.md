@@ -122,6 +122,128 @@ PiKVM uses self-signed SSL certificates out of the box. You can also use
 
 -----
 
+## Automated Ephemeral Tailscale Certificates Renewal
+
+Tailscale has a nice option of running an HTTPS on your behalf within your tailnet: [`tailscale serve`](https://tailscale.com/kb/1312/serve). It is using Let's Encrypt certificates and renews them every 90 days. The issue is that PiKVM’s filesystem is read-only. While tailscale will diligently request new certificates, it will fail to write it on the disk and hence will try to request new certificates next time you access your web server. Let's Encrypt has a limit of 5 certificates for the server per week, so you will end up with an inoperable server and rate-limited by Let's Encrypt for a day or so.
+
+Here's the command that allows you to seamlessly run HTTPS proxy for your PiKVM:
+```console
+[root@pikvm ~]# tailscale serve --bg https+insecure://localhost:443
+````
+And if you want to stop tailscale from serving HTTPS, you can do this by running:
+```console
+[root@pikvm ~]# tailscale serve --https=443 off
+````
+
+### Root cause
+Tailscale needs to refresh TLS certificates and write state under `/var/lib/tailscale`.  
+On PiKVM, the root filesystem is read-only, so direct writes fail.  
+
+We can fix this by mounting an **ephemeral overlay filesystem (tmpfs) in RAM** for `/var/lib/tailscale`, backed by a persistent lowerdir (`/root/tailscale-state`).
+
+This ensures that certificate rotation and state writes work without breaking PiKVM’s read-only state.
+
+!!! warning
+    The **caveat** is that renewed certificates exist only in RAM. After a reboot, Tailscale falls back to the older certificates on disk, requests fresh ones, and stores them in RAM again.
+    If you reboot PiKVM too frequently, this can trigger Let's Encrypt's rate limits.
+
+### Solution
+
+Core idea:
+- Mount a **tmpfs** over Tailscale's state folder stored in root's home: /root/tailscale-state. 
+- Mount the resulting *merged* layer onto the actual Tailscale state folder at /var/lib/tailscale.
+- An **overlayfs** will transparently present this folder to Tailscale, while changes are kept in the RAM-based overlay layer.
+
+**Note**: Overlayfs requires that the upperdir and workdir exist before creating the overlay.
+Since these directories live in RAM, they disappear after every reboot.
+This means we cannot use fstab to declare the mount points.
+Instead, we implement this with a systemd service that runs a setup script during boot, before tailscaled starts.
+
+1. Switch filesystem to RW and copy Tailscale state:
+
+```console
+[root@pikvm ~]# rw
+[root@pikvm ~]# cp -a /var/lib/tailscale /root/tailscale-state
+````
+
+2. Create a helper script, save as `/usr/local/bin/setup-tailscale-overlay.sh`:
+
+```bash
+#!/bin/bash
+set -e
+
+# Make tmpfs for tailscale overlay
+mkdir -p /tmp/tailscale-tmpfs
+mountpoint -q /tmp/tailscale-tmpfs || mount -t tmpfs tmpfs /tmp/tailscale-tmpfs
+
+# Prepare overlay dirs
+mkdir -p /tmp/tailscale-tmpfs/upper
+mkdir -p /tmp/tailscale-tmpfs/work
+mkdir -p /tmp/tailscale-merged
+
+# Mount overlay (lowerdir = persistent readonly state in /root)
+mountpoint -q /tmp/tailscale-merged || mount -t overlay overlay \
+  -o lowerdir=/root/tailscale-state,upperdir=/tmp/tailscale-tmpfs/upper,workdir=/tmp/tailscale-tmpfs/work \
+  /tmp/tailscale-merged
+
+# Bind merged to /var/lib/tailscale
+mountpoint -q /var/lib/tailscale && umount /var/lib/tailscale || true
+mount --bind /tmp/tailscale-merged /var/lib/tailscale
+```
+
+Make it executable:
+
+```console
+[root@pikvm ~]# chmod +x /usr/local/bin/setup-tailscale-overlay.sh
+```
+
+3. Create a systemd unit
+
+We need to run the overlay setup **after `/tmp` is mounted** but **before `tailscaled.service`**.
+
+Save as `/etc/systemd/system/tailscale-overlay.service`:
+
+```ini
+[Unit]
+Description=Setup overlayfs for Tailscale
+After=local-fs.target tmp.mount
+Before=tailscaled.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/setup-tailscale-overlay.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+```
+
+**Notes:**
+
+* `local-fs.target` ensures all local filesystems (including `/tmp` tmpfs from fstab) are mounted.
+* `tmp.mount` is added explicitly in case your system defines it.
+* Overlay is mounted and bound before `tailscaled` starts.
+
+4. Enable and reload
+
+```console
+[root@pikvm ~]# systemctl daemon-reload
+[root@pikvm ~]# systemctl enable tailscale-overlay.service
+[root@pikvm ~]# ro
+```
+
+---
+
+### Boot sequence recap:
+
+1. tmpfs is mounted at `/tmp/tailscale-tmpfs`
+2. `upper` + `work` dirs are recreated inside tmpfs
+3. overlay is mounted with `/root/tailscale-state` as lowerdir
+4. overlay bind-mounted to `/var/lib/tailscale`
+5. `tailscaled.service` starts with writable state
+
+-----
+
 ## Troubleshooting
 
 * If something does not work, the usual advice is to completely remove Tailscale from PiKVM and perform a clean installation:
