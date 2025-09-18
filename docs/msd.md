@@ -260,7 +260,8 @@ and then connect the second to exchange files.
 
 !!! note
     The first virtual drive is available for management both in the Web UI (the `Drive` menu)
-    and using [the console utility](#second-writable-flash-drive). Extra drives are controlled only from console.
+    and using the `kvmd-otgmsd` console utility ([see below](#manual-drives-management)).
+    Extra drives are controlled only from console.
 
 
 The issue of additional drives concerns compatibility.
