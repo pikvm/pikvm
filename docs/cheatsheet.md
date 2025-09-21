@@ -15,11 +15,23 @@ Here are **first steps guides** for each PiKVM device:
 
 ??? note "Performing commands with root privileges"
 
-    To perform any command with root privileges, you need to use `su -` followed by the command. For example, to power-off PiKVM, do this:
+    There are two ways to perform any command with root privileges.
 
-    `[kvmd-webterm@pikvm ~]$ su - shutdown -h`
+    1. Gain root privileges, then perform any command.
 
-    This applies to both SSH and web terminal sessions.
+    `[kvmd-webterm@pikvm ~]$ su -`
+
+    After providing root account password, you will be able to run any commands as a root user as long as the session is running. Use it wisely. For example, if you need to reboot PiKVM, all you need to do is this:
+    
+    `[root@pikvm ~]# reboot`
+
+    The use of `su -` applies to both SSH and web terminal sessions.
+
+    2. Use `su -c` followed by the command wrapped in apostrophes. This will perform the command with root privileges a single time, you will not gain permanent root access. This will For example, to reboot PiKVM, do this:
+
+    `[kvmd-webterm@pikvm ~]$ su -c 'reboot'
+
+    The use of `su -c` applies to both SSH and web terminal sessions.
 
 {!_passwd.md!}
 
