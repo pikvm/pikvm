@@ -19,19 +19,19 @@ Here are **first steps guides** for each PiKVM device:
 
     1. Gain root privileges, then perform any command.
 
-    `[kvmd-webterm@pikvm ~]$ su -`
+        `[kvmd-webterm@pikvm ~]$ su -`
 
-    After providing root account password, you will be able to run any commands as a root user as long as the session is running. Use it wisely. For example, if you need to reboot PiKVM, all you need to do is this:
+        After providing root account password, you will be able to run any commands as a root user as long as the session is running. Use it wisely. For example, if you need to reboot PiKVM, all you need to do is this:
     
-    `[root@pikvm ~]# reboot`
+        `[root@pikvm ~]# reboot`
 
-    The use of `su -` applies to both SSH and web terminal sessions.
+        The use of `su -` applies to both SSH and web terminal sessions.
 
     2. Use `su -c` followed by the command wrapped in apostrophes. This will perform the command with root privileges a single time, you will not gain permanent root access. This will For example, to reboot PiKVM, do this:
 
-    `[kvmd-webterm@pikvm ~]$ su -c 'reboot'
+        `[kvmd-webterm@pikvm ~]$ su -c 'reboot'`
 
-    The use of `su -c` applies to both SSH and web terminal sessions.
+        The use of `su -c` applies to both SSH and web terminal sessions.
 
 {!_passwd.md!}
 
@@ -39,7 +39,7 @@ Here are **first steps guides** for each PiKVM device:
 
 {!_update_os.md!}
 
-??? note "Connect to PiKVM via SSH"
+??? note "Connecting to PiKVM via SSH"
 
     SSH is the most common remote access method in the Linux world. Normally, it should be possible to simply run `ssh root@pikvm` in a terminal window to connect to your PiKVM. However, this can fail for various reasons. In that case, you will have to connect using PiKVM's IP address.
 
@@ -64,7 +64,7 @@ Here are **first steps guides** for each PiKVM device:
     4. You should now be able to see and interact with the serial port. All the system tools in PiKVM will be available in the terminal window. Once you are done, type `exit` and press **Enter**, or simply press **Ctrl+d** to terminate the session.
 
 
-??? note "Connect to PiKVM via serial console"
+??? note "Connecting to PiKVM via serial console"
 
     A serial console is a convenient and fast way to connect to PiKVM when there is no network, or get boot logs and a console if something goes wrong.
 
@@ -101,6 +101,25 @@ Here are **first steps guides** for each PiKVM device:
     5. Submit your root user credentials.
 
     6.  You should now be able to see and interact with the serial port. All the system tools in PiKVM will be available in the terminal window. Once you are done, press **Ctrl+a** and then immediately **Ctrl+x** to terminate the session.
+
+??? note "Shutting down PiKVM"
+
+    PiKVM defaults to using the system in read-only mode, so there is **no need to explicitly shut it down**. You can simply unplug the device from power.
+    
+    If you absolutely need to use the shutdown command, **please ensure the following requirements are met**:
+
+    - **This is not one of the DIY (V1 or V2) devices**. If you shut down a DIY PiKVM, it will not power on until you physically reconnect the power cord.
+    - **You are not currently running a system update**. If you are, you will likely corrupt the system.
+    - **You are not currently uploading a mass storage drive image**. If you are, you will likely corrupt the system.
+    
+    If all these requirements are met, do this:
+
+    ```
+    [kvmd-webterm@pikvm ~]$ su -
+    [root@pikvm ~]# shutdown -h now
+    ```
+    
+    PiKVM V3 and V4 will automatically reboot after several minutes of being halted. DIY PiKVM will need a power cord reconnection to become available again. 
 
 
 -----
