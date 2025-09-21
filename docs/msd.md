@@ -98,7 +98,7 @@ Here some options:
        of desired size (512MB in this example) and format it to FAT32:
 
         ```console
-        [root@pikvm ~]# dd if=/dev/zero of=/var/lib/kvmd/msd/flash.img bs=1M count=512 status=progress
+        [root@pikvm ~]# fallocate -l 512M /var/lib/kvmd/msd/flash.img
         [root@pikvm ~]# loop=$(losetup -f)
         [root@pikvm ~]# echo -e 'o\nn\np\n1\n\n\nt\nc\nw\n' | fdisk /var/lib/kvmd/msd/flash.img
         [root@pikvm ~]# losetup -P $loop /var/lib/kvmd/msd/flash.img
@@ -324,7 +324,7 @@ The full list of options can be found by running `kvmd-otgmsd --help`.
     2. Create an empty image file with desired size (1GB in this example):
 
         ```console
-        [root@pikvm ~]# dd if=/dev/zero of=/root/flash.img bs=1M count=1000 status=progress
+        [root@pikvm ~]# fallocate -l 1000M /root/flash.img
         ```
 
     3. Connect it to the drive `1` (the creation process is described in the previous section):
