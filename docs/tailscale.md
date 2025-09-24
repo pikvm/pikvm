@@ -129,7 +129,7 @@ Tailscale has a nice option of running an HTTPS on your behalf within your tailn
 Here's the command that allows you to seamlessly run HTTPS proxy for your PiKVM:
 ```console
 [root@pikvm ~]# tailscale serve --bg https+insecure://localhost:443
-````
+```
 And if you want to stop tailscale from serving HTTPS, you can do this by running:
 ```console
 [root@pikvm ~]# tailscale serve --https=443 off
