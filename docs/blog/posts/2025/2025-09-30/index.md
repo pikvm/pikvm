@@ -1,7 +1,7 @@
 ---
-title: "KVMD 4.98: Advanced diagnostics for the video stream"
+title: "KVMD 4.99: Advanced diagnostics for the video stream"
 date: 2025-09-30
-slug: kvmd-4-98-oled-display-improvements-on-v3-and-v4
+slug: kvmd-4-99-oled-display-improvements-on-v3-and-v4
 description: >
     The number of users is shown and the brightness is reduced if there is at least one to prolong the life of the screen
 categories:
@@ -11,7 +11,7 @@ authors:
 links:
     - PiKVM: https://pikvm.org
     - Discord: https://discord.gg/bpmXfz5
-    - KVMD release: https://github.com/pikvm/kvmd/releases/tag/v4.98
+    - KVMD release: https://github.com/pikvm/kvmd/releases/tag/v4.99
 comments: true
 ---
 
