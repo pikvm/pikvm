@@ -1,5 +1,5 @@
 ---
-title: "KVMD 4.99: Advanced diagnostics for the video stream"
+title: "KVMD 4.99: OLED display improvements on V3 and V4"
 date: 2025-09-30
 slug: kvmd-4-99-oled-display-improvements-on-v3-and-v4
 description: >
