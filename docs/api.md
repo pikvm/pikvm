@@ -80,6 +80,26 @@ There are two options here:
 
 3. The handle `POST /api/auth/logout` can be used to invalidate session token. The response codes will be similar to the previous handle.
 
+
+### Session-based login using HTML form
+
+You can submit PiKVM credentials from another site and go directly to the KVM page by passing the redirect parameter as follows:
+
+```html
+<html>
+<body>
+    <form method="POST" action="https://pikvm/api/auth/login">
+        <input name="user" value="admin">
+        <input name="passwd" value="admin">
+        <input name="expire" value="0">
+        <input name="redirect" value="/kvm/"> <!-- Available since KVMD 4.108 -->
+        <button type="submit">Open PiKVM</button>
+    </form>
+</body>
+<html>
+```
+
+
 -----
 ## WebSocket events
 
