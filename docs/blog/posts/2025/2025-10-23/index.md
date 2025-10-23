@@ -25,7 +25,7 @@ Here are the main changes:
 
 - We have deprecated and removed `/etc/kvmd/logging.yaml`. It contained some Python-specific logging settings that no one had ever changed. Getting rid of this artifact will simplify the configuration structure for some future improvements.
 
-- We have removed `/etc/kvmd/auth.yaml`. This is a legacy auth configuration that existed before `/etc/kvmd/override.yaml` was introduced, and has never been suggested for use even in the documentation. If you have ever customized your PiKVM with `auth.yaml` (likely not), your changes will be carefully moved to `/etc/kvmd/override.d/...`, and the source file is `auth.yaml` will be deleted. Please [see here](https://discord.com/channels/580094191938437144/712960053174599712/1430925722813333504) for details.
+- We have deprecated `/etc/kvmd/auth.yaml`. This is a legacy auth configuration that existed before `/etc/kvmd/override.yaml` was introduced, and has never been suggested for use even in the documentation. If you have ever customized your PiKVM with `auth.yaml` (likely not), your changes will be carefully moved to `/etc/kvmd/override.d/...`, and the source file is `auth.yaml` should be deleted manually. Please [see here](https://discord.com/channels/580094191938437144/712960053174599712/1430925722813333504) for details.
 
 - The `!include` directive in `/etc/kvmd/override*` and `/etc/kvmd/meta.yaml` configs is now deprecated and removed. Instead, you can place your partial config files into the `/etc/kvmd/override.d` directory, which is described in the documentation. Automatic migration is not possible here, and if you used `!include` for some reason, `pikvm-update` will tell you to remove this from the configuration before updating.
 
