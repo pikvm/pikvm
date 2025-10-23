@@ -9,7 +9,7 @@ PiKVM OS has various low-level settings you can customize: timeout for the `kvmd
 -----
 ## How overrides work in PiKVM OS
 
-Main default settings are stored in `/etc/kvmd/main.yaml`. However, you should **never edit that file**. To override these and other defaults, you need to edit `/etc/kvmd/override.yaml` instead.
+Main default settings are stored in `/usr/lib/kvmd/main.yaml`. However, you should **never edit that file**. To override these and other defaults, you need to edit `/etc/kvmd/override.yaml` instead.
 
 PiKVM OS applies settings from `main.yaml` first and then applies anything it finds in `override.yaml`. This approach helps keeping defaults and customizations safely separate from each other.
 
@@ -198,13 +198,43 @@ There are close to a dozen various system daemons that depend on configuration s
 
 Once the device restarts, your changes take effect.
 
+
 -----
 ## Keeping customizations atomic
 
 When you apply massive customizations, it may help separating changes into several files to keep them manageable.
 
-To do that, create these YAML files inside the `/etc/kvmd/override.d/` directory. KVMD will apply all configurations in the following order: `main.yaml` -> `override.d` -> `override.yaml`. Inside the `override.d` directory, KVMD will apply YAML files in alphabetical order, so please pay attention to how you name them.
+To do that, create these YAML files inside the `/etc/kvmd/override.d/` directory. KVMD will apply all configurations in the following order: `main.yaml` -> legacy `auth.yaml` -> `override.d` -> `override.yaml`. Inside the `override.d` directory, KVMD will apply YAML files in alphabetical order, so please pay attention to how you name them.
 
 We recommend sticking with a particular file-naming scheme, e.g. `0000-vendor-otg-serial.yaml`. We do reserve `-vendor-` and `-pikvm-` prefixes for our own future needs, though.
 
-Once you completed the customization and validated newly created/edited files, reboot your PiKVM for the changes to take effect. 
+Once you completed the customization and validated newly created/edited files, reboot your PiKVM for the changes to take effect.
+
+
+-----
+## Legacy notes
+
+* Older installations may have used the outdated `/etc/kvmd/auth.yaml` for authorization settings.
+    It existed even before the introduction of `/etc/override*` mechanism.
+    It has never been recommended for use in this documentation and should contain only the string `{}`, meaning an empty configuration.
+
+    However, if you have used it, you should move your configuration from `/etc/kvmd/auth.yaml`
+    somewhere in `/etc/kvmd/override.d` or even `/etc/kvmd/override.yaml`,
+    and then delete the source file `/etc/kvmd/auth.yaml`.
+
+    For example, if the `/etc/kvmd/auth.yaml` contained the following text:
+
+    ```yaml
+    enabled: false
+    ```
+
+    You can move it to `/etc/kvmd/override.d/9999-auth.yaml` and change the nesting of the parameters as follows:
+
+    ```yaml
+    kvmd:
+        auth:
+            enabled: false
+    ```
+
+* Early YAML configurations could contain the `!include` directive, which loaded the content of another file to the appropriate level.
+    It still works, but has been deprecated and should not be used. Support will be removed in the future.
