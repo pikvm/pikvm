@@ -475,7 +475,7 @@ kvmd:
 kvmd:
     auth:
         internal:
-            type: ldap:
+            type: ldap
             url: ldap://ldap.example.com:389
             verify: true
             base: DC=example,DC=com
@@ -580,7 +580,17 @@ kvmd:
 
 ## Unix Socket Credentials configuration
 
-USC is a built-in mehanism that is primarily used for authorizing local PiKVM microservices, such as [VNC](vnc.md) и [IPMI](ipmi.md). You can use this method to execute scripts that use the local [KVMD API](api.md). For scheduling the execution, you can use either [systemd-timers](https://wiki.archlinux.org/title/Systemd/Timers) (available by default and recommended) or cron (not installed by default).
+USC is a built-in mehanism that is primarily used for authorizing local PiKVM microservices, such as [VNC](vnc.md) и [IPMI](ipmi.md). You can use this method to execute scripts that use the local [KVMD API](api.md). 
+
+For example, the following command will authenticate a script with a unix socket and return PiKVM status:
+
+```
+[root@pikvm ~]# sudo -u monitoring curl --unix-socket /run/kvmd/kvmd.sock http://localhost/info
+```
+
+Note that there is no `api` prefix used when accessing the API. The prefix is added by KVMD-Nginx when exposing the socket on ports 80 and 443.
+
+For scheduling the execution, you can use either [systemd-timers](https://wiki.archlinux.org/title/Systemd/Timers) (available by default and recommended) or cron (not installed by default).
 
 Here are some best practices:
 
@@ -607,7 +617,7 @@ List of Unix group names whose members are allowed to authenticate via Unix Sock
 
 #### `kvmd_users` and `kvmd_groups`
 
-These two lists are reserved for system users and groups. They are not visible in configuration files and should **never** be customized. 
+These two lists are reserved for system users and groups. They should **never** be customized. 
 
 ### Authentication flow
 
@@ -644,9 +654,4 @@ kvmd:
             users: ["monitoring", "backup-service"]
 ```
 
-### Use example
-
-The following 
-[root@pikvm ~]# sudo -u monitoring curl --unix-socket /run/kvmd/kvmd.sock http://localhost/info
-
-Обратите внимание, что доступ к [API](api.md) здесь указывается без префикса /api/, который добавляется сервисом KVMD-Nginx при экспозе сокета на порт 80 и 443.
+Both users should exist prior to listing them in configuration. You can use `useradd` to create these users.
