@@ -3,6 +3,9 @@ title: "Authentication"
 description: Regular and 2FA authentication on PiKVM
 ---
 
+!!! info
+    PiKVM supports additional authentication methods commonly used on enterprise networks. [See here](auth_advanced.md) for detailed documentation.
+
 !!! warning "PiKVM comes with the following default passwords"
 
     * **Linux OS-level admin** (SSH, console...):

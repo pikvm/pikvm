@@ -60,6 +60,7 @@ markdown_extensions:
     - pymdownx.blocks.caption
     - toc:
         permalink: true
+        toc_depth: 3
     - codehilite:
         guess_lang: false
     - markdown_include.include:
@@ -141,6 +142,7 @@ nav:
         - "Serial-over-USB": usb_serial.md
         - "GPIO (pins, relays, lamps, etc)": gpio.md
     - "Advanced usage":
+        - "Advanced authentication": advauth.md
         - "PiKVM identification": id.md
         - "On-boot configuration": on_boot_config.md
         - "Automatic snapshots": auto_snapshots.md
