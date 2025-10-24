@@ -4,6 +4,15 @@ PiKVM provides flexible authentication options to integrate with your existing s
 
 This guide covers the configuration of PiKVM's authentication methods. All external authentication servers (LDAP, RADIUS, HTTP auth servers) are assumed to be already configured and accessible from your PiKVM device.
 
+!!! warning
+    This is advanced material. Before you try setting this up, we recommend (re)familirizing yourself with the documentation on [configuration](config.md) and taking another look at the [cheat sheet](cheatsheet.md).
+    
+    Whenever you customize authentication, restart kvmd:
+
+    ```shell
+    $ systemctl restart kvmd
+    ```
+
 ## Overview
 
 PiKVM supports the following authentication methods through its pluggable authentication system:
@@ -16,17 +25,19 @@ PiKVM supports the following authentication methods through its pluggable authen
 
 ## Authentication methods comparison
 
-| Method | Best For | Complexity | External Dependencies | MFA Support |
-|--------|----------|------------|----------------------|-------------|
-| **HTTP Auth** | Custom authentication systems, microservices | Low | HTTP auth server | Depends on server |
-| **PAM** | System integration, existing PAM setups | Medium | PAM modules | Via PAM modules |Depends on module |
-| **LDAP** | Active Directory, directory services | Medium | LDAP server | Limited |
-| **RADIUS** | Enterprise networks, centralized auth | Medium | RADIUS server | Yes |
-| **Unix Socket Credentials** | Local process integration, containers | Low | Local processes | No |
+| Method | Best For | Complexity | External Dependencies |
+|--------|----------|------------|----------------------|
+| **HTTP Auth** | Custom authentication systems, microservices | Low | HTTP auth server |
+| **PAM** | System integration, existing PAM setups | Medium | PAM modules | Via PAM modules |
+| **LDAP** | Active Directory, directory services | Medium | LDAP server |
+| **RADIUS** | Enterprise networks, centralized auth | Medium | RADIUS server |
+| **Unix Socket Credentials** | Local process integration, containers | Low | Local processes |
+
+2FA/TOTP is [always available](/auth/#two-factor-authentication) works locally and is compatible with all the methods listed here.
 
 ## Basic configuration
 
-You can customize authentication andd authorization with `/etc/kvmd/override.yaml`. If you want to keep the configuration modular, create and edit `/etc/kvmd/override.d/auth.yaml` instead.
+You can customize authentication and authorization with `/etc/kvmd/override.yaml`. If you want to keep the configuration modular, create and edit `/etc/kvmd/override.d/9999-auth.yaml` instead. You can use any 4-digit number prepending the filename.
 
 Here are the keys you need to know about.
 
@@ -44,7 +55,7 @@ Setting it to `false` will disable all authentication, regardless of the methods
 
 ### `expire`
 
-This key sets the cookie expiration time measured in seconds. Please see [this part of the documentation](https://docs.pikvm.org/auth/#session-expiration) for details.
+This key sets the cookie expiration time measured in seconds. Please see [this part of the documentation](auth.md#session-expiration) for details.
 
 In this example, the cookie will expire in 10 minutes:
 
@@ -72,54 +83,59 @@ kvmd:
 
 ### `internal` and `external`
 
-You can think of these two groups of keys as of primary and secondary authentication methods. `internal` is the authentication method that is applied first, `external` is the one applied second.
+`internal` is the authentication method that is applied first, `external` is used for external services. Note that there is no fallback from `external` to `internal`.
 
 `kvmd` defaults to using `htpasswd` as the internal method and doesn't set the external one:
 
 ```yaml
 kvmd:
     auth:
+        internal:
+            type: htpasswd
+            force_users: []
+            file: /etc/kvmd/htpasswd
+
         external:
             type: ''
-
-        internal:
-            file: /etc/kvmd/htpasswd
-            force_users: []
-            type: htpasswd
 ```
 
 The recommended configuration is either `htpasswd` or `pam` as the internal authentication method and any other method as the external one. In that case, do the following:
 
 1. Keep the default `admin` user.
-2. Change its password to a random 30 characters long one (e.g., use `pwgen -y 30`).
-3. Use `htpasswd` as the internal method.
-4. Use `ldap` or `radius` as the external method, depending on your use case.
+2. [Change its password](auth.md#changing-the-kvm-password) to a random 30 characters long one (e.g., use `pwgen -y 30`).
+3. Keep `htpasswd` as the internal method.
+4. Use `ldap` or any other method as the external one, depending on your use case.
 
 Here is a configuration example:
 
 ```yaml
 kvmd:
     auth:
+        internal:
+            #type: htpasswd
+            force_users: [admin]
+            #file: /etc/kvmd/htpasswd
+
         external:
             type: ldap
-
-        internal:
-            file: /etc/kvmd/htpasswd
-            force_users: []
-            type: htpasswd
+            ...
 ```
+
+Type and file are defaults in the above example.
 
 However, if your LDAP server has a guaranteed high availability, you _can_ use `ldap` as an internal authentication method and discard the external authentication method entirely.
 
 ### `totp`
 
-You can pass the secret file along with the password. The secret file location defaults to `/etc/kvmd/totp.secret`.
+You can pass the secret file along with the password. The secret file location defaults to `/etc/kvmd/totp.secret`. [See here](auth.md#two-factor-authentication) for more information on 2FA authenticaion on PiKVM.
 
 ## HTTP authentication
 
 The HTTP authentication plugin delegates credential validation to an external HTTP/HTTPS endpoint. This enables integration with custom authentication services and third-party identity providers.
 
 The plugin sends authentication requests as JSON POST requests to a configurable URL and grants access when the endpoint returns `HTTP 200 OK`. This approach allows you to implement complex authentication logic without modifying PiKVM's core code.
+
+For an example of using HTTP authentication, please see [this GitHub repository](https://github.com/pikvm/kvmd-auth-server).
 
 ### Parameters
 
@@ -178,7 +194,6 @@ The total timeout for the HTTP authentication request. If the authentication end
 
 - **Type:** Float (≥ 0.1)
 - **Default value:** `5.0`
-- **Validator:** `valid_float_f01` (validates float >= 0.1)
 - **Unit:** Seconds
 - **Considerations:**
   - Network latency to the authentication endpoint
@@ -204,7 +219,7 @@ The total timeout for the HTTP authentication request. If the authentication end
           "passwd": "password",
           "secret": "shared_secret"
         }
-        ```
+     ```
 
 3. **Request Transmission:** Send the HTTP request to the authentication endpoint
 
@@ -236,13 +251,14 @@ The total timeout for the HTTP authentication request. If the authentication end
 ```yaml
 kvmd:
     auth:
-        http:
+        internal:
+            type: http
             url: http://localhost:8080/api/auth
-                verify: true
-                secret: ""
-                user: ""
-                passwd: ""
-                timeout: 5.0
+            verify: true
+            secret: ""
+            user: ""
+            passwd: ""
+            timeout: 5.0
 ```
 
 ## PAM plugin configuration
@@ -308,7 +324,8 @@ All checks must pass for authentication to succeed.
 ```yaml
 kvmd:
     auth:
-        pam:
+        internal:
+            type: pam
             service: login
             allow_users: [admin, operator, viewer]
             deny_users: [guest, test]
@@ -359,7 +376,6 @@ Controls SSL/TLS certificate verification when using LDAPS connections.
 
 - **Type:** Boolean
 - **Default:** `True`
-- **Validator:** `valid_bool`
 - **Behavior:**
   - `true`: Verifies the server's SSL/TLS certificate (recommended for production)
   - `false`: Disables certificate verification (useful for self-signed certificates or testing)
@@ -371,7 +387,6 @@ The LDAP base DN (Distinguished Name) where user searches will start. This defin
 
 - **Type:** String (non-empty)
 - **Default:** `""` (empty string, must be configured)
-- **Validator:** `valid_stripped_string_not_empty`
 - **Required:** Yes
 - **Example:** `DC=example,DC=com` or `OU=Users,DC=example,DC=com`
 
@@ -429,8 +444,9 @@ The authentication process works as follows:
 ```yaml
 kvmd:
     auth:
-        ldap:
-            url: ldaps://dc.example.com:636
+        internal:
+            type: ldap:
+                url: ldaps://dc.example.com:636
                 verify: true
                 base: DC=example,DC=com
                 group: CN=PiKVM-Admins,OU=Security Groups,DC=example,DC=com
@@ -443,13 +459,14 @@ kvmd:
 ```yaml
 kvmd:
     auth:
-        ldap:
+        internal:
+            type: ldap:
             url: ldaps://dc.internal.local:636
-                verify: false
-                base: OU=Users,DC=internal,DC=local
-                group: CN=KVM-Users,OU=Groups,DC=internal,DC=local
-                user_domain: internal.local
-                timeout: 10
+            verify: false
+            base: OU=Users,DC=internal,DC=local
+            group: CN=KVM-Users,OU=Groups,DC=internal,DC=local
+            user_domain: internal.local
+            timeout: 10
 ```
 
 ### Configuration for standard LDAP (non-SSL)
@@ -457,13 +474,14 @@ kvmd:
 ```yaml
 kvmd:
     auth:
-        ldap:
+        internal:
+            type: ldap:
             url: ldap://ldap.example.com:389
-                verify: true
-                base: DC=example,DC=com
-                group: CN=RemoteAccess,DC=example,DC=com
-                user_domain: ""
-                timeout: 5
+            verify: true
+            base: DC=example,DC=com
+            group: CN=RemoteAccess,DC=example,DC=com
+            user_domain: ""
+            timeout: 5
 ```
 
 ---
@@ -560,9 +578,16 @@ kvmd:
             timeout: 5
 ```
 
-## Unix Socket Credentials plugin configuration
+## Unix Socket Credentials configuration
 
-The USC plugin allows using the operating system's built-in mechanisms for process identification and security. A common use case is running scripts via `cron`.
+USC is a built-in mehanism that is primarily used for authorizing local PiKVM microservices, such as [VNC](vnc.md) и [IPMI](ipmi.md). You can use this method to execute scripts that use the local [KVMD API](api.md). For scheduling the execution, you can use either [systemd-timers](https://wiki.archlinux.org/title/Systemd/Timers) (available by default and recommended) or cron (not installed by default).
+
+Here are some best practices:
+
+- Never add system users (start with `kvmd-*`) to any of the lists below, unless you are 100% sure you know what you are doing.
+- Adding the `root` user to the `users` list is a really bad idea. We srongly recommed against doing that.
+- `kvmd-webterm` is the only KVMD user we can recommend adding to the `users` list. Once you've done it, you can use `/run/kvmd/kvmd.sock` from the web terminal without authentication.
+- It's best to create a per-script user, add it to the `users` list, and then schedule the script execution.
 
 ### Parameters
 
@@ -579,6 +604,10 @@ List of Unix group names whose members are allowed to authenticate via Unix Sock
 
 - **Type:** List of strings
 - **Default:** `[]` (empty list)
+
+#### `kvmd_users` and `kvmd_groups`
+
+These two lists are reserved for system users and groups. They are not visible in configuration files and should **never** be customized. 
 
 ### Authentication flow
 
@@ -606,12 +635,18 @@ When a client connects to KVMD through its Unix socket (`/run/kvmd/kvmd.sock`), 
 
 ### Basic configuration example
 
-In the following example, processes run from users `monitoring` and `backup-service`, as well as from all members of the group `kvmd-selfauth` are allowed to authenticate:
+In the following example, processes run from users `monitoring` and `backup-service` are allowed to authenticate:
 
 ```yaml
 kvmd:
     auth:
         usc:
             users: ["monitoring", "backup-service"]
-            groups: ["kvmd-selfauth"]
 ```
+
+### Use example
+
+The following 
+[root@pikvm ~]# sudo -u monitoring curl --unix-socket /run/kvmd/kvmd.sock http://localhost/info
+
+Обратите внимание, что доступ к [API](api.md) здесь указывается без префикса /api/, который добавляется сервисом KVMD-Nginx при экспозе сокета на порт 80 и 443.
