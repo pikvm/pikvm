@@ -1950,3 +1950,13 @@ The `GET /api/export/prometheus/metrics` handle returns the Prometheus metrics. 
 ```console
 $ curl -k -u admin:admin https://<pikvm-ip>/api/export/prometheus/metrics
 ```
+
+----
+## Video
+
+PiKVM has 3 different ways to receive video and audio, depending on the device.
+This is also [reflected](video.md) in the web interface.
+
+| Mode |
+
+### Get raw H.264 video stream

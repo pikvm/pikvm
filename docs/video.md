@@ -123,34 +123,32 @@ this may include any RedHat or Debian variant. Here some examples:
 
 At the moment, it is not possible to record videos in a convenient way from the Web UI,
 but a small trick in the console can be used to record videos without sound.
-It's only available on same PiKVM models which support H.264 video.
+It's only available on all PiKVM models which support H.264 video.
 
-??? example "Recording video from terminal"
+Available since KVMD 4.110
 
-    1. Update OS:
+??? example "Recording video from terminal on Linux or Mac OS"
 
-        {!_update_os.md!}
+    1. Install `ffmpeg` and `websocat`.
 
-    2. Install `ffmpeg` package and reboot:
-
-        ```console
-        [root@pikvm ~]# rw
-        [root@pikvm ~]# pacman -S ffmpeg
-        [root@pikvm ~]# reboot
-        ```
-
-    3. After reboot, switch filesystem to RW-mode again using the `rw` command
-
-    4. To record a video, open the Web UI (i.e. stream should be running) or connect via VNC.
-        Next, run the recording process in the current directory:
+    2. Let's assume that your PiKVM is located on `https://pikvm` and uses a self-signed certificate.
+        Request the stream from it from the first opened console on your PC (not PiKVM):
 
         ```console
-        [root@pikvm ~]# ustreamer-dump --sink kvmd::ustreamer::h264 --output - | ffmpeg -use_wallclock_as_timestamps 1 -i pipe: -c:v copy my_video.mp4
+        [user@host ~]$ websocat -k wss://pikvm/api/ws?stream=1 -H X-KVMD-User:admin -H X-KVMD-Passwd:admin
         ```
 
-    5. Press `Ctrl+C` to stop the recording, and don't forget to switch filesystem to read-only mode using the `ro` command.
+    3. Keeping the previous command running, open a new terminal and run the video recording process:
 
-??? example "Take a screenshot from terminal"
+        ```console
+        [user@host ~]$ websocat -b -B 10000000 -k wss://pikvm/api/media/ws?video=h264 -H X-KVMD-User:admin -H X-KVMD-Passwd:admin | ffmpeg -use_wallclock_as_timestamps 1 -i pipe: -c:v copy my_captured_video.mp4
+        ```
+
+    4. Same can be done on PiKVM itself, locally.
+
+    5. Press `Ctrl+C` to stop the recording.
+
+??? example "Take a screenshot from terminal on PiKVM"
 
     To take a screenshot, switch filesystem to RW-mode like in previous example and run the stream.
 
