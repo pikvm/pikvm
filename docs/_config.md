@@ -14,7 +14,7 @@ search:
 
     Most of the PiKVM configuration files are located in the `/etc/kvmd` directory.
 
-    The `/etc/kvmd/main.yaml` file defines the platform config and **you should never edit it**.
+    The `/usr/lib/kvmd/main.yaml` file defines the platform configuration, and **you should never edit it**.
     To redefine system parameters use the file `/etc/kvmd/override.yaml`.
     All other files that are also not recommended for editing have read-only permissions.
 
