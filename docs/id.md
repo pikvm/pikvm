@@ -40,14 +40,13 @@ It works in a similar way with USB.
     This applies to [PiKVM V3](v3.md), [V4](v4.md) and DIY based on CSI bridge.
     It is impossible to change the EDID for the HDMI-USB dongle.
 
-The EDID (Extended Display Identification Data) is responsible for preseting the display.
+The EDID (Extended Display Identification Data) is responsible for presenting the display.
 It also provides the host with information about the resolutions that PiKVM supports.
 More information about this is written on [this page](edid.md), and here we will provide brief information.
 
 {!_edidconf_options.md!}
 
-For a detailed guide on customizing EDID, please visit [this page](edid.md).
-There you can also find out how to set the EDID from a real monitor, or quickly adopt your real monitor IDs with PiKVM V4 Plus.
+For a detailed guide on customizing EDID, please visit [this page](edid.md). There you can also find out how to set the EDID from a real monitor, or quickly adopt your real monitor IDs with PiKVM V4 Plus.
 
 
 -----
@@ -162,3 +161,22 @@ After changing validate the config using `kvmd -m`. You will see the full config
 or a message about configuration error.
 
 If everything is fine, perform the soft reboot.
+
+## Replicating setups
+
+You can use `kvmd-edidconf` and `kvmd-otgconf` to replicate an entire host configuration for testing or other purposes. What you can do will vary depending on the PiKVM device you have:
+
+- V4 Plus: you can import both EDID and USB IDs.
+- V4 Mini: you must manually edit `override.yaml`, as there is neither a second HDMI Out or additional USB ports on your PiKVM.
+- V3: you can import USB IDs only, as there is no second HDMI output on your PiKVM.
+
+Assuming you have PiKVM V4 Plus, follow these steps:
+
+1. Connect the host's display to one of the two HDMI Out ports on the rear panel of your PiKVM.
+2. Connect the host's USB keyboard and mouse to USB ports on the front and the rear panel of you PiKVM.
+3. Run `rw` to switch to read-write mode.
+4. Run `kvmd-edidconf --import-display-ids --apply` as root on the PiKVM. This will fetch EDID information from the connected physical display and place it into the `/etc/kvmd/override.yaml` configuration file.
+5. Run `kvmd-otgconf --import-usb-ids` as root on the PiKVM. This will fetch IDs of the connected physical USB devices and place them into the `/etc/kvmd/override.yaml` configuration file.
+6. Run `ro` to switch to read-only mode.
+7. Run `reboot` to reboot your PiKVM and apply newly the added customization.
+8. Reconnect the host's display and keyboard/mouse back to the host.
