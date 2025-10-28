@@ -123,9 +123,7 @@ Each line represents an emulated device, left to right:
 * The device name (e.g., `hid.usb0`).
 * The number of required endpoints (e.g., `[2]`).
 * The description (e.g., `Absolute mouse`).
-* Path to the relevant configuration parameter (e.g., `otg/devices/hid/mouse/start`).
-
-это путь к опции в конфиге, которой можно запустить или не запустить сервис при загрузке квм
+* Path to the relevant configuration parameter (e.g., `otg/devices/hid/mouse/start`) you can use to boot or not boot a service when `kvmd` launches.
 
 Sometimes it's impossible to get into the UEFI/BIOS due to their bugs
 in USB support, and you need to boot from the PiKVM mass storage.
