@@ -66,6 +66,6 @@ For example, to open the Start menu on Windows:
 
 PiKVM will send `Win` to the target host system which open the Start menu.
 
-## How to set up a magic key
+## Setting up a magic key
 
 TBD
