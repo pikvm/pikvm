@@ -80,6 +80,6 @@ You can define which key to use as the magic key. Follow these steps:
 
 PiKVM defaults to `Ctrl Right` on all major desktop systems, but the list of available keys is platform-specific:
 
-- **Windows**: `Ctrl`, `Alt`, `Shift`, and `Meta`.
-- **macOS**: `Ctrl`, `Option`, and `Shift`.
-- **Linux**: `Ctrl`, `Alt`, `Shift`, and `Meta`.
+- **Windows**: `Ctrl`, `Alt`, `Shift` and `Menu`.
+- **macOS**: `Ctrl`, `Option`, `Shift` and `Menu`.
+- **Linux**: `Ctrl`, `Alt`, `Shift`, `Meta` and `Menu`.
