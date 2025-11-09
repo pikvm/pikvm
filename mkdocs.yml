@@ -109,6 +109,7 @@ nav:
     - "Getting started":
         - "Cheat Sheet": cheatsheet.md
         - "Web UI Overview": webui.md
+        - "Sending Shortcuts": shortcuts.md
         - "Configuring PiKVM": config.md
         - "Authentication & 2FA": auth.md
         - "FAQ & Troubleshooting": faq.md

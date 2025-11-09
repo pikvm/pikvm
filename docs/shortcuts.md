@@ -1,5 +1,5 @@
 ---
-title: Sending shortcuts
+title: Sending Shortcuts
 description: "How to send shortcuts to atarget host system with PiKVM"
 ---
 
@@ -13,7 +13,7 @@ Operating systems deal with modifier keys differently, so it's difficult to get 
 
 When you press a magic key, the web UI starts accumulating a sequence of modifier keys you press, for example, `Ctrl L` and `Alt L` in `Ctrl+Alt+Del`, and displays a guiding overlay:
 
-![screenshot](_shortcuts/shortcut-overlay.webp)
+![Shortcuts overlay](shortcuts/shortcut-overlay.png)
 
 As soon as you press one non-modifier key, the web UI stop accumulating keys and sends the entire sequence of the keys you pressed to the target host system.
 
@@ -68,4 +68,18 @@ PiKVM will send `Win` to the target host system which open the Start menu.
 
 ## Setting up a magic key
 
-TBD
+You can define which key to use as the magic key. Follow these steps:
+
+1. In the web UI, open the **System** menu.
+
+2. Click on the drop-down list next to **Shortcuts magic**.
+
+3. Select the key the you will use as the magic key.
+
+![Selecting the magic key](shortcuts/web-ui-magic-key-selector.png)
+
+PiKVM defaults to `Ctrl Right` on all major desltop systems, but the list of available keys is platform-specific:
+
+- **Windows**: `Ctrl`, `Alt`, `Shift`, and `Meta`.
+- **macOS**: `Ctrl`, `Option`, and `Shift`.
+- **Linux**: `Ctrl`, `Alt`, `Shift`, and `Meta`.
