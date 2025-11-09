@@ -121,6 +121,8 @@ Here are **first steps guides** for each PiKVM device:
     
     PiKVM V3 and V4 will automatically reboot after several minutes of being halted. DIY PiKVM will need a power cord reconnection to become available again. 
 
+??? note "Sending keyboard shortcuts to target host systems"
+    {!shortcuts.md!}
 
 -----
 ## Getting User Support
