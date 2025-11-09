@@ -11,7 +11,7 @@ Operating systems deal with modifier keys differently, so it's difficult to get 
 
 ## Sending a shortcut
 
-When you press a magic key, the web UI starts accumulating a sequence of modifier keys you press, for example, `Ctrl L` and `Alt L` in `Ctrl+Alt+Del`, and displays a guiding overlay:
+When you press a magic key, the web UI starts accumulating a sequence of modifier keys you press, for example, `Ctrl Left` and `Alt Left` in `Ctrl+Alt+Del`, and displays a guiding overlay:
 
 ![Shortcuts overlay](shortcuts/shortcut-overlay.png)
 
@@ -76,9 +76,9 @@ You can define which key to use as the magic key. Follow these steps:
 
 3. Select the key the you will use as the magic key.
 
-![Selecting the magic key](shortcuts/web-ui-magic-key-selector.png)
+![Selecting the magic key](shortcuts/web-ui-magic-key-selector.png){ height="450" }
 
-PiKVM defaults to `Ctrl Right` on all major desltop systems, but the list of available keys is platform-specific:
+PiKVM defaults to `Ctrl Right` on all major desktop systems, but the list of available keys is platform-specific:
 
 - **Windows**: `Ctrl`, `Alt`, `Shift`, and `Meta`.
 - **macOS**: `Ctrl`, `Option`, and `Shift`.
