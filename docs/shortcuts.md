@@ -76,7 +76,7 @@ You can define which key to use as the magic key. Follow these steps:
 
 3. Select the key the you will use as the magic key.
 
-![Selecting the magic key](shortcuts/web-ui-magic-key-selector.png){ height="450" }
+![Selecting the magic key](shortcuts/web-ui-magic-key-selector.png){ height="250" }
 
 PiKVM defaults to `Ctrl Right` on all major desktop systems, but the list of available keys is platform-specific:
 
