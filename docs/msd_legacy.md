@@ -124,7 +124,7 @@ sudo cp windows.iso /media/XXX/ventoy
 sudo umount /dev/loopXX 
 # This is going to be different for everyone, please choose the same one you mounted earlier
 sudo losetup -d /dev/loopXX 
-# This may or may not work for everyone, if it doesnt work, skip and move forward#
+# This may or may not work for everyone, if it doesn't work, skip and move forward#
 ```
 
 ssh into the Ubuntu system (Or whatever OS you are using)
