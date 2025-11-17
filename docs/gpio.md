@@ -42,7 +42,7 @@ Setting up GPIO is considerably complex. The interface is divided into several l
 -----
 ## Drivers
 
-The first part of the configuration refers to the hardware layer, which defines which IO channels are used (standard GPIO pins of the Raspberry Pi, an USB relay, and so on). If you just want to use GPIO with the default settings you can skip to the next section [Scheme](#Scheme).
+The first part of the configuration refers to the hardware layer, which defines which IO channels are used (standard GPIO pins of the Raspberry Pi, a USB relay, and so on). If you just want to use GPIO with the default settings you can skip to the next section [Scheme](#Scheme).
 
 Each hardware input/output requires a individual driver configuration entry. Each driver has a type (which refers to the plugin that handles the communication between PiKVM and the hardware) and a unique name. This allows you to either can add multiple drivers of the same type with different settings or connect multiple USB HID relays.
 
