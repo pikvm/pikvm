@@ -177,6 +177,8 @@ If you run into any issues you can check this page which will list common errors
     * Missing `/etc/kvmd/override.yaml` file, to resolve it run `rw; touch /etc/kvmd/override.yaml; ro`
     * Bad YAML syntax, edit your `/etc/kvmd/override.yaml` file and undo what you did and restart PiKVM.
 
+    To validate your configuration run `kvmd -M` before reboot.
+
 
 ??? question "How can I use the serial console to gain access to other devices"
     You need to stop the service which listens on the `/dev/ttyAMA0`:
