@@ -107,19 +107,19 @@ nav:
         - "DIY PiKVM V2": v2.md
         - "DIY PiKVM V1": v1.md
     - "Getting started":
-        - "Cheat Sheet": cheatsheet.md
-        - "Web UI Overview": webui.md
-        - "Sending Shortcuts": shortcuts.md
+        - "Cheat sheet": cheatsheet.md
+        - "Web UI overview": webui.md
+        - "Sending shortcuts": shortcuts.md
         - "Configuring PiKVM": config.md
         - "Authentication & 2FA": auth.md
-        - "FAQ & Troubleshooting": faq.md
+        - "FAQ & troubleshooting": faq.md
         - "Flashing OS": flashing_os.md
     - "Networking":
         - "Internet access":
             - "Port forwarding": port_forwarding.md
             - "Reverse proxy": reverse_proxy.md
             - "Tailscale VPN": tailscale.md
-            - "Cloudflare Tunnel": cloudflared.md
+            - "Cloudflare tunnel": cloudflared.md
         - "Setting up Wi-Fi": wifi.md
         - "Setting up 3G/4G/LTE modem": modem.md
         - "Let's Encrypt certificates": letsencrypt.md
@@ -138,7 +138,7 @@ nav:
             - "Mouse jiggler": mouse_jiggler.md
             - "Pico HID (USB, PS/2)": pico_hid.md
             - "Bluetooth HID": bluetooth_hid.md
-        - "Mass Storage Drive": msd.md
+        - "Mass storage drive": msd.md
         - "Ethernet-over-USB": usb_ethernet.md
         - "Serial-over-USB": usb_serial.md
         - "GPIO (pins, relays, lamps, etc)": gpio.md
@@ -160,7 +160,7 @@ nav:
     - "Legacy":
         - "Arduino HID": arduino_hid.md
         - "Big DVD images on old PiKVM": msd_legacy.md
-    - "PiKVM Info":
+    - "PiKVM info":
         - "Compliance": compliance.md
-        - "Blog & News":
+        - "Blog & news":
             - blog/index.md
