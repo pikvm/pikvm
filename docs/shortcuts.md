@@ -62,7 +62,8 @@ For example, to open the Start menu on Windows:
 
 1. Press and hold the magic key.
 2. Press and release `Win`.
-3. Quickly press and release the magic key twice.
+3. Release the magic key.
+4. Quickly press and release the magic key twice.
 
 PiKVM will send `Win` to the target host system which open the Start menu.
 
