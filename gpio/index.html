@@ -1,0 +1,4176 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="How to use GPIO on a PiKVM: drivers, configuration, modules, and more">
+      
+      
+        <meta name="author" content="Maxim Devaev">
+      
+      
+        <link rel="canonical" href="https://pikvm.github.io/pikvm/gpio/">
+      
+      
+        <link rel="prev" href="../usb_serial/">
+      
+      
+        <link rel="next" href="../auth_advanced/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../_assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>GPIO - PiKVM Handbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=arial,+sans-serif:300,300i,400,400i,700,700i%7Cmonospace:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"arial, sans-serif";--md-code-font:"monospace"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../_assets/user.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#basics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="PiKVM Handbook" class="md-header__button md-logo" aria-label="PiKVM Handbook" data-md-component="logo">
+      
+  <img src="../_assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PiKVM Handbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              GPIO
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/pikvm/pikvm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    pikvm/pikvm
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="PiKVM Handbook" class="md-nav__button md-logo" aria-label="PiKVM Handbook" data-md-component="logo">
+      
+  <img src="../_assets/logo.png" alt="logo">
+
+    </a>
+    PiKVM Handbook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/pikvm/pikvm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    pikvm/pikvm
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1">
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Device guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Device guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PiKVM V4 Mini &amp; Plus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PiKVM V3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../switch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PiKVM Switch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DIY PiKVM V2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DIY PiKVM V1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cheatsheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cheat sheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web UI overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../shortcuts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sending shortcuts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuring PiKVM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication &amp; 2FA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ &amp; troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flashing_os/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashing OS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Networking
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Networking
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1">
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Internet access
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Internet access
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../port_forwarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Port forwarding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reverse_proxy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reverse proxy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tailscale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tailscale VPN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloudflared/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cloudflare tunnel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wifi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setting up Wi-Fi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setting up 3G/4G/LTE modem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../letsencrypt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Let's Encrypt certificates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Video
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../video/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video modes (WebRTC, Direct)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webrtc_config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WebRTC configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tuning HDMI EDID
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HDMI passthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Peripheral devices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Peripheral devices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../atx_board/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ATX board
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    USB configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usb_pass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    USB passthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio / Microphone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Keyboard &amp; mouse
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Keyboard &amp; mouse
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mouse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mouse modes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mouse_jiggler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mouse jiggler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pico_hid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pico HID (USB, PS/2)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bluetooth_hid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bluetooth HID
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../msd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mass storage drive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usb_ethernet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ethernet-over-USB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usb_serial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Serial-over-USB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPIO (pins, relays, lamps, etc)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPIO (pins, relays, lamps, etc)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Drivers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scheme
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        View
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-modules-and-pseudo-drivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware modules and pseudo-drivers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware modules and pseudo-drivers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#raspberrys-gpio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Raspberry's GPIO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usb-hid-relay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        USB HID Relay
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ezcoo-kvm-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ezCoo KVM switch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IPMI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wake-on-lan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wake-on-LAN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CMD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PWM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Servo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#philips-hue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Philips Hue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anel-net-pwrctrl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ANEL NET-PwrCtrl
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extron-sw-series-switchers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extron SW Series Switchers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced usage
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Advanced usage
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auth_advanced/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../id/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PiKVM identification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../on_boot_config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    On-boot configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auto_snapshots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automatic snapshots
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vnc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using VNC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multiport/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multiport KVM-over-IP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wake-on-LAN the server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ipmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IPMI &amp; Redfish integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pst/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistent storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prometheus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prometheus monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7">
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTTP API reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../building_os/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building PiKVM OS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3d_printing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cases for 3D printing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8">
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legacy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legacy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arduino_hid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arduino HID
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../msd_legacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Big DVD images on old PiKVM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9">
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PiKVM info
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PiKVM info
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compliance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compliance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../blog/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog &amp; news
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Blog &amp; news
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_2">
+        
+          
+          <label class="md-nav__link" for="__nav_9_2_2" id="__nav_9_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Archive
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Archive
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/archive/2025/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2025
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/archive/2024/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2024
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/archive/2023/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2023
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/archive/2022/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2022
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/archive/2021/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2021
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/archive/2020/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2020
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_3">
+        
+          
+          <label class="md-nav__link" for="__nav_9_2_3" id="__nav_9_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Categories
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Categories
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/category/development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/category/products/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Products
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/category/releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Drivers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scheme
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        View
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-modules-and-pseudo-drivers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware modules and pseudo-drivers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware modules and pseudo-drivers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#raspberrys-gpio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Raspberry's GPIO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usb-hid-relay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        USB HID Relay
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ezcoo-kvm-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ezCoo KVM switch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IPMI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wake-on-lan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wake-on-LAN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CMD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PWM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Servo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#philips-hue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Philips Hue
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anel-net-pwrctrl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ANEL NET-PwrCtrl
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extron-sw-series-switchers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extron SW Series Switchers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>GPIO (pins, relays, lamps, etc)</h1>
+
+<div><p><a href="https://en.wikipedia.org/wiki/General-purpose_input/output">GPIO (general-purpose input/output)</a> is a series of digital interfaces that can be used to connect relays, LEDs, sensors, and other components.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>Before using GPIO on <strong>PiKVM v3 HAT</strong>, carefully study <a href="../v3/#io-ports-and-jumpers">the purpose of its ports</a>.</li>
+<li>Using GPIO on a PiKVM was designed as a feature for advanced users, so please familiarize yourself with the topic to make sure you understand how to use use it before setting it up.</li>
+<li><strong>Careless usage of GPIO can damage your Raspberry Pi or components.</strong></li>
+</ul>
+</div>
+<p>When talking about PiKVM and GPIO it refers not solely to the <a href="https://www.raspberrypi.org/documentation/usage/gpio">physical interface of the Raspberry Pi</a>, but also to various plugins (for example, for <a href="http://vusb.wikidot.com/project:driver-less-usb-relays-hid-interface">USB relays</a>) that can also be used transparently by emulating an abstract GPIO API.</p>
+<hr>
+<h2 id="basics">Basics<a class="headerlink" href="#basics" title="Permanent link">¶</a></h2>
+<p>Setting up GPIO is considerably complex. The interface is divided into several layers for flexibility. Any configuration is performed using a file <code>/etc/kvmd/override.yaml</code> which uses the <a href="https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html">YAML syntax</a>. We will look at each part of the configuration individually with an example for each. Sections should be combined under shared keys.</p>
+<ul>
+<li>
+<p><strong>Wrong:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">gpio</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">drivers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">gpio</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Correct:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">gpio</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">drivers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">        </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+</li>
+</ul>
+<hr>
+<h2 id="drivers">Drivers<a class="headerlink" href="#drivers" title="Permanent link">¶</a></h2>
+<p>The first part of the configuration refers to the hardware layer, which defines which IO channels are used (standard GPIO pins of the Raspberry Pi, a USB relay, and so on). If you just want to use GPIO with the default settings you can skip to the next section <a href="#Scheme">Scheme</a>.</p>
+<p>Each hardware input/output requires a individual driver configuration entry. Each driver has a type (which refers to the plugin that handles the communication between PiKVM and the hardware) and a unique name. This allows you to either can add multiple drivers of the same type with different settings or connect multiple USB HID relays.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Each driver requires a unique name. Names surrounded by double underscore are system reserved and should not be used.</p>
+</div>
+<p>The only exception to this is the default GPIO driver with the name <code>__gpio__</code>, representing the physical GPIO interface of the Raspberry Pi. The configuration section for <code>__gpio__</code> is only required in your <code>/etc/kvmd/override.yaml</code> if you want to change the default settings. It can be omitted if you are fine with the defaults.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">gpio</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">drivers</span><span class="p">:</span>
+<span class="w">            </span><span class="c1"># This example shows how the default __gpio__ driver settings can be changed. It can be omitted if you are fine with the defaults.</span>
+<span class="w">            </span><span class="nt">__gpio__</span><span class="p">:</span><span class="w">  </span><span class="c1"># Names surrounded by double underscore are system reserved</span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpio</span><span class="w">  </span><span class="c1"># Refers to the plugin name handling the communication</span>
+
+<span class="w">            </span><span class="c1"># You can define another gpio driver for some reason</span>
+<span class="w">            </span><span class="nt">my_gpio</span><span class="p">:</span><span class="w"> </span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpio</span>
+
+<span class="w">            </span><span class="c1"># Example for a USB HID relay connected to PiKVM</span>
+<span class="w">            </span><span class="nt">relay</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hidrelay</span>
+<span class="w">                </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/hidraw0</span><span class="w">  </span><span class="c1"># The path to the linux device</span>
+</code></pre></div>
+<hr>
+<h2 id="scheme">Scheme<a class="headerlink" href="#scheme" title="Permanent link">¶</a></h2>
+<p>The second part defines how the various driver channels are configured. Each channel has a unique name, a mode (<code>input</code> or <code>output</code>), a pin number, and a reference to the driver configured in the previous part.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Names that starts and ends with two underscores (like <code>__magic__</code>) are reserved.</p>
+</div>
+<p>Two interaction modes are available for outputs: <code>pulse</code> and <code>switch</code>. In pulse mode, the output quickly switches its state to logical 1 and back (just like pressing a button). In switch mode, it saves (toggles) the state that the user set. When PiKVM is started/rebooted (any time the KVMD daemon is started or stopped) all output channels are reset to 0. This can be changed using the <code>initial</code> parameter. For example, <code>initial=true</code> for logic 1 on startup.</p>
+<p>If you don't specify a driver for the channel in the scheme the default driver, <code>__gpio__</code> will be used.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Allowed values</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>led1</code>, <code>button1</code>, <code>relay1</code>, etc.</td>
+<td><code>string</code></td>
+<td><code>a-Z</code>, numbers, <code>_</code>, <code>-</code></td>
+<td></td>
+<td>A section for the named channel</td>
+</tr>
+<tr>
+<td><code>driver</code></td>
+<td><code>string</code></td>
+<td><code>a-Z</code>, numbers, <code>_</code>, <code>-</code></td>
+<td></td>
+<td>Optional, Name of the section defined above in <code>Drivers</code> if not GPIO</td>
+</tr>
+<tr>
+<td><code>pin</code></td>
+<td><code>integer</code></td>
+<td><code>X &gt;= 0</code></td>
+<td></td>
+<td>Refers to a GPIO pin or driver's pin/port</td>
+</tr>
+<tr>
+<td><code>mode</code></td>
+<td><code>enum</code></td>
+<td><code>input</code> or <code>output</code></td>
+<td></td>
+<td>Defines if a channel is used for input or output, may be limited by driver plugin</td>
+</tr>
+<tr>
+<td><strong>Input only</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>debounce</code></td>
+<td><code>float</code></td>
+<td><code>x &gt;= 0</code></td>
+<td><code>0.1</code></td>
+<td><a href="https://www.arduino.cc/en/Tutorial/Debounce">Debounce</a> time in seconds. <code>0</code> for disable debounce</td>
+</tr>
+<tr>
+<td><strong>Output only</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>switch</code></td>
+<td><code>bool</code></td>
+<td><code>true</code> or <code>false</code></td>
+<td><code>true</code></td>
+<td>Enables or disables the switch mode on the channel (enabled by default).</td>
+</tr>
+<tr>
+<td><code>initial</code></td>
+<td><code>nullable bool</code></td>
+<td><code>true</code>, <code>false</code> or <code>null</code></td>
+<td><code>false</code></td>
+<td>Defines the initial state of the switch upon boot, <code>null</code> for don't make changes (the last one does not supported by generic GPIO)</td>
+</tr>
+<tr>
+<td><code>inverted</code></td>
+<td><code>bool</code></td>
+<td><code>true</code> or <code>false</code></td>
+<td><code>false</code></td>
+<td>Inverts the active logical level</td>
+</tr>
+<tr>
+<td><code>pulse</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td>A section header to define switch pulse configuration</td>
+</tr>
+<tr>
+<td><code>delay</code></td>
+<td><code>float</code></td>
+<td><code>X &gt;= 0</code></td>
+<td><code>0.1</code></td>
+<td>Defines the pulse time in seconds, <code>0</code> for disable pulsing</td>
+</tr>
+<tr>
+<td><code>min_delay</code></td>
+<td><code>float</code></td>
+<td><code>X &gt;= 0.1</code></td>
+<td><code>0.1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>max_delay</code></td>
+<td><code>float</code></td>
+<td><code>X &gt;= 0.1</code></td>
+<td><code>0.1</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">gpio</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">scheme</span><span class="p">:</span>
+<span class="w">            </span><span class="c1"># A certain device sends signals to the RPi and we want the PiKVM to display this as an led</span>
+<span class="w">            </span><span class="nt">led1</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">19</span><span class="w"> </span><span class="c1"># GPIO pin number on the RPi</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input</span><span class="w"> </span>
+<span class="w">            </span><span class="nt">led2</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input</span><span class="w"> </span>
+
+<span class="w">            </span><span class="c1"># Two outputs of RPi's GPIO</span>
+<span class="w">            </span><span class="nt">button1</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">26</span><span class="w"> </span><span class="c1"># GPIO pin number on the RPi</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+<span class="w">                </span><span class="nt">switch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">  </span><span class="c1"># Disable switching, only pulse available</span>
+<span class="w">            </span><span class="nt">button2</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+<span class="w">                </span><span class="nt">switch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="w">            </span><span class="nt">relay1</span><span class="p">:</span><span class="w">  </span><span class="c1"># Channel 1 of the relay /dev/hidraw0</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">relay</span><span class="w">  </span><span class="c1"># Not GPIO, so add name from the above Drivers section</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w">  </span><span class="c1"># Numerating starts from 0</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span><span class="w">  </span><span class="c1"># Relays can't be inputs</span>
+<span class="w">                </span><span class="nt">initial</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w">  </span><span class="c1"># Don't reset the state to 0 when initializing and terminating KVMD</span>
+<span class="w">            </span><span class="nt">relay2</span><span class="p">:</span><span class="w">  </span><span class="c1"># Channel 2</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">relay</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+<span class="w">                </span><span class="nt">initial</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+<span class="w">                </span><span class="nt">pulse</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w">  </span><span class="c1"># Default pulse value</span>
+<span class="w">                    </span><span class="nt">max_delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w">  </span><span class="c1"># The pulse interval can be between min_delay=0.1 (by default) and max_delay=2</span>
+</code></pre></div>
+<hr>
+<h2 id="view">View<a class="headerlink" href="#view" title="Permanent link">¶</a></h2>
+<p>This is the last part of the required configuration. It defines how the previous driver and channel configuration is rendered on the Web interface. Here's an example for the example configuration above:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">gpio</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">view</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">header</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Switches</span><span class="w">  </span><span class="c1"># The menu title</span>
+<span class="w">            </span><span class="nt">table</span><span class="p">:</span><span class="w">  </span><span class="c1"># The menu items are rendered in the form of a table of text labels and controls</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"#Generic</span><span class="nv"> </span><span class="s">GPIO</span><span class="nv"> </span><span class="s">leds"</span><span class="p p-Indicator">]</span><span class="w">  </span><span class="c1"># Text starting with the sharp symbol will be a label</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[]</span><span class="w">  </span><span class="c1"># creates a horizontal separator and starts a new table</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"#Test</span><span class="nv"> </span><span class="s">1:"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">led1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">button1</span><span class="p p-Indicator">]</span><span class="w">  </span><span class="c1"># Text label, one input, one button with text "Click"</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"#Test</span><span class="nv"> </span><span class="s">2:"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">led2</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">button2</span><span class="p p-Indicator">]</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"#HID</span><span class="nv"> </span><span class="s">Relays</span><span class="nv"> </span><span class="s">/dev/hidraw0"</span><span class="p p-Indicator">]</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"#Relay</span><span class="nv"> </span><span class="s">#1:"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"relay1|Boop</span><span class="nv"> </span><span class="s">0.1"</span><span class="p p-Indicator">]</span><span class="w">  </span><span class="c1"># Text label and button with alternative text</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"#Relay</span><span class="nv"> </span><span class="s">#2:"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"relay2|Boop</span><span class="nv"> </span><span class="s">2.0"</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>This will be rendered as:</p>
+<p><a class="glightbox" data-type="image" data-width="95%" data-height="auto" href="gpio_menu.png" data-desc-position="bottom"><img src="gpio_menu.png" alt="drawing"></a></p>
+<p>Some rules and customization options:</p>
+<ul>
+<li>Text starting with the <code>#</code> symbol will be a label.</li>
+<li>To place a channel in a cell, use the name you defined in the scheme.</li>
+<li>Inputs are displayed as round LEDs.</li>
+<li>Outputs are displayed as a switch AND a button.</li>
+<li>If the switch mode is disabled, only a button will be displayed. If pulse is disabled, only a switch will be shown.</li>
+<li>To change the LED's color specify it after the channel name like <code>"led1|red"</code>. Available: <code>green</code>, <code>yellow</code>, <code>red</code>, <code>blue</code>, <code>cyan</code>, <code>magenta</code>, <code>pink</code> and <code>white</code>.</li>
+<li>To change title of the button, write some its name like <code>"relay1|My cool relay"</code>.</li>
+<li>Buttons and switches can request confirmation on acting. To do this write its name like <code>"relay1|confirm|My cool relay"</code>. The third argument with a title is required in this case.</li>
+<li>The button can automatically close the menu when clicked. Use something like <code>"relay1|hide|My button"</code>. It can be used with confirmation option: <code>"relay1|confirm,hide|My button"</code>.</li>
+</ul>
+<p>Also you can place some leds in the menu title using the similar syntax:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kvmd</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">gpio</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="nt">view</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">header</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"#Test1:"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">led1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"Test2:"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">led2</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<hr>
+<h2 id="hardware-modules-and-pseudo-drivers">Hardware modules and pseudo-drivers<a class="headerlink" href="#hardware-modules-and-pseudo-drivers" title="Permanent link">¶</a></h2>
+<h3 id="raspberrys-gpio">Raspberry's GPIO<a class="headerlink" href="#raspberrys-gpio" title="Permanent link">¶</a></h3>
+<details class="note">
+<summary>Click to view</summary>
+<p>The driver <code>gpio</code> provides access to regular GPIO pins with input and output modes. It uses <code>/dev/gpiochip0</code> and the libgpiod library to communicate with the hardware. Does not support saving state between KVMD restarts (meaning <code>initial=null</code>).</p>
+<p>You can use the <a href="https://pinout.xyz/">interactive scheme</a> when selecting the pins to use. Please note that when selecting a pin for a channel, you need to use a logical number instead of a physical number. That is, if you want to use a physical pin with the number 40, the channel must have the number 21 corresponding to the logical GPIO21.</p>
+<p>Channels should not use duplicate pins. You can also not use already used pins. To see which pins are currently used, run the command <code>gpioinfo</code>.</p>
+</details>
+<h3 id="usb-hid-relay">USB HID Relay<a class="headerlink" href="#usb-hid-relay" title="Permanent link">¶</a></h3>
+<details class="note">
+<summary>Click to view</summary>
+<p>The driver <code>hidrelay</code> provides access to cheap managed <a href="http://vusb.wikidot.com/project:driver-less-usb-relays-hid-interface">USB HID relays</a> that can be found on AliExpress. This driver does not support input mode, only output. To use it, you need to specify the path to the device file (like <code>/dev/hidraw0</code>) using the <code>device</code> parameter.</p>
+<p>Additionally, we recommend to configure access rights and static device name using <a href="https://wiki.archlinux.org/index.php/udev">UDEV rules</a>. For example, create <code>/etc/udev/rules.d/99-kvmd-extra.rules</code>:</p>
+<div class="highlight"><pre><span></span><code>KERNEL=="hidraw[0-9]*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="05df", GROUP="kvmd"
+</code></pre></div>
+<p>Channels should not use duplicate physical numbers. The driver supports saving state between KVMD restarts (meaning <code>initial=null</code>).</p>
+</details>
+<h3 id="ezcoo-kvm-switch">ezCoo KVM switch<a class="headerlink" href="#ezcoo-kvm-switch" title="Permanent link">¶</a></h3>
+<details class="note">
+<summary>Click to view</summary>
+<p>You can use GPIO to control KVM port switching. This usually requires the use of relays and buttons, but for the <a href="../ezcoo/">ezCoo switch</a> there is a special <code>ezcoo</code> driver that simulates GPIO by sending commands to the switch via serial port. So you can make a menu in PiKVM to control the multiport switch.</p>
+</details>
+<h3 id="ipmi">IPMI<a class="headerlink" href="#ipmi" title="Permanent link">¶</a></h3>
+<details class="note">
+<summary>Click to view</summary>
+<p>The driver <code>ipmi</code> provides the ability to send IPMI commands (on, off, reset) and show the power status of the remote host. In fact, this is not a hardware driver, but something like a pseudo-GPIO. Each "pin" is actually responsible for a specific IPMI operation of <code>ipmitool</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Type</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td><code>input</code></td>
+<td><code>ipmitool ... power status</code>, can be used to draw the LED in the menu</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td><code>output</code></td>
+<td><code>ipmitool ... power on</code>, sends the <code>on</code> command (and only this), so like all other outputs it should be a button</td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td><code>output</code></td>
+<td><code>ipmitool ... power off</code></td>
+</tr>
+<tr>
+<td><code>3</code></td>
+<td><code>output</code></td>
+<td><code>ipmitool ... power cycle</code></td>
+</tr>
+<tr>
+<td><code>4</code></td>
+<td><code>output</code></td>
+<td><code>ipmitool ... power reset</code></td>
+</tr>
+<tr>
+<td><code>5</code></td>
+<td><code>output</code></td>
+<td><code>ipmitool ... power diag</code></td>
+</tr>
+<tr>
+<td><code>6</code></td>
+<td><code>output</code></td>
+<td><code>ipmitool ... power soft</code></td>
+</tr>
+</tbody>
+</table>
+<p>You are supposed to define one driver per host:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">gpio</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">drivers</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">my_server</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ipmi</span>
+<span class="w">                </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myserver.local</span>
+<span class="w">                </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
+<span class="w">                </span><span class="nt">passwd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
+<span class="w">        </span><span class="nt">scheme</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">my_server_status</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_server</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input</span>
+<span class="w">            </span><span class="nt">my_server_on</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_server</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+<span class="w">                </span><span class="nt">switch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">            </span><span class="nt">my_server_off</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_server</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+<span class="w">                </span><span class="nt">switch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">        </span><span class="nt">view</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">table</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">my_server_status</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"my_server_on|On"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"my_server_off|Off"</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+</details>
+<h3 id="wake-on-lan">Wake-on-LAN<a class="headerlink" href="#wake-on-lan" title="Permanent link">¶</a></h3>
+<details class="note">
+<summary>Click to view</summary>
+<p>The driver <code>wol</code> provides a simple generator of Wake-on-LAN packages. One driver and one output are generated for one host if a <a href="../wol/">simplified configuration method</a> is used. However, you can define multiple drivers if you want to manage different hosts. One driver controls one host, and can only be used as an output. Pin numbers are ignored.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">gpio</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">drivers</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">wol_server1</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wol</span>
+<span class="w">                </span><span class="nt">mac</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ff:ff:ff:ff:ff:f1</span>
+<span class="w">            </span><span class="nt">wol_server2</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wol</span>
+<span class="w">                </span><span class="nt">mac</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ff:ff:ff:ff:ff:f2</span>
+<span class="w">                </span><span class="nt">ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.100</span>
+<span class="w">                </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9</span>
+<span class="w">        </span><span class="nt">scheme</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">wol_server1</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wol_server1</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+<span class="w">                </span><span class="nt">switch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">            </span><span class="nt">wol_server2</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wol_server2</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+<span class="w">                </span><span class="nt">switch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">        </span><span class="nt">view</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">table</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"#Server</span><span class="nv"> </span><span class="s">1"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"wol_server1|Send</span><span class="nv"> </span><span class="s">Wake-on-LAN"</span><span class="p p-Indicator">]</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"#Server</span><span class="nv"> </span><span class="s">2"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"wol_server2|Send</span><span class="nv"> </span><span class="s">Wake-on-LAN"</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+</details>
+<h3 id="cmd">CMD<a class="headerlink" href="#cmd" title="Permanent link">¶</a></h3>
+<details class="note">
+<summary>Click to view</summary>
+<p>The <code>cmd</code> driver allows you to run custom command on PiKVM OS.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This driver does not support bash operators, that is, it is a direct call to commands with arguments. For more complex cases, write your own shell scripts.</p>
+</div>
+<p>Commands are executed from the user <code>kvmd</code>. If you want to run the command as root, then you need to configure <code>sudo</code>. Example of the <code>/etc/sudoers.d/custom_commands</code>:</p>
+<p>Granular example</p>
+<div class="highlight"><pre><span></span><code>kvmd ALL=(ALL) NOPASSWD: /usr/bin/reboot
+</code></pre></div>
+<p>NON Granular example (Captures ALL commands)</p>
+<div class="highlight"><pre><span></span><code>kvmd ALL=(ALL) NOPASSWD: ALL
+</code></pre></div>
+<p>Example of the <code>/etc/kvmd/override.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">gpio</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">drivers</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">reboot</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cmd</span>
+<span class="w">                </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">/usr/bin/sudo</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">reboot</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">scheme</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">reboot_button</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reboot</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+<span class="w">                </span><span class="nt">switch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">        </span><span class="nt">view</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">table</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"reboot_button|confirm|Reboot</span><span class="nv"> </span><span class="s">PiKVM"</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>An example to help you get started:</p>
+<ul>
+<li><code>cmd: [/usr/bin/sudo, kvmd-otgconf, --disable-function, mass_storage.usb0]</code></li>
+<li><code>cmd: [(absolute path to sudo, command, flag, flag, absolute path to file]</code></li>
+</ul>
+<p>Then run the following:</p>
+<div class="highlight"><pre><span></span><code>systemctl restart kvmd
+</code></pre></div>
+</details>
+<h3 id="pwm">PWM<a class="headerlink" href="#pwm" title="Permanent link">¶</a></h3>
+<details class="note">
+<summary>Click to view</summary>
+<p>The <code>pwm</code> driver allows you to use <a href="https://pinout.xyz/pinout/pwm">some GPIO pins</a> on the Raspberry Pi for PWM.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to hardware limitations, this module conflicts with the <strong>kvmd-fan</strong> (the fan controller) on PiKVM V3 and V4 Plus.
+To use it, you have to use hardware PWM for kvmfan. To do this, add the following lines to <code>/etc/kvmd/fan.ini</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[main]</span>
+<span class="na">pwm_soft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">80</span>
+</code></pre></div>
+<p><em>Not needed for V4 Mini because it does not have a fan.</em></p>
+</div>
+<p>Here the small example with servo control:</p>
+<ol>
+<li>
+<p>Add some params to <code>/boot/config.txt</code>:</p>
+<ul>
+<li>
+<p>For PiKVM V3 or DIY device to enable <a href="https://github.com/dotnet/iot/blob/main/Documentation/raspi-pwm.md#enabling-hardware-pwm">PWM0_0</a> on RPi GPIO18:</p>
+<div class="highlight"><pre><span></span><code><span class="na">dtoverlay</span><span class="o">=</span><span class="s">pwm</span>
+</code></pre></div>
+</li>
+<li>
+<p>For PiKVM V4 to enable <a href="https://github.com/dotnet/iot/blob/main/Documentation/raspi-pwm.md#enabling-hardware-pwm">PWM0_0</a> on CM4 GPIO12 (CN5 NeoPixel Pin) and set the PWM function to 4 (ALT0):</p>
+<div class="highlight"><pre><span></span><code><span class="na">dtoverlay</span><span class="o">=</span><span class="s">pwm,pin=12,func=4</span>
+</code></pre></div>
+</li>
+</ul>
+</li>
+<li>
+<p>Create <code>/etc/udev/rules.d/99-kvmd-pwm.rules</code>:</p>
+<div class="highlight"><pre><span></span><code>SUBSYSTEM=="pwm*", ACTION=="add", RUN+="/bin/chgrp -R kvmd /sys%p", RUN+="/bin/chmod -R g=u /sys%p"
+SUBSYSTEM=="pwm*", ACTION=="change", ENV{TRIGGER}!="none", RUN+="/bin/chgrp -R kvmd /sys%p", RUN+="/bin/chmod -R g=u /sys%p"
+</code></pre></div>
+</li>
+<li>
+<p>Connect Servo motor like SG90 PWM connection to RPi GPIO18 or CM4 GPIO12, +5V and GND to a 5V and GND pin on header:</p>
+</li>
+<li>
+<p>Add to /etc/kvmd/override.yaml</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">gpio</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">drivers</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">servo1</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pwm</span>
+<span class="w">                </span><span class="nt">chip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w">                      </span><span class="c1"># PWM Chip Number</span>
+<span class="w">                </span><span class="nt">period</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20000000</span><span class="w">             </span><span class="c1"># Servo Motor SG90 Period in nano-seconds</span>
+<span class="w">                </span><span class="nt">duty_cycle_push</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1500000</span><span class="w">     </span><span class="c1"># Servo Motor SG90 duty_cycle for pushing button</span>
+<span class="w">                </span><span class="nt">duty_cycle_release</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000000</span><span class="w">  </span><span class="c1"># Servo Motor SG90 duty_cycle for releasing button</span>
+<span class="w">        </span><span class="nt">scheme</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">__v4_locator__</span><span class="p">:</span><span class="w">  </span><span class="c1"># v4-mini only</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25</span><span class="w">      </span><span class="c1"># v4-mini only</span>
+<span class="w">            </span><span class="nt">short_press</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">servo1</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w">  </span><span class="c1"># Pin number is the PWM channel number on the PWM Chip</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+<span class="w">                </span><span class="nt">switch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">                </span><span class="nt">pulse</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+<span class="w">                    </span><span class="nt">max_delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">            </span><span class="nt">long_press</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">servo1</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+<span class="w">                </span><span class="nt">switch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">                </span><span class="nt">pulse</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">                    </span><span class="nt">max_delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">            </span><span class="nt">extra_long_press</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">servo1</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+<span class="w">                </span><span class="nt">switch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">                </span><span class="nt">pulse</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">                    </span><span class="nt">max_delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+<span class="w">        </span><span class="nt">view</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">header</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Controls</span>
+<span class="w">            </span><span class="nt">table</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"#Servo</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">Short</span><span class="nv"> </span><span class="s">Press"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"short_press|Press"</span><span class="p p-Indicator">]</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"#Servo</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">Long</span><span class="nv"> </span><span class="s">Press"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"long_press|Press"</span><span class="p p-Indicator">]</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"#Servo</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">Extra</span><span class="nv"> </span><span class="s">Long</span><span class="nv"> </span><span class="s">Press"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"extra_long_press|Press"</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+</li>
+</ol>
+</details>
+<h3 id="servo">Servo<a class="headerlink" href="#servo" title="Permanent link">¶</a></h3>
+<details class="note">
+<summary>Click to view</summary>
+<p>The <code>servo</code> module is built on top of the <code>pwm</code> module and allows user to define angles instead of <code>duty_cyles</code> to control a PWM enabled servo motor like SG90. When the button is pressed the servo motor moves to an angle defined by <code>angle_push</code> and when button is released it moves back to <code>angle_release</code>. In the example configuration for a <a href="https://www.ebay.co.uk/sch/i.html?_nkw=5V+SG90+Servo">cheap 5V SG90 Servo</a>, the motor moves to an angle of 45 degrees when button is pressed and moves back to 20 degress when released.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to hardware limitations, this module conflicts with the <strong>kvmd-fan</strong> (the fan controller) on PiKVM V3 and V4 Plus.
+To use it, you have to use hardware PWM for kvmfan. To do this, add the following lines to <code>/etc/kvmd/fan.ini</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[main]</span>
+<span class="na">pwm_soft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">80</span>
+</code></pre></div>
+<p><em>Not needed for v4-mini because it does not have a fan.</em></p>
+</div>
+<p>To use Servo motors in PiKVM you need to follow steps 1-3 for <a href="#pwm">PWM Module</a> and then use the following configuration.</p>
+<p>Add to <code>/etc/kvmd/override.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">gpio</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">drivers</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">servo1</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">servo</span>
+<span class="w">                </span><span class="nt">chip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w">                  </span><span class="c1"># PWM Chip Number</span>
+<span class="w">                </span><span class="nt">period</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20000000</span><span class="w">         </span><span class="c1"># Servo Motor SG90 Period in nano-seconds</span>
+<span class="w">                </span><span class="nt">duty_cycle_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">350000</span><span class="w">   </span><span class="c1"># Servo Motor SG90 duty_cycle for -90 degrees</span>
+<span class="w">                </span><span class="nt">duty_cycle_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2350000</span><span class="w">  </span><span class="c1"># Servo Motor SG90 duty_cycle for +90 degrees</span>
+<span class="w">                </span><span class="nt">angle_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">90</span><span class="w">            </span><span class="c1"># Servo Motor SG90 angle at duty_cycle_max</span>
+<span class="w">                </span><span class="nt">angle_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-90</span><span class="w">           </span><span class="c1"># Servo Motor SG90 angle at duty_cycle_min</span>
+<span class="w">                </span><span class="nt">angle_push</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">45</span><span class="w">           </span><span class="c1"># Servo Motor SG90 angle to push button</span>
+<span class="w">                </span><span class="nt">angle_release</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span><span class="w">        </span><span class="c1"># Servo Motor SG90 angle to release button</span>
+<span class="w">        </span><span class="nt">scheme</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">__v4_locator__</span><span class="p">:</span><span class="w">  </span><span class="c1"># v4-mini only</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25</span><span class="w">      </span><span class="c1"># v4-mini only</span>
+<span class="w">            </span><span class="nt">short_press</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">servo1</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w">  </span><span class="c1"># Pin number is the PWM channel number on the PWM Chip</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+<span class="w">                </span><span class="nt">switch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">                </span><span class="nt">pulse</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+<span class="w">                    </span><span class="nt">max_delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">            </span><span class="nt">long_press</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">servo1</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+<span class="w">                </span><span class="nt">switch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">                </span><span class="nt">pulse</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">                    </span><span class="nt">max_delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">            </span><span class="nt">extra_long_press</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">servo1</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+<span class="w">                </span><span class="nt">switch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">                </span><span class="nt">pulse</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">                    </span><span class="nt">max_delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+<span class="w">        </span><span class="nt">view</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">header</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Controls</span>
+<span class="w">            </span><span class="nt">table</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"#Servo</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">Short</span><span class="nv"> </span><span class="s">Press"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"short_press|Press"</span><span class="p p-Indicator">]</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"#Servo</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">Long</span><span class="nv"> </span><span class="s">Press"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"long_press|Press"</span><span class="p p-Indicator">]</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"#Servo</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">Extra</span><span class="nv"> </span><span class="s">Long</span><span class="nv"> </span><span class="s">Press"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"extra_long_press|Press"</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+</details>
+<h3 id="philips-hue">Philips Hue<a class="headerlink" href="#philips-hue" title="Permanent link">¶</a></h3>
+<details class="note">
+<summary>Click to view</summary>
+<p>The <code>hue</code> module can control <a href="https://shop.ledvance.com/en/products/smart-plug-eu">smartplugs</a> and lamps over Philips Hue Bridge API. In general the plugin can switch any device on/off which is connected to the bridge. To use it you will need API token aka username:</p>
+<ol>
+<li>Open <code>http://bridge/debug/clip.html</code>.</li>
+<li>In the URL: Field type <code>/api/</code>.</li>
+<li>In the Message Body: Field type: <code>{"devicetype": "pikvm"}</code>.</li>
+<li>Hit the Get Button.</li>
+<li>As the Response you become the Username: <code>{"success": {"username": "apiusername"}</code>.</li>
+</ol>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">gpio</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">drivers</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">hue</span><span class="p">:</span>
+<span class="w">               </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hue</span>
+<span class="w">               </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://bridge</span>
+<span class="w">               </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">YG-xxxxxxxxxxxx</span>
+<span class="w">        </span><span class="nt">scheme</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">plug_button</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hue</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+<span class="w">                </span><span class="nt">initial</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+<span class="w">                </span><span class="nt">switch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">                </span><span class="nt">pulse</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">            </span><span class="nt">plug_led</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hue</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input</span>
+<span class="w">        </span><span class="nt">view</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">table</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"plug_led"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"plug_button"</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+</details>
+<h3 id="anel-net-pwrctrl">ANEL NET-PwrCtrl<a class="headerlink" href="#anel-net-pwrctrl" title="Permanent link">¶</a></h3>
+<details class="note">
+<summary>Click to view</summary>
+<p>The <code>anelpwr</code> plugin allows you to use ANEL NET-PwrCrtl IP-PDUs (switchabel sockets) as gpios. There are up to 8 Ports per PDU. Input pulls the the current state from the PDU, Output switches the Socket. </p>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">gpio</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">drivers</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">anel_pdu_0</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anelpwr</span>
+<span class="w">                </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://IP:port</span>
+<span class="w">                </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
+<span class="w">                </span><span class="nt">passwd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anel</span>
+<span class="w">        </span><span class="nt">scheme</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">pdu0_0_pwr</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anel_pdu_0</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+<span class="w">                </span><span class="nt">pulse</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">delay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">            </span><span class="nt">pdu0_0_led</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anel_pdu_0</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input</span>
+<span class="w">        </span><span class="nt">view</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">header</span><span class="p">:</span>
+<span class="w">               </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">"PDUs"</span>
+<span class="w">            </span><span class="nt">table</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"#PDU0"</span><span class="p p-Indicator">]</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"#PDU0_Port0:"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">pdu0_0_led</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"pdu0_0_pwr|confirm|test"</span><span class="p p-Indicator">]</span><span class="w"> </span>
+</code></pre></div>
+</details>
+<h3 id="extron-sw-series-switchers">Extron SW Series Switchers<a class="headerlink" href="#extron-sw-series-switchers" title="Permanent link">¶</a></h3>
+<details class="note">
+<summary>Click to view</summary>
+<p>The <code>extron</code> plugin allows you to control Extron SW series switchers (ex. SW4 USB, SW4 VGA, etc.). There are up to 4 Ports per switcher. Input pulls the the current state from the switcher, Output switches the active port.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">gpio</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">drivers</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">extron_vga</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extron</span>
+<span class="w">                </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/ttyUSB0</span><span class="w">  </span><span class="c1"># The path to the RS-232 serial adapter</span>
+<span class="w">        </span><span class="nt">scheme</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">vga_port1_led</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extron_vga</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input</span>
+<span class="w">            </span><span class="nt">vga_port2_led</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extron_vga</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input</span>
+<span class="w">            </span><span class="nt">vga_port3_led</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extron_vga</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input</span>
+<span class="w">            </span><span class="nt">vga_port4_led</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extron_vga</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input</span>
+<span class="w">            </span><span class="nt">vga_port1_button</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extron_vga</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+<span class="w">            </span><span class="nt">vga_port2_button</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extron_vga</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+<span class="w">            </span><span class="nt">vga_port3_button</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extron_vga</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+<span class="w">            </span><span class="nt">vga_port4_button</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">pin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">                </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extron_vga</span>
+<span class="w">                </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span>
+<span class="w">        </span><span class="nt">view</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">header</span><span class="p">:</span>
+<span class="w">               </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">"Extron</span><span class="nv"> </span><span class="s">SW4</span><span class="nv"> </span><span class="s">VGA"</span>
+<span class="w">            </span><span class="nt">table</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"vga_port1_led|red"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"vga_port1_button||Port</span><span class="nv"> </span><span class="s">1"</span><span class="p p-Indicator">]</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"vga_port2_led|red"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"vga_port2_button||Port</span><span class="nv"> </span><span class="s">2"</span><span class="p p-Indicator">]</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"vga_port3_led|red"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"vga_port3_button||Port</span><span class="nv"> </span><span class="s">3"</span><span class="p p-Indicator">]</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"vga_port4_led|red"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"vga_port4_button||Port</span><span class="nv"> </span><span class="s">4"</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+</details></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2018-2025 Maxim Devaev
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "navigation.expand", "search.highlight", "search.share", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../_assets/add_paragraphs.js"></script>
+      
+        <script src="../_assets/scroll_to_summary.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": false, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

@@ -1,0 +1,4536 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="KVM over IP on Raspberry Pi">
+      
+      
+        <meta name="author" content="Maxim Devaev">
+      
+      
+        <link rel="canonical" href="https://pikvm.github.io/pikvm/auth_advanced/">
+      
+      
+        <link rel="prev" href="../gpio/">
+      
+      
+        <link rel="next" href="../id/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../_assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Advanced authentication - PiKVM Handbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=arial,+sans-serif:300,300i,400,400i,700,700i%7Cmonospace:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"arial, sans-serif";--md-code-font:"monospace"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../_assets/user.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#advanced-authentication-methods" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="PiKVM Handbook" class="md-header__button md-logo" aria-label="PiKVM Handbook" data-md-component="logo">
+      
+  <img src="../_assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PiKVM Handbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Advanced authentication
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/pikvm/pikvm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    pikvm/pikvm
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="PiKVM Handbook" class="md-nav__button md-logo" aria-label="PiKVM Handbook" data-md-component="logo">
+      
+  <img src="../_assets/logo.png" alt="logo">
+
+    </a>
+    PiKVM Handbook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/pikvm/pikvm" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    pikvm/pikvm
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1">
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Device guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Device guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PiKVM V4 Mini &amp; Plus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PiKVM V3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../switch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PiKVM Switch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DIY PiKVM V2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DIY PiKVM V1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cheatsheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cheat sheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web UI overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../shortcuts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sending shortcuts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuring PiKVM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication &amp; 2FA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ &amp; troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flashing_os/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashing OS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Networking
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Networking
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1">
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Internet access
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Internet access
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../port_forwarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Port forwarding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reverse_proxy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reverse proxy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tailscale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tailscale VPN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloudflared/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cloudflare tunnel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wifi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setting up Wi-Fi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setting up 3G/4G/LTE modem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../letsencrypt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Let's Encrypt certificates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Video
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../video/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video modes (WebRTC, Direct)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webrtc_config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WebRTC configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tuning HDMI EDID
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HDMI passthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Peripheral devices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Peripheral devices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../atx_board/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ATX board
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    USB configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usb_pass/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    USB passthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio / Microphone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Keyboard &amp; mouse
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Keyboard &amp; mouse
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mouse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mouse modes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mouse_jiggler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mouse jiggler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pico_hid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pico HID (USB, PS/2)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bluetooth_hid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bluetooth HID
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../msd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mass storage drive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usb_ethernet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ethernet-over-USB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usb_serial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Serial-over-USB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPIO (pins, relays, lamps, etc)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced usage
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Advanced usage
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced authentication
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication-methods-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication methods comparison
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enabled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        enabled
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        expire
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        usc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-and-external" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        internal and external
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#totp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        totp
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP authentication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-endpoint-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication endpoint requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-configuration-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic configuration example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pam-plugin-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PAM plugin configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PAM plugin configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-flow_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-configuration-example_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic configuration example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-pam-configuration-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced PAM configuration examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ldap-plugin-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LDAP plugin configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LDAP plugin configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-flow_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-configuration-example_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic configuration example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-with-a-self-signed-certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration with a self-signed certificate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-for-standard-ldap-non-ssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration for standard LDAP (non-SSL)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radius-plugin-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RADIUS plugin configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RADIUS plugin configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-flow_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-configuration-example_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic Configuration Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unix-socket-credentials-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unix Socket Credentials configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unix Socket Credentials configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-flow_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-configuration-example_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic configuration example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../id/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PiKVM identification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../on_boot_config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    On-boot configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auto_snapshots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automatic snapshots
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vnc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using VNC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multiport/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multiport KVM-over-IP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wake-on-LAN the server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ipmi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IPMI &amp; Redfish integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pst/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistent storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prometheus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prometheus monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7">
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTTP API reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../building_os/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building PiKVM OS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3d_printing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cases for 3D printing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8">
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legacy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legacy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arduino_hid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arduino HID
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../msd_legacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Big DVD images on old PiKVM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9">
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PiKVM info
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PiKVM info
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compliance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compliance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../blog/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog &amp; news
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Blog &amp; news
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_2">
+        
+          
+          <label class="md-nav__link" for="__nav_9_2_2" id="__nav_9_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Archive
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Archive
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/archive/2025/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2025
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/archive/2024/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2024
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/archive/2023/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2023
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/archive/2022/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2022
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/archive/2021/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2021
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/archive/2020/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2020
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2_3">
+        
+          
+          <label class="md-nav__link" for="__nav_9_2_3" id="__nav_9_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Categories
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Categories
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/category/development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/category/products/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Products
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/category/releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication-methods-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication methods comparison
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enabled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        enabled
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        expire
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        usc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-and-external" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        internal and external
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#totp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        totp
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HTTP authentication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-endpoint-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication endpoint requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-configuration-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic configuration example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pam-plugin-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PAM plugin configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PAM plugin configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-flow_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-configuration-example_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic configuration example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-pam-configuration-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced PAM configuration examples
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ldap-plugin-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LDAP plugin configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LDAP plugin configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-flow_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-configuration-example_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic configuration example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-with-a-self-signed-certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration with a self-signed certificate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-for-standard-ldap-non-ssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration for standard LDAP (non-SSL)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radius-plugin-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RADIUS plugin configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RADIUS plugin configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-flow_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-configuration-example_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic Configuration Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unix-socket-credentials-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unix Socket Credentials configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unix Socket Credentials configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-flow_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-configuration-example_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic configuration example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<div><h1 id="advanced-authentication-methods">Advanced authentication methods<a class="headerlink" href="#advanced-authentication-methods" title="Permanent link">¶</a></h1>
+<p>PiKVM provides flexible authentication options to integrate with your existing security infrastructure. By default, PiKVM uses a simple file-based authentication system (htpasswd), but it can be configured to authenticate users against external systems for enterprise environments.</p>
+<p>This guide covers the configuration of PiKVM's authentication methods. All external authentication servers (LDAP, RADIUS, HTTP auth servers) are assumed to be already configured and accessible from your PiKVM device.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is advanced material. Before you try setting this up, we recommend (re)familirizing yourself with the documentation on <a href="../config/">configuration</a> and taking another look at the <a href="../cheatsheet/">cheat sheet</a>.</p>
+<p>Whenever you customize authentication, restart kvmd:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>kvmd
+</code></pre></div>
+</div>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">¶</a></h2>
+<p>PiKVM supports the following authentication methods through its pluggable authentication system:</p>
+<ul>
+<li><strong>HTTP Authentication</strong>: External HTTP-based authentication service integration. PiKVM forwards authentication requests to a custom HTTP API endpoint.</li>
+<li><strong>PAM (Pluggable Authentication Modules)</strong>: Integration with Linux PAM system, allowing authentication against system users, LDAP, Active Directory, and other PAM-supported backends.</li>
+<li><strong>LDAP (Lightweight Directory Access Protocol)</strong>: Direct LDAP authentication against directory servers like Active Directory, OpenLDAP, or other LDAP-compatible systems.</li>
+<li><strong>RADIUS (Remote Authentication Dial-In User Service)</strong>: Authentication against RADIUS servers, commonly used in enterprise networks with support for multi-factor authentication.</li>
+<li><strong>Unix Socket Credentials</strong>: Process-based authentication using Unix domain sockets with credential passing for local system integration.</li>
+</ul>
+<h2 id="authentication-methods-comparison">Authentication methods comparison<a class="headerlink" href="#authentication-methods-comparison" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Best For</th>
+<th>Complexity</th>
+<th>External Dependencies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HTTP Auth</strong></td>
+<td>Custom authentication systems, microservices</td>
+<td>Low</td>
+<td>HTTP auth server</td>
+</tr>
+<tr>
+<td><strong>PAM</strong></td>
+<td>System integration, existing PAM setups</td>
+<td>Medium</td>
+<td>PAM modules</td>
+</tr>
+<tr>
+<td><strong>LDAP</strong></td>
+<td>Active Directory, directory services</td>
+<td>Medium</td>
+<td>LDAP server</td>
+</tr>
+<tr>
+<td><strong>RADIUS</strong></td>
+<td>Enterprise networks, centralized auth</td>
+<td>Medium</td>
+<td>RADIUS server</td>
+</tr>
+<tr>
+<td><strong>Unix Socket Credentials</strong></td>
+<td>Local process integration, containers</td>
+<td>Low</td>
+<td>Local processes</td>
+</tr>
+</tbody>
+</table>
+<p>2FA/TOTP is <a href="/auth/#two-factor-authentication">always available</a> works locally and is compatible with all the methods listed here.</p>
+<h2 id="basic-configuration">Basic configuration<a class="headerlink" href="#basic-configuration" title="Permanent link">¶</a></h2>
+<p>You can customize authentication and authorization with <code>/etc/kvmd/override.yaml</code>. If you want to keep the configuration modular, create and edit <code>/etc/kvmd/override.d/9999-auth.yaml</code> instead. You can use any 4-digit number prepending the filename.</p>
+<p>Here are the keys you need to know about.</p>
+<h3 id="enabled"><code>enabled</code><a class="headerlink" href="#enabled" title="Permanent link">¶</a></h3>
+<p>This is a global authentication switch, enabled by default:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">auth</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>Setting it to <code>false</code> will disable all authentication, regardless of the methods you configured.</p>
+<h3 id="expire"><code>expire</code><a class="headerlink" href="#expire" title="Permanent link">¶</a></h3>
+<p>This key sets the cookie expiration time measured in seconds. Please see <a href="../auth/#session-expiration">this part of the documentation</a> for details.</p>
+<p>In this example, the cookie will expire in 10 minutes:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">auth</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">expire</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">600</span>
+</code></pre></div>
+<h3 id="usc"><code>usc</code><a class="headerlink" href="#usc" title="Permanent link">¶</a></h3>
+<p>This group of keys is in charge for basic configuration of Unix Socket Credentials:</p>
+<ul>
+<li><code>users</code>: this key is for listing valid usernames</li>
+<li><code>groups</code>: this key is for listing valid user groups</li>
+</ul>
+<p>Here is a configuration example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">auth</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">usc</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">users</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">cyril</span><span class="p p-Indicator">,</span><span class="nv">jane</span><span class="p p-Indicator">,</span><span class="nv">mike</span><span class="p p-Indicator">,</span><span class="nv">sheryl</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<h3 id="internal-and-external"><code>internal</code> and <code>external</code><a class="headerlink" href="#internal-and-external" title="Permanent link">¶</a></h3>
+<p><code>internal</code> is the authentication method that is applied first, <code>external</code> is used for external services. Note that there is no fallback from <code>external</code> to <code>internal</code>.</p>
+<p><code>kvmd</code> defaults to using <code>htpasswd</code> as the internal method and doesn't set the external one:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">auth</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">internal</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">htpasswd</span>
+<span class="w">            </span><span class="nt">force_users</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="w">            </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/kvmd/htpasswd</span>
+
+<span class="w">        </span><span class="nt">external</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">''</span>
+</code></pre></div>
+<p>The recommended configuration is either <code>htpasswd</code> or <code>pam</code> as the internal authentication method and any other method as the external one. In that case, do the following:</p>
+<ol>
+<li>Keep the default <code>admin</code> user.</li>
+<li><a href="../auth/#changing-the-kvm-password">Change its password</a> to a random 30 characters long one (e.g., use <code>pwgen -y 30</code>).</li>
+<li>Keep <code>htpasswd</code> as the internal method.</li>
+<li>Use <code>ldap</code> or any other method as the external one, depending on your use case.</li>
+</ol>
+<p>Here is a configuration example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">auth</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">internal</span><span class="p">:</span>
+<span class="w">            </span><span class="c1">#type: htpasswd</span>
+<span class="w">            </span><span class="nt">force_users</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">admin</span><span class="p p-Indicator">]</span>
+<span class="w">            </span><span class="c1">#file: /etc/kvmd/htpasswd</span>
+
+<span class="w">        </span><span class="nt">external</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ldap</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p>Type and file are defaults in the above example.</p>
+<p>However, if your LDAP server has a guaranteed high availability, you <em>can</em> use <code>ldap</code> as an internal authentication method and discard the external authentication method entirely.</p>
+<h3 id="totp"><code>totp</code><a class="headerlink" href="#totp" title="Permanent link">¶</a></h3>
+<p>You can pass the secret file along with the password. The secret file location defaults to <code>/etc/kvmd/totp.secret</code>. <a href="../auth/#two-factor-authentication">See here</a> for more information on 2FA authenticaion on PiKVM.</p>
+<h2 id="http-authentication">HTTP authentication<a class="headerlink" href="#http-authentication" title="Permanent link">¶</a></h2>
+<p>The HTTP authentication plugin delegates credential validation to an external HTTP/HTTPS endpoint. This enables integration with custom authentication services and third-party identity providers.</p>
+<p>The plugin sends authentication requests as JSON POST requests to a configurable URL and grants access when the endpoint returns <code>HTTP 200 OK</code>. This approach allows you to implement complex authentication logic without modifying PiKVM's core code.</p>
+<p>For an example of using HTTP authentication, please see <a href="https://github.com/pikvm/kvmd-auth-server">this GitHub repository</a>.</p>
+<h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">¶</a></h3>
+<h4 id="url"><code>url</code><a class="headerlink" href="#url" title="Permanent link">¶</a></h4>
+<p>The URL of the external HTTP authentication endpoint. PiKVM will send POST requests to this URL to authenticate users.</p>
+<ul>
+<li><strong>Type:</strong> String (URL)</li>
+<li><strong>Default value:</strong> <code>"http://localhost/auth"</code></li>
+<li><strong>Examples:</strong><ul>
+<li><code>http://localhost:8080/api/auth</code> - Local authentication service</li>
+<li><code>https://auth.example.com/validate</code> - Remote HTTPS endpoint</li>
+<li><code>http://10.0.0.100/auth</code> - Internal network service</li>
+</ul>
+</li>
+<li><strong>Note:</strong> The endpoint must accept POST requests with JSON payload.</li>
+</ul>
+<h4 id="verify"><code>verify</code><a class="headerlink" href="#verify" title="Permanent link">¶</a></h4>
+<p>Controls SSL/TLS certificate verification when using HTTPS URLs.</p>
+<ul>
+<li><strong>Type:</strong> Boolean</li>
+<li><strong>Default value:</strong> <code>true</code></li>
+<li><strong>Acceptable values:</strong> <code>true</code> and <code>false</code></li>
+<li><strong>Behavior:</strong><ul>
+<li><code>true</code>: Verifies the server's SSL/TLS certificate (recommended for production)</li>
+<li><code>false</code>: Disables certificate verification (useful for self-signed certificates or testing)</li>
+</ul>
+</li>
+<li><strong>Note:</strong> Only applies when using <code>https://</code> URLs. When set to <code>false</code>, SSL is completely disabled.</li>
+</ul>
+<h4 id="secret"><code>secret</code><a class="headerlink" href="#secret" title="Permanent link">¶</a></h4>
+<p>An optional shared secret token sent in the authentication request JSON payload. This can be used by the authentication endpoint to verify that requests are coming from an authorized PiKVM instance.</p>
+<ul>
+<li><strong>Type:</strong> String</li>
+<li><strong>Default value:</strong> <code>""</code> (empty string)</li>
+<li><strong>Use Case:</strong> Provides an additional layer of security to prevent unauthorized services from using your authentication endpoint.</li>
+<li><strong>Note:</strong> The secret is sent as part of the JSON body, not as a header.</li>
+</ul>
+<h4 id="user"><code>user</code><a class="headerlink" href="#user" title="Permanent link">¶</a></h4>
+<p>Optional username for HTTP basic authentication to the authentication endpoint itself. Used when the authentication service requires its own authentication.</p>
+<ul>
+<li><strong>Type:</strong> String</li>
+<li><strong>Default value:</strong> <code>""</code> (empty string)</li>
+<li><strong>Note:</strong> Works in combination with the <code>passwd</code> parameter. If <code>user</code> is empty, Basic Auth is not used.</li>
+</ul>
+<h4 id="passwd"><code>passwd</code><a class="headerlink" href="#passwd" title="Permanent link">¶</a></h4>
+<p>Optional password for HTTP basic authentication to the authentication endpoint. Used in combination with the <code>user</code> parameter.</p>
+<ul>
+<li><strong>Type:</strong> String</li>
+<li><strong>Default value:</strong> <code>""</code> (empty string)</li>
+<li><strong>Note:</strong> Only used when <code>user</code> is configured.</li>
+</ul>
+<h4 id="timeout"><code>timeout</code><a class="headerlink" href="#timeout" title="Permanent link">¶</a></h4>
+<p>The total timeout for the HTTP authentication request. If the authentication endpoint doesn't respond within this time, the authentication attempt fails.</p>
+<ul>
+<li><strong>Type:</strong> Float (≥ 0.1)</li>
+<li><strong>Default value:</strong> <code>5.0</code></li>
+<li><strong>Unit:</strong> Seconds</li>
+<li><strong>Considerations:</strong></li>
+<li>Network latency to the authentication endpoint</li>
+<li>Processing time on the authentication server</li>
+<li>Balance between security (shorter timeout) and reliability (longer timeout)</li>
+</ul>
+<h3 id="authentication-flow">Authentication flow<a class="headerlink" href="#authentication-flow" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Session Creation:</strong> Create or reuse an HTTP client session configured with:</li>
+<li>SSL verification settings (based on <code>verify</code> parameter)</li>
+<li>
+<p>Basic Authentication credentials (if <code>user</code> is configured)</p>
+</li>
+<li>
+<p><strong>Request Construction:</strong> Create a POST request to the configured <code>url</code> with:</p>
+<ul>
+<li><strong>Method:</strong> POST</li>
+<li><strong>Content-Type:</strong> application/json</li>
+<li><strong>Headers:</strong><ul>
+<li><code>User-Agent</code>: "KVMD" with version information</li>
+<li><code>X-KVMD-User</code>: The username being authenticated</li>
+</ul>
+</li>
+<li><strong>JSON Body:</strong>
+ <div class="highlight"><pre><span></span><code><span class="w">   </span><span class="p">{</span>
+<span class="w">     </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">"passwd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="p">,</span>
+<span class="w">     </span><span class="nt">"secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shared_secret"</span>
+<span class="w">   </span><span class="p">}</span>
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>Request Transmission:</strong> Send the HTTP request to the authentication endpoint</p>
+</li>
+<li>
+<p><strong>Response Processing:</strong> Wait for response (up to timeout period)</p>
+</li>
+<li>
+<p><strong>Authorization Decision:</strong> Grant access if:</p>
+<ul>
+<li>The response is received within the timeout</li>
+<li>The HTTP status code is 200 (OK)</li>
+<li>Any other status code (including 401, 403, 404, etc.) results in authentication failure</li>
+</ul>
+</li>
+</ol>
+<h3 id="authentication-endpoint-requirements">Authentication endpoint requirements<a class="headerlink" href="#authentication-endpoint-requirements" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p><strong>Accept POST requests</strong> with JSON payload</p>
+</li>
+<li>
+<p><strong>Parse the JSON body</strong> containing:</p>
+<ul>
+<li><code>user</code>: The username attempting to authenticate</li>
+<li><code>passwd</code>: The password provided by the user</li>
+<li><code>secret</code>: The shared secret (if configured)</li>
+</ul>
+</li>
+<li>
+<p><strong>Validate credentials</strong> according to your authentication logic</p>
+</li>
+<li>
+<p><strong>Return appropriate HTTP status codes:</strong></p>
+<ul>
+<li><code>200 OK</code>: Authentication successful</li>
+<li><code>401 Unauthorized</code>: Invalid credentials</li>
+<li><code>403 Forbidden</code>: User not authorized</li>
+<li>Any other status code: Authentication failure</li>
+</ul>
+</li>
+</ol>
+<h3 id="basic-configuration-example">Basic configuration example<a class="headerlink" href="#basic-configuration-example" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">auth</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">internal</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="w">            </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://localhost:8080/api/auth</span>
+<span class="w">            </span><span class="nt">verify</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">            </span><span class="nt">secret</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">            </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">            </span><span class="nt">passwd</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">            </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span>
+</code></pre></div>
+<h2 id="pam-plugin-configuration">PAM plugin configuration<a class="headerlink" href="#pam-plugin-configuration" title="Permanent link">¶</a></h2>
+<p>The PAM authentication plugin leverages Linux's <a href="https://github.com/linux-pam/linux-pam">Pluggable Authentication Modules framework</a> to authenticate users against the same mechanisms used by the underlying operating system. </p>
+<p>This plugin supports any authentication backend configured through PAM, including local user accounts, SSSD for Active Directory, LDAP, Kerberos, or any other PAM-compatible service.</p>
+<p>It also includes access control features such as username whitelists/blacklists and UID-based filtering to prevent system accounts from authenticating.</p>
+<h3 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">¶</a></h3>
+<h4 id="service"><code>service</code><a class="headerlink" href="#service" title="Permanent link">¶</a></h4>
+<p>Specifies the PAM service name to use for authentication. This corresponds to a configuration file in <code>/etc/pam.d/</code> on the system. The default value <code>login</code> uses the standard PAM login service configuration.</p>
+<ul>
+<li><strong>Type:</strong> String</li>
+<li><strong>Default:</strong> <code>"login"</code></li>
+</ul>
+<h4 id="allow_users"><code>allow_users</code><a class="headerlink" href="#allow_users" title="Permanent link">¶</a></h4>
+<p>A whitelist of usernames that are explicitly allowed to authenticate. If the list is empty, this check is bypassed, all users are allowed and are subject to other checks.</p>
+<ul>
+<li><strong>Type:</strong> List of strings</li>
+<li><strong>Default:</strong> <code>[]</code> (empty list)</li>
+<li><strong>Behavior:</strong> When a user attempts to authenticate:<ul>
+<li>If the list is not empty and the user is not in the list, authentication fails with an error message.</li>
+</ul>
+</li>
+</ul>
+<h4 id="deny_users"><code>deny_users</code><a class="headerlink" href="#deny_users" title="Permanent link">¶</a></h4>
+<p>A blacklist of usernames that are explicitly denied authentication. Users in this list cannot authenticate regardless of their credentials.</p>
+<ul>
+<li><strong>Type:</strong> List of strings</li>
+<li><strong>Default:</strong> <code>[]</code> (empty list)</li>
+<li><strong>Behavior:</strong> When a user attempts to authenticate:<ul>
+<li>If the user is in the deny list, authentication fails with an error message.</li>
+</ul>
+</li>
+</ul>
+<h4 id="allow_uids_at"><code>allow_uids_at</code><a class="headerlink" href="#allow_uids_at" title="Permanent link">¶</a></h4>
+<p>Specifies a minimum UID (User ID) threshold for authentication. Only users with UIDs greater than or equal to this value are allowed to authenticate. A value of <code>0</code> disables this check.</p>
+<ul>
+<li><strong>Type:</strong> Integer (≥ 0)</li>
+<li><strong>Default:</strong> <code>0</code></li>
+<li><strong>Behavior:</strong> When set to a value greater than 0:<ul>
+<li>The plugin retrieves the UID of the authenticating user from the system</li>
+<li>If the user's UID is less than the configured threshold, authentication fails</li>
+<li>This is useful for preventing system users (typically UIDs &lt; 1000) from authenticating</li>
+</ul>
+</li>
+<li><strong>Use case:</strong> Commonly used to restrict authentication to regular user accounts and prevent service accounts or system users from accessing the interface.</li>
+</ul>
+<h3 id="authentication-flow_1">Authentication flow<a class="headerlink" href="#authentication-flow_1" title="Permanent link">¶</a></h3>
+<p>The authentication process follows the steps in the following order:</p>
+<ol>
+<li><strong>Allow list check:</strong> If <code>allow_users</code> is configured, verify the user is in the list</li>
+<li><strong>Deny list check:</strong> If <code>deny_users</code> is configured, verify the user is not in the list</li>
+<li><strong>UID threshold check:</strong> If <code>allow_uids_at</code> &gt; 0, verify the user's UID meets the minimum threshold</li>
+<li><strong>PAM authentication:</strong> Finally, authenticate the user credentials against the specified PAM service</li>
+</ol>
+<p>All checks must pass for authentication to succeed.</p>
+<h3 id="basic-configuration-example_1">Basic configuration example<a class="headerlink" href="#basic-configuration-example_1" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">auth</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">internal</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pam</span>
+<span class="w">            </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">login</span>
+<span class="w">            </span><span class="nt">allow_users</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">admin</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">operator</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">viewer</span><span class="p p-Indicator">]</span>
+<span class="w">            </span><span class="nt">deny_users</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">guest</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">test</span><span class="p p-Indicator">]</span>
+<span class="w">            </span><span class="nt">allow_uids_at</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+</code></pre></div>
+<p>This configuration would:</p>
+<ul>
+<li>Use the standard "login" PAM service</li>
+<li>Only allow users named <code>admin</code>, <code>operator</code>, or <code>viewer</code></li>
+<li>Explicitly deny users named <code>guest</code> or <code>test</code></li>
+<li>Only allow users with UID ≥ 1000 (excluding most system accounts)</li>
+</ul>
+<h3 id="advanced-pam-configuration-examples">Advanced PAM configuration examples<a class="headerlink" href="#advanced-pam-configuration-examples" title="Permanent link">¶</a></h3>
+<ul>
+<li>Multiple PAM modules (stacking)</li>
+<li>Time-based restrictions (pam_time)</li>
+<li>Access control lists (pam_access)</li>
+<li>Account lockout policies</li>
+</ul>
+<hr>
+<h2 id="ldap-plugin-configuration">LDAP plugin configuration<a class="headerlink" href="#ldap-plugin-configuration" title="Permanent link">¶</a></h2>
+<p>The LDAP authentication plugin integrates with LDAP directories and Active Directory environments for centralized user management.</p>
+<p>The plugin authenticates users through LDAP bind operations and validates group membership to enforce authorization policies, so that only users in specified security groups can access the KVM interface.</p>
+<p>It supports both standard LDAP and secure LDAPS connections with configurable certificate verification, optional domain suffix auto-appending, and timeout settings.</p>
+<h3 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">¶</a></h3>
+<h4 id="url_1"><code>url</code><a class="headerlink" href="#url_1" title="Permanent link">¶</a></h4>
+<p>The LDAP server URL, should be in either <code>ldap://hostname:port</code> or the <code>ldaps://hostname:port</code> format.</p>
+<ul>
+<li><strong>Type:</strong> String (non-empty)</li>
+<li><strong>Default:</strong> <code>""</code> (empty string, must be configured)</li>
+<li><strong>Required:</strong> Yes</li>
+<li><strong>Examples:</strong></li>
+<li><code>ldap://dc.example.com:389</code> - Standard LDAP</li>
+<li><code>ldaps://dc.example.com:636</code> - LDAP over SSL/TLS</li>
+<li><strong>Note:</strong> When using <code>ldaps://</code>, the plugin automatically configures TLS options.</li>
+</ul>
+<h4 id="verify_1"><code>verify</code><a class="headerlink" href="#verify_1" title="Permanent link">¶</a></h4>
+<p>Controls SSL/TLS certificate verification when using LDAPS connections.</p>
+<ul>
+<li><strong>Type:</strong> Boolean</li>
+<li><strong>Default:</strong> <code>True</code></li>
+<li><strong>Behavior:</strong></li>
+<li><code>true</code>: Verifies the server's SSL/TLS certificate (recommended for production)</li>
+<li><code>false</code>: Disables certificate verification (useful for self-signed certificates or testing)</li>
+<li><strong>Note:</strong> Only applies when using <code>ldaps://</code> URLs.</li>
+</ul>
+<h4 id="base"><code>base</code><a class="headerlink" href="#base" title="Permanent link">¶</a></h4>
+<p>The LDAP base DN (Distinguished Name) where user searches will start. This defines the starting point in the directory tree for user lookups.</p>
+<ul>
+<li><strong>Type:</strong> String (non-empty)</li>
+<li><strong>Default:</strong> <code>""</code> (empty string, must be configured)</li>
+<li><strong>Required:</strong> Yes</li>
+<li><strong>Example:</strong> <code>DC=example,DC=com</code> or <code>OU=Users,DC=example,DC=com</code></li>
+</ul>
+<h4 id="group"><code>group</code><a class="headerlink" href="#group" title="Permanent link">¶</a></h4>
+<p>The full DN of the LDAP/Active Directory group that users must be members of to authenticate successfully. Only users who are members of this group will be granted access.</p>
+<ul>
+<li><strong>Type:</strong> String (non-empty)</li>
+<li><strong>Default:</strong> <code>""</code> (empty string, must be configured)</li>
+<li><strong>Required:</strong> Yes</li>
+<li><strong>Example:</strong> <code>CN=PiKVM-Users,OU=Groups,DC=example,DC=com</code></li>
+<li><strong>Note:</strong> The plugin checks for exact group membership using the <code>memberOf</code> attribute.</li>
+</ul>
+<h4 id="user_domain"><code>user_domain</code><a class="headerlink" href="#user_domain" title="Permanent link">¶</a></h4>
+<p>An optional domain suffix to append to usernames during authentication. When configured, the username will be transformed to <code>username@user_domain</code> format (User Principal Name format).</p>
+<ul>
+<li><strong>Type:</strong> String</li>
+<li><strong>Default:</strong> <code>""</code> (empty string)</li>
+<li><strong>Examples:</strong></li>
+<li>If set to <code>example.com</code> and user enters <code>john</code>, the plugin authenticates as <code>john@example.com</code></li>
+<li>If empty, the username is used as-is</li>
+<li><strong>Use Case:</strong> Simplifies login by allowing users to enter just their username instead of the full UPN.</li>
+</ul>
+<h4 id="timeout_1"><code>timeout</code><a class="headerlink" href="#timeout_1" title="Permanent link">¶</a></h4>
+<p>Timeout value for LDAP operations (bind and search). If the LDAP server doesn't respond within this time, the operation fails.</p>
+<ul>
+<li><strong>Type:</strong> Integer (≥ 1)</li>
+<li><strong>Default:</strong> <code>5</code></li>
+<li><strong>Unit:</strong> Seconds</li>
+<li><strong>Recommendation:</strong> Adjust based on network latency and LDAP server performance.</li>
+</ul>
+<h3 id="authentication-flow_2">Authentication flow<a class="headerlink" href="#authentication-flow_2" title="Permanent link">¶</a></h3>
+<p>The authentication process works as follows:</p>
+<ol>
+<li>
+<p><strong>Username transformation:</strong> If <code>user_domain</code> is configured, append it to the username (e.g., <code>user</code> &gt; <code>user@example.com</code>).</p>
+</li>
+<li>
+<p><strong>Connection initialization:</strong> Connect to the LDAP server specified in <code>url</code>.</p>
+</li>
+<li>
+<p><strong>TLS configuration:</strong> If using <code>ldaps://</code>, configure TLS settings based on the <code>verify</code> parameter.</p>
+</li>
+<li>
+<p><strong>Bind attempt:</strong> Attempt to bind (authenticate) to the LDAP server using the username and password.</p>
+</li>
+<li>
+<p><strong>Group membership search:</strong> Search for the user in the directory and verify they are a member of the specified <code>group</code>.</p>
+</li>
+<li>
+<p><strong>Authorization decision:</strong> Grant access only if:</p>
+<ul>
+<li>The bind (authentication) succeeds</li>
+<li>The user is found in the directory under the specified <code>base</code></li>
+<li>The user is a member of the specified <code>group</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="basic-configuration-example_2">Basic configuration example<a class="headerlink" href="#basic-configuration-example_2" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">auth</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">internal</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">type: ldap</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ldaps://dc.example.com:636</span>
+<span class="w">                </span><span class="nt">verify</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">                </span><span class="nt">base</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DC=example,DC=com</span>
+<span class="w">                </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CN=PiKVM-Admins,OU=Security Groups,DC=example,DC=com</span>
+<span class="w">                </span><span class="nt">user_domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
+<span class="w">                </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+</code></pre></div>
+<h3 id="configuration-with-a-self-signed-certificate">Configuration with a self-signed certificate<a class="headerlink" href="#configuration-with-a-self-signed-certificate" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">auth</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">internal</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">type: ldap</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ldaps://dc.internal.local:636</span>
+<span class="w">            </span><span class="nt">verify</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">            </span><span class="nt">base</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OU=Users,DC=internal,DC=local</span>
+<span class="w">            </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CN=KVM-Users,OU=Groups,DC=internal,DC=local</span>
+<span class="w">            </span><span class="nt">user_domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">internal.local</span>
+<span class="w">            </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+</code></pre></div>
+<h3 id="configuration-for-standard-ldap-non-ssl">Configuration for standard LDAP (non-SSL)<a class="headerlink" href="#configuration-for-standard-ldap-non-ssl" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">auth</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">internal</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ldap</span>
+<span class="w">            </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ldap://ldap.example.com:389</span>
+<span class="w">            </span><span class="nt">verify</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">            </span><span class="nt">base</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DC=example,DC=com</span>
+<span class="w">            </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CN=RemoteAccess,DC=example,DC=com</span>
+<span class="w">            </span><span class="nt">user_domain</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">            </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+</code></pre></div>
+<hr>
+<h2 id="radius-plugin-configuration">RADIUS plugin configuration<a class="headerlink" href="#radius-plugin-configuration" title="Permanent link">¶</a></h2>
+<p>This plugin enables authentication against RADIUS (Remote Authentication Dial-In User Service) servers. Supported features:</p>
+<ul>
+<li>Standard RADIUS Access-Request/Access-Accept protocol over UDP.</li>
+<li>Password encryption using the RADIUS shared secret mechanism.</li>
+<li>Supports any RFC 2865-compliant server (FreeRADIUS, Microsoft NPS, Cisco ISE).</li>
+</ul>
+<h3 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">¶</a></h3>
+<h4 id="host"><code>host</code><a class="headerlink" href="#host" title="Permanent link">¶</a></h4>
+<p>The hostname or IP address of the RADIUS authentication server.</p>
+<ul>
+<li><strong>Type:</strong> String (IP address or hostname)</li>
+<li><strong>Default:</strong> <code>"localhost"</code></li>
+<li><strong>Examples:</strong><ul>
+<li><code>192.168.1.100</code> - IP address</li>
+<li><code>radius.example.com</code> - Hostname</li>
+<li><code>localhost</code> - Local RADIUS server</li>
+</ul>
+</li>
+</ul>
+<h4 id="port"><code>port</code><a class="headerlink" href="#port" title="Permanent link">¶</a></h4>
+<p>The UDP port number on which the RADIUS server is listening for authentication requests.</p>
+<ul>
+<li><strong>Type:</strong> Integer (valid port number: 1-65535)</li>
+<li><strong>Default:</strong> <code>1812</code></li>
+<li><strong>Standard ports:</strong><ul>
+<li><code>1812</code> - Standard RADIUS authentication port (recommended, RFC 2865)</li>
+<li><code>1645</code> - Legacy RADIUS authentication port (deprecated but sometimes still used)</li>
+</ul>
+</li>
+</ul>
+<h4 id="secret_1"><code>secret</code><a class="headerlink" href="#secret_1" title="Permanent link">¶</a></h4>
+<p>The shared secret (password) used to encrypt communication between the PiKVM client and the RADIUS server. This must match the shared secret configured on the RADIUS server for this client.</p>
+<ul>
+<li><strong>Type:</strong> String</li>
+<li><strong>Default:</strong> <code>""</code> (empty string, must be configured)</li>
+<li><strong>Required:</strong> Yes</li>
+<li><strong>Security:</strong> <ul>
+<li>This value should be kept confidential and stored securely</li>
+<li>Use a strong, random secret</li>
+<li>The secret is used for encrypting user passwords in transit and authenticating packets</li>
+</ul>
+</li>
+<li><strong>Note:</strong> The secret is encoded as ASCII before use.</li>
+</ul>
+<h4 id="timeout_2"><code>timeout</code><a class="headerlink" href="#timeout_2" title="Permanent link">¶</a></h4>
+<p>The timeout value for RADIUS authentication requests. If the RADIUS server doesn't respond within this time, the authentication attempt fails.</p>
+<ul>
+<li><strong>Type:</strong> Integer (≥ 1)</li>
+<li><strong>Default:</strong> <code>5</code></li>
+<li><strong>Unit:</strong> Seconds</li>
+<li><strong>Considerations:</strong><ul>
+<li>Network latency between PiKVM and RADIUS server</li>
+<li>RADIUS server load and response time</li>
+<li>Consider increasing for servers on slow or distant networks</li>
+</ul>
+</li>
+</ul>
+<h3 id="authentication-flow_3">Authentication flow<a class="headerlink" href="#authentication-flow_3" title="Permanent link">¶</a></h3>
+<p>The authentication process works as follows:</p>
+<ol>
+<li>
+<p><strong>Dictionary loading:</strong> Load the RADIUS attribute dictionary (embedded FreeRADIUS dictionary format)</p>
+</li>
+<li>
+<p><strong>Client creation:</strong> Create a RADIUS client configured with:</p>
+<ul>
+<li>Server hostname/IP</li>
+<li>Authentication port</li>
+<li>Shared secret (encrypted)</li>
+<li>Timeout value</li>
+</ul>
+</li>
+<li>
+<p><strong>Packet creation:</strong> Create a RADIUS Access-Request packet containing:</p>
+<ul>
+<li>Username (<code>User-Name</code> attribute)</li>
+<li>Encrypted password (<code>User-Password</code> attribute, encrypted using the shared secret)</li>
+</ul>
+</li>
+<li>
+<p><strong>Request transmission:</strong> Send the authentication packet to the RADIUS server via UDP</p>
+</li>
+<li>
+<p><strong>Response processing:</strong> Wait for response (up to timeout period)</p>
+</li>
+<li>
+<p><strong>Authorization decision:</strong> Grant access if:</p>
+<ul>
+<li>A response is received within the timeout</li>
+<li>The response code is <code>AccessAccept</code> (code 2)</li>
+</ul>
+</li>
+</ol>
+<h3 id="basic-configuration-example_3">Basic Configuration Example<a class="headerlink" href="#basic-configuration-example_3" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">auth</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">radius</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">radius.example.com</span>
+<span class="w">            </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1812</span>
+<span class="w">            </span><span class="nt">secret</span><span class="p">:</span><span class="w"> </span><span class="s">"MySharedSecret123"</span>
+<span class="w">            </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+</code></pre></div>
+<h2 id="unix-socket-credentials-configuration">Unix Socket Credentials configuration<a class="headerlink" href="#unix-socket-credentials-configuration" title="Permanent link">¶</a></h2>
+<p>USC is a built-in mehanism that is primarily used for authorizing local PiKVM microservices, such as <a href="../vnc/">VNC</a> и <a href="../ipmi/">IPMI</a>. You can use this method to execute scripts that use the local <a href="../api/">KVMD API</a>. </p>
+<p>For example, the following command will authenticate a script with a unix socket and return PiKVM status:</p>
+<div class="highlight"><pre><span></span><code>[root@pikvm ~]# sudo -u monitoring curl --unix-socket /run/kvmd/kvmd.sock http://localhost/info
+</code></pre></div>
+<p>Note that there is no <code>api</code> prefix used when accessing the API. The prefix is added by KVMD-Nginx when exposing the socket on ports 80 and 443.</p>
+<p>For scheduling the execution, you can use either <a href="https://wiki.archlinux.org/title/Systemd/Timers">systemd-timers</a> (available by default and recommended) or cron (not installed by default).</p>
+<p>Here are some best practices:</p>
+<ul>
+<li>Never add system users (start with <code>kvmd-*</code>) to any of the lists below, unless you are 100% sure you know what you are doing.</li>
+<li>Adding the <code>root</code> user to the <code>users</code> list is a really bad idea. We srongly recommed against doing that.</li>
+<li><code>kvmd-webterm</code> is the only KVMD user we can recommend adding to the <code>users</code> list. Once you've done it, you can use <code>/run/kvmd/kvmd.sock</code> from the web terminal without authentication.</li>
+<li>It's best to create a per-script user, add it to the <code>users</code> list, and then schedule the script execution.</li>
+</ul>
+<h3 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">¶</a></h3>
+<h4 id="users"><code>users</code><a class="headerlink" href="#users" title="Permanent link">¶</a></h4>
+<p>List of Unix usernames that are allowed to authenticate via Unix Socket Credentials. Any user in this list can connect to KVMD's Unix socket and be automatically authenticated.</p>
+<ul>
+<li><strong>Type:</strong> List of strings</li>
+<li><strong>Default:</strong> <code>[]</code> (empty list)</li>
+</ul>
+<h4 id="groups"><code>groups</code><a class="headerlink" href="#groups" title="Permanent link">¶</a></h4>
+<p>List of Unix group names whose members are allowed to authenticate via Unix Socket Credentials. Any user who is a member of one of these groups can connect to KVMD's Unix socket and be automatically authenticated.</p>
+<ul>
+<li><strong>Type:</strong> List of strings</li>
+<li><strong>Default:</strong> <code>[]</code> (empty list)</li>
+</ul>
+<h4 id="kvmd_users-and-kvmd_groups"><code>kvmd_users</code> and <code>kvmd_groups</code><a class="headerlink" href="#kvmd_users-and-kvmd_groups" title="Permanent link">¶</a></h4>
+<p>These two lists are reserved for system users and groups. They should <strong>never</strong> be customized. </p>
+<h3 id="authentication-flow_4">Authentication flow<a class="headerlink" href="#authentication-flow_4" title="Permanent link">¶</a></h3>
+<p>When a client connects to KVMD through its Unix socket (<code>/run/kvmd/kvmd.sock</code>), the following authentication process occurs:</p>
+<ol>
+<li>
+<p><strong>Connection establishment.</strong> The client process opens a connection to the Unix socket: <code>/run/kvmd/kvmd.sock</code></p>
+</li>
+<li>
+<p><strong>Kernel credential passing</strong>. The Linux kernel automatically attaches the connecting process's credentials to the socket connection:</p>
+<ul>
+<li>UID (User ID) - The numeric user ID of the process</li>
+<li>GID (Group ID) - The primary group ID of the process</li>
+<li>Supplementary groups - Additional groups the user belongs to</li>
+</ul>
+<p>This happens transparently at the kernel level using the <code>SO_PEERCRED</code> socket option.</p>
+</li>
+<li>
+<p><strong>Credential retrieval</strong>.. KVMD receives the connection and extracts the peer credentials from the socket. It obtains:</p>
+<ul>
+<li>The username (resolved from UID)</li>
+<li>The primary group name (resolved from GID)</li>
+<li>All supplementary group names the user is a member of
+.</li>
+</ul>
+</li>
+<li>
+<p><strong>Authorization check</strong>. KVMD compares the credentials against the user whitelist and the group whitelist. If the connecting user is a member of ANY group in the groups list (primary or supplementary), authentication succeeds.</p>
+</li>
+<li>
+<p><strong>Access decision</strong>.</p>
+<ul>
+<li><strong>Success</strong>: If either the user check or group check passes, the connection is authenticated and the client gains full API access.</li>
+<li><strong>Failure</strong>: If neither check passes, the connection is rejected and must use standard HTTP authentication instead.</li>
+</ul>
+</li>
+</ol>
+<h3 id="basic-configuration-example_4">Basic configuration example<a class="headerlink" href="#basic-configuration-example_4" title="Permanent link">¶</a></h3>
+<p>In the following example, processes run from users <code>monitoring</code> and <code>backup-service</code> are allowed to authenticate:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">auth</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">usc</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">users</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"monitoring"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"backup-service"</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>Both users should exist prior to listing them in configuration. You can use <code>useradd</code> to create these users.</p></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2018-2025 Maxim Devaev
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "navigation.expand", "search.highlight", "search.share", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../_assets/add_paragraphs.js"></script>
+      
+        <script src="../_assets/scroll_to_summary.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": false, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
