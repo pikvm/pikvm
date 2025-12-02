@@ -38,6 +38,16 @@ the 2FA token.
     7. These are links to the PiKVM project, current documentation and support
     8. **NOT SHOWN**, in the lower left of the KVM screen is some information that when you mouse over, will let you know what they are for
 
+## Web UI Stream window
+<img src="kvm window.jpg" />
+    1. Video mode
+    2. Resolution/bitrate/FPS
+    3. View modifiers, from left to right
+        * Fullscreen
+        * Stretch to fill tab (micro fullscreen, hides the menu in a side button)
+        * Fit stream to client resolution (within constraints of the canvas, will shrink if window is smaller than client resolution)
+        * Maximize within window (keeping PiKVM UI Toolbar)
+        * Close stream (saves bandwidth)
 ## Web UI toolbar
 
 <img src="Toolbar.jpg" />
