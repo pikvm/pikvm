@@ -135,6 +135,13 @@ because of the lack of available USB host ports.
 All the functions of the Switch are available through the menu, which you will see in the PiKVM interface.
 The attached example uses two Switches, and switching between their ports works transparently.
 
+!!! info
+
+    You can connect your keyboard and mouse directly to PiKVM V3 or V4 Plus, then PiKVM will transmit
+    all input events to the selected port. You can also switch ports using hotkeys.
+
+    [USB Keyboard/Mouse passthrough](usb_pass.md)
+
 <img src="ui_menu.png" width=500 />
 
 * The menu title shows the current active port (**1.4**) in **unit.port** format,
