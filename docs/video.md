@@ -53,14 +53,14 @@ with the WebRTC mode, please [check this guide](webrtc_config.md).
 
     * ✅ Supported by all modern browsers.
 
+    * ✅ Lowest latency, [fast as hell](latency.md) with `H.264 gop = 0`.
+
     * ✅ Provides [two-way audio](audio.md) on PikVM [V3](v3.md) and [V4 Plus/Mini](v4.md).
 
     * ❌ The video may be lost due to a poor connection (like mobile internet, bad Wi-Fi, etc.),
         or because of the router settings, when WebRTC is given low priority.
 
     * ❌ It may be blocked at all in some networks.
-
-    * ❌ Sometimes the latency may increase slightly due to the peculiarities of WebRTC processing in all browsers.
 
 
 -----
