@@ -53,43 +53,43 @@ Let's go through the stages.
 
 ### 1. Host
 
-A remote host generates a video signal, which is usually sent to the monitor. PiKVM pretends to be a real monitor and sets a specific resolution and display refresh rate (or frequency) measured in Hz for the operating system to use.
+An image on the remote host is generated in video memory. We don't take into account the time it takes for the OS to generate the image, because it is the same for PiKVM and the physical monitor, and we cannot influence this. Besides, it is negligible.
 
-A display refresh rate of 60Hz means that 60 frames per second are sent over the HDMI cable. So it takes `1s / 60 = 0.017s` or 17ms from the beginning to the end of frame. For 24-bit RGB 1920x1080px video, this means that the HDMI cable should able to transmit approx 6MB of video data every 17ms.
+After that, the host generates a video signal, which is usually sent to the monitor. PiKVM pretends to be a real monitor and provides a set of supported resolutions and display refresh rates (frequencies) measured in Hz for the operating system to use. The OS selects the most appropriate mode to produce a signal.
 
-We do not account for the video signal generation in the total measurements because PiKVM is not part of this yet. But it's useful to have the full picture.
-
-### 2. HDMI cable
+#### 2. HDMI cable
 
 The HDMI cable transmits the data at the frequency set by the operating system. Since it's not part of the PiKVM signal path, we do not account for it either. Even if we did, a 1-meter cable adds approx. 5–10 nanoseconds of delay. That's a negligible amount of latency.
 
-### 3. PiKVM
+#### 3. PiKVM
 
 Inside PiKVM, the latency accumulates in three stages: capturing, encoding, and queuing. The data transfer between them takes negligible time due to the use of DMA or a small amount of already compressed video data.
 
-### 3.1 Capturing
+#### 3.1 Capturing
 
 This is where we start measuring latency.
 
+A display refresh rate of 60Hz means that 60 frames per second are sent over the HDMI cable. So it takes `1s / 60 = 0.017s` or 17ms from the beginning to the end of frame. For 24-bit RGB 1920x1080px video, this means that the HDMI cable should able to transmit approx 6MB of video data every 17ms.
+
 Video capture on PiKVM is always the same as the host's frequency. However, it isn't possible to start processing the frame until it is fully received. [PiKVM V4](v4.md) can capture the signal at 60Hz, but [V3](v3.md) and DIY devices can handle only 50Hz. Thus:
 
-- PiKVM v4: `1s / 60 = 17ms`
-- PiKVM V3/DIY: `1s / 60 = 20ms`
+- PiKVM V4: `1s / 60 = 17ms`
+- PiKVM V3/DIY: `1s / 50 = 20ms`
 
 In other words, the higher the frequency, the shorter the frame transmission time and the less the latency.
 
 So, this is the first source of the latency: **17ms for 1080p 60Hz video**.
 
-### 3.2. Encoding
+#### 3.2. Encoding
 
 PiKVM sends the captured frame to the hardware H.264 encoder. There is no special magic happening here. Encoding can happen with or without boost:
 
 - With boost: 13ms to encode 60 frames per second for 1080p.
-- Without boost: 20ms to encode 30 frames per second for 1080p, every secodn frame is skipped.
+- Without boost: 20ms to encode 30 frames per second for 1080p, every second frame is skipped.
 
 Thus, with boost we can add another **13ms of encoding** to the total latency. That's 30ms total at this stage.
 
-### 3.3. Queuing
+#### 3.3. Queuing
 
 The encoded frames are transmitted to the WebRTC server, split into RTP video packets along with meta information and suggestions about browser settings and sent over the network as soon as possible.
 
