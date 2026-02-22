@@ -16,7 +16,7 @@ Latency defines how responsive a KVM-over-IP device *feels* to users:
 
 !!! tip "Our latency measurements"
 
-    PiKVM has **33-40 milliseconds of total latency**, from capture to displaying, with the following conditions:
+    PiKVM has **30-50 milliseconds of total latency**, from capture to displaying, with the following conditions:
 
     * [PiKVM V4](v4.md) device
     * Resolution: 1920x1080 at 60Hz
@@ -53,25 +53,23 @@ Let's go through the stages.
 
 ### 1. Host
 
-An image on the remote host is generated in video memory. We don't take into account the time it takes for the OS to generate the image, because it is the same for PiKVM and the physical monitor, and we cannot influence this. Besides, it is negligible.
+The host generates an image in the video memory to send it to a physical monitor. This time is very negligible. Next, the host takes this image and converts it into a video signal, which is usually sent to the monitor. PiKVM pretends to be a real monitor and provides a set of supported display resolutions and refresh rates (frequencies) measured in Hz for the host to use. The host selects the most appropriate mode to produce a signal to HDMI cable.
 
-After that, the host generates a video signal, which is usually sent to the monitor. PiKVM pretends to be a real monitor and provides a set of supported resolutions and display refresh rates (frequencies) measured in Hz for the operating system to use. The OS selects the most appropriate mode to produce a signal.
+### 2. HDMI cable
 
-#### 2. HDMI cable
+The HDMI cable transmits the data at the frequency set by the operating system. Since it's not part of the PiKVM signal path, we do not account for it either. Even if we did, a 1-meter cable adds approx. 5–10 nanoseconds of delay. That's also a negligible amount of latency.
 
-The HDMI cable transmits the data at the frequency set by the operating system. Since it's not part of the PiKVM signal path, we do not account for it either. Even if we did, a 1-meter cable adds approx. 5–10 nanoseconds of delay. That's a negligible amount of latency.
+### 3. PiKVM
 
-#### 3. PiKVM
+Inside PiKVM, the latency accumulates in three stages: capturing, encoding, and queuing. The data transfer between them takes almost zero time due to the use of DMA or a small amount of already compressed video data.
 
-Inside PiKVM, the latency accumulates in three stages: capturing, encoding, and queuing. The data transfer between them takes negligible time due to the use of DMA or a small amount of already compressed video data.
-
-#### 3.1 Capturing
+### 3.1 Capturing
 
 This is where we start measuring latency.
 
 A display refresh rate of 60Hz means that 60 frames per second are sent over the HDMI cable. So it takes `1s / 60 = 0.017s` or 17ms from the beginning to the end of frame. For 24-bit RGB 1920x1080px video, this means that the HDMI cable should able to transmit approx 6MB of video data every 17ms.
 
-Video capture on PiKVM is always the same as the host's frequency. However, it isn't possible to start processing the frame until it is fully received. [PiKVM V4](v4.md) can capture the signal at 60Hz, but [V3](v3.md) and DIY devices can handle only 50Hz. Thus:
+Video capture on PiKVM is always the same as the host's frequency. However, it isn't possible to start processing the frame until it is fully received. [PiKVM V4](v4.md) can capture the 1080p signal at 60Hz, but [V3](v3.md) and DIY devices can handle only 50Hz. Thus:
 
 - PiKVM V4: `1s / 60 = 17ms`
 - PiKVM V3/DIY: `1s / 50 = 20ms`
@@ -80,7 +78,7 @@ In other words, the higher the frequency, the shorter the frame transmission tim
 
 So, this is the first source of the latency: **17ms for 1080p 60Hz video**.
 
-#### 3.2. Encoding
+### 3.2. Encoding
 
 PiKVM sends the captured frame to the hardware H.264 encoder. There is no special magic happening here. Encoding can happen with or without boost:
 
@@ -89,11 +87,11 @@ PiKVM sends the captured frame to the hardware H.264 encoder. There is no specia
 
 Thus, with boost we can add another **13ms of encoding** to the total latency. That's 30ms total at this stage.
 
-#### 3.3. Queuing
+### 3.3. Queuing
 
 The encoded frames are transmitted to the WebRTC server, split into RTP video packets along with meta information and suggestions about browser settings and sent over the network as soon as possible.
 
-Own latency at this stage is **less than 1ms**, so still approx. 30ms total so far.
+Own latency at this stage is **less than 1ms**, so still approximately 30ms total so far.
 
 ### 4. Network
 
@@ -102,7 +100,7 @@ so it all depends on the quality of the connection, geography, distance between 
 
 The encoding parameters that we use by default are optimal for "just a regular Internet connection". If you reduce the bit rate, you can gain some bandwidth and latency.
 
-A local network adds **less than 1ms latency here**. We are still in the 30ms territory here.
+A local network adds **less than 1ms latency**. We are still in the 30ms territory here.
 
 ### 5. Browser
 
@@ -114,4 +112,30 @@ To achieve minimal delays, PiKVM uses some special RTP settings here to reduce b
 
 Additionally, the physical rendering time of the frame that goes from the graphics card to the display works exactly the same as an HDMI cable to PiKVM (even if you use a laptop for browsing). The higher the refresh rate of your monitor, the lower the latency.
 
-We can assume that an **average of 10ms is added here** for decoding and other things.
+We can assume that an **average of 10-20ms is added here** for decoding and other things, depending on the client's display frequency.
+
+
+## Measurement the latency
+
+There is a simple way using a browser that allows to estimate the latency without taking into account the rendering time in the browser, and a more complex way using special equipment to accurately measure the latency.
+
+### Browser-based method
+
+This method does not take into account the time it takes for the browser and the client computer to display the image received from the host. It takes into account everything that happens on PiKVM, the network and buffering and decoding in the browser.
+
+Please note that outside the local network, measurement readings using this method may be false due to diverging clocks, even when using chrony.
+
+To use this method, it is necessary that the clocks on PiKVM and the client computer with the browser are very precisely synchronized via NTP. To do this, we recommend using [chrony](https://chrony-project.org/). In case of Arch Linux on the client, you can easily install it (and do the same on PiKVM):
+
+```console
+# pacman -Syy
+# pacman -S chrony
+# systemctl stop systemd-networkd
+# systemctl start chrony
+```
+
+Next, follow to PiKVM Web UI with Chrome or Chromium (other browsers can't handle RTP timings) and add a URL paramether `show_webrtc_latency=1` (like this: `https://pikvm/kvmd/?show_webrtc_latency=1`). Switch the video mode to WebRTC in the system menu if necessary. After establishing and stabilizing the connection, you will see the calculated delay in the stream window:
+
+![Measured WebRTC Latency](latency/webrtc_latency.png){ width="250" }
+
+As already mentioned, the measured value does not include the rendering and display time on the physical display with the browser. For 60Hz it will be +17ms, for 144Hz it will be +6ms. In both cases, you get a latency **around or less than 50ms**.
