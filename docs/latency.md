@@ -136,6 +136,6 @@ To use this method, it is necessary that the clocks on PiKVM and the client comp
 
 Next, follow to PiKVM Web UI with Chrome or Chromium (other browsers can't handle RTP timings) and add a URL paramether `show_webrtc_latency=1` (like this: `https://pikvm/kvmd/?show_webrtc_latency=1`). Switch the video mode to WebRTC in the system menu if necessary. After establishing and stabilizing the connection, you will see the calculated delay in the stream window:
 
-![Measured WebRTC Latency](latency/webrtc_latency.png){ width="250" }
+![Measured WebRTC Latency](latency/webrtc_latency.webp)
 
 As already mentioned, the measured value does not include the rendering and display time on the physical display with the browser. For 60Hz it will be +17ms, for 144Hz it will be +6ms. In both cases, you get a latency **around or less than 50ms**.
