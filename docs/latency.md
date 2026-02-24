@@ -89,16 +89,16 @@ Thus, with boost we can add another **13ms of encoding** to the total latency. T
 
 ### 3.3. Queuing
 
-The encoded frames are transmitted to the WebRTC server, split into RTP video packets along with meta information and suggestions about browser settings and sent over the network as soon as possible.
+The encoded frames are transmitted to the WebRTC server, split into RTP video packets along with meta information and suggestions about browser settings, and sent over the network as soon as possible.
 
 Own latency at this stage is **less than 1ms**, so still approximately 30ms total so far.
 
 ### 4. Network
 
 The general rule of thumb here is that the smaller the frame size is, the faster it will be transmitted over the network. The size of each regular frame in PiKVM is only a few kilobytes,
-so it all depends on the quality of the connection, geography, distance between PiKVM and you. We cannot influence any of these things.
+so it all depends on the quality of the connection, geography, and the distance between the PiKVM and you. We cannot influence any of these things.
 
-The encoding parameters that we use by default are optimal for "just a regular Internet connection". If you reduce the bit rate, you can gain some bandwidth and latency.
+The encoding parameters that we use by default are optimal for a regular Internet connection. If you reduce the bit rate, you can gain some bandwidth and latency.
 
 A local network adds **less than 1ms latency**. We are still in the 30ms territory here.
 
@@ -106,24 +106,25 @@ A local network adds **less than 1ms latency**. We are still in the 30ms territo
 
 The browser assembles the WebRTC RTP stream, buffers it, and then renders the image. All modern browsers use Google's WebRTC stack, and it works almost equally fast. What makes the differences is which H.264 decoders the browser uses (hardware or software), which RTP extensions are implemented, and so on.
 
-In our experience, Chrome or Chromium works best, followed by Safari and Firefox. Brave and other browsers don't always handle real-time streaming, despite the fact that they also could the Blink or WebKit engine.
+In our experience, Chrome or Chromium works best, followed by Safari and Firefox. Brave and other browsers don't always handle real-time streaming, despite the fact that they also could use the Blink or WebKit engine.
 
 To achieve minimal delays, PiKVM uses some special RTP settings here to reduce buffering time to almost zero. However, the browser internals and rendering still add some latency.
 
 Additionally, the physical rendering time of the frame that goes from the graphics card to the display works exactly the same as an HDMI cable to PiKVM (even if you use a laptop for browsing). The higher the refresh rate of your monitor, the lower the latency.
 
-We can assume that an **average of 10-20ms is added here** for decoding and other things, depending on the client's display frequency.
-
+We can assume that **an average of 10-20ms is added here** for decoding and other things, depending on the client's display frequency.
 
 -----
 ## Measuring the latency
 
-There is a simple way using a browser that allows to estimate the latency without taking into account the rendering time in the browser, and a more complex way using special equipment to accurately measure the latency.
+There are two ways to measure latency:
 
+1. A simple way using a browser. Gets you a realistic, but not 100% reliable estimation. Doesn't take the rendering time in the browser into account.
+2. A more complex way using special equipment. Gets you accurate measurements.
 
 ### Browser-based method
 
-This method does not take into account the time it takes for the browser and the client computer to display the image received from the host. It takes into account everything that happens on PiKVM, the network and buffering and decoding in the browser.
+This method does not take into account the time it takes for the browser and the client computer to display the image received from the host. It takes into account everything that happens on PiKVM, the network, and buffering and decoding in the browser.
 
 Please note that outside the local network, measurement readings using this method may be false due to diverging clocks, even when using chrony.
 
@@ -136,14 +137,13 @@ To use this method, it is necessary that the clocks on PiKVM and the client comp
 # systemctl start chrony
 ```
 
-Next, follow to PiKVM Web UI with Chrome or Chromium (other browsers can't handle RTP timings) and add a URL paramether `show_webrtc_latency=1` (like this: `https://pikvm/kvmd/?show_webrtc_latency=1`). Switch the video mode to WebRTC in the system menu if necessary. After establishing and stabilizing the connection, you will see the calculated delay in the stream window:
+Next, follow to PiKVM web UI with Chrome or Chromium (other browsers can't handle RTP timings) and add the `show_webrtc_latency=1` URL parameter like this: `https://pikvm/kvmd/?show_webrtc_latency=1`. Switch the video mode to WebRTC in the system menu if necessary. After establishing and stabilizing the connection, you will see the calculated delay in the stream window:
 
 ![Measured WebRTC Latency](latency/webrtc_latency.webp)
 
-As already mentioned, the measured value does not include the rendering and display time on the physical display with the browser. For 60Hz it will be +17ms, for 144Hz it will be +6ms. In both cases, you get a latency **around or less than 50ms**.
+As already mentioned, the measured value does not include the rendering and display time on the physical display with the browser. For 60Hz, it will be +17ms, for 144Hz it will be +6ms. In both cases, you get a latency **around or less than 50ms**.
 
-
-### Local Screen-to-Screen metod
+### Local screen-to-screen method
 
 ```
 +------= Host =-----+           +--= PiKVM =--+           +-----= Monitor =-----+
@@ -159,4 +159,6 @@ As already mentioned, the measured value does not include the rendering and disp
 +-------------------+           +-------------+           +---------------------+
 ```
 
-To measure Screen-to-Screen latency best possible way is to do screenshot when both base time source and PiKVM preview of the same base time source are on the same screen. After it's easy to get timestamps from screenshot and sabstruct one from another to get real latency. As base time source it's required to use some application able to show time with milliseconds, on Linux it can be "Stopwatch" application from Don Libes.
+The best possible way to measure screen-to-screen latency is run a stopwatch that displays millisecond and take a screenshot of the base time source and the PiKVM preview of the same time source on one screen. The difference in captured time readings will be your latency.
+
+For a stopwatch on Linux, you can use the Stopwatch application by Don Libes (NIST).
