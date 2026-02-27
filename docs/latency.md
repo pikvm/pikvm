@@ -134,7 +134,7 @@ To use this method, it is necessary that the clocks on PiKVM and the client comp
 # pacman -Syy
 # pacman -S chrony
 # systemctl stop systemd-timesyncd
-# systemctl start chrony
+# systemctl start chronyd
 ```
 
 Next, follow to PiKVM web UI with Chrome or Chromium (other browsers can't handle RTP timings) and add the `show_webrtc_latency=1` URL parameter like this: `https://pikvm/kvmd/?show_webrtc_latency=1`. Switch the video mode to WebRTC in the system menu if necessary. After establishing and stabilizing the connection, you will see the calculated delay in the stream window:
