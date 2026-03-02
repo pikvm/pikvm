@@ -16,14 +16,14 @@ Latency defines how responsive a KVM-over-IP device *feels* to users:
 
 !!! tip "Our latency measurements"
 
-    PiKVM has **30-50 milliseconds of total latency**, from capture to displaying, with the following conditions:
+    PiKVM has **around 35-50 milliseconds of total latency**, from capture to displaying, with the following conditions:
 
     * [PiKVM V4](v4.md) device
     * Resolution: 1920x1080 at 60Hz
     * WebRTC H.264 video mode (default)
     * H.264 kbps = 5000 (default)
-    * [H.264 gop = 0](video.md) (default)
-    * H.264 boost enabled
+    * H.264 gop = 0 (default)
+    * [H.264 boost enabled](video.md#boost-pikvm-v4-to-60fps-h264)
     * Access via a local network or good internet connection
 
     Currently, **PiKVM offers a proven lowest end-to-end latency** among all other KVM-over-IP devices available on the market.
@@ -124,17 +124,19 @@ There are two ways to measure latency:
 
 ### Browser-based method
 
-This method does not take into account the time it takes for the browser and the client computer to display the image received from the host. It takes into account everything that happens on PiKVM, the network, and buffering and decoding in the browser.
-
-Please note that outside the local network, measurement readings using this method may be false due to diverging clocks, even when using chrony.
+The measurements performed using this method covers a full video processing chain starting from PiKVM capture and finishing in the browser, except the rendering on display. The starting point is the moment when the first byte of the HDMI frame enters the PiKVM video capture chip. This timestamp is saved, and then transmitted via WebRTC to the browser using the RTP extension [abs-capture-time](http://www.webrtc.org/experiments/rtp-hdrext/abs-capture-time). Every second, the browser extracts the time from the last received frame and outputs the difference between the current time and the timestamp of the start of frame capture in the Web UI.
 
 To use this method, it is necessary that the clocks on PiKVM and the client computer with the browser are very precisely synchronized via NTP. To do this, we recommend using [chrony](https://chrony-project.org/). In case of Arch Linux on the client, you can easily install it (and do the same on PiKVM):
 
+Please note that outside the local network, measurement readings using this method may be false due to diverging clocks, even when using chrony.
+
+{!_update_os.md!}
+
 ```console
-# pacman -Syy
-# pacman -S chrony
-# systemctl stop systemd-timesyncd
-# systemctl start chronyd
+[root@pikvm ~]# pacman -Syy
+[root@pikvm ~]# pacman -S chrony
+[root@pikvm ~]# systemctl stop systemd-timesyncd
+[root@pikvm ~]# systemctl start chronyd
 ```
 
 Next, follow to PiKVM web UI with Chrome or Chromium (other browsers can't handle RTP timings) and add the `show_webrtc_latency=1` URL parameter like this: `https://pikvm/kvmd/?show_webrtc_latency=1`. Switch the video mode to WebRTC in the system menu if necessary. After establishing and stabilizing the connection, you will see the calculated delay in the stream window:
