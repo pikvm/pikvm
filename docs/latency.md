@@ -124,22 +124,39 @@ There are two ways to measure latency:
 
 ### Browser-based method
 
-The measurements performed using this method covers a full video processing chain starting from PiKVM capture and finishing in the browser, except the rendering on display. The starting point is the moment when the first byte of the HDMI frame enters the PiKVM video capture chip. This timestamp is saved, and then transmitted via WebRTC to the browser using the RTP extension [abs-capture-time](http://www.webrtc.org/experiments/rtp-hdrext/abs-capture-time). Every second, the browser extracts the time from the last received frame and outputs the difference between the current time and the timestamp of the start of frame capture in the Web UI.
+The measurements performed using this method covers a full video processing chain starting from PiKVM capture and finishing in the browser, except the rendering on display. The starting point is the moment when the first byte of the HDMI frame enters the PiKVM video capture chip. This timestamp is saved, and then transmitted via WebRTC to the browser using the RTP extension [abs-capture-time](http://www.webrtc.org/experiments/rtp-hdrext/abs-capture-time). The browser extracts the time from the last received frame every second and outputs to the Web UI the difference between the current time and the timestamp.
 
-To use this method, it is necessary that the clocks on PiKVM and the client computer with the browser are very precisely synchronized via NTP. To do this, we recommend using [chrony](https://chrony-project.org/). In case of Arch Linux on the client, you can easily install it (and do the same on PiKVM):
+When using this method, the clocks on the client computer with the browser and on the PiKVM must be precisely synchronized via NTP. Also we recommend to perform measurement in the local network, because when measured over the internet, the clock may be inaccurate due to divergence even with NTP.
 
-Please note that outside the local network, measurement readings using this method may be false due to diverging clocks, even when using chrony.
+Measurements are only possible in Chromium or Chrome because they have support for the required [abs-capture-time](http://www.webrtc.org/experiments/rtp-hdrext/abs-capture-time) extension.
 
-{!_update_os.md!}
+If you use Linux, you can install [chrony](https://chrony-project.org/) for very accurate NTP synchronization. In our case, we used Chromium on Arch Linux, and the preparations were as follows:
 
 ```console
-[root@pikvm ~]# pacman -Syy
-[root@pikvm ~]# pacman -S chrony
-[root@pikvm ~]# systemctl stop systemd-timesyncd
-[root@pikvm ~]# systemctl start chronyd
+[root@localhost ~]# pacman -Syy
+[root@localhost ~]# pacman -S chrony
+[root@localhost ~]# systemctl stop systemd-timesyncd
+[root@localhost ~]# systemctl start chronyd
 ```
 
-Next, follow to PiKVM web UI with Chrome or Chromium (other browsers can't handle RTP timings) and add the `show_webrtc_latency=1` URL parameter like this: `https://pikvm/kvmd/?show_webrtc_latency=1`. Switch the video mode to WebRTC in the system menu if necessary. After establishing and stabilizing the connection, you will see the calculated delay in the stream window:
+Similar on PiKVM:
+
+* Start from updating your device:
+
+    {!_update_os.md!}
+
+* Install and run `chrony`:
+
+    ```console
+    [root@pikvm ~]# pacman -Syy
+    [root@pikvm ~]# pacman -S chrony
+    [root@pikvm ~]# systemctl stop systemd-timesyncd
+    [root@pikvm ~]# systemctl start chronyd
+    ```
+
+Ideally, you should use the same NTP servers on the client and on PiKVM. They can be configured in `/etc/chrony.conf`.
+
+To take measurements, follow to PiKVM Web UI and add the `show_webrtc_latency=1` URL parameter like this: `https://pikvm/kvmd/?show_webrtc_latency=1`. Switch the video mode to WebRTC in the system menu if necessary. After establishing and stabilizing the connection, you will see the calculated delay in the stream window:
 
 ![Measured WebRTC Latency](latency/webrtc_latency.webp)
 
