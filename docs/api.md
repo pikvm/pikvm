@@ -99,6 +99,16 @@ You can submit PiKVM credentials from another site and go directly to the KVM pa
 <html>
 ```
 
+The `redirect` can't have any value but only one from the list `["", "/", "/kvm", "/kvm/"]` where an empty value means "no redirect". Since KVMD 4.152, this list is configurable via `/etc/kvmd/override.yaml`:
+
+```yaml
+kvmd:
+    auth:
+        allow_redirects: ["/", "/kvm", "/kvm/"]
+```
+
+You can replace the entire list but please note that the empty line for "no redirect" is always available and cannot be disabled.
+
 
 -----
 ## WebSocket events
