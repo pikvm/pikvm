@@ -14,7 +14,8 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 * Can be made based on **Raspberry Pi 2**, **3**, **4** and **Zero2W**;
     * *Raspberry Pi 5 is not supported right now. It doesn't have GPU video encoders, therefore, there is no point in using it for PiKVM, it will not give any performance boost for this case. The Pi 5 is a great device, just not suitable for PiKVM.*
 * **FullHD video** using advanced **HDMI-to-CSI bridge** or **USB dongle**;
-* Extra low **video latency** with **MJPEG** or **H.264** via direct HTTP or WebRTC streaming (for CSI bridge);
+* Extra low **35-50ms H.264 latency**;
+* WebRTC, H.264-over-HTTP and MJPEG video;
 * Bootable **Virtual CD/DVD** and **Flash Drive**, ability to store images on **NFS**;
 * USB **Keyboard** and **mouse** (with leds and the wheel), Bluetooth HID, Mouse jiggler, full support of PS/2;
 * **Control the server power** using ATX functions;
@@ -153,7 +154,7 @@ All of them uses our common open source software stack.
 * **The widest hardware support**  
   There are many ways to build a PiKVM. Video capture devices can be attached using the CSI-2 or USB interfaces. Raspberry Pi models 2, 3, 4 or Zero2W may be used. Any combination of hardware is supported, and PiKVM implements the maximum possible set of features.
 * **Very low latency**  
-  ~100 milliseconds of video latency. This is the smallest delay of all existing solutions.
+  ~35-50 milliseconds of video latency. This is the smallest delay of all existing solutions.
 * **Extra lightweight and fancy Web UI**  
   No weird proprietary clients. No ugly Java applets. Just use your favorite browser to connect to the PiKVM. No flash plugins either!
 * **Keyboard and mouse**  
