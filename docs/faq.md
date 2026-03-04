@@ -331,7 +331,7 @@ If you run into any issues you can check this page which will list common errors
 
 ??? question "Can I have different hostnames for each of my PiKVMs?"
     Yes! And it's easy to do! Using a SSH session or the web terminal:
-    * Make sure you are root, run `rw` then run `hostnamectl set-hostname yournewhostname.domain`.
+    * `systemd-hostnamed` is finicky and can have issues with changing the hostname if it was started while the filesystem was read-only. It can then complain the file system is read-only even after you have made it rw. To work around this, make sure you are root, run `rw && systemctl restart systemd-hostnamed` then run `hostnamectl set-hostname yournewhostname.domain`.
     * Optional: edit `/etc/kvmd/meta.yaml` to alter the displayed hostname in the web UI.
     * Run `ro` and `reboot`.
 
