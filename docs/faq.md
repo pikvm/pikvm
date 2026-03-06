@@ -330,10 +330,14 @@ If you run into any issues you can check this page which will list common errors
 
 
 ??? question "Can I have different hostnames for each of my PiKVMs?"
-    Yes! And it's easy to do! Using a SSH session or the web terminal:
-    * Make sure you are root, run `rw` then run `hostnamectl set-hostname yournewhostname.domain`.
-    * Optional: edit `/etc/kvmd/meta.yaml` to alter the displayed hostname in the web UI.
-    * Run `ro` and `reboot`.
+    Yes! And it's easy to do. Using a SSH session or the web terminal:
+
+    ```console
+    [root@pikvm ~]# rw
+    [root@pikvm ~]# systemctl restart systemd-hostnamed
+    [root@pikvm ~]# hostnamectl set-hostname yournewhostname.domain
+    [root@pikvm ~]# reboot
+    ```
 
 ??? question "Why not add software support for another codec?"
     Encoding is a heavy process and will add significant latency, its best to have hardware support to avoid additional latency.
