@@ -133,7 +133,7 @@ Here's the command that allows you to seamlessly run HTTPS proxy for your PiKVM:
 And if you want to stop tailscale from serving HTTPS, you can do this by running:
 ```console
 [root@pikvm ~]# tailscale serve --https=443 off
-````
+```
 
 ### Root cause
 Tailscale needs to refresh TLS certificates and write state under `/var/lib/tailscale`.  
