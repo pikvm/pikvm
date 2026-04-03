@@ -117,12 +117,30 @@ We can assume that **an average of 10-20ms is added here** for decoding and othe
 -----
 ## Measuring the latency
 
-There are two ways to measure latency:
+### Internal timings
 
-1. A simple way using a browser. Gets you a realistic, but not 100% reliable estimation. Doesn't take the rendering time in the browser into account.
-2. A more complex way using special equipment. Gets you accurate measurements.
+Above, we mentioned the many timings that occur in the internal processes of PiKVM.
 
-### Browser-based method
+To make sure that these timings are correct, you can use a special PiKVM profiling tool
+that will measure the timings from the moment the first byte arrives in the video capture until the image is sent to the client.
+
+Run on PiKVM (along with opening the stream in the browser):
+
+```console
+[root@pikvm ~]# ustreamer-dump -s kvmd::ustreamer::h264 --verbose
+...
+... 1920x1080 ... GRAB=0.017 ~~0.000~~ ENC=0.014 ~~> LAT=0.031 - size=5878
+... 1920x1080 ... GRAB=0.017 ~~0.000~~ ENC=0.013 ~~> LAT=0.030 - size=7139
+... 1920x1080 ... GRAB=0.017 ~~0.000~~ ENC=0.014 ~~> LAT=0.031 - size=14058
+...
+```
+
+* `GRAB=` - A capture time.
+* `~~xxx~~` - Time between stages.
+* `ENC=` - Encoding time.
+* `LAT=` - Final latency between capturing and before sending H.264 to the client.
+
+### Total timings to the browser
 
 The measurements performed using this method covers a full video processing chain starting from PiKVM capture and finishing in the browser, except the rendering on display. The starting point is the moment when the first byte of the HDMI frame enters the PiKVM video capture chip. This timestamp is saved, and then transmitted via WebRTC to the browser using the RTP extension [abs-capture-time](http://www.webrtc.org/experiments/rtp-hdrext/abs-capture-time). The browser extracts the time from the last received frame every second and outputs to the Web UI the difference between the current time and the timestamp.
 
@@ -161,23 +179,3 @@ To take measurements, follow to PiKVM Web UI and add the `show_webrtc_latency=1`
 ![Measured WebRTC Latency](latency/webrtc_latency.webp)
 
 As already mentioned, the measured value does not include the rendering and display time on the physical display with the browser. For 60Hz, it will be +17ms, for 144Hz it will be +6ms. In both cases, you get a latency **around or less than 50ms**.
-
-### Local screen-to-screen method
-
-```
-+------= Host =-----+           +--= PiKVM =--+           +-----= Monitor =-----+
-| +-= Timer app =-+ |  HDMI IN  |             |  HDMI OUT |  +-= Timer app =-+  |
-| |               | |==========>|             |==========>|  |               |  |
-| |               | |  Cable 1  |             |  Cable 2  |  |               |  |
-| +---------------+ |           |             |           |  +---------------+  |
-| +-= Browser =-+   |           |             |           |  +-= Browser =-+    |
-| |             |   |  Network  |             |           |  |             |    |
-| |  PiKVM UI   |<--|<==========|             |           |  |  PiKVM UI   |    |
-| |             |   |           |             |           |  |             |    |
-| +-------------+   |           |             |           |  +-------------+    |
-+-------------------+           +-------------+           +---------------------+
-```
-
-The best possible way to measure screen-to-screen latency is run a stopwatch that displays millisecond and take a screenshot of the base time source and the PiKVM preview of the same time source on one screen. The difference in captured time readings will be your latency.
-
-For a stopwatch on Linux, you can use the Stopwatch application by Don Libes (NIST).
