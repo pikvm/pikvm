@@ -35,6 +35,8 @@ Next, we'll explain how we arrived at these numbers and how you can replicate th
 
 PiKVM works with the physical world: it captures video from a cable, encodes it, and sends it to your browser over a network.
 
+![Pipeline Latency](latency/pipeline_latency.webp)
+
 ```
 +--= Host =--+           +-------= PiKVM =-------+           +---= Browser =---+
 |            |   HDMI    |                       |           |                 |
