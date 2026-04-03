@@ -157,7 +157,7 @@ otg:
                         revision: '1.00'
 ```
 
-After changing validate the config using `kvmd -m`. You will see the full config list with changed and default values,
+After changing validate the config using `kvmd -M`. You will see a list with your changes and default values,
 or a message about configuration error.
 
 If everything is fine, perform the soft reboot.

@@ -228,7 +228,7 @@ If you run into any issues you can check this page which will list common errors
 
 ??? question "I can't find the PiKVM IP address in my network"
 
-	Follow the device guide of your PiKVM [here](cheatsheet.md).
+    Follow the device guide of your PiKVM [here](cheatsheet.md).
 
 
 ??? question "What is the default password? How do I change it?"
@@ -240,13 +240,11 @@ If you run into any issues you can check this page which will list common errors
 
 
 ??? question "How do I get root access in the web terminal?"
-	See [here](auth.md#root-access-in-the-web-terminal).
+    See [here](auth.md#root-access-in-the-web-terminal).
 
 
 ??? question "Where is the PiKVM configuration located?"
-    Almost all KVMD (the main daemon controlling PiKVM) configuration files are located in `/etc/kvmd`. You can also find nginx configs and SSL certificates there. KVMD configs use [YAML](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html) syntax. The specific platform parameters can be found in the file `/etc/kvmd/main.yaml` and **you should never edit it**. Use `/etc/kvmd/override.yaml` to redefine the system parameters.
-
-    Files that are not recommended for editing have read-only permissions. If you edit any of these files, you will need to manually make changes to them when you upgrade your system. You can view the current configuration and all available KVMD parameters using the command `kvmd -m`.
+    See [here](config.md)
 
 
 ??? question "I can't edit any file on PiKVM. Why is the system in read-only mode?"
@@ -326,7 +324,7 @@ If you run into any issues you can check this page which will list common errors
 
 ??? question "How do I completely disable authorization in PiKVM?"
 
-	See [here](auth.md).
+    See [here](auth.md).
 
 
 ??? question "Can I have different hostnames for each of my PiKVMs?"

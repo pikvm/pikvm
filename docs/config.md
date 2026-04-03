@@ -15,6 +15,38 @@ PiKVM OS applies settings from `main.yaml` first and then applies anything it fi
 
 
 -----
+## A quick way to override simple parameters
+
+Most of the PiKVM configuration consists of simple parameters with plain values (yes/no, a string, a number),
+and you can quickly override them using the `kvmd-override` utility.
+
+It reads your `/etc/kvmd/override.yaml` file, carefully adds the desired parameters,
+validates the result and writes it to a file back. Also, it keeps all comments in the file.
+
+Thus, for simple operations, you don't need to dive into a text editor and YAML syntax,
+and you are guaranteed that the changes will always be syntactically correct.
+
+For example, [enabling the microphone audio on PiKVM V3/V4](audio.md#microphone-outgoing-audio):
+
+```console
+[root@pikvm ~]# rw
+[root@pikvm ~]# kvmd-override --set otg/devices/audio/enabled=true
+[root@pikvm ~]# reboot
+```
+
+This puts a config override looks like this:
+
+```yaml
+otg:
+    devices:
+        audio:
+            enabled: true
+```
+
+That's all! However, it is important to know what is going on under the hood, so we recommend that you read this page to the end :)
+
+
+-----
 ## How `override.yaml` is structured
 
 The `/etc/kvmd/override.yaml` file has YAML syntax. All configurations are stored as key-value pairs.
@@ -158,7 +190,9 @@ Press **Ctrl+O** to save the configuration file and then **Ctrl+X** to quit nano
 -----
 ## Validate the configuration
 
-Before attempting to make your changes take effect, you should always validate `override.yaml`. To do that, run `kvmd -m`. If there are any syntax errors, `kvmd` will complain about them.
+Before attempting to make your changes take effect, you should always validate `override.yaml`. To do that, run `kvmd -M`. If there are any syntax errors, `kvmd` will complain about them.
+
+There is a difference between `kvmd -m` and `kvmd -M`. The first one shows you a full configuration, the second one shows only your non-default overrides. Both work like override validators.
 
 For example, if you accidentally used a semicolon instead of a colon between the key and the value like this:
 
@@ -166,15 +200,15 @@ For example, if you accidentally used a semicolon instead of a colon between the
 keymap; /usr/share/kvmd/keymaps/de
 ```
 
-`kvmd -m` will display this message instead of outputting all configuration entries:
+`kvmd -M` will display this message instead of outputting all your changes:
 
 ```
 ConfigError: The node 'vnc' must be a dictionary
 ```
 
-If you see any errors in the output, fix them and run `kvmd -m` again to verify that the error is gone.
+If you see any errors in the output, fix them and run `kvmd -M` again to verify that the error is gone.
 
-Note that `kvmd -m` does not validate configuration entries for correct key names. So if your changes don't work, that's #1 thing to check for when troubleshooting.
+Note that `kvmd -M` does not validate configuration entries for correct key names. So if your changes don't work, that's #1 thing to check for when troubleshooting.
 
 
 -----
@@ -200,13 +234,16 @@ Once the device restarts, your changes take effect.
 
 
 -----
-## Keeping customizations atomic
+## Atomic configuration deployment
 
-When you apply massive customizations, it may help separating changes into several files to keep them manageable.
+When you configure your PiKVM fleet with some automation (for example, using the Ansible), you can put some atomic parts
+of your configuration as YAML files into the `/etc/kvmd/override.d` directory. This way you can avoid editing of the `override.yaml`.
 
-To do that, create these YAML files inside the `/etc/kvmd/override.d/` directory. KVMD will apply all configurations in the following order: `main.yaml` -> legacy `auth.yaml` -> `override.d` -> `override.yaml`. Inside the `override.d` directory, KVMD will apply YAML files in alphabetical order, so please pay attention to how you name them.
+KVMD will apply all configurations in the following order: `main.yaml` -> legacy `auth.yaml` -> `override.d` -> `override.yaml`. Inside the `override.d` directory, KVMD will apply YAML files in alphabetical order, so please pay attention to how you name them.
 
 We recommend sticking with a particular file-naming scheme, e.g. `0000-vendor-otg-serial.yaml`. We do reserve `-vendor-` and `-pikvm-` prefixes for our own future needs, though.
+
+Thus, the division is as follows: `/etc/kvmd/override.d` is intended for vendor configs, and `/etc/kvmd/override.yaml` contains a manual tuning of a specific device.
 
 Once you completed the customization and validated newly created/edited files, reboot your PiKVM for the changes to take effect.
 

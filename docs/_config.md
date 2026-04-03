@@ -18,11 +18,13 @@ search:
     To redefine system parameters use the file `/etc/kvmd/override.yaml`.
     All other files that are also not recommended for editing have read-only permissions.
 
-    You can also create several files with the `.*yaml` suffix and put then into `/etc/kvmd/override.d` directory
-    to split your customization into logical parts.
-    The `override.yaml` file definitions takes precedence over the `override.d` directory.
+    For automated deployment, you can put `.*yaml` files into `/etc/kvmd/override.d` directory.
+    The `override.yaml` file definitions takes precedence over the `override.d` directory
+    and it is intended for local manual configuration.
 
     A complete list of all parameters can be viewed using the `kvmd -m` command.
+
+    A list of your non-default overrides can be viewed using the `kvmd -M` command.
 
     Files with the `*.yaml` suffix uses the [YAML syntax](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html)
     and describes a parameter tree with key-value pairs of different types.
@@ -35,24 +37,40 @@ search:
 
     Sections under the same keys **should be merged**:
 
-	* **Wrong:**
+    * **Wrong:**
 
-		```yaml
-		kvmd:
-			gpio:
-				drivers: ...
-		kvmd:
-			gpio:
-				scheme: ...
-		```
+        ```yaml
+        kvmd:
+            gpio:
+                drivers: ...
+        kvmd:
+            gpio:
+                scheme: ...
+        ```
 
-	* **Correct:**
+    * **Correct:**
 
-		```yaml
-		kvmd:
-			gpio:
-				drivers: ...
-				scheme: ...
-		```
+        ```yaml
+        kvmd:
+            gpio:
+                drivers: ...
+                scheme: ...
+        ```
+
+    For simple config overrides you don't need to use a text editor, you can do this with `kvmd-override` command.
+    For example, [enabling the microphone audio on PiKVM V3/V4](audio.md#microphone-outgoing-audio):
+
+    ```console
+    [root@pikvm ~]# kvmd-override --set otg/devices/audio/enabled=true
+    ```
+
+    This puts a config override looks like this:
+
+    ```yaml
+    otg:
+        devices:
+            audio:
+                enabled: true
+    ```
 
     In the `/etc/kvmd/meta.yaml` file you can specify some information regarding this PiKVM installation in an almost free YAML format.
