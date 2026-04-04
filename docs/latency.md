@@ -3,6 +3,12 @@ title: Latency in KVM systems
 description: What is a KVM latency, where does it come from, and how to measure it?
 ---
 
+When you control a remote machine through a KVM-over-IP device, there's always some latency — a gap between what you do and what you see. When the latency is relatively small, using a KVM-over-IP feels natural, but a large latency may feel frustrating.
+
+Currently, **PiKVM offers 35-50 milliseconds of total latency** — a proven lowest end-to-end latency among all other KVM-over-IP devices available on the market.
+
+We've worked hard to eliminate as many bottlenecks as possible to deliver the smallest latency on the market today. This article breaks down where latency comes from in PiKVM's video pipeline, what you can realistically expect, and how to measure it yourself.
+
 ## What is latency in KVM?
 
 When you move your mouse in PiKVM, you can see how the remote cursor lags behind the local one (which is indicated by a blue dot). This is *latency* — the delay between your keyboard/mouse input and the remote host's response to the video.
@@ -25,8 +31,6 @@ Latency defines how responsive a KVM-over-IP device *feels* to users:
     * H.264 gop = 0 (default)
     * [H.264 boost enabled](video.md#boost-pikvm-v4-to-60fps-h264)
     * Access via a local network or good internet connection
-
-    Currently, **PiKVM offers a proven lowest end-to-end latency** among all other KVM-over-IP devices available on the market.
 
 Next, we'll explain how we arrived at these numbers and how you can replicate them yourself to verify our results.
 
@@ -181,3 +185,5 @@ To take measurements, follow to PiKVM Web UI and add the `show_webrtc_latency=1`
 ![Measured WebRTC Latency](latency/webrtc_latency.webp)
 
 As already mentioned, the measured value does not include the rendering and display time on the physical display with the browser. For 60Hz, it will be +17ms, for 144Hz it will be +6ms. In both cases, you get a latency **around or less than 50ms**.
+
+Our measurements apply to both PiKVM V4 Mini and V4 Plus. [Click here](https://pikvm.org/products) to pick the right version for you!
