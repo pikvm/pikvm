@@ -133,6 +133,7 @@ nav:
         - "WebRTC configuration": webrtc_config.md
         - "Tuning HDMI EDID": edid.md
         - "HDMI passthrough": pass.md
+        - "Latency": latency.md
     - "Peripheral devices":
         - "ATX board": atx_board.md
         - "USB configuration": usb.md

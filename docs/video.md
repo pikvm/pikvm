@@ -43,7 +43,7 @@ video.
 ## Boost PiKVM V4 to 60fps H.264
 
 By default, the performance of PiKVM in 1080p mode is limited to 30fps, but this limitation can be lifted.
-The result will be a slightly lower video latency and a full 60fps stream
+The result will be a slightly lower video [latency](latency.md) and a full 60fps stream
 with a slight increase in processor temperature
 (it's not critical for both [V4 Plus and Mini](v4.md), as they have a very good cooling system).
 It will also double the consumption of network traffic.

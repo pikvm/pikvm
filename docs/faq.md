@@ -74,22 +74,24 @@ If you run into any issues you can check this page which will list common errors
     * General hardware video capture differs from software streaming and introduces additional latency.
 
 
+??? question "Where does the cursor/video latency come from?"
+    [See here](latency.md).
+
+
 ??? question "Can PiKVM do 4K video?"
     * For HDMI-CSI bridge, no. There is not enough bandwidth in the CSI bus for that much data. 1080p50 will max out the bandwidth.
     * For the USB capture devices: technically yes, they will down sample to something smaller to meet the USB 2.0 bandwidth limitations, so the source may be 4k, but the stream will not.
     * The 4K real-time video will not fit through the network anyway.
 
 
-??? question "Where does the cursor/video latency come from?"
-    Here is the chain of transferring an image to your browser or VNC client.
-
-    `Capture device -> Compression -> Network -> Decompression -> Rendering`
-
-    100-200ms is very, very fast for this. But we are working to speed things up even more.
-
 ??? question "I am expecting to see 60fps and I am not, why?"
 
-    PiKVM receives the entire signal, but then the encoding is the bottleneck. For 1080p, this is no more than 30 fps. V4 throws out every second frame of 60 hz/fps, and 30 fps is encoded. V3 and DIY can't process 60 hz and is only able to capture 50 hz, and in the same way they take every second frame, all you get out is 25 fps. The reason why V3 and DIY does not encode 30 out of 50 is that the picture will be jerky, but smooth at 25.
+    PiKVM receives the entire signal, but then the encoding is the bottleneck depends of the device model.
+
+    [PiKVM V4](v4.md) is able to encode full 60fps with [enabled H.264 boost](video.md#boost-pikvm-v4-to-60fps-h264).
+
+    [PiKVM V3](v3.md) and DIY can't process 60Hz and is only able to capture 50Hz, and they take every second frame to encode, so you get only 25fps. The reason why V3 and DIY does not encode 30 out of 50 is that the picture will be jerky, but smooth at 25.
+
 
 ??? question "Does PiKVM support sound?"
     Yes but the only officially supported version is the PiKVM V3+ devices, V2 we will attempt best effort but ultimately we do not support CSI modules or USB.
