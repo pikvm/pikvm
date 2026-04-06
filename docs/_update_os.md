@@ -6,6 +6,13 @@ search:
 
 ??? note "Updating PiKVM OS"
 
+    !!! tip
+
+        We recommend updating PiKVM OS only if you have physical access to the device, or in the most extreme cases.
+        The update process is very reliable, but there is always a small chance that something may go wrong
+        so reflashing will be required. PiKVM cannot be bricked, but you need physical access to the memory card
+		for this operation.
+
     To update, run following commands under the `root` user:
 
     ```console
