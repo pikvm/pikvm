@@ -125,6 +125,7 @@ nav:
             - "Reverse proxy": reverse_proxy.md
             - "Tailscale VPN": tailscale.md
             - "Cloudflare tunnel": cloudflared.md
+            - "NetBird VPN": netbird.md
         - "Setting up Wi-Fi": wifi.md
         - "Setting up 3G/4G/LTE modem": modem.md
         - "Let's Encrypt certificates": letsencrypt.md
