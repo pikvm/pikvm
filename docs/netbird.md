@@ -20,42 +20,32 @@ The NetBird client stores its state in `/var/lib/netbird`. On PiKVM this path mu
 writable at runtime, so we mount an overlay backed by tmpfs over a persistent
 copy of the state.
 
-1. Switch to read-write mode and ensure the `overlay` kernel module loads on boot:
+1. Switch to read-write mode and create the persistent state directory:
 
     ```console
     [root@pikvm ~]# rw
-    [root@pikvm ~]# echo "overlay" > /etc/modules-load.d/overlay.conf
-    ```
-
-2. Create the persistent state directory:
-
-    ```console
     [root@pikvm ~]# mkdir -p /root/netbird-state
     ```
 
-3. Create the helper script. Save as `/usr/local/bin/setup-netbird-overlay.sh`:
+2. Create the helper script. Save as `/usr/local/bin/setup-netbird-overlay.sh`:
 
     ```bash
     #!/bin/bash
     set -e
 
-    # Make tmpfs for netbird overlay
-    mkdir -p /tmp/netbird-tmpfs
-    mountpoint -q /tmp/netbird-tmpfs || mount -t tmpfs tmpfs /tmp/netbird-tmpfs
+    # Mount a tmpfs for writable NetBird state
+    mkdir -p /tmp/netbird-state
+    mount -t tmpfs tmpfs /tmp/netbird-state
 
-    # Prepare overlay dirs
-    mkdir -p /tmp/netbird-tmpfs/upper
-    mkdir -p /tmp/netbird-tmpfs/work
-    mkdir -p /tmp/netbird-merged
+    # Copy persistent state into the writable tmpfs
+    if [ -d /root/netbird-state ]; then
+        cp -a /root/netbird-state/. /tmp/netbird-state/
+    fi
 
-    # Mount overlay (lowerdir = persistent readonly state in /root)
-    mountpoint -q /tmp/netbird-merged || mount -t overlay overlay \
-      -o lowerdir=/root/netbird-state,upperdir=/tmp/netbird-tmpfs/upper,workdir=/tmp/netbird-tmpfs/work \
-      /tmp/netbird-merged
-
-    # Bind merged to /var/lib/netbird
+    # Bind mount over /var/lib/netbird so NetBird sees the writable copy
+    mkdir -p /var/lib/netbird
     mountpoint -q /var/lib/netbird && umount /var/lib/netbird || true
-    mount --bind /tmp/netbird-merged /var/lib/netbird
+    mount --bind /tmp/netbird-state /var/lib/netbird
     ```
 
     Make it executable:
@@ -64,18 +54,19 @@ copy of the state.
     [root@pikvm ~]# chmod +x /usr/local/bin/setup-netbird-overlay.sh
     ```
 
-4. Create a systemd unit to run the overlay setup before NetBird starts.
-    Save as `/etc/systemd/system/netbird-overlay.service`:
+3. Create a systemd unit to run the setup before NetBird starts and save
+    state back on stop. Save as `/etc/systemd/system/netbird-overlay.service`:
 
     ```ini
     [Unit]
-    Description=Setup overlayfs for NetBird
+    Description=Setup tmpfs overlay for NetBird
     After=local-fs.target tmp.mount
-    Before=netbird.service
+    Before=netbird@netbird.service
 
     [Service]
     Type=oneshot
     ExecStart=/usr/local/bin/setup-netbird-overlay.sh
+    ExecStop=/bin/sh -c 'cp -a /tmp/netbird-state/. /root/netbird-state/'
     RemainAfterExit=yes
 
     [Install]
@@ -93,46 +84,63 @@ copy of the state.
 
 ## Installing NetBird
 
-1. Install the NetBird client:
+NetBird is installed from the [AUR](https://aur.archlinux.org/packages/netbird-bin)
+using `makepkg`. The `netbird-bin` package provides pre-built binaries with SHA256
+checksum verification, avoiding the need to compile from source on the Pi.
+
+!!! note
+    `makepkg` must not run as root. PiKVM provides the unprivileged `kvmd-webterm`
+    user for this purpose.
+
+1. Update the system and install the build dependencies, then clone the AUR package:
 
     ```console
-    [root@pikvm ~]# curl -fsSL https://pkgs.netbird.io/install.sh | sh
+    [root@pikvm ~]# pacman -Syu --needed git base-devel
+    [root@pikvm ~]# cd /tmp
+    [root@pikvm tmp]# git clone https://aur.archlinux.org/netbird-bin.git
+    [root@pikvm tmp]# chown -R kvmd-webterm:kvmd-webterm netbird-bin
     ```
 
-2. Edit the NetBird service file to work with PiKVM's read-only filesystem:
+2. Build the package as the `kvmd-webterm` user:
 
     ```console
-    [root@pikvm ~]# systemctl edit --full netbird.service
+    [root@pikvm tmp]# su -s /bin/bash kvmd-webterm -c 'cd /tmp/netbird-bin && makepkg'
     ```
 
-    The complete file should look like this:
+    This will download the NetBird binary for your architecture, verify its
+    SHA256 checksum, and create a pacman package.
+
+3. Install the built package:
+
+    ```console
+    [root@pikvm tmp]# pacman -U /tmp/netbird-bin/netbird-bin-*.pkg.tar.*
+    ```
+
+4. Clean up the build directory:
+
+    ```console
+    [root@pikvm tmp]# rm -rf /tmp/netbird-bin
+    [root@pikvm tmp]# cd ~
+    ```
+
+5. Create a systemd override to adapt the service for PiKVM's read-only filesystem:
+
+    ```console
+    [root@pikvm ~]# mkdir -p /etc/systemd/system/netbird@.service.d
+    ```
+
+    Save the following as `/etc/systemd/system/netbird@.service.d/pikvm.conf`:
 
     ```ini
     [Unit]
-    Description=NetBird mesh network client
-    ConditionFileIsExecutable=/usr/bin/netbird
-    After=network.target syslog.target netbird-overlay.service
+    After=netbird-overlay.service
     Requires=netbird-overlay.service
 
     [Service]
-    StartLimitInterval=5
-    StartLimitBurst=10
     ExecStart=
-    ExecStart=/usr/bin/netbird "service" "run" "--log-level" "info" "--daemon-addr" "unix:///var/run/netbird.sock" "--log-file" "syslog"
-
-    StandardOutput=
-    StandardOutput=journal
-    StandardError=
-    StandardError=journal
-
-    Restart=always
-    RestartSec=120
-    EnvironmentFile=-/etc/sysconfig/netbird
+    ExecStart=/usr/bin/netbird service run --log-file syslog --daemon-addr unix:///var/run/netbird/%i.sock
+    LogsDirectory=
     Environment=NB_DISABLE_SSH_CONFIG=true
-    Environment=SYSTEMD_UNIT=netbird
-
-    [Install]
-    WantedBy=multi-user.target
     ```
 
     The key changes from the default service file are:
@@ -141,28 +149,47 @@ copy of the state.
         overlay is mounted before NetBird starts.
     * **`ExecStart=`** is cleared then set with `--log-file syslog` instead of
         a file path, since `/var/log` is read-only.
-    * **`StandardOutput=` and `StandardError=`** are cleared then set to
-        `journal` instead of file paths.
+    * **`LogsDirectory=`** is cleared to prevent systemd from trying to create
+        a log directory on the read-only filesystem.
     * **`NB_DISABLE_SSH_CONFIG=true`** prevents NetBird from writing SSH
         shortcut configuration to `/etc/ssh/ssh_config.d/99-netbird.conf`,
         which would fail on the read-only filesystem. This only disables
-        the convenience of `ssh <peer-name>` — SSH over NetBird still works
+        the convenience of `ssh <peer-name>` -- SSH over NetBird still works
         using the peer's IP address directly.
 
     !!! note
-        The empty `ExecStart=`, `StandardOutput=`, and `StandardError=` lines
-        are **not a typo**. In systemd, these directives are list-type settings.
-        An empty assignment clears the previous value so the next line replaces
-        it rather than appending to it.
+        The empty `ExecStart=` line is **not a typo**. In systemd, `ExecStart`
+        is a list-type setting. An empty assignment clears the previous value so
+        the next line replaces it rather than appending to it.
 
-3. Enable and start the services:
+6. Enable and start the services:
 
     ```console
     [root@pikvm ~]# systemctl daemon-reload
-    [root@pikvm ~]# systemctl enable netbird.service
+    [root@pikvm ~]# systemctl enable netbird@netbird.service
     [root@pikvm ~]# systemctl start netbird-overlay.service
-    [root@pikvm ~]# systemctl start netbird.service
+    [root@pikvm ~]# systemctl start netbird@netbird.service
     ```
+
+-----
+
+## Updating NetBird
+
+Since NetBird is installed from the AUR rather than an official repository,
+updates must be performed manually by rebuilding the package.
+
+```console
+[root@pikvm ~]# rw
+[root@pikvm ~]# cd /tmp
+[root@pikvm tmp]# git clone https://aur.archlinux.org/netbird-bin.git
+[root@pikvm tmp]# chown -R kvmd-webterm:kvmd-webterm netbird-bin
+[root@pikvm tmp]# su -s /bin/bash kvmd-webterm -c 'cd /tmp/netbird-bin && makepkg'
+[root@pikvm tmp]# pacman -U /tmp/netbird-bin/netbird-bin-*.pkg.tar.*
+[root@pikvm tmp]# rm -rf /tmp/netbird-bin
+[root@pikvm tmp]# cd ~
+[root@pikvm ~]# systemctl restart netbird@netbird
+[root@pikvm ~]# ro
+```
 
 -----
 
@@ -224,7 +251,7 @@ but the activation URL can be opened on any other device.
 
     ```console
     [root@pikvm ~]# rw
-    [root@pikvm ~]# cp -a /tmp/netbird-tmpfs/upper/* /root/netbird-state/
+    [root@pikvm ~]# cp -a /tmp/netbird-state/. /root/netbird-state/
     [root@pikvm ~]# ro
     ```
 
@@ -241,7 +268,7 @@ but the activation URL can be opened on any other device.
 
     ```console
     [root@pikvm ~]# rw
-    [root@pikvm ~]# cp -a /tmp/netbird-tmpfs/upper/* /root/netbird-state/
+    [root@pikvm ~]# cp -a /tmp/netbird-state/. /root/netbird-state/
     [root@pikvm ~]# ro
     ```
 
@@ -259,12 +286,12 @@ but the activation URL can be opened on any other device.
 ## Troubleshooting
 
 * **Service fails with `status=209/STDOUT`**: The service is trying to write
-    logs to a file on the read-only filesystem. Make sure you edited the service
-    file to use `StandardOutput=journal` and `--log-file syslog` as described above.
+    logs to a file on the read-only filesystem. Make sure the systemd override
+    includes `--log-file syslog` as described above.
 
-* **`mount: special device overlay does not exist`**: The `overlay` kernel module
-    is not loaded. Verify that `/etc/modules-load.d/overlay.conf` contains `overlay`
-    and reboot, or load it manually with `modprobe overlay`.
+* **`mount: tmpfs: mount failed`**: The tmpfs mount in the overlay script is
+    failing. Check that `/tmp` is writable and that the script is executable
+    (`chmod +x /usr/local/bin/setup-netbird-overlay.sh`).
 
 * **DNS lookup failures (`DeadlineExceeded`)**: If NetBird cannot reach
     `api.netbird.io`, check that your PiKVM has working DNS resolution:
@@ -277,7 +304,7 @@ but the activation URL can be opened on any other device.
     A stale NetBird daemon process can also cause this; restart the service:
 
     ```console
-    [root@pikvm ~]# systemctl restart netbird
+    [root@pikvm ~]# systemctl restart netbird@netbird
     ```
 
 * **Need to re-authenticate after reboot**: You forgot to persist the state.
@@ -285,7 +312,7 @@ but the activation URL can be opened on any other device.
 
     ```console
     [root@pikvm ~]# rw
-    [root@pikvm ~]# cp -a /tmp/netbird-tmpfs/upper/* /root/netbird-state/
+    [root@pikvm ~]# cp -a /tmp/netbird-state/. /root/netbird-state/
     [root@pikvm ~]# ro
     ```
 
@@ -295,9 +322,11 @@ but the activation URL can be opened on any other device.
     ```console
     [root@pikvm ~]# rw
     [root@pikvm ~]# netbird down
-    [root@pikvm ~]# systemctl stop netbird
-    [root@pikvm ~]# systemctl disable netbird netbird-overlay
+    [root@pikvm ~]# systemctl stop netbird@netbird
+    [root@pikvm ~]# systemctl disable netbird@netbird netbird-overlay
+    [root@pikvm ~]# pacman -Rns netbird-bin
     [root@pikvm ~]# rm -rf /var/lib/netbird /root/netbird-state
+    [root@pikvm ~]# rm -rf /etc/systemd/system/netbird@.service.d
     [root@pikvm ~]# reboot
     ```
 
