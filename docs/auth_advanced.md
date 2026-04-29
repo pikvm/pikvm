@@ -21,6 +21,7 @@ PiKVM supports the following authentication methods through its pluggable authen
 - **PAM (Pluggable Authentication Modules)**: Integration with Linux PAM system, allowing authentication against system users, LDAP, Active Directory, and other PAM-supported backends.
 - **LDAP (Lightweight Directory Access Protocol)**: Direct LDAP authentication against directory servers like Active Directory, OpenLDAP, or other LDAP-compatible systems.
 - **RADIUS (Remote Authentication Dial-In User Service)**: Authentication against RADIUS servers, commonly used in enterprise networks with support for multi-factor authentication.
+- **OneTime**: Don't confuse it with [2FA/TOTP](auth.md#two-factor-authentication). This method allows to generate one-time passwords during booting, which are displayed on the [PiKVM V3](v3.md) or [V4](v4.md) built-in OLED screen. It is useful if you send PiKVM device to your client, who then has to say the password to your administrator over the phone.
 - **Unix Socket Credentials**: Process-based authentication using Unix domain sockets with credential passing for local system integration.
 
 ## Authentication methods comparison
@@ -31,6 +32,7 @@ PiKVM supports the following authentication methods through its pluggable authen
 | **PAM** | System integration, existing PAM setups | Medium | PAM modules | Via PAM modules |
 | **LDAP** | Active Directory, directory services | Medium | LDAP server |
 | **RADIUS** | Enterprise networks, centralized auth | Medium | RADIUS server |
+| **OneTime** | PiKVM devices that are physically sent to the client | Low | No |
 | **Unix Socket Credentials** | Local process integration, containers | Low | Local processes |
 
 2FA/TOTP is [always available](/auth/#two-factor-authentication) works locally and is compatible with all the methods listed here.
@@ -577,6 +579,64 @@ kvmd:
             secret: "MySharedSecret123"
             timeout: 5
 ```
+
+---
+
+## OneTime plugin configuration
+
+This plugin generates one-time access passwords that will be displayed on the [PiKVM V3](v3.md) or [V4](v4.md) built-in OLED screen. It is useful if you send PiKVM device to your client, who then has to say the password to your administrator over the phone. Do not confuse it with [2FA/TOTP](auth.md#two-factor-authentication).
+
+### Parameters
+
+#### `user`
+
+A static username.
+
+- **Type:** String
+- **Default:** `"onetime"`
+- **Examples:**
+    - `onetime`
+    - `tmpuser`
+
+#### `passwd_len`
+
+The length of the generated password. The following set of characters is used: `23479ACDEFHJKLMNPQRTWXYZ`. The set was chosen to avoid confusion of similar letters and numbers (like `5` and `S`).
+
+- **Type:** Integer (valid port number: 3-32)
+- **Default:** `8`
+
+#### `change_after_login`
+
+Change password right after the successful login. The logged in user will not be logged out, but new user should use a new password.
+
+- **Type:** Boolean
+- **Default value:** `false`
+- **Acceptable values:** `true` and `false`
+  
+### Basic Configuration Example
+
+Use this if you need `onetime` as only auth method:
+
+```yaml
+kvmd:
+    auth:
+        internal:
+            type: onetime
+```
+
+If you want to keep `htpasswd` and `admin` access with a regular PiKVM auth:
+
+```yaml
+kvmd:
+    auth:
+        internal:
+            type: onetime
+            force_users: [onetime]
+		external:
+			type: htpasswd
+```
+
+---
 
 ## Unix Socket Credentials configuration
 
