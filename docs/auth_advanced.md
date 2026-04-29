@@ -447,13 +447,13 @@ The authentication process works as follows:
 kvmd:
     auth:
         internal:
-            type: ldap:
-                url: ldaps://dc.example.com:636
-                verify: true
-                base: DC=example,DC=com
-                group: CN=PiKVM-Admins,OU=Security Groups,DC=example,DC=com
-                user_domain: example.com
-                timeout: 5
+            type: ldap
+            url: ldaps://dc.example.com:636
+            verify: true
+            base: DC=example,DC=com
+            group: CN=PiKVM-Admins,OU=Security Groups,DC=example,DC=com
+            user_domain: example.com
+            timeout: 5
 ```
 
 ### Configuration with a self-signed certificate
@@ -462,7 +462,7 @@ kvmd:
 kvmd:
     auth:
         internal:
-            type: ldap:
+            type: ldap
             url: ldaps://dc.internal.local:636
             verify: false
             base: OU=Users,DC=internal,DC=local
@@ -573,7 +573,8 @@ The authentication process works as follows:
 ```yaml
 kvmd:
     auth:
-        radius:
+        internal:
+            type: radius
             host: radius.example.com
             port: 1812
             secret: "MySharedSecret123"
@@ -632,8 +633,8 @@ kvmd:
         internal:
             type: onetime
             force_users: [onetime]
-		external:
-			type: htpasswd
+        external:
+            type: htpasswd
 ```
 
 ---
