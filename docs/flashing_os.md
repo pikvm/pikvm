@@ -79,6 +79,8 @@ Decompress (if nessessary) and flash the image. **Be careful when choosing the d
 ```console
 [user@localhost]$ xz --decompress v2-hdmi-rpi4-latest.img.xz
 [user@localhost]$ sudo dd if=v2-hdmi-rpi4-latest.img of=/dev/mmcblkX bs=4M status=progress conv=fsync oflag=direct
+[user@localhost]$ sync
+[user@localhost]$ sudo eject /dev/sdb
 ```
 
 You can also use `dd_rescue` or `ddrescue`.
