@@ -74,11 +74,11 @@ Download the appropriate SD card image. Select it based on the board, platform, 
 
 ### Using Linux CLI (ADVANCED USERS)
 
-Decompress (if nessessary) and flash the image. **Be careful when choosing the device path, it may be different on your machine**:
+Decompress (if nessessary) and flash the image. **Be careful when choosing the device path, it may be different on your machine** (use `lsblk -dpno NAME,SIZE,MODEL`):
 
 ```console
 [user@localhost]$ xz --decompress v2-hdmi-rpi4-latest.img.xz
-[user@localhost]$ sudo dd if=v2-hdmi-rpi4-latest.img of=/dev/mmcblkX
+[user@localhost]$ sudo dd if=v2-hdmi-rpi4-latest.img of=/dev/mmcblkX bs=4M status=progress conv=fsync oflag=direct
 ```
 
 You can also use `dd_rescue` or `ddrescue`.
