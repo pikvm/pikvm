@@ -69,12 +69,12 @@ Download the appropriate SD card image. Select it based on the board, platform, 
 ## Flashing the image
 
 !!! tip
-    After inserting the memory card into your computer, ignore request to format. This is not nessessary.
+    After inserting the memory card into your computer, ignore request to format. This is not necessary.
 
 
 ### Using Linux CLI (ADVANCED USERS)
 
-Decompress (if nessessary) and flash the image. **Be careful when choosing the device path, it may be different on your machine** (use `lsblk -dpno NAME,SIZE,MODEL`):
+Decompress (if necessary) and flash the image. **Be careful when choosing the device path, it may be different on your machine** (use `lsblk -dpno NAME,SIZE,MODEL`):
 
 ```console
 [user@localhost]$ xz --decompress v2-hdmi-rpi4-latest.img.xz
