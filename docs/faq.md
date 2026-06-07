@@ -109,10 +109,11 @@ If you run into any issues you can check this page which will list common errors
     No, there is no need for anything additional, you can power your RPi and or the PiKVM Mini with the USB-C variant.
 
 
-??? question "Do I need a power splitter? Why do I need one?"
-    * Yes for RPi4 - Please see the main v2 document for splitter types listed under V2 hardware
-    * Yes for Zero W and Zero W 2, if using dedicated power you still need to split the power from the data towards the target. If using the target for power, this is not needed.
-    * This is not needed if you have a PiKVM V3 and V4, as they splits power and signal on the board.
+??? question "Do I need a USB splitter for data and power lines? Why do I need one?"
+
+    * This is the case of DIY PiKVM. You need a splitter to prevent backpowering from PiKVM to the host over the USB cable. See detauls [here](v4.md#required-parts).
+
+    * This is not needed if you have a PiKVM V3 and V4, as they splits USB power and data on the board.
 
 
 ??? question "Can I use PiKVM with non-Raspberry Pi boards (Orange, Nano, etc)?"
