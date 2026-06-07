@@ -47,13 +47,30 @@ Here are some examples to place it to `/etc/kvmd/override.yaml`.
                 active: true
     ```
 
+3. Change the interval between movements (in seconds, default is `60`):
+
+    ```yaml
+    kvmd:
+        hid:
+            jiggler:
+                interval: 60
+    ```
+
+!!! note
+    The interval is automatically randomized by ±25% on each iteration to make the jiggling
+    less predictable and harder to detect. There is no setting for this — it is always on.
+    For example, with `interval: 60` each movement waits a random 45–75 seconds; with
+    `interval: 120`, 90–150 seconds. The effective wait is never less than 1 second.
+
 
 -----
 ## Description of the algorithm
 
 When the Jiggler is active, PiKVM counts down the time that has elapsed since the last user input:
-that is, any action with the keyboard or mouse. If there have been no actions for more than 15 seconds,
-the Jiggler performs a mouse movement and waits another 15 seconds until the next iteration.
+that is, any action with the keyboard or mouse. If there have been no actions for more than the configured
+`interval` (default `60` seconds), the Jiggler performs a mouse movement and waits until the next iteration.
+The wait is randomized by ±25% of the `interval` on each iteration (e.g. 45–75 seconds for the default 60),
+so the movements are not perfectly periodic and harder to detect.
 
 The Jiggler supports both [mouse modes](mouse.md): absolute and relative.
 
@@ -66,4 +83,4 @@ The Jiggler works on the PiKVM device side, even if the Web UI was closed.
 
 An important feature of the Jiggler is that it does not interfere with normal user work.
 If the user is actively interacting with the keyboard and mouse, Jiggler will not introduce its interference
-until it notices that the period of inactivity has exceeded the threshold of 15 seconds.
+until it notices that the period of inactivity has exceeded the configured `interval` threshold.
