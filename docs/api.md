@@ -626,7 +626,7 @@ $ curl -k -X POST \
 ```console
 $ curl -k -X POST \
     -u admin:admin \
-    'https://<pikvm-ip>/api/hid/send_mouse_move?to_x=0&to_y=50'
+    'https://<pikvm-ip>/api/hid/events/send_mouse_move?to_x=0&to_y=50'
 ```
 
 ??? note "Example output"
@@ -657,7 +657,7 @@ $ curl -k -X POST \
 ```console
 $ curl -k -X POST \
     -u admin:admin \
-    'https://<pikvm-ip>/api/hid/send_mouse_relative?delta_x=20&delta_y=200'
+    'https://<pikvm-ip>/api/hid/events/send_mouse_relative?delta_x=20&delta_y=200'
 ```
 
 ??? note "Example output"
@@ -688,7 +688,7 @@ $ curl -k -X POST \
 ```console
 $ curl -k -X POST \
     -u admin:admin \
-    'https://<pikvm-ip>/api/hid/send_mouse_wheel?delta_x=0&delta_y=200'
+    'https://<pikvm-ip>/api/hid/events/send_mouse_wheel?delta_x=0&delta_y=200'
 ```
 
 ??? note "Example output"
