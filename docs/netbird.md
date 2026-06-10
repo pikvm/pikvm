@@ -44,6 +44,9 @@ copy of the state.
         cp -a /root/netbird-state/. /tmp/netbird-state/
     fi
 
+    # Create sock directory
+    mkdir /var/run/netbird
+
     # Bind mount over /var/lib/netbird so NetBird sees the writable copy
     mkdir -p /var/lib/netbird
     mountpoint -q /var/lib/netbird && umount /var/lib/netbird || true
