@@ -385,6 +385,68 @@ The full list of options can be found by running `kvmd-otgmsd --help`.
 In rare cases, it may be necessary to disable Mass Storage emulation if the BIOS/UEFI
 does not recognize it correctly and even refuses to work with USB keyboard and mouse.
 
+!!! note "Known affected hardware"
+    Some Dell (OptiPlex / Pro Micro 7020 and similar) and HP (EliteDesk 800 G4 and similar)
+    machines use a UEFI framework that can't handle the combination of Mass Storage and HID
+    (keyboard/mouse) on a single USB port. Typical symptoms are a black screen, a boot loop,
+    or lost date/BIOS settings after exiting the BIOS or powering on the host while the PiKVM
+    USB cable is connected. Disabling Mass Storage as shown below resolves this.
+
+There are two ways to do this, depending on whether you still want to be able to use
+Mass Storage on demand.
+
+### Disable at startup, keep available on demand (recommended)
+
+This keeps the Mass Storage device configured but **does not start it** when PiKVM boots,
+so a problematic BIOS/UEFI is not confused. You can still enable it dynamically later
+(for example, to boot an installer image) using [dynamic USB configuration](usb.md).
+
+??? example "Step by step: Disabling Mass Storage at startup"
+
+    1. Switch the filesystem to read-write mode:
+
+        ```console
+        [root@pikvm ~]# rw
+        ```
+
+    2. Edit `/etc/kvmd/override.yaml` and add:
+
+        ```yaml
+        otg:
+            devices:
+                msd:
+                    start: false
+        ```
+
+        !!! warning
+            Use the `msd` section as shown above. Do **not** confuse it with the `drives`
+            section, which controls the [additional drives](#multiple-drives) and does not
+            affect the main Mass Storage device.
+
+    3. Perform reboot:
+
+        ```console
+        [root@pikvm ~]# reboot
+        ```
+
+    When you need Mass Storage, enable it on the fly:
+
+    ```console
+    [root@pikvm ~]# kvmd-otgconf -e mass_storage.usb0
+    ```
+
+    And disable it again before exiting the BIOS or rebooting the target host:
+
+    ```console
+    [root@pikvm ~]# kvmd-otgconf -d mass_storage.usb0
+    ```
+
+### Disable completely
+
+This fully disables the Mass Storage subsystem. The `Drive` menu in the Web UI
+will be unavailable, and Mass Storage can't be re-enabled dynamically without
+reverting this change.
+
 ??? example "Step by step: Permanent disabling Mass Storage"
 
     1. Switch the filesystem to read-write mode:
@@ -393,13 +455,12 @@ does not recognize it correctly and even refuses to work with USB keyboard and m
         [root@pikvm ~]# rw
         ```
 
-    2. Edit `/etc/kvmd/override.yaml` and add the extra drive config section:
+    2. Edit `/etc/kvmd/override.yaml` and add:
 
         ```yaml
         kvmd:
             msd:
                 type: disabled
-
         ```
 
     3. Perform reboot:
@@ -407,10 +468,6 @@ does not recognize it correctly and even refuses to work with USB keyboard and m
         ```console
         [root@pikvm ~]# reboot
         ```
-
-!!! tip
-    As an alternative method may be to use the [dynamic USB configuration](usb.md),
-    which allows you to temporarily disable any of the emulated devices, including Mass Storage Drive.
 
 
 -----
