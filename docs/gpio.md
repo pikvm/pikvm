@@ -263,6 +263,54 @@ kvmd
     ```
 
 
+### Intel AMT
+??? note "Click to view"
+
+    The driver `amt` provides the ability to send Intel AMT power commands (poweron, poweroff, reset) and show the power status of the remote host. In fact, this is not a hardware driver, but something like a pseudo-GPIO. Each "pin" is actually responsible for a specific AMT operation of `meshcmd`:
+
+    | Pin | Type     | Command |
+    |-----|----------|---------|
+    | `0` | `input`  | `meshcmd ... amtpower status`, can be used to draw the LED in the menu |
+    | `1` | `output` | `meshcmd ... amtpower poweron`, sends the `poweron` command (and only this), so like all other outputs it should be a button |
+    | `2` | `output` | `meshcmd ... amtpower poweroff` |
+    | `3` | `output` | `meshcmd ... amtpower cycle` |
+    | `4` | `output` | `meshcmd ... amtpower reset` |
+    | `5` | `output` | `meshcmd ... amtpower sleep` |
+    | `6` | `output` | `meshcmd ... amtpower hibernate` |
+
+    You are supposed to define one driver per host:
+
+    ```yaml
+    kvmd:
+        gpio:
+            drivers:
+                my_server:
+                    type: amt
+                    host: myserver.local
+                    user: admin
+                    passwd: admin
+                    tls: true
+            scheme:
+                my_server_status:
+                    driver: my_server
+                    pin: 0
+                    mode: input
+                my_server_on:
+                    driver: my_server
+                    pin: 1
+                    mode: output
+                    switch: false
+                my_server_off:
+                    driver: my_server
+                    pin: 2
+                    mode: output
+                    switch: false
+            view:
+                table:
+                    - [my_server_status, "my_server_on|On", "my_server_off|Off"]
+    ```
+
+
 ### Wake-on-LAN
 ??? note "Click to view"
     The driver `wol` provides a simple generator of Wake-on-LAN packages. One driver and one output are generated for one host if a [simplified configuration method](wol.md) is used. However, you can define multiple drivers if you want to manage different hosts. One driver controls one host, and can only be used as an output. Pin numbers are ignored.
