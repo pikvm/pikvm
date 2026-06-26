@@ -21,12 +21,4 @@ This is a feature that many users have been asking for for a long time. So, mous
 
 **It performs short mouse movements every minute until you use PiKVM. Works with both mouse modes: absolute and relative**. In addition, being enabled, it does not interfere with normal work with PiKVM: it will only interfere when you are not interacting with a virtual keyboard or mouse. The time of inactivity is counted from your last actions.
 
-To update (see previous post):
-
-```console
-curl https://files.pikvm.org/update-os.sh | bash
-```
-
-Or ``rw; pacman -Syu; reboot``, if you have already updated the OS using the script earlier.
-
 Howto enable it: https://docs.pikvm.org/mouse_jiggler/

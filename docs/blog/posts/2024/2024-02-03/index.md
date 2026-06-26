@@ -30,9 +30,3 @@ nginx:
 If you had any changes in nginx.conf (for example, you previously disabled HTTPS manually), your Nginx configuration will roll back to the default, and HTTPS will be enabled again. To disable it, use the snippet above.
 
 This will not affect the settings of certificates and Letsencrypt, nothing will break here. If you have not changed Nginx configs, you have nothing to worry about at all and the migration will be seamless.
-
-To update:
-
-```console
-$ curl https://files.pikvm.org/update-os.sh | bash
-```

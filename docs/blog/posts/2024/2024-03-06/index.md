@@ -22,15 +22,3 @@ Today I have prepared a great update for you. After few weeks of research, I man
 
 In H.264 mode (WebUI and VNC), you will get stable 30fps on 1080p and 60fps on 720p
 In MJPEG mode it just works a little faster.
-
-To update:
-
-```
-# pikvm-update`
-```
-
-If this command is not available, please use:
-
-```console
-# curl https://files.pikvm.org/update-os.sh | bash`
-```

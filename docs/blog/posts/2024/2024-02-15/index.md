@@ -38,12 +38,6 @@ In this release, you will get many improvements regarding video quality and EDID
 - Added several new supported resolutions like 1600×YYYY.
 - kvmd-edidconf --set-audio=1 now allows you to automatically add audio blocks for PiKVM, which are required by some particularly finicky OS.
 
-To update:
-
-```console
-$ curl https://files.pikvm.org/update-os.sh | bash
-```
-
 Important: if you are using a custom EDID, you will need to manually replace it with a new one after update. For example: rw; kvmd-edidconf --restore-default=v4plus; reboot (available: v0, v1, v2, v3, v4mini and v4plus)
 
 ![Before/After](before-after.webp)
