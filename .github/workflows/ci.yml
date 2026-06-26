@@ -1,17 +1,21 @@
-name: ci 
+name: ci
 
 on:
   push:
-    branches: 
+    branches:
       - master
+
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: 3.x
       # We're using the own fork of markdown-include because of indention
-      - run: pip install mkdocs-material mkdocs-video mkdocs-redirects mkdocs-glightbox mkdocs-rss-plugin git+https://github.com/pikvm/markdown-include
+      - run: pip install mkdocs-material==9.7.6 mkdocs-video==1.5.0 mkdocs-redirects==1.2.3 mkdocs-glightbox==0.5.2 mkdocs-rss-plugin==1.19.0 git+https://github.com/pikvm/markdown-include@e531f8eae5b2c6736ddf4c6fd4d4dad8bd83f547
       - run: mkdocs gh-deploy --force
