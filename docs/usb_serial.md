@@ -5,6 +5,13 @@ description: How to configure a serial-over-USB connection on PiKVM V2+
 
 Specifically to V2+. This can be used for terminal access from the target host to the PiKVM, or for any other purpose that requires a serial connection. In the last case, you only need to perform step 1 and reboot.
 
+!!! warning
+
+    This allows access from the host to PiKVM. Make sure that you trust the host enough to do this,
+    and change the default passwords of PiKVM if you haven't already done so.
+
+    {!_passwd.md!}
+
 {!_usb_limits.md!}
 
 1. Update your PiKVM:
