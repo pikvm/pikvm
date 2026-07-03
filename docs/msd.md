@@ -380,6 +380,69 @@ The full list of options can be found by running `kvmd-otgmsd --help`.
 
 
 -----
+## When the host doesn't detect the virtual drive
+
+Some hosts refuse to detect or boot from the emulated drive even though a **physical** USB flash
+drive with the *same* image works. This has been reported for game consoles (for example the
+Xbox One recovery / _Offline System Update_, see [#581](https://github.com/pikvm/pikvm/issues/581))
+and occasionally for strict BIOS/UEFI firmware.
+
+The usual reason is that such hosts are pickier about *how* the drive presents itself on USB than
+a regular PC. The emulated drive can be tuned to look as much like an ordinary removable flash
+stick as possible. Try these one change at a time, reconnecting the drive (V3/V4:
+`System -> Connect Main USB` off/on) or rebooting the target host after each:
+
+* **Present it as a writable Flash drive, not a CD-ROM.** In the `Drive` menu set the media type
+  to `Flash` and enable the `Writable` switch. Console recovery images generally expect a writable
+  removable disk rather than a read-only optical drive.
+
+* **Give it a real-looking identity.** By default the gadget advertises itself as a generic Linux
+  composite device; you can make it impersonate an ordinary vendor's flash stick (see below).
+
+??? example "Step by step: Making the drive look like a plain USB stick"
+
+    1. Switch the filesystem to read-write mode:
+
+        ```console
+        [root@pikvm ~]# rw
+        ```
+
+    2. Edit `/etc/kvmd/override.yaml`:
+
+        ```yaml
+        otg:
+            vendor_id: 0x0781         # e.g. SanDisk; use any real vendor/product IDs
+            product_id: 0x5567
+            devices:
+                msd:
+                    default:
+                        cdrom: false      # Flash, not CD/DVD
+                        rw: true          # Writable
+                        removable: true   # Report as removable media (this is the default)
+                        stall: true       # Some hosts expect bulk-endpoint STALL; worth toggling
+                        inquiry_string:
+                            flash:
+                                vendor: SanDisk
+                                product: "Cruzer Blade"
+                                revision: "1.00"
+        ```
+
+    3. Reboot:
+
+        ```console
+        [root@pikvm ~]# reboot
+        ```
+
+!!! note "Known limitation"
+    PiKVM presents a single **composite** USB device (keyboard + mouse + mass storage on one
+    cable), whereas a physical flash drive is a lone single-function device. Some hosts dislike a
+    mass-storage function inside a composite gadget — this is the current best guess for the Xbox
+    case and cannot be changed by the options above. If you have such a device and can capture the
+    USB traffic (comparing a working physical stick against the PiKVM drive), please share it on
+    [#581](https://github.com/pikvm/pikvm/issues/581) — that is what is needed to pin it down.
+
+
+-----
 ## Disabling Mass Storage
 
 In rare cases, it may be necessary to disable Mass Storage emulation if the BIOS/UEFI
