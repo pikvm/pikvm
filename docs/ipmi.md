@@ -29,7 +29,7 @@ It can be useful for managing a large number of machines with PiKVM. Its advanta
         [root@pikvm ~]# rw
         ```
 
-    2. Set up IPMI account in file `/etc/kvmd/ipmipasswd` (see the comment inside it).
+    2. Set up IPMI account in file `/etc/kvmd/ipmipasswd` (see the comment inside it). Passwords are stored as plain text due to the IPMI legacy. Do not use passwords for IPMI that you use somewhere else.
 
     3. Enable the `kvmd-ipmi` daemon:
 

@@ -205,8 +205,8 @@ These instructions are for how to install and use the **`acme-dns-client`** with
 ### Assumptions
 
 - ACME DNS is already set up and functioning in the environment
-- ACME DNS Server is **`auth.example.org`**
-- PiKVM Fully Qualified Domain Name (FQDN) is **`pikvm.example.org`**
+- ACME DNS Server is **`auth.example.com`**
+- PiKVM Fully Qualified Domain Name (FQDN) is **`pikvm.example.com`**
 - PiKVM is running on a supported Raspberry Pi using the [PiKVM OS](https://github.com/pikvm/os) (which is 32-bit as of the writing of this documentation)
 - All configuration examples below are as user **`root`** via a terminal session to PiKVM
 
@@ -251,7 +251,7 @@ These instructions are for how to install and use the **`acme-dns-client`** with
         This is interactive, follow instructions for creating and verifying the appropriate `CNAME` record.  
    
       ```
-      # acme-dns-client register -d pikvm.example.org -s http://auth.example.org
+      # acme-dns-client register -d pikvm.example.com -s https://auth.example.com
       ```
 
       Once registration is complete ownership of `clientstorage.json` must be changed to `kvmd-certbot`.
@@ -272,11 +272,11 @@ These instructions are for how to install and use the **`acme-dns-client`** with
 6. Request Certificate via Certbot
 
       ```
-      # kvmd-certbot certonly --manual --preferred-challenges dns --manual-auth-hook 'acme-dns-client' -d pikvm.example.org
+      # kvmd-certbot certonly --manual --preferred-challenges dns --manual-auth-hook 'acme-dns-client' -d pikvm.example.com
       ```
 
     !!! note
-        If using an ACME compatible Certificate Authority (other than Let's Encrypt) do not forget to add `--server https://ca.example.org/acme/acme/directory` to `kvmd-certbot`
+        If using an ACME compatible Certificate Authority (other than Let's Encrypt) do not forget to add `--server https://ca.example.com/acme/acme/directory` to `kvmd-certbot`
 
 7. Follow steps 3 through 5 under [Basic Setup](https://docs.pikvm.org/letsencrypt/#basic-setup) to complete setup and renewal of certificates
 

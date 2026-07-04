@@ -68,14 +68,20 @@ Docker must work in privileged mode.
     TIMEZONE = Europe/Nicosia
 
     # For SSH root user
-    ROOT_PASSWD = rootpass
+    ROOT_PASSWD = change_me
 
-    # Web UI credentials: user=admin, password=adminpass
-    WEBUI_ADMIN_PASSWD = adminpass
+    # Web UI credentials: user=admin, password=admin_change_me
+    WEBUI_ADMIN_PASSWD = admin_change_me
 
-    # IPMI credentials: user=admin, password=adminpass
-    IPMI_ADMIN_PASSWD = adminpass
+    # IPMI credentials: password=ipmi_change_me
+    IPMI_ADMIN_PASSWD = ipmi_change_me
     ```
+
+   !!! warning
+
+       Due to the [legacy of the IPMI protocol](ipmi.md), passwords for it are stored as plain text in `/etc/kvmd/ipmipasswd`.
+
+       Do not use passwords for IPMI that you use somewhere else.
 
 4. Build the OS. It may take about one hour depending on the Internet connection:
 

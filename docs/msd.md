@@ -232,11 +232,18 @@ linux kernel will default to 'root' ownership of the mountpoint.  This means the
 volume will be visible in the 'Media' menu, but will be marked as `[read-only]`, without
 any obvious reason.
 
+First, you need to find out UID of the `kvmd` user:
+
+```console
+[root@pikvm ~]# id kvmd
+uid=966(kvmd) ...
+```
+
 The correct `/etc/fstab` entry for a USB drive that presents as `/dev/sda1` with an
-exfat filesystem is:
+exfat filesystem is (use your actual UID of `kvmd`):
 
         ```fstab
-        /dev/sda1   /var/lib/kvmd/msd/usb   exfat  auto,nofail,rw,umask=0000  0 0
+        /dev/sda1   /var/lib/kvmd/msd/usb   exfat  auto,nofail,rw,umask=0133,uid=966  0 0
         ```
 This says to mount it automatically, do not fail if it's missing, mount it read/write by
 default, and allow all users and groups access to it.

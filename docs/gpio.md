@@ -370,12 +370,6 @@ kvmd
     ```sudoers
     kvmd ALL=(ALL) NOPASSWD: /usr/bin/reboot
     ```
-    
-    NON Granular example (Captures ALL commands)
-    
-    ```sudoers
-    kvmd ALL=(ALL) NOPASSWD: ALL
-    ```
 
     Example of the `/etc/kvmd/override.yaml`:
 

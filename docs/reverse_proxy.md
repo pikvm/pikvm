@@ -52,6 +52,10 @@ HTTPS for them.
 
     * Disabling HTTPS. All requests will be handled via HTTP port `80`.
 
+        Please note that this disables encryption.
+        You are supposed to use this only in trusted networks in order to put PiKVM
+        behind a reverse proxy with its own SSL certificate.
+
         ```yaml
         nginx:
             https:
