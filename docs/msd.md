@@ -475,18 +475,3 @@ reverting this change.
         ```console
         [root@pikvm ~]# reboot
         ```
-
-
------
-## Big DVD images on old PiKVM
-
-Since KVMD 4.49, PiKVM is able to emulate DVD images.
-
-Before that, users had to use Ventoy and other utilities to pre-convert large DVD images
-such as the official Windows ISO to Flash.
-
-We strongly recommend updating the PiKVM OS to simplify your Mass Storage experience when using DVDs:
-
-{!_update_os.md!}
-
-Anyway, you can still view [all these legacy recipes](msd_legacy.md).

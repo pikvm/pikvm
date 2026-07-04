@@ -83,6 +83,7 @@ plugins:
             "first_steps.md": "cheatsheet.md"
             "cheat_sheet.md": "cheatsheet.md"
             "override.md": "config.md"
+            "msd_legacy.md": "msd.md"
     - glightbox:
         touchNavigation: false
         loop: false
@@ -166,7 +167,6 @@ nav:
         - "Cases for 3D printing": 3d_printing.md
     - "Legacy":
         - "Arduino HID": arduino_hid.md
-        - "Big DVD images on old PiKVM": msd_legacy.md
     - "PiKVM info":
         - "Compliance": compliance.md
         - "Blog & news":
