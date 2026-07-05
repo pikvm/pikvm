@@ -31,53 +31,43 @@ description: How to configure Cloudflare tunnels for your PiKVM
    * Don't skip the access policies as this important to preventing randoms from the internet from gaining access to your PiKVM. Cloudflare offers a variety of login options with the simplest being One-time PINs that are emailed to you. NOTE: This external authentication will not replace the username/password for the PiKVM but instead supplement it acting as a first line of defense from the internet.
   
 
-## Installation on the PiKVM
+## Installation
 
 1. Use these commands to install Cloudflared:
 
-    ```
-    # rw
-    # curl -L -o /usr/local/bin/cloudflared "$(curl -s "https://api.github.com/repos/cloudflare/cloudflared/releases/latest" | grep -e 'browser_download_url.*/cloudflared-linux-armhf"' | sed -e 's/[\ \":]//g' -e 's/browser_download_url//g' -e 's/\/\//:\/\//g')"
-    # chmod +x /usr/local/bin/cloudflared
-    # cloudflared version
-    ```
-
-2. Update /etc/systemd/resolved.conf and set cloudflare nameservers.
-
-    ```
-    # sudo vim /etc/systemd/resolved.conf
-    # Uncomment DNS line and set 'DNS=1.1.1.1 1.0.0.1'
-    # systemctl restart systemd-resolved
+    ```console
+    [root@pikvm ~]# rw
+    [root@pikvm ~]# pacman -Syy
+    [root@pikvm ~]# pacman -S cloudflared
+    [root@pikvm ~]# cloudflared version
     ```
 
-3. Install the Cloudflare tunnel service to Cloudflared.
+2. Edit `/etc/systemd/resolved.conf`, uncomment DNS line and set `DNS=1.1.1.1 1.0.0.1`.
 
-    ```
-    # sudo cloudflared service install SERVICE_TOKEN_HERE
-    ```
+3. Restart systemd-resolved:
 
-4. Ensure cloudflared service is enabled so it starts on boot.
-
-    ```
-    # sudo systemctl enable cloudflared
+    ```console
+    [root@pikvm ~]# systemctl restart systemd-resolved
     ```
 
-5. Open a web browser and attempt to connect to your tunnel.
+4. Install the Cloudflare tunnel service to Cloudflared.
 
-6. Drop back in to read only mode
-   
-    ```
-    # ro
+    ```console
+    [root@pikvm ~]# sudo cloudflared service install SERVICE_TOKEN_HERE
     ```
 
-7. Reboot pikvm and ensure your tunnel comes back up.  This may take a few minutes. 
+5. Ensure cloudflared service is enabled so it starts on boot.
+
+    ```
+    [root@pikvm ~]# sudo systemctl enable cloudflared
+    ```
+
+6. Open a web browser and attempt to connect to your tunnel.
+
+7. Reboot pikvm with `reboot` command and ensure your tunnel comes back up.  This may take a few minutes. 
 
 ## Updating Cloudflared
 
-Use these commands to update Cloudflared:
-  
-```
-# rw
-# cloudflared update
-# ro
-```
+Use a general way to update the system packages:
+
+{!_update_os.md!}
