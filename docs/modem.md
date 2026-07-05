@@ -21,11 +21,18 @@ Please note that only modems with USB data lines are supported.
 Here is a list of good modems that you can start with:
 
 * [**SIMCom SIM7600G-H**](https://techship.com/product/simcom-sim7600g-h-r2-mpcie/?variant=006)
-* [Sierra Wireless MC7700](https://source.sierrawireless.com/devices/mc-series/mc7700/)
-* [Huawei EM820W](https://techship.com/product/huawei-em820w/?variant=001)
+* [Telit LE910C4](https://techship.com/product/telit-le910c4-wwxd-lte-cat-4-mpcie/?variant=004)
+* [Sierra Wireless MC7455](https://source.sierrawireless.com/devices/mc-series/mc7455/)
 * [Quectel EG25-G](https://www.quectel.com/product/lte-eg25-g-mpcie/)
 
 An antenna and an SMA pigtail are also required to use the modem.
+
+* [Antenna 1](https://techship.com/product/2-j-2-jw-0924-c952-b-lte-swivel-antenna-sma-male/?variant=001)
+* [Antenna 2](https://techship.com/product/2-j-2-j6983-m-pa-5-g-sub6-lte-mimo-antenna-mag-adh-3-m-sma/?variant=001)
+* [Antenna 3](https://techship.com/product/2-j-2-j4-f01-mgf-gnss-antenna-magnetic-mount-3-m-sma-m/?variant=001)
+* [Antenna 4](https://techship.com/product/2-j-2-j6984-bg-fa-5-g-sub6-lte-mimo-gnss-antenna-screw-3-m-sma/?variant=001)
+* [Pigtail](https://techship.com/product/rf-interface-cable-sma-fipex-mhf-113ll-15cm/?variant=001)
+
 
 When choosing an antenna, check the supported frequency list of your cellular ISP and the antenna itself.
 
