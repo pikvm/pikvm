@@ -269,7 +269,7 @@ kvmd
     The driver `amt` provides the ability to send Intel AMT power commands (poweron, poweroff, reset) and show the power status of the remote host. In fact, this is not a hardware driver, but something like a pseudo-GPIO. Each "pin" is actually responsible for a specific AMT operation of [meshcmd](https://docs.meshcentral.com/meshcmd/):
 
     !!! warning
-        To use this driver, you have to download the [meshcmd binary](https://meshcentral.com/executables/meshcmd-linux-arm-64) and install it to `/usr/local/bin`. ([Download page](https://meshcentral.com/downloads.html))
+        To use this driver, you have to download the [meshcmd binary](https://meshcentral.com/executables/meshcmd-linux-arm-64) and install it to `/usr/local/bin`. ([Download page](https://meshcentral.com/downloads.html)). ** This is a third-party binary and we are not responsible for it. Use it at your own risk.**
 
         ```console
         [root@pikvm ~]# rw

@@ -217,7 +217,7 @@ These instructions are for how to install and use the **`acme-dns-client`** with
 ### Instructions
 
 1. Ensure that Step 1 from [Basic Setup](https://docs.pikvm.org/letsencrypt/#basic-setup) has been completed
-2. Visit the [Releases](https://github.com/acme-dns/acme-dns-client/releases) page to get the download URL for the latest **`acme-dns-client`** release (_PiKVM OS_ is 32-bit, which is **`linux_armv6`**)
+2. Visit the [Releases](https://github.com/acme-dns/acme-dns-client/releases) page to get the download URL for the latest **`acme-dns-client`** release (_PiKVM OS_ is 32-bit, which is **`linux_armv6`**). **This is a third-party binary and we are not responsible for it. Use it at your own risk.**
 3. Install **`acme-dns-client`**
 
       The **`acme-dns-client`** is not distributed by **`pacman`** and is a manual installation. The steps below are for:
