@@ -218,7 +218,7 @@ The Switches are intelligent and save you time.
 Just run this command under the root user and wait:
 
 ```console
-[root@pikvm ~]# kvmd-update-switch
+[root@pikvm ~]# kvmd-update-switch --do-the-thing
 ```
 
 The switches will show the progress of the update on the front LEDs and will gradually return to service.
