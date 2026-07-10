@@ -213,17 +213,12 @@ The Switches are intelligent and save you time.
     Switches are extremely difficult to brick, but if there is a power failure during updating,
     you will need physical access to restore the device. So don't worry, it can't be bricked forever.
 
-    It is also recommended to perform all the operations described below via SSH, and not via a web terminal.
-
 ### Performing update
 
-Just run these commands via SSH under root:
+Just run this command under the root user and wait:
 
 ```console
-[root@pikvm ~]# cd /usr/share/kvmd/switch
-[root@pikvm switch]# systemctl stop kvmd   # This will stop the KVM web service
-[root@pikvm switch]# make install          # Flash the first switch
-[root@pikvm switch]# systemctl start kvmd  # Start it again
+[root@pikvm ~]# kvmd-update-switch
 ```
 
 The switches will show the progress of the update on the front LEDs and will gradually return to service.
