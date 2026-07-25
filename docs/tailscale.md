@@ -69,11 +69,11 @@ PiKVM uses self-signed SSL certificates out of the box. You can also use
 [Tailscale certificates](https://tailscale.com/kb/1153/enabling-https) in place of the default one.
 
 !!! warning
-    Tailscale certificates are provided by Let's Encrypt and has a default
+    Tailscale certificates are provided by Let's Encrypt and have a default
     [expiry of 90 days](https://letsencrypt.org/2015/11/09/why-90-days/).
-    There is currently no mechanism available to auto-renew Tailscale
-    certificate. You may put the commands below in a script to simplify
-    process.
+    Certificates created with `tailscale cert` are not installed or renewed
+    automatically. Follow the steps below for a manual installation, or use
+    the [automatic renewal](#automatic-certificate-renewal-for-nginx) setup.
 
 1. Switch filesystem to RW if in ReadOnly mode and delete existing PiKVM certificates for nginx and vnc.
 
@@ -122,22 +122,252 @@ PiKVM uses self-signed SSL certificates out of the box. You can also use
 
 -----
 
+## Automatic Certificate Renewal for Nginx
+
+The following systemd service checks the certificate daily and renews it only
+when it does not match the configured Tailscale hostname or has less than 30
+days remaining. It stages and validates the new certificate and key before
+installing them, reloads nginx without interrupting existing connections, and
+restores the original root filesystem mount mode when it finishes.
+
+This setup manages the nginx certificate only. If you use [KVMD-VNC](vnc.md),
+extend the script to install copies of the certificate and key with the
+`kvmd-vnc` group and restart `kvmd-vnc` after renewal.
+
+1. Switch the filesystem to RW mode and create
+    `/etc/conf.d/kvmd-tailscale-cert-renew`:
+
+    ```console
+    [root@pikvm ~]# rw
+    [root@pikvm ~]# nano /etc/conf.d/kvmd-tailscale-cert-renew
+    ```
+
+    Set the full MagicDNS hostname shown by the Tailscale admin console:
+
+    ```bash
+    TAILSCALE_DOMAIN="pikvm.example.ts.net"
+    ```
+
+2. Create `/usr/local/sbin/kvmd-tailscale-cert-renew`:
+
+    ```bash
+    #!/usr/bin/bash
+    set -Eeuo pipefail
+
+    : "${TAILSCALE_DOMAIN:?Set TAILSCALE_DOMAIN in /etc/conf.d/kvmd-tailscale-cert-renew}"
+
+    readonly domain="${TAILSCALE_DOMAIN%.}"
+    readonly cert_dir="/etc/kvmd/nginx/ssl"
+    readonly cert_file="${cert_dir}/server.crt"
+    readonly key_file="${cert_dir}/server.key"
+    readonly renew_before_seconds=2592000
+
+    exec 9>/run/lock/kvmd-tailscale-cert-renew.lock
+    if ! flock -n 9; then
+        printf '%s\n' "Certificate renewal is already running"
+        exit 0
+    fi
+
+    certificate_is_fresh() {
+        [[ -r "${cert_file}" ]] &&
+            openssl x509 -in "${cert_file}" -noout -checkhost "${domain}" >/dev/null 2>&1 &&
+            openssl x509 -in "${cert_file}" -noout -checkend "${renew_before_seconds}" >/dev/null 2>&1
+    }
+
+    if certificate_is_fresh; then
+        printf '%s\n' "Certificate for ${domain} is valid for more than 30 days; nothing to do"
+        exit 0
+    fi
+
+    printf '%s\n' "Certificate for ${domain} is missing, mismatched, or due within 30 days"
+    tailscale wait --timeout=60s
+
+    umask 077
+    tmp_dir="$(mktemp -d /run/kvmd-tailscale-cert.XXXXXX)"
+    staged_cert="${tmp_dir}/server.crt"
+    staged_key="${tmp_dir}/server.key"
+    old_cert="${tmp_dir}/old-server.crt"
+    old_key="${tmp_dir}/old-server.key"
+    new_cert="${cert_file}.new.$$"
+    new_key="${key_file}.new.$$"
+    root_was_ro=false
+    deployment_started=false
+    deployment_succeeded=false
+
+    cleanup() {
+        local status=$?
+        trap - EXIT HUP INT TERM
+        set +e
+
+        if [[ "${deployment_started}" == true && "${deployment_succeeded}" != true ]]; then
+            printf '%s\n' "Deployment failed; restoring the previous nginx certificate" >&2
+            if [[ -f "${old_cert}" && -f "${old_key}" ]]; then
+                install -o root -g kvmd-nginx -m 0444 "${old_cert}" "${cert_file}"
+                install -o root -g kvmd-nginx -m 0440 "${old_key}" "${key_file}"
+                systemctl reload kvmd-nginx.service
+            fi
+        fi
+
+        rm -f -- "${new_cert}" "${new_key}"
+        rm -rf -- "${tmp_dir}"
+
+        if [[ "${root_was_ro}" == true ]]; then
+            if ! mount -o remount,ro /; then
+                printf '%s\n' "ERROR: could not restore the root filesystem to read-only mode" >&2
+                status=1
+            fi
+        fi
+
+        exit "${status}"
+    }
+
+    trap cleanup EXIT
+    trap 'exit 129' HUP
+    trap 'exit 130' INT
+    trap 'exit 143' TERM
+
+    root_options="$(findmnt -T / -n -o OPTIONS)"
+    case ",${root_options}," in
+    *,ro,*)
+        root_was_ro=true
+        mount -o remount,rw /
+        ;;
+    *,rw,*)
+        ;;
+    *)
+        printf '%s\n' "ERROR: cannot determine the root filesystem mount mode" >&2
+        exit 1
+        ;;
+    esac
+
+    tailscale cert \
+        --min-validity=720h \
+        --cert-file="${staged_cert}" \
+        --key-file="${staged_key}" \
+        "${domain}"
+
+    openssl x509 -in "${staged_cert}" -noout -checkhost "${domain}"
+    openssl x509 -in "${staged_cert}" -noout -checkend "${renew_before_seconds}"
+
+    cert_pubkey_hash="$(openssl x509 -in "${staged_cert}" -pubkey -noout |
+        openssl pkey -pubin -outform DER 2>/dev/null |
+        sha256sum)"
+    cert_pubkey_hash="${cert_pubkey_hash%% *}"
+    key_pubkey_hash="$(openssl pkey -in "${staged_key}" -pubout -outform DER 2>/dev/null |
+        sha256sum)"
+    key_pubkey_hash="${key_pubkey_hash%% *}"
+
+    if [[ -z "${cert_pubkey_hash}" || "${cert_pubkey_hash}" != "${key_pubkey_hash}" ]]; then
+        printf '%s\n' "ERROR: staged certificate and private key do not match" >&2
+        exit 1
+    fi
+
+    cp -a -- "${cert_file}" "${old_cert}"
+    cp -a -- "${key_file}" "${old_key}"
+    install -o root -g kvmd-nginx -m 0444 "${staged_cert}" "${new_cert}"
+    install -o root -g kvmd-nginx -m 0440 "${staged_key}" "${new_key}"
+
+    deployment_started=true
+    mv -f -- "${new_cert}" "${cert_file}"
+    mv -f -- "${new_key}" "${key_file}"
+
+    /usr/sbin/nginx -t -p /etc/kvmd/nginx -c /run/kvmd/nginx.conf
+    systemctl reload kvmd-nginx.service
+    deployment_succeeded=true
+
+    printf '%s\n' "Installed certificate for ${domain}"
+    openssl x509 -in "${cert_file}" -noout -subject -issuer -dates
+    ```
+
+    Make the script executable:
+
+    ```console
+    [root@pikvm ~]# chmod 755 /usr/local/sbin/kvmd-tailscale-cert-renew
+    ```
+
+3. Create `/etc/systemd/system/kvmd-tailscale-cert-renew.service`:
+
+    ```ini
+    [Unit]
+    Description=Renew the PiKVM nginx Tailscale certificate
+    Documentation=https://tailscale.com/docs/reference/tailscale-cli#cert
+    Wants=network-online.target
+    After=network-online.target tailscaled.service
+    Requires=tailscaled.service
+
+    [Service]
+    Type=oneshot
+    EnvironmentFile=/etc/conf.d/kvmd-tailscale-cert-renew
+    ExecStart=/usr/local/sbin/kvmd-tailscale-cert-renew
+    TimeoutStartSec=5min
+    UMask=0077
+    ```
+
+4. Create `/etc/systemd/system/kvmd-tailscale-cert-renew.timer`:
+
+    ```ini
+    [Unit]
+    Description=Check the PiKVM nginx Tailscale certificate daily
+
+    [Timer]
+    OnCalendar=daily
+    RandomizedDelaySec=1h
+    AccuracySec=5m
+    Persistent=true
+    Unit=kvmd-tailscale-cert-renew.service
+
+    [Install]
+    WantedBy=timers.target
+    ```
+
+5. Load the units, enable the timer, run the first certificate installation,
+    and return the filesystem to RO mode:
+
+    ```console
+    [root@pikvm ~]# systemctl daemon-reload
+    [root@pikvm ~]# systemctl enable --now kvmd-tailscale-cert-renew.timer
+    [root@pikvm ~]# systemctl start kvmd-tailscale-cert-renew.service
+    [root@pikvm ~]# ro
+    ```
+
+6. Check the service log and the next scheduled run:
+
+    ```console
+    [root@pikvm ~]# journalctl -u kvmd-tailscale-cert-renew.service
+    [root@pikvm ~]# systemctl list-timers kvmd-tailscale-cert-renew.timer
+    ```
+
+-----
+
 ## Automated Ephemeral Tailscale Certificates Renewal
 
-Tailscale has a nice option of running an HTTPS on your behalf within your tailnet: [`tailscale serve`](https://tailscale.com/kb/1312/serve). It is using Let's Encrypt certificates and renews them every 90 days. The issue is that PiKVM’s filesystem is read-only. While tailscale will diligently request new certificates, it will fail to write it on the disk and hence will try to request new certificates next time you access your web server. Let's Encrypt has a limit of 5 certificates for the server per week, so you will end up with an inoperable server and rate-limited by Let's Encrypt for a day or so.
+[`tailscale serve`](https://tailscale.com/kb/1312/serve) can terminate HTTPS
+and proxy requests to PiKVM within your tailnet. Tailscale renews its Let's
+Encrypt certificates automatically, but it must write certificate and service
+state under `/var/lib/tailscale`. Because the PiKVM root filesystem is
+read-only, those writes fail and repeated certificate requests can eventually
+hit Let's Encrypt rate limits.
+
+The overlay below keeps Tailscale's runtime state writable in RAM. Use the
+[nginx renewal setup](#automatic-certificate-renewal-for-nginx) instead if the
+certificate must survive reboots.
 
 Here's the command that allows you to seamlessly run HTTPS proxy for your PiKVM:
+
 ```console
 [root@pikvm ~]# tailscale serve --bg https+insecure://localhost:443
 ```
+
 And if you want to stop tailscale from serving HTTPS, you can do this by running:
+
 ```console
 [root@pikvm ~]# tailscale serve --https=443 off
 ```
 
 ### Root cause
-Tailscale needs to refresh TLS certificates and write state under `/var/lib/tailscale`.  
-On PiKVM, the root filesystem is read-only, so direct writes fail.  
+
+Tailscale needs to refresh TLS certificates and write state under `/var/lib/tailscale`.
+On PiKVM, the root filesystem is read-only, so direct writes fail.
 
 We can fix this by mounting an **ephemeral overlay filesystem (tmpfs) in RAM** for `/var/lib/tailscale`, backed by a persistent lowerdir (`/root/tailscale-state`).
 
@@ -164,7 +394,7 @@ Instead, we implement this with a systemd service that runs a setup script durin
 ```console
 [root@pikvm ~]# rw
 [root@pikvm ~]# cp -a /var/lib/tailscale /root/tailscale-state
-````
+```
 
 2. Create a helper script, save as `/usr/local/bin/setup-tailscale-overlay.sh`:
 
