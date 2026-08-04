@@ -1818,7 +1818,7 @@ $ curl -k https://<pikvm-ip>/api/redfish/v1
 
 **Route**: `/api/redfish/v1/Systems`
 
-**Description**: Returns collection of available computer systems (PiKVM itself and [PiKVM Switch](switch.md) (if presented).
+**Description**: Returns collection of available computer systems connected to PiKVM itself and [PiKVM Switch](switch.md) (if presented).
 
 **Query parameters**: None.
 
