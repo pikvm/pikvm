@@ -1818,7 +1818,7 @@ $ curl -k https://<pikvm-ip>/api/redfish/v1
 
 **Route**: `/api/redfish/v1/Systems`
 
-**Description**: Returns collection of available computer systems.
+**Description**: Returns collection of available computer systems (PiKVM itself and [PiKVM Switch](switch.md) (if presented).
 
 **Query parameters**: None.
 
@@ -1839,6 +1839,46 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems
             }
         ],
         "Members@odata.count": 1,
+        "Name": "Computer System Collection"
+    }⏎
+    ```
+
+    Another example for two connected [PiKVM Switches](switch.md):
+
+    ```json
+    {
+        "@odata.id": "/redfish/v1/Systems",
+        "@odata.type": "#ComputerSystemCollection.ComputerSystemCollection",
+        "Members": [
+            {
+                "@odata.id": "/redfish/v1/Systems/0"
+            },
+            {
+                "@odata.id": "/redfish/v1/Systems/SwitchPort0"
+            },
+            {
+                "@odata.id": "/redfish/v1/Systems/SwitchPort1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Systems/SwitchPort2"
+            },
+            {
+                "@odata.id": "/redfish/v1/Systems/SwitchPort3"
+            },
+            {
+                "@odata.id": "/redfish/v1/Systems/SwitchPort4"
+            },
+            {
+                "@odata.id": "/redfish/v1/Systems/SwitchPort5"
+            },
+            {
+                "@odata.id": "/redfish/v1/Systems/SwitchPort6"
+            },
+            {
+                "@odata.id": "/redfish/v1/Systems/SwitchPort7"
+            }
+        ],
+        "Members@odata.count": 9,
         "Name": "Computer System Collection"
     }⏎
     ```
@@ -1966,7 +2006,3 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/export/prometheus/metrics
 
 PiKVM has 3 different ways to receive video and audio, depending on the device.
 This is also [reflected](video.md) in the web interface.
-
-| Mode |
-
-### Get raw H.264 video stream

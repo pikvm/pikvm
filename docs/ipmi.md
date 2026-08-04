@@ -96,3 +96,5 @@ To access the Redfish API, use HTTP Basic Auth methods. Also you can use the [re
 [root@pikvm ~]$ redfishtool -S Never -u admin -p admin -r pikvm Systems
 [root@pikvm ~]$ redfishtool -S Never -u admin -p admin -r pikvm Systems reset ForceOff
 ```
+
+Available Redfish API is described [here](api.md#redfish).
