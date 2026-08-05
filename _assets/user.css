@@ -1,0 +1,203 @@
+:root>* {
+	--md-primary-fg-color: #435071;
+	--md-primary-fg-color--light: #575b64;
+	--md-primary-fg-color--dark: #1c1d20;
+}
+
+a {
+	color: var(--md-typeset-a-color);
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a.md-source {
+	color: white;
+}
+
+a.md-source:hover {
+	text-decoration: none;
+}
+
+/*.md-header__button.md-logo img {
+	width: unset;
+}*/
+
+li.md-nav__item--section>label.md-nav__link {
+	font-size: large;
+}
+
+.md-main__inner {
+	margin-top: unset;
+}
+
+@media screen and (min-width: 76.3em) {
+	.md-nav__title {
+		display: none;
+	}
+}
+
+.md-sidebar--primary .md-nav__link--active {
+	font-weight: bold;
+	color: #e82062 !important;
+}
+
+.md-sidebar--primary .md-nav__link--active:before {
+	content: "\21D2";
+	margin-right: 6px;
+}
+
+@media screen and (min-width: 76.3em) {
+	.md-post__back>.md-nav__title {
+		/* Blog: Enable "Back to index" */
+		display: block;
+	}
+}
+
+.md-post__back {
+	/* Blog */
+	padding-top: 1.2rem;
+}
+
+/*.md-header,*/
+.md-footer {
+	background-color: #333333;
+}
+
+@media screen and (min-width: 76.3em) {
+	.md-footer__inner.md-grid {
+		display: none;
+	}
+}
+
+.md-sidebar {
+	padding-top: 0px;
+}
+
+/*.md-sidebar.md-sidebar--primary {
+	position: unset;
+}*/
+
+.md-nav__toggle~.md-nav>.md-nav__list {
+	margin-left: 15px;
+}
+
+.md-sidebar.md-sidebar--secondary {
+	padding-top: 10px;
+}
+
+.md-sidebar.md-sidebar--primary .md-sidebar__scrollwrap,
+.md-sidebar.md-sidebar--post .md-sidebar__scrollwrap {
+	/*overflow-y: unset;*/
+	padding-right: 1px;
+	border-right: 1px solid #adadad;
+}
+
+.md-sidebar.md-sidebar--primary .md-sidebar__inner {
+	/*border-right: 1px solid #adadad;*/
+	padding-bottom: 30px;
+}
+
+.md-sidebar.md-sidebar--secondary .md-sidebar__inner {
+	border-left: 1px solid #adadad;
+}
+
+.md-nav__item .md-nav__list {
+	padding-left: 10px;
+}
+
+.md-content {
+	margin-top: 25px;
+	/*border-left: 1px solid #adadad;
+	border-right: 1px solid #adadad;*/
+}
+
+.md-content.md-content--post {
+	/* Blog */
+	margin-top: 0px;
+}
+
+@media screen and (min-width: 76.3em) {
+	.md-top {
+		display: none;
+	}
+}
+
+.md-typeset hr {
+	border-bottom: 1px solid #adadad;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4,
+.md-typeset h5 {
+	font-weight: bold;
+}
+
+.md-typeset table:not([class]) td:not(:last-child),
+.md-typeset table:not([class]) th:not(:last-child) {
+	border-right: .05rem solid var(--md-typeset-table-color);
+}
+
+ol li::marker {
+	font-weight: bold;
+}
+
+[dir=ltr] .md-typeset summary {
+	padding-right: 80px;
+}
+
+.md-typeset summary:after {
+	background-color: unset;
+	content: " Expand ▼";
+	height: unset;
+	-webkit-mask-image: unset;
+	mask-image: unset;
+	-webkit-mask-position: unset;
+	mask-position: unset;
+	-webkit-mask-repeat: unset;
+	mask-repeat: unset;
+	-webkit-mask-size: unset;
+	mask-size: unset;
+	position: absolute;
+	top: 8px;
+	transform: unset;
+	transition: unset;
+	width: 80px;
+	text-align: right;
+}
+
+.md-typeset details[open]>summary:after {
+	transform: unset;
+	content: " Collapse ▲";
+	width: 80px;
+}
+
+.md-typeset details:not([open]) {
+	border-left-width: 16px;
+}
+
+.md-typeset li>p+details,
+.md-typeset li>p+.admonition,
+.md-typeset li>details:only-child,
+.md-typeset li>.admonition:only-child {
+	margin: 0;
+}
+
+.md-button--stretch {
+	width: 100%;
+}
+
+.hoverlink {
+	font-size: 1.0em;
+	margin-left: 8px;
+	text-decoration: none;
+}
+
+@media (hover: hover) {
+	.hoverlink:hover {
+		text-decoration: none;
+	}
+}
