@@ -484,10 +484,6 @@ If you run into any issues you can check this page which will list common errors
     You can proceed by typing `thisisunsafe` and Chrome will then load the page. Also see [Let's Encrypt](letsencrypt.md) page.
 
 
-??? question "Pressing ESC in full screen mode causes the PiKVM page to close"
-    Your browser does not support [keyboard lock](https://caniuse.com/mdn-api_keyboard_lock). Right now (January 2022), only Chromium implements this, so it works on Chrome, Edge, and Opera.
-
-
 ??? question "The Web UI doesn't work properly in Firefox while it works fine in Chrome"
     This might be related to your specific hardware combination or browser hardware acceleration. Try [disabling hardware acceleration in Firefox](https://support.mozilla.org/en-US/kb/hardware-acceleration-and-windowblinds-crash) or updating your GPU and chipset drivers.
 

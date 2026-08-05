@@ -129,7 +129,7 @@ The microphone signal will not be transmitted if the volume level is zero.
 ## Troubleshooting
 
 * If the browser does not play sound or does not show audio slider, try a different browser
-    and/or incognito mode without extensions. Google Chrome works best.
+    and/or incognito mode without extensions. Firefox and Google Chrome works best.
 
 * Check the log: `journalctl -u kvmd-janus`.
 
