@@ -21,8 +21,10 @@ re-enable existing emulated devices in preset.
 -----
 ## Basics
 
-Each emulated USB device consumes a limited hardware resource called **endpoints**.
+For information on how emulated devices are represented on the target host
+and how to change USB identifiers, please see [this page](id.md).
 
+Each emulated USB device consumes a limited hardware resource called **endpoints**.
 Depending on the device, the number of required endpoints varies:
 
 | Device | Endpoints |
@@ -67,7 +69,6 @@ To configure additional devices, please refer to the corresponding pages:
   from the target host to the PiKVM, or for any other purpose that
   requires a serial connection.
 
-For information on how emulated devices are represented on the target host and how to change it, read [here](id.md).
 
 -----
 ## Default preset

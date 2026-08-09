@@ -72,8 +72,11 @@ immediately after opening without user activity to protect against annoying ads.
 -----
 ## Microphone (outgoing audio)
 
-PiKVM is able to emulate a USB microphone on the target host to transmit your speech from the browser to the host.
-This feature is disabled by default for backward compatibility reasons.
+PiKVM [V3](v3.md) and [V4](v4.md) is able to emulate a USB microphone on the target host to transmit
+your speech from the browser to the host.
+
+The microphone uses [the same USB identifiers](id.md) as the keyboard, mouse and other emulated devices.
+You can change everything together, but not separately.
 
 {!_usb_limits.md!}
 
@@ -113,16 +116,6 @@ Your browser will ask for permission to use the microphone, allow it.
 
 The switch state will be saved in the browser's local settings.
 The microphone signal will not be transmitted if the volume level is zero.
-
-!!! warning "USB compatibility"
-
-    This feature is very new, so we don't know how much it affects the ability to interact with the BIOS and UEFI.
-
-     Please try this and [let us know](https://pikvm.org/support/) if you have lost the ability to access
-     the BIOS or boot OS from PiKVM Mass Storage after turning on the USB microphone.
-
-     But even if this happens, don't worry. You can use [the dynamic USB device control](usb.md)
-     to temporarily turn off the microphone emulation.
 
 
 -----
