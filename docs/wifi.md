@@ -91,6 +91,21 @@ while a single `>` will overwrite the entire configuration.
 4. Make the filesystem read-only again using `ro` command
 
 
+
+-----
+## Antenna on PiKVM V4
+
+PiKVM V4 has a robust metal case that protects your device from physical damage and electromagnetic interference.
+This also means that an external antenna must be used for Wi-Fi. We recommend the official Antenna Kit for Raspberry Pi.
+
+To install the antenna, fix it in the round hole in the back side of the PiKVM, and plug the wire to the connector
+on the Compute Module 4.
+
+Next, to activate the antenna, add line `dtparam=ant2` to the `/boot/config.txt` file on PiKVM, and perform `reboot`.
+
+![type:video](https://www.youtube.com/embed/WyHBWEbtxB4)
+
+
 -----
 ## Useful console commands
 
