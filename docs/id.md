@@ -35,34 +35,53 @@ It works in a similar way with USB.
 -----
 ## HDMI Identifiers
 
-!!! info
-
-    This applies to [PiKVM V3](v3.md), [V4](v4.md) and DIY based on CSI bridge.
-    It is impossible to change the EDID for the HDMI-USB dongle.
-
 The EDID (Extended Display Identification Data) is responsible for presenting the display.
 It also provides the host with information about the resolutions that PiKVM supports.
-More information about this is written on [this page](edid.md), and here we will provide brief information.
+More information about this is written on the [EDID guide](edid.md), and here we will provide brief information.
+
+Please note that this applies to [PiKVM V3](v3.md), [V4](v4.md) and DIY based on CSI bridge.
+It is impossible to change the EDID for the HDMI-USB dongle.
 
 {!_edidconf_options.md!}
 
-For a detailed guide on customizing EDID, please visit [this page](edid.md). There you can also find out how to set the EDID from a real monitor, or quickly adopt your real monitor IDs with PiKVM V4 Plus.
+For a detailed guide on customizing EDID identifiers, please visit the [EDID guide](edid.md).
 
 
 -----
 ## USB Identifiers
 
-!!! info
-
-    This applies to PiKVM V2+. Identifiers on V1 and/or the [Pico HID](pico_hid.md) can't be changed
-    without recompilation and reflashing of the firmware.
-
-
 USB is a much more complex subsystem and another part of PiKVM is responsible for it.
-Be careful when changing the settings here, it may cause the USB to fail.
 
-For information on how to control emulated devices see [here](usb.md).
-The identification is described below.
+What is described here does not concern the structure of the emulated device.
+Your typical PiKVM setup can still be recognized as a keyboard with a built-in mouse and flash drive.
+
+That is, if you encounter USB compatibility issues due to legacy OS or buggy drivers on the target host,
+there are two things you can do:
+
+  * Change USB identifiers (described further);
+  * [Disable some of emulated devices to simplify the device structure.](usb.md).
+    For example, keep only keyboard and one mouse (for example, this is useful for buggy UEFI on DELL and HP),
+    and disable Mass Storage and other devices.
+
+Please note that this applies to PiKVM V2+. Identifiers on V1 and/or the [Pico HID](pico_hid.md) can't be changed
+without recompilation and reflashing of the firmware.
+
+!!! tip "Quick USB IDs changing"
+
+    All PiKVMs (except DIY based on Zero W) have a simple way to read and adopt USB identifiers
+    from a physical USB keyboard or mouse connected to any USB port. This way, the target host
+    will recognize PiKVM as your regular USB device.
+
+    To adopt USB identifiers, connect a keyboard or mouse to PiKVM and run these commands:
+
+    ```console
+    [root@pikvm ~]# rw
+    [root@pikvm ~]# kvmd-otgconf --import-usb-ids
+    [root@pikvm ~]# reboot
+    ```
+
+    Now the device can be unplugged. PiKVM will remember the new settings (in `/etc/kvmd/override.yaml`)
+    and apply them after reboot (the last command).
 
 As you may have found out from the [PiKVM configuration guide](config.md) (if you haven't read it yet, now is the time),
 you can get the list of all configuration parameters using the `kvmd -m` command.

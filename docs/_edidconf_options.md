@@ -3,12 +3,11 @@ search:
     exclude: true
 ---
 
-!!! tip "Quick IDs changing on PiKVM V4 Plus"
+!!! tip "Quick video IDs changing on PiKVM V4 Plus"
 
-    PiKVM V4 Plus has a simple way read and adopt display identifiers like model and serial number
-    from your physical display. See [here](edid.md#adopt-real-display-indentifiers-on-v4-plus) for details.
+    {!_edidconf_adopt.md!}
 
-Run `kvmd-edidconf` on PiKVM:
+Let's check the identification. Run `kvmd-edidconf` on PiKVM:
 
 ```console
 [root@pikvm ~]# kvmd-edidconf
