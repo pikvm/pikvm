@@ -46,6 +46,37 @@ browser) should also work.
     [root@pikvm ~]# chmod 640 /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
     ```
 
+    [PiKVM V3](v3.md), [PiKVM V4](v4.md), and DIY builds based on Raspberry Pi 4
+    include experimental support for connecting to WPA3 networks. To connect to
+    a WPA3 network, you need to make sure your PiKVM is up-to-date, and edit the
+    `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf` file after creating it:
+
+      1. uncomment the plain-text `psk=` line, and comment/remove the hashed `psk=` line;
+      2. add options `key_mgmt=SAE` and `ieee80211w=2` before the closing `}` line;
+      3. finally, add a global option `sae_pwe=2` before the `network={` line.
+
+    For instance, if your `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf` looks like this:
+    ```
+    network={
+      ssid="MyNetwork"
+      #psk="P@assw0rd"
+      psk=4134d31e95e6387761d485796310894b1ac5e9bb86b3b96e0dd3473cea440014
+    }
+    ```
+
+    You need to change it as follows:
+    ```
+    sae_pwe=2
+
+    network={
+      ssid="MyNetwork"
+      psk="P@assw0rd"
+      #psk=4134d31e95e6387761d485796310894b1ac5e9bb86b3b96e0dd3473cea440014
+      key_mgmt=SAE
+      ieee80211w=2
+    }
+    ```
+
     !!! note "Connecting to mixed WPA2/3 networks in WPA2 mode (older devices)"
         Add options `key_mgmt=WPA-PSK-SHA256 WPA-PSK` and `ieee80211w=1`
         to `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf` inside the `network={` block.
@@ -93,6 +124,10 @@ while a single `>` will overwrite the entire configuration.
     [root@pikvm ~]# wpa_passphrase 'Wifi2' 'P@assw0rd' >> /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
     [root@pikvm ~]# wpa_passphrase 'Wifi3' 'P@assw0rd' >> /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
     ```
+
+    If any of those networks enable or require WPA3, edit your `wpa_supplicant-wlan0.conf`
+    as described above, making changes to relevant `network={...}` blocks.
+
 
 3. Restart the service: `systemctl restart wpa_supplicant@wlan0.service`.
 
