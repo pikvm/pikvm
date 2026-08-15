@@ -19,7 +19,7 @@ deleted.
 ## Setting up Wi-Fi
 
 !!! note
-    Devices based on Raspberry Pi Zero 2 W does not support 5GHz Wi-Fi.
+    PiKVM devices based on Raspberry Pi Zero 2 W do not support 5 GHz or WPA3 Wi-Fi networks.
 
 1. Remove the PiKVM memory card. The device must be turned off.
 
@@ -49,7 +49,9 @@ deleted.
 
 6. A few things to keep in mind:
     * Note that after applying the settings, the pikvm.txt file will be deleted.
-    * WPA3 is not supported. Enable WPA2 on your router, while AES is supported, some aspects of it is not and you may need to disable AES for it to connect.
+    * WPA3 support is experimental, and is only supported with newer devices.
+      If WPA3 does not work for you, switch your network into WPA2/3 mixed mode
+      and see below how to configure PiKVM to use WPA2/3 mixed mode instead.
     * There is a possibility that, in countries that support channel 13, the device will not connect.
         You will need to configure your router to disable channels 12-14 or disable Auto scan mode.
 
@@ -101,6 +103,12 @@ A number of other parameters can be applied in the same way as with Wi-Fi.
     Configures Wi-Fi with DHCP, described in more detail in previous paragrpah.
     Both options must be set simultaneously to avoid incorrect configuration.
     Can be followed by several options:
+
+* `WIFI_WPA3=1`<br>
+    Enables **experimental** support for connecting to WPA3 networks.
+
+    !!! warning
+        Available only on new images >= 2026.08.16, and only on devices based on Raspberry Pi 4.
 
 * `WIFI_WPA23=1`<br>
     Allows to connect to mixed WPA2/WPA3 networks in WPA2 mode. Specifically,
