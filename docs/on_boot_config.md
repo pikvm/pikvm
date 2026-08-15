@@ -85,6 +85,8 @@ A number of other parameters can be applied in the same way as with Wi-Fi.
 * `SSH_PORT=1234`<br>
     Changes SSH server port to 1234 instead of 22.
 
+### Options for configuring Ethernet
+
 * `ETH_DHCP=1`<br>
     Configures Ethernet port for DHCP. This is a default for PiKVM OS.
 
@@ -93,21 +95,23 @@ A number of other parameters can be applied in the same way as with Wi-Fi.
     [systemd configuration files](https://wiki.archlinux.org/title/systemd-networkd) on the live OS.
     All three options must be set simultaneously to avoid incorrect configuration.
 
+### Options for configuring Wi-Fi
+
 * `WIFI_ESSID=foo`<br>`WIFI_PASSWD=bar`<br>
     Configures Wi-Fi with DHCP, described in more detail in previous paragrpah.
     Both options must be set simultaneously to avoid incorrect configuration.
     Can be followed by several options:
 
-    * `WIFI_WPA23=1`<br>
-        Allows to connect to mixed WPA2/WPA3 network. Available only on new images >= 2025.03.03.
+* `WIFI_WPA23=1`<br>
+    Allows to connect to mixed WPA2/WPA3 network. Available only on new images >= 2025.03.03.
 
-    * `WIFI_HIDDEN=1`<br>
-        Allows to connect to hidden Wi-Fi network. Available only on new images >= 2024.03.12.
+* `WIFI_HIDDEN=1`<br>
+    Allows to connect to hidden Wi-Fi network. Available only on new images >= 2024.03.12.
 
-    * `WIFI_ADDR=192.168.0.100/24`<br>`WIFI_DNS=8.8.8.8`<br>`WIFI_GW=192.168.0.1`<br>
-        Configures a static IP on the Wifi. Only IPv4 is available here. For IPv6 you'll need to change
-        [systemd configuration files](https://wiki.archlinux.org/title/systemd-networkd) on the live OS.
-        All three options must be set simultaneously with `WIFI_ESSID` and `WIFI_PASSWD` to avoid incorrect configuration.
+* `WIFI_ADDR=192.168.0.100/24`<br>`WIFI_DNS=8.8.8.8`<br>`WIFI_GW=192.168.0.1`<br>
+    Configures a static IP on the Wifi. Only IPv4 is available here. For IPv6 you'll need to change
+    [systemd configuration files](https://wiki.archlinux.org/title/systemd-networkd) on the live OS.
+    All three options must be set simultaneously with `WIFI_ESSID` and `WIFI_PASSWD` to avoid incorrect configuration.
 
 * `WIFI_REGDOM=US`<br>
     Changes Wi-Fi regulatory domain to the US. Other domains available by
