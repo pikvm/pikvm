@@ -103,10 +103,17 @@ A number of other parameters can be applied in the same way as with Wi-Fi.
     Can be followed by several options:
 
 * `WIFI_WPA23=1`<br>
-    Allows to connect to mixed WPA2/WPA3 network. Available only on new images >= 2025.03.03.
+    Allows to connect to mixed WPA2/WPA3 networks in WPA2 mode. Specifically,
+    this enables WPA2 PMF (protected management frame) support.
+
+    !!! note
+        Available only on new images >= 2025.03.03.
 
 * `WIFI_HIDDEN=1`<br>
-    Allows to connect to hidden Wi-Fi network. Available only on new images >= 2024.03.12.
+    Allows to connect to hidden Wi-Fi network.
+
+    !!! note
+        Available only on new images >= 2024.03.12.
 
 * `WIFI_ADDR=192.168.0.100/24`<br>`WIFI_DNS=8.8.8.8`<br>`WIFI_GW=192.168.0.1`<br>
     Configures a static IP on the Wifi. Only IPv4 is available here. For IPv6 you'll need to change
