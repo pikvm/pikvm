@@ -46,20 +46,28 @@ browser) should also work.
     [root@pikvm ~]# chmod 640 /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
     ```
 
-    !!! note "WPA2 and WPA3 support"
-        Add options `key_mgmt=WPA-PSK-SHA256 WPA-PSK` and `ieee80211w=1` to `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf`
+    !!! note "Connecting to mixed WPA2/3 networks in WPA2 mode (older devices)"
+        Add options `key_mgmt=WPA-PSK-SHA256 WPA-PSK` and `ieee80211w=1`
+        to `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf` inside the `network={` block.
+
+        This enables WPA2 PMF (protected management frame) support, which is
+        often necessary to connect to WPA2/3 mixed mode networks.
 
     !!! note "Using Wi-Fi with hidden ESSID"
-        Add option `scan_ssid=1` to `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf`
+        Add global option `scan_ssid=1` to `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf`
 
     !!! note "Using 5GHz Wi-Fi in the USA"
-        Add option `country=US` to `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf`
+        Add global option `country=US` to `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf`
 
-    !!! note "Block 2ghz or 5ghz"
-        Add option `bssid=xx:xx:xx:xx:xx:xx` to `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf` within the `network={` block
+    !!! note "Block 2 GHz or 5 GHz"
+        Add option `bssid=xx:xx:xx:xx:xx:xx` to `/etc/wpa_supplicant/wpa_supplicant-wlan0.conf`
+        inside the `network={` block.
+
+        Here, `xx:xx:xx:xx:xx:xx` is the MAC address of the specific 2 GHz or 5 GHz
+        AP that you want to _allow_. All other APs in this network will be blocked.
 
 
-5. Enable WPA-supplicant service:
+5. Enable the `wpa_supplicant@wlan0` service:
 
    ```console
    [root@pikvm ~]# systemctl enable wpa_supplicant@wlan0.service
