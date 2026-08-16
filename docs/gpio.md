@@ -433,16 +433,9 @@ kvmd
             dtoverlay=pwm,pin=12,func=4
             ```
 
-    2. Create `/etc/udev/rules.d/99-kvmd-pwm.rules`:
+    2. Connect Servo motor like SG90 PWM connection to RPi GPIO18 or CM4 GPIO12, +5V and GND to a 5V and GND pin on header:
 
-        ```
-        SUBSYSTEM=="pwm*", ACTION=="add", RUN+="/bin/chgrp -R kvmd /sys%p", RUN+="/bin/chmod -R g=u /sys%p"
-        SUBSYSTEM=="pwm*", ACTION=="change", ENV{TRIGGER}!="none", RUN+="/bin/chgrp -R kvmd /sys%p", RUN+="/bin/chmod -R g=u /sys%p"
-        ```
-
-    3. Connect Servo motor like SG90 PWM connection to RPi GPIO18 or CM4 GPIO12, +5V and GND to a 5V and GND pin on header:
-
-    4. Add to /etc/kvmd/override.yaml
+    3. Add to /etc/kvmd/override.yaml
 
         ```yaml
         kvmd:
