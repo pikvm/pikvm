@@ -34,6 +34,7 @@ Docker must work in privileged mode.
 
     * Choose the board:
         * `BOARD=rpi4` for Raspberry Pi 4.
+        * `BOARD=rpi5`
         * `BOARD=zero2w`
         * `BOARD=rpi3`
         * `BOARD=rpi2`
@@ -43,7 +44,7 @@ Docker must work in privileged mode.
         * `PLATFORM=v4plus-hdmi` for PiKVM V4 Plus.
         * `PLATFORM=v3-hdmi` for RPi4 and PiKVM V3 HAT.
         * `PLATFORM=v2-hdmi` for RPi3a+/RPi4 or Zero2W with HDMI-CSI bridge.
-        * `PLATFORM=v2-hdmiusb` for RPi4 with HDMI-USB dongle.
+        * `PLATFORM=v2-hdmiusb` for RPi4 and RPi5 with HDMI-USB dongle.
         * `PLATFORM=v1-hdmi` for RPi2 or 3b+ with HDMI-CSI bridge and the Pico HID.
         * `PLATFORM=v1-hdmiusb` for RPi2 or 3b+ with HDMI-USB dongle and the Pico HID.
 

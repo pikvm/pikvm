@@ -17,7 +17,7 @@ If you need to connect multiple hosts to a single PiKVM, then the best way to do
 * True Plug-n-Play with no need for override.yaml setups and complete control via Web UI.
 * Multifunctional RGB LEDs with beacon mode and customizable color schemes.
 * Firmware update directly from PiKVM and ready for future hardware extensions.
-* Compatible with V4 Plus, V3 and DIY devices based on Pi2-Pi4 except Zero and V4 Mini.
+* Compatible with V4 Plus, V3 and DIY devices based on Pi2-Pi5 except Zero and V4 Mini.
 
 And now the best part: **the switches can be chained!** Need four ports? Get a PiKVM Switch.
 As your server fleet expands to eight, simply add another switch and link it to the first one.
@@ -67,6 +67,6 @@ Limitations:
     * [This loop capture device](https://www.amazon.com/gp/product/B08B346353)
     * v3 HAT v3.3 (Kickstarter model and later) also takes care of the back power issue
 * Mass Storage Device (MSD) workaround (will not work OOB)
-    * RPi4 OTG needs to be in the KB port for mouse and KB funtionality, ZeroW is required and needs to be connected to the HUB port for MSD functionality - ✔**KNOWN WORKING**✔
+    * RPi4 and RPi5 OTG needs to be in the KB port for mouse and KB funtionality, ZeroW is required and needs to be connected to the HUB port for MSD functionality - ✔**KNOWN WORKING**✔
     * AIMOS 4/8-port: See [here](https://github.com/pikvm/pikvm/issues/371) - Advanced soldering required - allows use of GPIO menu to change input by cycling
     * AIMOS 8-port: See [here](https://github.com/749/PiKVM-AIMOS-AM-KVM803-UART-Mod) - Advanced soldering required - allows use of GPIO menu to change input directly

@@ -31,6 +31,11 @@ Download the appropriate SD card image. Select it based on the board, platform, 
 
 !!! abstract "DIY PiKVM V2 Platform"
 
+    * **Raspberry Pi 5** <sub*64-bit*</sub>
+        * HDMI-CSI bridge is not supported due to lack of hardware image encoders on Pi 5.
+        * [For HDMI-USB dongle](https://files.pikvm.org/images/v2-hdmiusb-rpi5/aarch64/v2-hdmiusb-rpi5-aarch64-latest.img.xz)
+            <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmiusb-rpi5/aarch64/v2-hdmiusb-rpi5-aarch64-latest.img.xz.sha1)</sub>
+
     * **Raspberry Pi 4** <sub>*64-bit*</sub>
         * [For HDMI-CSI bridge](https://files.pikvm.org/images/v2-hdmi-rpi4/aarch64/v2-hdmi-rpi4-aarch64-latest.img.xz)
             <sub>- [*sha1*](https://files.pikvm.org/images/v2-hdmi-rpi4/aarch64/v2-hdmi-rpi4-aarch64-latest.img.xz.sha1)</sub>

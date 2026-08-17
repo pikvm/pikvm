@@ -6,8 +6,8 @@ search:
 
 Connect USB dongle to exactly this port. It is bound in the software so the OS does not confuse the video device with something else.
 
-| Raspberry Pi 2 and 3 | Raspberry Pi 4 |
-|----------------------|----------------|
+| Raspberry Pi 2, 3 and 5 | Raspberry Pi 4 |
+|-------------------------|----------------|
 | <img src="../_diy/usbcap_rpi2.jpg" width="200"/> | <img src="../_diy/usbcap_rpi4.jpg" width="200"/> |
 
 There are many revisions of the Raspberry Pi boards and you may come across one that we haven't tested.

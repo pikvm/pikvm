@@ -11,8 +11,7 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 
 
 # Features
-* Can be made based on **Raspberry Pi 2**, **3**, **4** and **Zero2W**;
-    * *Raspberry Pi 5 is not supported right now. It doesn't have GPU video encoders, therefore, there is no point in using it for PiKVM, it will not give any performance boost for this case. The Pi 5 is a great device, just not suitable for PiKVM.*
+* Can be made based on **Raspberry Pi 2**, **Pi 3**, **Pi 4**, **Pi 5** and **Zero2W**;
 * **FullHD video** using advanced **HDMI-to-CSI bridge** or **USB dongle**;
 * [Proven](https://docs.pikvm.org/latency) lowest **35-50ms H.264 latency** among all KVMs on the market;
 * WebRTC, H.264-over-HTTP and MJPEG video;
@@ -93,7 +92,7 @@ All of them uses our common open source software stack.
 |--------------------------------------------------------------------|:-----------:|:-----------:|---|:--------:|---|:----------:|:----------:|
 |                                                                    |             |             |   |          |   |            |            |
 | **Plug and Play out of box!**                                      | ✅          | ✅          |   | ✅       |   | DIY        | DIY        |
-| Base Raspberry unit | CM4<br><sup>Included!</sup> | CM4<br><sup>Included!</sup> | | RPi4<br><sup>Included!</sup> | | RPi4<br>Zero2W | RPi3<br>RPi2<br>Zero2W |
+| Base Raspberry unit | CM4<br><sup>Included!</sup> | CM4<br><sup>Included!</sup> | | RPi4<br><sup>Included!</sup> | | RPi5<br>RPi4<br>Zero2W | RPi3<br>RPi2<br>Zero2W |
 ||
 ||
 | <div align="center">⭐ ⭐ ⭐ **VIDEO** ⭐ ⭐ ⭐</div> | **V4 Plus** | **V4 Mini** |   |  **V3**  |   | **DIY V2** | **DIY V1** |
@@ -160,7 +159,7 @@ All of them uses our common open source software stack.
 * **Keyboard and mouse**  
   Mouse usage works directly in the browser. The keyboard emulator supports displaying the state of the keyboard LEDs.
 * **Mass Storage Drive**  
-  On the Raspberry Pi 4 and Zero2W, PiKVM can emulate a virtual CD/DVD or Flash Drive. A live image can be uploaded to boot the attached server.
+  On the Raspberry Pi 4, 5 and Zero2W, PiKVM can emulate a virtual CD/DVD or Flash Drive. A live image can be uploaded to boot the attached server.
 * **ATX power management**  
   With a very simple circuit that can be assembled on a breadboard, the power button of the attached server can be controlled using the ATX button headers on the motherboard.
 * **Security**  
@@ -202,7 +201,7 @@ All of them uses our common open source software stack.
 
 # DIY Getting Started
 PiKVM supports several different DIY platforms. Now available: **V2** and **V1**.
-* **Recommended**: **V2** is the most powerful implementation for **Raspberry Pi 4** and **Zero2W** supporting all of the features of PiKVM including the **Mass Storage Drive**. **It's also the easiest to make**.
+* **Recommended**: **V2** is the most powerful implementation for **Raspberry Pi 4**, **Pi 5** and **Zero2W** supporting all of the features of PiKVM including the **Mass Storage Drive**. **It's also the easiest to make**.
 * **V1** was designed to work with **Raspberry Pi 2** and **3** that do not have USB emulation port and requires a few more components for a basic implementation. It also does not support the Mass Storage Drive feature.
 
 The full list of parts is at the very beginning according to the assembly instructions for the corresponding platform.
@@ -212,7 +211,7 @@ So, again, in short:
 
 * **DIY PiKVM V2:**
   * [Here are the instructions and a complete list of components](https://docs.pikvm.org/v2).
-  * Requires Raspberry Pi 4 or Zero 2 W.
+  * Requires Raspberry Pi 4 (recommended), Pi 5 or Zero 2 W.
   * Supports H.264 (for recommended CSI capture).
   * Supports CD/DVD and Flash Drive (mass storage) emulation.
   * It is recommended as a simpler and more feature-rich way compared to V1.
