@@ -13,7 +13,8 @@ This brings the user experience of working with voice applications on the remote
 
     * Audio does not work with DIY devices, either CSI or USB video dongles.
 
-    * [VNC](vnc.md) does not support audio, it only works in the Web UI in [WebRTC](video.md) mode.
+    * [VNC](vnc.md) does not support audio, it only works in the Web UI.
+        The speakers require the `WebRTC` video mode, the microphone works in the `Direct` mode too.
 
 
 -----
@@ -117,6 +118,11 @@ Your browser will ask for permission to use the microphone, allow it.
 The switch state will be saved in the browser's local settings.
 The microphone signal will not be transmitted if the volume level is zero.
 
+The microphone is also available in the `Direct` video mode, where the Multimedia section
+contains the Microphone switch only, since this mode has no speakers.
+Unlike `WebRTC`, only one browser at a time can use the microphone here,
+the others will get the busy error.
+
 
 -----
 ## Troubleshooting
@@ -124,6 +130,7 @@ The microphone signal will not be transmitted if the volume level is zero.
 * If the browser does not play sound or does not show audio slider, try a different browser
     and/or incognito mode without extensions. Firefox and Google Chrome works best.
 
-* Check the log: `journalctl -u kvmd-janus`.
+* Check the log: `journalctl -u kvmd-janus` for the `WebRTC` mode
+    or `journalctl -u kvmd-media` for the `Direct` one.
 
 * If nothing helped, please report about the problem [to our support](https://pikvm.org/support/)
