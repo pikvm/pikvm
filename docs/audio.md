@@ -13,8 +13,8 @@ This brings the user experience of working with voice applications on the remote
 
     * Audio does not work with DIY devices, either CSI or USB video dongles.
 
-    * [VNC](vnc.md) does not support audio, it only works in the Web UI.
-        The speakers require the `WebRTC` video mode, the microphone works in the `Direct` mode too.
+    * [VNC](vnc.md) does not support audio, it only works in the Web UI,
+        in the `WebRTC` and `Direct` video modes.
 
 
 -----
@@ -56,9 +56,9 @@ PiKVM supports stereo mode with any standard bits and frequencies like 32/44.1/4
     a ritual dance under the full Moon. For now, a working Pipewire or Pulseaudio most likely be enough.
     Just specify HDMI as the audio sink in the mixer.
 
-To receive audio in the PiKVM Web UI, go to the **System** menu and switch the video mode to `WebRTC`.
-If everything is in order, the volume slider will appear. Set the volume to a non-zero value.
-The video stream will restart and you should start hearing sounds from the target host.
+To receive audio in the PiKVM Web UI, go to the **System** menu and switch the video mode
+to `WebRTC` or `Direct`. If everything is in order, the volume slider will appear.
+Set the volume to a non-zero value and you should start hearing sounds from the target host.
 
 <img src="menu_speakers.png" width="350" />
 
@@ -108,8 +108,8 @@ You can change everything together, but not separately.
         [root@pikvm ~]# reboot
         ```
 
-To receive and transmit audio in the PiKVM Web UI, go to the **System** menu and switch the video mode to `WebRTC`.
-If everything is in order, the volume slider will appear with additional Microphone switch.
+To receive and transmit audio in the PiKVM Web UI, go to the **System** menu and switch the video mode
+to `WebRTC` or `Direct`. If everything is in order, the volume slider will appear with additional Microphone switch.
 Set the volume to a non-zero value, next switch the mic switch.
 Your browser will ask for permission to use the microphone, allow it.
 
@@ -118,10 +118,9 @@ Your browser will ask for permission to use the microphone, allow it.
 The switch state will be saved in the browser's local settings.
 The microphone signal will not be transmitted if the volume level is zero.
 
-The microphone is also available in the `Direct` video mode, where the Multimedia section
-contains the Microphone switch only, since this mode has no speakers.
-Unlike `WebRTC`, only one browser at a time can use the microphone here,
-the others will get the busy error.
+Only one browser at a time can use the microphone, the others will get the busy error.
+The same applies to the video modes: the `WebRTC` and `Direct` modes use the same audio devices,
+so a session in one of them holds the microphone and the speakers until it's closed.
 
 
 -----
