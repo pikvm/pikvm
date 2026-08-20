@@ -27,7 +27,7 @@ video.
 
     * If the `WebRTC` mode is not working, try the `Direct`.
 
-    * The `Direct` mode doesn't support audio yet. If you need audio, but `WebRTC` is not working, follow [this guide](webrtc_config.md).
+    * The `Direct` mode supports [two-way audio](audio.md) as well, with the same requirements as `WebRTC`.
 
 
 -----
@@ -125,7 +125,7 @@ It also uses H.264 encoding, but streams the video over regular HTTP (WebSocket)
 
     * ✅ The latency is low and stable too.
 
-    * ❌ No audio support right now (but it will).
+    * ✅ Provides [two-way audio](audio.md) on PiKVM [V3](v3.md) and [V4 Plus/Mini](v4.md).
 
     * ❌ Some [older browsers](https://caniuse.com/webcodecs) doesn't have the WebCodes support needed for this mode.
 

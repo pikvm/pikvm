@@ -122,6 +122,14 @@ Only one browser at a time can use the microphone, the others will get the busy 
 The same applies to the video modes: the `WebRTC` and `Direct` modes use the same audio devices,
 so a session in one of them holds the microphone and the speakers until it's closed.
 
+The Multimedia section also contains a microphone level meter and the **Raw microphone**
+switch, in both the `WebRTC` and `Direct` modes. Normally the browser applies its own noise
+suppression and automatic gain control to the microphone. The raw mode turns both of them off,
+which is useful for music or a line-in source, but keep in mind that a quiet microphone will
+become much quieter too. The echo cancellation is never disabled, otherwise the target host
+would hear its own sound back through the microphone. The level meter shows what the host
+actually receives, that is, the signal after all the browser's processing.
+
 
 -----
 ## Troubleshooting
