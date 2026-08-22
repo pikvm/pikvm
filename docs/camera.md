@@ -74,7 +74,7 @@ after this instruction, please follow [here](audio.md#microphone-outgoing-audio)
 
 5. Add parameter `gpu_freq=700` to `/boot/config.txt` **on a separate line**.
 
-6. Add parameter `isolcpus=3` to `/boot/cmdline.txt` **to the end of existing one-line, separate with a space`.
+6. Add parameter `isolcpus=3` to `/boot/cmdline.txt` **to the end of existing one-line**, separate with a space.
 
 4. Perform reboot:
 
