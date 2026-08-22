@@ -103,7 +103,7 @@ with the WebRTC mode, please [check this guide](webrtc_config.md).
 
     * ✅ Lowest latency, [fast as hell](latency.md) with `H.264 gop = 0`.
 
-    * ✅ Provides [two-way audio](audio.md) on PikVM [V3](v3.md) and [V4 Plus/Mini](v4.md).
+    * ✅ Provides [two-way audio](audio.md) and [web camera](camera.md) on PikVM [V3](v3.md) and [V4 Plus/Mini](v4.md).
 
     * ❌ The video may be lost due to a poor connection (like mobile internet, bad Wi-Fi, etc.),
         or because of the router settings, when WebRTC is given low priority.
@@ -125,7 +125,7 @@ It also uses H.264 encoding, but streams the video over regular HTTP (WebSocket)
 
     * ✅ The latency is low and stable too.
 
-    * ❌ No audio support right now (but it will).
+    * ❌ No audio support right now (but it will), no camera.
 
     * ❌ Some [older browsers](https://caniuse.com/webcodecs) doesn't have the WebCodes support needed for this mode.
 
@@ -146,7 +146,7 @@ There is no point in using it now if one of the previous modes is working.
 
     * ✅ Low latency if you have a good network.
 
-    * ❌ No audio support.
+    * ❌ No audio and camera support.
 
     * ❌❌❌ Consumes a HUGE amount of traffic. No Wi-Fi, no mobile, nothing but cable connection will work.
 

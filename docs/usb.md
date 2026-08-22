@@ -32,6 +32,7 @@ Depending on the device, the number of required endpoints varies:
 | Keyboard, mouse | 1 for each |
 | Mass Storage Drive | 2 for each |
 | USB Microphone | 2 |
+| USB Web Camera | 2 |
 | USB Ethernet, USB Serial | 3 for each |
 
 **In total, PiKVM provides 9 endpoints for USB emulation**, some of which are used by default:
@@ -55,6 +56,9 @@ To configure additional devices, please refer to the corresponding pages:
 
 * [USB Microphone](audio.md) - Two-way audio communication for voice
   applications on the target host. Exclusive to [PiKVM V3](v3.md) and [V4 Mini/Plus](v4.md).
+
+* [USB Web Camera](camera.md) - Two-way video with web camera for video
+  calls from the target host and much more. Exclusive to [PiKVM V3](v3.md) and [V4 Mini/Plus](v4.md).
 
 * [Absolute and relative mouse](mouse.md) - The most convenient type
   of mouse is an absolute mouse, but some BIOSes may not understand it.

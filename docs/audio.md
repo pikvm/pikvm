@@ -1,9 +1,9 @@
 ---
-title: PiKVM V3+ two-way audio
-description: How to setup two-way audio on PiKVM V3+
+title: PiKVM V4 and V3 two-way audio
+description: How to setup two-way audio on PiKVM V4 Mini/Plus and PiKVM V3
 ---
 
-Official [PiKVM V3](v3.md) and [PiKVM V4 Mini/Plus](v4.md) devices have an exclusive audio transmission feature,
+Official [PiKVM V4 Mini/Plus](v4.md) and [PiKVM V3](v3.md) devices have an exclusive audio transmission feature,
 including **two-way** communication with microphone directly in the browser.
 
 The incoming stream is captured from the target host via HDMI, the outgoing stream is transmitted to an emulated USB microphone.
@@ -56,17 +56,14 @@ PiKVM supports stereo mode with any standard bits and frequencies like 32/44.1/4
     Just specify HDMI as the audio sink in the mixer.
 
 To receive audio in the PiKVM Web UI, go to the **System** menu and switch the video mode to `WebRTC`.
-If everything is in order, the volume slider will appear. Set the volume to a non-zero value.
+If everything is in order, the multimedia section will appear. Set the **Multimedia** switch on,
+and and just the volume for non-zero value.
 The video stream will restart and you should start hearing sounds from the target host.
 
 <img src="menu_speakers.png" width="350" />
 
-If the volume slider is set to zero, then PiKVM does not accept the audio stream to save traffic,
+If the volume slider is set to zero, PiKVM does not accept the audio stream to save traffic,
 while the target host will still assume that the audio output to HDMI is available.
-
-Besides, when the page is reloaded, the volume slider will be reset to zero.
-Saving this setting is not possible due to browser limitation that do not allow web pages to play audio
-immediately after opening without user activity to protect against annoying ads.
 
 
 -----
@@ -75,8 +72,8 @@ immediately after opening without user activity to protect against annoying ads.
 PiKVM [V3](v3.md) and [V4](v4.md) is able to emulate a USB microphone on the target host to transmit
 your speech from the browser to the host.
 
-The microphone uses [the same USB identifiers](id.md) as the keyboard, mouse and other emulated devices.
-You can change everything together, but not separately.
+If you also want enable a webcam for video calls and other applications,
+after this instruction, please follow [here](camera.md).
 
 {!_usb_limits.md!}
 
@@ -107,15 +104,12 @@ You can change everything together, but not separately.
         [root@pikvm ~]# reboot
         ```
 
-To receive and transmit audio in the PiKVM Web UI, go to the **System** menu and switch the video mode to `WebRTC`.
-If everything is in order, the volume slider will appear with additional Microphone switch.
-Set the volume to a non-zero value, next switch the mic switch.
-Your browser will ask for permission to use the microphone, allow it.
+To receive audio in the PiKVM Web UI, go to the **System** menu and switch the video mode to `WebRTC`.
+Before using the microphone, you need to allow the PiKVM Web UI to access it.
+Enable **Multimedia** switch and enable the **Microphone** switch too. You can also choose a specific device.
+The settings are saved in the browser's local storage.
 
 <img src="menu_mic.png" width="350"/>
-
-The switch state will be saved in the browser's local settings.
-The microphone signal will not be transmitted if the volume level is zero.
 
 
 -----

@@ -84,6 +84,7 @@ plugins:
             "cheat_sheet.md": "cheatsheet.md"
             "override.md": "config.md"
             "msd_legacy.md": "msd.md"
+            "webcam.md": "camera.md"
     - glightbox:
         touchNavigation: false
         loop: false
@@ -141,6 +142,7 @@ nav:
         - "USB configuration": usb.md
         - "USB passthrough": usb_pass.md
         - "Audio / Microphone": audio.md
+        - "Web camera": camera.md
         - "Keyboard & mouse":
             - "Mouse modes": mouse.md
             - "Mouse jiggler": mouse_jiggler.md

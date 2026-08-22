@@ -150,7 +150,7 @@ The generally accepted names from the USB specifications are shown too.
 | `serial`         | `iSerialNumber` to 0x409 | ASCII serial number of the product. |
 | `device_version` | `bcdDevice`              | Kinda the revision of the device. Assigned automatically. It can be changed to 256, 257, 258 or something like this |
 
-These IDs are also used for the [microphone](audio.md#microphone-outgoing-audio) on PiKVM V4.
+These IDs are also used for the [microphone](audio.md#microphone-outgoing-audio) and [camera](camera.md) on PiKVM V3 and V4.
 
 The strings under `otg/drives` and `otg/msd` sections deserve a special description.
 They relate to virtual media emulation and are separate parts of the SCSI inquiry string, the drive identifier used by the OS driver.

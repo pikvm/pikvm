@@ -31,8 +31,10 @@ The website: [pikvm.org](https://pikvm.org). Also check out [the documentation](
 PiKVM supports several different hardware configurations, referred to as **platforms**.
 All of them uses our common open source software stack.
 
+### PiKVM V3 & V4 - Now with web camera!
+
 * **PiKVM V4** and **V3** are our own **plug-and-play, fully assembled, industrial grade, robust** devices.<br>
-    Supports **H.264 video & two-way audio with microphone** transmission, **host power management**, **mass-storage emulation** and much more.
+    Supports **H.264 video, audio, microphone and web camera** transmission, **host power management**, **mass-storage emulation** and much more.
     They are really well-made, reliable things which you can use yourself or provide to your clients.
     V4 and V3 also have more features than DIY builds.
 
@@ -101,7 +103,8 @@ All of them uses our common open source software stack.
 | **HDMI 1920x1200@60Hz** support<br>for big displays                          | ✅   | ✅          |   | ❌       |   | ❌         | ❌         |
 | **HDMI 1920x1080@60Hz** support<br>for better BIOS/UEFI compatibility        | ✅   | ✅          |   | ❌       |   | ❌         | ❌         |
 | **HDMI audio** capture                                                       | ✅   | ✅          |   | ✅       |   | ❌         | ❌         |
-| **Microphone emulation** for two-way audio                                   | ✅   | ✅          |   | ✅       |   | ❌         | ❌         |
+| **Microphone** for two-way audio                                             | ✅   | ✅          |   | ✅       |   | ❌         | ❌         |
+| **Web camera** for video calls                                               | ✅   | ✅          |   | ✅       |   | ❌         | ❌         |
 | **Super fast H.264 & MJPEG video:**<br>up to 1080p 60fps                     | ✅   | ✅          |   | ✅       |   | ✅         | ✅         |
 ||
 ||
