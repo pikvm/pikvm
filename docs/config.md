@@ -273,5 +273,4 @@ Once you completed the customization and validated newly created/edited files, r
             enabled: false
     ```
 
-* Early YAML configurations could contain the `!include` directive, which loaded the content of another file to the appropriate level.
-    It still works, but has been deprecated and should not be used. Support will be removed in the future.
+* The legacy `!include` directive is deprecated. Please use `/etc/kvmd/override.d` directory instead.
