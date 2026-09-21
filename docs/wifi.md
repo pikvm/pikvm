@@ -98,13 +98,15 @@ browser) should also work.
         AP that you want to _allow_. All other APs in this network will be blocked.
 
 
-5. Enable the `wpa_supplicant@wlan0` service:
+4. Enable the `wpa_supplicant@wlan0` service:
 
-   ```console
-   [root@pikvm ~]# systemctl enable wpa_supplicant@wlan0.service
-   ```
+    ```console
+    [root@pikvm ~]# systemctl enable wpa_supplicant@wlan0.service
+    ```
 
-6. Make filesystem read-only again using `ro` command
+5. Make filesystem read-only again using `ro` command
+
+6. Reboot PiKVM for immediate use with `reboot` command or apply network settings in current boot with `networkctl reload && networkctl reconfigure wlan0`.
 
 
 -----
