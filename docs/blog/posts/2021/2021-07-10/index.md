@@ -26,7 +26,7 @@ For a long time, Pi-KVM had several problems related to the mouse and keyboard o
 Since this problem was hidden somewhere inside the Apple drivers, I needed to buy a hardware USB protocol analyzer to understand how to get around it (because Mac is a closed source and there is no other way to find out what is happening there). Fixing this cost me almost $1500. So if it will be useful to someone, you can support me with a donation, because developing Pi-KVM software as Open Source is my main and only job.
 
 - https://patreon.com/pikvm
-- https://www.paypal.me/mdevaev
+- https://ko-fi.com/pikvm
 
 To update:
 

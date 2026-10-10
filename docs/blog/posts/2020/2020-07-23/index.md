@@ -23,6 +23,6 @@ Two important VNC improvements: client connections that have hung up are now ter
 
 - Minor fixes and codebase cleanup.
 
-This release also updated the list of project sponsors, who donated via Patreon (https://patreon.com/pikvm) or PayPal (https://www.paypal.me/mdevaev). The names of these good people are forever immortalized on the project page and in the web interface in the About window.
+This release also updated the list of project sponsors, who donated via Patreon (https://patreon.com/pikvm) or Ko-Fi (https://ko-fi.com/pikvm). The names of these good people are forever immortalized on the project page and in the web interface in the About window.
 
 Thanks to them, I was able to buy a couple of new devices, support for which will appear in one of the next releases of Pi-KVM, and also bought food for my cat!
