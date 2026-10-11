@@ -947,6 +947,30 @@ $ curl -v -X POST -k \
 | `cdrom` | boolean | optional | Change the media type to the CD-ROM or Flash. | `1` (CD-ROM) or `0` (Flash) |
 | `rw` | boolean | optional | Sets read-write or read-only mode. Ignored (always read-only) when `cdrom=1` | `1` (read-write) or `0` (read-only) |
 
+The `image` parameter can be a URL. In this case, PiKVM will bind a specified remote image over a network. It works transparently.
+
+The following protocols are supported:
+
+* `http://...`, `https://host:port/path/to/image.iso` - read-only access over HTTP. Default ports are `80` and `443`.
+
+* `smb://host:port/sharename/path/to/image.iso` - read-write access to Samba share. Default port is `445`.
+
+* `sftp://host:port/path/to/image.iso` - read-write access via the SSH. Default port is `22`.
+
+* `nbd://host:port/exportname` - read-write access via the unencrypted NBD. Default port is `10809`.
+
+    If the export name is empty, use url like `nbd://host` or `nbd://host/`. If the export name should be started from the slash, use this: `nbd://host//exportname`.
+
+    Keep in mind that PiKVM requests the export twice before connecting to it, so the NBD server must be configured for multiple connections. We recommend to use `qemu-nbd` server with `-t/--persistent` option, for example: `qemu-nbd -f raw image.iso -p 10809 -x image.iso -t`.
+
+There are few optional parameters for each protocol: 
+
+| Parameter | Type    | HTTP | SMB | SFTP | NBD |
+|-----------|---------|------|-----|------|-----|
+| `user`    | string  | Yes  | Yes | Yes  |     |
+| `passwd`  | string  | Yes  | Yes | Yes  |     |
+| `verify`  | boolean | Yes  |     |      |     |
+
 **Example of use**:
 
 ```console
@@ -1786,7 +1810,7 @@ Most endpoints require authentication using your PiKVM credentials. You can inte
 
 **Method**: `GET`
 
-**Route**: `/api/redfish/v1`
+**Route**: `/redfish/v1`
 
 **Description**: Returns the basic Redfish service information and links to available resources. Doesn't require authentication.
 
@@ -1795,7 +1819,7 @@ Most endpoints require authentication using your PiKVM credentials. You can inte
 **Example of use**:
 
 ```console
-$ curl -k https://<pikvm-ip>/api/redfish/v1
+$ curl -k https://<pikvm-ip>/redfish/v1
 ```
 
 ??? note "Example output"
@@ -1816,7 +1840,7 @@ $ curl -k https://<pikvm-ip>/api/redfish/v1
 
 **Method**: `GET`
 
-**Route**: `/api/redfish/v1/Systems`
+**Route**: `/redfish/v1/Systems`
 
 **Description**: Returns collection of available computer systems connected to PiKVM itself and [PiKVM Switch](switch.md) (if presented).
 
@@ -1825,7 +1849,7 @@ $ curl -k https://<pikvm-ip>/api/redfish/v1
 **Example of use**:
 
 ```console
-$ curl -k -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems
+$ curl -k -u admin:admin https://<pikvm-ip>/redfish/v1/Systems
 ```
 
 ??? note "Example output"
@@ -1887,7 +1911,7 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems
 
 **Method**: `GET`
 
-**Route**: `/api/redfish/v1/Systems/0`
+**Route**: `/redfish/v1/Systems/0`
 
 **Description**: Returns detailed information about the specific system, including power state, hostname, and available actions.
 
@@ -1896,7 +1920,7 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems
 **Example of use**:
 
 ```console
-$ curl -k -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems/0
+$ curl -k -u admin:admin https://<pikvm-ip>/redfish/v1/Systems/0
 ```
 
 ??? note "Example output"
@@ -1934,7 +1958,7 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems/0
 
 **Method**: `PATCH`
 
-**Route**: `/api/redfish/v1/Systems/0`
+**Route**: `/redfish/v1/Systems/0`
 
 **Description**: This handle was added to aid in scenarios where installing OKD (Kubernetes) using installer-provisioned infrastructure involves expecting two fields to be returned and the patch request to return a 204. Hence, this handle is currently a no-op that just returns success.
 
@@ -1943,7 +1967,7 @@ $ curl -k -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems/0
 **Example of use**:
 
 ```console
-$ curl -k -X PATCH -u admin:admin https://<pikvm-ip>/api/redfish/v1/Systems/0
+$ curl -k -X PATCH -u admin:admin https://<pikvm-ip>/redfish/v1/Systems/0
 ```
 
 There will be zero output for this command by design.
@@ -1958,7 +1982,7 @@ There will be zero output for this command by design.
 
 **Method**: `POST`
 
-**Route**: `/api/redfish/v1/Systems/0/Actions/ComputerSystem.Reset`
+**Route**: `/redfish/v1/Systems/0/Actions/ComputerSystem.Reset`
 
 **Description**: Performs power control actions on the system.
 
@@ -1978,7 +2002,7 @@ $ curl -k -X POST \
     -H "Content-Type: application/json" \
     -u admin:admin \
     -d '{"ResetType": "ForceRestart"}' \
-    https://<pikvm-ip>/api/redfish/v1/Systems/0/Actions/ComputerSystem.Reset
+    https://<pikvm-ip>/redfish/v1/Systems/0/Actions/ComputerSystem.Reset
 ```
 
 There will be zero output for this command by design.
@@ -1989,6 +2013,122 @@ There will be zero output for this command by design.
 |------|-------------|
 | 204 | Success |
 | 400 | Invalid or missing ResetType |
+
+### Mass Storage Drive Information
+
+**Method**: `GET`
+
+**Route**: `/redfish/v1/Managers/BMC/VirtualMedia/MSD`
+
+**Description**: Returns detailed information about MSD state and configuration.
+
+**Query parameters**: None.
+
+**Example of use**:
+
+```console
+$ curl -k -u admin:admin https://<pikvm-ip>/redfish/v1/Managers/BMC/VirtualMedia/MSD
+```
+
+??? note "Example output"
+    ```json
+    {
+        "@odata.id": "/redfish/v1/Managers/BMC/VirtualMedia/MSD",
+        "@odata.type": "#VirtualMedia.v1_4_0.VirtualMedia",
+        "Actions": {
+            "#VirtualMedia.EjectMedia": {
+                "target": "/redfish/v1/Managers/BMC/VirtualMedia/MSD/Actions/VirtualMedia.EjectMedia"
+            },
+            "#VirtualMedia.InsertMedia": {
+                "Image@Redfish.AllowableValues": [
+                    "URI"
+                ],
+                "target": "/redfish/v1/Managers/BMC/VirtualMedia/MSD/Actions/VirtualMedia.InsertMedia"
+            }
+        },
+        "ConnectedVia": "URI",
+        "Description": "PiKVM Virtual CD/DVD/Flash Drive",
+        "Id": "MSD",
+        "Image": "nbd://192.168.1.238/NetBSD-10.0-sparc.iso",
+        "ImageName": "NetBSD-10.0-sparc.iso",
+        "Inserted": false,
+        "MediaTypes": [
+            "USBStick",
+            "CD",
+            "DVD"
+        ],
+        "Name": "Virtual CD/DVD/Flash Drive",
+        "Oem": {
+            "PiKVM": {
+                "@odata.context": "/redfish/v1/$metadata#PiKVMVirtualMedia.PiKVMVirtualMedia",
+                "@odata.type": "#PiKVMVirtualMedia.v1_0_0.PiKVMVirtualMedia",
+                "DriveOptical": true,
+                "MsdBusy": false,
+                "MsdEnabled": true,
+                "MsdOnline": true
+            }
+        },
+        "TransferMethod": "Stream",
+        "WriteProtected": false
+    }
+    ```
+
+### Insert image to Mass Storage Drive
+
+**Method**: `POST`
+
+**Route**: `/redfish/v1/Managers/BMC/VirtualMedia/MSD/Actions/VirtualMedia.InsertMedia`
+
+**Description**: Insert a local or remote image.
+
+**Query parameters**: None, use a POST body JSON:
+
+  * `Image` - image name, [can be a URL](#set-msd-parameters). Required.
+  * `Inserted` - should the image be connected to the host or just configured. Boolean, default - true.
+  * `WriteProtected` - access mode. Boolean, default - true.
+  * `UserName` - username for remote image auth.
+  * `Password` - password for remote image auth.
+  * `VerifyCertificate` - check the target host (in case of HTTP - check certificate). Boolean, default: true.
+  * `"DriveOptical": {"Oem": {"PiKVM": {"DriveOptical": true|false}}}` - CD-ROM/DVD or USB flash emulation. By default determines by the image file extension.
+
+**Example of use**:
+
+```console
+curl -i -X POST \
+    -H "Content-Type: application/json" \
+    -L -k https://<pikvm-ip>/redfish/v1/Managers/BMC/VirtualMedia/MSD/Actions/VirtualMedia.InsertMedia \
+    -d '{
+        "Image": "https://releases.ubuntu.com/noble/ubuntu-24.04.3-live-server-amd64.iso",
+        "Inserted": true
+    }'
+```
+
+| Code | Description |
+|------|-------------|
+| 204 | Success |
+| 400 | Invalid or missing parameter |
+
+### Eject image from Mass Storage Drive
+
+**Method**: `POST`
+
+**Route**: `/redfish/v1/Managers/BMC/VirtualMedia/MSD/Actions/VirtualMedia.EjectMedia`
+
+**Description**: Eject an image.
+
+**Query parameters**: None.
+
+**Example of use**:
+
+```console
+curl -i -X POST \
+    -H "Content-Type: application/json" \
+    -L https://<pikvm-ip>/redfish/v1/Managers/BMC/VirtualMedia/MSD/Actions/VirtualMedia.EjectMedia
+```
+
+| Code | Description |
+|------|-------------|
+| 204 | Success |
 
 ----
 ## Misc
