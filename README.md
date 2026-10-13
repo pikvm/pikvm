@@ -246,17 +246,21 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Aaron Graubert
 * Aaron Heise
 * Aaron Stein
+* Abdulla Hasan Alhaddad
 * Accalia
 * Adam Goodbar
 * Adam S
 * Adam Stuart
 * AdamBomb
+* Ade Adeoti
 * adipisicing
 * Adrian Basham
 * Adrian Popescu
 * Ahmed Syed
+* ajorpheus
 * Alberto Bassi
 * alejandro
+* Alejandro Madurga Ainoza
 * Aleksei Brusianskii
 * Alessio Curri
 * Alex T
@@ -276,6 +280,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Andreas Schmid
 * Andrew Brant
 * Andrew Melton
+* Andrew Moir
 * Andrew Reusch
 * Andrew Ruan
 * Andrzej V
@@ -300,6 +305,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Badal Patel
 * baddog
 * Bao Tin Hoang
+* Bartosz Baranowski
 * Bean Co.
 * Bela Bargel
 * Belf Igor
@@ -321,13 +327,16 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Blair Hasler
 * Blindside
 * Blue Frog LLC
+* Bojan Vlasonjic
 * Bootstrapper - Programmierung erklärt
+* Bora Bilgin
 * Bosco
 * Bradford King
 * Brainspore Networks
 * Branden Shaulis
 * Brandon Daniels
 * Brian
+* Brian Grohe
 * Brian Moses
 * Brian T Mulcahy
 * Brian Vecchiarelli
@@ -335,6 +344,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * brodonalds
 * Bruno Gomes
 * Bryan Adams
+* Bryan Henry
 * Bryan Montgomery
 * Buzzer
 * C P ELSE
@@ -347,7 +357,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Carlos Garcia
 * Carlos Manuel Torres
 * cbad536
-* César Nascimento
+* Charles Ricketts
 * CHINATERA LIMITED
 * Chris Blackmon
 * Chris Burton
@@ -358,9 +368,9 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Christi King
 * Christian Schlögl
 * Christian Svensson
-* Christoph Dette
 * Christof Maluck
 * Christoffer Lund
+* Christoph Dette
 * Christopher Bulla
 * Christopher Gelatt
 * Christopher Hearn
@@ -369,6 +379,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Christopher Simms
 * Chucktastic
 * Cihan VURAL
+* Claudius Bächle
 * clauskj3r
 * Clifford Coleman
 * Clinton Lee Taylor
@@ -377,13 +388,13 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Corey Layton
 * Corey Lista
 * Craig Keenan
+* Cristian Torres
 * Crossfactor
 * Cruzzer
 * ctag
 * Curt Sammer
 * CyB0rgg
-* DeMentor
-* Desmond Whitt
+* César Nascimento
 * Daegara
 * DailyAneurism
 * Damon Meledones
@@ -406,6 +417,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * David Shay
 * David Ye
 * David York
+* DeMentor
 * Denis
 * Denis Andreev
 * Denis Yatsenko
@@ -414,6 +426,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Dennis Lomet
 * Derek Jarvis
 * Derek Yap
+* Desmond Whitt
 * Didrik
 * digitalbaconbits
 * Dimitrij Jedich
@@ -421,6 +434,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * dizztrukshin
 * Dmitry Shilov
 * DogeLabs
+* Dominic Damoah
 * Dominic Phoon
 * Dominik Klonowski
 * Donald Hays
@@ -442,6 +456,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Fergus McKay
 * Finn Ebenritter
 * floppy
+* Florijn Terstal
 * fo0bar
 * Foad Yousef
 * Foamy
@@ -455,8 +470,8 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Garrett Dangerfield
 * Ge Men
 * Geekworm
-* Genkinger Andreas
 * Geijer
+* Genkinger Andreas
 * Geoffrey Wright
 * George Becker
 * Georgy Brodsky
@@ -476,7 +491,10 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Gustin Johnson
 * György Tamás Vizi
 * Haiberg GmbH
+* Halil YILDIRIM
+* Hassan Mohammed
 * Haven Zheng
+* Hector De La Torre
 * Heibunny
 * Heikki Tiittanen
 * Helio Leonardo Pinheiro e Mota
@@ -501,6 +519,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * J L
 * Jaanus
 * Jackson Wyatt
+* Jacob Bachmann
 * Jacob Karaffa
 * Jacob Morgan
 * James Cadd
@@ -527,6 +546,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Jeff
 * Jeff Bowman
 * Jeff Urlwin
+* JeffreyJ
 * Jennifer Herting
 * Jennifer Rowlett
 * Jeremy Abel
@@ -554,27 +574,29 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Johnny Henson
 * Jon Ferguy
 * Jon-Eric
-* Joni Ruuskanen
 * Jonas Fischer
 * Jonathan Slenders
 * Jonathan Vaughn
+* Joni Ruuskanen
 * Joost Backer
+* Jordan Blake
+* Jordi Pakey-Rodriguez
+* Joris van Embden
+* Josefine Starlene
 * Joseph Swift
 * Josh Nethery
 * Josh Ricker
 * Josh VanDeraa
 * Joshua Futterer
-* Jordan Blake
-* Jordi Pakey-Rodriguez
-* Joris van Embden
 * Jozef Riha
-* Jörgen Fredriksson
 * Julian Forero
 * Julian Schneider
 * Julien Angelier
 * Justin
 * Justin Waters
+* Jörgen Fredriksson
 * Kai Hadler
+* Kaleb Schaffner
 * Kamil Chyba
 * Kari Matti Korpi
 * Karl Dunne
@@ -609,9 +631,9 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Lothar Schweikle-Droll
 * Louis Müller
 * LSDTripp
-* Ľubor Slušný
 * Luca Di Diomede
 * Lucio De Carli
+* luiscon14
 * Luiz Bizzio
 * Lukas Bischof
 * Lukas Kammerer
@@ -619,6 +641,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Maksim Terehin
 * Malcolm Cameron
 * Manfred Radeschnig
+* Mar. Balske
 * Marc Khouri
 * Marcin Wilk
 * Marcio Zimbres
@@ -626,12 +649,14 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Marcos Wolf
 * Marek Marczykowski-Górecki
 * Marius
-* Mar. Balske
+* Mark Dockery
 * Mark Farrell
+* Mark Fletcher
 * Mark Gilbert
 * Mark Knam
 * Mark Robinson
 * Markrosoft
+* Markus Däschler
 * Markus Halm
 * Markus Schicker
 * Markus Sobczack
@@ -656,6 +681,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Michael Bombe
 * Michael Collins
 * Michael Copeland
+* Michael Gawert
 * Michael Ho
 * Michael Kovacs
 * Michael Lynch
@@ -663,10 +689,12 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Michael Sage
 * Michael Stella
 * Michael Thalmann
+* Michael Woodcock
 * Michael Wu
 * MichaelZ
 * Michel Bissonnette
 * Mikael Wikström
+* mike gore
 * Mike Mason
 * Mikhael Mariano
 * Milan Burda
@@ -689,6 +717,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Nico Baumgartner
 * Nicolai Kragh-Hansen
 * Nicolas Christener
+* Niek Hombrouckx
 * Nigel Smith
 * Nihal Fernando
 * Nils Orbat
@@ -700,14 +729,17 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * nubbn
 * nybble
 * Oh Be
+* Oliver Mesieh
 * Oliver Schwarz
 * Oliver Zimmer
 * Omar El-Domeiri
 * Omar Siam
 * Oscar
+* P_Dmitrij
 * Patrick
 * Patrick Fortin-Ducharme
 * Patrick McDowell
+* Patrick Smears
 * Patrick Wagstrom
 * Paul Bishop
 * Paul De La Rosa
@@ -719,6 +751,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Peter Drayton
 * Peter Farrelly
 * Peter Okelmann
+* Peter Williams
 * Petra Lohmann
 * Petri Heiskanen
 * Phil Wu
@@ -729,7 +762,6 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * posicat
 * pozitron03
 * Przemysław Szypowicz
-* P_Dmitrij
 * Qteal
 * Quattro Uno
 * Quentin Peten
@@ -737,8 +769,8 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Ranc1d
 * Randall D Bilbrey
 * RandomJerk
-* Ref Chowdhury
 * Raphael Schitz
+* Ref Chowdhury
 * René Rathenau
 * ReysDad
 * Ricardo Marques
@@ -746,12 +778,15 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Richard Bernarts
 * Richard Fancher
 * Richard Freemantle
+* Richard Korn
 * Richard Michael
 * Rico Cantrell
 * Rob
 * Rob Holden
 * Rob Tongue
 * Robert Klauco
+* Robert Milkovits
+* Robert Resch
 * Robert Weemhoff 
 * Robin Gfatter
 * Rodion DENISYUK
@@ -765,6 +800,8 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Russell Scott
 * Ryan
 * Ryan Peacock
+* Ryan Stewart-Christie
+* Sained Ltd.
 * Samed Ozoglu
 * Sameul Davies
 * Samuel Cote
@@ -787,6 +824,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Seonwoo Lee
 * Sergey Lukjanov
 * Seth Jennings
+* Shafiq Mohammed
 * Shane Selling
 * Shawn Butts
 * Sheran Gunasekera
@@ -796,6 +834,7 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Simon Sundgaard
 * Simplistic Realities
 * Sirmo
+* Snoof
 * Snowy Maslov
 * Solve Technology
 * srepac
@@ -806,15 +845,17 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Stephan Schmidt
 * Stephen
 * Stephen Hocking
+* Stephen McElroy
 * Steve Jones
 * Steve Kerr
 * Steve Ovens
 * Steve Stringham
 * Steven Richter
 * Stratagem Solutions Ltd
-* Sven Breckler
 * sudo34
 * SuperHiTech
+* Sven Breckler
+* Taha Anwar
 * Tango_Echo_Alpha
 * Tarlak Desaydrone
 * TechBear
@@ -834,13 +875,14 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Timo Brinkmann
 * Timothee Besset
 * TitomusPrime
+* Tobias Schafferhans
+* Toby Pettit
 * Tom Lawson
 * Tom York
 * Tomas Kuchta
 * Tomáš hrubý
 * Torsten Droste
 * Torsten Knoll
-* Tobias Schafferhans
 * Tracy Fitch
 * Tristan Schoening
 * Truman Kilen
@@ -856,15 +898,18 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Viktor Aschenbrenner
 * Viktor Ekmark
 * Vincent Chov
+* Vincent Cojot
 * Vlad Sterescu
+* Vladislav Karbovskii
 * Volker Gropp
 * Walli
 * Walter_Ego
-* William Wenzel
 * Will Froning
+* Willi Mutschler
 * William Hooper
 * William Perrin
 * William Stearns
+* William Wenzel
 * Woojin Son
 * xMdb
 * Yanko Kaneti
@@ -872,12 +917,15 @@ These kind people donated money to the PiKVM project and supported work on it. W
 * Yethal
 * Yevgeniy Kuksenko
 * Yew Kay Yan
-* Yogi
 * Yigal Dar
+* Yogi
 * YURI LEE
 * Yurii Ostapchuk
 * Zeljko
 * zgen
+* Zhang Supeng
+* Zhang Youfu
 * Zoltan Magyari
 * Zsombor Vari
+* Ľubor Slušný
 </details>
