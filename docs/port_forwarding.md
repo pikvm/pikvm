@@ -17,6 +17,7 @@ service is provided by the ISP.
 * By default, port `80` performs permanent forwarding to `443` for security reasons.
 * Forwarding the port `443` is sufficient in most cases.
 * If enabled, the [VNC](vnc.md) server runs on port `5900` (disabled by default).
+* The [WebRTC H.264](webrtc_config.md) video mode additionally requires forwarding a UDP port range, see [WebRTC behind NAT](webrtc_config.md#webrtc-behind-nat).
 
 !!! warning
 

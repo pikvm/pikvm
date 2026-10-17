@@ -51,6 +51,46 @@ server.
 
 
 -----
+## WebRTC behind NAT
+
+If you access PiKVM from the Internet via [port forwarding](port_forwarding.md),
+forwarding ports `80` and `443` is enough for the Web UI and the
+[Direct H.264 or MJPEG video](video.md), but not for WebRTC. WebRTC
+transmits the video over a P2P UDP connection, so the router must also
+forward a range of UDP ports to the PiKVM.
+
+By default, Janus picks a random UDP port from a wide range for each
+connection. To make port forwarding practical, limit this range to a
+small one and forward it on the router:
+
+1. Forward UDP ports `20000-20020` on your router to the PiKVM.
+
+2. Switch the file system to write mode and add the port range to `/etc/kvmd/override.yaml`:
+
+    ```console
+    [root@pikvm ~]# rw
+    [root@pikvm ~]# nano /etc/kvmd/override.yaml
+    ```
+
+    ```yaml
+    janus:
+        cmd_append:
+        - --rtp-port-range=20000-20020
+    ```
+
+3. Switch the file system back to read-only mode and restart the `kvmd-janus` service:
+
+    ```console
+    [root@pikvm ~]# ro
+    [root@pikvm ~]# systemctl restart kvmd-janus
+    ```
+
+!!! note
+    The range `20000-20020` is just an example. You can choose any other UDP range,
+    but the forwarded ports on the router and the `--rtp-port-range` option must match.
+
+
+-----
 ## Custom Janus config
 
 [Janus](https://janus.conf.meetecho.com) is a WebRTC gateway that is
@@ -84,6 +124,6 @@ In some cases, WebRTC may not work. Here some common tips:
 
 * Tricky IPv6 configuration on the network can be a problem. IPv6 support for WebRTC in PiKVM is still in its infancy, so if your network has IPv4, it will be easiest to disable IPv6 on PiKVM. To do this, switch the file system to write mode using `rw` command, add option `ipv6.disable_ipv6=1` to `/boot/cmdline.txt` and perform `reboot`. Also see [here](https://wiki.archlinux.org/title/IPv6#Disable_IPv6).
 
-* A paranoid firewall can interfere too when you try to connect to the PiKVM by forwarding port 443 to the Internet from the internal network. WebRTC is not enough of this, it uses UDP on ports 20000-40000 for a P2P connection. Make sure that the Firewall does not block them.
+* If you access PiKVM from the Internet, forwarding port `443` alone is not enough. WebRTC needs a wide range of UDP ports for the P2P connection, and a strict firewall or NAT will block it. You can significantly limit the port range in the config, forward it on the router and allow it in the firewall, see [WebRTC behind NAT](#webrtc-behind-nat).
 
 * If nothing helps, open the browser's JavaScript console, look at the log and contact our [Support](https://pikvm.org/support/). Developers and/or experienced users will definitely help you.
