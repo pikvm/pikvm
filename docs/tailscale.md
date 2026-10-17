@@ -150,7 +150,7 @@ extend the script to install copies of the certificate and key with the
     TAILSCALE_DOMAIN="pikvm.example.ts.net"
     ```
 
-2. Create `/usr/local/sbin/kvmd-tailscale-cert-renew`:
+2. Create `/usr/local/bin/kvmd-tailscale-cert-renew`:
 
     ```bash
     #!/usr/bin/bash
@@ -261,7 +261,7 @@ extend the script to install copies of the certificate and key with the
     mv -f -- "${new_cert}" "${cert_file}"
     mv -f -- "${new_key}" "${key_file}"
 
-    /usr/sbin/nginx -t -p /etc/kvmd/nginx -c /run/kvmd/nginx.conf
+    /usr/bin/nginx -t -p /etc/kvmd/nginx -c /run/kvmd/nginx.conf
     systemctl reload kvmd-nginx.service
     deployment_succeeded=true
 
@@ -272,7 +272,7 @@ extend the script to install copies of the certificate and key with the
     Make the script executable:
 
     ```console
-    [root@pikvm ~]# chmod 755 /usr/local/sbin/kvmd-tailscale-cert-renew
+    [root@pikvm ~]# chmod 755 /usr/local/bin/kvmd-tailscale-cert-renew
     ```
 
 3. Create the certificate directory in persistent storage and point nginx to
@@ -302,7 +302,7 @@ extend the script to install copies of the certificate and key with the
     [Service]
     Type=oneshot
     EnvironmentFile=/etc/conf.d/kvmd-tailscale-cert-renew
-    ExecStart=/usr/bin/kvmd-pstrun -- /usr/local/sbin/kvmd-tailscale-cert-renew
+    ExecStart=/usr/bin/kvmd-pstrun -- /usr/local/bin/kvmd-tailscale-cert-renew
     TimeoutStartSec=5min
     UMask=0077
     ```
