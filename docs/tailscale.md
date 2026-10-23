@@ -132,6 +132,12 @@ The certificate and key are kept in [persistent storage](pst.md), which
 `kvmd-pstrun` makes writable only while the renewal script is running. The root
 filesystem remains read-only during scheduled checks and renewals.
 
+`tailscale cert` also stores every certificate it obtains in tailscaled's own
+cache at `/var/lib/tailscale/certs`, which is on the read-only root filesystem.
+That cache is therefore moved to persistent storage as well. Otherwise
+tailscaled cannot save a renewed certificate, the renewal order is lost, and
+each later attempt fails with `alreadyReplaced` until the certificate expires.
+
 This setup manages the nginx certificate only. If you use [KVMD-VNC](vnc.md),
 extend the script to install copies of the certificate and key with the
 `kvmd-vnc` group and restart `kvmd-vnc` after renewal.
@@ -276,8 +282,9 @@ extend the script to install copies of the certificate and key with the
     ```
 
 3. Create the certificate directory in persistent storage and point nginx to
-    it. The script uses `KVMD_PST_DATA` instead of a fixed path because that
-    path can differ between PiKVM versions:
+    it. Also move tailscaled's certificate cache to persistent storage, keeping
+    its ACME account key. The script uses `KVMD_PST_DATA` instead of a fixed
+    path because that path can differ between PiKVM versions:
 
     ```console
     [root@pikvm ~]# kvmd-pstrun -- /usr/bin/bash -c '
@@ -286,6 +293,16 @@ extend the script to install copies of the certificate and key with the
         install -d -o root -g kvmd-nginx -m 0750 "${cert_dir}"
         ln -sfn "${cert_dir}/server.crt" /etc/kvmd/nginx/ssl/server.crt
         ln -sfn "${cert_dir}/server.key" /etc/kvmd/nginx/ssl/server.key
+
+        tailscaled_cert_dir="${KVMD_PST_DATA}/tailscaled-certs"
+        install -d -o root -g root -m 0700 "${tailscaled_cert_dir}"
+        if [[ ! -L /var/lib/tailscale/certs ]]; then
+            if [[ -d /var/lib/tailscale/certs ]]; then
+                cp -a /var/lib/tailscale/certs/. "${tailscaled_cert_dir}/"
+                rm -rf /var/lib/tailscale/certs
+            fi
+            ln -s "${tailscaled_cert_dir}" /var/lib/tailscale/certs
+        fi
     '
     ```
 
@@ -339,6 +356,17 @@ extend the script to install copies of the certificate and key with the
     ```console
     [root@pikvm ~]# journalctl -u kvmd-tailscale-cert-renew.service
     [root@pikvm ~]# systemctl list-timers kvmd-tailscale-cert-renew.timer
+    ```
+
+!!! note "Recovering from `alreadyReplaced` errors"
+    If the log shows `409 urn:ietf:params:acme:error:alreadyReplaced`,
+    tailscaled obtained a renewed certificate earlier but could not save it.
+    Make sure step 3 has been applied, then remove the stale cached certificate
+    so that tailscaled requests a new one, and run the renewal again:
+
+    ```console
+    [root@pikvm ~]# kvmd-pstrun -- /usr/bin/bash -c 'rm -f /var/lib/tailscale/certs/pikvm.example.ts.net.{crt,key}'
+    [root@pikvm ~]# systemctl start kvmd-tailscale-cert-renew.service
     ```
 
 -----
