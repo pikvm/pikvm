@@ -9,9 +9,7 @@ which will be available even in BIOS/UEFI when you need live disk to revive the 
 or even reinstall it.
 
 !!! warning
-    This document is relevant for `KVMD >= 4.49`.
-
-    **Also since this version, PiKVM supports DVD emulation!**
+    This document is relevant for `KVMD >= 4.230`.
 
     If you are using an older version, please update the PiKVM OS:
 
@@ -24,6 +22,7 @@ or even reinstall it.
 The following actions are available here:
 
 * Uploading an image to the internal storage of PiKVM.
+* Binding remote image by URL.
 * Selecting an image to connect to the target host.
 * Changing the media type and write availability mode.
 * Downloading an image from the PiKVM storage.
@@ -37,12 +36,59 @@ The following actions are available here:
     The rest of the time, power off is safe because the PiKVM filesystem
     will be in read-only mode.
 
-!!! info "Changing the media type between CD/DVD and Flash is possible only when the device is reconnected"
-    On PiKVM V3 and V4, this can be done using the `System -> Connect main USB` switch in the Web UI.
 
-    In this case, the **media type is determined at the time of connecting the image, and not by clicking on the switch**.
-    The switch affects the settings of the future connection. For non-V3/V4 devices,
-    you need to either reboot your target host or otherwise reinitialize the drive.
+-----
+## Switching between CD/DVD and Flash
+
+Changing the media type between CD/DVD and Flash is possible only when the virtual drive
+is reconnected since it is required by the host OS driver.
+
+On PiKVM V3 and V4, this can be done using the `System -> Connect main USB` switch in the Web UI.
+
+In this case, the **media type is determined at the time of connecting the image,
+and not by clicking on the switch**. The switch affects the settings of the future connection.
+
+For non-V3/V4 devices, you need to either reboot your target host or otherwise reinitialize the drive.
+
+
+-----
+## Binding remote images
+
+Typically, PiKVM uses images uploaded into internal storege to emulate a virtual drive.
+
+Instead, you can use a remote image if you have a fast network.
+This saves memory card resources and avoid waiting you for the image to upload into PiKVM.
+When a host uses such an image, PiKVM transparently sends requests over the network
+to a server where the image is located.
+
+PiKVM can take images over HTTP(S), SMB, SFTP, and NBD protocols via the specified URL.
+
+To use this function, go to the `Drive` menu and click `Bind remote image`.
+Paste the URL and optional user credentials, press `Bind` button, and then `Connect`.
+
+To cancel the binding, simply click `Disconnect` and select any other image in the dropdown.
+
+The following URLs are supported:
+
+* `http://...`, `https://host:port/path/to/image.iso` - read-only access over HTTP. Default ports are `80` and `443`.
+
+* `smb://host:port/sharename/path/to/image.iso` - read-write access to Samba share. Default port is `445`.
+
+* `sftp://host:port/path/to/image.iso` - read-write access via the SSH. Default port is `22`.
+
+* `nbd://host:port/exportname` - read-write access via the unencrypted NBD. Default port is `10809`.
+
+    If the export name is empty, use url like `nbd://host` or `nbd://host/`. If the export name should be started from the slash, use this: `nbd://host//exportname`.
+
+    Keep in mind that PiKVM requests the export twice before connecting to it, so the NBD server must be configured for multiple connections. We recommend to use `qemu-nbd` server with `-t/--persistent` option, for example: `qemu-nbd -f raw image.iso -p 10809 -x image.iso -t`.
+
+There are few optional parameters for each protocol: 
+
+| Parameter  | Type    | HTTP | SMB | SFTP | NBD |
+|------------|---------|------|-----|------|-----|
+| `User`     | string  | Yes  | Yes | Yes  |     |
+| `Password` | string  | Yes  | Yes | Yes  |     |
+| `Verify`   | boolean | Yes  |     |      |     |
 
 
 -----
