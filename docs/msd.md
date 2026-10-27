@@ -70,9 +70,11 @@ To cancel the binding, simply click `Disconnect` and select any other image in t
 
 The following URLs are supported:
 
-* `http://...`, `https://host:port/path/to/image.iso` - read-only access over HTTP. Default ports are `80` and `443`.
+* `http://...`, `https://host:port/path/to/image.iso` - read-only access over HTTP(S). Default ports are `80` and `443`.
 
 * `smb://host:port/sharename/path/to/image.iso` - read-write access to Samba share. Default port is `445`.
+
+* `nfs://host:port/path/to/image.iso` - read-write access to NFSv3/NFSv4 share. Default port is `2049`.
 
 * `sftp://host:port/path/to/image.iso` - read-write access via the SSH. Default port is `22`.
 
@@ -84,11 +86,11 @@ The following URLs are supported:
 
 There are few optional parameters for each protocol: 
 
-| Parameter  | Type    | HTTP | SMB | SFTP | NBD |
-|------------|---------|------|-----|------|-----|
-| `User`     | string  | Yes  | Yes | Yes  |     |
-| `Password` | string  | Yes  | Yes | Yes  |     |
-| `Verify`   | boolean | Yes  |     |      |     |
+| Parameter | Type    | HTTP | SMB | NFS | SFTP | NBD |
+|-----------|---------|------|-----|-----|------|-----|
+| `user`    | string  | Yes  | Yes |     | Yes  |     |
+| `passwd`  | string  | Yes  | Yes |     | Yes  |     |
+| `verify`  | boolean | Yes  |     |     |      |     |
 
 
 -----
