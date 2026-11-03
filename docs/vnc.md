@@ -123,7 +123,7 @@ Hotkeys are triggered by quickly pressing and releasing each key sequentially (t
 -----
 ## Unsupported clients
 
-* **RealVNC** - Does not support most widely used open VNC protocol extensions.
+* **RealVNC** - Does not support required VNC protocol extensions.
 * **Remmina** - Slightly imperfect algorithms for matching settings with the server, we are working on it.
 * **Guacamole** - Incorrectly implements vencrypt, no JPEG compression.
 * **Vinagre** - Incorrectly implements vencrypt, dead.
